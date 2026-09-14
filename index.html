@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Tender Desk | Public sector contracts for small contractors</title>
+<meta name="description" content="A tender desk for small UK contractors. We watch every public contract portal, send you only the contracts you can win, and write the bid with you. From 249 pounds a month.">
+<style>
+  :root{--ink:#16232f;--muted:#5b6770;--line:#dfe4e8;--bg:#ffffff;--soft:#f3f6f8;--brand:#0f5c8c;--brand-dark:#0b4569;--ok:#1d7a4a}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;font-size:17px}
+  a{color:var(--brand)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:5}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:800;font-size:20px;letter-spacing:.2px;color:var(--ink);text-decoration:none}
+  .logo span{color:var(--brand)}
+  .nav a.btn{margin-left:8px}
+  .btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;padding:12px 20px;border-radius:8px;font-weight:600}
+  .btn:hover{background:var(--brand-dark)}
+  .btn.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--brand)}
+  .hero{padding:72px 0 56px;background:linear-gradient(180deg,#f7fafc 0%,#fff 100%)}
+  .hero h1{font-size:44px;line-height:1.12;margin:0 0 18px;max-width:760px}
+  .hero p.lead{font-size:20px;color:var(--muted);max-width:680px;margin:0 0 28px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+  .stat b{display:block;font-size:26px;color:var(--brand)}
+  .stat small{color:var(--muted);font-size:14px}
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  h2{font-size:30px;margin:0 0 12px}
+  .sub{color:var(--muted);max-width:720px;margin:0 0 30px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:var(--soft);border-radius:12px;padding:22px}
+  .card h3{margin:0 0 8px;font-size:19px}
+  .card p{margin:0;color:var(--muted);font-size:16px}
+  .steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .step{padding:18px;border:1px solid var(--line);border-radius:12px}
+  .step::before{counter-increment:s;content:counter(s);display:inline-block;width:32px;height:32px;line-height:32px;text-align:center;border-radius:50%;background:var(--brand);color:#fff;font-weight:700;margin-bottom:10px}
+  .step h3{margin:0 0 6px;font-size:17px}
+  .step p{margin:0;font-size:15px;color:var(--muted)}
+  .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .price{border:1.5px solid var(--line);border-radius:14px;padding:26px;background:#fff;display:flex;flex-direction:column}
+  .price.featured{border-color:var(--brand);box-shadow:0 8px 30px rgba(15,92,140,.10)}
+  .price h3{margin:0;font-size:20px}
+  .price .amt{font-size:36px;font-weight:800;margin:10px 0 2px}
+  .price .amt small{font-size:15px;font-weight:500;color:var(--muted)}
+  .price ul{padding-left:18px;margin:14px 0 22px;color:var(--muted);font-size:15px;flex:1}
+  .price li{margin-bottom:6px}
+  .who{display:flex;flex-wrap:wrap;gap:10px}
+  .who span{background:var(--soft);border-radius:999px;padding:8px 14px;font-size:15px}
+  .honest{background:var(--soft);border-left:4px solid var(--ok);padding:18px 22px;border-radius:8px;font-size:16px}
+  .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:start}
+  form{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}
+  label{display:block;font-weight:600;font-size:14px;margin:12px 0 6px}
+  input,select,textarea{width:100%;padding:11px 12px;border:1px solid #c9d1d8;border-radius:8px;font:inherit;font-size:15px}
+  textarea{min-height:90px}
+  footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+  @media (max-width:820px){
+    .stats,.grid,.steps,.prices,.contact{grid-template-columns:1fr}
+    .hero h1{font-size:34px}
+    .nav .hide-m{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">The Tender<span>Desk</span></a>
+    <nav>
+      <a class="hide-m" href="#how" style="margin-right:18px;text-decoration:none;color:var(--ink)">How it works</a>
+      <a class="hide-m" href="#prices" style="margin-right:18px;text-decoration:none;color:var(--ink)">Prices</a>
+      <a class="btn" href="#contact">Get this month's contracts</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <h1>Public sector contracts, found and written for you. For firms with 3 to 30 staff.</h1>
+      <p class="lead">Councils, the NHS, housing associations and schools publish contracts for cleaning, grounds, maintenance, catering, care and training every week. Most small firms never see them. We watch every portal for you, send you only the ones you can win, and write the bid with you.</p>
+      <a class="btn" href="#contact">Show me what was published in my area</a>
+      <a class="btn ghost" href="#prices" style="margin-left:8px">See prices</a>
+
+      <div class="stats">
+        <div class="stat"><b>45.2 billion pounds</b><small>spent by the UK public sector with small and medium firms in 2025, a six year high (British Chambers of Commerce and Tussell, May 2026)</small></div>
+        <div class="stat"><b>21 percent</b><small>of all direct public spend now goes to SMEs, and the government's 2026 SME Action Plan is pushing for more</small></div>
+        <div class="stat"><b>From 249 pounds a month</b><small>rolling, no contract, cancel any time. Bid consultancies charge 2,000 pounds and up per bid</small></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="problem">
+    <div class="wrap">
+      <h2>Why you are not winning public work</h2>
+      <p class="sub">It is not the quality of your work. It is that the contracts are published on portals you do not check, the paperwork is written for firms with a bid team, and the consultants who could help price themselves for companies ten times your size.</p>
+      <div class="grid">
+        <div class="card"><h3>You never see them</h3><p>Since February 2025 public bodies publish on the government's Central Digital Platform. Unless someone is checking it daily for your trade and your area, the contract is awarded before you know it existed.</p></div>
+        <div class="card"><h3>The forms put you off</h3><p>Selection questionnaires, method statements, social value, policies, insurance evidence. None of it is hard once it is written down properly the first time. It just never gets written down.</p></div>
+        <div class="card"><h3>Help is priced out of reach</h3><p>Bid writers charge 450 to 750 pounds a day and 2,000 to 8,000 pounds a tender. That works for a firm with 100 staff. It does not work for you.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="sub">One phone call to set up. After that you get a short weekly email and a monthly call, and you only spend time on contracts worth your time.</p>
+      <div class="steps">
+        <div class="step"><h3>We register you properly</h3><p>Central Digital Platform account, supplier profile, share code, the lot. Done once, done right.</p></div>
+        <div class="step"><h3>We watch every portal daily</h3><p>Find a Tender, Contracts Finder and your regional portal, filtered to your trade, your area and the contract sizes you can deliver.</p></div>
+        <div class="step"><h3>You get a one page shortlist</h3><p>Each week: only the contracts you can realistically win, with a plain summary, the deadline and our honest view on your chances.</p></div>
+        <div class="step"><h3>We write the bid with you</h3><p>When you want to go for one, we draft every answer from your own evidence, you check it, we format and submit on time.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prices">
+    <div class="wrap">
+      <h2>Prices</h2>
+      <p class="sub">Plain prices, no contracts, no percentage of the contract value. You pay for the work, not for the win.</p>
+      <div class="prices">
+        <div class="price featured">
+          <h3>Tender Desk</h3>
+          <div class="amt">249 <small>pounds a month</small></div>
+          <ul>
+            <li>Central Digital Platform registration and profile</li>
+            <li>Daily monitoring of every relevant portal</li>
+            <li>Weekly shortlist with plain summaries</li>
+            <li>Deadline reminders</li>
+            <li>15 minute call each month</li>
+            <li>Rolling monthly, cancel any time</li>
+          </ul>
+          <a class="btn" href="#contact">Start this month</a>
+        </div>
+        <div class="price">
+          <h3>Bid Build</h3>
+          <div class="amt">750 <small>pounds per bid</small></div>
+          <ul>
+            <li>For below threshold and framework applications</li>
+            <li>1,500 pounds for a full tender response</li>
+            <li>Every question answered from your evidence</li>
+            <li>You review, we format and submit</li>
+            <li>Half on start, half on submission</li>
+          </ul>
+          <a class="btn ghost" href="#contact">Ask about a bid</a>
+        </div>
+        <div class="price">
+          <h3>Tender Ready Pack</h3>
+          <div class="amt">350 <small>pounds one off</small></div>
+          <ul>
+            <li>The documents every bid asks for, written once</li>
+            <li>Policies, insurance summary, case studies</li>
+            <li>Method statements and social value statement</li>
+            <li>Reused in every future bid</li>
+          </ul>
+          <a class="btn ghost" href="#contact">Get tender ready</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="who">
+    <div class="wrap">
+      <h2>Who this is for</h2>
+      <p class="sub">Firms with 3 to 30 staff, established for at least a year, with public liability insurance, who do good work and want steady contracts rather than one off jobs.</p>
+      <div class="who">
+        <span>Commercial cleaning</span><span>Grounds maintenance</span><span>Building maintenance</span><span>Small construction</span><span>Catering</span><span>Domiciliary care</span><span>Training providers</span><span>Security</span><span>Waste and recycling</span><span>Electrical and plumbing</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="honesty">
+    <div class="wrap">
+      <h2>What we will and will not promise</h2>
+      <div class="honest">
+        We do not guarantee that any bid is won. Nobody honest can. What we promise is that you will see every contract you are eligible for, that every bid we submit is complete, on time and based only on things your firm can evidence, and that you can stop at any time. Our drafting is AI assisted and checked by a person before anything is sent, and we will tell you plainly when we think a contract is not worth your time.
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <h2>See what was published in your area this month</h2>
+        <p class="sub">Tell us your trade and where you work. We will send you the live contracts we found, free, with no obligation. If there is nothing there for you, we will say so.</p>
+        <p><strong>Email:</strong> <a href="mailto:hello@thetenderdesk.co.uk">hello@thetenderdesk.co.uk</a><br><strong>Hours:</strong> Monday to Friday, 9am to 5pm</p>
+      </div>
+      <form onsubmit="var f=this;var b='Name: '+f.name.value+'\nCompany: '+f.company.value+'\nTrade: '+f.trade.value+'\nArea: '+f.area.value+'\nPhone: '+f.phone.value+'\nNotes: '+f.notes.value;window.location.href='mailto:hello@thetenderdesk.co.uk?subject='+encodeURIComponent('Contracts in my area: '+f.company.value)+'&body='+encodeURIComponent(b);return false;">
+        <label for="name">Your name</label><input id="name" name="name" required>
+        <label for="company">Company</label><input id="company" name="company" required>
+        <label for="trade">Trade</label>
+        <select id="trade" name="trade">
+          <option>Commercial cleaning</option><option>Grounds maintenance</option><option>Building maintenance</option><option>Small construction</option><option>Catering</option><option>Domiciliary care</option><option>Training</option><option>Security</option><option>Other</option>
+        </select>
+        <label for="area">Area you cover</label><input id="area" name="area" placeholder="For example Hampshire and Surrey">
+        <label for="phone">Best number to call</label><input id="phone" name="phone" type="tel">
+        <label for="notes">Anything else</label><textarea id="notes" name="notes"></textarea>
+        <div style="margin-top:14px"><button class="btn" type="submit" style="border:0;cursor:pointer">Send me the contracts</button></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    The Tender Desk is a trading name of Yusuf Imthiyas, sole trader, Aldershot, Hampshire. Figures quoted are from the British Chambers of Commerce and Tussell SME Procurement Tracker (May 2026) and published UK bid writing price guides (2026).
+  </div>
+</footer>
+
+</body>
+</html>
