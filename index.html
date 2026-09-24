@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Tender Desk | Public sector contracts, found and written for small contractors</title>
-<meta name="description" content="We watch every UK public contract portal daily, send small contractors only the contracts they can win, and write the bid with them. From 249 pounds a month, no contract.">
+<title>The Tender Desk | Tenders, websites and AI automation for local businesses</title>
+<meta name="description" content="Tenders, websites and AI automation for local businesses. We find public contracts you can win and write the bid with you, build fast modern websites, and set up assistants that answer enquiries and handle admin.">
 <meta property="og:title" content="The Tender Desk">
-<meta property="og:description" content="Public sector contracts, found and written for firms with 3 to 30 staff.">
+<meta property="og:description" content="Tenders, websites and AI automation for local businesses.">
 <meta name="theme-color" content="#0c2a3e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -172,7 +172,21 @@ footer .logo{color:#fff;margin-bottom:12px}
 footer .mark{background:#fff;color:var(--ink)}
 .src{max-width:60ch;line-height:1.6}
 
+/* services */
+.svc{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px;box-shadow:var(--shadow)}
+.svc .num{font-family:var(--display);font-size:1.6rem;color:var(--gold);margin-bottom:10px}
+.svc p{margin:10px 0 0;font-size:.96rem;flex:1}
+.svc a.more{margin-top:18px;font-weight:600;text-decoration:none}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.ticks{list-style:none;padding:0;margin:0}
+.ticks li{position:relative;padding-left:26px;margin-bottom:12px;font-size:.97rem}
+.ticks li::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:8px;
+  border-left:2px solid var(--brand);border-bottom:2px solid var(--brand);transform:rotate(-45deg)}
+.alt{background:var(--shell);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.tbc{border:2px dashed var(--gold);background:var(--gold-tint);border-radius:var(--r);padding:36px;text-align:center}
+.tbc strong{display:block;font-family:var(--display);font-size:1.8rem;color:var(--ink);margin-bottom:8px}
 @media (max-width:900px){
+  .split{grid-template-columns:1fr;gap:32px}
   body{font-size:16px}
   .hero{padding:52px 0 40px}
   .hero-grid,.contact-grid{grid-template-columns:1fr;gap:36px}
@@ -199,11 +213,13 @@ footer .mark{background:#fff;color:var(--ink)}
   <div class="wrap nav">
     <a class="logo" href="#top"><span class="mark">TD</span>The Tender Desk</a>
     <nav class="nav-links">
-      <a href="#how">How it works</a>
+      <a href="#tenders">Tenders</a>
+      <a href="#websites">Websites</a>
+      <a href="#automation">AI automation</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">Questions</a>
     </nav>
-    <a class="btn" href="#start">Get this month's list</a>
+    <a class="btn" href="#start">Get in touch</a>
   </div>
 </header>
 
@@ -212,14 +228,14 @@ footer .mark{background:#fff;color:var(--ink)}
 <div class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow">For contractors with 3 to 30 staff</p>
-      <h1>Councils are buying. <span class="hl">You are not bidding.</span></h1>
-      <p class="lede">Every week, councils, NHS trusts, schools and housing associations publish contracts for cleaning, grounds and maintenance. We find the ones you can win, and we write the bid with you.</p>
+      <p class="eyebrow">For local businesses with 1 to 30 staff</p>
+      <h1>More work in. <span class="hl">Less admin.</span></h1>
+      <p class="lede">We find public contracts you can win and write the bid with you. We build fast, modern websites. And we set up simple AI tools that answer enquiries and take care of routine admin.</p>
       <div class="hero-cta">
-        <a class="btn btn-brand" href="#start">Show me contracts in my area</a>
-        <a class="btn btn-line" href="#how">See how it works</a>
+        <a class="btn btn-brand" href="#start">Talk to us</a>
+        <a class="btn btn-line" href="#services">See what we do</a>
       </div>
-      <p class="hero-note">Free first list. No obligation, no card needed.</p>
+      <p class="hero-note">Free first conversation. No obligation, no card needed.</p>
     </div>
 
     <div class="live">
@@ -244,7 +260,37 @@ footer .mark{background:#fff;color:var(--ink)}
   </div>
 </div>
 
-<div class="stats">
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What we do</p>
+      <h2>Three services, one desk.</h2>
+      <p>Use one, or use all three. Each is priced on its own and you can stop at any time.</p>
+    </div>
+    <div class="cards">
+      <div class="svc">
+        <div class="num">01</div>
+        <h3>Tenders</h3>
+        <p>We watch every public contract portal daily, send you only the contracts worth your time, and write the bid with you from your own evidence.</p>
+        <a class="more" href="#tenders">How tenders work &rarr;</a>
+      </div>
+      <div class="svc">
+        <div class="num">02</div>
+        <h3>Websites</h3>
+        <p>Fast, modern websites that work properly on a phone, tell people clearly what you do, and make it easy to call or enquire.</p>
+        <a class="more" href="#websites">About websites &rarr;</a>
+      </div>
+      <div class="svc">
+        <div class="num">03</div>
+        <h3>AI automation</h3>
+        <p>A chat assistant on your site for enquiries and bookings, automatic replies so nobody waits, review requests after each job, and less time on routine admin.</p>
+        <a class="more" href="#automation">About automation &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="tenders" class="stats" style="border-top:1px solid var(--line-2)">
   <div class="wrap stats-grid">
     <div class="stat">
       <b>£45.2bn</b>
@@ -264,7 +310,7 @@ footer .mark{background:#fff;color:var(--ink)}
 <section>
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">The problem</p>
+      <p class="eyebrow">Tenders: the problem</p>
       <h2>It is not the quality of your work.</h2>
       <p>You lose these contracts before anyone reads a word about you. Here is where it actually goes wrong.</p>
     </div>
@@ -291,7 +337,7 @@ footer .mark{background:#fff;color:var(--ink)}
 <section class="steps" id="how">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow" style="color:#7fd4cc">How it works</p>
+      <p class="eyebrow" style="color:#7fd4cc">Tenders: how it works</p>
       <h2>One call to set up. A short email every week after that.</h2>
       <p>You stay on the tools. We do the watching, the reading and the writing.</p>
     </div>
@@ -320,51 +366,94 @@ footer .mark{background:#fff;color:var(--ink)}
   </div>
 </section>
 
-<section id="pricing">
+<section class="alt" id="websites">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Websites</p>
+      <h2>A website that does its job.</h2>
+      <p style="margin-top:14px">Most people will find you on their phone. If the site is slow, out of date or hard to read, they call someone else. We build clean, quick sites for local businesses and keep them simple to run.</p>
+      <p>You can see example sites we have built as demos before you decide anything.</p>
+      <a class="btn btn-line" href="https://imthiyasyusuf1-dotcom.github.io/sites/" target="_blank" rel="noopener">See example sites</a>
+    </div>
+    <ul class="ticks">
+      <li>Designed for phones first, and fast to load</li>
+      <li>Clear about what you do, where you work and how to reach you</li>
+      <li>Click to call, enquiry form and map built in</li>
+      <li>Basic search set up so local customers can find you</li>
+      <li>Your domain and your content stay yours</li>
+      <li>Changes after launch handled for you if you want</li>
+    </ul>
+  </div>
+</section>
+
+<section id="automation">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">AI automation</p>
+      <h2>Answer every enquiry, even when you are on a job.</h2>
+      <p style="margin-top:14px">Missed calls and slow replies lose work. We set up small, practical tools that reply to customers straight away, collect the details you need and take routine admin off your plate.</p>
+      <p>You decide what the tools can and cannot say. Anything unusual comes to you.</p>
+    </div>
+    <ul class="ticks">
+      <li>Chat assistant on your website that answers common questions and takes enquiries or bookings</li>
+      <li>Automatic replies to enquiries by email or web form, so nobody waits</li>
+      <li>Review requests sent to customers after each job</li>
+      <li>Admin automations such as reminders, follow ups and moving details between the tools you already use</li>
+      <li>Set up around how you already work, not the other way round</li>
+    </ul>
+  </div>
+</section>
+
+<section id="pricing" style="padding-top:0">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Pricing</p>
-      <h2>Plain prices. No contract, no percentage of your contract value.</h2>
-      <p>You pay for the work, not for the win. Cancel any month.</p>
+      <h2>Plain prices. No long contracts.</h2>
+      <p>Fixed setup fee, then a simple monthly price. Cancel any month.</p>
     </div>
     <div class="prices">
+      <div class="price">
+        <h3>Website</h3>
+        <div class="amt">£99<small> setup</small></div>
+        <p style="font-size:.9rem;color:var(--muted);margin:0">Then £25 a month. Hosting, updates and support included.</p>
+        <ul><li>Fast, mobile-friendly site</li><li>Contact form and Google Maps</li><li>Domain and hosting sorted</li><li>Small updates each month</li></ul>
+        <a class="btn btn-line" href="#start">Get a website</a>
+      </div>
       <div class="price feat">
+        <h3>Website + AI</h3>
+        <div class="amt">£199<small> setup</small></div>
+        <p style="font-size:.9rem;color:var(--muted);margin:0">Then £45 a month. Everything in Website, plus:</p>
+        <ul><li>Chat assistant for enquiries and FAQs</li><li>Online booking</li><li>Instant replies to new enquiries</li><li>Automatic Google review requests</li></ul>
+        <a class="btn btn-brand" href="#start">Get the full setup</a>
+      </div>
+      <div class="price">
+        <h3>AI add-on</h3>
+        <div class="amt">£99<small> setup</small></div>
+        <p style="font-size:.9rem;color:var(--muted);margin:0">Then £29 a month. For a site you already have.</p>
+        <ul><li>Chat assistant on your current site</li><li>Instant enquiry replies</li><li>Review requests</li><li>Up to 500 chats a month included</li></ul>
+        <a class="btn btn-line" href="#start">Add AI to my site</a>
+      </div>
+    </div>
+    <div class="prices" style="margin-top:1.5rem">
+      <div class="price">
         <h3>Tender Desk</h3>
         <div class="amt">£249<small> / month</small></div>
         <p style="font-size:.9rem;color:var(--muted);margin:0">Rolling monthly. Cancel any time.</p>
-        <ul>
-          <li>Central Digital Platform registration and profile</li>
-          <li>Daily monitoring of every relevant portal</li>
-          <li>Weekly shortlist with plain summaries</li>
-          <li>Deadline reminders so nothing slips</li>
-          <li>15 minute review call each month</li>
-        </ul>
-        <a class="btn btn-brand" href="#start">Start this month</a>
+        <ul><li>Daily monitoring of every relevant portal</li><li>Weekly shortlist with plain summaries</li><li>Deadline reminders</li><li>Bid writing from £750 per bid</li></ul>
+        <a class="btn btn-line" href="#start">Start this month</a>
       </div>
       <div class="price">
         <h3>Bid Build</h3>
         <div class="amt">£750<small> / bid</small></div>
         <p style="font-size:.9rem;color:var(--muted);margin:0">£1,500 for a full tender response.</p>
-        <ul>
-          <li>Every question answered from your evidence</li>
-          <li>Method statements and social value written</li>
-          <li>You review before anything is sent</li>
-          <li>Formatted and submitted on time</li>
-          <li>Half on start, half on submission</li>
-        </ul>
+        <ul><li>Every question answered from your evidence</li><li>Method statements and social value written</li><li>You review before anything is sent</li><li>Half on start, half on submission</li></ul>
         <a class="btn btn-line" href="#start">Ask about a bid</a>
       </div>
       <div class="price">
         <h3>Tender Ready Pack</h3>
         <div class="amt">£350<small> one off</small></div>
         <p style="font-size:.9rem;color:var(--muted);margin:0">Written once, reused in every bid.</p>
-        <ul>
-          <li>The policies every buyer asks for</li>
-          <li>Insurance and accreditation summary</li>
-          <li>Two written case studies</li>
-          <li>Standard method statements</li>
-          <li>Social value statement</li>
-        </ul>
+        <ul><li>The policies every buyer asks for</li><li>Insurance and accreditation summary</li><li>Standard method statements</li><li>Social value statement</li></ul>
         <a class="btn btn-line" href="#start">Get tender ready</a>
       </div>
     </div>
@@ -375,8 +464,8 @@ footer .mark{background:#fff;color:var(--ink)}
   <div class="wrap">
     <div class="section-head" style="margin-bottom:24px">
       <p class="eyebrow">Who this is for</p>
-      <h2>Firms that do good work and want steadier work.</h2>
-      <p>Trading at least a year, public liability insurance in place, two customers who would give a reference. If that is you, there is public work you are eligible for right now.</p>
+      <h2>Local businesses that do good work and want steadier work.</h2>
+      <p>For tenders: trading at least a year, public liability insurance in place, two customers who would give a reference. For websites and automation: any local business that wants to be easier to find and quicker to reply.</p>
     </div>
     <div class="chips">
       <span class="chip">Commercial cleaning</span>
@@ -389,6 +478,8 @@ footer .mark{background:#fff;color:var(--ink)}
       <span class="chip">Security</span>
       <span class="chip">Waste and recycling</span>
       <span class="chip">Electrical and plumbing</span>
+      <span class="chip">Trades and home services</span>
+      <span class="chip">Shops, salons and cafes</span>
     </div>
   </div>
 </section>
@@ -406,6 +497,8 @@ footer .mark{background:#fff;color:var(--ink)}
         <li>Drafting is AI assisted and checked by a person before it is sent.</li>
         <li>No contract, no notice period, no percentage of the contract value.</li>
         <li>If a month is quiet, the email still comes, and it says why.</li>
+        <li>Automated replies only say what you have approved.</li>
+        <li>Your website, domain and data stay in your name.</li>
       </ul>
     </div>
   </div>
@@ -444,6 +537,16 @@ footer .mark{background:#fff;color:var(--ink)}
     </details>
 
     <details>
+      <summary>Can I use just a website or just automation, without tenders?</summary>
+      <p>Yes. Each service stands on its own. Plenty of businesses only need a better website or faster replies to enquiries.</p>
+    </details>
+
+    <details>
+      <summary>Will an AI assistant say the wrong thing to my customers?</summary>
+      <p>It is set up to answer from information you give it and to pass anything it is unsure of to you. You see and approve what it says before it goes live.</p>
+    </details>
+
+    <details>
       <summary>How do I pay, and can I stop?</summary>
       <p>Card or direct debit, monthly. Stop whenever you like, with no notice period and no exit fee. Bids are quoted as a fixed fee, half up front.</p>
     </details>
@@ -454,18 +557,27 @@ footer .mark{background:#fff;color:var(--ink)}
   <div class="wrap contact-grid">
     <div class="contact-side">
       <p class="eyebrow">No obligation</p>
-      <h2>See what was published in your area this month.</h2>
-      <p style="margin-top:16px">Tell us your trade and where you work. We will send you the live contracts we found, free. If there is nothing worth your time, we will say that instead.</p>
+      <h2>Tell us what you need.</h2>
+      <p style="margin-top:16px">Tenders, a website, automation, or a mix. For tenders, tell us your trade and where you work and we will send you the live contracts we found, free. If there is nothing worth your time, we will say that instead.</p>
       <p class="big">07534 458327</p>
       <p class="big" style="margin-top:6px">hello@thetenderdesk.co.uk</p>
       <p style="color:var(--muted);font-size:.95rem">Monday to Friday, 9am to 5pm. We reply the same working day.</p>
     </div>
-    <form onsubmit="var f=this;var b='Name: '+f.fname.value+'\nCompany: '+f.company.value+'\nTrade: '+f.trade.value+'\nArea: '+f.area.value+'\nPhone: '+f.phone.value+'\n\n'+f.notes.value;window.location.href='mailto:hello@thetenderdesk.co.uk?subject='+encodeURIComponent('Contracts in my area: '+f.company.value)+'&body='+encodeURIComponent(b);return false;">
+    <form onsubmit="var f=this;var b='Name: '+f.fname.value+'\nCompany: '+f.company.value+'\nInterested in: '+f.service.value+'\nTrade: '+f.trade.value+'\nArea: '+f.area.value+'\nPhone: '+f.phone.value+'\n\n'+f.notes.value;window.location.href='mailto:hello@thetenderdesk.co.uk?subject='+encodeURIComponent(f.service.value+': '+f.company.value)+'&body='+encodeURIComponent(b);return false;">
       <label for="fname">Your name</label>
       <input id="fname" name="fname" required autocomplete="name">
 
       <label for="company">Company</label>
       <input id="company" name="company" required autocomplete="organization">
+
+      <label for="service">What do you need?</label>
+      <select id="service" name="service">
+        <option>Tenders</option>
+        <option>Website</option>
+        <option>AI automation</option>
+        <option>More than one</option>
+        <option>Not sure yet</option>
+      </select>
 
       <label for="trade">Trade</label>
       <select id="trade" name="trade">
@@ -490,7 +602,7 @@ footer .mark{background:#fff;color:var(--ink)}
       <label for="notes">Anything else</label>
       <textarea id="notes" name="notes" placeholder="Size of team, contracts you have bid for before, anything we should know"></textarea>
 
-      <button class="btn btn-brand" type="submit">Send me this month's contracts</button>
+      <button class="btn btn-brand" type="submit">Send enquiry</button>
       <p class="form-note">Opens your email app. Nothing is stored on this site.</p>
     </form>
   </div>
@@ -502,6 +614,7 @@ footer .mark{background:#fff;color:var(--ink)}
   <div class="wrap foot-grid">
     <div>
       <div class="logo"><span class="mark">TD</span>The Tender Desk</div>
+      <p style="margin:0 0 10px">Tenders, websites and AI automation for local businesses.</p>
       <p style="margin:0">A trading name of Yusuf Imthiyas, sole trader.<br>Aldershot, Hampshire.</p>
       <p style="margin:10px 0 0"><a href="tel:+447534458327">07534 458327</a><br><a href="mailto:hello@thetenderdesk.co.uk">hello@thetenderdesk.co.uk</a></p>
     </div>
