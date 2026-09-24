@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fade House Barbers — Precision Fades & Hot Towel Shaves, Aldershot (Demo)</title>
+<meta name="description" content="Fade House Barbers: skin fades, scissor cuts, beard sculpting and hot-towel shaves in Aldershot. Book online in 30 seconds. Demo website by The Tender Desk.">
+<meta name="theme-color" content="#0f0d0b">
+<link rel="canonical" href="https://thetenderdesk.co.uk/work/fadehouse/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fade House Barbers — Aldershot">
+<meta property="og:description" content="Sharp fades. Hot towels. No faff. Book your chair online.">
+<meta property="og:url" content="https://thetenderdesk.co.uk/work/fadehouse/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&h=630&fit=crop&q=70">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230f0d0b'/><text x='32' y='44' font-family='Georgia' font-size='34' font-weight='700' fill='%23e8dcc4' text-anchor='middle'>F</text><rect x='12' y='50' width='40' height='3' fill='%23b3261e'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BarberShop","name":"Fade House Barbers (demo)","description":"Fictional demo business by The Tender Desk","address":{"@type":"PostalAddress","addressLocality":"Aldershot","addressRegion":"Hampshire","addressCountry":"GB"},"priceRange":"££","openingHours":["Tu-We 09:00-19:00","Th 09:00-20:00","Fr 09:00-19:00","Sa 08:00-17:00","Su 10:00-15:00"]}</script>
+<style>
+:root{--ink:#0f0d0b;--ink2:#1a1714;--ink3:#26211c;--bone:#ece3d0;--bone2:#b8ad98;--red:#c8372d;--red2:#e0493d;--line:rgba(236,227,208,.14);--r:4px;--ease:cubic-bezier(.2,.7,.1,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]:not(.chat){display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--ink);color:var(--bone);font:400 17px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--red2);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--bone);color:var(--ink);padding:8px 14px;z-index:99}.skip:focus{left:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.wrap{width:min(1240px,100% - 48px);margin-inline:auto}
+.display{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:.9}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;text-transform:none;letter-spacing:0;font-weight:400}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--bone2);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--red)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:var(--r);font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform .3s var(--ease),background .3s,color .3s}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red2);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line);color:var(--bone);background:none}.btn-ghost:hover{border-color:var(--bone)}
+.btn svg{transition:transform .3s var(--ease)}.btn:hover svg{transform:translateX(4px)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(15,13,11,.86);backdrop-filter:blur(12px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.logo b{font-family:Anton,sans-serif;font-weight:400;font-size:22px;letter-spacing:.06em}
+.logo i{font-family:"Instrument Serif",serif;color:var(--bone2);font-size:18px}
+.nav ul{display:flex;gap:34px;list-style:none;font-size:14px}
+.nav ul a{text-decoration:none;color:var(--bone2);transition:color .2s}.nav ul a:hover{color:var(--bone)}
+.nav .btn{padding:11px 18px}
+.menu-btn{display:none;background:none;border:0;color:var(--bone);width:44px;height:44px}
+.hero{position:relative;min-height:100svh;display:grid;align-items:end;overflow:hidden;isolation:isolate}
+.hero-img{position:absolute;inset:0;z-index:-2;background:#2a2119 url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=2000&q=70&auto=format&fit=crop") center 35%/cover;transform:scale(1.08);animation:zoom 2.4s var(--ease) forwards;filter:grayscale(.35) contrast(1.05)}
+@keyframes zoom{to{transform:scale(1)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,13,11,.55) 0%,rgba(15,13,11,.25) 35%,rgba(15,13,11,.92) 82%,var(--ink) 100%),linear-gradient(90deg,rgba(15,13,11,.7),transparent 60%)}
+.hero .wrap{padding:140px 0 56px}
+.hero h1{font-size:clamp(60px,min(12vw,17vh),200px);margin:18px 0 0}
+.hero h1 .serif{display:block;font-size:.3em;color:var(--bone2);margin:.15em 0 0 .06em;line-height:1.1}
+.hero h1 .l{display:block;overflow:hidden;padding-bottom:.04em}.hero h1 .l>span{display:inline-block;transform:translateY(105%);animation:up 1.1s var(--ease) forwards}
+.hero h1 .l:nth-child(2)>span{animation-delay:.12s;color:var(--red2)}.hero h1 .l:nth-child(3)>span{animation-delay:.24s}
+@keyframes up{to{transform:none}}
+.hero-foot{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-top:26px;opacity:0;animation:fade 1s .6s forwards}
+@keyframes fade{to{opacity:1}}
+.hero p.lede{max-width:470px;color:var(--bone2);font-size:18px}
+.hero .ctas{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.status{border:1px solid var(--line);border-radius:var(--r);padding:18px 22px;min-width:250px;background:rgba(15,13,11,.5);backdrop-filter:blur(8px)}
+.status .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#5bbf6a;margin-right:8px;box-shadow:0 0 0 0 #5bbf6a88;animation:pulse 2s infinite}
+.status.closed .dot{background:var(--red);animation:none}
+@keyframes pulse{70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.status strong{font-size:15px}.status small{display:block;color:var(--bone2);font-size:13px;margin-top:4px}
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding:18px 0;background:var(--ink)}
+.marquee div{display:flex;gap:48px;width:max-content;animation:mq 40s linear infinite;font-family:Anton,sans-serif;font-size:26px;text-transform:uppercase;letter-spacing:.04em;color:var(--bone2)}
+.marquee span::after{content:"✦";color:var(--red);margin-left:48px;font-size:18px;vertical-align:middle}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:clamp(80px,11vw,150px) 0}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:64px}
+.head h2{font-size:clamp(48px,7vw,104px);margin-top:18px}
+.head h2 .serif{color:var(--red2)}
+.head>p{color:var(--bone2);max-width:440px;justify-self:end}
+.about{display:grid;grid-template-columns:5fr 6fr;gap:clamp(40px,7vw,110px);align-items:center}
+.about figure{position:relative;aspect-ratio:4/5;background:var(--ink3);overflow:hidden;border-radius:var(--r)}
+.about figure img{width:100%;height:100%;object-fit:cover;filter:grayscale(.3)}
+.about figure figcaption{position:absolute;left:16px;bottom:16px;background:var(--ink);padding:8px 12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.about h2{font-size:clamp(40px,5vw,72px);margin:18px 0 28px}
+.about .big{font-family:"Instrument Serif",serif;font-size:clamp(22px,2.2vw,28px);line-height:1.35;margin-bottom:22px}
+.about p{color:var(--bone2)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:44px}
+.stats div{padding:22px 0}.stats b{font-family:Anton,sans-serif;font-weight:400;font-size:44px;display:block;line-height:1}.stats span{font-size:13px;color:var(--bone2)}
+.svc-wrap{background:var(--bone);color:var(--ink)}
+.svc-wrap .eyebrow,.svc-wrap .head>p{color:#5c5345}
+.svc-wrap .head h2 .serif{color:var(--red)}
+.tabs{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.tabs button{background:none;border:1px solid rgba(15,13,11,.25);padding:10px 18px;border-radius:99px;font-size:14px;font-weight:500;color:var(--ink)}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+.menu{list-style:none;border-top:1px solid rgba(15,13,11,.9)}
+.menu li{display:grid;grid-template-columns:60px 1fr auto auto auto;gap:24px;align-items:center;padding:26px 0;border-bottom:1px solid rgba(15,13,11,.18);transition:padding .35s var(--ease),background .35s}
+.menu li:hover{padding-inline:14px;background:rgba(15,13,11,.04)}
+.menu .n{font-family:"Instrument Serif",serif;font-style:italic;color:#6f6554;font-size:20px}
+.menu h3{font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(24px,2.6vw,34px);line-height:1.05}
+.menu p{font-size:14px;color:#5c5345;margin-top:4px}
+.menu .t{font-size:13px;color:#5c5345;white-space:nowrap}
+.menu .p{font-family:Anton,sans-serif;font-size:34px;min-width:90px;text-align:right}
+.menu .go{background:none;border:1px solid rgba(15,13,11,.3);border-radius:99px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--ink);transition:background .2s,color .2s}
+.menu .go:hover{background:var(--ink);color:var(--bone)}
+.menu li[hidden]{display:none}
+.note{margin-top:22px;font-size:14px;color:#5c5345}
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:120px;gap:14px}
+.gallery figure{position:relative;overflow:hidden;border-radius:var(--r);background:var(--ink3)}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .6s;filter:grayscale(.45)}
+.gallery figure:hover img{transform:scale(1.06);filter:none}
+.gallery figcaption{position:absolute;left:14px;bottom:12px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 8px #000}
+.g1{grid-column:span 5;grid-row:span 4}.g2{grid-column:span 4;grid-row:span 2}.g3{grid-column:span 3;grid-row:span 3}.g4{grid-column:span 4;grid-row:span 2}.g5{grid-column:span 3;grid-row:span 1;background:var(--red)!important;display:grid;place-items:center;text-align:center;padding:10px}
+.g5 a{font-family:Anton,sans-serif;font-size:22px;text-transform:uppercase;text-decoration:none;color:#fff}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.barber{border-top:1px solid var(--line);padding-top:22px}
+.barber .av{aspect-ratio:1;border-radius:var(--r);margin-bottom:18px;display:grid;place-items:center;font-family:Anton,sans-serif;font-size:120px;color:var(--ink);position:relative;overflow:hidden}
+.barber .av::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent 0 22px,rgba(0,0,0,.05) 22px 44px)}
+.barber h3{font-family:Anton,sans-serif;font-weight:400;font-size:30px;text-transform:uppercase}
+.barber span{color:var(--bone2);font-size:14px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rev{background:var(--ink);border:1px solid var(--line);border-radius:var(--r);padding:32px;display:flex;flex-direction:column;gap:22px}
+.rev .stars{color:var(--red2);letter-spacing:4px}
+.rev blockquote{font-family:"Instrument Serif",serif;font-size:24px;line-height:1.3}
+.rev figcaption{font-size:14px;color:var(--bone2);margin-top:auto}
+.sample{display:inline-block;border:1px dashed var(--bone2);color:var(--bone2);font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px;border-radius:99px}
+.visit{display:grid;grid-template-columns:1fr 1.2fr;gap:22px}
+.card{background:var(--ink2);border:1px solid var(--line);border-radius:var(--r);padding:36px}
+.hours{width:100%;border-collapse:collapse;margin-top:18px}
+.hours td{padding:13px 0;border-bottom:1px solid var(--line)}.hours td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.hours tr.today td{color:var(--red2);font-weight:600}
+.hours tr.today td:first-child::after{content:" · today";font-weight:400;font-size:13px}
+.map{border-radius:var(--r);overflow:hidden;min-height:420px;position:relative;border:1px solid var(--line);background:var(--ink3)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) invert(.9) contrast(.9)}
+.addr{margin-top:28px;color:var(--bone2);font-size:15px}.addr strong{color:var(--bone);display:block;font-size:17px}
+.cta{text-align:center;padding:clamp(90px,12vw,170px) 0;background:var(--red);color:#fff;position:relative;overflow:hidden}
+.cta h2{font-size:clamp(60px,12vw,190px)}
+.cta .serif{display:block;font-size:.34em;margin-bottom:.1em}
+.cta .btn{background:var(--ink);color:var(--bone);margin-top:40px;font-size:17px;padding:20px 34px}
+.cta .btn:hover{transform:translateY(-2px);background:#000}
+footer{padding:60px 0 100px;font-size:14px;color:var(--bone2)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer a{color:var(--bone)}
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+dialog{margin:auto;background:var(--ink2);color:var(--bone);border-radius:8px;width:min(560px,94vw);max-height:92vh;padding:0;border:1px solid var(--line)}
+dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
+.bk-h{display:flex;justify-content:space-between;align-items:center;padding:22px 26px;border-bottom:1px solid var(--line)}
+.bk-h h2{font-size:28px}
+.x{background:none;border:0;color:var(--bone);font-size:28px;width:40px;height:40px;line-height:1}
+.bk-b{padding:6px 26px 24px}
+.step{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--bone2);margin:18px 0 10px}
+.bk-b select{width:100%;padding:14px;background:var(--ink);color:var(--bone);border:1px solid var(--line);border-radius:var(--r);font:inherit}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips button{background:var(--ink);border:1px solid var(--line);color:var(--bone);padding:10px 14px;border-radius:var(--r);font-size:14px;min-width:64px}
+.chips button[aria-pressed=true]{background:var(--bone);color:var(--ink);border-color:var(--bone);font-weight:600}
+.chips button:disabled{opacity:.3;text-decoration:line-through;cursor:not-allowed}
+.bk-f{padding:20px 26px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:14px}
+.bk-f .sum{font-size:14px;color:var(--bone2)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.done{text-align:center;padding:30px 26px}.done b{font-family:Anton,sans-serif;font-size:40px;font-weight:400;display:block;margin:10px 0}
+.chat-fab{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;align-items:center;gap:10px;background:var(--bone);color:var(--ink);border:0;border-radius:99px;padding:12px 18px 12px 12px;font-weight:600;font-size:14px;box-shadow:0 12px 40px rgba(0,0,0,.45);transition:transform .3s var(--ease)}
+.chat-fab:hover{transform:translateY(-3px)}
+.chat-fab .ic{width:34px;height:34px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff}
+.chat{position:fixed;right:22px;bottom:22px;z-index:61;width:min(390px,calc(100vw - 24px));height:min(600px,calc(100svh - 44px));background:var(--ink2);border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);transform-origin:bottom right;transition:transform .4s var(--ease),opacity .3s,visibility .4s}
+.chat[hidden]{display:flex;transform:scale(.9) translateY(20px);opacity:0;pointer-events:none;visibility:hidden}
+.chat-h{padding:16px 18px;background:var(--ink3);display:flex;align-items:center;gap:12px}
+.chat-h .ic{width:38px;height:38px;border-radius:50%;background:var(--red);display:grid;place-items:center;font-family:Anton,sans-serif;color:#fff}
+.chat-h div{flex:1;line-height:1.3}.chat-h strong{font-size:15px}.chat-h small{display:block;font-size:12px;color:var(--bone2)}
+.demo-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;background:var(--bone);color:var(--ink);padding:3px 7px;border-radius:99px;margin-left:6px;vertical-align:2px;font-weight:700}
+.log{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:85%;padding:11px 14px;border-radius:14px;font-size:14.5px;line-height:1.5;animation:pop .35s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}}
+.msg.bot{background:var(--ink3);border-bottom-left-radius:4px}
+.msg.me{background:var(--red);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.typing{display:flex;gap:4px;padding:14px}.typing i{width:6px;height:6px;border-radius:50%;background:var(--bone2);animation:bl 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bl{50%{opacity:.2}}
+.quick{display:flex;gap:6px;flex-wrap:wrap;padding:0 18px 10px}
+.quick button{background:none;border:1px solid var(--line);color:var(--bone);border-radius:99px;padding:7px 12px;font-size:13px}
+.quick button:hover{border-color:var(--bone)}
+.chat form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.chat input{flex:1;background:var(--ink);border:1px solid var(--line);color:var(--bone);border-radius:99px;padding:12px 16px;font:inherit;font-size:14px}
+.chat form button{background:var(--red);border:0;color:#fff;border-radius:50%;width:44px;height:44px;display:grid;place-items:center}
+.chat .disc{font-size:11px;color:var(--bone2);text-align:center;padding:0 12px 10px}
+@media (max-width:900px){
+ .nav ul{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;background:var(--ink);border-bottom:1px solid var(--line);padding:8px 24px 20px}
+ .nav ul.open{display:flex}.nav ul a{display:block;padding:14px 0;font-size:18px;color:var(--bone)}
+ .menu-btn{display:grid;place-items:center}.nav .wrap>.btn{display:none}
+ .hero-foot,.head,.about,.visit{grid-template-columns:1fr}
+ .head>p{justify-self:start}.head{margin-bottom:40px}
+ .reviews{grid-template-columns:1fr}
+ .team{grid-template-columns:repeat(3,minmax(230px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+ .barber{scroll-snap-align:start}
+ .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
+ .gallery figure{grid-column:span 1!important;grid-row:span 1!important}.g1,.g3{grid-row:span 2!important}.g5{grid-column:span 2!important}
+ .menu li{grid-template-columns:1fr auto;gap:4px 16px}
+ .menu .n,.menu .go{display:none}.menu .t{grid-column:1;grid-row:2}.menu .p{grid-row:1/3;grid-column:2;font-size:28px}
+ .status{min-width:0}.map{min-height:320px}
+}
+@media (max-width:520px){.wrap{width:calc(100% - 36px)}.hero h1{font-size:25vw}.hero h1 .serif{font-size:.36em}.chat-fab .lbl{display:none}.chat-fab{padding:10px}.stats b{font-size:34px}.hero .ctas .btn{flex:1;justify-content:center}.card{padding:26px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" id="nav">
+ <div class="wrap">
+  <a class="logo" href="#top" aria-label="Fade House Barbers, home"><b>FADE HOUSE</b><i>barbers</i></a>
+  <nav aria-label="Main"><ul id="navlist">
+   <li><a href="#services">Services</a></li><li><a href="#work">The work</a></li><li><a href="#team">Barbers</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#visit">Visit</a></li>
+  </ul></nav>
+  <button class="btn btn-red" data-book>Book a chair</button>
+  <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="navlist"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h18M3 17h18"/></svg></button>
+ </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top" aria-label="Introduction" style="padding:0">
+ <div class="hero-img" role="img" aria-label="Barber cutting a client's hair in a classic barbershop"></div>
+ <div class="wrap">
+  <p class="eyebrow">Est. 2019 · Aldershot, Hampshire</p>
+  <h1 class="display"><span class="l"><span>Sharp</span></span><span class="l"><span>Fades.</span></span><span class="l"><span class="serif">No faff, no waiting around.</span></span></h1>
+  <div class="hero-foot">
+   <div>
+    <p class="lede">Skin fades, scissor work and hot-towel shaves from barbers who actually listen. Book your chair online in thirty seconds.</p>
+    <div class="ctas">
+     <button class="btn btn-red" data-book>Book now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+     <a class="btn btn-ghost" href="#services">See prices</a>
+    </div>
+   </div>
+   <div class="status" id="status" aria-live="polite"><span class="dot"></span><strong id="st-t">Checking hours…</strong><small id="st-s">&nbsp;</small></div>
+  </div>
+ </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div>
+ <span>Skin fades</span><span>Hot towel shaves</span><span>Beard sculpting</span><span>Scissor cuts</span><span>Kids' cuts</span><span>Walk-ins welcome</span>
+ <span>Skin fades</span><span>Hot towel shaves</span><span>Beard sculpting</span><span>Scissor cuts</span><span>Kids' cuts</span><span>Walk-ins welcome</span>
+</div></div>
+
+<section id="about"><div class="wrap about">
+ <figure class="rv"><img loading="lazy" src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=900&q=70&auto=format&fit=crop" alt="Barbershop interior with leather chairs and mirrors" width="900" height="1125"><figcaption>The shop floor</figcaption></figure>
+ <div class="rv">
+  <p class="eyebrow">The house</p>
+  <h2 class="display">Three chairs.<br><span class="serif" style="color:var(--red2)">One standard.</span></h2>
+  <p class="big">We're a small shop that takes the fundamentals seriously: a proper consultation, clean blends, sharp lines, and a hot towel to finish.</p>
+  <p>No upselling, no rushing to the next one. Book ahead to guarantee your slot, or drop in; there's usually coffee on.</p>
+  <div class="stats"><div><b data-count="3">3</b><span>Barbers</span></div><div><b data-count="45">45</b><span>Minutes per fade</span></div><div><b data-count="6">6</b><span>Days a week</span></div></div>
+ </div>
+</div></section>
+
+<section class="svc-wrap" id="services"><div class="wrap">
+ <div class="head">
+  <div><p class="eyebrow">Services &amp; prices</p><h2 class="display">The <span class="serif">menu</span></h2></div>
+  <p>Straightforward pricing, no surprises at the till. Every cut includes a consultation, wash on request and a styling finish.</p>
+ </div>
+ <div class="tabs" role="tablist" aria-label="Filter services">
+  <button role="tab" aria-selected="true" data-f="all">All</button><button role="tab" aria-selected="false" data-f="hair">Hair</button><button role="tab" aria-selected="false" data-f="beard">Beard &amp; shave</button><button role="tab" aria-selected="false" data-f="combo">Combos</button>
+ </div>
+ <ul class="menu" id="menu"></ul>
+ <p class="note">Card &amp; contactless only. Under-12s Tuesday to Friday. Prices are demo content.</p>
+</div></section>
+
+<section id="work"><div class="wrap">
+ <div class="head">
+  <div><p class="eyebrow">The work</p><h2 class="display">Fresh off <span class="serif">the chair</span></h2></div>
+  <p>A few recent cuts. Follow along on Instagram for the full archive, and screenshot one to bring in.</p>
+ </div>
+ <div class="gallery">
+  <figure class="g1 rv"><img loading="lazy" src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=900&q=70&auto=format&fit=crop" alt="Barber blending a fade with clippers"><figcaption>Mid skin fade</figcaption></figure>
+  <figure class="g2 rv"><img loading="lazy" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=900&q=70&auto=format&fit=crop" alt="Barber detailing a client's haircut"><figcaption>Line-up</figcaption></figure>
+  <figure class="g3 rv"><img loading="lazy" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=700&q=70&auto=format&fit=crop" alt="Beard being trimmed and shaped"><figcaption>Beard sculpt</figcaption></figure>
+  <figure class="g4 rv"><img loading="lazy" src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?w=900&q=70&auto=format&fit=crop" alt="Barbershop tools and chair"><figcaption>The kit</figcaption></figure>
+  <figure class="g5 rv"><a href="#work" aria-label="Instagram (demo link)">@fadehouse ↗</a></figure>
+ </div>
+</div></section>
+
+<section id="team" style="padding-top:0"><div class="wrap">
+ <div class="head"><div><p class="eyebrow">The barbers</p><h2 class="display">Pick your <span class="serif">chair</span></h2></div><p>Every barber does every service; each has a speciality clients come back for.</p></div>
+ <div class="team">
+  <article class="barber rv"><div class="av" style="background:var(--bone)" aria-hidden="true">D</div><h3>Dan</h3><span>Owner · skin fades &amp; tapers</span></article>
+  <article class="barber rv"><div class="av" style="background:var(--red);color:#fff" aria-hidden="true">R</div><h3>Reece</h3><span>Scissor work &amp; textured crops</span></article>
+  <article class="barber rv"><div class="av" style="background:var(--bone2)" aria-hidden="true">M</div><h3>Marek</h3><span>Beards &amp; hot-towel shaves</span></article>
+ </div>
+</div></section>
+
+<section id="reviews" style="background:var(--ink2)"><div class="wrap">
+ <div class="head"><div><p class="eyebrow">Word of mouth</p><h2 class="display">What they <span class="serif">say</span></h2></div><p><span class="sample">Sample reviews · illustrative only</span><br><br>On a real build, these pull straight from your Google Business profile.</p></div>
+ <div class="reviews">
+  <figure class="rev rv"><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><blockquote>"Best fade I've had in years. Took his time and it still looks sharp two weeks on."</blockquote><figcaption>Sample review · skin fade</figcaption></figure>
+  <figure class="rev rv"><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><blockquote>"Booked on my phone in under a minute, in and out on my lunch break. The hot towel is worth it."</blockquote><figcaption>Sample review · cut &amp; beard</figcaption></figure>
+  <figure class="rev rv"><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><blockquote>"Brought my lad in for his first proper cut. Patient, friendly, and he wants to go back."</blockquote><figcaption>Sample review · kids' cut</figcaption></figure>
+ </div>
+</div></section>
+
+<section id="visit"><div class="wrap">
+ <div class="head"><div><p class="eyebrow">Visit</p><h2 class="display">Find <span class="serif">the shop</span></h2></div><p>Town-centre location near the station, with pay-and-display parking round the corner.</p></div>
+ <div class="visit">
+  <div class="card rv">
+   <h3 class="display" style="font-size:32px">Opening hours</h3>
+   <table class="hours" id="hours"><caption class="sr">Opening hours</caption><tbody></tbody></table>
+   <p class="addr"><strong>Fade House Barbers (demo)</strong>Aldershot town centre, Hampshire<br>Tel: <a href="tel:+441632960123">01632 960123</a> <small>(fictional number)</small></p>
+  </div>
+  <div class="map rv"><iframe title="Map of Aldershot town centre" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.7760%2C51.2440%2C-0.7560%2C51.2530&amp;layer=mapnik"></iframe></div>
+ </div>
+</div></section>
+
+<section class="cta" aria-label="Book"><div class="wrap">
+ <h2 class="display"><span class="serif">Your chair's waiting.</span>Book now</h2>
+ <button class="btn" data-book>Pick a time <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <span>© <span id="yr"></span> Fade House Barbers, a fictional business.</span>
+ <span>Demo site by <a href="mailto:hello@thetenderdesk.co.uk">The Tender Desk</a>. Want one like this for your shop?</span>
+</div></footer>
+
+<dialog id="book" aria-labelledby="bk-title">
+ <div class="bk-h"><h2 class="display" id="bk-title">Book a chair</h2><button class="x" aria-label="Close" data-close>×</button></div>
+ <div class="bk-b" id="bk-body">
+  <label class="step" for="bk-svc">1 · Service</label><select id="bk-svc"></select>
+  <span class="step">2 · Barber</span><div class="chips" id="bk-barber"></div>
+  <span class="step">3 · Day</span><div class="chips" id="bk-day"></div>
+  <span class="step">4 · Time</span><div class="chips" id="bk-time"></div>
+ </div>
+ <div class="bk-f"><span class="sum" id="bk-sum">Choose a day and time</span><button class="btn btn-red" id="bk-go" disabled>Confirm</button></div>
+</dialog>
+
+<button class="chat-fab" id="fab" aria-controls="chat" aria-expanded="false"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span><span class="lbl">Demo assistant</span><span class="sr">Open demo assistant</span></button>
+<div class="chat" id="chat" hidden role="dialog" aria-label="Demo assistant">
+ <div class="chat-h"><span class="ic" aria-hidden="true">F</span><div><strong>Fade House assistant <span class="demo-tag">Demo</span></strong><small>Demo assistant · scripted, replies instantly</small></div><button class="x" aria-label="Close assistant" id="chat-x">×</button></div>
+ <div class="log" id="log" aria-live="polite"></div>
+ <div class="quick" id="quick"></div>
+ <form id="cf"><label for="ci" class="sr">Message</label><input id="ci" autocomplete="off" placeholder="Ask about prices, hours, booking…"><button aria-label="Send"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
+ <p class="disc">Demo assistant: scripted, no AI API. Bookings aren't real.</p>
+</div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const SVC=[
+ {id:'fade',c:'hair',n:'Skin fade',d:'Zero to blended, finished with a line-up',t:45,p:24},
+ {id:'cut',c:'hair',n:'Scissor cut',d:'Classic or textured, all scissors',t:40,p:22},
+ {id:'clip',c:'hair',n:'Clipper cut',d:'One grade all over, neatened edges',t:20,p:14},
+ {id:'kids',c:'hair',n:"Kids' cut (under 12)",d:'Tuesday to Friday only',t:30,p:15},
+ {id:'beard',c:'beard',n:'Beard sculpt',d:'Shape, line and hot towel',t:25,p:14},
+ {id:'shave',c:'beard',n:'Hot towel shave',d:'Straight razor, hot towels, balm',t:40,p:25},
+ {id:'full',c:'combo',n:'The full house',d:'Skin fade + beard sculpt + hot towel',t:70,p:36},
+ {id:'dad',c:'combo',n:'Father & son',d:"Any adult cut + kids' cut",t:70,p:34}];
+const H={0:[10,15],1:null,2:[9,19],3:[9,19],4:[9,20],5:[9,19],6:[8,17]};
+const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const fmt=h=>{const hh=Math.floor(h),m=Math.round((h-hh)*60);return `${hh}:${String(m).padStart(2,'0')}`};
+$('#menu').innerHTML=SVC.map((s,i)=>`<li data-c="${s.c}"><span class="n">${String(i+1).padStart(2,'0')}</span><div><h3>${s.n}</h3><p>${s.d}</p></div><span class="t">${s.t} min</span><span class="p">£${s.p}</span><button class="go" data-svc="${s.id}" aria-label="Book ${s.n}">Book</button></li>`).join('');
+$$('.menu .go').forEach(b=>b.onclick=()=>openBook(b.dataset.svc));
+$$('.tabs button').forEach(b=>b.onclick=()=>{$$('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));$$('#menu li').forEach(li=>li.hidden=b.dataset.f!=='all'&&li.dataset.c!==b.dataset.f)});
+const now=new Date(),today=now.getDay();
+$('#hours tbody').innerHTML=[1,2,3,4,5,6,0].map(d=>`<tr class="${d===today?'today':''}"><td>${DAYS[d]}</td><td>${H[d]?fmt(H[d][0])+' – '+fmt(H[d][1]):'Closed'}</td></tr>`).join('');
+function status(){const n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60,o=H[d],st=$('#status');
+ if(o&&h>=o[0]&&h<o[1]){st.classList.remove('closed');$('#st-t').textContent='Open now';$('#st-s').textContent=`Closes ${fmt(o[1])} today · walk-ins welcome`;}
+ else{st.classList.add('closed');let k,nd;if(o&&h<o[0]){nd=d;k=0}else{for(k=1;k<8;k++){nd=(d+k)%7;if(H[nd])break}}
+  $('#st-t').textContent='Closed right now';$('#st-s').textContent=`Opens ${k===0?'today':k===1?'tomorrow':DAYS[nd]} at ${fmt(H[nd][0])}`;}}
+status();setInterval(status,60000);
+$('#yr').textContent=now.getFullYear();
+const nav=$('#nav');addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:true});
+const mb=$('.menu-btn');mb.onclick=()=>{const o=$('#navlist').classList.toggle('open');mb.setAttribute('aria-expanded',o)};
+$$('#navlist a').forEach(a=>a.onclick=()=>{$('#navlist').classList.remove('open');mb.setAttribute('aria-expanded',false)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');io.unobserve(e.target);
+ e.target.querySelectorAll('[data-count]').forEach(el=>{const to=+el.dataset.count,t0=performance.now();const f=t=>{const p=Math.min(1,(t-t0)/1200);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}),{threshold:.12});
+$$('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*90+'ms';io.observe(el)});
+// booking
+const B={svc:'fade',barber:'Any',day:null,time:null};
+const dlg=$('#book');
+$('#bk-svc').innerHTML=SVC.map(s=>`<option value="${s.id}">${s.n} · £${s.p} · ${s.t} min</option>`).join('');
+$('#bk-svc').onchange=e=>{B.svc=e.target.value;sum()};
+function chips(el,items,key,cb){el.innerHTML=items.map(it=>`<button type="button" aria-pressed="${B[key]===it.v}" ${it.dis?'disabled':''} data-v="${it.v}">${it.l}</button>`).join('');
+ el.querySelectorAll('button').forEach(b=>b.onclick=()=>{B[key]=b.dataset.v;el.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));cb&&cb();sum()})}
+function seed(s){let x=0;for(const c of String(s))x=(x*31+c.charCodeAt(0))%9973;return x}
+function renderDays(){const out=[];for(let k=0;out.length<7&&k<14;k++){const d=new Date();d.setDate(d.getDate()+k);const o=H[d.getDay()];if(!o)continue;if(k===0&&new Date().getHours()+1>=o[1])continue;out.push({v:d.toDateString(),l:k===0?'Today':k===1?'Tmrw':d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric'})})}
+ if(!B.day||!out.some(o=>o.v===B.day))B.day=out[0].v;chips($('#bk-day'),out,'day',()=>{B.time=null;renderTimes()});renderTimes()}
+function renderTimes(){const d=new Date(B.day),o=H[d.getDay()],isToday=d.toDateString()===new Date().toDateString(),nh=new Date().getHours()+new Date().getMinutes()/60,out=[];
+ for(let h=o[0];h<o[1]-.4;h+=.5){const taken=seed(B.day+h+B.barber)%3===0;out.push({v:fmt(h),l:fmt(h),dis:taken||(isToday&&h<nh+.5)})}
+ chips($('#bk-time'),out,'time');}
+chips($('#bk-barber'),['Any','Dan','Reece','Marek'].map(v=>({v,l:v})),'barber',()=>{B.time=null;renderTimes()});
+function sum(){const s=SVC.find(x=>x.id===B.svc);$('#bk-go').disabled=!B.time;$('#bk-sum').textContent=B.time?`${s.n} · ${new Date(B.day).toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'})} ${B.time} · £${s.p}`:'Choose a day and time'}
+function openBook(svc){if(typeof svc==='string'){B.svc=svc;$('#bk-svc').value=svc}renderDays();sum();if(!dlg.open)dlg.showModal()}
+$$('[data-book]').forEach(b=>b.onclick=()=>openBook());
+$('[data-close]').onclick=()=>dlg.close();
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+$('#bk-go').onclick=()=>{const txt=$('#bk-sum').textContent;
+ $('#bk-body').hidden=true;$('.bk-f').hidden=true;
+ $('#bk-body').insertAdjacentHTML('afterend',`<div class="done" id="bk-done"><span class="sample">Demo booking · nothing was sent</span><b>You're booked in.</b><p style="color:var(--bone2)">${txt}<br>with ${B.barber==='Any'?'the first free barber':B.barber}. A real build sends an SMS confirmation and a reminder.</p><button class="btn btn-ghost" style="margin-top:20px" id="bk-again">Done</button></div>`);
+ $('#bk-again').onclick=()=>dlg.close()};
+dlg.addEventListener('close',()=>{const d=$('#bk-done');if(d){d.remove();$('#bk-body').hidden=false;$('.bk-f').hidden=false;B.time=null;sum()}});
+// chat
+const chat=$('#chat'),fab=$('#fab'),log=$('#log');let started=false,flow=null;
+function add(t,who='bot'){const m=document.createElement('div');m.className='msg '+who;m.innerHTML=t;log.appendChild(m);log.scrollTop=log.scrollHeight}
+function quick(arr){$('#quick').innerHTML=arr.map(a=>`<button type="button">${a}</button>`).join('');$$('#quick button').forEach(b=>b.onclick=()=>send(b.textContent))}
+function bot(t,q){const ty=document.createElement('div');ty.className='msg bot typing';ty.innerHTML='<i></i><i></i><i></i>';log.appendChild(ty);log.scrollTop=log.scrollHeight;
+ setTimeout(()=>{ty.remove();add(t);if(q)quick(q)},450+Math.min(t.length*3,600))}
+const MAIN=['Prices','Opening hours','Walk-ins?','Book an appointment'];
+function openChat(){chat.hidden=false;fab.setAttribute('aria-expanded',true);fab.style.visibility='hidden';$('#ci').focus();
+ if(!started){started=true;bot("Alright! I'm the Fade House assistant <b>(demo)</b>. I can answer questions or book you in. What do you need?",MAIN)}}
+fab.onclick=openChat;$('#chat-x').onclick=()=>{chat.hidden=true;fab.setAttribute('aria-expanded',false);fab.style.visibility='';fab.focus()};
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!chat.hidden)$('#chat-x').click()});
+const priceList=()=>SVC.map(s=>`${s.n}: <b>£${s.p}</b>`).join('<br>');
+const hoursTxt=()=>[1,2,3,4,5,6,0].map(d=>`${DAYS[d].slice(0,3)}: ${H[d]?fmt(H[d][0])+'–'+fmt(H[d][1]):'Closed'}`).join('<br>');
+const findSvc=t=>SVC.find(s=>s.n.toLowerCase()===t)||SVC.find(s=>t.includes(s.id)||t.includes(s.n.toLowerCase().split(/[ ']/)[0])||(s.id==='kids'&&/kid|child|son/.test(t)));
+function nextSlots(){const out=[];for(let k=0;k<7&&out.length<4;k++){const d=new Date();d.setDate(d.getDate()+k);const o=H[d.getDay()];if(!o)continue;const nh=k===0?new Date().getHours()+1:0;
+ for(let h=Math.max(o[0],Math.ceil(nh));h<o[1]-.4&&out.length<4;h+=1.5){if(seed(d.toDateString()+h+'Any')%3)out.push({h,l:(k===0?'Today':k===1?'Tomorrow':d.toLocaleDateString('en-GB',{weekday:'short'}))+' '+fmt(h)})}}return out}
+function send(txt){txt=txt.trim();if(!txt)return;add(txt.replace(/</g,'&lt;'),'me');$('#quick').innerHTML='';const t=txt.toLowerCase();
+ if(flow)return flow(txt,t);
+ if(/book|appoint|slot|reserve|availab/.test(t))return startBook(t);
+ if(/price|cost|how much|£|menu|charge/.test(t)){const s=findSvc(t);
+  return bot(s?`A <b>${s.n}</b> is <b>£${s.p}</b> and takes about ${s.t} minutes. Want to book one?`:`Here's the menu:<br>${priceList()}`,['Book an appointment',s?'Opening hours':'Walk-ins?'])}
+ if(/hour|open|close|what time|when|sunday|monday|saturday|weekend/.test(t))return bot(`Our hours:<br>${hoursTxt()}<br><br>${$('#st-t').textContent}. ${$('#st-s').textContent}.`,['Book an appointment','Walk-ins?']);
+ if(/walk|drop|queue|wait/.test(t))return bot("Walk-ins are welcome whenever a chair's free. Weekday mornings are quietest. Saturdays get busy, so booking guarantees your slot.",['Book an appointment','Opening hours']);
+ {const s=findSvc(t);if(s&&/fade|beard|shave|kid|scissor|clipper|full/.test(t))return bot(`<b>${s.n}</b>: £${s.p}, about ${s.t} min. ${s.d}.`,['Book an appointment','Prices'])}
+ if(/where|address|park|locat|find/.test(t))return bot("We're in Aldershot town centre near the station, with pay-and-display parking nearby. (This is a demo business, so there's no real address.)",MAIN);
+ if(/pay|card|cash/.test(t))return bot("Card and contactless only, sorry, no cash.",MAIN);
+ if(/cancel|resched|move/.test(t))return bot("Just reply to your confirmation text to cancel or move it, free up to 2 hours before.",MAIN);
+ if(/thank|cheers|\bta\b/.test(t))return bot("Any time. See you in the chair ✂️",MAIN);
+ if(/\b(hi|hello|hey|alright|yo)\b/.test(t))return bot("Hey! What can I help with?",MAIN);
+ bot("I'm a scripted demo, so I only know the basics: prices, hours, walk-ins, location and bookings. Try one of these:",MAIN)}
+function startBook(t=''){const pick={};
+ const askSlot=s=>{pick.s=s;const sl=nextSlots();bot(`${s.n}, £${s.p}. Next free slots:`,sl.map(x=>x.l).concat('Other time'));
+  flow=raw2=>{if(/other/i.test(raw2)){flow=null;bot(`No problem, the full calendar has every slot.<br><br><button class="btn btn-red" style="padding:8px 14px" onclick="openBook('${s.id}')">Open booking calendar</button>`,MAIN);return}
+   const x=sl.find(x=>x.l.toLowerCase()===raw2.toLowerCase());if(!x)return bot('Tap one of the times:',sl.map(x=>x.l).concat('Other time'));pick.x=x;
+   bot("Lovely. What name should I put it under?");
+   flow=name=>{pick.name=name.replace(/[<>&]/g,'').slice(0,40);bot(`Confirm: <b>${pick.s.n}</b>, ${pick.x.l}, for <b>${pick.name}</b>, £${pick.s.p}?`,['Confirm','Start again']);
+    flow=(c,ct)=>{flow=null;if(/confirm|yes|yep|ok/.test(ct))bot(`✅ Booked (demo), ${pick.name}. On a real site you'd get a text confirmation now and a reminder the day before.<br><span class="sample" style="margin-top:8px">Nothing was actually booked</span>`,['Prices','Opening hours']);else startBook()}}}};
+ const pre=findSvc(t);if(pre)return askSlot(pre);
+ bot('Nice. Which service?',SVC.map(s=>s.n));
+ flow=(raw,tt)=>{const s=findSvc(tt);if(!s)return bot('Pick one of the options below:',SVC.map(s=>s.n));askSlot(s)}}
+$('#cf').onsubmit=e=>{e.preventDefault();const v=$('#ci').value;$('#ci').value='';send(v)};
+window.openBook=openBook;
+</script>
+</body>
+</html>

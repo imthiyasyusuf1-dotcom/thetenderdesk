@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rise &amp; Crust Bakery · Slow sourdough &amp; pastry, order for collection</title>
+<meta name="description" content="Rise & Crust is a neighbourhood sourdough bakery: 36-hour loaves, three-day croissants and the cinnamon buns people queue for. Order online, collect warm from 7am.">
+<meta name="theme-color" content="#2b1d12">
+<link rel="canonical" href="https://thetenderdesk.co.uk/work/sourdough/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rise & Crust Bakery · Slow sourdough & pastry">
+<meta property="og:description" content="36-hour sourdough, three-day croissants, cinnamon buns worth queuing for. Order tonight, collect warm tomorrow.">
+<meta property="og:image" content="https://thetenderdesk.co.uk/work/sourdough/img/sourdough-boule.jpg">
+<meta property="og:url" content="https://thetenderdesk.co.uk/work/sourdough/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23b5652b'/%3E%3Cpath d='M18 36c6-10 22-10 28 0' stroke='%23f6efe3' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/sourdough-boule.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Bakery","name":"Rise & Crust Bakery (demo)","description":"Fictional demo bakery website built by The Tender Desk.","image":"https://thetenderdesk.co.uk/work/sourdough/img/sourdough-boule.jpg","url":"https://thetenderdesk.co.uk/work/sourdough/","servesCuisine":["Bakery","Coffee"],"priceRange":"£","hasMenu":"https://thetenderdesk.co.uk/work/sourdough/#menu","address":{"@type":"PostalAddress","streetAddress":"1 Example Lane (fictional)","addressLocality":"Demo Town","addressCountry":"GB"},
+"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"15:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"07:30","closes":"14:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"08:00","closes":"12:00"}],
+"acceptsReservations":false}
+</script>
+<style>
+:root{--cream:#f6efe3;--paper:#fbf7ef;--ink:#2b1d12;--ink2:#5a4636;--crust:#b5652b;--crust-d:#8f4c1c;--sage:#6f7d5c;--line:#e3d6c1;--r:18px;--shadow:0 30px 60px -30px rgba(43,29,18,.45);--ff:'Fraunces',Georgia,serif;--fs:'Inter',system-ui,-apple-system,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{font-family:var(--fs);background:var(--cream);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--crust);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;background:var(--ink);color:var(--cream);padding:10px 16px;border-radius:10px;z-index:200}.skip:focus{top:12px}
+.wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--crust-d)}
+h1,h2,h3{font-family:var(--ff);font-weight:400;line-height:1.05;letter-spacing:-.01em}
+h2{font-size:clamp(38px,5.4vw,72px);font-variation-settings:"opsz" 144}
+h2 em,h1 em{font-style:italic;color:var(--crust)}
+.btn{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:99px;padding:15px 26px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s,background .2s,box-shadow .2s}
+.btn-primary{background:var(--ink);color:var(--cream)}.btn-primary:hover{background:var(--crust-d);transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid var(--ink);background:transparent}.btn-ghost:hover{background:var(--ink);color:var(--cream)}
+section{padding:clamp(80px,11vw,140px) 0;position:relative}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}.reveal.in{opacity:1;transform:none}
+.no-js .reveal{opacity:1;transform:none}
+
+/* demo ribbon + nav */
+.demo-bar{background:var(--ink);color:#e9dcc6;font-size:13px;text-align:center;padding:8px 16px}
+.demo-bar a{color:#f3b67e}
+.nav{position:sticky;top:0;z-index:50;background:rgba(246,239,227,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+.nav.scrolled{border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:28px;height:72px}
+.logo{font-family:var(--ff);font-size:26px;text-decoration:none;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.logo svg{width:34px;height:34px}
+.logo em{color:var(--crust);font-style:italic}
+.nav ul{display:flex;gap:26px;list-style:none;margin-left:auto;font-size:15px;font-weight:500}
+.nav ul a{text-decoration:none;position:relative}.nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1.5px;background:var(--crust);transform:scaleX(0);transition:transform .3s;transform-origin:left}.nav ul a:hover::after{transform:scaleX(1)}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding:7px 12px;border-radius:99px;background:#fff8;border:1px solid var(--line);white-space:nowrap}
+.status i{width:8px;height:8px;border-radius:50%;background:#b0412e}.status.open i{background:#4f8a3b;box-shadow:0 0 0 0 #4f8a3b88;animation:pulse 2s infinite}
+@keyframes pulse{to{box-shadow:0 0 0 9px #4f8a3b00}}
+.basket-btn{display:inline-flex;align-items:center;gap:10px;border:0;background:var(--ink);color:var(--cream);border-radius:99px;padding:11px 18px;font-weight:600;font-size:14px}
+.basket-btn b{background:var(--crust);border-radius:99px;min-width:24px;padding:1px 7px;text-align:center;transition:transform .3s}
+.basket-btn b.bump{transform:scale(1.4)}
+.burger{display:none;background:none;border:0;width:44px;height:44px}
+@media (max-width:960px){.nav ul{display:none}.nav .status{margin-left:auto}.nav .wrap{gap:12px}}
+@media (max-width:560px){.nav .status span{display:none}.basket-btn .lbl{display:none}.logo{font-size:22px}}
+
+/* hero */
+.hero{padding:clamp(40px,6vw,80px) 0 clamp(60px,8vw,100px);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,70px);align-items:center}
+.hero h1{font-size:clamp(54px,8.6vw,124px);font-variation-settings:"opsz" 144;font-weight:350;letter-spacing:-.03em;line-height:.92;margin:22px 0 26px}
+.hero h1 .l{display:block;overflow:hidden}.hero h1 .l>span{display:inline-block;animation:rise 1.1s cubic-bezier(.2,.8,.2,1) both}.hero h1 .l:nth-child(2)>span{animation-delay:.12s}.hero h1 .l:nth-child(3)>span{animation-delay:.24s}
+@keyframes rise{from{transform:translateY(105%)}}
+.hero p.lede{font-size:clamp(17px,1.5vw,20px);color:var(--ink2);max-width:30em}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.hero-facts{display:flex;gap:34px;margin-top:44px;padding-top:26px;border-top:1px solid var(--line);flex-wrap:wrap}
+.hero-facts div{font-size:13px;color:var(--ink2)}.hero-facts b{display:block;font-family:var(--ff);font-weight:400;font-size:34px;color:var(--ink);line-height:1.1}
+.collage{position:relative;aspect-ratio:1/1.08}
+.collage .main{position:absolute;inset:0 0 10% 12%;border-radius:220px 220px var(--r) var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.collage img{width:100%;height:100%;object-fit:cover}
+.collage .main img{animation:zoom 14s ease-out both}@keyframes zoom{from{transform:scale(1.12)}}
+.collage .small{position:absolute;left:0;bottom:0;width:42%;aspect-ratio:1;border-radius:var(--r);overflow:hidden;border:8px solid var(--cream);box-shadow:var(--shadow)}
+.stamp{position:absolute;right:-10px;top:8%;width:130px;height:130px;animation:spin 22s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.stamp text{font:600 10.5px var(--fs);letter-spacing:.28em;fill:var(--ink)}
+.stamp-c{position:absolute;right:-10px;top:8%;width:130px;height:130px;display:grid;place-items:center;font-size:34px}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.collage{max-width:520px;width:100%;margin:10px auto 0}.stamp,.stamp-c{width:104px;height:104px;right:0}}
+
+/* marquee */
+.marquee{background:var(--crust);color:var(--cream);overflow:hidden;padding:18px 0;transform:rotate(-1.2deg);margin:-10px -20px 0;box-shadow:0 10px 30px -18px #0006}
+.marquee div{display:flex;gap:44px;width:max-content;animation:mq 38s linear infinite;font-family:var(--ff);font-size:clamp(22px,2.6vw,32px);font-style:italic;white-space:nowrap}
+.marquee span::after{content:"✺";margin-left:44px;font-style:normal;opacity:.7}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* story */
+.story .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,7vw,110px);align-items:center}
+.story .imgs{position:relative;aspect-ratio:4/5}
+.story .imgs img{position:absolute;border-radius:var(--r);object-fit:cover;box-shadow:var(--shadow)}
+.story .imgs img:first-child{inset:0 18% 14% 0;width:82%;height:86%}
+.story .imgs img:last-child{right:0;bottom:0;width:52%;height:46%;border:8px solid var(--cream)}
+.story blockquote{font-family:var(--ff);font-size:clamp(24px,2.5vw,34px);line-height:1.3;margin:26px 0;font-weight:350}
+.story p{color:var(--ink2);max-width:36em;margin-bottom:16px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px;list-style:none;counter-reset:s}
+.steps li{border-top:1.5px solid var(--ink);padding-top:14px;font-size:14px;color:var(--ink2)}
+.steps b{display:block;font-family:var(--ff);font-weight:400;font-size:22px;color:var(--ink)}
+.sig{font-family:var(--ff);font-style:italic;font-size:22px;margin-top:10px}
+@media (max-width:860px){.story .wrap{grid-template-columns:1fr}.story .imgs{max-width:480px}.steps{grid-template-columns:1fr}}
+
+/* menu */
+.menu{background:var(--paper);border-block:1px solid var(--line)}
+.menu-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:40px}
+.menu-head p{max-width:30em;color:var(--ink2)}
+.menu-tools{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;margin-bottom:26px;position:sticky;top:72px;z-index:5;background:var(--paper);padding:12px 0;border-bottom:1px solid var(--line)}
+.menu-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.menu-tabs button{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:10px 18px;font-weight:600;font-size:14px;transition:.2s}
+.menu-tabs button[aria-selected=true]{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.filter{position:relative}
+.filter>button{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:10px 16px;font-weight:600;font-size:14px;display:flex;gap:8px;align-items:center}
+.filter>button .n{background:var(--crust);color:#fff;border-radius:99px;padding:0 7px;font-size:12px}
+.filter-pop{position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;width:300px;box-shadow:var(--shadow);z-index:10}
+.filter-pop p{font-size:13px;color:var(--ink2);margin-bottom:10px}
+.filter-pop label{display:inline-flex;gap:6px;align-items:center;font-size:14px;margin:4px 12px 4px 0}
+.filter-pop input{accent-color:var(--crust);width:16px;height:16px}
+.menu-sub{font-family:var(--ff);font-style:italic;font-size:20px;color:var(--ink2);margin-bottom:10px}
+.menu-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;column-gap:56px}
+.dish{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:22px 0;border-bottom:1px dashed var(--line);transition:opacity .3s}
+.dish img,.dish .noimg{width:78px;height:78px;border-radius:50%;object-fit:cover}
+.dish .noimg{background:radial-gradient(circle at 35% 30%,#e9c89c,#c98a4b 60%,#9a5c26);opacity:.35}
+.dish-top{display:flex;align-items:baseline;gap:10px}
+.dish h3{font-size:22px}
+.dots{flex:1;border-bottom:1.5px dotted #b9a68b;transform:translateY(-4px);min-width:14px}
+.price{font-family:var(--ff);font-size:20px;color:var(--crust-d)}
+.dish p{font-size:14.5px;color:var(--ink2);margin:4px 0 8px}
+.dish-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px}
+.tag{border-radius:99px;padding:2px 9px;font-weight:600;background:#eae4d4;color:#4a5639}
+.tag-pop{background:#f5dcc3;color:var(--crust-d)}
+.allergens{display:inline-flex;gap:4px;margin-left:4px}
+.allergens abbr{text-decoration:none;border:1px solid #cdbba0;border-radius:6px;padding:1px 6px;font-weight:600;color:var(--ink2);cursor:help}
+.allergens em{color:var(--sage)}
+.add{border:1.5px solid var(--ink);background:transparent;border-radius:99px;padding:9px 16px;font-weight:600;font-size:14px;transition:.2s}
+.add:hover{background:var(--ink);color:var(--cream)}
+.add.done{background:var(--sage);border-color:var(--sage);color:#fff}
+.dish.hidden-a{opacity:.28}.dish.hidden-a .add{pointer-events:none}
+.dish.hidden-a .dish-meta::after{content:"Contains an allergen you've filtered";color:#b0412e;font-weight:600}
+.allergen-note{margin-top:34px;padding:22px 26px;border-radius:var(--r);background:#efe6d6;font-size:14px;color:var(--ink2);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.allergen-note b{color:var(--ink)}
+.key{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px}.key abbr{text-decoration:none;font-weight:700;margin-right:4px}
+@media (max-width:860px){.menu-list{grid-template-columns:1fr}.menu-tools{top:64px}}
+@media (max-width:520px){.dish{grid-template-columns:1fr auto;gap:12px}.dish img,.dish .noimg{display:none}.dish h3{font-size:19px}.dots{display:none}.dish-top{justify-content:space-between}.filter-pop{right:auto;left:0;width:min(300px,86vw)}}
+
+/* order */
+.order .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.order-card{background:var(--ink);color:var(--cream);border-radius:28px;padding:clamp(28px,4vw,48px);position:relative;overflow:hidden}
+.order-card::after{content:"";position:absolute;right:-80px;bottom:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,#b5652b66,transparent 70%)}
+.order-card h2{font-size:clamp(34px,4vw,54px)}
+.order-card ol{list-style:none;margin:28px 0;display:grid;gap:18px;counter-reset:o}
+.order-card li{display:grid;grid-template-columns:44px 1fr;gap:14px;color:#dccbb2}
+.order-card li::before{counter-increment:o;content:counter(o);width:44px;height:44px;border-radius:50%;border:1.5px solid #f3b67e;display:grid;place-items:center;font-family:var(--ff);font-size:20px;color:#f3b67e}
+.order-card li b{color:var(--cream);display:block}
+.order-card .btn-primary{background:var(--crust)}.order-card .btn-primary:hover{background:#c97538}
+.order-img{border-radius:28px;overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow)}
+.order-img img{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){.order .wrap{grid-template-columns:1fr}.order-img{aspect-ratio:16/10}}
+
+/* cakes */
+.cakes{background:#ecdfca}
+.cakes .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,6vw,90px);align-items:center}
+.cake-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cake-row figure{border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;position:relative}
+.cake-row figure:nth-child(2){transform:translateY(40px)}
+.cake-row img{width:100%;height:100%;object-fit:cover}
+.cake-row figcaption{position:absolute;left:12px;bottom:12px;background:var(--cream);border-radius:99px;padding:6px 14px;font-size:13px;font-weight:600}
+.cakes p{color:var(--ink2);margin:18px 0 24px}
+.cake-prices{list-style:none;margin-bottom:28px}.cake-prices li{display:flex;justify-content:space-between;border-bottom:1px solid #d6c5a8;padding:12px 0;font-family:var(--ff);font-size:19px}
+@media (max-width:860px){.cakes .wrap{grid-template-columns:1fr}.cake-row figure:nth-child(2){transform:none}}
+
+/* gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px;margin-top:44px}
+.gallery-grid figure{border-radius:var(--r);overflow:hidden;position:relative}
+.gallery-grid figure:nth-child(1){grid-row:span 2;grid-column:span 2}
+.gallery-grid figure:nth-child(4){grid-row:span 2}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.gallery-grid figure:hover img{transform:scale(1.06)}
+.gallery-grid figcaption{position:absolute;inset:auto 0 0;padding:30px 16px 12px;background:linear-gradient(transparent,#0008);color:#fff;font-size:13px;opacity:0;transition:.4s}
+.gallery-grid figure:hover figcaption,.gallery-grid figure:focus-within figcaption{opacity:1}
+@media (max-width:860px){.gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:170px}.gallery-grid figure:nth-child(4){grid-row:span 1}.gallery-grid figcaption{opacity:1}}
+
+/* reviews */
+.reviews{background:var(--ink);color:var(--cream)}
+.reviews .eyebrow{color:#f3b67e}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.rev{border:1px solid #ffffff22;border-radius:var(--r);padding:30px;display:flex;flex-direction:column;gap:18px}
+.rev .stars{color:#f3b67e;letter-spacing:3px}
+.rev q{font-family:var(--ff);font-size:21px;line-height:1.4;quotes:"“" "”";font-weight:350}
+.rev cite{font-style:normal;font-size:14px;color:#cdbba0;margin-top:auto}
+.sample{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;border:1px solid #f3b67e88;color:#f3b67e;border-radius:99px;padding:3px 10px;margin-left:10px;vertical-align:middle}
+@media (max-width:860px){.rev-grid{grid-template-columns:1fr}}
+
+/* visit */
+.visit .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,6vw,80px)}
+.hours{list-style:none;margin:28px 0}
+.hours li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);font-size:16px}
+.hours li.today{font-weight:700;color:var(--crust-d)}
+.hours li.today::before{content:"Today";font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:var(--crust);color:#fff;border-radius:99px;padding:3px 8px;margin-right:auto;margin-left:12px;order:2;align-self:center}
+.hours li span:first-child{order:1}.hours li span:last-child{order:3}
+.map{border-radius:28px;overflow:hidden;background:#e8dcc6;position:relative;min-height:420px;border:1px solid var(--line)}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.map .card{position:absolute;left:20px;bottom:20px;right:20px;background:var(--cream);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.map .card b{font-family:var(--ff);font-weight:400;font-size:20px;display:block}
+.pin{position:absolute;left:52%;top:40%;transform:translate(-50%,-100%);animation:drop 1s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes drop{from{transform:translate(-50%,-260%);opacity:0}}
+@media (max-width:860px){.visit .wrap{grid-template-columns:1fr}}
+
+/* footer */
+footer{background:#1f150d;color:#cdbba0;padding:70px 0 34px;font-size:14px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+footer .logo{color:var(--cream);font-size:30px;margin-bottom:12px}
+footer h4{color:var(--cream);font-weight:600;margin-bottom:12px;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
+footer ul{list-style:none;display:grid;gap:8px}footer a{text-decoration:none}footer a:hover{color:#f3b67e}
+.foot-bottom{grid-column:1/-1;border-top:1px solid #ffffff1a;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.foot-bottom a{color:#f3b67e;text-decoration:underline}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr}}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:#1f150d77;z-index:80;opacity:0;pointer-events:none;transition:.3s}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,100%);background:var(--cream);z-index:90;transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s .45s;visibility:hidden;display:flex;flex-direction:column;box-shadow:-30px 0 60px -30px #0007}
+.drawer.on{transform:none;visibility:visible;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.drawer header{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line)}
+.drawer header h2{font-size:30px}
+.x{background:none;border:1.5px solid var(--line);border-radius:50%;width:40px;height:40px;font-size:20px;line-height:1}
+.drawer .body{flex:1;overflow:auto;padding:10px 24px}
+.line{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.line b{font-weight:600;display:block}.line small{color:var(--ink2)}
+.qty{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:99px}
+.qty button{background:none;border:0;width:32px;height:32px;font-size:17px}
+.qty span{min-width:20px;text-align:center;font-weight:600}
+.empty{text-align:center;padding:50px 10px;color:var(--ink2)}
+.empty .big{font-family:var(--ff);font-size:26px;color:var(--ink);display:block;margin-bottom:6px}
+.drawer footer{background:none;padding:18px 24px 24px;border-top:1px solid var(--line);color:var(--ink);display:grid;gap:12px}
+.field{display:grid;gap:6px;font-size:13px;font-weight:600}
+.field select,.field input,.field textarea{font:inherit;font-weight:400;border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff;font-size:15px}
+.total{display:flex;justify-content:space-between;font-family:var(--ff);font-size:24px}
+.drawer .btn{justify-content:center}
+.btn[disabled]{opacity:.4;pointer-events:none}
+.demo-note{font-size:12px;color:var(--ink2);text-align:center}
+.confirm{text-align:center;padding:30px 6px}
+.confirm .tick{width:76px;height:76px;border-radius:50%;background:var(--sage);color:#fff;display:grid;place-items:center;font-size:36px;margin:10px auto 16px;animation:pop .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(0)}}
+.confirm h3{font-size:30px;margin-bottom:8px}
+.ref{font-family:ui-monospace,monospace;background:#fff;border:1px dashed var(--crust);padding:8px 14px;border-radius:10px;display:inline-block;margin:14px 0}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,140%);background:var(--ink);color:var(--cream);padding:12px 20px;border-radius:99px;font-size:14px;font-weight:600;z-index:95;transition:transform .4s cubic-bezier(.2,.8,.2,1),visibility 0s .4s;visibility:hidden}
+.toast.on{transform:translate(-50%,0);visibility:visible;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+
+/* chat */
+.chat-fab{position:fixed;right:22px;bottom:22px;z-index:70;display:flex;align-items:center;gap:10px;background:var(--crust);color:#fff;border:0;border-radius:99px;padding:14px 20px 14px 16px;font-weight:600;box-shadow:0 18px 40px -14px #8f4c1caa;transition:transform .2s}
+.chat-fab:hover{transform:translateY(-2px)}
+.chat-fab .dot{width:10px;height:10px;border-radius:50%;background:#bff0a5;box-shadow:0 0 0 3px #ffffff44}
+.chat{position:fixed;right:22px;bottom:90px;width:min(380px,calc(100% - 28px));height:min(580px,calc(100% - 120px));background:var(--paper);border-radius:22px;box-shadow:0 40px 80px -30px #000a;z-index:75;display:flex;flex-direction:column;overflow:hidden;transform-origin:bottom right;transform:scale(.9) translateY(10px);opacity:0;pointer-events:none;visibility:hidden;transition:.3s cubic-bezier(.2,.8,.2,1);border:1px solid var(--line)}
+.chat.on{transform:none;opacity:1;pointer-events:auto;visibility:visible}
+.chat-h{background:var(--ink);color:var(--cream);padding:16px 18px;display:flex;align-items:center;gap:12px}
+.chat-h .av{width:40px;height:40px;border-radius:50%;background:var(--crust);display:grid;place-items:center;font-family:var(--ff);font-size:20px}
+.chat-h b{display:block;font-size:15px}.chat-h small{color:#cdbba0;font-size:12px}
+.chat-h .x{margin-left:auto;border-color:#ffffff33;color:var(--cream);width:34px;height:34px;font-size:17px}
+.msgs{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.m{max-width:86%;padding:10px 14px;border-radius:16px;font-size:14.5px;line-height:1.45;animation:min .3s ease both}
+@keyframes min{from{opacity:0;transform:translateY(6px)}}
+.m.bot{background:#fff;border:1px solid var(--line);border-bottom-left-radius:4px}
+.m.me{background:var(--ink);color:var(--cream);align-self:flex-end;border-bottom-right-radius:4px}
+.m ul{margin:6px 0 0 18px}
+.typing{display:flex;gap:4px;padding:14px}.typing i{width:7px;height:7px;border-radius:50%;background:#b9a68b;animation:bl 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bl{50%{opacity:.3;transform:translateY(-3px)}}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 10px}
+.chips button{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:6px 12px;font-size:13px;font-weight:600}
+.chips button:hover{border-color:var(--crust);color:var(--crust-d)}
+.chat form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.chat input{flex:1;font:inherit;font-size:15px;border:1.5px solid var(--line);border-radius:99px;padding:10px 14px;background:#fff}
+.chat form button{border:0;background:var(--ink);color:var(--cream);border-radius:99px;padding:0 16px;font-weight:600}
+.chat-foot{font-size:11px;text-align:center;color:var(--ink2);padding:0 12px 10px}
+@media (max-width:560px){.chat{right:14px;bottom:84px;height:calc(100% - 110px)}.chat-fab{right:14px;bottom:14px}.chat-fab .t{display:none}.chat-fab{padding:14px}}
+</style>
+</head>
+<body class="no-js">
+<a class="skip" href="#main">Skip to content</a>
+<div class="demo-bar" role="note">Fictional bakery · a portfolio demo by <a href="mailto:hello@thetenderdesk.co.uk">The Tender Desk</a>. Orders and chat are simulated.</div>
+<nav class="nav" aria-label="Main">
+ <div class="wrap">
+  <a href="#top" class="logo" aria-label="Rise and Crust, home"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#b5652b"/><path d="M14 38c5-14 31-14 36 0" stroke="#f6efe3" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M24 30l4 6M32 27v7M40 30l-4 6" stroke="#f6efe3" stroke-width="3" stroke-linecap="round"/></svg>Rise <em>&amp;</em> Crust</a>
+  <ul><li><a href="#story">Our story</a></li><li><a href="#menu">Menu</a></li><li><a href="#order">Order</a></li><li><a href="#cakes">Cakes</a></li><li><a href="#visit">Visit</a></li></ul>
+  <span class="status" id="status" aria-live="polite"><i></i><span>Checking hours…</span></span>
+  <button class="basket-btn" id="basketBtn" aria-haspopup="dialog" aria-controls="drawer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9h14l-1.5 10.5a2 2 0 0 1-2 1.5h-7a2 2 0 0 1-2-1.5z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg><span class="lbl">Basket</span> <b id="count">0</b><span class="sr"> items</span></button>
+ </div>
+</nav>
+
+<main id="main">
+<header class="hero" id="top">
+ <div class="wrap">
+  <div>
+   <p class="eyebrow">Neighbourhood bakery · Est. 2019</p>
+   <h1><span class="l"><span>Slow bread</span></span><span class="l"><span>for <em>fast</em></span></span><span class="l"><span>mornings.</span></span></h1>
+   <p class="lede">36-hour sourdough, three-day croissants and the cinnamon buns people queue round the block for. Order tonight, collect warm from 7am.</p>
+   <div class="ctas"><a class="btn btn-primary" href="#menu">Order for collection <span aria-hidden="true">→</span></a><a class="btn btn-ghost" href="#story">Our story</a></div>
+   <div class="hero-facts"><div><b>36h</b>sourdough ferment</div><div><b>4am</b>ovens on, daily</div><div><b>27</b>layers per croissant</div></div>
+  </div>
+  <div class="collage">
+   <div class="main"><img src="img/sourdough-boule.jpg" alt="A floured, scored sourdough boule with a deep golden crust" width="1100" height="1100" fetchpriority="high"></div>
+   <div class="small"><img src="img/croissants.jpg" alt="Two butter croissants dusted with flour" width="600" height="600" loading="lazy"></div>
+   <svg class="stamp" viewBox="0 0 130 130" aria-hidden="true"><defs><path id="c" d="M65 65m-50 0a50 50 0 1 1 100 0a50 50 0 1 1-100 0"/></defs><circle cx="65" cy="65" r="64" fill="#f6efe3"/><text><textPath href="#c">BAKED AT 4AM · SOLD BY 2PM · </textPath></text></svg>
+   <div class="stamp-c" aria-hidden="true">🌾</div>
+  </div>
+ </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div><span>Country sourdough</span><span>Cardamom knots</span><span>Brown-butter cinnamon buns</span><span>Seasonal fruit tarts</span><span>Celebration cakes to order</span><span>Hampshire-roasted coffee</span><span>Country sourdough</span><span>Cardamom knots</span><span>Brown-butter cinnamon buns</span><span>Seasonal fruit tarts</span><span>Celebration cakes to order</span><span>Hampshire-roasted coffee</span></div></div>
+
+<section class="story" id="story" aria-labelledby="story-h">
+ <div class="wrap">
+  <div class="imgs reveal"><img src="img/display-case.jpg" alt="Glass counter full of pastries and loaves" loading="lazy" width="1100" height="1400"><img src="img/cinnamon-buns.jpg" alt="Cinnamon buns on a floured dark board" loading="lazy" width="600" height="600"></div>
+  <div class="reveal">
+   <p class="eyebrow">Our story</p>
+   <h2 id="story-h">Four ingredients.<br><em>No shortcuts.</em></h2>
+   <blockquote>“Flour, water, salt, time. The first three are cheap. The fourth is the whole point.”</blockquote>
+   <p>Rise &amp; Crust started as a starter in a jam jar and a Saturday stall. Six years on we still mix every dough by hand the day before, let it slowly ferment overnight, and bake from 4am so the loaves are still crackling when the door opens.</p>
+   <p>We buy stoneground flour from a mill forty miles away, use proper butter, and stop baking when we sell out. That's it.</p>
+   <ol class="steps"><li><b>Day one</b>Levain fed, dough mixed and folded by hand.</li><li><b>Overnight</b>A long, cold ferment for flavour and digestibility.</li><li><b>4am</b>Shaped, scored, baked hot in a stone-deck oven.</li></ol>
+   <p class="sig">— Mara &amp; Tom, bakers</p>
+  </div>
+ </div>
+</section>
+
+<section class="menu" id="menu" aria-labelledby="menu-h">
+ <div class="wrap">
+  <div class="menu-head reveal"><div><p class="eyebrow">The menu</p><h2 id="menu-h">Today, <em>from the oven</em></h2></div><p>Everything below is baked here, today. Tap <b>Add</b> to build a collection order, or filter by allergen to see what's safe for you.</p></div>
+  <div class="menu-tools">
+   <div class="menu-tabs" role="tablist" aria-label="Menu categories"><button role="tab" id="tab-bread" aria-controls="panel-bread" aria-selected="true" tabindex="0">Breads</button><button role="tab" id="tab-pastry" aria-controls="panel-pastry" aria-selected="false" tabindex="-1">Pastry</button><button role="tab" id="tab-sweet" aria-controls="panel-sweet" aria-selected="false" tabindex="-1">Cakes & Sweet</button><button role="tab" id="tab-coffee" aria-controls="panel-coffee" aria-selected="false" tabindex="-1">Coffee & Drinks</button></div>
+   <div class="filter"><button id="filterBtn" aria-expanded="false" aria-controls="filterPop"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 5h18M6 12h12M10 19h4"/></svg>Allergen filter <span class="n" id="filterN" hidden>0</span></button>
+    <div class="filter-pop" id="filterPop" hidden><p>Grey out items containing:</p><div id="filterOpts"></div></div></div>
+  </div>
+  <div class="menu-panel" role="tabpanel" id="panel-bread" aria-labelledby="tab-bread"><p class="menu-sub">Naturally leavened, 36-hour ferment, baked from 4am.</p><ul class="menu-list">
+<li class="dish" data-id="country" data-allergens="G"><img src="img/sourdough-boule.jpg" alt="" loading="lazy" width="96" height="96"><div class="dish-body"><div class="dish-top"><h3>Country Sourdough</h3><span class="dots" aria-hidden="true"></span><span class="price">£5.50</span></div><p>Our house loaf. Stoneground wheat, a little rye, blistered dark crust.</p><div class="dish-meta"><span class="tag tag-vg">Vegan</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Gluten">G</abbr></span></div></div><button class="add" data-add="country" aria-label="Add Country Sourdough to collection order">Add</button></li>
+<li class="dish" data-id="seeded" data-allergens="G SE"><img src="img/rye-loaves.jpg" alt="" loading="lazy" width="96" height="96"><div class="dish-body"><div class="dish-top"><h3>Five-Seed Rye</h3><span class="dots" aria-hidden="true"></span><span class="price">£6.00</span></div><p>Sunflower, pumpkin, linseed, sesame and poppy in a dense, malty rye.</p><div class="dish-meta"><span class="tag tag-vg">Vegan</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Gluten">G</abbr><abbr title="Sesame">SE</abbr></span></div></div><button class="add" data-add="seeded" aria-label="Add Five-Seed Rye to collection order">Add</button></li>
+<li class="dish" data-id="tin" data-allergens="G"><img src="img/sliced-loaf.jpg" alt="" loading="lazy" width="96" height="96"><div class="dish-body"><div class="dish-top"><h3>Sandwich Tin</h3><span class="dots" aria-hidden="true"></span><span class="price">£4.80</span></div><p>Soft, tight-crumbed sourdough tin. Toasts beautifully.</p><div class="dish-meta"><span class="tag tag-vg">Vegan</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Gluten">G</abbr></span></div></div><button class="add" data-add="tin" aria-label="Add Sandwich Tin to collection order">Add</button></li>
+<li class="dish" data-id="baguette" data-allergens="G"><span class="noimg" aria-hidden="true"></span><div class="dish-body"><div class="dish-top"><h3>Sourdough Baguette</h3><span class="dots" aria-hidden="true"></span><span class="price">£2.60</span></div><p>Crackling crust, open crumb. Best before lunch.</p><div class="dish-meta"><span class="tag tag-vg">Vegan</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Gluten">G</abbr></span></div></div><button class="add" data-add="baguette" aria-label="Add Sourdough Baguette to collection order">Add</button></li>
+<li class="dish" data-id="focaccia" data-allergens="G"><span class="noimg" aria-hidden="true"></span><div class="dish-body"><div class="dish-top"><h3>Rosemary Focaccia</h3><span class="dots" aria-hidden="true"></span><span class="price">£3.80</span></div><p>Olive oil, Maldon salt, rosemary from the yard. Per slab.</p><div class="dish-meta"><span class="tag tag-vg">Vegan</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Gluten">G</abbr></span></div></div><button class="add" data-add="focaccia" aria-label="Add Rosemary Focaccia to collection order">Add</button></li>
+</ul></div>
+<div class="menu-panel" role="tabpanel" id="panel-pastry" aria-labelledby="tab-pastry" hidden><p class="menu-sub">Laminated over three days with Normandy butter.</p><ul class="menu-list">
+<li class="dish" data-id="croissant" data-allergens="G M E"><img src="img/croissants.jpg" alt="" loading="lazy" width="96" height="96"><div class="dish-body"><div class="dish-top"><h3>Butter Croissant</h3><span class="dots" aria-hidden="true"></span><span class="price">£2.80</span></div><p>Three-day laminated, 27 layers, shatters properly.</p><div class="dish-meta"><span class="tag tag-v">Vegetarian</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Gluten">G</abbr><abbr title="Milk">M</abbr><abbr title="Egg">E</abbr></span></div></div><button class="add" data-add="croissant" aria-label="Add Butter Croissant to collection order">Add</button></li>
+<li class="dish" data-id="painchoc" data-allergens="G M E SO"><img src="img/pastry-tray.jpg" alt="" loading="lazy" width="96" height="96"><div class="dish-body"><div class="dish-top"><h3>Pain au Chocolat</h3><span class="dots" aria-hidden="true"></span><span class="price">£3.20</span></div><p>Two batons of 70% dark chocolate.</p><div class="dish-meta"><span class="tag tag-v">Vegetarian</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Gluten">G</abbr><abbr title="Milk">M</abbr><abbr title="Egg">E</abbr><abbr title="Soya">SO</abbr></span></div></div><button class="add" data-add="painchoc" aria-label="Add Pain au Chocolat to collection order">Add</button></li>
+<li class="dish" data-id="almond" data-allergens="G M E N"><span class="noimg" aria-hidden="true"></span><div class="dish-body"><div class="dish-top"><h3>Almond Croissant</h3><span class="dots" aria-hidden="true"></span><span class="price">£3.60</span></div><p>Twice-baked with frangipane and toasted flaked almonds.</p><div class="dish-meta"><span class="tag tag-v">Vegetarian</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Gluten">G</abbr><abbr title="Milk">M</abbr><abbr title="Egg">E</abbr><abbr title="Tree nuts">N</abbr></span></div></div><button class="add" data-add="almond" aria-label="Add Almond Croissant to collection order">Add</button></li>
+<li class="dish" data-id="cardamom" data-allergens="G M E"><span class="noimg" aria-hidden="true"></span><div class="dish-body"><div class="dish-top"><h3>Cardamom Knot</h3><span class="dots" aria-hidden="true"></span><span class="price">£3.40</span></div><p>Swedish-style, cardamom sugar, pearl sugar crunch.</p><div class="dish-meta"><span class="tag tag-v">Vegetarian</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Gluten">G</abbr><abbr title="Milk">M</abbr><abbr title="Egg">E</abbr></span></div></div><button class="add" data-add="cardamom" aria-label="Add Cardamom Knot to collection order">Add</button></li>
+<li class="dish" data-id="cinnamon" data-allergens="G M E"><img src="img/cinnamon-buns.jpg" alt="" loading="lazy" width="96" height="96"><div class="dish-body"><div class="dish-top"><h3>Cinnamon Bun</h3><span class="dots" aria-hidden="true"></span><span class="price">£3.50</span></div><p>The one people queue for. Brown butter, cinnamon, orange glaze.</p><div class="dish-meta"><span class="tag tag-v">Vegetarian</span><span class="tag tag-pop">Most loved</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Gluten">G</abbr><abbr title="Milk">M</abbr><abbr title="Egg">E</abbr></span></div></div><button class="add" data-add="cinnamon" aria-label="Add Cinnamon Bun to collection order">Add</button></li>
+</ul></div>
+<div class="menu-panel" role="tabpanel" id="panel-sweet" aria-labelledby="tab-sweet" hidden><p class="menu-sub">Baked daily, sold by the slice.</p><ul class="menu-list">
+<li class="dish" data-id="cookie" data-allergens="G M E SO"><img src="img/cookies.jpg" alt="" loading="lazy" width="96" height="96"><div class="dish-body"><div class="dish-top"><h3>Sea Salt Choc Chunk Cookie</h3><span class="dots" aria-hidden="true"></span><span class="price">£2.40</span></div><p>Brown butter, three chocolates, flaky salt.</p><div class="dish-meta"><span class="tag tag-v">Vegetarian</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Gluten">G</abbr><abbr title="Milk">M</abbr><abbr title="Egg">E</abbr><abbr title="Soya">SO</abbr></span></div></div><button class="add" data-add="cookie" aria-label="Add Sea Salt Choc Chunk Cookie to collection order">Add</button></li>
+<li class="dish" data-id="tart" data-allergens="G M E"><img src="img/fruit-tarts.jpg" alt="" loading="lazy" width="96" height="96"><div class="dish-body"><div class="dish-top"><h3>Seasonal Fruit Tart</h3><span class="dots" aria-hidden="true"></span><span class="price">£4.20</span></div><p>Vanilla crème pâtissière, whatever&#x27;s best from the market.</p><div class="dish-meta"><span class="tag tag-v">Vegetarian</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Gluten">G</abbr><abbr title="Milk">M</abbr><abbr title="Egg">E</abbr></span></div></div><button class="add" data-add="tart" aria-label="Add Seasonal Fruit Tart to collection order">Add</button></li>
+<li class="dish" data-id="choc" data-allergens="G M E SO"><img src="img/chocolate-cake.jpg" alt="" loading="lazy" width="96" height="96"><div class="dish-body"><div class="dish-top"><h3>Chocolate Fudge Slice</h3><span class="dots" aria-hidden="true"></span><span class="price">£4.00</span></div><p>Dark, dense, glossy ganache.</p><div class="dish-meta"><span class="tag tag-v">Vegetarian</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Gluten">G</abbr><abbr title="Milk">M</abbr><abbr title="Egg">E</abbr><abbr title="Soya">SO</abbr></span></div></div><button class="add" data-add="choc" aria-label="Add Chocolate Fudge Slice to collection order">Add</button></li>
+<li class="dish" data-id="banana" data-allergens="G N"><span class="noimg" aria-hidden="true"></span><div class="dish-body"><div class="dish-top"><h3>Banana &amp; Walnut Loaf (slice)</h3><span class="dots" aria-hidden="true"></span><span class="price">£3.20</span></div><p>Made with oat milk. Gloriously damp.</p><div class="dish-meta"><span class="tag tag-vg">Vegan</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Gluten">G</abbr><abbr title="Tree nuts">N</abbr></span></div></div><button class="add" data-add="banana" aria-label="Add Banana &amp; Walnut Loaf (slice) to collection order">Add</button></li>
+<li class="dish" data-id="brownie" data-allergens="E M SO"><span class="noimg" aria-hidden="true"></span><div class="dish-body"><div class="dish-top"><h3>Gluten-free Brownie</h3><span class="dots" aria-hidden="true"></span><span class="price">£3.00</span></div><p>Made without gluten ingredients; baked in a kitchen that handles flour.</p><div class="dish-meta"><span class="tag tag-v">Vegetarian</span><span class="tag tag-gf">No gluten ingredients</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Egg">E</abbr><abbr title="Milk">M</abbr><abbr title="Soya">SO</abbr></span></div></div><button class="add" data-add="brownie" aria-label="Add Gluten-free Brownie to collection order">Add</button></li>
+</ul></div>
+<div class="menu-panel" role="tabpanel" id="panel-coffee" aria-labelledby="tab-coffee" hidden><p class="menu-sub">Seasonal espresso from a Hampshire roaster. Oat milk at no extra cost.</p><ul class="menu-list">
+<li class="dish" data-id="flatwhite" data-allergens="M"><span class="noimg" aria-hidden="true"></span><div class="dish-body"><div class="dish-top"><h3>Flat White</h3><span class="dots" aria-hidden="true"></span><span class="price">£3.20</span></div><p>Double ristretto, silky milk.</p><div class="dish-meta"><span class="tag tag-v">Vegetarian</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Milk">M</abbr></span></div></div><button class="add" data-add="flatwhite" aria-label="Add Flat White to collection order">Add</button></li>
+<li class="dish" data-id="latte" data-allergens="M"><span class="noimg" aria-hidden="true"></span><div class="dish-body"><div class="dish-top"><h3>Latte</h3><span class="dots" aria-hidden="true"></span><span class="price">£3.30</span></div><p></p><div class="dish-meta"><span class="tag tag-v">Vegetarian</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Milk">M</abbr></span></div></div><button class="add" data-add="latte" aria-label="Add Latte to collection order">Add</button></li>
+<li class="dish" data-id="filter" data-allergens=""><span class="noimg" aria-hidden="true"></span><div class="dish-body"><div class="dish-top"><h3>Batch Filter</h3><span class="dots" aria-hidden="true"></span><span class="price">£2.60</span></div><p>Rotating single origin.</p><div class="dish-meta"><span class="tag tag-vg">Vegan</span><span class="allergens"><span class="sr">Allergens: </span><em>No major allergens</em></span></div></div><button class="add" data-add="filter" aria-label="Add Batch Filter to collection order">Add</button></li>
+<li class="dish" data-id="chai" data-allergens="M"><span class="noimg" aria-hidden="true"></span><div class="dish-body"><div class="dish-top"><h3>Spiced Chai</h3><span class="dots" aria-hidden="true"></span><span class="price">£3.40</span></div><p>House-made syrup, steamed milk.</p><div class="dish-meta"><span class="tag tag-v">Vegetarian</span><span class="allergens"><span class="sr">Allergens: </span><abbr title="Milk">M</abbr></span></div></div><button class="add" data-add="chai" aria-label="Add Spiced Chai to collection order">Add</button></li>
+<li class="dish" data-id="oj" data-allergens=""><span class="noimg" aria-hidden="true"></span><div class="dish-body"><div class="dish-top"><h3>Fresh Orange Juice</h3><span class="dots" aria-hidden="true"></span><span class="price">£3.00</span></div><p>Squeezed to order.</p><div class="dish-meta"><span class="tag tag-vg">Vegan</span><span class="allergens"><span class="sr">Allergens: </span><em>No major allergens</em></span></div></div><button class="add" data-add="oj" aria-label="Add Fresh Orange Juice to collection order">Add</button></li>
+</ul></div>
+  <div class="allergen-note reveal" role="note"><span aria-hidden="true" style="font-size:26px">⚠️</span><div><b>Allergens.</b> We list the 14 major allergens for every item (UK Food Information Regulations). Our kitchen handles gluten, nuts, sesame, eggs, milk and soya, so we can't rule out traces. Please ask us before ordering if you have a severe allergy.
+   <div class="key"><span><abbr>G</abbr>Gluten</span><span><abbr>M</abbr>Milk</span><span><abbr>E</abbr>Egg</span><span><abbr>N</abbr>Tree nuts</span><span><abbr>SE</abbr>Sesame</span><span><abbr>SO</abbr>Soya</span></div></div></div>
+ </div>
+</section>
+
+<section class="order" id="order" aria-labelledby="order-h">
+ <div class="wrap">
+  <div class="order-card reveal">
+   <p class="eyebrow" style="color:#f3b67e">Order for collection</p>
+   <h2 id="order-h">Skip the queue. <em>Keep the warm bits.</em></h2>
+   <ol><li><div><b>Pick your bakes</b>Add anything from the menu before 8pm.</div></li><li><div><b>Choose a slot</b>Collect from 7am, in 15-minute windows.</div></li><li><div><b>Walk straight in</b>Your bag's on the shelf with your name on it.</div></li></ol>
+   <button class="btn btn-primary" data-open-basket>Open my basket <span aria-hidden="true">→</span></button>
+  </div>
+  <div class="order-img reveal"><img src="img/pastry-tray.jpg" alt="Trays of pains au chocolat and pastries fresh from the oven" loading="lazy" width="1100" height="1375"></div>
+ </div>
+</section>
+
+<section class="cakes" id="cakes" aria-labelledby="cakes-h">
+ <div class="wrap">
+  <div class="cake-row reveal"><figure><img src="img/chocolate-cake.jpg" alt="Chocolate cake with ganache drip and piped rosettes" loading="lazy" width="600" height="800"><figcaption>Triple chocolate</figcaption></figure><figure><img src="img/blueberry-cake.jpg" alt="Cream-frosted cake topped with blueberries" loading="lazy" width="600" height="800"><figcaption>Blueberry &amp; vanilla</figcaption></figure></div>
+  <div class="reveal">
+   <p class="eyebrow">Celebration cakes</p>
+   <h2 id="cakes-h">Cakes worth <em>blowing candles</em> on.</h2>
+   <p>Birthdays, weddings, leaving dos. Real butter, seasonal fruit, no fondant unless you insist. We need five days' notice; gluten-free and vegan sponges available.</p>
+   <ul class="cake-prices"><li><span>6″ serves 8–10</span><span>from £38</span></li><li><span>8″ serves 14–16</span><span>from £52</span></li><li><span>Two-tier, serves 30</span><span>from £120</span></li></ul>
+   <button class="btn btn-primary" data-chat="cake">Ask the assistant about a cake <span aria-hidden="true">→</span></button>
+  </div>
+ </div>
+</section>
+
+<section class="gallery" id="gallery" aria-labelledby="gal-h">
+ <div class="wrap">
+  <div class="reveal"><p class="eyebrow">From the bench</p><h2 id="gal-h">A morning <em>at the bakery</em></h2></div>
+  <div class="gallery-grid reveal">
+   <figure><img src="img/shop-counter.jpg" alt="Bakery shelves with baguettes and baskets of bread" loading="lazy" width="1100" height="740"><figcaption>7am: the shelves before the rush</figcaption></figure>
+   <figure><img src="img/sliced-loaf.jpg" alt="Sliced seeded loaf on a wooden board" loading="lazy" width="800" height="530"><figcaption>Sandwich tin, sliced to order</figcaption></figure>
+   <figure><img src="img/cookies.jpg" alt="Chocolate chunk cookies in a paper-lined basket" loading="lazy" width="800" height="530"><figcaption>Sea salt choc chunk</figcaption></figure>
+   <figure><img src="img/rye-loaves.jpg" alt="Seeded rye loaves with ears of wheat" loading="lazy" width="800" height="1100"><figcaption>Five-seed rye</figcaption></figure>
+   <figure><img src="img/fruit-tarts.jpg" alt="Small tarts topped with fresh fruit and edible flowers" loading="lazy" width="800" height="530"><figcaption>Seasonal fruit tarts</figcaption></figure>
+   <figure><img src="img/pancakes.jpg" alt="Stack of pancakes with strawberries and syrup" loading="lazy" width="800" height="530"><figcaption>Saturday brunch special</figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<section class="reviews" aria-labelledby="rev-h">
+ <div class="wrap">
+  <p class="eyebrow">Kind words</p>
+  <h2 id="rev-h">Worth the <em>4am alarm</em><span class="sample">Sample reviews</span></h2>
+  <div class="rev-grid">
+   <figure class="rev reveal"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote><q>Pre-ordered on the site the night before, walked in at 7:15, bag was waiting with my name on it. Cinnamon bun was still warm.</q></blockquote><figcaption><cite>Sample review · local regular</cite></figcaption></figure>
+   <figure class="rev reveal"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote><q>The allergen labels are so clear. My daughter has a nut allergy and I could filter the whole menu in two taps.</q></blockquote><figcaption><cite>Sample review · parent</cite></figcaption></figure>
+   <figure class="rev reveal"><div class="stars" aria-label="5 out of 5">★★★★★</div><blockquote><q>Asked the chat assistant about a birthday cake at 11pm and had a quote request in before bed. Cake was stunning.</q></blockquote><figcaption><cite>Sample review · cake customer</cite></figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<section class="visit" id="visit" aria-labelledby="visit-h">
+ <div class="wrap">
+  <div class="reveal">
+   <p class="eyebrow">Visit us</p>
+   <h2 id="visit-h">Come early. <em>We sell out.</em></h2>
+   <ul class="hours" id="hours" aria-label="Opening hours"></ul>
+   <p style="color:var(--ink2);font-size:15px">Closed Mondays (that's when we sleep). Step-free entrance, dogs welcome, a bench out front for the impatient.</p>
+  </div>
+  <div class="map reveal" role="img" aria-label="Illustrated map showing the bakery on a fictional high street">
+   <svg viewBox="0 0 600 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="460" fill="#e8dcc6"/><path d="M-20 300 C150 260 260 330 620 250" stroke="#f6efe3" stroke-width="36" fill="none"/><path d="M300 -20 C290 150 330 300 280 480" stroke="#f6efe3" stroke-width="28" fill="none"/><path d="M-20 120 L620 90" stroke="#f6efe3" stroke-width="16" fill="none"/><path d="M430 -10 L470 470" stroke="#f6efe3" stroke-width="14" fill="none"/><path d="M90 -10 C120 200 60 300 110 470" stroke="#f6efe3" stroke-width="12" fill="none"/><ellipse cx="170" cy="200" rx="70" ry="45" fill="#c9d0b0"/><ellipse cx="520" cy="360" rx="80" ry="50" fill="#c9d0b0"/><path d="M-20 420 C200 390 400 440 620 400" stroke="#b9cfd3" stroke-width="22" fill="none"/><g fill="#d7c7ab"><rect x="330" y="130" width="80" height="50" rx="6"/><rect x="340" y="190" width="60" height="40" rx="6"/><rect x="180" y="30" width="90" height="60" rx="6"/><rect x="480" y="140" width="90" height="70" rx="6"/><rect x="150" y="330" width="100" height="40" rx="6"/></g><text x="170" y="205" font-family="Inter" font-size="12" fill="#6f7d5c" text-anchor="middle">Park</text><text x="40" y="288" font-family="Inter" font-size="12" fill="#8a765d">High Street</text></svg>
+   <svg class="pin" width="54" height="68" viewBox="0 0 54 68" aria-hidden="true"><path d="M27 66C27 66 52 40 52 25A25 25 0 0 0 2 25C2 40 27 66 27 66Z" fill="#2b1d12"/><circle cx="27" cy="25" r="11" fill="#b5652b"/></svg>
+   <div class="card"><div><b>Rise &amp; Crust</b>1 Example Lane, Demo Town (fictional)</div><a class="btn btn-ghost" style="padding:10px 18px" href="#visit" onclick="return false" aria-disabled="true" title="Demo: no real address">Get directions</a></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div><a href="#top" class="logo"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#b5652b"/><path d="M14 38c5-14 31-14 36 0" stroke="#f6efe3" stroke-width="4" fill="none" stroke-linecap="round"/></svg>Rise <em>&amp;</em> Crust</a><p>Slow sourdough and honest pastry. A fictional bakery, built to show what a small food business website can do.</p></div>
+  <div><h4>Explore</h4><ul><li><a href="#menu">Menu &amp; allergens</a></li><li><a href="#order">Order for collection</a></li><li><a href="#cakes">Celebration cakes</a></li><li><a href="#visit">Hours &amp; location</a></li></ul></div>
+  <div><h4>Say hello</h4><ul><li>No real phone or email: this is a demo.</li><li><button class="linklike" data-chat="hi" style="background:none;border:0;color:#f3b67e;text-decoration:underline;padding:0">Chat with the demo assistant</button></li></ul></div>
+  <div class="foot-bottom"><span>© <span id="yr">2026</span> Rise &amp; Crust (fictional). Photos: Unsplash licence.</span><span>Demo site by <a href="mailto:hello@thetenderdesk.co.uk">The Tender Desk</a></span></div>
+ </div>
+</footer>
+
+<!-- basket drawer -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-h" aria-hidden="true">
+ <header><h2 id="drawer-h">Your order</h2><button class="x" data-close aria-label="Close basket">×</button></header>
+ <div class="body" id="lines"></div>
+ <footer id="checkout">
+  <label class="field">Name for the bag<input id="oName" autocomplete="given-name" placeholder="e.g. Sam"></label>
+  <label class="field">Collection slot<select id="oSlot"></select></label>
+  <div class="total"><span>Total</span><span id="total">£0.00</span></div>
+  <button class="btn btn-primary" id="placeBtn" disabled>Place demo order</button>
+  <p class="demo-note">Demo only: no payment is taken and no order is sent.</p>
+ </footer>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- chat -->
+<button class="chat-fab" id="chatFab" aria-expanded="false" aria-controls="chat"><span class="dot" aria-hidden="true"></span><span class="t">Ask the bakery</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><span class="sr">Open demo assistant</span></button>
+<div class="chat" id="chat" role="dialog" aria-label="Demo assistant" aria-hidden="true">
+ <div class="chat-h"><div class="av" aria-hidden="true">R</div><div><b>Crumb · demo assistant</b><small>Scripted demo, no AI API connected</small></div><button class="x" id="chatX" aria-label="Close assistant">×</button></div>
+ <div class="msgs" id="msgs" aria-live="polite"></div>
+ <div class="chips" id="chips"></div>
+ <form id="chatForm" autocomplete="off"><label class="sr" for="chatIn">Message</label><input id="chatIn" placeholder="Ask about menu, allergens, hours…"><button>Send</button></form>
+ <p class="chat-foot">Answers come from this page's menu data. Demo by The Tender Desk.</p>
+</div>
+
+<script src="menu-data.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>
