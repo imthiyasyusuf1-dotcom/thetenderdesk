@@ -367,7 +367,7 @@ p { text-wrap: pretty; }
 
 /* Sectors */
 .chips { display: flex; flex-wrap: wrap; gap: var(--space-2xs); list-style: none; padding: 0; }
-.chips li { padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 999px; background: var(--card); font-weight: 500; font-size: 0.95rem; }
+.chips li { padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); font-weight: 500; font-size: 0.95rem; }
 
 /* FAQ */
 .faq { border-top: 1px solid var(--ink); }
