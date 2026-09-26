@@ -1,4 +1,5 @@
 /* 7ei8ht6 Properties, v4. Quiet luxury: ink, sand, champagne. */
+[hidden]{display:none!important}
 :root{
   --ink:#0c0b09; --ink2:#15130f; --ink3:#1d1a15;
   --sand:#efe8dc; --sand2:#e6dccb; --paper:#f7f3ec;
@@ -125,7 +126,7 @@ body.light-top .hdr:not(.solid)::after{background:var(--line-l)}
 .hero-copy{position:absolute;left:0;right:0;bottom:0;max-width:var(--max);margin:0 auto;padding:0 var(--pad) clamp(56px,9vh,110px)}
 .hero .kicker{color:var(--gold2)}
 .hero-t{font-size:clamp(3.1rem,8.6vw,9.6rem);line-height:.96;letter-spacing:-.025em;margin:0 0 6px}
-.hero-t .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero-t .ln{display:block;overflow:hidden;padding:0 .12em .2em 0;margin-bottom:-.14em}
 .hero-t .ln>span{display:block}
 .hero-t em{color:var(--gold2)}
 .hero-ar{font:400 clamp(1.4rem,2.2vw,2rem)/1.2 var(--arab);color:var(--gold2);opacity:.9;margin:0 0 44px;text-align:left}
@@ -573,3 +574,16 @@ html,body{overflow-x:clip}
 
 .credits{font-size:11px;line-height:1.7;color:rgba(239,232,220,.35);margin:0 auto 24px}
 .credits a{color:rgba(239,232,220,.5)}
+/* touch targets: min 44px on coarse pointers */
+@media (pointer:coarse){
+  .brand{min-height:44px}
+  .tl,.ftr-cta,.toc a,.search input,.c-direct a{min-height:44px;box-sizing:border-box}
+  .tl,.ftr-cta{padding-top:0;padding-bottom:0}
+  .toc a,.c-direct a{display:inline-flex;align-items:center}
+  .ftr-grid p a,.mc a{display:inline-flex;align-items:center;min-height:44px}
+  .ftr-grid p{line-height:1.5}
+  .member .mc a{min-height:44px}
+  .opt input{width:100%;height:100%}
+  .lang,.burger,.chip{min-height:44px}
+  .burger{min-width:44px}
+}

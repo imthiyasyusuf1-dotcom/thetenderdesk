@@ -192,10 +192,11 @@
     function buildWA() { waBtn.href = 'https://wa.me/971506468786?text=' + encodeURIComponent('Private consultation request\n\n' + text()); }
     next.addEventListener('click', () => { if (valid(steps[i])) show(i + 1); });
     back.addEventListener('click', () => show(i - 1));
-    steps.forEach(s => s.addEventListener('change', () => { err.textContent = ''; buildWA(); }));
+    steps.forEach(s => ['change', 'input'].forEach(ev => s.addEventListener(ev, () => { err.textContent = ''; buildWA(); })));
     form.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT' && i < steps.length - 1) { e.preventDefault(); next.click(); } });
     form.addEventListener('submit', e => {
       e.preventDefault(); if (!valid(steps[i])) return;
+      err.textContent = ''; buildWA();
       location.href = `mailto:info@7ei8ht6properties.com?subject=${encodeURIComponent(form.dataset.subject)}&body=${encodeURIComponent(text() + '\n\nSent from the 7ei8ht6 Properties website')}`;
       form.classList.add('sent'); $('.c-done', form).hidden = false; waBtn.hidden = false;
     });
