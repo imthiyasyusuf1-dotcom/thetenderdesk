@@ -471,7 +471,9 @@ html,body{overflow-x:clip}
   .nav a::after{display:none}
   .nav a[aria-current]{color:var(--gold2);font-style:italic}
   .nav .nav-x{margin-top:30px;font:500 11px/1 var(--sans);letter-spacing:.2em}
-  .hdr:has(.nav.open){color:var(--sand);background:transparent}
+  .hdr:has(.nav.open){color:var(--sand);background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;transform:none}
+  .nav{height:100vh;height:100dvh;overflow-y:auto}
+  .hdr:has(.nav.open) .brand,.hdr:has(.nav.open) .hdr-r{position:relative;z-index:1}
   .why-dubai,.visa{grid-template-columns:1fr;padding-right:var(--pad);padding-left:0}
   .wd-copy,.visa-copy{padding-left:var(--pad)}
   .wd-img,.visa-img{height:70vw;margin-right:12vw}
