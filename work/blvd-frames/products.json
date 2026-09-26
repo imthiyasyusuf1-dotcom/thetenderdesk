@@ -1,0 +1,297 @@
+{
+ "currency": "USD",
+ "products": [
+  {
+   "handle": "onyx-2-tones-copy-1",
+   "title": "CHAMPAGNE BLACKOUTS",
+   "sku": "BL56",
+   "price": 55,
+   "available": true,
+   "lens": "UV400",
+   "details": [
+    "Signature spoon temple tips",
+    "Cellulose Propionate Frame with CR-39 lenses",
+    "Engraved slogan: FOR DEGENERATES BY DEGENERATES",
+    "Collapsible pocket case included",
+    "100% UV Protection"
+   ],
+   "images": [
+    "p/onyx-2-tones-copy-1-0",
+    "p/onyx-2-tones-copy-1-1",
+    "p/onyx-2-tones-copy-1-2",
+    "p/onyx-2-tones-copy-1-3",
+    "p/onyx-2-tones-copy-1-4"
+   ],
+   "name": "Champagne Blackouts"
+  },
+  {
+   "handle": "onyx-2-tones-copy",
+   "title": "CLEAR STREAMERS 85% BLUE LIGHT BLOCKERS",
+   "sku": "BL61",
+   "price": 55,
+   "available": true,
+   "lens": "Blue light",
+   "details": [
+    "Signature spoon temple tips",
+    "85% Blue light blocking lenses",
+    "Cellulose Propionate Frame with Nylon lenses",
+    "Engraved slogan: FOR DEGENERATES BY DEGENERATES",
+    "Collapsible pocket case included",
+    "100% UV Protection"
+   ],
+   "images": [
+    "p/onyx-2-tones-copy-0",
+    "p/onyx-2-tones-copy-1",
+    "p/onyx-2-tones-copy-2",
+    "p/onyx-2-tones-copy-3",
+    "p/onyx-2-tones-copy-4"
+   ],
+   "name": "Clear Streamers"
+  },
+  {
+   "handle": "white-groovers",
+   "title": "WHITE GROOVERS",
+   "sku": "BL35",
+   "price": 55,
+   "available": true,
+   "lens": "Polarized",
+   "details": [
+    "Signature spoon temple tips",
+    "Acetate Frame with Polarized lenses",
+    "Engraved slogan: FOR DEGENERATES BY DEGENERATES",
+    "Collapsible pocket case included",
+    "100% UV Protection"
+   ],
+   "images": [
+    "p/white-groovers-0",
+    "p/white-groovers-1",
+    "p/white-groovers-2",
+    "p/white-groovers-3",
+    "p/white-groovers-4"
+   ],
+   "name": "White Groovers"
+  },
+  {
+   "handle": "red-groovers",
+   "title": "CHERRY GROOVERS",
+   "sku": "BL36",
+   "price": 55,
+   "available": true,
+   "lens": "Polarized",
+   "details": [
+    "Signature spoon temple tips",
+    "Acetate Frame with Polarized lenses",
+    "Engraved slogan: FOR DEGENERATES BY DEGENERATES",
+    "Collapsible pocket case included",
+    "100% UV Protection"
+   ],
+   "images": [
+    "p/red-groovers-0",
+    "p/red-groovers-1",
+    "p/red-groovers-2",
+    "p/red-groovers-3"
+   ],
+   "name": "Cherry Groovers"
+  },
+  {
+   "handle": "bl14-copy",
+   "title": "RED SKINNIES",
+   "sku": "BL15",
+   "price": 55,
+   "available": true,
+   "lens": "Polarized",
+   "details": [
+    "Polarized lenses",
+    "Signature spoon temple tips",
+    "Engraved slogan: FOR DEGENERATES BY DEGENERATES",
+    "Collapsible pocket case included"
+   ],
+   "images": [
+    "p/bl14-copy-0",
+    "p/bl14-copy-1",
+    "p/bl14-copy-2",
+    "p/bl14-copy-3",
+    "p/bl14-copy-4",
+    "p/bl14-copy-5"
+   ],
+   "name": "Red Skinnies"
+  },
+  {
+   "handle": "rose",
+   "title": "ROSÉ",
+   "sku": "BL20",
+   "price": 55,
+   "available": true,
+   "lens": "Blue light",
+   "details": [
+    "55% Blue light blocking lenses",
+    "Signature spoon temple tips",
+    "Engraved slogan: FOR DEGENERATES BY DEGENERATES",
+    "Collapsible pocket case included"
+   ],
+   "images": [
+    "p/rose-0",
+    "p/rose-1",
+    "p/rose-2",
+    "p/rose-3",
+    "p/rose-4"
+   ],
+   "name": "Rosé"
+  },
+  {
+   "handle": "ghost-rider",
+   "title": "GHOST RIDER",
+   "sku": "BL19",
+   "price": 55,
+   "available": true,
+   "lens": "Polarized",
+   "details": [
+    "Polarized lenses",
+    "Signature spoon temple tips",
+    "Engraved slogan: FOR DEGENERATES BY DEGENERATES",
+    "Collapsible pocket case included"
+   ],
+   "images": [
+    "p/ghost-rider-0",
+    "p/ghost-rider-1",
+    "p/ghost-rider-2",
+    "p/ghost-rider-3",
+    "p/ghost-rider-4"
+   ],
+   "name": "Ghost Rider"
+  },
+  {
+   "handle": "gamba",
+   "title": "GAMBA",
+   "sku": "BL17",
+   "price": 55,
+   "available": true,
+   "lens": "Blue light",
+   "details": [
+    "90% Blue light blocking lenses",
+    "Signature spoon temple tips",
+    "Engraved slogan: FOR DEGENERATES BY DEGENERATES",
+    "Collapsible pocket case included"
+   ],
+   "images": [
+    "p/gamba-0",
+    "p/gamba-1",
+    "p/gamba-2",
+    "p/gamba-3",
+    "p/gamba-4"
+   ],
+   "name": "Gamba"
+  },
+  {
+   "handle": "raver",
+   "title": "RAVER",
+   "sku": "BL16",
+   "price": 55,
+   "available": true,
+   "lens": "Polarized",
+   "details": [
+    "Polarized mirror lenses",
+    "Signature spoon temple tips",
+    "Engraved slogan: FOR DEGENERATES BY DEGENERATES",
+    "Collapsible pocket case included"
+   ],
+   "images": [
+    "p/raver-0",
+    "p/raver-1",
+    "p/raver-2",
+    "p/raver-3"
+   ],
+   "name": "Raver"
+  },
+  {
+   "handle": "ghost-chrome",
+   "title": "GHOST CHROME",
+   "sku": "BL38",
+   "price": 55,
+   "available": true,
+   "lens": "Polarized",
+   "details": [
+    "Polarized mirror lenses",
+    "Signature spoon temple tips",
+    "Engraved slogan: FOR DEGENERATES BY DEGENERATES",
+    "Collapsible pocket case included"
+   ],
+   "images": [
+    "p/ghost-chrome-0",
+    "p/ghost-chrome-1",
+    "p/ghost-chrome-2",
+    "p/ghost-chrome-3"
+   ],
+   "name": "Ghost Chrome"
+  },
+  {
+   "handle": "salmon-bomber",
+   "title": "SALMON BOMBER",
+   "sku": "BL10",
+   "price": 55,
+   "available": true,
+   "lens": "UV400",
+   "details": [
+    "Signature spoon temple tips",
+    "Engraved slogan: FOR DEGENERATES BY DEGENERATES",
+    "Collapsible pocket case included",
+    "100% UV Protection"
+   ],
+   "images": [
+    "p/salmon-bomber-0",
+    "p/salmon-bomber-1",
+    "p/salmon-bomber-2",
+    "p/salmon-bomber-3",
+    "p/salmon-bomber-4",
+    "p/salmon-bomber-5"
+   ],
+   "name": "Salmon Bomber"
+  },
+  {
+   "handle": "flava",
+   "title": "FLAVA",
+   "sku": "BL08",
+   "price": 55,
+   "available": true,
+   "lens": "Polarized",
+   "details": [
+    "High-performance polarized lenses for maximum clarity",
+    "Signature spoon temple tips",
+    "Engraved slogan: FOR DEGENERATES BY DEGENERATES",
+    "Collapsible pocket case included"
+   ],
+   "images": [
+    "p/flava-0",
+    "p/flava-1",
+    "p/flava-2",
+    "p/flava-3",
+    "p/flava-4",
+    "p/flava-5",
+    "p/flava-6"
+   ],
+   "name": "Flava"
+  },
+  {
+   "handle": "coco-chanel",
+   "title": "COCO CHANEL",
+   "sku": "BL25",
+   "price": 55,
+   "available": true,
+   "lens": "Blue light",
+   "details": [
+    "30% blue light blocking lenses",
+    "Signature spoon temple tips",
+    "Engraved slogan: FOR DEGENERATES BY DEGENERATES",
+    "Collapsible pocket case included"
+   ],
+   "images": [
+    "p/coco-chanel-0",
+    "p/coco-chanel-1",
+    "p/coco-chanel-2",
+    "p/coco-chanel-3",
+    "p/coco-chanel-4"
+   ],
+   "name": "Coco Chanel"
+  }
+ ]
+}

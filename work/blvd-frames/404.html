@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>404 | BLVD Frames</title>
+<meta name="author" content="The Tender Desk"><meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/work/blvd-frames/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@300;400;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/work/blvd-frames/assets/blvd.css">
+<style>
+.lost{min-height:100vh;display:grid;grid-template-columns:7fr 5fr;align-items:end;gap:var(--pad);padding:120px var(--pad) 70px}
+.lost h1{font-family:var(--display);font-weight:400;font-size:clamp(140px,30vw,460px);line-height:.78;letter-spacing:-.02em}
+.lost h1 em{color:var(--crim);font-size:.5em}
+.lost p{color:#cfc4be;line-height:1.55;max-width:34ch;margin:18px 0 30px;font-size:17px}
+.spill{position:fixed;inset:0;pointer-events:none;z-index:0}
+.lost>*{position:relative;z-index:1}
+@media(max-width:760px){.lost{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas class="spill" id="spill" aria-hidden="true"></canvas>
+<header class="nav"><a class="logo" href="/work/blvd-frames/">BLVD</a><a class="nav-cta" href="/work/blvd-frames/#shop">Shop</a></header>
+<main class="lost">
+ <h1>4<em>o</em>4</h1>
+ <div><span class="eyebrow">Page not found</span>
+ <p>Somebody spilled the salt. Whatever you were looking for isn't here, but the spoon is right where you left it.</p>
+ <a class="btn" href="/work/blvd-frames/">Back to the boulevard <span aria-hidden="true">→</span></a></div>
+</main>
+<footer class="foot"><span>© 2026 BLVD Frames</span><span class="credit">Designed &amp; built by <a href="https://thetenderdesk.co.uk">The Tender Desk</a></span></footer>
+<script>
+/* Salt that follows the cursor and piles up at the bottom. 2D canvas, capped grains. */
+(()=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+const c=document.getElementById('spill'),g=c.getContext('2d'),d=Math.min(devicePixelRatio,1.5);let W,H,gr=[],mx=innerWidth/2,my=innerHeight/3;
+const size=()=>{W=c.width=innerWidth*d;H=c.height=innerHeight*d};size();addEventListener('resize',size);
+addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY},{passive:true});
+(function f(){if(gr.length<900)for(let i=0;i<3;i++)gr.push({x:mx*d+(Math.random()-.5)*8,y:my*d,vx:(Math.random()-.5)*.6,vy:Math.random()*.5,s:Math.random()*1.6+.6,r:0});
+g.clearRect(0,0,W,H);g.fillStyle='rgba(242,235,227,.85)';
+for(const p of gr){if(!p.r){p.vy+=.12*d;p.x+=p.vx;p.y+=p.vy;if(p.y>H-3*d){p.y=H-3*d-Math.random()*6*d;p.r=1}}g.fillRect(p.x,p.y,p.s*d,p.s*d)}
+if(gr.length>=900)gr.splice(0,3);requestAnimationFrame(f)})();})();
+</script>
+</body>
+</html>
