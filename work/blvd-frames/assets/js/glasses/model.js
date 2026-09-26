@@ -8,11 +8,11 @@
  * Units are centimetres; the caller scales the group.
  */
 import * as THREE from 'three';
-import { frontShape, lensPath, wrapZ, HINGE } from './profile.js';
+import { frontShape, lensPath, wrapZ, WRAP, HINGE, LENS } from './profile.js';
 import { templeGeometry, bowlCentre } from './temple.js';
 
-const FRONT_DEPTH = 0.42;   // acetate front thickness (before bevel)
-const BEVEL = 0.13;
+const FRONT_DEPTH = 0.62;   // acetate front thickness (before bevel)
+const BEVEL = 0.17;
 
 /** Minimal indexed merge (position, normal, uv). Keeps this dependency free. */
 export function merge(geos) {
@@ -47,29 +47,34 @@ function indexify(g) {
 }
 
 /** Bend a geometry around the face: z += wrapZ(x). */
-function wrap(g, k = 1) {
-  const p = g.attributes.position;
-  for (let i = 0; i < p.count; i++) p.setZ(i, p.getZ(i) + wrapZ(p.getX(i)) * k);
-  g.computeVertexNormals();
+function wrap(g, k = 1, keepNormals = false) {
+  const p = g.attributes.position, n = g.attributes.normal;
+  for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i);
+    p.setZ(i, p.getZ(i) + wrapZ(x) * k);
+    // Transform the existing smooth normals analytically (inverse transpose
+    // of the bend), so faceted cap triangulation never shows in shading.
+    if (keepNormals) n.setXYZ(i, n.getX(i) - 2 * WRAP * x * k * n.getZ(i), n.getY(i), n.getZ(i));
+  }
+  if (keepNormals) { g.normalizeNormals(); n.needsUpdate = true; } else g.computeVertexNormals();
   return g;
 }
 
 function frontGeometry(detail) {
   const g = new THREE.ExtrudeGeometry(frontShape(), {
     depth: FRONT_DEPTH, curveSegments: detail, steps: 1,
-    bevelEnabled: true, bevelThickness: BEVEL, bevelSize: 0.11, bevelSegments: Math.max(3, detail >> 2),
+    bevelEnabled: true, bevelThickness: BEVEL, bevelSize: 0.15, bevelSegments: Math.max(3, detail >> 2),
   });
   g.translate(0, 0, -FRONT_DEPTH / 2);
   g.clearGroups();
-  // Crease-free normals on the bevel look like polished acetate.
-  return wrap(g);
+  return wrap(g, 1, true);
 }
 
 function lensGeometry(detail) {
   const geos = [1, -1].map((side) => {
-    const g = new THREE.ShapeGeometry(lensPath(side, 0.035), detail);
+    const g = new THREE.ShapeGeometry(lensPath(side, 0.05), detail);
     // Give each lens a gentle spherical base curve so reflections bend.
-    const p = g.attributes.position, cx = 4.1 * side;
+    const p = g.attributes.position, cx = LENS.cx * side;
     for (let i = 0; i < p.count; i++) {
       const dx = p.getX(i) - cx, dy = p.getY(i);
       p.setZ(i, 0.05 - (dx * dx + dy * dy) * 0.012);
@@ -136,7 +141,7 @@ export function buildGlasses({ acetate, lens, metal, detail = 24 } = {}) {
   const group = new THREE.Group();
   group.name = 'blvd-frames';
 
-  const arms = [1, -1].map((side) => templeGeometry(side, detail < 20 ? { along: 180, around: 32 } : undefined).applyMatrix4(armMatrix(side)));
+  const arms = [1, -1].map((side) => templeGeometry(side, detail < 20 ? { along: 200, around: 40 } : undefined).applyMatrix4(armMatrix(side)));
   const acetateGeo = merge([frontGeometry(detail), ...nosePads(), ...hingeBlocks(), ...arms]);
   group.add(new THREE.Mesh(acetateGeo, acetate));
   const lenses = new THREE.Mesh(lensGeometry(detail), lens);

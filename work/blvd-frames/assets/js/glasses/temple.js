@@ -56,7 +56,7 @@ export const TEMPLE = {
   padStart: 0.8, // fraction of arc length where the paddle begins to swell
   padW: 1.04,    // paddle full width (about 1.5x armH1)
   padT: 0.28,    // paddle half thickness (thicker, so the bowl can be deep)
-  bowlDepth: 0.34,
+  bowlDepth: 0.27,
 };
 
 /**
@@ -64,7 +64,7 @@ export const TEMPLE = {
  * edges, the look of polished acetate). Near the end the section height
  * follows a teardrop, closing to a hemispherical tip.
  */
-export function templeGeometry(side = 1, { along = 380, around = 72 } = {}) {
+export function templeGeometry(side = 1, { along = 560, around = 200 } = {}) {
   const T = TEMPLE, curve = templeCurve();
   const L = curve.getLength();
   const frames = curve.computeFrenetFrames(along, false);
@@ -115,11 +115,12 @@ export function templeGeometry(side = 1, { along = 380, around = 72 } = {}) {
       // shape does not depend on how the section is sampled.
       if (sy < 0) {
         const d = bowlSDF(v, s - L);
-        if (d < 0.05) {
-          const inside = Math.min(1, Math.max(0, -d / 0.24));
-          // Rounded floor, shallower toward the narrow neck like a real spoon bowl.
-          const depth = T.bowlDepth * (1 - (1 - inside) ** 2) * (0.3 + 0.7 * smooth(-1.85, -0.95, s - L));
-          const lip = Math.exp(-(((d - 0.03) / 0.035) ** 2)) * 0.02;  // thin raised rim
+        if (d < 0.12) {
+          // Smooth, C1 floor: steep polished wall just inside the rim that
+          // rounds into a shallow dish, shallower toward the narrow neck.
+          const inside = smooth(0, 0.3, -d);
+          const depth = T.bowlDepth * Math.sqrt(inside) * inside ** 0.35 * (0.3 + 0.7 * smooth(-1.85, -0.95, s - L));
+          const lip = Math.exp(-(((d - 0.022) / 0.028) ** 2)) * 0.032;  // crisp raised rim
           const face = smooth(0.45, 0.85, -sy);
           w += face * (depth - lip);
         }

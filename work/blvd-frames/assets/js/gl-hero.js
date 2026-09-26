@@ -107,7 +107,7 @@ export function createHero(canvas, {
     const ry = THREE.MathUtils.lerp(-0.55, 0.95, ease(turn)) + mx * 0.3 * (1 - fly);
     const rx = THREE.MathUtils.lerp(0.2, 0.08, turn) + my * 0.15 * (1 - fly);
     rig.rotation.set(rx, ry, 0);
-    rig.position.set((wide ? 1.35 - 0.4 * turn : 0) * (1 - fly), (wide ? 0.3 : 0.9) * (1 - turn) * (1 - fly), 0);
+    rig.position.set((wide ? 1.35 - 0.4 * turn : (portrait ? 0.4 * (1 - turn) : 0)) * (1 - fly), (wide ? 0.3 : portrait ? 1.8 : 0.9) * (1 - turn) * (1 - fly), 0);
     rig.updateMatrixWorld(true);
 
     // Fly to the inner face of the bowl so the arm hangs into frame with
@@ -115,7 +115,7 @@ export function createHero(canvas, {
     bowl.getWorldPosition(bowlW);
     rig.getWorldQuaternion(q);
     nW.copy(bowlNormal).applyQuaternion(q).normalize();
-    start.set(0, 0, portrait ? 12.5 : 7.6);
+    start.set(0, 0, portrait ? 11.4 : 7.6);
     end.copy(bowlW).addScaledVector(nW, spoonDist); end.y -= 0.1;
     camera.position.copy(start).lerp(end, fly);
     const arc = Math.sin(Math.PI * fly); // arc up so the path never cuts a lens
