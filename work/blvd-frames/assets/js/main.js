@@ -18,7 +18,6 @@
 import { createTransition } from './transition.js';
 import { initCursor } from './cursor.js';
 import { initRail } from './rail.js';
-import { createSequence } from './sequence.js';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -27,9 +26,9 @@ const root = document.documentElement;
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const touch = matchMedia('(hover: none), (pointer: coarse)').matches;
 const small = innerWidth < 820;
-const hasGL = (() => { try { return !!document.createElement('canvas').getContext('webgl2'); } catch { return false; } })();
+const hasGL = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } })();
 const useSequence = !reduce && (touch || small);
-const lite = reduce || (!useSequence && !hasGL);
+const lite = reduce || !hasGL;
 if (lite) root.classList.add('lite');
 if (reduce) root.classList.add('no-motion');
 if (touch) root.classList.add('touch');
@@ -87,16 +86,12 @@ let stage = null; // { draw(T, mx, my, time), resize(), setColour?(i) }
 
 function makeStage() {
   if (lite || !canvas) return Promise.resolve(null);
-  if (useSequence) {
-    const base = (i) => asset(CFG.seqBase ? CFG.seqBase(SEQ.colours[i]) : `img/seq/${SEQ.colours[i]}/`);
-    const seq = createSequence(canvas, { base: base(0), count: SEQ.count, width: SEQ.width, height: SEQ.height });
-    stage = { draw: (T) => seq.draw(T), resize: () => seq.resize(), setColour: (i) => seq.swap(base(i)) };
-    return seq.load().then(() => stage);
-  }
-  return import('./gl-hero.js').then(({ createHero }) => {
-    const hero = createHero(canvas, { mobile: false });
+  // Photoreal hero from the real product photos (cut-out + depth parallax).
+  // Light enough (three textured quads) to run live on phones too.
+  return import('./photo-hero.js').then(({ createHero }) => {
+    const hero = createHero(canvas, { mobile: useSequence, asset });
     stage = { draw: hero.draw, resize: () => hero.resize(), setColour: hero.setColour, hero };
-    return stage;
+    return hero.ready.then(() => stage);
   });
 }
 const stageP = makeStage().catch((err) => { console.warn('3D disabled', err); root.classList.add('lite'); return null; });
@@ -148,7 +143,8 @@ function wireStage() {
   let T = 0, mx = 0, my = 0, last = { T: -1, mx: 9, my: 9, salt: -1 };
   let slow = 0, frames = 0, prev = 0, dprDropped = false;
   const redraw = () => (last.T = -1);
-  addEventListener('resize', () => { stage.resize(); redraw(); });
+  addEventListener('resize', () => { stage.resize(); redraw(); stage.draw(T, mx, my, performance.now()); });
+  stage.draw(0, 0, 0, 0); // first frame without waiting for the ticker
 
   gsap.ticker.add((time, dtMs) => {
     if (!live.size || document.hidden) return;
@@ -160,7 +156,7 @@ function wireStage() {
     my += (mouse.y - my) * (1 - Math.exp(-4 * dt));
     if (Math.abs(goal - T) < 1e-4) T = goal;
     // Salt shimmers while visible, which needs a redraw on the live scene.
-    const shimmer = !useSequence && T > 1.36;
+    const shimmer = T > 1.36;
     if (!shimmer && Math.abs(T - last.T) < 2e-4 && Math.abs(mx - last.mx) < 1e-3 && Math.abs(my - last.my) < 1e-3) return;
     last.T = T; last.mx = mx; last.my = my;
     const t0 = performance.now();
@@ -176,7 +172,7 @@ function wireStage() {
   // Colourway chips. Real in-stock frame colours.
   $$('[data-colour]').forEach((b) => b.addEventListener('click', () => {
     $$('[data-colour]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-    Promise.resolve(stage.setColour(+b.dataset.colour)).then(redraw);
+    Promise.resolve(stage.setColour(+b.dataset.colour)).then(() => { redraw(); stage.draw(T, mx, my, performance.now()); });
     redraw();
   }));
 }

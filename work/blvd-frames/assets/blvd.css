@@ -60,7 +60,7 @@ html.has-cursor,html.has-cursor a,html.has-cursor button{cursor:none}
 .btn[disabled]{opacity:.45;pointer-events:none}
 
 /* stage (3D) */
-.gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0;transition:opacity 1.2s ease}
+.gl{position:fixed;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;opacity:0;transition:opacity 1.2s ease}
 .gl.on{opacity:1}
 .stage{position:relative;z-index:1}
 .hero{min-height:100vh;min-height:100svh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--pad) clamp(28px,5vw,64px)}
