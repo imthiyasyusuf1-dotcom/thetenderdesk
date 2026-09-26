@@ -63,6 +63,10 @@ export function createHero(canvas, { mobile = false } = {}) {
   // Rim lights for the cinematic edge glow the bloom picks up.
   const rim = new THREE.DirectionalLight(0xff3b52, 3.2); rim.position.set(-4, 2, -3); scene.add(rim);
   const key = new THREE.DirectionalLight(0xfff1e6, 1.6); key.position.set(3, 4, 5); scene.add(key);
+  // Front fill + cool top rim so the frames read clearly behind the headline.
+  const fill = new THREE.DirectionalLight(0xffffff, 1.3); fill.position.set(-2, 1, 6); scene.add(fill);
+  const topRim = new THREE.DirectionalLight(0xcfe3ff, 2.4); topRim.position.set(2, 5, -4); scene.add(topRim);
+  scene.add(new THREE.HemisphereLight(0xfff4ee, 0x220a10, 0.6));
 
   /* ------------------------------------------------------------ model */
   const rig = new THREE.Group();        // scroll + mouse rotate this
@@ -70,7 +74,7 @@ export function createHero(canvas, { mobile = false } = {}) {
   rig.add(frames); scene.add(rig);
 
   const acetate = new THREE.MeshPhysicalMaterial({
-    color: 0x16090b, roughness: 0.18, metalness: 0.0, clearcoat: 1, clearcoatRoughness: 0.06,
+    color: 0x3a121a, roughness: 0.18, metalness: 0.0, clearcoat: 1, clearcoatRoughness: 0.06,
     sheen: 0.4, sheenColor: new THREE.Color(0x6b0f1a), envMapIntensity: 1.4,
   });
   const chrome = new THREE.MeshStandardMaterial({ color: 0xdedad6, metalness: 1, roughness: 0.22, envMapIntensity: 1.1 });
@@ -97,19 +101,34 @@ export function createHero(canvas, { mobile = false } = {}) {
     new THREE.TubeGeometry(new THREE.QuadraticBezierCurve3(new THREE.Vector3(-GAP / 2 - 0.1, 0.28, 0), new THREE.Vector3(0, 0.46, 0.04), new THREE.Vector3(GAP / 2 + 0.1, 0.28, 0)), 16, 0.07, 10), acetate);
   frames.add(bridge);
 
-  // Hinge studs, a little chrome glint for the bloom to catch.
+  // Hinge studs (real hinge pins), a little metal glint for the bloom to catch.
   const stud = new THREE.SphereGeometry(0.045, 12, 8);
   for (const side of [-1, 1]) for (const y of [0.34, 0.2]) {
     const m = new THREE.Mesh(stud, chrome); m.position.set(side * (half + LW / 2 + 0.06), y, 0.1); frames.add(m);
   }
 
-  // Arms: tapered tubes running back, ending in a modelled spoon.
+  // Arms: tapered tubes running back. The spoon is not a separate part: the
+  // acetate tip flattens into a small teardrop paddle with an oval dip moulded
+  // into its top face, same material as the frame, like the real BLVD arm.
   const armLen = 3.3;
   const spoonTips = [];
-  const bowlProfile = [];
-  for (let i = 0; i <= 12; i++) { const t = i / 12; bowlProfile.push(new THREE.Vector2(Math.sin(t * Math.PI / 2) * 0.16, -Math.cos(t * Math.PI / 2) * 0.07)); }
-  const bowlGeo = new THREE.LatheGeometry(bowlProfile, 28);
-  bowlGeo.scale(0.8, 0.8, 1.35);
+  const PL = 0.15, PW = 0.078, PT = 0.05;   // paddle half length / half width / half thickness
+  const paddleGeo = new THREE.SphereGeometry(1, 36, 24);
+  {
+    const pos = paddleGeo.attributes.position, v = new THREE.Vector3();
+    for (let i = 0; i < pos.count; i++) {
+      v.fromBufferAttribute(pos, i);
+      const u = (v.z + 1) / 2;                       // 0 = arm side, 1 = tip
+      const taper = 0.72 + 0.28 * Math.sin(Math.min(u * 1.25, 1) * Math.PI / 2);
+      let x = v.x * PW * taper, y = v.y * PT, z = v.z * PL;
+      // Oval dip centred toward the tip, only on the top face.
+      const dx = x / (PW * 0.68), dz = (z - PL * 0.22) / (PL * 0.6);
+      const r2 = dx * dx + dz * dz;
+      if (v.y > 0 && r2 < 1) y -= PT * 0.95 * (1 - r2) * (1 - r2) * Math.min(v.y * 2.2, 1);
+      pos.setXYZ(i, x, y, z);
+    }
+    paddleGeo.computeVertexNormals();
+  }
   for (const side of [-1, 1]) {
     const x = side * (half + LW / 2 + 0.1);
     const curve = new THREE.CatmullRomCurve3([
@@ -119,19 +138,16 @@ export function createHero(canvas, { mobile = false } = {}) {
     const arm = new THREE.Mesh(new THREE.TubeGeometry(curve, 48, 0.05, 10), acetate);
     arm.scale.set(1, 1.35, 1);
     frames.add(arm);
-    // Neck + bowl, in chrome, angled like a real spoon lip.
     const end = curve.getPoint(1), tan = curve.getTangent(1);
     const spoon = new THREE.Group();
-    const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.022, 0.035, 0.34, 10), chrome);
-    neck.rotation.x = Math.PI / 2; neck.position.z = -0.17;
-    const bowl = new THREE.Mesh(bowlGeo, chrome);
-    bowl.rotation.x = Math.PI / 2 + 0.25; bowl.position.set(0, 0.02, -0.5);
-    spoon.add(neck, bowl);
-    spoon.position.copy(end);
-    spoon.lookAt(end.clone().add(tan));
-    spoon.rotateY(Math.PI);
+    const paddle = new THREE.Mesh(paddleGeo, acetate);
+    paddle.position.z = PL * 0.32;                  // overlaps the arm end so it reads as one piece
+    spoon.add(paddle);
+    spoon.position.copy(end); spoon.position.y *= 1.35;
+    spoon.lookAt(spoon.position.clone().add(tan));
+    spoon.rotateZ(side * 0.12);
     frames.add(spoon);
-    const tip = new THREE.Object3D(); tip.position.set(0, 0.06, -0.5); spoon.add(tip);
+    const tip = new THREE.Object3D(); tip.position.set(0, PT * 0.4, PL * 0.32 + PL * 0.22); spoon.add(tip);
     spoonTips.push(tip);
   }
   frames.position.z = armLen * 0.35;  // pivot near the middle of the object
@@ -187,7 +203,7 @@ export function createHero(canvas, { mobile = false } = {}) {
     // Camera fly: from the front, down the arm, to hover over the spoon.
     spoonTips[0].getWorldPosition(tipW);
     const e = spoon * spoon * (3 - 2 * spoon); // smoothstep
-    camPos.set(0, 0, 7.5).lerp(tipW.clone().add(new THREE.Vector3(0.45, 0.7, 1.9)), e);
+    camPos.set(0, 0, 7.5).lerp(tipW.clone().add(new THREE.Vector3(0.28, 0.5, 1.15)), e);
     // Arc outward and up so the fly swings around the lens, never through it.
     const arc = Math.sin(Math.PI * e);
     camPos.x += -3.2 * arc; camPos.y += 1.4 * arc;

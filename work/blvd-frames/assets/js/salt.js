@@ -57,7 +57,7 @@ export function makeSalt({ count, text, dpr }) {
         float delay = aSeed.x * .55;
         float t = clamp((uProgress - delay) / .45, 0., 1.);
         float e = t * t * (3. - 2. * t);
-        vec3 start = uTip + (aSeed.yzw - .5) * .05;
+        vec3 start = uTip + (aSeed.yzw - .5) * vec3(.03, .012, .04);
         vec3 end = vec3(aTarget * uScale.x + vec2(0., uScale.y), -4.2);
         // Arc: drop under gravity first, then swing to the glyph.
         vec3 mid = mix(start, end, .5) + vec3((aSeed.y - .5) * 1.4, -1.2 - aSeed.z, .6);
