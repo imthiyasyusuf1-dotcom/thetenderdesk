@@ -93,7 +93,7 @@ export function makeSalt({ count, text, dpr }) {
       // Fit the word to ~84% of the visible width at z = -4.2.
       const vh = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * 4.2;
       const vw = vh * (w / h);
-      mat.uniforms.uScale.value.set(vw * (w < h ? 0.92 : 0.84), vh * (w < h ? -0.2 : 0.2));
+      mat.uniforms.uScale.value.set(vw * (w < h ? 0.92 : 0.84), vh * (w < h ? -0.16 : 0.2));
     },
     update(time, progress, tip) {
       mat.uniforms.uTime.value = time;

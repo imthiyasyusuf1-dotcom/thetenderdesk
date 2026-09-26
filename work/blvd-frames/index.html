@@ -18,8 +18,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@200..800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <script type="importmap">{"imports":{"three":"./assets/three.module.min.js"}}</script>
-<link rel="modulepreload" href="assets/three.module.min.js">
-<link rel="preload" as="image" href="img/life-salmon.webp" media="(max-width:820px)">
+<link rel="modulepreload" href="assets/three.module.min.js" media="(hover:hover) and (min-width:821px)">
+<link rel="preload" as="image" href="img/seq/coco-chanel/000.webp" media="(hover:none),(max-width:820px)">
 <link rel="stylesheet" href="assets/blvd.css">
 <script>document.documentElement.classList.remove('no-js')</script>
 </head>
@@ -42,7 +42,12 @@
   <a href="#spoon">The spoon</a><a href="#look">Lookbook</a><a href="#shop">Shop</a><a href="#specs">Specs</a>
  </nav>
  <a class="nav-cta" href="#shop" data-mag><b>13</b> in stock <span aria-hidden="true">↘</span></a>
+ <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
 </header>
+<nav class="menu" id="menu" aria-label="Mobile">
+ <a href="#spoon">The spoon</a><a href="#look">Lookbook</a><a href="#shop">Shop</a><a href="#specs">Specs</a>
+ <p class="eyebrow">Every frame $55. Spoon included.</p>
+</nav>
 
 <canvas class="gl" id="gl" aria-hidden="true"></canvas>
 
@@ -59,6 +64,13 @@
   <div class="hero-foot">
    <p>Sunglasses for late nights and the moments that follow. Every pair hides a tiny spoon at the end of each arm. You know what it's for. The salt. Obviously.</p>
    <div class="cue"><i></i>Scroll</div>
+  </div>
+  <div class="swatches" role="group" aria-label="Frame colour">
+   <button data-colour="0" aria-pressed="true" style="--c:#f3ddd6"><span class="sr">Coco Chanel</span></button>
+   <button data-colour="1" aria-pressed="false" style="--c:#9e1522"><span class="sr">Cherry Groovers</span></button>
+   <button data-colour="2" aria-pressed="false" style="--c:#f4a0b8"><span class="sr">Salmon Bomber</span></button>
+   <button data-colour="3" aria-pressed="false" style="--c:#f2d6dc"><span class="sr">Ghost Chrome</span></button>
+   <button data-colour="4" aria-pressed="false" style="--c:#f6eeee"><span class="sr">Raver</span></button>
   </div>
  </section>
 
