@@ -25,7 +25,7 @@ export const COLOURS = [
   { h: 'ghost-chrome', b: 'q' },
   { h: 'raver', b: 'q' },
 ];
-const ARM = { src: 'arm', tip: [0.871, 0.758], aspect: 1066 / 1600 };
+const ARM = { src: 'arm', tip: [0.646, 0.935], aspect: 1064 / 1600 };
 
 export function phases(T) {
   return { turn: clamp01(T), fly: ease(clamp01((T - 1) / 0.32)), salt: clamp01((T - 1.36) / 0.6) };
@@ -109,7 +109,7 @@ export function createHero(canvas, { mobile = false, width = innerWidth, height 
   ready.then(() => setTimeout(() => COLOURS.forEach((c) => { pair(`${c.h}-front`); pair(`${c.h}-${c.b}`); }), 1500));
 
   let portrait = width < height;
-  const salt = makeSalt({ count: saltCount ?? (mobile ? 1500 : 5000), text: saltWords(window.BLVD?.saltText || saltText, portrait), dpr: DPR });
+  const salt = makeSalt({ count: saltCount ?? (mobile ? 5000 : 7000), text: saltWords(window.BLVD?.saltText || saltText, portrait), dpr: DPR });
   camera.add(salt.points);
 
   let w = width, h = height, vh = 1, vw = 1;
@@ -149,15 +149,16 @@ export function createHero(canvas, { mobile = false, width = innerWidth, height 
     shadow.material.uniforms.uAlpha.value = 0;
 
     // Spoon: the real arm photo, framed so its tip lands on a fixed screen point.
-    const ah = vh * (portrait ? 1.25 : 1.55) * (1.25 - 0.25 * fly);
-    const focus = portrait ? [0, vh * 0.12] : [vw * 0.12, vh * 0.1];
+    // Bowl lands in the centre of the upper half; the arm rises off-frame above it.
+    const ah = Math.min(vh * (portrait ? 0.95 : 1.05), vw * (portrait ? 1.5 : 0.9)) * (1.15 - 0.15 * fly);
+    const focus = portrait ? [vw * 0.04, vh * 0.1] : [vw * 0.02, vh * 0.16];
     arm.scale.set(ah, ah, 1);
     const tx = (ARM.tip[0] - 0.5) * ARM.aspect * ah, ty = (0.5 - ARM.tip[1]) * ah;
     arm.position.set(focus[0] - tx + (1 - fly) * vw * 0.25, focus[1] - ty - (1 - fly) * vh * 0.1, 0);
     arm.rotation.set(my * 0.1, mx * 0.2, 0);
     const au = arm.material.uniforms;
     au.uAlpha.value = clamp01((fly - 0.35) / 0.4); au.uPar.value.set(mx * 0.02, -my * 0.015);
-    au.uSheen.value = 0.2 + fly * 0.5 + s * 0.3; au.uLift.value = 1 - s * 0.35;
+    au.uSheen.value = 0.2 + fly * 0.5 + s * 0.3; au.uLift.value = 1.1 - s * 0.1;
     arm.visible = au.uAlpha.value > 0.002 && !!au.map.value;
 
     arm.updateMatrixWorld(true); camera.updateMatrixWorld(true);

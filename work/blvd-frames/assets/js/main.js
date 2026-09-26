@@ -9,9 +9,8 @@
  *    scroll handlers). The ticker lerps toward them and redraws the 3D
  *    only when the value actually changed (render on demand), and never
  *    while the stage is offscreen or the tab is hidden.
- *  - Phones scrub a pre-baked WebP sequence of the same scene on a 2D
- *    canvas (sequence.js). Laptops run the live WebGL scene (gl-hero.js)
- *    and drop to DPR 1 automatically if frames run long.
+ *  - Every device runs photo-hero.js: real product-photo cut-outs with
+ *    depth parallax (three textured quads), lighter textures on phones.
  *
  * Modes: .lite = prefers-reduced-motion or no WebGL (static art direction).
  */
@@ -58,11 +57,19 @@ if (!reduce && !touch && window.Lenis) {
 }
 function scrollToEl(t) {
   if (lenis) lenis.scrollTo(t, { duration: 1.4 });
-  else t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+  else {
+    const y = t.getBoundingClientRect().top + scrollY;
+    if (reduce) { scrollTo(0, y); return; }
+    const o = { y: scrollY };
+    gsap.to(o, { y, duration: 1, ease: 'power2.inOut', onUpdate: () => scrollTo(0, o.y), onComplete: () => scrollTo(0, y) });
+  }
 }
 $$('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
   const t = $(a.getAttribute('href')); if (!t) return;
-  e.preventDefault(); closeMenu(); scrollToEl(t);
+  e.preventDefault();
+  const wasOpen = root.classList.contains('menu-open'); closeMenu();
+  // Root is overflow:hidden while the menu is open; scroll after it's released.
+  if (wasOpen) requestAnimationFrame(() => requestAnimationFrame(() => scrollToEl(t))); else scrollToEl(t);
 }));
 const velocity = () => (lenis ? lenis.velocity : 0);
 
@@ -81,7 +88,6 @@ const dataP = CFG.products ? Promise.resolve(CFG.products)
 
 /* ---------------------------------------------------------------- 3D stage */
 const canvas = $('#gl');
-const SEQ = { count: 72, width: 540, height: 1170, colours: ['coco-chanel', 'red-groovers', 'salmon-bomber', 'ghost-chrome', 'raver'] };
 let stage = null; // { draw(T, mx, my, time), resize(), setColour?(i) }
 
 function makeStage() {
@@ -126,7 +132,7 @@ function wireStage() {
   ScrollTrigger.create({ trigger: '.spoon', start: 'top top', end: 'bottom bottom', onUpdate: (t) => (target.spoon = t.progress) });
   gsap.fromTo('.spoon-label', { opacity: 0, y: 30 }, { opacity: 1, y: 0, ease: 'none', scrollTrigger: { trigger: '.spoon', start: '22% top', end: '34% top', scrub: true } });
   // Get out of the way once the salt starts spelling the line.
-  gsap.fromTo('.spoon-label', { opacity: 1 }, { opacity: 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: '.spoon', start: '50% top', end: '58% top', scrub: true } });
+  gsap.fromTo('.spoon-label', { opacity: 1 }, { opacity: 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: '.spoon', start: '38% top', end: '46% top', scrub: true } });
 
   // Pointer parallax on laptops only.
   const mouse = { x: 0, y: 0 };

@@ -44,7 +44,7 @@ export function makeSalt({ count, text, dpr }) {
     transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
     uniforms: {
       uProgress: { value: 0 }, uTime: { value: 0 }, uTip: { value: new THREE.Vector3() },
-      uScale: { value: new THREE.Vector2(3, 3) }, uSize: { value: 2.2 * dpr },
+      uScale: { value: new THREE.Vector2(3, 3) }, uSize: { value: (w0 => w0 < 600 ? 2.3 : 1.8)(innerWidth) * dpr },
     },
     vertexShader: /* glsl */`
       attribute vec4 aSeed; attribute vec2 aTarget;
@@ -54,8 +54,8 @@ export function makeSalt({ count, text, dpr }) {
       float h(float n){ return fract(sin(n) * 43758.5453); }
       void main(){
         // Staggered start: grains leave the spoon in a stream, not a block.
-        float delay = aSeed.x * .55;
-        float t = clamp((uProgress - delay) / .45, 0., 1.);
+        float delay = aSeed.x * .5;
+        float t = clamp((uProgress - delay) / .38, 0., 1.);
         float e = t * t * (3. - 2. * t);
         vec3 start = uTip + (aSeed.yzw - .5) * vec3(.03, .012, .04);
         vec3 end = vec3(aTarget * uScale.x + vec2(0., uScale.y), -4.2);
@@ -93,7 +93,7 @@ export function makeSalt({ count, text, dpr }) {
       // Fit the word to ~84% of the visible width at z = -4.2.
       const vh = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * 4.2;
       const vw = vh * (w / h);
-      mat.uniforms.uScale.value.set(vw * (w < h ? 0.92 : 0.84), vh * (w < h ? -0.16 : 0.2));
+      mat.uniforms.uScale.value.set(vw * (w < h ? 0.92 : 0.84), vh * (w < h ? -0.1 : -0.12));
     },
     update(time, progress, tip) {
       mat.uniforms.uTime.value = time;
