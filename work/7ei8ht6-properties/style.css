@@ -594,3 +594,9 @@ html,body{overflow-x:clip}
   .hero-copy p,.hero-copy .hero-t{text-shadow:0 1px 14px rgba(12,11,9,.85),0 0 2px rgba(12,11,9,.6)}
 }
 @media (min-width:761px){.hero-copy p{text-shadow:0 1px 12px rgba(12,11,9,.7)}}
+
+@media (max-width:760px){
+  .sub-shade{background:linear-gradient(180deg,rgba(12,11,9,.55) 0%,rgba(12,11,9,.3) 25%,rgba(12,11,9,.75) 50%,rgba(12,11,9,.92) 72%,rgba(12,11,9,.96) 100%)}
+  .sub-hero h1,.sub-hero p{text-shadow:0 1px 14px rgba(12,11,9,.85),0 0 2px rgba(12,11,9,.6)}
+}
+@media (min-width:761px){.sub-shade{background:linear-gradient(180deg,rgba(12,11,9,.5),rgba(12,11,9,.15) 35%,rgba(12,11,9,.88))}.sub-hero p{text-shadow:0 1px 12px rgba(12,11,9,.7)}}
