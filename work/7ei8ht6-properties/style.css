@@ -587,3 +587,10 @@ html,body{overflow-x:clip}
   .lang,.burger,.chip{min-height:44px}
   .burger{min-width:44px}
 }
+
+/* legibility: copy sits over bright skyline reflections on phones */
+@media (max-width:760px){
+  .hero-shade{background:linear-gradient(180deg,rgba(12,11,9,.6) 0%,rgba(12,11,9,.35) 22%,rgba(12,11,9,.72) 48%,rgba(12,11,9,.9) 70%,rgba(12,11,9,.96) 100%)}
+  .hero-copy p,.hero-copy .hero-t{text-shadow:0 1px 14px rgba(12,11,9,.85),0 0 2px rgba(12,11,9,.6)}
+}
+@media (min-width:761px){.hero-copy p{text-shadow:0 1px 12px rgba(12,11,9,.7)}}
