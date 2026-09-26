@@ -1,268 +1,266 @@
 (() => {
   const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const root = document.documentElement;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
-  const mobile = innerWidth < 760;
-  const G = window.gsap, ST = window.ScrollTrigger;
-  document.documentElement.classList.add('js');
+  const touch = matchMedia('(hover: none), (pointer: coarse)').matches;
+  const small = () => innerWidth < 1000;
+  const heavy = !touch && !reduce && innerWidth >= 1000;          // desktop path: Lenis, WebGL, parallax
+  const DPR = Math.min(devicePixelRatio || 1, 1.25);
+  root.classList.add('js');
+  const VS = 'attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
   $('#yr') && ($('#yr').textContent = new Date().getFullYear());
 
-  /* ---------- loader (first visit) / curtain (page transitions) ---------- */
-  const loader = $('.loader'), curtain = $('.curtain'), bar = $('.ld-bar i');
+  /* ---------- language toggle (key headings only) ---------- */
+  const lang = $('.lang');
+  const setLang = on => { root.classList.toggle('ar-on', on); lang && lang.setAttribute('aria-pressed', on); lang && lang.setAttribute('aria-label', on ? 'Show headings in English' : 'Show key headings in Arabic'); };
+  try { setLang(localStorage.getItem('e86ar') === '1'); } catch (e) {}
+  lang && lang.addEventListener('click', () => {
+    const on = !root.classList.contains('ar-on');
+    root.classList.add('swapping');
+    setTimeout(() => { setLang(on); root.classList.remove('swapping'); }, 260);
+    try { localStorage.setItem('e86ar', on ? '1' : '0'); } catch (e) {}
+  });
+
+  /* ---------- page transitions: WebGL veil on desktop, CSS wipe elsewhere ---------- */
+  const veil = $('.veil'), vc = $('.veil-gl');
+  let veilGL = null;
+  if (heavy && vc) veilGL = makeVeil(vc);
+  if (!veilGL) veil.classList.add('css');
   const fromNav = sessionStorage.getItem('e86nav') === '1';
   sessionStorage.removeItem('e86nav');
-  let started = false;
-  const start = () => { if (started) return; started = true; loader.classList.add('done'); intro(); };
-  if (fromNav) { loader.style.display = 'none'; curtain.classList.add('out'); requestAnimationFrame(start); }
-  else {
-    const imgs = $$('img').filter(i => i.loading !== 'lazy').slice(0, 6); let n = 0;
-    const tick = () => { n++; bar.style.transform = `scaleX(${Math.min(1, n / Math.max(1, imgs.length))})`; };
-    Promise.all(imgs.map(i => i.complete ? (tick(), 0) : new Promise(r => { i.addEventListener('load', () => { tick(); r(); }, { once: true }); i.addEventListener('error', r, { once: true }); })))
-      .then(() => setTimeout(start, 350));
-    setTimeout(start, 2200);
+  const internal = a => a && a.host === location.host && !a.target && !a.hasAttribute('download') &&
+    /\.html$|\/$/.test(a.pathname) && !(a.pathname === location.pathname && a.hash);
+  function cover(done) {
+    veil.classList.add('on');
+    if (veilGL) veilGL.run(0, 1, 720, done);
+    else setTimeout(done, 650);
   }
-  const same = a => a.host === location.host && a.pathname !== location.pathname && !a.target && !a.hash && a.pathname.endsWith('.html') || (a.host === location.host && /\/$/.test(a.pathname) && a.pathname !== location.pathname && !a.target);
+  function uncover() {
+    if (veilGL) { veil.classList.add('on'); veilGL.set(1); requestAnimationFrame(() => veilGL.run(1, 0, 900, () => veil.classList.remove('on'))); }
+    else { root.classList.add('entering'); requestAnimationFrame(() => requestAnimationFrame(() => { root.classList.remove('entering'); })); }
+  }
+  if (fromNav && !reduce) uncover();
   document.addEventListener('click', e => {
-    const a = e.target.closest('a'); if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
-    if (!same(a)) return;
+    const a = e.target.closest('a');
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button || !internal(a) || reduce) return;
+    if (a.pathname === location.pathname) return;
     e.preventDefault(); sessionStorage.setItem('e86nav', '1');
-    curtain.classList.remove('out'); curtain.classList.add('in');
-    setTimeout(() => location.href = a.href, 330);
+    closeNav(); cover(() => { location.href = a.href; });
   });
-  const pre = new Set();
-  document.addEventListener('pointerover', e => {
-    const a = e.target.closest('a'); if (!a || !same(a) || pre.has(a.href)) return;
-    pre.add(a.href); const l = document.createElement('link'); l.rel = 'prefetch'; l.href = a.href; document.head.appendChild(l);
-  }, { passive: true });
-  addEventListener('pageshow', e => { if (e.persisted) { curtain.classList.remove('in'); curtain.classList.add('out'); } });
+  addEventListener('pageshow', e => { if (e.persisted) { veil.classList.remove('on'); veilGL && veilGL.set(0); } });
+  if (heavy) {
+    const pre = new Set();
+    document.addEventListener('pointerover', e => {
+      const a = e.target.closest('a'); if (!internal(a) || pre.has(a.href)) return;
+      pre.add(a.href); const l = document.createElement('link'); l.rel = 'prefetch'; l.href = a.href; document.head.appendChild(l);
+    }, { passive: true });
+  }
 
-  /* ---------- menu, header, sticky CTA ---------- */
+  /* ---------- nav ---------- */
   const burger = $('.burger'), nav = $('#nav');
+  function closeNav() { if (!nav.classList.contains('open')) return; nav.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); burger.setAttribute('aria-label', 'Open menu'); document.body.style.overflow = ''; lenis && lenis.start(); }
   burger.addEventListener('click', () => {
-    const o = nav.classList.toggle('open');
-    burger.setAttribute('aria-expanded', o); burger.setAttribute('aria-label', o ? 'Close menu' : 'Open menu');
-    lenis && (o ? lenis.stop() : lenis.start());
+    const o = !nav.classList.contains('open');
+    if (!o) return closeNav();
+    nav.classList.add('open'); burger.setAttribute('aria-expanded', 'true'); burger.setAttribute('aria-label', 'Close menu');
+    document.body.style.overflow = 'hidden'; lenis && lenis.stop();
   });
-  const hdr = $('.hdr'), enq = $('.enq'); let last = 0;
-  const onScroll = y => {
-    hdr.classList.toggle('hide', y > last && y > 400 && !nav.classList.contains('open')); last = y;
-    enq && enq.classList.toggle('show', y > 600);
-  };
+  addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
 
-  /* ---------- Lenis + single GSAP ticker ---------- */
+  /* ---------- scroll engine: Lenis on desktop only; native scroll on touch ---------- */
   let lenis = null;
-  if (window.Lenis && !reduce) {
-    lenis = new Lenis({ duration: 1.15, smoothWheel: true, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-    const skewEls = () => $$('.sc img,.member .ph,.tt-row,.pin-img');
-    let sk = [], skv = 0;
-    lenis.on('scroll', e => { ST && ST.update(); onScroll(e.scroll);
-      if (!G || mobile) return; if (!sk.length) sk = skewEls().map(el => G.quickSetter(el, 'skewY', 'deg'));
-      skv += (Math.max(-4, Math.min(4, e.velocity * .12)) - skv) * .2; sk.forEach(s => s(skv)); });
-    G && G.ticker.add(() => { if (Math.abs(skv) > .01 && Math.abs(lenis.velocity) < .5) { skv *= .85; sk.forEach(s => s(skv)); } });
-    if (G) { G.ticker.add(t => lenis.raf(t * 1000)); G.ticker.lagSmoothing(0); }
-    else { const r = t => { lenis.raf(t); requestAnimationFrame(r); }; requestAnimationFrame(r); }
-  } else addEventListener('scroll', () => onScroll(scrollY), { passive: true });
+  if (heavy && window.Lenis) {
+    lenis = new Lenis({ duration: 1.1, smoothWheel: true, syncTouch: false, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    $$('a[href^="#"], a[href*=".html#"]').forEach(a => a.addEventListener('click', e => {
+      if (a.pathname !== location.pathname) return;
+      const t = document.getElementById(decodeURIComponent(a.hash.slice(1))); if (!t) return;
+      e.preventDefault(); lenis.scrollTo(t, { offset: -80 });
+    }));
+  }
 
-  /* ---------- mailto forms ---------- */
-  $$('.mform').forEach(f => f.addEventListener('submit', e => {
-    e.preventDefault();
-    const err = $('.ferr', f); let ok = true;
-    $$('input,select,textarea', f).forEach(el => {
-      const bad = (el.required && !el.value.trim()) || (el.type === 'email' && el.value && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value));
-      el.classList.toggle('bad', bad); if (bad) ok = false;
+  const hdr = $('.hdr'), wa = $('.wa-float'), mbar = $('.mbar');
+  const isHome = document.body.classList.contains('p-index');
+  let lastY = 0, vh = innerHeight;
+  addEventListener('resize', () => { vh = innerHeight; measure(); }, { passive: true });
+  function onScroll(y) {
+    hdr.classList.toggle('solid', y > 40);
+    hdr.classList.toggle('hide', y > lastY && y > vh * .7 && !nav.classList.contains('open'));
+    lastY = y;
+    const show = y > (isHome ? vh * .6 : 240);
+    wa && wa.classList.toggle('show', show);
+    mbar && mbar.classList.toggle('show', show);
+  }
+
+  /* parallax targets: desktop only, transform only, measured once */
+  let px = [];
+  function measure() {
+    if (!heavy) return;
+    px = $$('[data-speed]').map(el => { const r = el.parentElement.getBoundingClientRect(); return { el, s: +el.dataset.speed, top: r.top + scrollY, h: r.height, last: null }; });
+  }
+  function parallax(y) {
+    for (const p of px) {
+      if (p.top > y + vh || p.top + p.h < y) continue;
+      const v = ((y + vh / 2) - (p.top + p.h / 2)) * p.s * -1;
+      const r = Math.round(v * 10) / 10;
+      if (r !== p.last) { p.el.style.transform = `translate3d(0,${r}px,0)`; p.last = r; }
+    }
+  }
+
+  /* statement: words brighten as the paragraph passes */
+  const stm = $$('[data-words]').map(el => {
+    el.innerHTML = el.innerHTML.replace(/(<[^>]+>)|([^\s<]+)/g, (m, tag, w) => tag ? tag : `<span class="w">${w}</span>`);
+    return { el, ws: $$('.w', el), n: -1 };
+  });
+  function words() {
+    for (const s of stm) {
+      const r = s.el.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) continue;
+      const p = Math.min(1, Math.max(0, (vh * .85 - r.top) / (r.height + vh * .35)));
+      const n = Math.round(p * s.ws.length);
+      if (n === s.n) continue;
+      s.ws.forEach((w, i) => w.classList.toggle('on', i < n)); s.n = n;
+    }
+  }
+  if (reduce) stm.forEach(s => s.ws.forEach(w => w.classList.add('on')));
+
+  let ticking = false, curY = scrollY;
+  const frame = () => { ticking = false; onScroll(curY); if (heavy) parallax(curY); if (!reduce) words(); };
+  if (lenis) {
+    lenis.on('scroll', e => { curY = e.scroll; if (!ticking) { ticking = true; requestAnimationFrame(frame); } });
+    const raf = t => { lenis.raf(t); requestAnimationFrame(raf); }; requestAnimationFrame(raf);
+  } else {
+    addEventListener('scroll', () => { curY = scrollY; if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
+  }
+
+  /* ---------- reveals ---------- */
+  if ('IntersectionObserver' in window && !reduce) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    $$('.rv,[data-reveal]').forEach(el => io.observe(el));
+  } else $$('.rv,[data-reveal]').forEach(el => el.classList.add('is-in'));
+
+  /* ---------- intro ---------- */
+  const go = () => { root.classList.add('in'); measure(); frame(); };
+  (document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 900))]) : Promise.resolve()).then(() => requestAnimationFrame(go));
+
+  /* ---------- services list: floating preview (fine pointers only) ---------- */
+  const sl = $('.services-list'), fl = $('.sl-float');
+  if (sl && fl && !touch && !reduce) {
+    const im = $('img', fl); let ty = 0, cy = 0, run = false;
+    const loop = () => { cy += (ty - cy) * .14; fl.style.transform = `translate3d(0,${cy.toFixed(1)}px,0)`; if (Math.abs(ty - cy) > .3) requestAnimationFrame(loop); else run = false; };
+    $$('.sl a', sl).forEach(a => {
+      a.addEventListener('mouseenter', () => { if (im.getAttribute('src') !== a.dataset.img) im.src = a.dataset.img; fl.classList.add('on'); });
+      a.addEventListener('mousemove', e => { const r = sl.getBoundingClientRect(); ty = e.clientY - r.top - fl.offsetHeight / 2; if (!run) { run = true; requestAnimationFrame(loop); } });
     });
-    if (!ok) { err.textContent = 'Please complete the highlighted fields.'; return; }
-    err.textContent = '';
-    const body = $$('input,select,textarea', f).map(el => `${el.name}: ${el.value}`).join('\n');
-    location.href = `mailto:info@7ei8ht6properties.com?subject=${encodeURIComponent(f.dataset.subject)}&body=${encodeURIComponent(body + '\n\nSent from the 7ei8ht6 Properties website')}`;
-  }));
+    $('.sl', sl).addEventListener('mouseleave', () => fl.classList.remove('on'));
+  }
 
   /* ---------- team filter ---------- */
-  const chips = $$('.chip'), q = $('#tsearch');
-  if (chips.length) {
+  const chips = $$('.chip'), q = $('#tsearch'), members = $$('.member');
+  if (members.length) {
     let f = 'all';
-    const apply = () => {
-      const s = (q.value || '').toLowerCase().trim(); let shown = 0;
-      $$('.member').forEach(m => { const on = (f === 'all' || m.dataset.role === f) && (!s || m.dataset.name.includes(s)); m.classList.toggle('gone', !on); on && shown++; });
-      $('.empty').hidden = shown > 0;
-      if (G) G.fromTo($$('.member:not(.gone)'), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .55, stagger: .025, ease: 'power3.out', overwrite: true });
-      ST && ST.refresh();
-    };
-    chips.forEach(c => c.addEventListener('click', () => { chips.forEach(x => x.classList.toggle('on', x === c)); f = c.dataset.f; apply(); }));
+    const apply = () => { const s = (q.value || '').trim().toLowerCase(); let n = 0;
+      members.forEach(m => { const ok = (f === 'all' || m.dataset.role === f) && (!s || m.dataset.name.includes(s)); m.hidden = !ok; ok && n++; });
+      $('.empty').hidden = n > 0; lenis && lenis.resize(); measure(); };
+    chips.forEach(c => c.addEventListener('click', () => { chips.forEach(x => x.classList.toggle('on', x === c)); f = c.dataset.f === 'all' ? 'all' : c.textContent; f = c.dataset.f === 'all' ? 'all' : c.dataset.f.replace(/&amp;/g, '&'); members.forEach(m => m.dataset.role = m.dataset.role.replace(/&amp;/g, '&')); apply(); }));
     q.addEventListener('input', apply);
   }
 
-  /* ---------- text splitting ---------- */
-  const heroT = $('.hero-t');
-  heroT && $$('.ln', heroT).forEach(ln => {
-    const walk = node => [...node.childNodes].forEach(ch => {
-      if (ch.nodeType === 3) { const frag = document.createDocumentFragment(); [...ch.textContent].forEach(c => { const s = document.createElement('span'); s.className = 'ch'; s.setAttribute('aria-hidden', 'true'); s.textContent = c === ' ' ? '\u00a0' : c; frag.appendChild(s); }); ch.replaceWith(frag); }
-      else walk(ch);
-    }); walk(ln);
-  });
-  $$('.split').forEach(h => {
-    const html = h.innerHTML.split(/(<[^>]+>|\s+)/).map(t => !t || /^\s+$/.test(t) ? t : t.startsWith('<') ? t : `<span class="wd"><span class="wi">${t}</span></span>`).join('');
-    h.innerHTML = html;
-  });
-  $$('.words').forEach(p => { p.innerHTML = p.innerHTML.split(/(<[^>]+>|\s+)/).map(t => !t || /^\s+$/.test(t) || t.startsWith('<') ? t : `<span class="w">${t}</span>`).join(''); });
-
-  /* ---------- choreography ---------- */
-  function intro() {
-    if (!G || reduce) { $$('.reveal').forEach(r => { r.style.opacity = 1; r.style.transform = 'none'; }); return; }
-    ST.defaults({ once: false });
-    if (heroT) {
-      const tl = G.timeline({ delay: .1 });
-      tl.from($$('.ch', heroT), { yPercent: 110, rotate: 6, duration: 1.2, ease: 'expo.out', stagger: .035 })
-        .from('.hero-copy .kicker,.hero-copy .lead,.hero-copy .hero-ctas,.hero-time', { y: 30, opacity: 0, duration: .9, stagger: .1, ease: 'power3.out' }, '-=.8');
-    }
-    const sub = $('.sub-in');
-    if (sub) {
-      G.from($$('.wi', sub), { yPercent: 110, duration: 1.1, ease: 'expo.out', stagger: .05, delay: .05 });
-      G.from($$('.kicker,.lead', sub), { y: 30, opacity: 0, duration: .9, ease: 'power3.out', delay: .35, stagger: .1 });
-    }
-    $$('.split').filter(h => !h.closest('.sub-in')).forEach(h => G.from($$('.wi', h), { yPercent: 110, duration: 1.1, ease: 'expo.out', stagger: .04, scrollTrigger: { trigger: h, start: 'top 85%' } }));
-    ST.batch('.reveal', { start: 'top 88%', onEnter: b => G.to(b, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: .08, overwrite: true }) });
-    ST.batch('.member', { start: 'top 92%', onEnter: b => G.from(b, { opacity: 0, y: 40, duration: .9, ease: 'power3.out', stagger: .06 }) });
-    if (!mobile) $$('.words').forEach(p => G.to($$('.w', p), { opacity: 1, stagger: .05, ease: 'none', scrollTrigger: { trigger: p, start: 'top 80%', end: 'bottom 45%', scrub: true } }));
-    $$('.diff-list li').forEach(li => G.from(li, { x: -40, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: li, start: 'top 90%' } }));
-    $$('.step').forEach(s => G.from(s, { y: 60, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: s, start: 'top 85%' } }));
-    $$('[data-count]').forEach(b => {
-      const o = { v: 0 }, t = +b.dataset.count, suf = b.dataset.suf || '';
-      G.to(o, { v: t, duration: 2, ease: 'power2.out', scrollTrigger: { trigger: b, start: 'top 90%' }, onUpdate: () => b.textContent = Math.round(o.v).toLocaleString('en-US') + suf });
-    });
-    $$('.sub-bg').forEach(el => G.to(el, { yPercent: 14, ease: 'none', scrollTrigger: { trigger: el.parentNode, start: 'top top', end: 'bottom top', scrub: true } }));
-    $$('.pin-img img').forEach(el => G.fromTo(el, { yPercent: -18 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: el.parentNode, start: 'top bottom', end: 'bottom top', scrub: true } }));
-    $$('.sc img,.card').forEach(el => G.from(el, { y: 60, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 55%', scrub: true } }));
-    G.from('.ftr-big', { yPercent: 30, opacity: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: '.ftr', start: 'top 80%' } });
-    // horizontal pinned services
-    const hs = $('.hscroll'), tr = $('.hs-track');
-    if (hs) {
-      const dist = () => tr.scrollWidth - innerWidth;
-      const setH = () => hs.style.height = (dist() + innerHeight) + 'px';
-      setH(); addEventListener('resize', setH);
-      const imgs = $$('.hs-panel img', tr);
-      ST.create({ trigger: hs, start: 'top top', end: 'bottom bottom', invalidateOnRefresh: true, onRefresh: setH,
-        onUpdate: s => { const d = dist(); G.set(tr, { x: -d * s.progress }); imgs.forEach(i => G.set(i, { xPercent: -6 + 12 * s.progress })); } });
-    }
-    const hc = $('.hero-copy');
-    if (hc) G.to(hc, { y: -120, opacity: 0, ease: 'none', scrollTrigger: { trigger: '#hero', start: '55% bottom', end: 'bottom bottom', scrub: true } });
-    addEventListener('load', () => ST.refresh());
-  }
-
-  /* ---------- cursor, magnetic, spotlight ---------- */
-  if (fine && G && !reduce) {
-    const c = $('.cur'), d = $('.cur-dot'); c.appendChild(document.createElement('i'));
-    const cx = G.quickTo(c, 'x', { duration: .45, ease: 'power3' }), cy = G.quickTo(c, 'y', { duration: .45, ease: 'power3' });
-    const dx = G.quickTo(d, 'x', { duration: .08 }), dy = G.quickTo(d, 'y', { duration: .08 });
-    addEventListener('pointermove', e => { c.classList.add('on'); d.classList.add('on'); cx(e.clientX); cy(e.clientY); dx(e.clientX); dy(e.clientY); }, { passive: true });
-    document.addEventListener('pointerover', e => c.classList.toggle('big', !!e.target.closest('a,button,.member,.hs-panel,select,input,textarea')), { passive: true });
-    $$('.magnetic').forEach(m => {
-      const mx = G.quickTo(m, 'x', { duration: .5, ease: 'power3' }), my = G.quickTo(m, 'y', { duration: .5, ease: 'power3' });
-      m.addEventListener('pointermove', e => { const r = m.getBoundingClientRect(); mx((e.clientX - r.left - r.width / 2) * .3); my((e.clientY - r.top - r.height / 2) * .35); });
-      m.addEventListener('pointerleave', () => { mx(0); my(0); });
-    });
-    $$('.card').forEach(el => el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(); el.style.setProperty('--mx', (e.clientX - r.left) + 'px'); el.style.setProperty('--my', (e.clientY - r.top) + 'px'); }));
-  }
-
-  /* ---------- WebGL skyline hero ---------- */
-  const cv = $('#sky');
-  if (cv) {
-    const ok = (() => { try { return !!document.createElement('canvas').getContext('webgl2'); } catch { return false; } })();
-    if (!ok || reduce) document.documentElement.classList.add('no-webgl');
-    else import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js').then(T => skyline(T, cv)).catch(() => document.documentElement.classList.add('no-webgl'));
-  }
-  function skyline(T, cv) {
-    const r = new T.WebGLRenderer({ canvas: cv, antialias: !mobile, powerPreference: 'high-performance' });
-    r.setPixelRatio(Math.min(devicePixelRatio, mobile ? 1.25 : 1.5));
-    const scene = new T.Scene(), cam = new T.PerspectiveCamera(mobile ? 60 : 42, 1, .5, 900);
-    const U = { uT: { value: 0 }, uOn: { value: .12 }, uTime: { value: 0 } };
-    const NIGHT = new T.Color('#05070b'), DUSK = new T.Color('#c98a55');
-    // sky dome
-    const sky = new T.Mesh(new T.SphereGeometry(600, 24, 12), new T.ShaderMaterial({ side: T.BackSide, depthWrite: false, uniforms: U,
-      vertexShader: 'varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-      fragmentShader: `uniform float uT;varying vec3 vP;
-        float h(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}
-        void main(){float y=normalize(vP).y;
-        vec3 d=mix(vec3(.93,.62,.38),vec3(.17,.2,.36),smoothstep(-.02,.35,y));d=mix(d,vec3(.05,.07,.16),smoothstep(.3,.8,y));
-        vec3 n=mix(vec3(.07,.09,.16),vec3(.01,.015,.03),smoothstep(0.,.5,y));
-        vec3 c=mix(d,n,smoothstep(.0,.85,uT));
-        vec2 g=floor(normalize(vP).xz*260./(y+1.2));float s=step(.996,h(g))*smoothstep(.05,.4,y)*smoothstep(.4,1.,uT);
-        gl_FragColor=vec4(c+s*.8,1.);}` }));
-    scene.add(sky);
-    // shared building shader: gradient facade + lit window grid
-    const bMat = new T.ShaderMaterial({ uniforms: U,
-      vertexShader: `uniform float uTime,uT;attribute float aSeed;varying vec3 vW;varying vec3 vN;varying float vS;
-        void main(){vec4 w=modelMatrix*instanceMatrix*vec4(position,1.);w.x+=sin(w.y*.35+uTime*2.2+w.z*.05)*.9*(1.-uT)*smoothstep(-200.,-380.,w.z)*smoothstep(40.,0.,w.y);vW=w.xyz;vN=normalize(mat3(modelMatrix*instanceMatrix)*normal);vS=aSeed;gl_Position=projectionMatrix*viewMatrix*w;}`,
-      fragmentShader: `uniform float uT,uOn;varying vec3 vW;varying vec3 vN;varying float vS;
-        float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-        void main(){
-          float side=1.-abs(vN.y);
-          vec3 base=mix(vec3(.30,.26,.28),vec3(.035,.05,.08),uT);
-          base*=.55+.45*smoothstep(-1.,1.,dot(vN,normalize(vec3(-.6,.3,.7))));
-          base+=mix(vec3(.35,.2,.1),vec3(0.),uT)*smoothstep(40.,0.,vW.y)*.15;
-          vec2 cell=vec2(floor((vW.x+vW.z)*1.1),floor(vW.y*1.4));
-          vec2 f=fract(vec2((vW.x+vW.z)*1.1,vW.y*1.4));
-          float win=step(.2,f.x)*step(f.x,.8)*step(.25,f.y)*step(f.y,.75)*side;
-          float lit=step(h(cell+vS*17.),uOn*.75)*win;
-          vec3 wc=mix(vec3(1.,.8,.5),vec3(.75,.88,1.),step(.7,h(cell*1.3+vS)));
-          vec3 col=base+lit*wc*(.8+.4*h(cell+3.));
-          float fog=smoothstep(60.,420.,length(vW.xz-vec2(0.,40.)));
-          vec3 fc=mix(vec3(.62,.44,.36),vec3(.03,.04,.08),uT);
-          gl_FragColor=vec4(mix(col,fc,fog*.85),1.);}` });
-    const add = (geo, list) => {
-      const m = new T.InstancedMesh(geo, bMat, list.length), o = new T.Object3D(), seeds = new Float32Array(list.length);
-      list.forEach((b, i) => { o.position.set(b[0], b[4] / 2 + (b[5] || 0), b[1]); o.scale.set(b[2], b[4], b[3]); o.rotation.y = b[6] || 0; o.updateMatrix(); m.setMatrixAt(i, o.matrix); seeds[i] = Math.random(); });
-      geo.setAttribute('aSeed', new T.InstancedBufferAttribute(seeds, 1)); scene.add(m); return m;
+  /* ---------- consultation: multi-step brief ---------- */
+  const form = $('#consult-form');
+  if (form) {
+    const steps = $$('.c-step', form), back = $('.c-back', form), next = $('.c-next', form), send = $('.c-send', form), waBtn = $('.c-wa', form);
+    const err = $('.ferr', form), bar = $('.c-bar i', form), cnt = $('.c-count b', form), lab = $('.c-lab', form);
+    let i = 0;
+    const show = n => {
+      steps.forEach((s, k) => s.classList.toggle('on', k === n)); i = n;
+      back.hidden = n === 0; next.hidden = n === steps.length - 1; send.hidden = waBtn.hidden = n !== steps.length - 1;
+      bar.style.transform = `scaleX(${(n + 1) / steps.length})`; cnt.textContent = String(n + 1).padStart(2, '0'); lab.textContent = steps[n].dataset.t;
+      err.textContent = '';
+      const top = form.getBoundingClientRect().top + scrollY - 90;
+      if (form.getBoundingClientRect().top < 0) lenis ? lenis.scrollTo(top) : scrollTo({ top, behavior: 'smooth' });
+      buildWA();
     };
-    let rnd = 7; const R = () => (rnd = (rnd * 16807) % 2147483647) / 2147483647;
-    const boxes = [], N = mobile ? 170 : 420;
-    for (let i = 0; i < N; i++) {
-      const x = (R() - .5) * 520, z = -R() * 380 + 10, near = Math.abs(x) < 70 && z > -140;
-      if (Math.abs(x) < 16 && z > -60 && z < 0) continue;
-      const hgt = (near ? 10 : 6) + Math.pow(R(), 2.6) * (near ? 70 : 55);
-      boxes.push([x, z, 5 + R() * 9, 5 + R() * 9, hgt, 0, R() * .5]);
-    }
-    add(new T.BoxGeometry(1, 1, 1), boxes);
-    // Burj-like tower: stacked hexagonal tiers + spire
-    const tiers = []; let y = 0;
-    for (let i = 0; i < 11; i++) { const hh = 22 - i * 1.2, rr = 9 - i * .78; tiers.push([0, -30, rr, rr, hh, y, i * .26]); y += hh; }
-    add(new T.CylinderGeometry(1, 1, 1, 6), tiers);
-    add(new T.CylinderGeometry(.08, 1, 1, 6), [[0, -30, 1.1, 1.1, 60, y, 0]]);
-    // a sail-like tower and twin towers
-    add(new T.CylinderGeometry(.35, 1, 1, 3), [[-95, -60, 12, 12, 110, 0, .4]]);
-    add(new T.BoxGeometry(1, 1, 1), [[70, -50, 9, 9, 125, 0, .2], [84, -50, 8, 8, 110, 0, .2]]);
-    // aviation beacon
-    const beacon = new T.Mesh(new T.SphereGeometry(.9, 8, 6), new T.MeshBasicMaterial({ color: 0xff3b30 }));
-    beacon.position.set(0, y + 60, -30); scene.add(beacon);
-    // water with gold reflection streak
-    const water = new T.Mesh(new T.PlaneGeometry(1400, 800), new T.ShaderMaterial({ uniforms: U,
-      vertexShader: 'varying vec3 vW;void main(){vec4 w=modelMatrix*vec4(position,1.);vW=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}',
-      fragmentShader: `uniform float uT,uOn,uTime;varying vec3 vW;
-        void main(){vec3 d=mix(vec3(.45,.3,.26),vec3(.02,.03,.05),uT);
-        float streak=exp(-abs(vW.x)*.03)*(.5+.5*sin(vW.z*.9+uTime*1.5+sin(vW.x*.3)))*smoothstep(80.,-100.,vW.z);
-        vec3 c=d+streak*mix(vec3(.9,.6,.35)*.35,vec3(.85,.7,.45)*.45*uOn,uT);
-        gl_FragColor=vec4(c,1.);}` }));
-    water.rotation.x = -Math.PI / 2; water.position.set(0, 0, 200); scene.add(water);
-
-    const size = () => { const w = cv.clientWidth, h = cv.clientHeight; r.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); };
-    size(); addEventListener('resize', size);
-    let p = 0, visible = true, mx = 0, my = 0, smx = 0, smy = 0;
-    if (G && ST) ST.create({ trigger: '#hero', start: 'top top', end: 'bottom bottom', onUpdate: s => p = s.progress });
-    if (fine) addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; }, { passive: true });
-    new IntersectionObserver(e => visible = e[0].isIntersecting).observe($('#hero'));
-    const ht = $('#ht'); let label = '';
-    let sp = 0, intro0 = 1;
-    const frame = (t) => {
-      if (!visible || document.hidden) return;
-      sp += (p - sp) * .08; smx += (mx - smx) * .05; smy += (my - smy) * .05; intro0 += (0 - intro0) * .03;
-      U.uT.value = Math.min(1, sp * 1.3); U.uOn.value = .1 + Math.min(1, Math.max(0, (sp - .1) * 1.5)) * .9; U.uTime.value = t;
-      const z = 290 - sp * 150 + intro0 * 80;
-      cam.position.set(Math.sin(sp * 1.2) * 40 + smx * 14, 14 + sp * 18 + intro0 * 25 - smy * 6, z);
-      cam.lookAt(0, 62 + sp * 22, -40);
-      beacon.visible = Math.sin(t * 3) > 0;
-      r.render(scene, cam);
-      const l = sp < .25 ? 'Dusk' : sp < .6 ? 'Evening' : 'Night'; if (l !== label) { label = l; ht.textContent = l; }
+    const valid = s => {
+      for (const el of $$('input[required]', s)) {
+        if (el.type === 'radio') { if (!$(`input[name="${el.name}"]:checked`, s)) { err.textContent = 'Please choose one option to continue.'; return false; } }
+        else if (!el.value.trim() || (el.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value))) { err.textContent = el.type === 'email' ? 'Please enter a valid email address.' : 'Please add your name.'; el.focus(); return false; }
+      }
+      return true;
     };
-    if (G) G.ticker.add(frame); else { const loop = t => { frame(t / 1000); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
+    const data = () => { const fd = new FormData(form), o = {}; for (const [k, v] of fd) if (String(v).trim()) o[k] = o[k] ? o[k] + ', ' + v : v; return o; };
+    const text = () => Object.entries(data()).map(([k, v]) => `${k}: ${v}`).join('\n');
+    function buildWA() { waBtn.href = 'https://wa.me/971506468786?text=' + encodeURIComponent('Private consultation request\n\n' + text()); }
+    next.addEventListener('click', () => { if (valid(steps[i])) show(i + 1); });
+    back.addEventListener('click', () => show(i - 1));
+    steps.forEach(s => s.addEventListener('change', () => { err.textContent = ''; buildWA(); }));
+    form.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT' && i < steps.length - 1) { e.preventDefault(); next.click(); } });
+    form.addEventListener('submit', e => {
+      e.preventDefault(); if (!valid(steps[i])) return;
+      location.href = `mailto:info@7ei8ht6properties.com?subject=${encodeURIComponent(form.dataset.subject)}&body=${encodeURIComponent(text() + '\n\nSent from the 7ei8ht6 Properties website')}`;
+      form.classList.add('sent'); $('.c-done', form).hidden = false; waBtn.hidden = false;
+    });
+  }
+
+  /* ---------- hero: heat haze shader over the photograph (desktop only) ---------- */
+  const gl = $('#gl');
+  if (gl && heavy) {
+    const img = $('.hero-media img');
+    const startGL = () => heroGL(gl, img);
+    img.complete ? setTimeout(startGL, 300) : img.addEventListener('load', () => setTimeout(startGL, 300), { once: true });
+  }
+
+  function compile(g, vs, fs) {
+    const p = g.createProgram();
+    [[g.VERTEX_SHADER, vs], [g.FRAGMENT_SHADER, fs]].forEach(([t, s]) => { const sh = g.createShader(t); g.shaderSource(sh, s); g.compileShader(sh); g.attachShader(p, sh); });
+    g.linkProgram(p); if (!g.getProgramParameter(p, g.LINK_STATUS)) return null;
+    const b = g.createBuffer(); g.bindBuffer(g.ARRAY_BUFFER, b); g.bufferData(g.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), g.STATIC_DRAW);
+    g.useProgram(p); const loc = g.getAttribLocation(p, 'p'); g.enableVertexAttribArray(loc); g.vertexAttribPointer(loc, 2, g.FLOAT, false, 0, 0);
+    return p;
+  }
+
+  function heroGL(cv, img) {
+    const g = cv.getContext('webgl', { alpha: false, antialias: false, powerPreference: 'low-power' }); if (!g) return;
+    const p = compile(g, VS, `precision mediump float;varying vec2 v;uniform sampler2D t;uniform float T;uniform vec2 R,I;
+      float h(vec2 q){return fract(sin(dot(q,vec2(127.1,311.7)))*43758.5453);}
+      float n(vec2 q){vec2 i=floor(q),f=fract(q);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+1.),f.x),f.y);}
+      void main(){float ra=R.x/R.y,ia=I.x/I.y;vec2 s=ra>ia?vec2(1.,ia/ra):vec2(ra/ia,1.);vec2 uv=(v-.5)*s;
+        float k=1.10-.06*sin(T*.025);uv=uv/k+vec2(.012*sin(T*.02),-.02+.01*cos(T*.017))+.5;
+        float band=smoothstep(.62,.0,v.y)*.0032;
+        vec2 d=vec2(n(vec2(uv.x*9.,uv.y*26.-T*.55))-.5,n(vec2(uv.x*7.+3.,uv.y*20.-T*.4))-.5)*band;
+        vec3 c=texture2D(t,vec2(uv.x,1.-uv.y)+d).rgb;
+        c*=1.-.25*length(v-.5);gl_FragColor=vec4(c,1.);}`);
+    if (!p) return;
+    const tx = g.createTexture(); g.bindTexture(g.TEXTURE_2D, tx);
+    try { g.texImage2D(g.TEXTURE_2D, 0, g.RGB, g.RGB, g.UNSIGNED_BYTE, img); } catch (e) { return; }
+    [g.TEXTURE_WRAP_S, g.TEXTURE_WRAP_T].forEach(w => g.texParameteri(g.TEXTURE_2D, w, g.CLAMP_TO_EDGE));
+    g.texParameteri(g.TEXTURE_2D, g.TEXTURE_MIN_FILTER, g.LINEAR);
+    const uT = g.getUniformLocation(p, 'T'), uR = g.getUniformLocation(p, 'R');
+    g.uniform2f(g.getUniformLocation(p, 'I'), img.naturalWidth, img.naturalHeight);
+    const size = () => { cv.width = Math.round(cv.clientWidth * DPR); cv.height = Math.round(cv.clientHeight * DPR); g.viewport(0, 0, cv.width, cv.height); g.uniform2f(uR, cv.width, cv.height); };
+    size(); addEventListener('resize', size, { passive: true });
+    let vis = true, t0 = performance.now(), shown = false;
+    new IntersectionObserver(([e]) => { vis = e.isIntersecting; if (vis) requestAnimationFrame(draw); }).observe(cv);
+    function draw(now) { if (!vis) return; g.uniform1f(uT, (now - t0) / 1000); g.drawArrays(g.TRIANGLE_STRIP, 0, 4);
+      if (!shown) { shown = true; cv.classList.add('on'); setTimeout(() => cv.parentElement.classList.add('gl-on'), 1700); }
+      requestAnimationFrame(draw); }
+    requestAnimationFrame(draw);
+  }
+
+  function makeVeil(cv) {
+    const g = cv.getContext('webgl', { premultipliedAlpha: false, alpha: true }); if (!g) return null;
+    const p = compile(g, VS, `precision mediump float;varying vec2 v;uniform float P;uniform vec2 R;
+      float h(vec2 q){return fract(sin(dot(q,vec2(127.1,311.7)))*43758.5453);}
+      float n(vec2 q){vec2 i=floor(q),f=fract(q);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+1.),f.x),f.y);}
+      void main(){float e=v.y+ (n(vec2(v.x*4.,P*3.))-.5)*.12 + sin(v.x*3.14159)*.05;float edge=P*1.3-.15;
+        float a=smoothstep(edge-.005,edge-.06,1.-e);float line=smoothstep(.03,.0,abs((1.-e)-(edge-.03)))*step(.001,P)*step(P,.999);
+        vec3 ink=vec3(.047,.043,.035),gold=vec3(.83,.73,.56);gl_FragColor=vec4(mix(ink,gold,line*.9),max(a,line*.9));}`);
+    if (!p) return null;
+    g.enable(g.BLEND); g.blendFunc(g.SRC_ALPHA, g.ONE_MINUS_SRC_ALPHA);
+    const uP = g.getUniformLocation(p, 'P'), uR = g.getUniformLocation(p, 'R');
+    const size = () => { cv.width = Math.round(innerWidth * DPR * .6); cv.height = Math.round(innerHeight * DPR * .6); g.viewport(0, 0, cv.width, cv.height); g.uniform2f(uR, cv.width, cv.height); };
+    size(); addEventListener('resize', size, { passive: true });
+    const set = x => { g.clearColor(0, 0, 0, 0); g.clear(g.COLOR_BUFFER_BIT); g.uniform1f(uP, x); g.drawArrays(g.TRIANGLE_STRIP, 0, 4); };
+    const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    return { set, run(a, b, ms, done) { const s = performance.now(); const f = now => { const t = Math.min(1, (now - s) / ms); set(a + (b - a) * ease(t)); t < 1 ? requestAnimationFrame(f) : done && done(); }; requestAnimationFrame(f); } };
   }
 })();
