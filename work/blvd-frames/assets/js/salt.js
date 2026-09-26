@@ -44,7 +44,7 @@ export function makeSalt({ count, text, dpr }) {
     transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
     uniforms: {
       uProgress: { value: 0 }, uTime: { value: 0 }, uTip: { value: new THREE.Vector3() },
-      uScale: { value: new THREE.Vector2(3, 3) }, uSize: { value: (w0 => w0 < 600 ? 2.3 : 1.8)(innerWidth) * dpr },
+      uScale: { value: new THREE.Vector2(3, 3) }, uSize: { value: (w0 => w0 < 600 ? 2.3 : 2.6)(innerWidth) * dpr },
     },
     vertexShader: /* glsl */`
       attribute vec4 aSeed; attribute vec2 aTarget;
@@ -80,7 +80,7 @@ export function makeSalt({ count, text, dpr }) {
         // Faceted crystal, not a soft dot: diamond falloff.
         float d = abs(c.x) + abs(c.y);
         if (d > .5) discard;
-        gl_FragColor = vec4(vec3(1., .97, .94), vA * (1. - d * 1.4));
+        gl_FragColor = vec4(vec3(1., .97, .94), min(1., vA * 1.6) * (1. - d * 1.2));
       }`,
   });
   const points = new THREE.Points(geo, mat);
