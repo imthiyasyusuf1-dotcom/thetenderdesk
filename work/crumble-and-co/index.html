@@ -265,6 +265,7 @@ footer a{color:var(--peach)}
 
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 </style>
+<link rel="stylesheet" href="fx.css">
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>
@@ -356,7 +357,9 @@ footer a{color:var(--peach)}
 
 <section id="menu" aria-labelledby="menu-h">
   <div class="head reveal"><div><div class="eyebrow">Full menu</div><h2 id="menu-h">What's <em>on</em></h2></div>
-    <p>Everything below is from the live ordering menu. Ask in store for today's specials.</p></div>
+    <div><p>Everything below is from the live ordering menu. Ask in store for today's specials.</p>
+      <div class="msearch" id="msearch"><div class="mfield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><label for="mq" class="sr">Search the menu</label><input id="mq" type="search" placeholder="Search the menu" autocomplete="off" enterkeyhint="search"><button type="button" class="mclr" aria-label="Clear search">×</button></div>
+      <div class="mchips" aria-label="Quick searches"><button type="button" aria-pressed="false">Lotus</button><button type="button" aria-pressed="false">Pistachio</button><button type="button" aria-pressed="false">Kinder</button></div></div></div></div>
   <div class="menu-wrap">
     <div class="tabs" id="tabs" role="tablist" aria-label="Menu categories"></div>
     <div id="menuPanel" role="tabpanel" tabindex="0"><div class="menu" id="menuList"></div>
@@ -550,5 +553,6 @@ function ask(q){if(!q.trim())return;add(q,'me');botSay(answer(q))}
 document.getElementById('chatForm').onsubmit=e=>{e.preventDefault();ask(ci.value);ci.value=''};
 window.__ask=answer;
 </script>
+<script src="fx.js" defer></script>
 </body>
 </html>
