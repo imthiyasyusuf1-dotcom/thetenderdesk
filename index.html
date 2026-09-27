@@ -24,7 +24,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/bricolage-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/site.css?v=20260927">
 <script type="module" src="/assets/js/main.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://thetenderdesk.co.uk/#business", "name": "The Tender Desk", "url": "https://thetenderdesk.co.uk/", "email": "hello@thetenderdesk.co.uk", "telephone": "+447534458327", "image": "https://thetenderdesk.co.uk/assets/img/og.png", "logo": "https://thetenderdesk.co.uk/assets/img/apple-touch-icon.png", "description": "Tenders, bid writing, websites and AI automation for local businesses.", "founder": {"@type": "Person", "name": "Yusuf Imthiyas"}, "address": {"@type": "PostalAddress", "addressLocality": "Aldershot", "addressRegion": "Hampshire", "addressCountry": "GB"}, "areaServed": ["Aldershot", "Hampshire", "Surrey", "United Kingdom"], "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "17:00"}], "priceRange": "££", "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Services", "itemListElement": [{"@type": "Offer", "name": "Website", "price": "99", "priceCurrency": "GBP", "description": "£99 setup, then £25 a month"}, {"@type": "Offer", "name": "Website + AI", "price": "199", "priceCurrency": "GBP", "description": "£199 setup, then £45 a month"}, {"@type": "Offer", "name": "AI add-on", "price": "99", "priceCurrency": "GBP", "description": "£99 setup, then £29 a month"}, {"@type": "Offer", "name": "Tender Desk", "price": "249", "priceCurrency": "GBP", "description": "£249 a month, rolling"}, {"@type": "Offer", "name": "Bid Build", "price": "750", "priceCurrency": "GBP", "description": "£750 per bid, £1,500 for a full tender response"}, {"@type": "Offer", "name": "Tender Ready Pack", "price": "350", "priceCurrency": "GBP", "description": "£350 one off"}]}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are these contracts really open to a firm my size?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Buyers mark many notices as suitable for small and medium firms, and the government has a published plan to send more work their way. Small and medium firms took £45.2 billion of public spend in 2025. The contracts we send you are filtered by value so you only see work you could deliver with the staff you have."}}, {"@type": "Question", "name": "Why would I pay when the portals are free?", "acceptedAnswer": {"@type": "Answer", "text": "They are free, and unusable at volume. There were 456 live tender notices in one week. Sorting those to the handful that fit your trade, your area and your size takes a few hours every week, and then you still have the questionnaire to answer. That is the job you are paying for."}}, {"@type": "Question", "name": "How much of my time does this take?", "acceptedAnswer": {"@type": "Answer", "text": "Around ten minutes a week to read the shortlist, and one short call a month. When you decide to bid, expect an hour of your time to pull together evidence and to check the draft before it goes."}}, {"@type": "Question", "name": "What if I have never bid for public work before?", "acceptedAnswer": {"@type": "Answer", "text": "That is the normal starting point. The first job is getting you registered and tender ready, which is a one off. After that you are eligible for everything your trade covers."}}, {"@type": "Question", "name": "Do you use AI?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, for reading the notices and for first drafts. Every line is checked by a person against your own documents before anything reaches you or a buyer. That is how the price stays where it is."}}, {"@type": "Question", "name": "Can I use just a website or just automation, without tenders?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Each service stands on its own. Plenty of businesses only need a better website or faster replies to enquiries."}}, {"@type": "Question", "name": "Are the sites on your work page real clients?", "acceptedAnswer": {"@type": "Answer", "text": "No. They are example sites we built as demos so you can see the quality before deciding anything. Crumble & Co is a concept we made for a real Aldershot dessert shop; the others are fictional businesses."}}, {"@type": "Question", "name": "Will an AI assistant say the wrong thing to my customers?", "acceptedAnswer": {"@type": "Answer", "text": "It is set up to answer from information you give it and to pass anything it is unsure of to you. You see and approve what it says before it goes live."}}, {"@type": "Question", "name": "How do I pay, and can I stop?", "acceptedAnswer": {"@type": "Answer", "text": "Card or direct debit, monthly. Stop whenever you like, with no notice period and no exit fee. Bids are quoted as a fixed fee, half up front."}}]}</script>
@@ -164,33 +164,41 @@
 
 <section class="section" id="work" aria-labelledby="work-title">
   <div class="container">
-    <div class="section-head reveal"><p class="eyebrow">Our work</p><h2 id="work-title" class="h2">Example sites, <span class="serif">built to be clicked.</span></h2><p class="lede">Demo builds for different kinds of local business, so you can see the quality before you decide anything. Open any of them on your phone.</p></div>
-    <div class="work-grid"><article class="work-card reveal">
+    <div class="section-head reveal"><p class="eyebrow">Our work</p><h2 id="work-title" class="h2">Real sites, <span class="serif">built to be clicked.</span></h2><p class="lede">A live site for a real client, plus concept and demo builds for different kinds of business, so you can see the quality before you decide anything. Open any of them on your phone.</p></div>
+    <div class="work-grid work-grid--home"><article class="work-card reveal work-card--feature work-card--live">
+  <div class="work-card__media"><img src="/work/thumbs/7ei8ht6-properties.webp" srcset="/work/thumbs/7ei8ht6-properties-640.webp 640w, /work/thumbs/7ei8ht6-properties.webp 1200w" sizes="(min-width: 900px) 60vw, 100vw" width="1200" height="825" loading="lazy" decoding="async" alt=""></div>
+  <div class="work-card__body">
+    <div class="work-card__meta"><span class="tag tag--live"><span class="live-dot" aria-hidden="true"></span>Live client site</span><span class="tag">Dubai real estate</span></div>
+    <h3>7ei8ht6 Properties</h3>
+    <p>A new site for a Dubai luxury real estate brokerage, now live on their own domain. A cinematic dark design with English and Arabic headlines, a page for the whole 33-person team, WhatsApp buttons, listings linked to their Bayut page, and an enquiry form that lands straight in their inbox. We also replaced an expired security certificate with free SSL that renews itself.</p>
+    <a class="work-card__link" href="https://7ei8ht6properties.com" target="_blank" rel="noopener">Visit the live site<span class="visually-hidden">: 7ei8ht6 Properties (opens in a new tab)</span> <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="work-card reveal">
+  <div class="work-card__media"><img src="/work/thumbs/blvd-frames.webp" srcset="/work/thumbs/blvd-frames-640.webp 640w, /work/thumbs/blvd-frames.webp 1200w" sizes="(min-width: 1100px) 380px, (min-width: 760px) 50vw, 100vw" width="1200" height="825" loading="lazy" decoding="async" alt=""></div>
+  <div class="work-card__body">
+    <div class="work-card__meta"><span class="tag tag--signal">Concept build</span><span class="tag">Eyewear brand</span></div>
+    <h3>BLVD Frames</h3>
+    <p>A concept for a sunglasses brand. A photoreal product hero built from real photos of the frames, a lookbook and a shop, with a loud look to match the brand.</p>
+    <a class="work-card__link" href="/work/blvd-frames/">View the concept<span class="visually-hidden">: BLVD Frames</span> <span aria-hidden="true">→</span></a>
+  </div>
+</article><article class="work-card reveal">
   <div class="work-card__media"><img src="/work/thumbs/crumble-and-co.webp" srcset="/work/thumbs/crumble-and-co-640.webp 640w, /work/thumbs/crumble-and-co.webp 1200w" sizes="(min-width: 1100px) 380px, (min-width: 760px) 50vw, 100vw" width="1200" height="825" loading="lazy" decoding="async" alt=""></div>
   <div class="work-card__body">
-    <div class="work-card__meta"><span class="tag">Dessert parlour</span><span class="tag tag--signal">Concept build</span></div>
+    <div class="work-card__meta"><span class="tag tag--signal">Concept build</span><span class="tag">Dessert parlour</span></div>
     <h3>Crumble &amp; Co</h3>
-    <p>A concept built for a real dessert shop on Union Street. Real menu and hours, a build-your-own dessert with a live price, and every order button pointing at the shop's existing ordering system.</p>
+    <p>A concept built for a real dessert shop on Union Street, Aldershot. Real menu and hours, a build-your-own dessert with a live price, and every order button pointing at the shop's existing ordering system.</p>
     <a class="work-card__link" href="/work/crumble-and-co/">View the concept<span class="visually-hidden">: Crumble &amp; Co</span> <span aria-hidden="true">→</span></a>
   </div>
 </article><article class="work-card reveal">
   <div class="work-card__media"><img src="/work/thumbs/fadehouse.webp" srcset="/work/thumbs/fadehouse-640.webp 640w, /work/thumbs/fadehouse.webp 1200w" sizes="(min-width: 1100px) 380px, (min-width: 760px) 50vw, 100vw" width="1200" height="825" loading="lazy" decoding="async" alt=""></div>
   <div class="work-card__body">
-    <div class="work-card__meta"><span class="tag">Barber</span><span class="tag tag--mint">Demo build</span></div>
+    <div class="work-card__meta"><span class="tag tag--mint">Demo build</span><span class="tag">Barber</span></div>
     <h3>Fade House Barbers</h3>
     <p>A bold, dark site for a fictional barber. Services and prices up front, and a booking flow that takes about thirty seconds on a phone.</p>
     <a class="work-card__link" href="/work/fadehouse/">View the demo<span class="visually-hidden">: Fade House Barbers</span> <span aria-hidden="true">→</span></a>
   </div>
-</article><article class="work-card reveal">
-  <div class="work-card__media"><img src="/work/thumbs/flowright.webp" srcset="/work/thumbs/flowright-640.webp 640w, /work/thumbs/flowright.webp 1200w" sizes="(min-width: 1100px) 380px, (min-width: 760px) 50vw, 100vw" width="1200" height="825" loading="lazy" decoding="async" alt=""></div>
-  <div class="work-card__body">
-    <div class="work-card__meta"><span class="tag">Plumbing and heating</span><span class="tag tag--mint">Demo build</span></div>
-    <h3>FlowRight Plumbing &amp; Heating</h3>
-    <p>A fictional local plumber. Fixed prices, a clear emergency call button, and the areas covered spelled out so people know straight away.</p>
-    <a class="work-card__link" href="/work/flowright/">View the demo<span class="visually-hidden">: FlowRight Plumbing &amp; Heating</span> <span aria-hidden="true">→</span></a>
-  </div>
 </article></div>
-    <div class="btn-row mt-l"><a class="btn" href="/work/">See all example sites <span class="btn__arrow" aria-hidden="true">→</span></a></div>
+    <div class="btn-row mt-l"><a class="btn" href="/work/">See all our work <span class="btn__arrow" aria-hidden="true">→</span></a></div>
   </div>
 </section>
 
@@ -326,7 +334,7 @@
     <p class="footer__big" aria-hidden="true">More work in. <span class="serif">Less admin.</span></p>
     <div class="footer__sources" id="sources">
       <p>Figures on this site: <sup>1</sup> British Chambers of Commerce and Tussell SME Procurement Tracker, May 2026 (£45.2bn, six year high). <sup>2</sup> Notice counts taken from the government's <a href="https://www.find-tender.service.gov.uk/" rel="noopener">Find a Tender</a> service for the week to 14 September 2026. Bid consultancy prices from published UK rate cards, 2026.</p>
-      <p>&copy; <span data-year>2026</span> The Tender Desk. Example sites on this website are demo builds, not client work.</p>
+      <p>&copy; <span data-year>2026</span> The Tender Desk. Sites marked as demo or concept builds are not client work.</p>
     </div>
   </div>
 </footer>
