@@ -468,3 +468,6 @@ p { text-wrap: pretty; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Odd last service card spans the row */
+.services > .service:last-child:nth-child(odd) { grid-column: 1 / -1; }
