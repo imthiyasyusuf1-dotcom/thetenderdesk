@@ -261,6 +261,8 @@ p { text-wrap: pretty; }
 .service__link { margin-top: auto; font-weight: 600; display: inline-flex; gap: 0.4rem; align-items: center; }
 .service:hover .service__link span { transform: translateX(4px); }
 .service__link span { transition: transform 0.2s var(--ease); }
+.service > .tag { align-self: flex-start; }
+.ticket__title .tag { vertical-align: middle; }
 
 /* Stats */
 .stats { display: grid; gap: var(--space-m); grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
