@@ -22,6 +22,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ExerciseGym","name":"IronCore Fitness (demo)","description":"Fictional demo gym website built by The Tender Desk.","url":"https://thetenderdesk.co.uk/work/ironcore/","openingHours":"Mo-Su 00:00-23:59","priceRange":"££"}
 </script>
+<link rel="stylesheet" href="fx.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -57,6 +58,7 @@
       <a href="#trial" class="btn btn-volt btn-lg">Claim your free week <span aria-hidden="true">→</span></a>
       <button class="btn btn-ghost btn-lg" data-open-chat>Ask the assistant</button>
     </div>
+    <a class="nextcls" id="nextcls" href="#timetable" hidden><i id="ncIn">in 42 min</i><span id="ncTxt">Next class</span></a>
     <dl class="stats">
       <div><dt>Members</dt><dd><span data-count="1240">0</span>+</dd></div>
       <div><dt>Classes a week</dt><dd><span data-count="62">0</span></dd></div>
@@ -86,6 +88,21 @@
         <button aria-pressed="false" data-bill="annual">Annual <em>2 months free</em></button>
       </div>
     </div>
+<form class="pf" id="pf" aria-label="Find your plan" onsubmit="return false">
+      <fieldset><legend>When do you train?</legend><div class="seg">
+        <label><input type="radio" name="when" value="off"><span>Daytime</span></label>
+        <label><input type="radio" name="when" value="any" checked><span>Whenever</span></label>
+      </div></fieldset>
+      <fieldset><legend>Classes?</legend><div class="seg">
+        <label><input type="radio" name="cls" value="0"><span>Not for me</span></label>
+        <label><input type="radio" name="cls" value="1" checked><span>Yes please</span></label>
+      </div></fieldset>
+      <fieldset><legend>Want a coach?</legend><div class="seg">
+        <label><input type="radio" name="pt" value="0" checked><span>Self led</span></label>
+        <label><input type="radio" name="pt" value="1"><span>1:1 coaching</span></label>
+      </div></fieldset>
+      <div class="pf-out" aria-live="polite"><small>Your match</small><b id="pfName">Core</b><em id="pfCost">£39 a month, first week free</em></div>
+    </form>
     <div class="plans">
       <article class="plan reveal">
         <h3>Off-Peak</h3>
@@ -280,5 +297,7 @@
 </section>
 
 <script src="app.js" defer></script>
+<div class="fx-bar" id="fxBar" aria-hidden="true"><a class="b1" href="#trial">Free week</a><a class="b2" href="#timetable">Classes</a></div>
+<script src="fx.js" defer></script>
 </body>
 </html>
