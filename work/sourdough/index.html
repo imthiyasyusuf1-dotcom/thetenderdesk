@@ -282,6 +282,7 @@ footer ul{list-style:none;display:grid;gap:8px}footer a{text-decoration:none}foo
 .chat-foot{font-size:11px;text-align:center;color:var(--ink2);padding:0 12px 10px}
 @media (max-width:560px){.chat{right:14px;bottom:84px;height:calc(100% - 110px)}.chat-fab{right:14px;bottom:14px}.chat-fab .t{display:none}.chat-fab{padding:14px}}
 </style>
+<link rel="stylesheet" href="fx.css">
 </head>
 <body class="no-js">
 <a class="skip" href="#main">Skip to content</a>
@@ -303,6 +304,7 @@ footer ul{list-style:none;display:grid;gap:8px}footer a{text-decoration:none}foo
    <h1><span class="l"><span>Slow bread</span></span><span class="l"><span>for <em>fast</em></span></span><span class="l"><span>mornings.</span></span></h1>
    <p class="lede">36-hour sourdough, three-day croissants and the cinnamon buns people queue round the block for. Order tonight, collect warm from 7am.</p>
    <div class="ctas"><a class="btn btn-primary" href="#menu">Order for collection <span aria-hidden="true">→</span></a><a class="btn btn-ghost" href="#story">Our story</a></div>
+   <p class="cutoff" id="cutoff" hidden><b id="coT">3h 12m</b><span id="coS">left to order for tomorrow morning</span></p>
    <div class="hero-facts"><div><b>36h</b>sourdough ferment</div><div><b>4am</b>ovens on, daily</div><div><b>27</b>layers per croissant</div></div>
   </div>
   <div class="collage">
@@ -369,6 +371,13 @@ footer ul{list-style:none;display:grid;gap:8px}footer a{text-decoration:none}foo
 </ul></div>
   <div class="allergen-note reveal" role="note"><span aria-hidden="true" style="font-size:26px">⚠️</span><div><b>Allergens.</b> We list the 14 major allergens for every item (UK Food Information Regulations). Our kitchen handles gluten, nuts, sesame, eggs, milk and soya, so we can't rule out traces. Please ask us before ordering if you have a severe allergy.
    <div class="key"><span><abbr>G</abbr>Gluten</span><span><abbr>M</abbr>Milk</span><span><abbr>E</abbr>Egg</span><span><abbr>N</abbr>Tree nuts</span><span><abbr>SE</abbr>Sesame</span><span><abbr>SO</abbr>Soya</span></div></div></div>
+ </div>
+</section>
+
+<section class="oven" id="oven" aria-labelledby="oven-h">
+ <div class="wrap">
+  <div class="oven-head"><h2 id="oven-h">What's coming out <em>of the oven</em></h2><p>The bake runs to a clock. Check what's out now, then order ahead so the thing you came for is waiting with your name on it.</p></div>
+  <div class="tlw"><span class="tl-fill" id="tlFill" aria-hidden="true"></span><ol class="tl" id="tl"></ol></div>
  </div>
 </section>
 
@@ -476,5 +485,7 @@ footer ul{list-style:none;display:grid;gap:8px}footer a{text-decoration:none}foo
 
 <script src="menu-data.js" defer></script>
 <script src="app.js" defer></script>
+<div class="fx-bar" id="fxBar" aria-hidden="true"><a class="b1" href="#menu">Order ahead</a><button type="button" class="b2" data-open-basket>Basket</button></div>
+<script src="fx.js" defer></script>
 </body>
 </html>

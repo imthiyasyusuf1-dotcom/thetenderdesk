@@ -1,0 +1,44 @@
+/* FX core */
+.fx-split .fx-w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.fx-split .fx-wi{display:inline-block;transform:translate3d(0,108%,0);transition:transform .9s cubic-bezier(.2,.7,.1,1)}
+.fx-split.fx-in .fx-wi{transform:none}
+.fx-bar{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:60;display:none;gap:8px;padding:8px;border-radius:14px;transform:translate3d(0,140%,0);opacity:0;transition:transform .45s cubic-bezier(.2,.7,.1,1),opacity .3s}
+.fx-bar.on{transform:none;opacity:1}
+.fx-bar a,.fx-bar button{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 10px;border-radius:10px;font-weight:700;font-size:15px;white-space:nowrap;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+@media (max-width:760px){.fx-bar{display:flex}}
+@media (prefers-reduced-motion:reduce){.fx-split .fx-wi{transform:none!important;transition:none}.fx-bar{transition:opacity .01s}}
+
+/* Cut-off countdown pill */
+.cutoff{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:99px;padding:8px 16px 8px 8px;font-size:14px;color:var(--ink2);box-shadow:0 10px 30px -20px rgba(43,29,18,.5);max-width:100%}
+.cutoff b{background:var(--crust);color:#fff;border-radius:99px;padding:5px 11px;font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cutoff span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* Oven board */
+.oven{padding:clamp(70px,9vw,120px) 0 0}
+.oven-head{display:flex;justify-content:space-between;align-items:end;gap:20px 40px;flex-wrap:wrap;margin-bottom:34px}
+.oven-head h2{font-family:var(--ff);font-weight:400;font-size:clamp(34px,4.6vw,58px);line-height:1.02;letter-spacing:-.02em}
+.oven-head h2 em{color:var(--crust)}
+.oven-head p{max-width:400px;color:var(--ink2)}
+.tl{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.tlw{position:relative}.tlw::before{content:"";position:absolute;left:0;right:0;top:15px;height:2px;background:var(--line)}
+.tl-fill{position:absolute;z-index:0;left:0;right:0;top:15px;height:2px;background:var(--crust);transform-origin:0 50%;transform:scaleX(0);transition:transform 1.4s cubic-bezier(.2,.7,.1,1)}
+.tl li{list-style:none;position:relative;z-index:1;padding-top:40px}
+.tl li::before{content:"";position:absolute;left:0;top:8px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:2px solid var(--line);transition:background .4s,border-color .4s,transform .4s}
+.tl li.done::before{background:var(--crust);border-color:var(--crust)}
+.tl li.now::before{background:#fff;border-color:var(--crust);transform:scale(1.35);box-shadow:0 0 0 6px rgba(181,101,43,.18)}
+.tl time{font-family:var(--ff);font-size:22px;display:block;font-variant-numeric:tabular-nums}
+.tl b{display:block;font-size:15px;margin-top:4px}
+.tl small{display:block;font-size:13px;color:var(--ink2);margin-top:2px}
+.tl .st{display:inline-block;margin-top:12px;margin-left:-1px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:99px;background:#fff;border:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+.tl li.done .st{background:#e8efe0;color:var(--sage)}
+.tl li.now .st{background:var(--crust);color:#fff}
+@media (max-width:900px){
+ .tl{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(170px,1fr);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;margin:0 calc(-1*max(20px,4vw));padding-left:max(20px,4vw);padding-right:max(20px,4vw);scrollbar-width:none;scroll-padding-inline:max(20px,4vw)}
+ .tl::-webkit-scrollbar{display:none}
+ .tl li{scroll-snap-align:start}
+ .tlw::before,.tl-fill{display:none}
+}
+/* bar */
+.fx-bar{background:rgba(251,247,239,.95);border:1px solid var(--line);box-shadow:0 18px 44px -14px rgba(43,29,18,.5)}
+.fx-bar .b1{background:var(--ink);color:var(--cream)}.fx-bar .b2{background:var(--crust);color:#fff}
+@media (max-width:760px){.chat-fab{transition:transform .45s cubic-bezier(.2,.7,.1,1)}body.fx-bar-on .chat-fab{transform:translate3d(0,-72px,0)}}
+.drawer.on ~ .fx-bar{opacity:0;pointer-events:none}
