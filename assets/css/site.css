@@ -262,6 +262,7 @@ p { text-wrap: pretty; }
 .service:hover .service__link span { transform: translateX(4px); }
 .service__link span { transition: transform 0.2s var(--ease); }
 .service > .tag { align-self: flex-start; }
+.service__makes { font-size: 0.92rem; color: var(--ink); border-left: 3px solid var(--signal); padding-left: 0.7rem; }
 .ticket__title .tag { vertical-align: middle; }
 
 /* Stats */
