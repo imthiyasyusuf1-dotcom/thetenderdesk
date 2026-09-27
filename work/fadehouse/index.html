@@ -200,6 +200,7 @@ dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
 @media (max-width:520px){.wrap{width:calc(100% - 36px)}.hero h1{font-size:25vw}.hero h1 .serif{font-size:.36em}.chat-fab .lbl{display:none}.chat-fab{padding:10px}.stats b{font-size:34px}.hero .ctas .btn{flex:1;justify-content:center}.card{padding:26px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
 </style>
+<link rel="stylesheet" href="fx.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -259,6 +260,56 @@ dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
  </div>
  <ul class="menu" id="menu"></ul>
  <p class="note">Card &amp; contactless only. Under-12s Tuesday to Friday. Prices are demo content.</p>
+</div></section>
+
+<section id="builder" aria-labelledby="fb-h"><div class="wrap">
+ <div class="head">
+  <div><p class="eyebrow">Build your cut</p><h2 class="display" id="fb-h">Know it <span class="serif">before you sit</span></h2></div>
+  <p>Pick the fade height, the length on top and whether the beard gets done. You see the shape, the time and the price, then book that exact cut.</p>
+ </div>
+ <div class="fb">
+  <div class="fb-stage" aria-hidden="true">
+   <svg viewBox="0 0 240 260" role="presentation">
+    <defs>
+     <clipPath id="fbHair"><path d="M58 92 L182 92 C190 116 190 146 176 172 L64 172 C50 146 50 116 58 92 Z"/></clipPath>
+     <linearGradient id="fbGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d7ad86" stop-opacity="0"/><stop offset=".85" stop-color="#d7ad86"/></linearGradient>
+    </defs>
+    <path d="M92 196 L92 232 C104 244 136 244 148 232 L148 196 Z" fill="#c69a74"/>
+    <path d="M40 250 C60 226 96 220 120 226 C144 220 180 226 200 250 L200 262 L40 262 Z" fill="#b3261e"/>
+    <g clip-path="url(#fbHair)">
+     <rect x="40" y="20" width="160" height="170" fill="#1b1612"/>
+     <g class="fb-fade" id="fbFade"><rect x="40" y="0" width="160" height="34" fill="url(#fbGrad)"/><rect x="40" y="33" width="160" height="200" fill="#d7ad86"/></g>
+    </g>
+    <ellipse cx="54" cy="140" rx="11" ry="18" fill="#cfa47d"/><ellipse cx="186" cy="140" rx="11" ry="18" fill="#cfa47d"/>
+    <path d="M66 104 C66 86 90 76 120 76 C150 76 174 86 174 104 L174 150 C174 188 150 212 120 212 C90 212 66 188 66 150 Z" fill="#dcb28b"/>
+    <g class="fb-line" id="fbLine"><path d="M66 104 C70 90 92 82 120 82 C148 82 170 90 174 104" fill="none" stroke="#1b1612" stroke-width="3" stroke-linecap="round" opacity=".55"/></g>
+    <g class="fb-beard" id="fbBeard"><path d="M68 146 C70 190 94 214 120 214 C146 214 170 190 172 146 C166 168 154 176 146 174 C136 170 128 170 120 172 C112 170 104 170 94 174 C86 176 74 168 68 146 Z" fill="#1b1612"/><path d="M104 176 C112 170 128 170 136 176 C130 184 110 184 104 176 Z" fill="#dcb28b"/></g>
+    <g class="fb-top" id="fbTop"><path d="M62 104 C56 60 90 36 124 38 C158 38 186 62 178 104 C168 88 150 80 120 80 C92 80 72 88 62 104 Z" fill="#1b1612"/><path d="M80 70 C98 52 132 46 162 60" fill="none" stroke="#3a2f26" stroke-width="3" stroke-linecap="round"/></g>
+    <circle cx="100" cy="138" r="4" fill="#1b1612"/><circle cx="140" cy="138" r="4" fill="#1b1612"/>
+    <path d="M110 186 C116 190 124 190 130 186" fill="none" stroke="#8a5a3f" stroke-width="3" stroke-linecap="round"/>
+   </svg>
+   <span class="tag" id="fbTag">Mid skin fade</span>
+  </div>
+  <form class="fb-ctl" id="fbForm" onsubmit="return false">
+   <fieldset><legend>Fade height</legend><div class="seg">
+    <label><input type="radio" name="fade" value="none"><span>No fade</span></label>
+    <label><input type="radio" name="fade" value="low"><span>Low</span></label>
+    <label><input type="radio" name="fade" value="mid" checked><span>Mid</span></label>
+    <label><input type="radio" name="fade" value="high"><span>High</span></label>
+   </div></fieldset>
+   <fieldset><legend>Length on top</legend><div class="seg">
+    <label><input type="radio" name="top" value="short"><span>Short</span></label>
+    <label><input type="radio" name="top" value="crop" checked><span>Crop</span></label>
+    <label><input type="radio" name="top" value="long"><span>Long</span></label>
+   </div></fieldset>
+   <fieldset><legend>Beard</legend><div class="seg">
+    <label><input type="radio" name="beard" value="0" checked><span>Leave it</span></label>
+    <label><input type="radio" name="beard" value="1"><span>Sculpt + hot towel</span></label>
+   </div></fieldset>
+   <div class="fb-sum"><div><b id="fbPrice">£24</b><small id="fbMeta">Skin fade · about 45 min</small></div><button type="button" class="btn btn-red" id="fbBook">Book this cut <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+   <p class="fb-note">Demo prices. The booking opens with this service already picked.</p>
+  </form>
+ </div>
 </div></section>
 
 <section id="work"><div class="wrap">
@@ -434,5 +485,7 @@ function startBook(t=''){const pick={};
 $('#cf').onsubmit=e=>{e.preventDefault();const v=$('#ci').value;$('#ci').value='';send(v)};
 window.openBook=openBook;
 </script>
+<div class="fx-bar" id="fxBar" aria-hidden="true"><button type="button" class="b1" data-book>Book a chair</button><a class="b2" href="#visit">Find us</a></div>
+<script src="fx.js" defer></script>
 </body>
 </html>
