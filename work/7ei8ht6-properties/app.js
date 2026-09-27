@@ -197,8 +197,16 @@
     form.addEventListener('submit', e => {
       e.preventDefault(); if (!valid(steps[i])) return;
       err.textContent = ''; buildWA();
-      location.href = `mailto:info@7ei8ht6properties.com?subject=${encodeURIComponent(form.dataset.subject)}&body=${encodeURIComponent(text() + '\n\nSent from the 7ei8ht6 Properties website')}`;
-      form.classList.add('sent'); $('.c-done', form).hidden = false; waBtn.hidden = false;
+      const btn = form.querySelector('[type=submit]'); if (btn) { btn.disabled = true; btn.dataset.l = btn.innerHTML; btn.innerHTML = '<span>Sending...</span>'; }
+      const done = ok => {
+        if (btn) { btn.disabled = false; btn.innerHTML = btn.dataset.l; }
+        if (!ok) { location.href = `mailto:info@7ei8ht6properties.com?subject=${encodeURIComponent(form.dataset.subject)}&body=${encodeURIComponent(text() + '\n\nSent from the 7ei8ht6 Properties website')}`; }
+        const d = $('.c-done', form); if (ok && d) { const h = d.querySelector('h3'), pp = d.querySelector('p.body'); if (h) h.textContent = 'Thank you, your brief has been sent.'; if (pp) pp.innerHTML = 'An advisor will reply personally, usually within one working day. For anything urgent, message us on WhatsApp.'; }
+        form.classList.add('sent'); if (d) d.hidden = false; waBtn.hidden = false;
+      };
+      fetch('https://formsubmit.co/ajax/info@7ei8ht6properties.com', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(Object.assign({ _subject: form.dataset.subject + ' (website)', _template: 'table', _captcha: 'false' }, data())) })
+        .then(r => r.json()).then(j => done(j && (j.success === true || j.success === 'true'))).catch(() => done(false));
     });
   }
 
