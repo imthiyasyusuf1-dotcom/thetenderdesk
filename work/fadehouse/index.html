@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fade House Barbers — Precision Fades & Hot Towel Shaves, Aldershot (Demo)</title>
+<title>Fade House Barbers | Precision Fades & Hot Towel Shaves, Aldershot (Demo)</title>
 <meta name="description" content="Fade House Barbers: skin fades, scissor cuts, beard sculpting and hot-towel shaves in Aldershot. Book online in 30 seconds. Demo website by The Tender Desk.">
 <meta name="theme-color" content="#0f0d0b">
 <link rel="canonical" href="https://thetenderdesk.co.uk/work/fadehouse/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Fade House Barbers — Aldershot">
+<meta property="og:title" content="Fade House Barbers | Aldershot">
 <meta property="og:description" content="Sharp fades. Hot towels. No faff. Book your chair online.">
 <meta property="og:url" content="https://thetenderdesk.co.uk/work/fadehouse/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&h=630&fit=crop&q=70">
@@ -405,7 +405,7 @@ $('#menu').innerHTML=SVC.map((s,i)=>`<li data-c="${s.c}"><span class="n">${Strin
 $$('.menu .go').forEach(b=>b.onclick=()=>openBook(b.dataset.svc));
 $$('.tabs button').forEach(b=>b.onclick=()=>{$$('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));$$('#menu li').forEach(li=>li.hidden=b.dataset.f!=='all'&&li.dataset.c!==b.dataset.f)});
 const now=new Date(),today=now.getDay();
-$('#hours tbody').innerHTML=[1,2,3,4,5,6,0].map(d=>`<tr class="${d===today?'today':''}"><td>${DAYS[d]}</td><td>${H[d]?fmt(H[d][0])+' – '+fmt(H[d][1]):'Closed'}</td></tr>`).join('');
+$('#hours tbody').innerHTML=[1,2,3,4,5,6,0].map(d=>`<tr class="${d===today?'today':''}"><td>${DAYS[d]}</td><td>${H[d]?fmt(H[d][0])+' to '+fmt(H[d][1]):'Closed'}</td></tr>`).join('');
 function status(){const n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60,o=H[d],st=$('#status');
  if(o&&h>=o[0]&&h<o[1]){st.classList.remove('closed');$('#st-t').textContent='Open now';$('#st-s').textContent=`Closes ${fmt(o[1])} today · walk-ins welcome`;}
  else{st.classList.add('closed');let k,nd;if(o&&h<o[0]){nd=d;k=0}else{for(k=1;k<8;k++){nd=(d+k)%7;if(H[nd])break}}
@@ -454,7 +454,7 @@ function openChat(){chat.hidden=false;fab.setAttribute('aria-expanded',true);fab
 fab.onclick=openChat;$('#chat-x').onclick=()=>{chat.hidden=true;fab.setAttribute('aria-expanded',false);fab.style.visibility='';fab.focus()};
 addEventListener('keydown',e=>{if(e.key==='Escape'&&!chat.hidden)$('#chat-x').click()});
 const priceList=()=>SVC.map(s=>`${s.n}: <b>£${s.p}</b>`).join('<br>');
-const hoursTxt=()=>[1,2,3,4,5,6,0].map(d=>`${DAYS[d].slice(0,3)}: ${H[d]?fmt(H[d][0])+'–'+fmt(H[d][1]):'Closed'}`).join('<br>');
+const hoursTxt=()=>[1,2,3,4,5,6,0].map(d=>`${DAYS[d].slice(0,3)}: ${H[d]?fmt(H[d][0])+' to '+fmt(H[d][1]):'Closed'}`).join('<br>');
 const findSvc=t=>SVC.find(s=>s.n.toLowerCase()===t)||SVC.find(s=>t.includes(s.id)||t.includes(s.n.toLowerCase().split(/[ ']/)[0])||(s.id==='kids'&&/kid|child|son/.test(t)));
 function nextSlots(){const out=[];for(let k=0;k<7&&out.length<4;k++){const d=new Date();d.setDate(d.getDate()+k);const o=H[d.getDay()];if(!o)continue;const nh=k===0?new Date().getHours()+1:0;
  for(let h=Math.max(o[0],Math.ceil(nh));h<o[1]-.4&&out.length<4;h+=1.5){if(seed(d.toDateString()+h+'Any')%3)out.push({h,l:(k===0?'Today':k===1?'Tomorrow':d.toLocaleDateString('en-GB',{weekday:'short'}))+' '+fmt(h)})}}return out}

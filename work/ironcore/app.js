@@ -136,7 +136,7 @@
 
   const FAQ = [
     [/price|cost|how much|£|fee|expensive|cheap|compare|plans/i, 'Plans are <b>Off-Peak £24</b>, <b>Core £39</b> and <b>Coached £149</b> a month. No joining fee, and annual saves two months.'],
-    [/hour|open|close|24|time.*open/i, "Members get in <b>24/7</b>. Coaches are on the floor 6am–10pm weekdays and 8am–6pm at weekends."],
+    [/hour|open|close|24|time.*open/i, "Members get in <b>24/7</b>. Coaches are on the floor 6am to 10pm weekdays and 8am to 6pm at weekends."],
     [/park|car/i, 'Free parking for 40 cars right outside, and the station is a 6-minute walk.'],
     [/contract|cancel|leave|tie/i, 'No long contract: monthly plans roll every 30 days. Cancel with 30 days\' notice in the app.'],
     [/freeze|pause|holiday|injur/i, 'Freeze for up to 3 months a year, free, for any reason.'],

@@ -77,9 +77,9 @@
   const JOBS = ['Leak / burst pipe','Boiler / heating','Blocked drain','Bathroom','Other'];
 
   const FAQ = [
-    {k:/price|cost|how much|charge|£/, a:'Typical fixed prices: tap repair from <b>£79</b>, unblocking from <b>£99</b>, boiler service from <b>£89</b>, new combi fitted from <b>£2,195</b>. No call-out fee weekdays 8am–6pm. (Demo prices.)'},
+    {k:/price|cost|how much|charge|£/, a:'Typical fixed prices: tap repair from <b>£79</b>, unblocking from <b>£99</b>, boiler service from <b>£89</b>, new combi fitted from <b>£2,195</b>. No call-out fee weekdays 8am to 6pm. (Demo prices.)'},
     {k:/area|cover|postcode|where|town/, a:'We cover Aldershot, Farnborough, Farnham, Fleet, Camberley, Ash, Frimley, Yateley and Hook. Type your postcode and I\'ll check it.'},
-    {k:/hour|open|when|weekend|night|sunday/, a:'The office is open Mon–Sat 8am–6pm, and emergency engineers are on call <b>24/7, 365 days</b>.'},
+    {k:/hour|open|when|weekend|night|sunday/, a:'The office is open Mon to Sat 8am to 6pm, and emergency engineers are on call <b>24/7, 365 days</b>.'},
     {k:/guarantee|warrant/, a:'Every job has a <b>12-month guarantee</b> on parts and labour. New boilers also carry the manufacturer warranty.'},
     {k:/pay|card|finance/, a:'Card, bank transfer or Apple/Google Pay on completion. Finance is available on new boilers.'},
     {k:/gas|qualif|insur|registered|accredit/, a:'All gas work is done by registered gas engineers, and we carry £5m public liability insurance. (Placeholder details on this demo.)'},

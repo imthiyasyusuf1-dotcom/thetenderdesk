@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Crumble &amp; Co — Dessert Parlour on Union Street, Aldershot</title>
+<title>Crumble &amp; Co | Dessert Parlour on Union Street, Aldershot</title>
 <meta name="description" content="Waffles, crepes, kunafa pots, brioche French toast, Dutch pancakes and milk cakes at Crumble & Co, 38 Union St, Aldershot. Open daily from 11am. Sit in or order for delivery.">
 <meta name="theme-color" content="#2a1624">
 <link rel="canonical" href="https://thetenderdesk.co.uk/work/crumble-and-co/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Crumble &amp; Co">
-<meta property="og:title" content="Crumble &amp; Co — Dessert, done properly. Aldershot">
+<meta property="og:title" content="Crumble &amp; Co | Dessert, done properly. Aldershot">
 <meta property="og:description" content="Stacked waffles, crispy kunafa pots, brioche French toast and milk cakes on Union Street, Aldershot.">
 <meta property="og:image" content="https://thetenderdesk.co.uk/work/crumble-and-co/img/hero.jpg">
 <meta property="og:url" content="https://thetenderdesk.co.uk/work/crumble-and-co/">
@@ -382,7 +382,7 @@ footer a{color:var(--peach)}
 
 <section aria-labelledby="rev-h">
   <div class="reveal"><div class="eyebrow">Don't just take our word</div><h2 id="rev-h">People <em>rate</em> it</h2>
-  <div class="score"><div><b>4.5★</b>on Google</div><div><b>90+</b>Google reviews</div><div><b>11pm</b>open till, Thu–Sun</div></div></div>
+  <div class="score"><div><b>4.5★</b>on Google</div><div><b>90+</b>Google reviews</div><div><b>11pm</b>open till, Thu to Sun</div></div></div>
   <div class="reviews">
     <figure class="rev reveal"><div class="stars" aria-label="5 stars">★★★★★</div><blockquote>Always a pleasure to come here. Loads of desserts and ice cream flavours. If you need a sugar fix, this is the place.</blockquote><figcaption>Bebo G · Google</figcaption></figure>
     <figure class="rev reveal"><div class="stars" aria-label="5 stars">★★★★★</div><blockquote>Nice little place for coffee and crumble. Loads of cake options too. Friendly staff.</blockquote><figcaption>Palden S · Google</figcaption></figure>
@@ -475,7 +475,7 @@ show('Waffles');
 const H=[["Sunday",11,23],["Monday",11,22],["Tuesday",11,22],["Wednesday",11,22],["Thursday",11,23],["Friday",11,23],["Saturday",11,23]];
 const uk=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/London'})),d=uk.getDay(),h=uk.getHours()+uk.getMinutes()/60;
 const fmt=x=>x>12?(x-12)+'pm':x+'am';
-document.getElementById('hours').innerHTML=[1,2,3,4,5,6,0].map(i=>`<li class="${i===d?'today':''}"><span>${H[i][0]}${i===d?' <small>(today)</small>':''}</span><span>${fmt(H[i][1])} – ${fmt(H[i][2])}</span></li>`).join('');
+document.getElementById('hours').innerHTML=[1,2,3,4,5,6,0].map(i=>`<li class="${i===d?'today':''}"><span>${H[i][0]}${i===d?' <small>(today)</small>':''}</span><span>${fmt(H[i][1])} to ${fmt(H[i][2])}</span></li>`).join('');
 const open=h>=H[d][1]&&h<H[d][2];
 document.getElementById('status').textContent=open?`Open now · till ${fmt(H[d][2])} tonight`:(h<H[d][1]?`Closed now · opens 11am today`:`Closed now · opens 11am tomorrow`);
 if(!open)document.getElementById('dot').classList.add('closed');
@@ -531,10 +531,10 @@ document.getElementById('chips').innerHTML=CH.map(c=>`<button type="button">${c}
 document.getElementById('chips').onclick=e=>{if(e.target.tagName==='BUTTON')ask(e.target.textContent)};
 function greet(){add("Hi! I'm a scripted demo assistant for Crumble &amp; Co. Ask me about opening hours, where to find us, or what's on the menu.","bot")}
 const allItems=Object.entries(MENU).flatMap(([c,l])=>l.map(m=>({c,n:m[0],d:m[1],p:m[2]})));
-const hrsText=()=>"Mon–Wed: 11am – 10pm\nThu–Sun: 11am – 11pm";
+const hrsText=()=>"Mon to Wed: 11am to 10pm\nThu to Sun: 11am to 11pm";
 function answer(q){q=q.toLowerCase();
   if(/open (now|today)|still open|closed|right now|tonight/.test(q))return (open?`Yes, we're open now until ${fmt(H[d][2])} tonight.`:`We're closed right now. We open at 11am.`)+`\n\nFull hours:\n${hrsText()}`;
-  if(/hour|time|when|close|late|sunday|monday|tuesday|wednesday|thursday|friday|saturday|weekend/.test(q))return `Opening hours:\n${hrsText()}\n\nToday (${H[d][0]}) it's ${fmt(H[d][1])} – ${fmt(H[d][2])}.`;
+  if(/hour|time|when|close|late|sunday|monday|tuesday|wednesday|thursday|friday|saturday|weekend/.test(q))return `Opening hours:\n${hrsText()}\n\nToday (${H[d][0]}) it's ${fmt(H[d][1])} to ${fmt(H[d][2])}.`;
   if(/where|address|locat|find|direction|park|map|union/.test(q))return `We're at <b>38 Union St, Aldershot</b>.\n<a href="https://maps.google.com/?q=Crumble+and+Co+38+Union+Street+Aldershot" target="_blank" rel="noopener">Get directions →</a>`;
   if(/phone|call|number|contact|instagram/.test(q))return `Call <a href="tel:07345532899">07345 532899</a> or find us on Instagram <a href="https://www.instagram.com/crumbleand_co/" target="_blank" rel="noopener">@crumbleand_co</a>.`;
   if(/deliver|order|takeaway|collect|online/.test(q))return `You can order online here: <a href="${ORDER}" target="_blank" rel="noopener">crumbleandcodesserts.co.uk →</a>\nOr pop in and sit down.`;

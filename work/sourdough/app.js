@@ -11,7 +11,7 @@
   const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   const HOURS = {0:[8,12],1:null,2:[7,15],3:[7,15],4:[7,15],5:[7,15],6:[7.5,14]};
   const fmt = h => { const hh = Math.floor(h), mm = Math.round((h - hh) * 60); const ap = hh >= 12 ? 'pm' : 'am'; const h12 = ((hh + 11) % 12) + 1; return h12 + (mm ? ':' + String(mm).padStart(2, '0') : '') + ap; };
-  const hoursText = d => HOURS[d] ? fmt(HOURS[d][0]) + ' – ' + fmt(HOURS[d][1]) : 'Closed';
+  const hoursText = d => HOURS[d] ? fmt(HOURS[d][0]) + ' to ' + fmt(HOURS[d][1]) : 'Closed';
   const now = new Date(), today = now.getDay(), hNow = now.getHours() + now.getMinutes() / 60;
   const order = [2,3,4,5,6,0,1];
   $('#hours').innerHTML = order.map(d => `<li class="${d === today ? 'today' : ''}"><span>${DAYS[d]}</span><span>${hoursText(d)}</span></li>`).join('');
@@ -176,7 +176,7 @@
 
     if (t === 'open basket') { closeChat(); openDrawer(fab); return; }
     if (t === 'cakes & sweet') return bot('Cakes & sweet:' + list(Object.keys(M).filter(k => M[k].cat === 'sweet')), ['Pre-order', 'Cake enquiry']);
-    if (/cake|birthday|wedding|celebrat/.test(t) && !/fudge|slice/.test(t)) { flow = {type: 'cake', step: 'size'}; return bot('Lovely! Celebration cakes need <b>5 days\' notice</b>. What size are you thinking?', ['6″ (serves 8–10) from £38', '8″ (serves 14–16) from £52', 'Two-tier (serves 30) from £120']); }
+    if (/cake|birthday|wedding|celebrat/.test(t) && !/fudge|slice/.test(t)) { flow = {type: 'cake', step: 'size'}; return bot('Lovely! Celebration cakes need <b>5 days\' notice</b>. What size are you thinking?', ['6″ (serves 8 to 10) from £38', '8″ (serves 14 to 16) from £52', 'Two-tier (serves 30) from £120']); }
     if (/pre-?order|order|collect|reserve|put aside/.test(t)) { flow = {type: 'order', items: {}}; return bot('Happy to set a demo pre-order aside. What would you like? e.g. <i>"2 croissants and a country sourdough"</i>.', ['2 croissants and a country sourdough', 'A cinnamon bun', '4 cookies']); }
     if (/hour|open|close|when|time|today|tomorrow|sunday|monday|saturday/.test(t)) {
       const rows = order.map(d => `<li>${DAYS[d]}: ${hoursText(d)}</li>`).join('');
