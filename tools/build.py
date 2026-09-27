@@ -1,4 +1,7 @@
 """Generates the static pages for thetenderdesk.co.uk (shared header/footer).
+# RETIRED 27 Sep 2026: the live HTML is now hand-edited (pricing removed, new services, portfolio redesign).
+# Running this would overwrite those changes and put public prices back. Do not run.
+import sys; sys.exit("tools/build.py is retired: edit the HTML directly.")
 Output is plain HTML committed to the repo; the live site needs no build step."""
 import json, pathlib
 
