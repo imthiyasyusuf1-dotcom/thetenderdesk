@@ -17,12 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BarberShop","@id":"https://thetenderdesk.co.uk/work/fadehouse/#shop","name":"Fade House Barbers (demo)","description":"Fictional demo business by The Tender Desk: skin fades, scissor cuts, beard sculpting and hot towel shaves in Aldershot.","url":"https://thetenderdesk.co.uk/work/fadehouse/","image":"https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=70","telephone":"+441632960123","address":{"@type":"PostalAddress","addressLocality":"Aldershot","addressRegion":"Hampshire","addressCountry":"GB"},"geo":{"@type":"GeoCoordinates","latitude":51.2485,"longitude":-0.766},"areaServed":["Aldershot","Farnborough","Ash","Fleet","Farnham","North Camp"],"priceRange":"££","paymentAccepted":"Card, Contactless","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Friday"],"opens":"09:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Thursday","opens":"09:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"17:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"15:00"}]},{"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Do you take walk-ins?","acceptedAnswer":{"@type":"Answer","text":"Yes, whenever a chair is free. Weekday mornings are quietest; booking guarantees your slot."}},
-{"@type":"Question","name":"How much is a skin fade?","acceptedAnswer":{"@type":"Answer","text":"A skin fade is £24 and takes about 45 minutes, including a line-up and styling finish (demo prices)."}},
-{"@type":"Question","name":"Do you cut kids' hair?","acceptedAnswer":{"@type":"Answer","text":"Yes, under-12s are £15, Tuesday to Friday."}},
-{"@type":"Question","name":"Can I pay cash?","acceptedAnswer":{"@type":"Answer","text":"We are card and contactless only."}},
-{"@type":"Question","name":"Where can I park?","acceptedAnswer":{"@type":"Answer","text":"Pay-and-display parking is a two minute walk away, and the station is close by."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BarberShop","name":"Fade House Barbers (demo)","description":"Fictional demo business by The Tender Desk","address":{"@type":"PostalAddress","addressLocality":"Aldershot","addressRegion":"Hampshire","addressCountry":"GB"},"priceRange":"££","openingHours":["Tu-We 09:00-19:00","Th 09:00-20:00","Fr 09:00-19:00","Sa 08:00-17:00","Su 10:00-15:00"]}</script>
 <style>
 :root{--ink:#0f0d0b;--ink2:#1a1714;--ink3:#26211c;--bone:#ece3d0;--bone2:#b8ad98;--red:#c8372d;--red2:#e0493d;--line:rgba(236,227,208,.14);--r:4px;--ease:cubic-bezier(.2,.7,.1,1)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -204,40 +199,6 @@ dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
 }
 @media (max-width:520px){.wrap{width:calc(100% - 36px)}.hero h1{font-size:25vw}.hero h1 .serif{font-size:.36em}.chat-fab .lbl{display:none}.chat-fab{padding:10px}.stats b{font-size:34px}.hero .ctas .btn{flex:1;justify-content:center}.card{padding:26px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
-@view-transition{navigation:auto}
-.proof{list-style:none;display:flex;gap:28px;margin-top:30px;flex-wrap:wrap}
-.proof li{display:grid;grid-template-columns:auto auto;align-items:baseline;column-gap:8px;padding-left:16px;border-left:1px solid var(--line)}
-.proof li:first-child{border:0;padding-left:0}
-.proof b{font-family:Anton,sans-serif;font-weight:400;font-size:30px;line-height:1}.proof .st{color:var(--red2);font-size:12px;letter-spacing:2px}
-.proof small{grid-column:1/-1;font-size:12px;color:var(--bone2);margin-top:4px}
-.faq{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;border-top:1px solid var(--line)}
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:24px 0;font-weight:600;font-size:18px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary span{color:var(--red2);font-size:24px;line-height:1;transition:transform .4s var(--ease)}
-.faq details[open] summary span{transform:rotate(45deg)}
-.faq details p{color:var(--bone2);padding:0 0 24px;max-width:520px}
-.local{background:var(--ink2);border-block:1px solid var(--line);padding:clamp(60px,8vw,110px) 0}
-.local-g{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:end}
-.local h2{font-size:clamp(40px,5.5vw,80px);margin-top:18px}.local h2 .serif{color:var(--red2)}
-.local p{color:var(--bone2)}
-.areas{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.areas li{border:1px solid var(--line);border-radius:99px;padding:7px 14px;font-size:13px;white-space:nowrap}
-.rv.tilt.in{transition:opacity 1s,transform .18s linear}
-.tilt{transform-style:preserve-3d;will-change:transform;position:relative}
-.tilt::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;transition:opacity .4s;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(255,240,215,.12),transparent 45%)}
-.tilt:hover::before{opacity:1}
-@supports (animation-timeline:view()){
- @media (prefers-reduced-motion:no-preference){
-  .gallery figure img{animation:par linear both;animation-timeline:view();scale:1.12}
-  @keyframes par{from{translate:0 -5%}to{translate:0 5%}}
-  .about figure img{animation:unz linear both;animation-timeline:view();animation-range:entry 0% cover 60%}
-  @keyframes unz{from{scale:1.2;clip-path:inset(12% 8% round 4px)}to{scale:1;clip-path:inset(0 round 4px)}}
-  .marquee div{animation-play-state:running}
- }
-}
-@media (max-width:900px){.faq,.local-g{grid-template-columns:1fr}}
-@media (max-width:520px){.proof{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px}.proof li{padding-left:12px}.proof .st{display:none}.proof b{font-size:22px}.proof small{font-size:11px}.faq summary{font-size:16px;padding:20px 0}}
 </style>
 <link rel="stylesheet" href="fx.css">
 </head>
@@ -247,7 +208,7 @@ dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
  <div class="wrap">
   <a class="logo" href="#top" aria-label="Fade House Barbers, home"><b>FADE HOUSE</b><i>barbers</i></a>
   <nav aria-label="Main"><ul id="navlist">
-   <li><a href="#services">Services</a></li><li><a href="#work">The work</a></li><li><a href="#team">Barbers</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#faq">FAQ</a></li><li><a href="#visit">Visit</a></li>
+   <li><a href="#services">Services</a></li><li><a href="#work">The work</a></li><li><a href="#team">Barbers</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#visit">Visit</a></li>
   </ul></nav>
   <button class="btn btn-red" data-book>Book a chair</button>
   <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="navlist"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h18M3 17h18"/></svg></button>
@@ -265,13 +226,8 @@ dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
     <p class="lede">Skin fades, scissor work and hot-towel shaves from barbers who actually listen. Book your chair online in thirty seconds.</p>
     <div class="ctas">
      <button class="btn btn-red" data-book>Book now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-     <a class="btn btn-ghost" href="tel:+441632960123">Call the shop</a>
+     <a class="btn btn-ghost" href="#services">See prices</a>
     </div>
-    <ul class="proof" aria-label="Why Fade House">
-     <li><b>4.9</b><span class="st" aria-hidden="true">★★★★★</span><small>312 reviews (sample)</small></li>
-     <li><b id="nextSlot">Today</b><small>Next free chair</small></li>
-     <li><b>30s</b><small>To book online</small></li>
-    </ul>
    </div>
    <div class="status" id="status" aria-live="polite"><span class="dot"></span><strong id="st-t">Checking hours…</strong><small id="st-s">&nbsp;</small></div>
   </div>
@@ -362,10 +318,10 @@ dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
   <p>A few recent cuts. Follow along on Instagram for the full archive, and screenshot one to bring in.</p>
  </div>
  <div class="gallery">
-  <figure class="g1 rv"><img loading="lazy" src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=900&q=70&auto=format&fit=crop" width="900" height="1100" alt="Barber blending a fade with clippers"><figcaption>Mid skin fade</figcaption></figure>
-  <figure class="g2 rv"><img loading="lazy" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=900&q=70&auto=format&fit=crop" width="900" height="600" alt="Barber detailing a client's haircut"><figcaption>Line-up</figcaption></figure>
-  <figure class="g3 rv"><img loading="lazy" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=700&q=70&auto=format&fit=crop" width="700" height="900" alt="Beard being trimmed and shaped"><figcaption>Beard sculpt</figcaption></figure>
-  <figure class="g4 rv"><img loading="lazy" src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?w=900&q=70&auto=format&fit=crop" width="900" height="600" alt="Barbershop tools and chair"><figcaption>The kit</figcaption></figure>
+  <figure class="g1 rv"><img loading="lazy" src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=900&q=70&auto=format&fit=crop" alt="Barber blending a fade with clippers"><figcaption>Mid skin fade</figcaption></figure>
+  <figure class="g2 rv"><img loading="lazy" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=900&q=70&auto=format&fit=crop" alt="Barber detailing a client's haircut"><figcaption>Line-up</figcaption></figure>
+  <figure class="g3 rv"><img loading="lazy" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=700&q=70&auto=format&fit=crop" alt="Beard being trimmed and shaped"><figcaption>Beard sculpt</figcaption></figure>
+  <figure class="g4 rv"><img loading="lazy" src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?w=900&q=70&auto=format&fit=crop" alt="Barbershop tools and chair"><figcaption>The kit</figcaption></figure>
   <figure class="g5 rv"><a href="#work" aria-label="Instagram (demo link)">@fadehouse ↗</a></figure>
  </div>
 </div></section>
@@ -373,18 +329,18 @@ dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
 <section id="team" style="padding-top:0"><div class="wrap">
  <div class="head"><div><p class="eyebrow">The barbers</p><h2 class="display">Pick your <span class="serif">chair</span></h2></div><p>Every barber does every service; each has a speciality clients come back for.</p></div>
  <div class="team">
-  <article class="barber rv tilt"><div class="av" style="background:var(--bone)" aria-hidden="true">D</div><h3>Dan</h3><span>Owner · skin fades &amp; tapers</span></article>
-  <article class="barber rv tilt"><div class="av" style="background:var(--red);color:#fff" aria-hidden="true">R</div><h3>Reece</h3><span>Scissor work &amp; textured crops</span></article>
-  <article class="barber rv tilt"><div class="av" style="background:var(--bone2)" aria-hidden="true">M</div><h3>Marek</h3><span>Beards &amp; hot-towel shaves</span></article>
+  <article class="barber rv"><div class="av" style="background:var(--bone)" aria-hidden="true">D</div><h3>Dan</h3><span>Owner · skin fades &amp; tapers</span></article>
+  <article class="barber rv"><div class="av" style="background:var(--red);color:#fff" aria-hidden="true">R</div><h3>Reece</h3><span>Scissor work &amp; textured crops</span></article>
+  <article class="barber rv"><div class="av" style="background:var(--bone2)" aria-hidden="true">M</div><h3>Marek</h3><span>Beards &amp; hot-towel shaves</span></article>
  </div>
 </div></section>
 
 <section id="reviews" style="background:var(--ink2)"><div class="wrap">
  <div class="head"><div><p class="eyebrow">Word of mouth</p><h2 class="display">What they <span class="serif">say</span></h2></div><p><span class="sample">Sample reviews · illustrative only</span><br><br>On a real build, these pull straight from your Google Business profile.</p></div>
  <div class="reviews">
-  <figure class="rev rv tilt"><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><blockquote>"Best fade I've had in years. Took his time and it still looks sharp two weeks on."</blockquote><figcaption>Sample review · skin fade</figcaption></figure>
-  <figure class="rev rv tilt"><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><blockquote>"Booked on my phone in under a minute, in and out on my lunch break. The hot towel is worth it."</blockquote><figcaption>Sample review · cut &amp; beard</figcaption></figure>
-  <figure class="rev rv tilt"><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><blockquote>"Brought my lad in for his first proper cut. Patient, friendly, and he wants to go back."</blockquote><figcaption>Sample review · kids' cut</figcaption></figure>
+  <figure class="rev rv"><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><blockquote>"Best fade I've had in years. Took his time and it still looks sharp two weeks on."</blockquote><figcaption>Sample review · skin fade</figcaption></figure>
+  <figure class="rev rv"><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><blockquote>"Booked on my phone in under a minute, in and out on my lunch break. The hot towel is worth it."</blockquote><figcaption>Sample review · cut &amp; beard</figcaption></figure>
+  <figure class="rev rv"><span class="stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><blockquote>"Brought my lad in for his first proper cut. Patient, friendly, and he wants to go back."</blockquote><figcaption>Sample review · kids' cut</figcaption></figure>
  </div>
 </div></section>
 
@@ -398,17 +354,6 @@ dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
   </div>
   <div class="map rv"><iframe title="Map of Aldershot town centre" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.7760%2C51.2440%2C-0.7560%2C51.2530&amp;layer=mapnik"></iframe></div>
  </div>
-</div></section>
-
-<section id="faq" style="padding-top:0"><div class="wrap">
- <div class="head"><div><p class="eyebrow">Good to know</p><h2 class="display">Quick <span class="serif">answers</span></h2></div><p>The questions we get asked most at the chair. Anything else, ask the assistant or just call.</p></div>
- <div class="faq"><details class="rv"><summary>Do you take walk-ins?<span aria-hidden="true">+</span></summary><p>Yes, whenever a chair is free. Weekday mornings are quietest. Saturdays fill up, so booking guarantees your slot.</p></details><details class="rv"><summary>How long does a skin fade take?<span aria-hidden="true">+</span></summary><p>About 45 minutes, including a consultation, the blend, a line-up and a styling finish. No rushing to the next one.</p></details><details class="rv"><summary>Do you cut kids' hair?<span aria-hidden="true">+</span></summary><p>Yes. Under-12s are £15, Tuesday to Friday. We are patient with first cuts and nervous ones.</p></details><details class="rv"><summary>Can I pay cash?<span aria-hidden="true">+</span></summary><p>We are card and contactless only, including Apple Pay and Google Pay.</p></details><details class="rv"><summary>How do I cancel or move a booking?<span aria-hidden="true">+</span></summary><p>Reply to your confirmation text. It is free up to 2 hours before your slot.</p></details><details class="rv"><summary>Where do I park?<span aria-hidden="true">+</span></summary><p>Pay-and-display parking is a two minute walk away, and the station is close by.</p></details></div>
-</div></section>
-
-<section class="local" aria-labelledby="local-h"><div class="wrap local-g">
- <div class="rv"><p class="eyebrow">Barbers in Aldershot</p><h2 class="display" id="local-h">Your local <span class="serif">fade house</span></h2></div>
- <div class="rv"><p>Fade House is an independent barbershop in Aldershot town centre, Hampshire, a short walk from the station. We cut skin fades, tapers, scissor cuts, kids' cuts, beard sculpts and traditional hot towel shaves, six days a week with late opening on Thursdays.</p>
- <ul class="areas" aria-label="Areas we serve"><li>Aldershot</li><li>North Camp</li><li>Farnborough</li><li>Ash</li><li>Farnham</li><li>Fleet</li></ul></div>
 </div></section>
 
 <section class="cta" aria-label="Book"><div class="wrap">
@@ -539,11 +484,6 @@ function startBook(t=''){const pick={};
  flow=(raw,tt)=>{const s=findSvc(tt);if(!s)return bot('Pick one of the options below:',SVC.map(s=>s.n));askSlot(s)}}
 $('#cf').onsubmit=e=>{e.preventDefault();const v=$('#ci').value;$('#ci').value='';send(v)};
 window.openBook=openBook;
-{const sl=nextSlots()[0];if(sl)$('#nextSlot').textContent=sl.l.replace('Tomorrow','Tmrw');}
-if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
- $$('.tilt').forEach(el=>{let raf=0;el.addEventListener('pointermove',e=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
-  el.style.transform=`perspective(900px) rotateX(${(.5-y)*7}deg) rotateY(${(x-.5)*9}deg)`;el.style.setProperty('--mx',x*100+'%');el.style.setProperty('--my',y*100+'%')})});
-  el.addEventListener('pointerleave',()=>{cancelAnimationFrame(raf);el.style.transition='transform .6s var(--ease)';el.style.transform='';setTimeout(()=>el.style.transition='',600)})})}
 </script>
 <div class="fx-bar" id="fxBar" aria-hidden="true"><button type="button" class="b1" data-book>Book a chair</button><a class="b2" href="#visit">Find us</a></div>
 <script src="fx.js" defer></script>
