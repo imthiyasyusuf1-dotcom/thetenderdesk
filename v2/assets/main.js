@@ -51,6 +51,7 @@ function resize() { const w = innerWidth, h = innerHeight; canvas.width = Math.r
 resize(); addEventListener('resize', resize);
 
 const mouse = { x: .5, y: .5, sx: .5, sy: .5 };
+addEventListener('touchmove', e => { const t = e.touches[0]; mouse.x = t.clientX / innerWidth; mouse.y = 1 - t.clientY / innerHeight; }, { passive: true });
 addEventListener('pointermove', e => { mouse.x = e.clientX / innerWidth; mouse.y = 1 - e.clientY / innerHeight; }, { passive: true });
 const chapters = ['top', 'tenders', 'websites', 'ai', 'proofs', 'work', 'contact'].map(id => document.getElementById(id));
 const modeOf = [0, 1, 2, 3, 4, 4, 0];
@@ -59,7 +60,7 @@ const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting
 chapters.forEach(c => io.observe(c));
 
 // ---------- live proof HUD ----------
-const fpsEl = document.getElementById('fps'), clsEl = document.getElementById('cls');
+let fpsEl = document.getElementById('fps'); const fpsHist = []; const clsElX = 0; const _c = document.getElementById('cls');const clsEl=_c;
 let cls = 0;
 try { new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) cls += e.value; clsEl.textContent = cls.toFixed(3); }).observe({ type: 'layout-shift', buffered: true }); } catch (_) {}
 addEventListener('load', () => { const kb = performance.getEntriesByType('resource').filter(r => r.initiatorType === 'script').reduce((a, r) => a + (r.transferSize || r.encodedBodySize || 0), 0); document.getElementById('kb').textContent = Math.max(1, Math.round(kb / 1024)); });
@@ -68,7 +69,7 @@ let frames = 0, last = performance.now(), t0 = last, visible = true;
 document.addEventListener('visibilitychange', () => visible = !document.hidden);
 function loop(now) {
   requestAnimationFrame(loop);
-  frames++; if (now - last >= 500) { const fps = Math.round(frames * 1000 / (now - last)); fpsEl.textContent = Math.min(120, fps); frames = 0; last = now; if (fps < 50 && SCALE > .3 && now - t0 > 1500) { SCALE = Math.max(.3, SCALE * .8); resize(); } }
+  frames++; if (now - last >= 500) { const fps = Math.round(frames * 1000 / (now - last)); fpsHist.push(fps); if (fpsHist.length > 4) fpsHist.shift(); const capped = fpsHist.length === 4 && fpsHist.every(x => x >= 24 && x <= 33); fpsEl.parentElement.innerHTML = capped ? '<i class="led"></i>GPU <b id="fps">battery saver</b>' : '<i class="led"></i><b id="fps">' + Math.min(120, fps) + '</b> fps live'; fpsEl = document.getElementById('fps'); frames = 0; last = now; if (fps < 50 && SCALE > .3 && now - t0 > 1500) { SCALE = Math.max(.3, SCALE * .8); resize(); } }
   if (!gl || !visible) return;
   mouse.sx += (mouse.x - mouse.sx) * .06; mouse.sy += (mouse.y - mouse.sy) * .06;
   Cs += (C - Cs) * .04;
