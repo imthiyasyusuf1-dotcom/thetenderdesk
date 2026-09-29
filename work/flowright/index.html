@@ -15,12 +15,13 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b2545'/%3E%3Cpath d='M16 6c4 6 7 9.5 7 13a7 7 0 0 1-14 0c0-3.5 3-7 7-13z' fill='%23ff7a1a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=optional" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Plumber","name":"FlowRight Plumbing & Heating (demo)","description":"Fictional demo business created by The Tender Desk to showcase a trades website.","url":"https://thetenderdesk.co.uk/work/flowright/","telephone":"+44 1632 960000","priceRange":"££","address":{"@type":"PostalAddress","addressLocality":"Aldershot","addressRegion":"Hampshire","addressCountry":"GB"},"areaServed":["Aldershot","Farnborough","Farnham","Fleet","Camberley","Ash","Church Crookham","Frimley"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Emergency plumbing"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Boiler service"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Boiler installation"}}]}
+{"@context":"https://schema.org","@type":"Plumber","name":"FlowRight Plumbing & Heating (demo)","description":"Fictional demo business created by The Tender Desk to showcase a trades website.","url":"https://thetenderdesk.co.uk/work/flowright/","telephone":"+44 1632 960000","email":"hello@flowright.example","geo":{"@type":"GeoCoordinates","latitude":51.2484,"longitude":-0.7626},"hasMap":"https://www.openstreetmap.org/?mlat=51.2484&mlon=-0.7626#map=12/51.2484/-0.7626","priceRange":"££","address":{"@type":"PostalAddress","addressLocality":"Aldershot","addressRegion":"Hampshire","addressCountry":"GB"},"areaServed":["Aldershot","Farnborough","Farnham","Fleet","Camberley","Ash","Church Crookham","Frimley"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Emergency plumbing"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Boiler service"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Boiler installation"}}]}
 </script>
 <link rel="stylesheet" href="fx.css">
+<link rel="stylesheet" href="redesign.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -39,9 +40,11 @@
     <nav aria-label="Main">
       <ul class="menu" id="menu">
         <li><a href="#services">Services</a></li>
-        <li><a href="#estimate">Instant price</a></li>
+        <li><a href="#estimate">Prices</a></li>
+        <li><a href="#book">Book</a></li>
         <li><a href="#areas">Areas</a></li>
         <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#quote" class="btn btn-sm btn-ghost">Get a quote</a></li>
       </ul>
@@ -53,20 +56,22 @@
 
 <main id="main">
 <section class="hero">
+  <canvas id="ripple" class="ripple" width="320" height="200" aria-hidden="true"></canvas>
   <div class="wrap hero-in">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="pill">★ 4.9</span> Sample rating from 300+ local jobs</p>
-      <h1>Burst pipe? Dead boiler?<br><span class="hl">We're there within the hour.</span></h1>
-      <p class="lead">Aldershot's fixed-price plumbers. You get a clear quote before we pick up a spanner, a tidy engineer who shows up when they say, and a 12-month guarantee on every job.</p>
+      <p class="eyebrow"><span class="live-chip"><span class="dot" aria-hidden="true"></span>3 engineers free near GU11 now</span></p>
+      <h1>Burst pipe? Dead boiler?<br><span class="hl">Fixed today, fixed price.</span></h1>
+      <p class="lead">Aldershot and Farnborough's 24/7 plumbers. A clear price before we pick up a spanner, an engineer at your door within the hour, and a 12-month guarantee on every job.</p>
       <div class="cta-row">
-        <a href="tel:+441632960000" class="btn btn-em btn-lg"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Emergency: call now</a>
-        <a href="#quote" class="btn btn-light btn-lg">Free quote in 2 min →</a>
+        <a href="tel:+441****0000" class="btn btn-em btn-lg"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Emergency: call now</a>
+        <a href="#book" class="btn btn-light btn-lg">Book a slot online</a>
       </div>
-      <ul class="ticks">
-        <li>No call-out fee in working hours</li><li>Price agreed upfront</li><li>DBS-checked engineers</li>
-      </ul>
+      <div class="proof-row">
+        <div class="avs" aria-hidden="true"><span>SK</span><span>MR</span><span>PJ</span><span>+</span></div>
+        <p><b>★★★★★ 4.9</b> from 300+ local jobs<small>Sample rating for this demo</small></p>
+      </div>
     </div>
-    <div class="hero-card" aria-label="Live job status example">
+<div class="hero-card" aria-label="Live job status example">
       <div class="hc-head"><span class="dot"></span> Live job tracker <em>(example)</em></div>
       <div class="van">
         <svg viewBox="0 0 320 150" role="img" aria-label="Illustration of a FlowRight van">
@@ -94,10 +99,15 @@
   </div>
 </section>
 
+<div class="marquee" aria-label="Towns we cover"><div class="mq-track">
+  <span>Aldershot</span><span>Farnborough</span><span>Farnham</span><span>Fleet</span><span>Camberley</span><span>Ash Vale</span><span>Church Crookham</span><span>Frimley</span><span>Yateley</span><span>Hook</span>
+  <span aria-hidden="true">Aldershot</span><span aria-hidden="true">Farnborough</span><span aria-hidden="true">Farnham</span><span aria-hidden="true">Fleet</span><span aria-hidden="true">Camberley</span><span aria-hidden="true">Ash Vale</span><span aria-hidden="true">Church Crookham</span><span aria-hidden="true">Frimley</span><span aria-hidden="true">Yateley</span><span aria-hidden="true">Hook</span>
+</div></div>
+
 <section id="services" class="sec">
   <div class="wrap">
     <div class="sec-head"><p class="kicker">What we do</p><h2>Everything water, heating &amp; drains</h2><p>One number for every job in the house, from a dripping tap to a full system upgrade.</p></div>
-    <div class="grid3">
+    <div class="grid3 bento">
       <article class="card svc"><div class="ic em"><svg class="i" aria-hidden="true"><use href="#i-drop"/></svg></div><h3>Emergency plumbing</h3><p>Burst pipes, major leaks, no water, overflowing tanks. Engineer dispatched in minutes, day or night.</p><a href="#quote" data-job="Emergency leak">Book now →</a></article>
       <article class="card svc"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-flame"/></svg></div><h3>Boiler repair &amp; service</h3><p>No heat or hot water? We fault-find all major makes and carry common parts on the van.</p><a href="#quote" data-job="Boiler repair">Book now →</a></article>
       <article class="card svc"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg></div><h3>New boiler installs</h3><p>A-rated combi and system boilers fitted in a day, with up to 10-year manufacturer warranty options.</p><a href="#quote" data-job="New boiler">Get a price →</a></article>
@@ -192,6 +202,46 @@
   </div>
 </section>
 
+<section id="book" class="sec" aria-labelledby="bk-h">
+  <div class="wrap">
+    <div class="sec-head"><p class="kicker">Online booking</p><h2 id="bk-h">Book an engineer in under a minute</h2><p>Pick a job, a day and a slot. You get a booking reference straight away and a text when your engineer is on the way.</p></div>
+    <div class="book">
+      <ol class="bk-prog" aria-hidden="true"><li class="on">Job</li><li>Day</li><li>Slot</li><li>Details</li></ol>
+      <form id="bkForm" novalidate>
+        <fieldset class="bk-step" data-step="0"><legend>What do you need?</legend>
+          <div class="bk-chips">
+            <label><input type="radio" name="bj" value="Boiler service" checked><span>Boiler service</span></label>
+            <label><input type="radio" name="bj" value="Boiler repair"><span>Boiler repair</span></label>
+            <label><input type="radio" name="bj" value="Leak or drip"><span>Leak or drip</span></label>
+            <label><input type="radio" name="bj" value="Blocked drain"><span>Blocked drain</span></label>
+            <label><input type="radio" name="bj" value="Radiator work"><span>Radiator work</span></label>
+            <label><input type="radio" name="bj" value="New boiler survey"><span>New boiler survey</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="bk-step" data-step="1" hidden><legend>Which day?</legend><div class="bk-days" id="bkDays"></div></fieldset>
+        <fieldset class="bk-step" data-step="2" hidden><legend>Pick a 2-hour arrival window</legend><div class="bk-slots" id="bkSlots"></div></fieldset>
+        <fieldset class="bk-step" data-step="3" hidden><legend>Where and who?</legend>
+          <div class="f2">
+            <div class="field"><label for="bn">Name</label><input id="bn" autocomplete="name" required></div>
+            <div class="field"><label for="bp">Postcode</label><input id="bp" autocomplete="postal-code" placeholder="GU11 1AA" required></div>
+          </div>
+          <div class="field"><label for="bt">Mobile</label><input id="bt" type="tel" autocomplete="tel" required></div>
+        </fieldset>
+        <div class="bk-nav"><button type="button" class="btn btn-ghost" id="bkBack" hidden>Back</button><button type="button" class="btn btn-em" id="bkNext">Continue</button></div>
+        <p class="form-msg" id="bkMsg" role="status" aria-live="polite"></p>
+      </form>
+      <div class="bk-done" id="bkDone" hidden tabindex="-1">
+        <div class="tick" aria-hidden="true"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
+        <h3>You're booked in</h3>
+        <p id="bkSum"></p>
+        <p class="ref">Reference <b id="bkRef"></b></p>
+        <p class="fine">Demo booking: nothing is sent or stored.</p>
+        <button type="button" class="btn btn-ghost" id="bkAgain">Make another booking</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="accreditations">
   <div class="wrap">
     <div class="sec-head"><p class="kicker">Accreditations &amp; cover</p><h2>Qualified, insured, accountable</h2><p>Placeholder badges: on a real build these show the firm's own registrations and membership numbers.</p></div>
@@ -275,6 +325,25 @@
     </form>
   </div>
 </section>
+<section id="contact" class="sec sec-soft" aria-labelledby="ct-h">
+  <div class="wrap contact">
+    <div>
+      <p class="kicker">Find us</p>
+      <h2 id="ct-h">Local plumber in Aldershot, covering Farnborough and the GU postcodes</h2>
+      <p>FlowRight Plumbing &amp; Heating is based in Aldershot, Hampshire, with engineers living across Farnborough, Farnham, Fleet and Camberley. That is how we reach most emergency call-outs in under an hour, day or night.</p>
+      <dl class="nap">
+        <div><dt>Phone</dt><dd><a href="tel:+441****0000">01632 960000</a> (fictional)</dd></div>
+        <div><dt>Email</dt><dd>hello@flowright.example</dd></div>
+        <div><dt>Base</dt><dd>Aldershot, Hampshire GU11</dd></div>
+        <div><dt>Hours</dt><dd>Emergencies 24/7, 365 days. Office Mon to Sat 8am to 6pm</dd></div>
+      </dl>
+    </div>
+    <div class="map">
+      <iframe title="Map of Aldershot and Farnborough service area" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.86%2C51.22%2C-0.68%2C51.32&amp;layer=mapnik&amp;marker=51.2484%2C-0.7626" width="600" height="450" loading="lazy" referrerpolicy="no-referrer"></iframe>
+      <a class="map-link" href="https://www.openstreetmap.org/?mlat=51.2484&amp;mlon=-0.7626#map=12/51.2484/-0.7626" target="_blank" rel="noopener">Open larger map</a>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer class="foot">
@@ -327,8 +396,9 @@
   <symbol id="i-send" viewBox="0 0 24 24"><path fill="currentColor" d="M3 20l18-8L3 4v6l12 2-12 2z"/></symbol>
 </svg>
 <script src="app.js" defer></script>
-<div class="fx-bar" id="fxBar" aria-hidden="true"><a class="b1" href="tel:+441****0000"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call 24/7</a><a class="b2" href="#estimate">Instant price</a></div>
+<div class="fx-bar" id="fxBar" aria-hidden="true"><a class="b1" href="tel:+441****0000"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Call 24/7</a><a class="b2" href="#book">Book online</a></div>
 <script src="fx.js" defer></script>
+<script src="redesign.js" defer></script>
 <script src="/assets/showcase/td-kit.js" defer></script>
 </body>
 </html>

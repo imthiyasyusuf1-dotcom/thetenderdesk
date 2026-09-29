@@ -1,0 +1,121 @@
+/* FlowRight 2026 redesign layer */
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
+:root{--em:#ff5b0a;--em2:#e44d00;--navy:#081d3a;--r:22px}
+body{background:#fbfaf7}
+h1{font-size:clamp(40px,6.2vw,84px);letter-spacing:-.035em;line-height:1.02}
+h2{font-size:clamp(30px,4.2vw,54px);letter-spacing:-.03em}
+.nav{background:rgba(251,250,247,.94)}
+.menu{gap:22px}
+
+/* Hero */
+.hero{position:relative;isolation:isolate;background:#061933;padding-top:88px}
+.ripple{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.55;filter:blur(8px);transform:scale(1.05);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#061933 0,#061933cc 45%,#06193355 100%),linear-gradient(0deg,#061933 0,transparent 30%);pointer-events:none}
+.hero-card{transform:rotate(1.2deg);contain:layout}
+.hl{background:linear-gradient(90deg,#ffb37a,#ff5b0a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.live-chip{display:inline-flex;align-items:center;gap:8px;background:#22c55e1a;border:1px solid #22c55e55;color:#bbf7d0;padding:6px 12px;border-radius:99px;font-weight:600;font-size:13px}
+.proof-row{display:flex;align-items:center;gap:14px;margin-top:6px}
+.avs{display:flex}
+.avs span{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:700 12px Inter,sans-serif;background:#13315c;color:#fff;border:2px solid #061933;margin-left:-10px}
+.avs span:first-child{margin-left:0;background:#ff5b0a}.avs span:nth-child(2){background:#2563eb}.avs span:nth-child(3){background:#16a34a}
+.proof-row p{font-size:14px;color:#c9d6e8;line-height:1.3}.proof-row b{color:#ffd166;display:block;font-size:15px}
+.proof-row small{display:block;font-size:11.5px;color:#8ea3bf}
+.trust div{background:#0b2446cc}
+
+/* Marquee */
+.marquee{background:var(--em);color:#fff;overflow:hidden;padding:14px 0;contain:paint}
+.mq-track{display:flex;gap:44px;width:max-content;animation:mq 38s linear infinite;font:800 20px "Plus Jakarta Sans",sans-serif;letter-spacing:-.01em}
+.mq-track span{display:flex;align-items:center;gap:44px;white-space:nowrap}
+.mq-track span::after{content:"";width:8px;height:8px;border-radius:50%;background:#ffffffa0}
+@keyframes mq{to{transform:translate3d(-50%,0,0)}}
+
+/* Bento services */
+.bento{grid-template-columns:repeat(4,1fr)}
+.bento .svc:first-child{grid-column:span 2;grid-row:span 2;background:linear-gradient(160deg,#081d3a,#13315c);color:#fff;border:0;display:flex;flex-direction:column;justify-content:flex-end;min-height:360px;position:relative;overflow:hidden}
+.bento .svc:first-child::before{content:"24/7";position:absolute;top:18px;right:24px;font:800 clamp(64px,8vw,120px) "Plus Jakarta Sans",sans-serif;letter-spacing:-.05em;color:#ffffff14}
+.bento .svc:first-child h3{font-size:30px}
+.bento .svc:first-child p{color:#c9d6e8;font-size:17px}
+.bento .svc:first-child a{color:#ffb37a}
+.bento .svc:nth-child(4){grid-column:span 2}
+.svc{will-change:transform}
+
+/* Booking flow */
+.book{max-width:820px;background:#fff;border:1px solid var(--line);border-radius:28px;padding:32px;box-shadow:var(--sh);min-height:420px}
+.bk-prog{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:26px;counter-reset:b}
+.bk-prog li{counter-increment:b;font:600 13px Inter,sans-serif;color:var(--mut);padding-top:10px;border-top:4px solid var(--line);transition:border-color .3s,color .3s}
+.bk-prog li::before{content:counter(b) ". "}
+.bk-prog li.on{border-color:var(--em);color:var(--ink)}
+.bk-step{border:0;padding:0;margin:0;min-width:0;min-height:190px}
+.bk-step legend{font:700 22px "Plus Jakarta Sans",sans-serif;margin-bottom:16px}
+.bk-chips,.bk-days,.bk-slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.bk-days{grid-template-columns:repeat(5,minmax(0,1fr))}
+.bk-chips label,.bk-days label,.bk-slots label{position:relative;cursor:pointer}
+.bk-chips input,.bk-days input,.bk-slots input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.bk-chips span,.bk-days span,.bk-slots span{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:58px;height:100%;padding:12px;border:1.5px solid var(--line);border-radius:14px;font-weight:600;font-size:14.5px;line-height:1.25;transition:border-color .2s,background .2s}
+.bk-days b{font:800 24px "Plus Jakarta Sans",sans-serif}.bk-days small,.bk-slots small{font-weight:500;font-size:12px;color:var(--mut)}
+label input:checked+span{border-color:var(--em);background:#fff4ec;box-shadow:0 0 0 3px #ff5b0a22}
+label input:focus-visible+span{outline:3px solid #ffb37a;outline-offset:2px}
+label input:disabled+span{opacity:.4;text-decoration:line-through;cursor:not-allowed}
+.bk-nav{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
+.bk-done{text-align:center;padding:20px 0}
+.bk-done h3{font-size:30px;margin:14px 0 8px}
+.bk-done p{color:var(--mut)}.bk-done .ref{margin:14px 0;color:var(--ink);font-size:18px}
+.bk-done .ref b{font-family:ui-monospace,Menlo,monospace;background:var(--soft);padding:4px 10px;border-radius:8px}
+.bk-done .fine{font-size:12px;margin-bottom:18px}
+.tick svg{width:72px;height:72px;margin:0 auto;fill:none;stroke:var(--ok);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.tick circle{stroke-dasharray:151;stroke-dashoffset:151;animation:draw .6s ease-out forwards}
+.tick path{stroke-dasharray:40;stroke-dashoffset:40;animation:draw .4s .5s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* Contact + map */
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+.contact h2{font-size:clamp(28px,3.4vw,42px)}
+.contact>div>p{color:var(--mut);margin-bottom:22px}
+.nap{display:grid;gap:0;border-top:1px solid var(--line)}
+.nap div{display:grid;grid-template-columns:90px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.nap dt{font-weight:700}.nap dd{color:var(--mut)}
+.map{position:relative;aspect-ratio:4/3;border-radius:24px;overflow:hidden;background:#dfe7f1;box-shadow:var(--sh)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.map-link{position:absolute;right:12px;bottom:12px;background:#fff;padding:8px 12px;border-radius:10px;font-weight:600;font-size:13px;text-decoration:none;box-shadow:var(--sh)}
+
+/* Scroll-driven reveals: CSS where supported, IO fallback in redesign.js */
+.rv{opacity:0;transform:translate3d(0,28px,0);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.1,1)}
+.rv.in{opacity:1;transform:none}
+@supports (animation-timeline:view()){
+  .rv{opacity:1;transform:none;transition:none;animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+  @keyframes rise{from{opacity:0;transform:translate3d(0,40px,0)}}
+  .hero-in{animation:heroOut linear both;animation-timeline:scroll(root);animation-range:0 90vh}
+  @keyframes heroOut{to{transform:translate3d(0,-60px,0);opacity:.35}}
+}
+
+@media (max-width:1000px){
+  .bento{grid-template-columns:1fr 1fr}
+  .bento .svc:first-child{grid-row:auto;min-height:280px}
+  .bento .svc:nth-child(4){grid-column:auto}
+  .contact{grid-template-columns:1fr}
+}
+@media (max-width:1100px) and (min-width:821px){.menu{gap:16px}.menu a{font-size:14px}}
+@media (max-width:640px){
+  .hero{padding-top:36px}
+  .hero::after{background:linear-gradient(180deg,#061933bb,#061933 70%)}
+  .bento{grid-template-columns:1fr}
+  .bento .svc:first-child{grid-column:auto}
+  .book{padding:20px;border-radius:22px}
+  .bk-chips,.bk-slots{grid-template-columns:1fr 1fr}
+  .bk-days{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+  .bk-days span{padding:10px 2px;font-size:12px}.bk-days b{font-size:19px}
+  .bk-step legend{font-size:19px}
+  .bk-nav .btn{flex:1}
+  .mq-track{font-size:16px;gap:28px}.mq-track span{gap:28px}
+  .nap div{grid-template-columns:70px 1fr}
+  .map{aspect-ratio:1/1}
+}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1!important;transform:none!important;animation:none!important}
+  .hero-in{animation:none!important}
+  .mq-track{animation:none!important;flex-wrap:wrap;width:auto}
+  .ripple{display:none}
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+}
+.book [hidden],.book[hidden]{display:none!important}
