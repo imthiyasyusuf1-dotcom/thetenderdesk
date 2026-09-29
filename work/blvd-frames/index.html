@@ -15,12 +15,21 @@
 <meta property="og:url" content="https://thetenderdesk.co.uk/work/blvd-frames/">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://thetenderdesk.co.uk/work/blvd-frames/img/life-salmon.jpg">
 <link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@200..800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/anton-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-tight-normal.woff2" crossorigin>
 <script type="importmap">{"imports":{"three":"./assets/three.module.min.js"}}</script>
 <link rel="modulepreload" href="assets/three.module.min.js" media="(hover:hover) and (min-width:821px)">
 <link rel="preload" as="image" href="img/cut/coco-chanel-front-800.webp">
 <link rel="stylesheet" href="assets/blvd.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[
+{"@type":["Store","LocalBusiness"],"@id":"https://blvdframes.com/#store","name":"BLVD Frames","slogan":"Sunglasses with a spoon. For degenerates by degenerates.","url":"https://blvdframes.com/","image":"https://thetenderdesk.co.uk/work/blvd-frames/img/life-salmon.jpg","email":"support@blvdframes.com","priceRange":"$55","address":{"@type":"PostalAddress","streetAddress":"8500 Balboa Blvd, Suite 101","addressLocality":"Northridge","addressRegion":"CA","postalCode":"91325","addressCountry":"US"},"areaServed":"US","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","bestRating":"5","reviewCount":"1128"},"sameAs":["https://www.instagram.com/blvdframes/","https://www.tiktok.com/@blvdframes"]},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the spoon for?","acceptedAnswer":{"@type":"Answer","text":"Every pair has a small spoon built into the end of each arm. Officially it is for a pinch of salt before the tequila."}},
+{"@type":"Question","name":"How much do BLVD Frames cost?","acceptedAnswer":{"@type":"Answer","text":"Every frame is $55, with spoon temple tips, an engraved slogan and a collapsible pocket case included."}},
+{"@type":"Question","name":"Do you ship for free?","acceptedAnswer":{"@type":"Answer","text":"Free standard US shipping on orders of $50 and up. Orders below $50 are $4.99. International shipping is calculated at checkout."}},
+{"@type":"Question","name":"What is the return policy?","acceptedAnswer":{"@type":"Answer","text":"30 days from delivery. Items must be unworn in original packaging; email support@blvdframes.com to start a return."}},
+{"@type":"Question","name":"Are the lenses UV protected?","acceptedAnswer":{"@type":"Answer","text":"Yes. CR-39, polarized or blue light lenses, all with 100% UV protection."}}]}]}</script>
+<link rel="stylesheet" href="assets/storefront.css">
 <script>document.documentElement.classList.remove('no-js')</script>
 </head>
 <body>
@@ -39,9 +48,10 @@
 <header class="nav">
  <a class="logo" href="./" data-mag>BLVD</a>
  <nav class="nav-links" aria-label="Primary">
-  <a href="#spoon">The spoon</a><a href="#look">Lookbook</a><a href="#shop">Shop</a><a href="#specs">Specs</a>
+  <a href="#spoon">The spoon</a><a href="#look">Lookbook</a><a href="#shop">Shop</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a>
  </nav>
  <a class="nav-cta" href="#shop" data-mag><b>13</b> in stock <span aria-hidden="true">↘</span></a>
+ <button class="bag-btn" data-bag-open aria-label="Open bag"><span>Bag</span><b data-bag-count>0</b></button>
  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
 </header>
 <nav class="menu" id="menu" aria-label="Mobile">
@@ -65,6 +75,10 @@
    <p>Sunglasses for late nights and the moments that follow. Every pair hides a tiny spoon at the end of each arm. You know what it's for. The salt. Obviously.</p>
    <div class="cue"><i></i>Scroll</div>
   </div>
+  <div class="hero-buy">
+   <a class="btn" href="#shop" id="heroShop">Shop the drop, $55 <span aria-hidden="true">&rarr;</span></a>
+   <span class="hero-proof"><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>4.9 from 1,128 reviews</span>
+  </div>
   <div class="swatches" role="group" aria-label="Frame colour">
    <button data-colour="0" aria-pressed="true" style="--c:#f3ddd6"><span class="sr">Coco Chanel</span></button>
    <button data-colour="1" aria-pressed="false" style="--c:#9e1522"><span class="sr">Cherry Groovers</span></button>
@@ -74,6 +88,11 @@
   </div>
  </section>
 
+
+ <div class="proof" aria-label="Why BLVD"><div class="proof-in">
+  <span>Every frame $55</span><span>Spoon included</span><span>Free US shipping over $50</span><span>30 day returns</span><span>100% UV protection</span><span>4.9 from 1,128 reviews</span>
+  <span aria-hidden="true">Every frame $55</span><span aria-hidden="true">Spoon included</span><span aria-hidden="true">Free US shipping over $50</span><span aria-hidden="true">30 day returns</span><span aria-hidden="true">100% UV protection</span><span aria-hidden="true">4.9 from 1,128 reviews</span>
+ </div></div>
  <section class="intro" aria-label="About the frames">
   <p class="statement" id="statement">Built heavy. Priced light. Every frame is <em>$55</em> and finished with a detail nobody asked for and everybody asks about.</p>
   <p class="intro-side"><span class="eyebrow">Fig. 01</span><br><br>Cellulose, acetate and polycarbonate frames. CR‑39, polarized or blue light lenses. The slogan is engraved inside the arm, where only you and your bartender will see it.</p>
@@ -134,6 +153,34 @@
   </ol>
  </section>
 
+ <section class="revs" id="reviews" aria-label="Reviews">
+  <div class="revs-head">
+   <h2>Word on <em>the boulevard</em></h2>
+   <div class="score"><b>4.9</b><small><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br>from 1,128 verified reviews</small></div>
+  </div>
+  <div class="rev-grid">
+   <figure class="rev"><q>Best shades ever! Ordered them on a Thursday, came Monday. Extremely fast shipping, super cheap. 10/10!</q><footer><span>Verified buyer</span><span>&#9733;&#9733;&#9733;&#9733;&#9733;</span></footer></figure>
+   <figure class="rev"><q>Exceeded any expectations of quality.</q><footer><span>Verified buyer</span><span>&#9733;&#9733;&#9733;&#9733;&#9733;</span></footer></figure>
+   <figure class="rev"><q>Another solid pair. By far the best frame if you have a bigger head.</q><footer><span>Verified buyer</span><span>&#9733;&#9733;&#9733;&#9733;&#9733;</span></footer></figure>
+  </div>
+  <p class="demo-note">Quotes from the BLVD Frames reviews page</p>
+ </section>
+
+ <section class="faqs" id="faq" aria-label="Questions">
+  <div class="faqs-h">
+   <h2>Asked <em>a lot</em></h2>
+   <p>Everything people DM us about, minus the stuff we can't print.</p>
+   <address>BLVD Frames<br>8500 Balboa Blvd, Suite 101<br>Northridge, CA 91325<br><a href="mailto:support@blvdframes.com">support@blvdframes.com</a></address>
+  </div>
+  <div class="faq-list">
+   <details open><summary>What is the spoon for?</summary><p>Every pair has a small spoon built into the end of each arm. Officially it is for a pinch of salt before the tequila. We are sticking to that.</p></details>
+   <details><summary>How much is a pair?</summary><p>$55. Every frame, every colour. Spoon tips, engraved slogan and a collapsible pocket case are all included.</p></details>
+   <details><summary>Do you ship for free?</summary><p>Free standard US shipping on orders of $50 and up, so one pair ships free. Orders below $50 are $4.99. International rates show at checkout.</p></details>
+   <details><summary>What if they don't suit me?</summary><p>You have 30 days from delivery. Keep them unworn in the original packaging and email support@blvdframes.com; we send a return label.</p></details>
+   <details><summary>Are the lenses any good?</summary><p>CR-39, polarized or blue light blocking, all with 100% UV protection. Cheap price, not cheap lenses.</p></details>
+  </div>
+ </section>
+
  <section class="outro" aria-label="Shop everything">
   <div class="outro-in">
    <span class="eyebrow">See you at the bar</span>
@@ -154,10 +201,26 @@
    <h3 id="qvTitle"></h3>
    <div class="qv-price">$55.00 USD</div>
    <ul id="qvList"></ul>
-   <a class="btn" id="qvBuy" href="#" data-tx>Add to bag on BLVD <span aria-hidden="true">→</span></a>
+   <a class="btn" id="qvBuy" href="#" data-tx>Add to bag <span aria-hidden="true">→</span></a>
   </div>
  </div>
 </div>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+ <div class="drawer-bg" data-drawer-close></div>
+ <aside class="drawer-box" role="dialog" aria-modal="true" aria-labelledby="bagTitle">
+  <div class="drawer-top"><h3 id="bagTitle">Your bag</h3><button class="drawer-x" data-drawer-close aria-label="Close bag">&#10005;</button></div>
+  <div class="ship"><span id="shipTxt">Free US shipping on orders over $50</span><i><b id="shipBar"></b></i></div>
+  <div class="lines" id="lines" aria-live="polite"></div>
+  <div class="drawer-foot" id="drawerFoot" hidden>
+   <div class="tot"><span>Subtotal</span><b id="subTot">$0</b></div>
+   <button class="btn" id="checkout">Checkout <span aria-hidden="true">&rarr;</span></button>
+   <small>Demo checkout. Nothing is charged.</small>
+  </div>
+ </aside>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<nav class="mcta" id="mcta" aria-label="Quick shop"><button data-bag-open aria-label="Open bag">Bag <b data-bag-count style="background:var(--crim);border-radius:99px;min-width:20px;height:20px;display:inline-grid;place-items:center;letter-spacing:0;font-size:11px">0</b></button><a href="#shop">Shop, $55</a></nav>
 
 <footer class="foot">
  <span>© 2026 BLVD Frames, Northridge CA</span>
@@ -177,6 +240,7 @@
 <script src="assets/ScrollTrigger.min.js" defer></script>
 <script src="assets/lenis.min.js" defer></script>
 <script type="module" src="assets/js/main.js"></script>
+<script src="assets/js/storefront.js" defer></script>
 <script src="/assets/showcase/td-kit.js" defer></script>
 </body>
 </html>
