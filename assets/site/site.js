@@ -86,7 +86,7 @@
   ['trade', 'style'].forEach(g => $(g).addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b || b.getAttribute('aria-checked') === 'true') return;
     $(g).querySelectorAll('button').forEach(x => x.setAttribute('aria-checked', x === b)); st[g] = b.dataset.v;
-    d.startViewTransition && !reduce ? d.startViewTransition(apply) : apply();
+    if (reduce) return apply(); site.classList.add('swap'); clearTimeout(site._t); site._t = setTimeout(() => { apply(); site.classList.remove('swap'); }, 180);
   }));
 
   /* tender assistant demo */
