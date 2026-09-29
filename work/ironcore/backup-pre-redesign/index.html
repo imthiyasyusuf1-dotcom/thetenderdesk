@@ -16,14 +16,13 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c8ff2e'/%3E%3Cpath d='M7 12h3v8H7zm15 0h3v8h-3zM10 15h12v2H10z' fill='%230b0b0c'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/u10.jpg">
 <link rel="stylesheet" href="styles.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":["ExerciseGym","LocalBusiness"],"name":"IronCore Fitness (demo)","description":"Fictional demo gym website built by The Tender Desk: strength gym, coached classes and personal training.","url":"https://thetenderdesk.co.uk/work/ironcore/","image":"https://thetenderdesk.co.uk/work/ironcore/img/u10.jpg","telephone":"+44 1234 567890","priceRange":"££","address":{"@type":"PostalAddress","streetAddress":"Unit 4, Foundry Yard","addressLocality":"Anytown","postalCode":"AB1 2CD","addressCountry":"GB"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}],"amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Free parking","value":true},{"@type":"LocationFeatureSpecification","name":"Showers","value":true}],"makesOffer":[{"@type":"Offer","name":"Free 7-day trial","price":"0","priceCurrency":"GBP"}]}
+{"@context":"https://schema.org","@type":"ExerciseGym","name":"IronCore Fitness (demo)","description":"Fictional demo gym website built by The Tender Desk.","url":"https://thetenderdesk.co.uk/work/ironcore/","openingHours":"Mo-Su 00:00-23:59","priceRange":"££"}
 </script>
 <link rel="stylesheet" href="fx.css">
-<link rel="stylesheet" href="v3.css?v=1">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -48,27 +47,24 @@
 </header>
 
 <main id="main">
-<section class="hero v3hero" aria-labelledby="hero-h">
-  <div class="wrap v3hero-grid">
-    <div class="v3hero-copy">
-      <p class="eyebrow"><span class="live-dot" id="livedot"></span><span id="livetext">Open 24/7 · Staffed 6am to 10pm</span></p>
-      <h1 id="hero-h"><span class="line">Built different.</span><span class="line"><span class="outline">Trained</span> <span class="volt">properly.</span></span></h1>
-      <p class="lead">A strength-first gym with coached classes, real programming and people who notice when you don't show up.</p>
-      <div class="hero-ctas">
-        <a href="#trial" class="btn btn-volt btn-lg">Claim your free week <span aria-hidden="true">→</span></a>
-        <button class="btn btn-ghost btn-lg" data-open-chat>Ask the assistant</button>
-      </div>
-      <ul class="v3trust" aria-label="Highlights"><li><b>£0</b> joining fee</li><li><b>No card</b> for the trial</li><li><b>30-day</b> rolling</li></ul>
+<section class="hero" aria-labelledby="hero-h">
+  <img class="hero-bg" src="img/u10.jpg" alt="" fetchpriority="high">
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <p class="eyebrow"><span class="live-dot" id="livedot"></span><span id="livetext">Open 24/7 · Staffed 6am to 10pm</span></p>
+    <h1 id="hero-h"><span class="line">Built different.</span><span class="line"><span class="outline">Trained</span> <span class="volt">properly.</span></span></h1>
+    <p class="lead">A strength-first gym with coached classes, real programming and people who notice when you don't show up. No mirrors-and-treadmills filler.</p>
+    <div class="hero-ctas">
+      <a href="#trial" class="btn btn-volt btn-lg">Claim your free week <span aria-hidden="true">→</span></a>
+      <button class="btn btn-ghost btn-lg" data-open-chat>Ask the assistant</button>
     </div>
-    <div class="v3hero-media">
-      <figure class="v3shot"><img class="hero-bg" src="img/u10.jpg" alt="Member training on the gym floor at IronCore" fetchpriority="high" width="1200" height="1800"></figure>
-      <a class="nextcls" id="nextcls" href="#timetable" hidden><i id="ncIn">in 42 min</i><span id="ncTxt">Next class</span></a>
-      <dl class="stats">
-        <div><dt>Members</dt><dd><span data-count="1240">0</span>+</dd></div>
-        <div><dt>Classes / week</dt><dd><span data-count="62">0</span></dd></div>
-        <div><dt>Racks</dt><dd><span data-count="14">0</span></dd></div>
-      </dl>
-    </div>
+    <a class="nextcls" id="nextcls" href="#timetable" hidden><i id="ncIn">in 42 min</i><span id="ncTxt">Next class</span></a>
+    <dl class="stats">
+      <div><dt>Members</dt><dd><span data-count="1240">0</span>+</dd></div>
+      <div><dt>Classes a week</dt><dd><span data-count="62">0</span></dd></div>
+      <div><dt>Racks &amp; platforms</dt><dd><span data-count="14">0</span></dd></div>
+      <div><dt>Joining fee</dt><dd>£0</dd></div>
+    </dl>
   </div>
   <div class="ticker" aria-hidden="true"><div class="ticker-track">
     <span>STRENGTH</span><i>✦</i><span>CONDITIONING</span><i>✦</i><span>HYROX PREP</span><i>✦</i><span>OLYMPIC LIFTING</span><i>✦</i><span>MOBILITY</span><i>✦</i><span>PERSONAL TRAINING</span><i>✦</i>
@@ -76,27 +72,10 @@
   </div></div>
 </section>
 
-<section class="section v3why" aria-labelledby="why-h">
-  <div class="wrap">
-    <div class="sec-head reveal"><p class="kicker">Why IronCore</p><h2 id="why-h">Less gym. <span class="volt">More coaching.</span></h2></div>
-    <div class="bento">
-      <article class="b b-big"><img src="img/u6.jpg" alt="Loaded barbell on a lifting platform" loading="lazy" width="1200" height="800"><div class="b-txt"><span class="num">01</span><h3>Program, not guesswork</h3><p>Every member gets a 12-week plan at induction, reviewed every month.</p></div></article>
-      <article class="b"><span class="num">02</span><h3>Serious kit</h3><p>14 racks and platforms, calibrated plates, a 40m turf lane, sleds, rowers and SkiErgs.</p></article>
-      <article class="b b-volt"><span class="num">03</span><h3>Coaches on the floor</h3><p>Qualified coaches on the gym floor every staffed hour, at no extra cost.</p></article>
-      <article class="b b-wide"><span class="num">04</span><h3>Beginners welcome</h3><p>About a third of members had never touched a barbell. Nobody is left to figure it out alone.</p></article>
-    </div>
-  </div>
-</section>
-
-<section class="section v3steps" aria-labelledby="steps-h">
-  <div class="wrap">
-    <div class="sec-head reveal"><p class="kicker">Your first week</p><h2 id="steps-h">Three steps. <span class="volt">Zero awkward.</span></h2></div>
-    <ol class="steps">
-      <li><b>1</b><h3>Book a free session</h3><p>Pick a day and time below. No card, no sales pitch.</p></li>
-      <li><b>2</b><h3>Meet your coach</h3><p>A 1:1 induction: goals, injuries, a tour and your first lifts.</p></li>
-      <li><b>3</b><h3>Train for 7 days</h3><p>Full gym and class access. Decide at the end, or just walk away.</p></li>
-    </ol>
-  </div>
+<section class="pillars wrap" aria-label="Why IronCore">
+  <article class="pillar reveal"><span class="num">01</span><h2>Program, not guesswork</h2><p>Every member gets a 12-week plan built at induction and reviewed every month.</p></article>
+  <article class="pillar reveal"><span class="num">02</span><h2>Serious kit</h2><p>14 racks and platforms, calibrated plates, a 40m turf lane, sleds, rowers and SkiErgs.</p></article>
+  <article class="pillar reveal"><span class="num">03</span><h2>Coaches on the floor</h2><p>Qualified coaches are on the gym floor every staffed hour, at no extra cost.</p></article>
 </section>
 
 <section id="memberships" class="section" aria-labelledby="mem-h">
@@ -239,17 +218,6 @@
   </div>
 </section>
 
-<section class="section v3rev" aria-labelledby="rev-h">
-  <div class="wrap">
-    <div class="sec-head reveal"><p class="kicker">Member voices</p><h2 id="rev-h">What people say.</h2><p class="sec-note">Sample reviews for this demo.</p></div>
-    <div class="revs">
-      <figure class="rev"><p class="stars" aria-label="5 out of 5">★★★★★</p><blockquote>“First gym where a coach actually remembered my name and my squat numbers.”</blockquote><figcaption>Sample member · Core</figcaption></figure>
-      <figure class="rev"><p class="stars" aria-label="5 out of 5">★★★★★</p><blockquote>“Clean, never rammed at 6am, and the racks are always free. Worth every penny.”</blockquote><figcaption>Sample member · Off-Peak</figcaption></figure>
-      <figure class="rev"><p class="stars" aria-label="5 out of 5">★★★★★</p><blockquote>“Came back after a knee op. Dev built the plan around it and I'm lifting again.”</blockquote><figcaption>Sample member · Coached</figcaption></figure>
-    </div>
-  </div>
-</section>
-
 <section id="faq" class="section" aria-labelledby="faq-h">
   <div class="wrap faq-wrap">
     <div class="sec-head reveal">
@@ -298,13 +266,6 @@
     </div>
   </div>
 </section>
-<section class="v3local" aria-labelledby="local-h">
-  <div class="wrap">
-    <h2 id="local-h">Strength gym in Anytown</h2>
-    <div><p>IronCore Fitness is a 24/7 strength and conditioning gym in Foundry Yard, six minutes' walk from Anytown station, with free parking for 40 cars. We offer coached classes, personal training, HYROX prep and Olympic lifting for beginners and experienced lifters across Anytown and the surrounding villages.</p>
-    <ul aria-label="Areas we serve"><li>Anytown centre</li><li>Foundry Yard</li><li>Station Quarter</li><li>Northfield</li><li>Riverside</li></ul></div>
-  </div>
-</section>
 </main>
 
 <footer class="footer">
@@ -338,7 +299,6 @@
 <script src="app.js" defer></script>
 <div class="fx-bar" id="fxBar" aria-hidden="true"><a class="b1" href="#trial">Free week</a><a class="b2" href="#timetable">Classes</a></div>
 <script src="fx.js" defer></script>
-<script src="v3.js?v=1" defer></script>
 <script src="/assets/showcase/td-kit.js" defer></script>
 </body>
 </html>
