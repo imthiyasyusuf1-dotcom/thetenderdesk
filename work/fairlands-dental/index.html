@@ -45,7 +45,7 @@ em{font-style:italic;color:var(--ink2)}
 
 /* hero */
 .hero{position:relative;min-height:100svh;display:grid;align-items:end;padding:120px 0 7vh;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:5vw;align-items:end}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:5vw;align-items:end}
 .hero h1{font-size:var(--s1)}
 .hero h1 .ln{display:block;overflow:hidden}.hero h1 .ln>span{display:inline-block;transform:translateY(105%);transition:transform 1.2s var(--ease)}
 .loaded .hero h1 .ln>span{transform:none}.hero h1 .ln:nth-child(2)>span{transition-delay:.1s}.hero h1 .ln:nth-child(3)>span{transition-delay:.2s}
