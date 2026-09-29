@@ -75,9 +75,9 @@
 
   /* website builder demo */
   const DATA = {
-    barber: { n: 'Fade House', k: 'Aldershot barbers', h: 'Sharp fades. No waiting.', s: 'Walk ins and online booking, 7 days a week.', r: '4.9 from 212 Google reviews', b: 'Book a chair' },
-    plumber: { n: 'FlowRight', k: '24/7 emergency plumber', h: 'Burst pipe? We are on the way.', s: 'Gas Safe engineers across Aldershot and Farnborough.', r: '4.8 from 164 Google reviews', b: 'Call out now' },
-    dentist: { n: 'Fairlands Dental', k: 'Private dentist, Guildford', h: 'Calm, modern dentistry.', s: 'Implants, hygiene and check ups. New patients welcome.', r: '5.0 from 98 Google reviews', b: 'Book a consultation' },
+    barber: { n: 'Fade House', k: 'Barbers', h: 'Sharp fades. No waiting.', s: 'Walk ins and online booking, 7 days a week.', r: '4.9 from 212 Google reviews', b: 'Book a chair' },
+    plumber: { n: 'FlowRight', k: '24/7 emergency plumber', h: 'Burst pipe? We are on the way.', s: 'Certified engineers, day and night, across the city.', r: '4.8 from 164 Google reviews', b: 'Call out now' },
+    dentist: { n: 'Fairlands Dental', k: 'Private dental clinic', h: 'Calm, modern dentistry.', s: 'Implants, hygiene and check ups. New patients welcome.', r: '5.0 from 98 Google reviews', b: 'Book a consultation' },
     bakery: { n: 'Rise & Crust', k: 'Sourdough bakery', h: 'Slow sourdough, baked at dawn.', s: 'Order by 8pm, collect warm the next morning.', r: '4.9 from 301 Google reviews', b: 'Order for collection' },
   };
   if (!$('site')) return;
