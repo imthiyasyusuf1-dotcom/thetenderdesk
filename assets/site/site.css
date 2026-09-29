@@ -240,7 +240,7 @@ textarea:focus{outline:2px solid var(--accent);outline-offset:0;border-color:tra
 .st-end .btn{margin-top:18px}
 .st-end p{margin-top:0!important}
 .st-end{justify-content:flex-end;padding-bottom:12vh}
-.kicker.dark{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#bdb6ab;align-self:flex-start}
+.kicker.dark{background:rgba(11,11,12,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(255,255,255,.12);color:#bdb6ab;align-self:flex-start}
 .btn-ghost{border:1px solid rgba(255,255,255,.22);color:#fff;background:rgba(255,255,255,.04);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .story-prog{position:sticky;top:calc(100svh - 40px);display:flex;gap:6px;justify-content:center;height:0}
 .story-prog i{width:26px;height:3px;border-radius:2px;background:rgba(255,255,255,.18);margin-top:-20px}

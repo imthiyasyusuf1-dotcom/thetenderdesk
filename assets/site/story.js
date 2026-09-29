@@ -1,11 +1,16 @@
 // The Tender Desk: cinematic particle story. Particles morph through the three services as you scroll.
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 const story = document.getElementById('story');
 const canvas = document.getElementById('story-gl');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const small = innerWidth < 760;
-const N = small ? 14000 : 36000;
+const N = small ? 26000 : 90000;
 
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: 'high-performance' });
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
@@ -84,13 +89,14 @@ const rnd = new Float32Array(N * 3); for (let i = 0; i < N * 3; i++) rnd[i] = Ma
 geo.setAttribute('position', aFrom); geo.setAttribute('aTo', aTo); geo.setAttribute('aRnd', new THREE.BufferAttribute(rnd, 3));
 const U = {
   uMix: { value: 0 }, uTime: { value: 0 }, uMouse: { value: new THREE.Vector3(99, 99, 0) }, uPR: { value: renderer.getPixelRatio() },
-  uSize: { value: small ? 2.3 : 2.0 }, uColA: { value: new THREE.Color('#ff5b2e') }, uColB: { value: new THREE.Color('#ffd9c2') }, uHot: { value: 0 },
+  uSize: { value: small ? 1.9 : 1.35 }, uColA: { value: new THREE.Color('#ff5b2e') }, uColB: { value: new THREE.Color('#ffd9c2') }, uColC: { value: new THREE.Color('#7fd1ff') }, uHot: { value: 0 }, uShock: { value: 1 }, uAlpha: { value: .5 }, uShockP: { value: new THREE.Vector3() },
 };
 const mat = new THREE.ShaderMaterial({
   uniforms: U, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
   vertexShader: `
     attribute vec3 aTo; attribute vec3 aRnd;
-    uniform float uMix,uTime,uPR,uSize,uHot; uniform vec3 uMouse;
+    uniform float uMix,uTime,uPR,uSize,uHot,uShock; uniform vec3 uMouse,uShockP;
+    vec3 flow(vec3 p,float t){return vec3(sin(p.y*1.7+t)+cos(p.z*1.3-t*.7),sin(p.z*1.5+t*.8)+cos(p.x*1.9+t*.5),sin(p.x*1.3-t*.6)+cos(p.y*1.1+t));}
     varying float vA; varying float vC;
     void main(){
       float d = clamp((uMix - aRnd.x*.35)/.65, 0., 1.);
@@ -100,6 +106,11 @@ const mat = new THREE.ShaderMaterial({
       float fly = sin(e*3.14159);
       p += (aRnd - .5) * fly * 3.2;
       p.z += fly * (aRnd.y - .3) * 4.;
+      // flow field turbulence, strongest mid-morph
+      p += flow(p*.6+aRnd*2., uTime*.5) * (.03 + fly*.55);
+      // click shockwave ring
+      float sd = length(p.xy-uShockP.xy); float ring = exp(-pow((sd-uShock*9.)*1.6,2.)) * (1.-uShock);
+      p += vec3(normalize(p.xy-uShockP.xy+1e-4),.8) * ring * 1.4;
       // idle drift
       p += .035*vec3(sin(uTime*.9+aRnd.x*40.), cos(uTime*.8+aRnd.y*40.), sin(uTime*.7+aRnd.z*40.));
       // mouse repel
@@ -109,17 +120,42 @@ const mat = new THREE.ShaderMaterial({
       vec4 mv = modelViewMatrix * vec4(p,1.);
       gl_Position = projectionMatrix * mv;
       gl_PointSize = uSize * uPR * (1. + aRnd.z*1.4 + uHot*.6) * (11. / -mv.z);
-      vA = .55 + aRnd.y*.45; vC = aRnd.z;
+      vA = (.55 + aRnd.y*.45) * (1. + ring*2.); vC = aRnd.z + fly*.6 + ring;
     }`,
   fragmentShader: `
-    uniform vec3 uColA,uColB; varying float vA; varying float vC;
+    uniform float uAlpha; uniform vec3 uColA,uColB,uColC; varying float vA; varying float vC;
     void main(){
       vec2 c = gl_PointCoord - .5; float r = length(c);
       float a = smoothstep(.5,.0,r);
-      gl_FragColor = vec4(mix(uColA,uColB,vC*vC), a*vA*.9);
+      vec3 col = mix(uColA,uColB,clamp(vC*vC,0.,1.)); col = mix(col,uColC,clamp(vC-1.,0.,1.)); gl_FragColor = vec4(col, a*vA*uAlpha);
     }`,
 });
 const points = new THREE.Points(geo, mat); scene.add(points);
+
+// post: bloom + chromatic aberration + vignette + film grain
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), .8, .55, .35);
+composer.addPass(bloom);
+const lens = new ShaderPass({
+  uniforms: { tDiffuse: { value: null }, uAb: { value: .0015 }, uTime: { value: 0 } },
+  vertexShader: 'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+  fragmentShader: `uniform sampler2D tDiffuse;uniform float uAb,uTime;varying vec2 vUv;
+    float h(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233))+uTime)*43758.5453);}
+    void main(){vec2 d=vUv-.5;float r=dot(d,d);vec2 o=d*uAb*(1.+r*8.);
+      vec3 c=vec3(texture2D(tDiffuse,vUv+o).r,texture2D(tDiffuse,vUv).g,texture2D(tDiffuse,vUv-o).b);
+      c*=1.-r*1.2; c=max(c-vec3(.035),0.)*1.04; c+=(h(vUv*1000.)-.5)*.035; gl_FragColor=vec4(c,1.);}`,
+});
+composer.addPass(lens);
+composer.addPass(new OutputPass());
+
+// palettes per chapter: ember, electric, gold, aurora, ember
+const PAL = [['#ff5b2e','#ffd9c2','#7fd1ff'],['#3d7bff','#bfe4ff','#ff5b2e'],['#ffb020','#fff1c9','#ff5b2e'],['#19e3b1','#c9fff0','#8a6bff'],['#ff5b2e','#ffe2d4','#ffffff']].map(a=>a.map(c=>new THREE.Color(c)));
+const tmpC = new THREE.Color();
+
+// click / tap shockwave
+addEventListener('pointerdown', e => { if (!visible || e.target.closest('a,button')) return; const v = new THREE.Vector2(e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight) * 2 + 1); ray.setFromCamera(v, camera); const hit = new THREE.Vector3(); if (ray.ray.intersectPlane(plane, hit)) { hit.sub(points.position).divideScalar(points.scale.x); U.uShockP.value.copy(hit); U.uShock.value = 0; } });
+
 
 // faint dust backdrop
 const dustN = small ? 600 : 1500, dp = new Float32Array(dustN * 3);
@@ -140,8 +176,8 @@ addEventListener('pointermove', e => { mouse.set(e.clientX / innerWidth * 2 - 1,
 addEventListener('pointerleave', () => mouse.set(9, 9));
 addEventListener('touchend', () => setTimeout(() => mouse.set(9, 9), 300));
 
-function resize() { const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.fov = w / h < .8 ? 58 : 40; camera.updateProjectionMatrix(); }
-addEventListener('resize', resize); resize();
+function resize() { const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false); composer && composer.setSize(w, h); bloom && bloom.resolution.set(w, h); camera.aspect = w / h; camera.fov = w / h < .8 ? 58 : 40; camera.updateProjectionMatrix(); }
+addEventListener('resize', resize);
 
 let visible = true, sp = 0, t0 = performance.now(), active = -1;
 new IntersectionObserver(([e]) => visible = e.isIntersecting).observe(story);
@@ -171,10 +207,23 @@ function frame(now) {
   points.position.y += ((small ? (active === 0 ? 3.4 : active === 4 ? 1.2 : 1.6) : (active === 4 ? .5 : 0)) - points.position.y) * .06;
   const sc = small && active === 0 ? .62 : 1; points.scale.setScalar(points.scale.x + (sc - points.scale.x) * .06);
   dust.rotation.y = t * .01;
-  renderer.render(scene, camera);
+  // palette blend between chapters
+  const pa = PAL[i], pb = PAL[i + 1];
+  ['uColA','uColB','uColC'].forEach((u, j) => U[u].value.copy(tmpC.copy(pa[j]).lerp(pb[j], m)));
+  U.uShock.value = Math.min(1, U.uShock.value + .012);
+  // camera dolly: pushes in during morphs, slight orbit with mouse
+  camera.position.z += ((small ? 12 : 11) - U.uHot.value * 2.2 - camera.position.z) * .08;
+  camera.position.x += (mouse.x < 5 ? mouse.x * .8 : 0) - camera.position.x * .05;
+  camera.position.y += (mouse.y < 5 ? mouse.y * .5 : 0) - camera.position.y * .05;
+  camera.lookAt(points.position.x * .3, points.position.y * .3, 0);
+  lens.uniforms.uAb.value = .0012 + U.uHot.value * .006;
+  lens.uniforms.uTime.value = t;
+  bloom.strength = (small ? .55 : .75) + U.uHot.value * .6;
+  const dens = [.55, .42, .36, .42, .16]; U.uAlpha.value = dens[i] + (dens[i + 1] - dens[i]) * m;
+  composer.render();
 }
 
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
-  build(); setPair(0, 1); requestAnimationFrame(frame);
+  build(); setPair(0, 1); resize(); requestAnimationFrame(frame);
   requestAnimationFrame(() => document.documentElement.classList.add('gl-ready'));
 });
