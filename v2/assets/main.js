@@ -46,7 +46,7 @@ if (gl) {
   ['R', 'T', 'S', 'C', 'M'].forEach(k => U[k] = gl.getUniformLocation(prog, k));
 }
 // render at reduced internal resolution; shader is soft so it scales cleanly
-const SCALE = mobile ? .45 : .6;
+let SCALE = mobile ? .45 : .6;
 function resize() { const w = innerWidth, h = innerHeight; canvas.width = Math.round(w * SCALE); canvas.height = Math.round(h * SCALE); gl && gl.viewport(0, 0, canvas.width, canvas.height); }
 resize(); addEventListener('resize', resize);
 
@@ -68,7 +68,7 @@ let frames = 0, last = performance.now(), t0 = last, visible = true;
 document.addEventListener('visibilitychange', () => visible = !document.hidden);
 function loop(now) {
   requestAnimationFrame(loop);
-  frames++; if (now - last >= 500) { fpsEl.textContent = Math.min(120, Math.round(frames * 1000 / (now - last))); frames = 0; last = now; }
+  frames++; if (now - last >= 500) { const fps = Math.round(frames * 1000 / (now - last)); fpsEl.textContent = Math.min(120, fps); frames = 0; last = now; if (fps < 50 && SCALE > .3 && now - t0 > 1500) { SCALE = Math.max(.3, SCALE * .8); resize(); } }
   if (!gl || !visible) return;
   mouse.sx += (mouse.x - mouse.sx) * .06; mouse.sy += (mouse.y - mouse.sy) * .06;
   Cs += (C - Cs) * .04;
