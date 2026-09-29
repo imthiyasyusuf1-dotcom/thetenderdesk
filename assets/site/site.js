@@ -10,7 +10,7 @@
     ticking = false;
     const y = scrollY;
     nav.classList.toggle('solid', y > 20);
-    const cTop = contact.getBoundingClientRect().top;
+    const cTop = contact && !contact.hidden ? contact.getBoundingClientRect().top : 1e9;
     mcta.classList.toggle('show', y > innerHeight * .6 && cTop > innerHeight * .9);
   };
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
@@ -27,13 +27,13 @@
     }), { threshold: .08, rootMargin: '0px 0px -40px 0px' });
     els.forEach(el => io.observe(el));
     // safety net: never leave content hidden if it was scrolled past quickly
-    const sweep = () => els.forEach(el => { if (!el.classList.contains('in') && el.getBoundingClientRect().top < innerHeight) { el.classList.add('in'); io.unobserve(el); } });
+    const sweep = () => els.forEach(el => { if (!el.classList.contains('in') && el.getBoundingClientRect().top < innerHeight * .95) { el.classList.add('in'); io.unobserve(el); } });
     addEventListener('scroll', () => requestAnimationFrame(sweep), { passive: true }); setTimeout(sweep, 2500);
   } else els.forEach(el => el.classList.add('in'));
 
   /* hero shader: soft warm gradient mesh, pauses off screen, low res, respects battery */
   const cv = $('hero-gl');
-  const gl = !reduce && cv.getContext('webgl', { antialias: false, alpha: true, premultipliedAlpha: false, powerPreference: 'low-power' });
+  const gl = cv && !reduce && cv.getContext('webgl', { antialias: false, alpha: true, premultipliedAlpha: false, powerPreference: 'low-power' });
   if (gl) {
     const vs = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
     const fs = `precision mediump float;uniform vec2 R;uniform float T;uniform vec2 M;
@@ -80,6 +80,7 @@
     dentist: { n: 'Fairlands Dental', k: 'Private dentist, Guildford', h: 'Calm, modern dentistry.', s: 'Implants, hygiene and check ups. New patients welcome.', r: '5.0 from 98 Google reviews', b: 'Book a consultation' },
     bakery: { n: 'Rise & Crust', k: 'Sourdough bakery', h: 'Slow sourdough, baked at dawn.', s: 'Order by 8pm, collect warm the next morning.', r: '4.9 from 301 Google reviews', b: 'Order for collection' },
   };
+  if (!$('site')) return;
   const site = $('site'), st = { trade: 'barber', style: 'bold' };
   const apply = () => { const x = DATA[st.trade]; site.dataset.style = st.style; $('sName').textContent = x.n; $('sK').textContent = x.k; $('sHead').textContent = x.h; $('sSub').textContent = x.s; $('sRev').textContent = x.r; $('sBtn').textContent = x.b; };
   ['trade', 'style'].forEach(g => $(g).addEventListener('click', e => {
