@@ -31,13 +31,13 @@
   });
 
   // Postcode checker
-  const AREAS = {GU9:1,GU10:1,GU11:1,GU12:1,GU14:1,GU15:1,GU16:1,GU46:1,GU51:1,GU52:1,RG27:1};
+  const AREAS = {GU9:1,GU10:1,your area:1,GU12:1,GU14:1,GU15:1,GU16:1,GU46:1,GU51:1,GU52:1,RG27:1};
   const outward = v => (v || '').toUpperCase().replace(/\s+/g, '').replace(/\d[A-Z]{2}$/, '').match(/^[A-Z]{1,2}\d{1,2}[A-Z]?/)?.[0] || '';
   const checkPc = v => { const o = outward(v); return {o, town: AREAS[o]}; };
   $('#pcForm').addEventListener('submit', e => {
     e.preventDefault();
     const out = $('#pcOut'), {o, town} = checkPc($('#pc').value);
-    if (!o) { out.className = 'pc-out no'; out.textContent = 'Please enter a UK postcode, e.g. GU11 1AA.'; return; }
+    if (!o) { out.className = 'pc-out no'; out.textContent = 'Please enter a UK postcode, e.g. your area 1AA.'; return; }
     if (town) { out.className = 'pc-out ok'; out.textContent = `✓ Yes, we cover ${o}. Typical emergency arrival: under 60 min.`; }
     else { out.className = 'pc-out no'; out.textContent = `${o} is outside our core area, but call us: we often travel for planned work.`; }
   });
@@ -134,7 +134,7 @@
       }
       case 'postcode': {
         const {o, town} = checkPc(v);
-        if (!o) return bot('That doesn\'t look like a UK postcode. Try something like <b>GU11 1AA</b>.');
+        if (!o) return bot('That doesn\'t look like a UK postcode. Try something like <b>your area 1AA</b>.');
         lead.postcode = v.toUpperCase(); lead.town = town;
         if (!town) await bot(`${esc(o)} is just outside our core area, but I'll pass it on: we often travel for planned jobs.`, {delay:500});
         else await bot(`✓ ${esc(o)} is in our area.`, {delay:450});
