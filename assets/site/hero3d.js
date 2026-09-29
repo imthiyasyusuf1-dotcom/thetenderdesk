@@ -30,7 +30,7 @@ scene.add(key, new THREE.AmbientLight('#ffffff', .25));
 
 // shadow catcher floor
 const floor = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), new THREE.ShadowMaterial({ opacity: .12 }));
-floor.rotation.x = -Math.PI / 2; floor.position.y = -5.2; floor.receiveShadow = true; scene.add(floor);
+floor.rotation.x = -Math.PI / 2; floor.position.y = -5.2; floor.receiveShadow = true; if (!small) scene.add(floor);
 
 // ---------- materials ----------
 const M = {
@@ -92,7 +92,7 @@ wrap.addEventListener('pointerdown', e => {
   bodies.forEach(b => { const d = b.mesh.position.clone().sub(hit); const l = Math.max(.6, d.length()); b.v.add(d.normalize().multiplyScalar(14 / (l * l) + .6)); b.spin.addScalar(rnd(-2, 2)); });
 });
 
-function resize() { const w = wrap.clientWidth, h = innerHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+function resize() { const w = canvas.clientWidth, h = canvas.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); }
 addEventListener('resize', resize); resize();
 
 // ---------- chapters ----------
