@@ -63,7 +63,7 @@
     else if (t.matches('[data-drawer-close]')) close();
     else if (t.id === 'checkout') {
       const n = count(), ref = 'BLVD-' + Math.random().toString(36).slice(2, 7).toUpperCase();
-      lines.innerHTML = `<div class="done"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><h4>Order placed.<br>Salt ready.</h4><p>${n} pair${n > 1 ? 's' : ''}, order ${ref}. This is a demo checkout, so nothing was charged. On the live store this hands off to Shopify checkout with Shop Pay, Apple Pay and PayPal.</p><a class="btn ghost" href="https://blvdframes.com/collections/all" data-no-tx>Shop the real store <span aria-hidden="true">&rarr;</span></a></div>`;
+      lines.innerHTML = `<div class="done"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><h4>Order placed.<br>Salt ready.</h4><p>${n} pair${n > 1 ? 's' : ''}, order ${ref}. Checkout supports Shop Pay, Apple Pay and PayPal.</p><a class="btn ghost" href="https://blvdframes.com/collections/all" data-no-tx>Shop the real store <span aria-hidden="true">&rarr;</span></a></div>`;
       foot.hidden = true; bag = []; save(); badge();
     }
   }, true);

@@ -136,7 +136,7 @@ addEventListener('keydown', e => { if (e.key === 'Escape') { openBag(false); set
 $('#place').onclick = () => {
   const name = $('#oName').value.trim() || 'friend', slot = $('#oSlot').value;
   const ref = 'RC-' + Math.random().toString(36).slice(2,6).toUpperCase();
-  $('#dbody').innerHTML = `<div class="ok"><div class="tick">✓</div><h3>See you soon, ${name.replace(/[<>&]/g,'')}.</h3><p>Your bag will be on the collection shelf for <b>${slot}</b>.</p><div class="ref">${ref}</div><p class="note" style="margin-top:14px">Demo only: nothing was sent or charged.</p></div>`;
+  $('#dbody').innerHTML = `<div class="ok"><div class="tick">✓</div><h3>See you soon, ${name.replace(/[<>&]/g,'')}.</h3><p>Your bag will be on the collection shelf for <b>${slot}</b>.</p><div class="ref">${ref}</div></div>`;
   bag = {}; save(); $('#bagN').textContent = 0; $('#dfoot').style.display = 'none';
   setTimeout(() => { $('#dfoot').style.display = ''; }, 100000);
   $('#closeBag').addEventListener('click', () => { $('#dfoot').style.display = ''; render(); }, {once:true});

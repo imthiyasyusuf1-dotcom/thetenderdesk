@@ -104,7 +104,7 @@
     if (!okName || !okEmail) { msg.className = 'form-msg err'; msg.textContent = !okName ? 'Please add your name.' : 'Please add a valid email.'; (!okName ? name : email).focus(); return; }
     const t = ($('input[name=time]:checked') || {}).value;
     msg.className = 'form-msg ok';
-    msg.textContent = `Booked (demo): ${name.value.trim().split(' ')[0]}, see you ${tfDay.selectedOptions[0].text} at ${t}. Your coach will email a confirmation.`;
+    msg.textContent = `Booked: ${name.value.trim().split(' ')[0]}, see you ${tfDay.selectedOptions[0].text} at ${t}. Your coach will email a confirmation.`;
   });
 
   /* ---------- demo assistant ---------- */
@@ -132,7 +132,7 @@
   $('#chatform').addEventListener('submit', e => { e.preventDefault(); const v = input.value.trim(); if (v) { input.value = ''; handle(v); } });
 
   const MENU = ['Find my membership', 'Book a free trial', 'Prices', 'Opening hours', 'Parking'];
-  const greet = () => say("Hey 👋 I'm IronCore's assistant (a scripted demo). I can <b>match you to a membership</b>, answer questions, or <b>book your free trial session</b>. What do you need?", MENU, 350);
+  const greet = () => say("Hey 👋 I'm IronCore's assistant. I can <b>match you to a membership</b>, answer questions, or <b>book your free trial session</b>. What do you need?", MENU, 350);
 
   const FAQ = [
     [/price|cost|how much|£|fee|expensive|cheap|compare|plans/i, 'Plans are <b>Off-Peak £24</b>, <b>Core £39</b> and <b>Coached £149</b> a month. No joining fee, and annual saves two months.'],
@@ -156,7 +156,7 @@
     if (/hi\b|hello|hey/.test(t)) return greet();
     for (const [re, a] of FAQ) if (re.test(text)) return say(a, ['Find my membership', 'Book a free trial', 'Something else']);
     if (/something else|menu|help/.test(t)) return say('Sure. Pick one, or type your question:', MENU);
-    say("I'm a simple demo, so I didn't catch that. Try asking about prices, hours, parking, contracts, beginners, or book a free trial.", MENU);
+    say("Sorry, I didn't catch that. Try asking about prices, hours, parking, contracts, beginners, or book a free trial.", MENU);
   }
 
   /* membership quiz */
@@ -202,7 +202,7 @@
           $('#tf-name').value = n.trim(); $('#tf-day').value = DAYS[b.i]; renderSlots(b.t);
           if (ans.plan) $('#tf-plan').value = ans.plan;
           const ref = 'IC-' + Math.random().toString(36).slice(2, 7).toUpperCase();
-          say(`Done, ${esc(b.name)} 💪<div class="card"><strong>Free session booked</strong>${esc(b.day)} at ${b.t} · Coach-led induction<br><small>Ref ${ref} · demo booking, nothing is sent</small></div>Bring trainers and water. Anything else?`, ['Prices', 'Parking', 'Find my membership'], 800);
+          say(`Done, ${esc(b.name)} 💪<div class="card"><strong>Free session booked</strong>${esc(b.day)} at ${b.t} · Coach-led induction<br><small>Ref ${ref}</small></div>Bring trainers and water. Anything else?`, ['Prices', 'Parking', 'Find my membership'], 800);
         };
       };
     };

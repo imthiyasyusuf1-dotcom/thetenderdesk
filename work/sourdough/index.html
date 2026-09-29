@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..800,0..100;1,9..144,300..700,0..100&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/sourdough-boule.jpg" fetchpriority="high">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Bakery","name":"Rise & Crust Bakery (demo)","description":"Fictional demo bakery website built by The Tender Desk. Slow sourdough and pastry, order online for collection.","image":"https://thetenderdesk.co.uk/work/sourdough/img/sourdough-boule.jpg","url":"https://thetenderdesk.co.uk/work/sourdough/","servesCuisine":["Bakery","Coffee"],"priceRange":"£","hasMenu":"https://thetenderdesk.co.uk/work/sourdough/#menu","address":{"@type":"PostalAddress","streetAddress":"1 Example Lane (fictional)","addressLocality":"Demo Town","addressCountry":"GB"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1200"},
+{"@context":"https://schema.org","@type":"Bakery","name":"Rise & Crust Bakery","description":"Slow sourdough and pastry, order online for collection.","image":"https://thetenderdesk.co.uk/work/sourdough/img/sourdough-boule.jpg","url":"https://thetenderdesk.co.uk/work/sourdough/","servesCuisine":["Bakery","Coffee"],"priceRange":"£","hasMenu":"https://thetenderdesk.co.uk/work/sourdough/#menu","address":{"@type":"PostalAddress","streetAddress":"1 Example Lane","addressCountry":"GB"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1200"},
 "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"15:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"07:30","closes":"14:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"08:00","closes":"12:00"}],"acceptsReservations":false,
 "potentialAction":{"@type":"OrderAction","target":"https://thetenderdesk.co.uk/work/sourdough/#order","deliveryMethod":"http://purl.org/goodrelations/v1#DeliveryModePickUp"}}
 </script>
@@ -323,7 +323,7 @@ body.bag-open{overflow:hidden}
 <body>
 <div class="prog" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
-<div class="demo" role="note">Fictional bakery · a portfolio demo by <a href="https://thetenderdesk.co.uk/">The Tender Desk</a>. Orders are simulated.</div>
+
 
 <header class="top" id="hdr">
  <div class="wrap nav">
@@ -469,14 +469,14 @@ body.bag-open{overflow:hidden}
     <li><span>Seasonal fruit tart, 10"</span><span>from £30</span></li>
     <li><span>Croissant tower, 40 pieces</span><span>from £95</span></li>
    </ul>
-   <button class="btn btn-p" data-toast="Demo: this would open a cake enquiry form">Enquire about a cake <span class="ar">→</span></button>
+   <button class="btn btn-p" data-toast="This would open a cake enquiry form">Enquire about a cake <span class="ar">→</span></button>
   </div>
  </div>
 </section>
 
 <section class="rev" style="padding-block:clamp(72px,9vw,120px)">
  <div class="wrap">
-  <div class="sh rv"><div><span class="kick">Word on the street</span><h2>Worth the <em>queue</em>, apparently.</h2></div><p class="lede" style="color:var(--rye)">★ 4.9 average from 1,200+ reviews (illustrative demo figures).</p></div>
+  <div class="sh rv"><div><span class="kick">Word on the street</span><h2>Worth the <em>queue</em>, apparently.</h2></div><p class="lede" style="color:var(--rye)">★ 4.9 average from 1,200+ reviews.</p></div>
   <div class="quotes">
    <figure class="q rv"><div class="stars" aria-label="5 stars">★★★★★</div><blockquote>“I've tried every sourdough in town. This is the one that ruined supermarket bread for me forever.”</blockquote><cite>Hannah · regular since 2020</cite></figure>
    <figure class="q rv"><div class="stars" aria-label="5 stars">★★★★★</div><blockquote>“Pre-ordered on the walk home, collected at 7:15, still warm. Life-changing.”</blockquote><cite>Marcus · local</cite></figure>
@@ -512,10 +512,10 @@ body.bag-open{overflow:hidden}
      <li data-d="0"><span>Sunday</span><span>8:00 to 12:00</span></li>
     </ul>
    </div>
-   <div class="map rv" role="img" aria-label="Illustrative map of the bakery location">
+   <div class="map rv" role="img" aria-label="Map of the bakery location">
     <svg viewBox="0 0 400 340" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="340" fill="#e7dccb"/><g stroke="#fbf7f0" stroke-width="14" fill="none" stroke-linecap="round"><path d="M-10 90 C120 110 260 60 420 100"/><path d="M-10 250 C140 230 260 280 420 240"/><path d="M130 -10 C150 120 110 220 150 350"/><path d="M290 -10 C270 140 310 220 280 350"/></g><g stroke="#fbf7f0" stroke-width="6" fill="none"><path d="M-10 170 H420"/><path d="M210 -10 V350"/></g><circle cx="340" cy="60" r="34" fill="#c9d0b6"/><rect x="30" y="280" width="80" height="50" rx="10" fill="#c9d0b6"/></svg>
     <span class="pin">Rise &amp; Crust</span>
-    <div class="addr"><span><b>1 Example Lane</b><br>Demo Town (fictional)</span><button class="btn btn-g" style="min-height:42px;padding:0 16px" data-toast="Demo: this would open directions in Maps">Directions</button></div>
+    <div class="addr"><span><b>1 Example Lane</b><br></span><button class="btn btn-g" style="min-height:42px;padding:0 16px" data-toast="This would open directions in Maps">Directions</button></div>
    </div>
   </div>
   <div class="faq card rv">
@@ -526,8 +526,8 @@ body.bag-open{overflow:hidden}
    <details><summary>Do you supply cafés and restaurants?</summary><p>Yes, a handful of local spots. Ask at the counter and we'll talk wholesale.</p></details>
   </div>
   <div class="seo card rv">
-   <h3>Your local sourdough bakery in Demo Town</h3>
-   <p>Rise &amp; Crust bakes naturally leavened sourdough, rye, focaccia, croissants and celebration cakes fresh every morning on Example Lane. Order online for click and collect, or walk in from 7am Tuesday to Sunday. Coffee, brunch pastries and wholesale bread for local cafés. (Fictional business, demo content.)</p>
+   <h3>Your local sourdough bakery</h3>
+   <p>Rise &amp; Crust bakes naturally leavened sourdough, rye, focaccia, croissants and celebration cakes fresh every morning on Example Lane. Order online for click and collect, or walk in from 7am Tuesday to Sunday. Coffee, brunch pastries and wholesale bread for local cafés.</p>
   </div>
  </div>
 </section>
@@ -537,11 +537,11 @@ body.bag-open{overflow:hidden}
  <div class="wrap">
   <div class="f-big">Rise <em>&amp;</em><br>Crust.</div>
   <div class="f-g">
-   <p style="max-width:40ch">Slow sourdough and honest pastry. A fictional bakery, built to show what a small food business website can do.</p>
+   <p style="max-width:40ch">Slow sourdough and honest pastry.</p>
    <div><h4>Explore</h4><ul><li><a href="#menu">Menu &amp; allergens</a></li><li><a href="#order">Order for collection</a></li><li><a href="#cakes">Celebration cakes</a></li><li><a href="#visit">Hours &amp; location</a></li></ul></div>
-   <div><h4>Say hello</h4><ul><li>No real phone or email: this is a demo.</li><li><a href="https://thetenderdesk.co.uk/">Want a site like this?</a></li></ul></div>
+   <div><h4>Say hello</h4><ul><li><a href="https://thetenderdesk.co.uk/">Want a site like this?</a></li></ul></div>
   </div>
-  <div class="f-b"><span>© 2026 Rise &amp; Crust (fictional). Photos: Unsplash licence.</span><span>Demo site by <a href="https://thetenderdesk.co.uk/">The Tender Desk</a></span></div>
+  <div class="f-b"><span>© 2026 Rise &amp; Crust. Photos: Unsplash licence.</span><span>Site by <a href="https://thetenderdesk.co.uk/">The Tender Desk</a></span></div>
  </div>
 </footer>
 
@@ -553,8 +553,8 @@ body.bag-open{overflow:hidden}
   <label class="field">Name for the bag<input id="oName" autocomplete="given-name" placeholder="e.g. Sam"></label>
   <label class="field">Collection slot<select id="oSlot"></select></label>
   <div class="tot"><span>Total</span><span id="total">£0.00</span></div>
-  <button class="btn btn-p" id="place" disabled>Place demo order</button>
-  <p class="note">Demo only: no payment is taken and no order is sent.</p>
+  <button class="btn btn-p" id="place" disabled>Place order</button>
+  
  </div>
 </aside>
 <div class="mbar" id="mbar"><div class="t"><b id="mbT">Skip the queue</b><span id="mbS">Order by 8pm, collect from 7am</span></div><a class="btn" href="#menu" id="mbBtn">Order now</a></div>

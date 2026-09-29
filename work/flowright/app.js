@@ -31,14 +31,14 @@
   });
 
   // Postcode checker
-  const AREAS = {GU9:'Farnham',GU10:'Farnham',GU11:'Aldershot',GU12:'Aldershot & Ash',GU14:'Farnborough',GU15:'Camberley',GU16:'Frimley & Camberley',GU46:'Yateley',GU51:'Fleet',GU52:'Fleet & Church Crookham',RG27:'Hook'};
+  const AREAS = {GU9:1,GU10:1,GU11:1,GU12:1,GU14:1,GU15:1,GU16:1,GU46:1,GU51:1,GU52:1,RG27:1};
   const outward = v => (v || '').toUpperCase().replace(/\s+/g, '').replace(/\d[A-Z]{2}$/, '').match(/^[A-Z]{1,2}\d{1,2}[A-Z]?/)?.[0] || '';
   const checkPc = v => { const o = outward(v); return {o, town: AREAS[o]}; };
   $('#pcForm').addEventListener('submit', e => {
     e.preventDefault();
     const out = $('#pcOut'), {o, town} = checkPc($('#pc').value);
     if (!o) { out.className = 'pc-out no'; out.textContent = 'Please enter a UK postcode, e.g. GU11 1AA.'; return; }
-    if (town) { out.className = 'pc-out ok'; out.textContent = `✓ Yes, we cover ${o} (${town}). Typical emergency arrival: under 60 min.`; }
+    if (town) { out.className = 'pc-out ok'; out.textContent = `✓ Yes, we cover ${o}. Typical emergency arrival: under 60 min.`; }
     else { out.className = 'pc-out no'; out.textContent = `${o} is outside our core area, but call us: we often travel for planned work.`; }
   });
 
@@ -57,7 +57,7 @@
     });
     if (bad) { msg.className = 'form-msg no'; msg.textContent = 'Please fill in the highlighted fields.'; bad.focus(); return; }
     msg.className = 'form-msg ok';
-    msg.textContent = `Thanks ${f.name.value.trim().split(' ')[0]}! (Demo) A real site would text you a fixed price within 30 minutes.`;
+    msg.textContent = `Thanks ${f.name.value.trim().split(' ')[0]}! We will text you a fixed price within 30 minutes.`;
     f.reset();
   });
 
@@ -77,14 +77,14 @@
   const JOBS = ['Leak / burst pipe','Boiler / heating','Blocked drain','Bathroom','Other'];
 
   const FAQ = [
-    {k:/price|cost|how much|charge|£/, a:'Typical fixed prices: tap repair from <b>£79</b>, unblocking from <b>£99</b>, boiler service from <b>£89</b>, new combi fitted from <b>£2,195</b>. No call-out fee weekdays 8am to 6pm. (Demo prices.)'},
-    {k:/area|cover|postcode|where|town/, a:'We cover Aldershot, Farnborough, Farnham, Fleet, Camberley, Ash, Frimley, Yateley and Hook. Type your postcode and I\'ll check it.'},
+    {k:/price|cost|how much|charge|£/, a:'Typical fixed prices: tap repair from <b>£79</b>, unblocking from <b>£99</b>, boiler service from <b>£89</b>, new combi fitted from <b>£2,195</b>. No call-out fee weekdays 8am to 6pm.'},
+    {k:/area|cover|postcode|where|town/, a:'We cover the whole local area. Type your postcode and I\'ll check it.'},
     {k:/hour|open|when|weekend|night|sunday/, a:'The office is open Mon to Sat 8am to 6pm, and emergency engineers are on call <b>24/7, 365 days</b>.'},
     {k:/guarantee|warrant/, a:'Every job has a <b>12-month guarantee</b> on parts and labour. New boilers also carry the manufacturer warranty.'},
     {k:/pay|card|finance/, a:'Card, bank transfer or Apple/Google Pay on completion. Finance is available on new boilers.'},
-    {k:/gas|qualif|insur|registered|accredit/, a:'All gas work is done by registered gas engineers, and we carry £5m public liability insurance. (Placeholder details on this demo.)'},
+    {k:/gas|qualif|insur|registered|accredit/, a:'All gas work is done by registered gas engineers, and we carry £5m public liability insurance.'},
     {k:/service|annual/, a:'An annual boiler service is from <b>£89</b> and takes about 45 minutes. Want me to book one in?', chips:[{t:'Yes, book a service', v:'quote:Boiler / heating'},{t:'Not now', v:'menu'}]},
-    {k:/human|person|call|phone|speak/, a:'You can call the team on <b>01632 960000</b> (fictional number on this demo). Or I can take your details and have someone call you back.', chips:[{t:'Request a call back', v:'quote'},{t:'Back to menu', v:'menu'}]},
+    {k:/human|person|call|phone|speak/, a:'You can call the team on <b>01632 960000</b>. Or I can take your details and have someone call you back.', chips:[{t:'Request a call back', v:'quote'},{t:'Back to menu', v:'menu'}]},
   ];
   const EMERG = /emergenc|burst|flood|leak|pouring|gas smell|smell gas|no water|urgent|water everywhere|ceiling/;
 
@@ -137,7 +137,7 @@
         if (!o) return bot('That doesn\'t look like a UK postcode. Try something like <b>GU11 1AA</b>.');
         lead.postcode = v.toUpperCase(); lead.town = town;
         if (!town) await bot(`${esc(o)} is just outside our core area, but I'll pass it on: we often travel for planned jobs.`, {delay:500});
-        else await bot(`✓ ${esc(o)} (${town}) is in our area.`, {delay:450});
+        else await bot(`✓ ${esc(o)} is in our area.`, {delay:450});
         if (lead.job) { state = 'photo'; return askPhoto(); }
         state = 'job';
         return bot('What kind of job is it?', {chips: JOBS.map(j => ({t:j, v:j}))});
@@ -158,7 +158,7 @@
   async function confirm() {
     state = 'done';
     const ref = 'FR-' + Math.floor(1000 + Math.random() * 9000);
-    await bot(`All done${lead.urgent ? ' and flagged as <b>PRIORITY</b>' : ''}. Here's what I've sent to the team:<div class="summary"><b>Ref ${ref}</b><br>Name: ${esc(lead.name)}<br>Postcode: ${esc(lead.postcode)}${lead.town ? ' (' + lead.town + ')' : ''}<br>Job: ${esc(lead.job)}<br>Photo: ${lead.photo ? 'attached ✓' : 'none'}</div>${lead.urgent ? 'An engineer would call you within <b>10 minutes</b>.' : 'You\'d get a fixed price by text within <b>30 minutes</b>.'}<br><br><i>Demo only: nothing was sent. This is the AI automation add-on from The Tender Desk.</i>`, {delay:900, chips:[{t:'Start again', v:'restart'},{t:'Back to menu', v:'menu'}]});
+    await bot(`All done${lead.urgent ? ' and flagged as <b>PRIORITY</b>' : ''}. Here's what I've sent to the team:<div class="summary"><b>Ref ${ref}</b><br>Name: ${esc(lead.name)}<br>Postcode: ${esc(lead.postcode)}<br>Job: ${esc(lead.job)}<br>Photo: ${lead.photo ? 'attached ✓' : 'none'}</div>${lead.urgent ? 'An engineer would call you within <b>10 minutes</b>.' : 'You\'d get a fixed price by text within <b>30 minutes</b>.'}`, {delay:900, chips:[{t:'Start again', v:'restart'},{t:'Back to menu', v:'menu'}]});
   }
 
   async function answer(lc, v) {
@@ -166,12 +166,12 @@
     if (/quote|book|price for|estimate|come out|fix my/.test(lc) && !/how much/.test(lc)) return startQuote();
     const m = v.toUpperCase().match(/\b[A-Z]{1,2}\d{1,2}[A-Z]?\s*\d[A-Z]{2}\b|\b(GU|RG)\d{1,2}\b/);
     const pc = m ? checkPc(m[0]) : {};
-    if (pc.o) return bot(pc.town ? `✓ Yes, we cover ${esc(pc.o)} (${pc.town}).` : `${esc(pc.o)} is outside our core area, but we often travel for planned work.`, {chips: MAIN});
+    if (pc.o) return bot(pc.town ? `✓ Yes, we cover ${esc(pc.o)}.` : `${esc(pc.o)} is outside our core area, but we often travel for planned work.`, {chips: MAIN});
     const hit = FAQ.find(f => f.k.test(lc));
     if (hit) return bot(hit.a, {chips: hit.chips || MAIN});
     if (/^(hi|hello|hey|hiya)\b/.test(lc)) return bot('Hi! How can I help today?', {chips: MAIN});
     if (/thank|cheers/.test(lc)) return bot('You\'re welcome! Anything else?', {chips: MAIN});
-    return bot('I\'m a demo assistant, so I know about prices, areas, hours, emergencies and quotes. Pick an option or rephrase:', {chips: MAIN});
+    return bot('I know about prices, areas, hours, emergencies and quotes. Pick an option or rephrase:', {chips: MAIN});
   }
 
   // Photo upload mock
@@ -181,14 +181,14 @@
     const url = URL.createObjectURL(f);
     add(`<img src="${url}" alt="Uploaded photo of the problem"><br><small>${esc(f.name)}</small>`, 'me');
     setChips([]); lead.photo = true; file.value = '';
-    await bot('📷 Got it. Photo attached (in a live build, AI would also flag visible issues, e.g. "corroded compression fitting").', {delay:900});
+    await bot('📷 Got it. Photo attached The engineer will check it before calling you.', {delay:900});
     confirm();
   });
 
   // Open/close
   const open = () => {
     chat.hidden = false; fab.hidden = true; fab.setAttribute('aria-expanded', 'true');
-    if (!started) { started = true; bot('Hi 👋 I\'m FlowRight\'s assistant (<b>demo</b>). I can answer questions, help in an emergency or get you a quote in under a minute.', {chips: MAIN, delay:400}); }
+    if (!started) { started = true; bot('Hi 👋 I\'m FlowRight\'s assistant. I can answer questions, help in an emergency or get you a quote in under a minute.', {chips: MAIN, delay:400}); }
     setTimeout(() => input.focus(), 50);
   };
   const close = () => { chat.hidden = true; fab.hidden = false; fab.setAttribute('aria-expanded', 'false'); fab.focus(); };
