@@ -11,11 +11,22 @@
 <meta property="og:image" content="img/g131.jpg">
 <meta name="theme-color" content="#0d2226">
 <link rel="icon" href="https://www.fairlandsdental.co.uk/wp-content/uploads/2023/10/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="fonts/cormorant-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/cormorant-italic.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-normal.woff2" crossorigin>
 <link rel="preload" as="image" href="img/g151.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Dentist","name":"Fairlands Dental & Implant Centre","telephone":"+441483233823","email":"info@fairlandsdental.co.uk","address":{"@type":"PostalAddress","streetAddress":"Fairlands Avenue, Worplesdon","addressLocality":"Guildford","postalCode":"GU3 3NA","addressCountry":"GB"},"openingHours":["Mo,Tu,Th,Fr 08:30-17:30","We 08:30-18:30","Sa 09:00-14:00"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Dentist","LocalBusiness"],"@id":"#practice","name":"Fairlands Dental & Implant Centre","url":"https://www.fairlandsdental.co.uk/","image":"img/g151.jpg","telephone":"+441483233823","email":"info@fairlandsdental.co.uk","priceRange":"££","address":{"@type":"PostalAddress","streetAddress":"First floor, Fairlands Medical Centre, Fairlands Avenue, Worplesdon","addressLocality":"Guildford","addressRegion":"Surrey","postalCode":"GU3 3NA","addressCountry":"GB"},"geo":{"@type":"GeoCoordinates","latitude":51.2596,"longitude":-0.6219},"areaServed":["Guildford","Worplesdon","Fairlands","Wood Street Village","Normandy","Surrey"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Thursday","Friday"],"opens":"08:30","closes":"17:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Wednesday","opens":"08:30","closes":"18:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"14:00"}],"sameAs":["https://www.facebook.com/FairlandsDentalCentre","https://www.cqc.org.uk/location/1-189251168"]},{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Are you taking new patients?","acceptedAnswer":{"@type":"Answer","text":"Yes. A new patient exam is £59 for adults, and children under 16 are seen free alongside a fee paying adult."}},
+{"@type":"Question","name":"Do you offer NHS treatment?","acceptedAnswer":{"@type":"Answer","text":"Fairlands is a private practice. NHS treatment is available for children who attend with a fee paying adult."}},
+{"@type":"Question","name":"Is there parking?","acceptedAnswer":{"@type":"Answer","text":"Yes, plenty of free parking at Fairlands Medical Centre, with lift access to the first floor practice."}},
+{"@type":"Question","name":"Can I spread the cost of treatment?","acceptedAnswer":{"@type":"Answer","text":"Yes. 0% interest free finance over 12 months is available through Tabeo, and Denplan Care starts from £23 a month."}},
+{"@type":"Question","name":"I am a nervous patient. Can you help?","acceptedAnswer":{"@type":"Answer","text":"Yes. The team goes at your pace, uses numbing gel, and offers IV or inhalation sedation."}},
+{"@type":"Question","name":"Do you see emergencies?","acceptedAnswer":{"@type":"Answer","text":"Same day and emergency appointments are £70. Call 01483 233 823 first thing and the team will try to see you that day."}}]}]}</script>
 <style>
+@font-face{font-family:Cormorant;font-style:normal;font-weight:400 500;font-display:optional;src:url(fonts/cormorant-normal.woff2) format("woff2")}
+@font-face{font-family:Cormorant;font-style:italic;font-weight:400 500;font-display:optional;src:url(fonts/cormorant-italic.woff2) format("woff2")}
+@font-face{font-family:Inter;font-style:normal;font-weight:400 600;font-display:optional;src:url(fonts/inter-normal.woff2) format("woff2")}
+@view-transition{navigation:auto}
 :root{
  --ink:#0d2226;--ink2:#1f4a50;--deep:#081719;--ivory:#f4f1ea;--paper:#fbfaf6;--stone:#e7e2d7;
  --mint:#a8dcd2;--gold:#9a6f2a;--gold2:#d9b36c;--mute:#4a5d60;--line:rgba(13,34,38,.12);
@@ -210,6 +221,72 @@ footer a{color:#fff}
 .chips button{border:1px solid var(--ink);background:#fff;color:var(--ink);border-radius:99px;padding:7px 12px;font:500 13px var(--sans);cursor:pointer}
 .chips button:hover{background:var(--ink);color:#fff}
 
+
+.trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;padding-top:22px;border-top:1px solid var(--line);font-size:13.5px;font-weight:500;color:var(--ink2);list-style:none}
+.trust li{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.trust svg{width:16px;height:16px;color:var(--gold);flex:none}
+.hero h1 .ln:nth-child(2) em{background:linear-gradient(90deg,var(--ink2),#3f8a86 60%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.book{background:var(--paper)}
+.bk{display:grid;grid-template-columns:.8fr 1.2fr;gap:4vw;align-items:start}
+.bk-side{position:sticky;top:120px}
+.bk-side ol{list-style:none;margin-top:28px;display:grid;gap:4px}
+.bk-side li{display:flex;gap:14px;align-items:center;padding:12px 0;color:var(--mute);font-weight:500;transition:color .3s}
+.bk-side li b{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);font:500 13px var(--sans);transition:.3s}
+.bk-side li.on{color:var(--ink)}.bk-side li.on b{background:var(--ink);color:#fff;border-color:var(--ink)}
+.bk-side li.done b{background:var(--mint);border-color:var(--mint);color:var(--deep)}
+.bk-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3vw,40px);box-shadow:0 40px 80px -50px rgba(13,34,38,.45);min-height:520px}
+.bk-card h3{font-size:var(--t3);margin-bottom:6px}
+.bk-card .sub{color:var(--mute);font-size:15px;margin-bottom:22px}
+.demo-pill{display:inline-block;font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;background:#f0dfb8;color:var(--deep);border-radius:99px;padding:6px 10px;margin-bottom:16px;white-space:nowrap}
+.tx{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tx button,.slot,.day{font:500 15px var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:left;cursor:pointer;transition:border-color .25s,background .25s,transform .25s var(--ease)}
+.tx button small{display:block;color:var(--mute);font-size:13px;margin-top:4px}
+.tx button:hover,.slot:hover,.day:hover{border-color:var(--ink2);transform:translateY(-2px)}
+.tx button[aria-pressed=true],.slot[aria-pressed=true],.day[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tx button[aria-pressed=true] small{color:var(--mint)}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:16px;scrollbar-width:thin}
+.day{flex:none;width:74px;text-align:center;padding:12px 6px}
+.day small{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.day b{font:500 26px/1.1 var(--serif);display:block}
+.day:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;min-height:120px;align-content:start}
+.slot{text-align:center;padding:12px 6px}
+.fld{display:grid;gap:14px}
+.fld label{font-size:13.5px;font-weight:600;display:grid;gap:6px}
+.fld input,.fld select{font:16px var(--sans);padding:14px 16px;border-radius:12px;border:1px solid rgba(13,34,38,.3);background:var(--paper);color:var(--ink);width:100%}
+.fld input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.bk-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:26px;flex-wrap:wrap}
+.bk-nav .btn[disabled]{opacity:.4;pointer-events:none}
+.back{background:none;border:0;font:600 14px var(--sans);color:var(--mute);cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.summary{background:var(--paper);border-radius:14px;padding:14px 16px;font-size:14px;color:var(--mute);margin-top:18px}
+.summary b{color:var(--ink)}
+.ok{text-align:center;padding:30px 0}
+.ok .tick{width:78px;height:78px;margin:0 auto 20px;border-radius:50%;background:var(--mint);display:grid;place-items:center}
+.ok .tick svg{width:36px;height:36px;stroke:var(--deep);stroke-dasharray:40;stroke-dashoffset:40;animation:draw .7s .2s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.ok p{color:var(--mute);max-width:40ch;margin:10px auto 0}
+.faq{max-width:900px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:24px 0;font:400 clamp(22px,2.2vw,28px)/1.2 var(--serif)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font:300 28px/1 var(--sans);color:var(--gold);transition:transform .4s var(--ease)}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq details p{color:var(--mute);padding:0 0 24px;max-width:62ch}
+.local{margin-top:48px;font-size:14.5px;color:var(--mute);max-width:80ch}
+.mbar{display:none}
+.chat-b{bottom:60px}.chat{bottom:126px}
+@media(max-width:960px){
+ .bk{grid-template-columns:1fr}.bk-side{position:static}.bk-side ol{display:none}
+ .mbar{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;position:fixed;left:10px;right:10px;bottom:10px;z-index:65;padding:8px;background:rgba(8,23,25,.94);border-radius:99px;box-shadow:0 18px 40px -12px rgba(0,0,0,.5);transform:translateY(140%);transition:transform .5s var(--ease)}
+ .mbar.show{transform:none}
+ .mbar a{display:flex;align-items:center;justify-content:center;gap:8px;height:48px;border-radius:99px;font:600 15px var(--sans);text-decoration:none;white-space:nowrap}
+ .mbar a:first-child{color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+ .mbar a:last-child{background:var(--gold2);color:var(--deep)}
+ .chat-b{bottom:58px}.td-badge{left:14px;right:auto!important}
+ body.mb .chat-b{bottom:84px}body.mb .chat{bottom:148px}body.mb .td-badge{bottom:84px!important}
+ footer{padding-bottom:100px}
+}
+@media(max-width:560px){.tx{grid-template-columns:1fr}.slots{grid-template-columns:repeat(3,1fr)}.trust{gap:8px 16px;font-size:12.5px}}
 @media(max-width:960px){
  .nav{position:fixed;inset:0;height:100dvh;background:var(--deep);flex-direction:column;justify-content:center;gap:24px;transform:translateY(-100%);transition:transform .7s var(--ease),visibility 0s .7s;visibility:hidden}
  .nav.open{transform:none;visibility:visible;transition:transform .7s var(--ease)}
@@ -249,8 +326,8 @@ footer a{color:#fff}
 <header class="hdr" id="hdr"><div class="wrap">
  <a class="logo" href="#top" aria-label="Fairlands Dental home"><img src="img/logo-large.png" alt="Fairlands Dental &amp; Implant Centre" width="340" height="140"></a>
  <nav class="nav" id="nav" aria-label="Main">
-  <a href="#story">The practice</a><a href="#finder">Smile finder</a><a href="#fees">Fees</a><a href="#team">Team</a><a href="#visit">Visit</a>
-  <a class="btn btn-d mag" href="https://appointmentor.com/webpages/r4pages/onlinebooking/LoginPatient.aspx?ClientID=578&amp;v=clean" target="_blank" rel="noopener">Book online</a>
+  <a href="#story">The practice</a><a href="#finder">Smile finder</a><a href="#fees">Fees</a><a href="#faq">FAQ</a><a href="#team">Team</a><a href="#visit">Visit</a>
+  <a class="btn btn-d mag" href="#book">Book online</a>
  </nav>
  <button class="burger" id="burger" aria-label="Open menu" aria-controls="nav" aria-expanded="false"><span></span></button>
 </div></header>
@@ -265,16 +342,18 @@ footer a{color:#fff}
    <h1><span class="ln"><span>Every smile,</span></span><span class="ln"><span><em>every specialist,</em></span></span><span class="ln"><span>one roof.</span></span></h1>
    <p class="lead hero-in">Private family, implant and specialist dentistry at Fairlands Medical Centre, Guildford. New patient exams now £59, with children seen free alongside a paying adult.</p>
    <div class="cta hero-in">
-    <a class="btn btn-d mag" href="https://appointmentor.com/webpages/r4pages/onlinebooking/LoginPatient.aspx?ClientID=578&amp;v=clean" target="_blank" rel="noopener">Book your £59 exam <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    <a class="btn btn-d mag" href="#book">Book your £59 exam <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
     <a class="btn btn-o mag" href="tel:01483233823">Call 01483 233 823</a>
    </div>
+   <ul class="trust hero-in" aria-label="Why patients choose Fairlands">
+    <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5l3 3 7-7"/></svg>GDC registered team</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5l3 3 7-7"/></svg>CQC regulated</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5l3 3 7-7"/></svg>Free parking</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5l3 3 7-7"/></svg>Saturday mornings</li>
+   </ul>
   </div>
   <div class="hero-media hero-in">
    <div class="arch"><img id="heroImg" src="img/g151.jpg" alt="Fairlands dentist and nurse treating a patient in a bright surgery" width="850" height="600" fetchpriority="high"></div>
    <div class="tag"><b>£59</b><small>New patient exam, was £70. Same day and Saturday visits £70.</small></div>
   </div>
  </div>
- <div class="scroll-cue" aria-hidden="true">Scroll<i></i></div>
 </section>
 
 <div class="mq" aria-hidden="true"><div>
@@ -329,6 +408,16 @@ footer a{color:#fff}
  </div>
 </div></section>
 
+<section class="book" id="book"><div class="wrap bk">
+ <div class="bk-side">
+  <p class="eyebrow">Book a visit</p>
+  <h2 class="split" style="font-size:var(--t2);margin-top:18px">Your appointment, <em>in under a minute.</em></h2>
+  <p style="color:var(--mute);margin-top:20px;max-width:36ch">Pick a treatment, choose a time that suits you, and you are in. Slots follow the real Fairlands opening hours, including late Wednesdays and Saturday mornings.</p>
+  <ol id="bkSteps"><li class="on"><b>1</b>Treatment</li><li><b>2</b>Day and time</li><li><b>3</b>Your details</li></ol>
+ </div>
+ <div class="bk-card" id="bkCard" aria-live="polite"></div>
+</div></section>
+
 <section class="finder" id="finder"><div class="wrap">
  <div class="sh"><div><p class="eyebrow">Smile finder</p><h2 class="split">Three taps to your <em>starting point.</em></h2></div><p>Answer three quick questions and we will point you at the right first appointment, with the real starting fee from the Fairlands price list.</p></div>
  <div class="quiz">
@@ -379,6 +468,19 @@ footer a{color:#fff}
  <div class="qdots" id="qdots"></div>
 </div></section>
 
+<section id="faq" style="padding-top:0"><div class="wrap">
+ <div class="sh"><div><p class="eyebrow">Good to know</p><h2 class="split">Questions, <em>answered.</em></h2></div><p>The things new patients ask reception most often.</p></div>
+ <div class="faq">
+  <details open><summary>Are you taking new patients?</summary><p>Yes. A new patient exam is £59 for adults (usually £70), and children under 16 are seen free alongside a fee paying adult.</p></details>
+  <details><summary>Do you offer NHS treatment?</summary><p>Fairlands is a private practice. NHS treatment is available for children who attend with a fee paying adult.</p></details>
+  <details><summary>Is there parking?</summary><p>Yes. Plenty of free parking at Fairlands Medical Centre, with a lift to the first floor practice and a pharmacy on site.</p></details>
+  <details><summary>Can I spread the cost of treatment?</summary><p>Yes. 0% interest free finance over 12 months is available through Tabeo, and Denplan Care starts from £23 a month.</p></details>
+  <details><summary>I am a nervous patient. Can you help?</summary><p>Absolutely. The team goes at your pace, explains each step, uses numbing gel and offers IV or inhalation sedation.</p></details>
+  <details><summary>Do you see dental emergencies?</summary><p>Same day and emergency appointments are £70. Call <a class="lnk" href="tel:01483233823">01483 233 823</a> first thing and the team will try to see you that day.</p></details>
+ </div>
+ <p class="local">Fairlands Dental &amp; Implant Centre is a private dentist in Guildford, on the first floor of Fairlands Medical Centre, Worplesdon GU3 3NA. We welcome patients from Guildford, Worplesdon, Wood Street Village, Normandy, Pirbright and across Surrey, Berkshire and Hampshire for family dentistry, dental implants, Invisalign, whitening and specialist root canal treatment.</p>
+</div></section>
+
 <section class="visit" id="visit"><div class="wrap">
  <div class="climax">
   <p class="eyebrow" style="justify-content:center">Ready when you are</p>
@@ -410,6 +512,7 @@ footer a{color:#fff}
  <span>Concept design by <a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener">The Tender Desk</a></span>
 </div></footer>
 
+<nav class="mbar" id="mbar" aria-label="Quick actions"><a href="tel:01483233823">Call us</a><a href="#book">Book £59 exam</a></nav>
 <button class="chat-b" id="chatB" aria-expanded="false" aria-controls="chat" aria-label="Ask the demo assistant"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4h14v9H8l-4 3v-3H3z"/></svg><span>Ask a question</span></button>
 <div class="chat" id="chat" role="dialog" aria-label="Demo assistant">
  <header><strong>Fairlands assistant</strong><small>Demo assistant · scripted answers from the practice website</small></header>
@@ -542,6 +645,40 @@ res.innerHTML=`<p class="eyebrow">Your suggestion</p><h4>${o[0]}</h4><p>${o[2]}$
 if(!RM)res.animate([{opacity:0,transform:'translateY(20px)'},{opacity:1,transform:'none'}],{duration:700,easing:'cubic-bezier(.16,1,.3,1)'});
 prog.style.width='100%';stp.textContent='Done';qT.textContent='Here is your starting point.';opts.innerHTML='';document.getElementById('again').onclick=()=>{step=0;ans=[];ask()}}
 ask();
+
+
+/* demo booking flow: slots from real opening hours, no backend */
+(function(){
+ const card=document.getElementById('bkCard'),stepsEl=[...document.querySelectorAll('#bkSteps li')];
+ const TX=[["New patient exam","£59 · 40 min"],["Hygiene appointment","from £115 · 30 min"],["Whitening consultation","Free · 20 min"],["Implant consultation","Free · 30 min"],["Invisalign consultation","Free · 30 min"],["Emergency appointment","£70 · same day"]];
+ const st={s:0,tx:null,day:null,slot:null};
+ const days=[];const now=new Date();for(let i=0;days.length<12&&i<20;i++){const d=new Date(now);d.setDate(now.getDate()+i);days.push(d)}
+ const DS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],MS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+ function slotsFor(d){const h=H[d.getDay()];if(!h)return[];const out=[];let seed=d.getDate()*7+d.getMonth();for(let m=h[0];m+40<=h[1];m+=40){seed=(seed*9301+49297)%233280;if(seed/233280>.42)out.push(m)}if(d.toDateString()===now.toDateString()){const c=now.getHours()*60+now.getMinutes()+60;return out.filter(m=>m>c)}return out}
+ const pill='<span class="demo-pill">Demo booking · nothing is sent</span>';
+ function mark(){stepsEl.forEach((l,i)=>{l.classList.toggle('on',i===st.s);l.classList.toggle('done',i<st.s)})}
+ function nav(canNext,label){return `<div class="bk-nav">${st.s?'<button class="back" data-back>Back</button>':'<span></span>'}<button class="btn btn-d" data-next ${canNext?'':'disabled'}>${label} <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div>`}
+ function render(){mark();let h='';
+  if(st.s===0){h=`${pill}<h3>What would you like to book?</h3><p class="sub">Step 1 of 3</p><div class="tx">${TX.map((t,i)=>`<button data-tx="${i}" aria-pressed="${st.tx===i}">${t[0]}<small>${t[1]}</small></button>`).join('')}</div>${nav(st.tx!==null,'Choose a time')}`}
+  else if(st.s===1){const sd=st.day!==null?days[st.day]:null,sl=sd?slotsFor(sd):[];
+   h=`${pill}<h3>Pick a day and time</h3><p class="sub">Step 2 of 3 · ${TX[st.tx][0]}</p><div class="days">${days.map((d,i)=>`<button class="day" data-day="${i}" aria-pressed="${st.day===i}" ${slotsFor(d).length?'':'disabled'} aria-label="${DS[d.getDay()]} ${d.getDate()} ${MS[d.getMonth()]}"><small>${DS[d.getDay()]}</small><b>${d.getDate()}</b><small>${MS[d.getMonth()]}</small></button>`).join('')}</div><div class="slots">${sd?sl.map(m=>`<button class="slot" data-slot="${m}" aria-pressed="${st.slot===m}">${fmt(m)}</button>`).join(''):'<p class="sub" style="grid-column:1/-1">Choose a day to see free times. Sundays are closed.</p>'}</div>${nav(st.slot!==null,'Your details')}`}
+  else if(st.s===2){const d=days[st.day];h=`${pill}<h3>Your details</h3><p class="sub">Step 3 of 3</p><form class="fld" id="bkForm" novalidate><label>Full name<input name="n" autocomplete="name" required placeholder="Jane Smith"></label><label>Mobile<input name="p" type="tel" autocomplete="tel" inputmode="tel" required placeholder="07700 900123"></label><label>Email<input name="e" type="email" autocomplete="email" required placeholder="jane@example.com"></label><label style="display:flex;align-items:center;gap:10px;font-weight:500"><input type="checkbox" name="nv" style="width:auto"> I am a nervous patient, please take it slow</label></form><div class="summary"><b>${TX[st.tx][0]}</b> · ${DS[d.getDay()]} ${d.getDate()} ${MS[d.getMonth()]} at ${fmt(st.slot)} · Fairlands Medical Centre, GU3 3NA</div>${nav(true,'Confirm booking')}`}
+  else{const d=days[st.day];h=`<div class="ok"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>${pill}<h3>You are booked in, ${esc(st.name)}.</h3><p><b>${TX[st.tx][0]}</b> on ${DS[d.getDay()]} ${d.getDate()} ${MS[d.getMonth()]} at ${fmt(st.slot)}. In the live version a confirmation text and email would follow, with a reminder 48 hours before.</p><div class="cta" style="justify-content:center;margin-top:26px"><a class="btn btn-d" href="${BOOK}" target="_blank" rel="noopener">Use the real booking system</a><button class="btn btn-o" data-reset>Book another</button></div></div>`}
+  card.innerHTML=h;if(!RM)card.firstElementChild&&card.animate([{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'none'}],{duration:450,easing:'cubic-bezier(.16,1,.3,1)'})}
+ card.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.tx!==undefined){st.tx=+b.dataset.tx;render();return}
+  if(b.dataset.day!==undefined){st.day=+b.dataset.day;st.slot=null;render();return}
+  if(b.dataset.slot!==undefined){st.slot=+b.dataset.slot;render();return}
+  if(b.hasAttribute('data-back')){st.s--;render();return}
+  if(b.hasAttribute('data-reset')){Object.assign(st,{s:0,tx:null,day:null,slot:null});render();return}
+  if(b.hasAttribute('data-next')){if(st.s===2){const f=document.getElementById('bkForm');let ok=true;[...f.querySelectorAll('input[required]')].forEach(i=>{const v=i.value.trim();const good=v&&(i.type!=='email'||/^\S+@\S+\.\S+$/.test(v))&&(i.type!=='tel'||v.replace(/\D/g,'').length>=10);i.setAttribute('aria-invalid',!good);i.style.borderColor=good?'':'#b0422b';if(!good&&ok){i.focus();ok=false}});if(!ok)return;st.name=f.n.value.trim().split(' ')[0]}
+   st.s++;render();if(MOBILE)card.scrollIntoView({block:'start',behavior:RM?'auto':'smooth'})}});
+ render();
+})();
+
+/* sticky mobile CTA bar: shows after the hero */
+const mbar=document.getElementById('mbar');
+new IntersectionObserver(([e])=>{const show=!e.isIntersecting;mbar.classList.toggle('show',show);document.body.classList.toggle('mb',show)}).observe(document.querySelector('.hero .cta'));
 
 /* team (from meet-the-team page) */
 const TEAM=[["Mr Amit Vaidya","Principal Dentist · BDS, M.Med.Sci, FDS RCS (Eng)","86138"],["Mrs Shilpa Vaidya","Principal Dentist · BDS","86189"],["Mr Ben Molyneux","Implant Dentist · BDS, Dip Imp Dent RCS","76460"],["Balaji Rajamani","Advanced Implant Dentist · MSc Dental Implantology","104848"],["Dr Nadia Alwash","Specialist Orthodontist · MOrth RCS Eng","80312"],["Alix L Davies","Specialist Endodontist · MClinDent Endo","85852"],["Dr Angela Boodhooa","Specialist in Periodontics · MClinDent (Perio)","209502"],["Amy Bachra","Dentist and Aesthetic Practitioner · BDS (Hons)","213203"]];
