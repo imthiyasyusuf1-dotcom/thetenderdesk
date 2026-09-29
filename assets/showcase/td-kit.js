@@ -18,7 +18,7 @@
   const init = () => {
     const bar = document.createElement('div'); bar.className = 'td-prog'; bar.setAttribute('aria-hidden', 'true'); document.body.appendChild(bar);
     const a = document.createElement('a'); a.className = 'td-badge'; a.href = "/"; a.setAttribute('aria-label', 'Built by The Tender Desk');
-    a.innerHTML = '<i></i><b class="td-f">60</b>fps &middot; Built by The Tender Desk'; document.body.appendChild(a);
+    a.innerHTML = '<i></i>Built by The Tender Desk<b class="td-f" hidden></b>'; document.body.appendChild(a);
     const f = a.querySelector('.td-f');
     let n = 0, last = performance.now(), ticking = false;
     const upd = () => { ticking = false; const h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`; };
