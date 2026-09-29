@@ -9,211 +9,272 @@
 <meta property="og:title" content="Fairlands Dental &amp; Implant Centre, Guildford">
 <meta property="og:description" content="Every treatment under one roof. New patient exams £59.">
 <meta property="og:image" content="img/g131.jpg">
-<meta name="theme-color" content="#0e2a2e">
+<meta name="theme-color" content="#0d2226">
 <link rel="icon" href="https://www.fairlandsdental.co.uk/wp-content/uploads/2023/10/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/g151.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Dentist","name":"Fairlands Dental & Implant Centre","telephone":"+441483233823","email":"info@fairlandsdental.co.uk","address":{"@type":"PostalAddress","streetAddress":"Fairlands Avenue, Worplesdon","addressLocality":"Guildford","postalCode":"GU3 3NA","addressCountry":"GB"},"openingHours":["Mo,Tu,Th,Fr 08:30-17:30","We 08:30-18:30","Sa 09:00-14:00"]}</script>
 <style>
-:root{--ink:#0e2a2e;--ink2:#1d4a4f;--ivory:#f6f2ea;--paper:#fffdf8;--mint:#9fd8cf;--gold:#c79a4a;--mute:#4d6264;--r:22px;--s1:clamp(2.6rem,7vw,6.4rem);--s2:clamp(1.9rem,4vw,3.4rem);--ease:cubic-bezier(.2,.8,.2,1)}
+:root{
+ --ink:#0d2226;--ink2:#1f4a50;--deep:#081719;--ivory:#f4f1ea;--paper:#fbfaf6;--stone:#e7e2d7;
+ --mint:#a8dcd2;--gold:#9a6f2a;--gold2:#d9b36c;--mute:#4a5d60;--line:rgba(13,34,38,.12);
+ --serif:Cormorant,"Cormorant Garamond",Georgia,serif;--sans:Inter,system-ui,-apple-system,sans-serif;
+ --t1:clamp(3rem,8.6vw,8.4rem);--t2:clamp(2.2rem,4.8vw,4.4rem);--t3:clamp(1.6rem,2.4vw,2.2rem);
+ --r:20px;--ease:cubic-bezier(.16,1,.3,1);--pad:clamp(88px,12vw,168px)
+}
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
-body{font:400 17px/1.6 Inter,system-ui,sans-serif;color:var(--ink);background:var(--ivory);overflow-x:hidden}
+body{font:400 17px/1.65 var(--sans);color:var(--ink);background:var(--ivory);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:300;letter-spacing:-.02em;line-height:1.02}
-em{font-style:italic;color:var(--ink2)}
-.wrap{width:min(1240px,92vw);margin:auto}
-.eyebrow{font:600 12px/1 Inter;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
-.btn{display:inline-flex;align-items:center;gap:.6em;padding:15px 26px;border-radius:99px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .4s var(--ease),background .3s;border:0;cursor:pointer}
-.btn:hover{transform:translateY(-2px)}
-.btn-d{background:var(--ink);color:#fff}.btn-l{background:#fff;color:var(--ink)}.btn-o{border:1.5px solid currentColor;background:transparent}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;line-height:.98}
+em{font-style:italic}
+.wrap{width:min(1280px,90vw);margin:auto}
+.eyebrow{font:600 11.5px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--ink2);display:flex;align-items:center;gap:12px}
+.eyebrow:before{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
+.btn{display:inline-flex;align-items:center;gap:.7em;padding:16px 28px;border-radius:99px;font:600 15px/1 var(--sans);text-decoration:none;border:0;cursor:pointer;transition:background .3s,color .3s,box-shadow .3s}
+.btn svg{width:16px;height:16px;transition:transform .4s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-d{background:var(--ink);color:#fff}.btn-d:hover{background:var(--ink2)}
+.btn-g{background:var(--gold2);color:var(--deep)}.btn-g:hover{background:#e6c585}
+.btn-l{background:#fff;color:var(--ink)}
+.btn-o{box-shadow:inset 0 0 0 1.5px currentColor;background:transparent}
 .skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;z-index:99;background:#fff;padding:8px}
-:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-/* header */
-.hdr{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,box-shadow .4s}
-.hdr.solid{background:rgba(246,242,234,.94);box-shadow:0 1px 0 rgba(14,42,46,.1)}
-.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
-.logo img{height:46px;width:auto}
-.nav{display:flex;gap:30px;align-items:center}
-.nav a{text-decoration:none;font-weight:500;font-size:15px}
-.burger{display:none;width:46px;height:46px;border-radius:50%;border:0;background:var(--ink);color:#fff;position:relative;z-index:60;cursor:pointer}
-.burger span,.burger span:before,.burger span:after{position:absolute;left:14px;width:18px;height:2px;background:#fff;content:"";transition:.3s}
-.burger span{top:22px}.burger span:before{top:-6px;left:0}.burger span:after{top:6px;left:0}
-.nav.open~.burger span{background:transparent}.nav.open~.burger span:before{top:0;transform:rotate(45deg)}.nav.open~.burger span:after{top:0;transform:rotate(-45deg)}
+.hdr{position:fixed;inset:0 0 auto;z-index:50;transition:background .5s,box-shadow .5s}
+.hdr.solid{background:rgba(244,241,234,.9);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--line)}
+.hdr:has(.nav.open){backdrop-filter:none;-webkit-backdrop-filter:none;transform:none;background:transparent;box-shadow:none}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
+.logo img{height:44px;width:auto}
+.nav{display:flex;gap:34px;align-items:center}
+.nav a{text-decoration:none;font-weight:500;font-size:14.5px;position:relative}
+.nav a:not(.btn):after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.nav a:not(.btn):hover:after{transform:scaleX(1);transform-origin:left}
+.burger{display:none;width:48px;height:48px;border-radius:50%;border:0;background:var(--ink);position:relative;z-index:60;cursor:pointer}
+.burger span,.burger span:before,.burger span:after{position:absolute;left:15px;width:18px;height:1.5px;background:#fff;content:"";transition:.35s var(--ease)}
+.burger span{top:23px}.burger span:before{top:-6px;left:0}.burger span:after{top:6px;left:0}
+.nav.open~.burger{background:var(--gold2)}
+.nav.open~.burger span{background:transparent}.nav.open~.burger span:before{top:0;transform:rotate(45deg);background:var(--deep)}.nav.open~.burger span:after{top:0;transform:rotate(-45deg);background:var(--deep)}
+.prog-bar{position:fixed;left:0;top:0;height:2px;width:100%;background:var(--gold);transform-origin:0 50%;transform:scaleX(0);z-index:55}
 
-/* hero */
-.hero{position:relative;min-height:100svh;display:grid;align-items:end;padding:120px 0 7vh;overflow:hidden}
-.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:5vw;align-items:end}
-.hero h1{font-size:var(--s1)}
-.hero h1 .ln{display:block;overflow:hidden}.hero h1 .ln>span{display:inline-block;transform:translateY(105%);transition:transform 1.2s var(--ease)}
-.loaded .hero h1 .ln>span{transform:none}.hero h1 .ln:nth-child(2)>span{transition-delay:.1s}.hero h1 .ln:nth-child(3)>span{transition-delay:.2s}
-.lead{font-size:clamp(17px,1.5vw,20px);max-width:36ch;color:var(--mute);margin:26px 0 32px}
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:130px 0 8vh;overflow:hidden;isolation:isolate}
+.mesh,#gl{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.mesh{background:radial-gradient(40% 50% at 82% 18%,#cfeae3 0,transparent 70%),radial-gradient(38% 46% at 12% 88%,#efdcb8 0,transparent 70%),radial-gradient(50% 60% at 55% 55%,#f7f3ea 0,transparent 80%),var(--ivory)}
+#gl{opacity:0;transition:opacity 1.6s}
+#gl.on{opacity:1}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:5vw;align-items:end}
+.status{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.85);border:1px solid var(--line);border-radius:99px;padding:9px 18px 9px 13px;font-size:13.5px;font-weight:500;margin-bottom:34px;color:var(--ink)}
+.dot{width:9px;height:9px;border-radius:50%;background:#b0422b;box-shadow:0 0 0 4px rgba(176,66,43,.16);flex:none}
+.dot.on{background:#1d7f55;box-shadow:0 0 0 4px rgba(29,127,85,.2);animation:pulse 2.2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 9px rgba(29,127,85,0)}}
+.hero h1{font-size:var(--t1);line-height:.9;letter-spacing:-.03em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
+.hero h1 .ln>span{display:inline-block}
+.hero h1 em{color:var(--ink2)}
+.lead{font-size:clamp(17px,1.35vw,19.5px);max-width:40ch;color:var(--mute);margin:30px 0 36px}
 .cta{display:flex;flex-wrap:wrap;gap:12px}
-.status{display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:99px;padding:8px 16px 8px 12px;font-size:14px;font-weight:500;margin-bottom:28px;box-shadow:0 6px 24px rgba(14,42,46,.08);color:var(--ink)}
-.dot{width:10px;height:10px;border-radius:50%;background:#b8452f;box-shadow:0 0 0 4px rgba(184,69,47,.18)}
-.dot.on{background:#1f8a5b;box-shadow:0 0 0 4px rgba(31,138,91,.2);animation:pulse 2s infinite}
-@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(31,138,91,0)}}
-.arch{position:relative;aspect-ratio:3/4;border-radius:999px 999px var(--r) var(--r);overflow:hidden;box-shadow:0 40px 80px -30px rgba(14,42,46,.45)}
-.arch img{width:100%;height:118%;object-fit:cover;will-change:transform}
-.tag{position:absolute;left:-28px;bottom:40px;background:var(--ink);color:#fff;border-radius:18px;padding:18px 22px;max-width:220px;box-shadow:0 20px 40px -10px rgba(0,0,0,.35)}
-.tag b{font:300 44px/1 Fraunces;display:block}
-.tag small{font-size:13px;opacity:.85}
-.orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;pointer-events:none}
+.hero-media{position:relative}
+.arch{position:relative;aspect-ratio:3/4;border-radius:999px 999px 24px 24px;overflow:hidden;box-shadow:0 50px 90px -40px rgba(13,34,38,.55)}
+.arch img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover}
+.tag{position:absolute;left:-36px;bottom:44px;background:var(--deep);color:#fff;border-radius:18px;padding:20px 22px;max-width:230px;box-shadow:0 24px 50px -14px rgba(0,0,0,.45)}
+.tag b{font:400 52px/1 var(--serif);display:block;color:var(--gold2)}
+.tag small{font-size:13px;color:#d6e1df;line-height:1.45;display:block;margin-top:6px}
+.scroll-cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font:600 10.5px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--mute);display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-cue i{width:1px;height:38px;background:linear-gradient(var(--mute),transparent);animation:cue 2.4s var(--ease) infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
 
-/* marquee */
-.mq{background:var(--ink);color:var(--ivory);padding:22px 0;overflow:hidden;white-space:nowrap}
-.mq div{display:inline-flex;gap:48px;animation:mq 38s linear infinite;font:300 clamp(22px,2.4vw,32px) Fraunces}
-.mq i{color:var(--mint);font-style:normal}
+.mq{background:var(--deep);color:var(--ivory);padding:26px 0;overflow:hidden;white-space:nowrap}
+.mq div{display:inline-flex;gap:54px;animation:mq 44s linear infinite;font:italic 400 clamp(24px,2.6vw,36px) var(--serif)}
+.mq i{color:var(--gold2);font-style:normal}
 @keyframes mq{to{transform:translateX(-50%)}}
 
-section{padding:clamp(80px,12vw,160px) 0;position:relative}
-.sh{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:56px;flex-wrap:wrap}
-.sh h2{font-size:var(--s2);max-width:16ch;margin-top:14px}
-.sh p{max-width:40ch;color:var(--mute)}
+section{padding:var(--pad) 0;position:relative}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:64px;flex-wrap:wrap}
+.sh h2{font-size:var(--t2);max-width:15ch;margin-top:18px}
+.sh p{max-width:42ch;color:var(--mute)}
 
-/* reveal */
-.rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
-.rv.in{opacity:1;transform:none}
+.story{background:var(--paper)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:start}
+.story-vis{position:sticky;top:12vh;height:76vh;border-radius:28px;overflow:hidden;background:var(--stone)}
+.story-vis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity 1s var(--ease),transform 1.6s var(--ease)}
+.story-vis img.on{opacity:1;transform:none}
+.story-vis .cap{position:absolute;left:18px;bottom:18px;background:rgba(8,23,25,.82);color:#fff;border-radius:99px;padding:8px 16px;font-size:13px;font-weight:500}
+.chap{min-height:78vh;display:flex;flex-direction:column;justify-content:center;padding:6vh 0;opacity:.3;transition:opacity .6s}
+.chap.on{opacity:1}
+.chap .num{font:italic 400 var(--t3) var(--serif);color:var(--gold)}
+.chap h3{font-size:var(--t2);margin:14px 0 20px;max-width:12ch}
+.chap p{color:var(--mute);max-width:44ch}
+.chap .mini{margin-top:26px}
+.chap .mini a{font-weight:600;font-size:15px;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:3px}
+.chap-img{display:none}
 
-/* pillars */
-.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.pl{background:var(--paper);border-radius:var(--r);padding:32px 26px;min-height:260px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .5s var(--ease),background .4s,color .4s;color:var(--ink)}
-.pl:hover{transform:translateY(-8px);background:var(--ink);color:#fff}
-.pl:hover p{color:#d6e4e2}
-.pl .n{font:300 15px Fraunces;opacity:.7}
-.pl h3{font-size:28px;margin:16px 0 10px}
-.pl p{font-size:15px;color:var(--mute)}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.pl{padding:34px 28px 40px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:18px;min-height:320px;color:var(--ink);transition:background .6s var(--ease)}
+.pl:last-child{border-right:0}
+.pl:hover{background:var(--paper)}
+.pl .n{font:italic 400 20px var(--serif);color:var(--gold)}
+.pl h3{font-size:34px}
+.pl p{font-size:15px;color:var(--mute);margin-top:auto}
+.pl .fee{font:400 26px var(--serif);color:var(--ink)}
 
-/* finder */
-.finder{background:var(--ink);color:var(--ivory);border-radius:0}
+.finder{background:var(--deep);color:var(--ivory);overflow:hidden}
 .finder .eyebrow{color:var(--mint)}
-.finder .sh p{color:#c5d6d4}
+.finder .sh p{color:#c3d3d1}
+.finder h2 em{color:var(--gold2)}
 .quiz{display:grid;grid-template-columns:1fr 1fr;gap:4vw;align-items:start}
-.q h3{font-size:clamp(26px,3vw,40px);margin-bottom:24px}
+.q h3{font-size:clamp(28px,3.2vw,44px);margin-bottom:26px;color:#fff}
 .opts{display:grid;gap:10px}
-.opt{text-align:left;background:rgba(255,255,255,.06);color:var(--ivory);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:18px 20px;font:500 16px Inter;cursor:pointer;transition:background .3s,transform .3s var(--ease)}
-.opt:hover,.opt[aria-pressed=true]{background:var(--mint);color:var(--ink);transform:translateX(6px)}
-.res{background:var(--ivory);color:var(--ink);border-radius:var(--r);padding:36px;min-height:340px;position:relative;overflow:hidden}
-.res h4{font:400 34px/1.05 Fraunces;margin:12px 0}
+.opt{text-align:left;background:rgba(255,255,255,.05);color:var(--ivory);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:18px 22px;font:500 16px var(--sans);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .35s,color .35s,border-color .35s}
+.opt:after{content:"";width:8px;height:8px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);opacity:.6}
+.opt:hover,.opt[aria-pressed=true]{background:var(--mint);color:var(--deep);border-color:var(--mint)}
+.res{background:var(--ivory);color:var(--ink);border-radius:var(--r);padding:40px;min-height:360px}
+.res h4{font:400 38px/1.02 var(--serif);margin:14px 0}
 .res p{color:var(--mute)}.finder .res .eyebrow{color:var(--ink2)}
-.res .price{font:300 54px/1 Fraunces;margin:22px 0 4px}
-.res .btn{margin-top:22px}
-.prog{height:3px;background:rgba(255,255,255,.15);border-radius:3px;margin-bottom:30px}.prog i{display:block;height:100%;background:var(--mint);width:33%;transition:width .6s var(--ease)}
+.res .price{font:400 64px/1 var(--serif);margin:24px 0 4px;color:var(--ink)}
+.res .cta{margin-top:24px}
+.res .btn-o{color:var(--ink)}
+.prog{height:2px;background:rgba(255,255,255,.15);margin-bottom:32px}.prog i{display:block;height:100%;background:var(--gold2);width:33%;transition:width .7s var(--ease)}
+.steps{font-size:13px;color:#c3d3d1;margin-bottom:10px;letter-spacing:.08em}
 
-/* price explorer */
-.px{display:grid;grid-template-columns:260px 1fr;gap:40px}
-.cats{display:flex;flex-direction:column;gap:6px;position:sticky;top:100px;align-self:start}
-.cat{background:none;border:0;text-align:left;padding:12px 16px;border-radius:12px;font:500 16px Inter;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between}
+.px{display:grid;grid-template-columns:270px 1fr;gap:48px}
+.cats{display:flex;flex-direction:column;gap:4px;position:sticky;top:110px;align-self:start}
+.cat{background:none;border:0;text-align:left;padding:12px 16px;border-radius:12px;font:500 15.5px var(--sans);color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;gap:10px;transition:background .3s}
+.cat:hover{background:var(--stone)}
 .cat[aria-selected=true]{background:var(--ink);color:#fff}
-.cat small{opacity:.7}
-.search{width:100%;padding:16px 20px;border-radius:14px;border:1.5px solid rgba(14,42,46,.2);font:16px Inter;background:var(--paper);margin-bottom:18px;color:var(--ink)}
-.rows{background:var(--paper);border-radius:var(--r);padding:8px 28px}
-.row{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid rgba(14,42,46,.1);animation:fi .5s var(--ease) both}
+.cat small{opacity:.8}
+.count{font-size:13px;color:var(--mute);margin:0 0 14px}
+.search{width:100%;padding:17px 22px;border-radius:14px;border:1px solid rgba(13,34,38,.3);font:16px var(--sans);background:var(--paper);margin-bottom:14px;color:var(--ink)}
+.rows{background:var(--paper);border-radius:var(--r);padding:6px 30px;border:1px solid var(--line)}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:19px 0;border-bottom:1px solid var(--line);animation:fi .5s var(--ease) both;color:var(--ink)}
 .row:last-child{border:0}
-.row b{font:400 22px Fraunces;white-space:nowrap}
+.row b{font:500 24px var(--serif);white-space:nowrap}
 .row span small{display:block;color:var(--mute);font-size:13px}
-@keyframes fi{from{opacity:0;transform:translateY(10px)}}
+.row mark{background:#f0dfb8;color:inherit}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}}
 .fine{font-size:13px;color:var(--mute);margin-top:16px}
-.fin{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.fin div{background:#e9f3f1;border-radius:16px;padding:18px;color:var(--ink)}
-.fin b{font:400 26px Fraunces;display:block}
+.fin{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.fin div{background:var(--stone);border-radius:16px;padding:20px;color:var(--ink);font-size:14.5px}
+.fin b{font:400 34px/1.1 var(--serif);display:block}
+.lnk{font-weight:600;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px}
 
-/* gallery / practice */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center}
-.stack{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.stack img{border-radius:var(--r);aspect-ratio:4/5;object-fit:cover;width:100%}
-.stack img:nth-child(2){margin-top:60px}
-.ticks{list-style:none;margin:24px 0 30px;display:grid;gap:14px}
-.ticks li{padding-left:34px;position:relative}
-.ticks li:before{content:"";position:absolute;left:0;top:4px;width:20px;height:20px;border-radius:50%;background:var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10l3 3 7-7' stroke='%230e2a2e' stroke-width='2' fill='none'/%3E%3C/svg%3E")}
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.tm{background:var(--ivory);padding:26px;color:var(--ink);transition:background .4s}
+.tm:hover{background:var(--paper)}
+.tm h3{font-size:26px}.tm p{font-size:14px;color:var(--mute);margin-top:8px}
+.tm .gdc{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;margin-top:14px;color:var(--ink2);font-weight:600}
+.tm.more{background:var(--ink);color:#fff}.tm.more p{color:#c3d3d1}
 
-/* team */
-.team{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
-.tm{background:var(--paper);border-radius:18px;padding:22px;color:var(--ink)}
-.tm h3{font-size:22px}.tm p{font-size:14px;color:var(--mute);margin-top:6px}
-.tm .gdc{font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-top:12px;color:var(--ink2)}
+.quotes{background:var(--paper);text-align:center}
+.quotes .eyebrow{justify-content:center}
+.qt{font:italic 400 clamp(28px,3.8vw,54px)/1.14 var(--serif);max-width:24ch;margin:30px auto 0;min-height:4.6em;transition:opacity .6s;color:var(--ink)}
+.qt cite{display:block;font:500 14px var(--sans);font-style:normal;margin-top:26px;color:var(--mute);letter-spacing:.06em}
+.qdots{display:flex;gap:8px;justify-content:center;margin-top:20px}
+.qdots button{width:32px;height:28px;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.qdots button:before{content:"";width:24px;height:2px;background:rgba(13,34,38,.25);transition:background .3s}
+.qdots button[aria-current=true]:before{background:var(--ink)}
 
-/* quotes */
-.quotes{background:var(--paper)}
-.qt{font:300 clamp(26px,3.4vw,46px)/1.2 Fraunces;max-width:22ch;min-height:4.8em;transition:opacity .6s}
-.qt cite{display:block;font:500 15px Inter;font-style:normal;margin-top:24px;color:var(--mute)}
-
-/* visit */
-.visit{background:var(--ink);color:var(--ivory)}
+.visit{background:var(--deep);color:var(--ivory)}
 .visit .eyebrow{color:var(--mint)}
-.hours{list-style:none;margin-top:20px}
-.hours li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.14)}
-.hours li.today{color:var(--mint);font-weight:600}
-.map{border-radius:var(--r);overflow:hidden;min-height:380px;border:0;width:100%;height:100%}
+.climax{text-align:center;padding-bottom:clamp(56px,7vw,96px)}
+.climax h2{font-size:var(--t1);line-height:.92;letter-spacing:-.03em;color:#fff}
+.climax h2 em{color:var(--gold2)}
+.climax p{color:#c3d3d1;margin:24px auto 36px;max-width:44ch}
+.climax .cta{justify-content:center}
+.climax .btn-o{color:#fff}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:stretch;border-top:1px solid rgba(255,255,255,.14);padding-top:clamp(56px,7vw,96px)}
+.vgrid h3{font-size:var(--t3);margin:16px 0;color:#fff}
+.hours{list-style:none;margin-top:22px}
+.hours li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.14);color:#dbe5e3}
+.hours li.today{color:var(--gold2);font-weight:600}
+.map{border-radius:var(--r);min-height:400px;border:0;width:100%;height:100%}
 .visit a:not(.btn){color:var(--mint)}
-footer{background:#081b1e;color:#b9c9c7;padding:40px 0;font-size:14px}
+footer{background:#050f11;color:#b7c6c4;padding:40px 0;font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 footer a{color:#fff}
 
-/* chat */
-.chat-b{position:fixed;right:20px;bottom:20px;z-index:70;background:var(--gold);color:var(--ink);border:0;border-radius:99px;padding:14px 20px;font:600 15px Inter;box-shadow:0 14px 30px -8px rgba(0,0,0,.4);cursor:pointer}
-.chat{position:fixed;right:20px;bottom:84px;z-index:70;width:min(370px,calc(100vw - 40px));background:#fff;color:var(--ink);border-radius:20px;box-shadow:0 30px 60px -10px rgba(0,0,0,.35);display:none;flex-direction:column;max-height:70vh;overflow:hidden}
-.chat.open{display:flex}
+.chat-b{position:fixed;right:20px;bottom:20px;z-index:70;background:var(--gold2);color:var(--deep);border:0;border-radius:99px;padding:14px 20px;font:600 14.5px var(--sans);box-shadow:0 16px 34px -10px rgba(0,0,0,.45);cursor:pointer;display:flex;gap:8px;align-items:center}
+.chat-b svg{width:18px;height:18px}
+.chat{position:fixed;right:20px;bottom:86px;z-index:70;width:min(380px,calc(100vw - 40px));background:#fff;color:var(--ink);border-radius:22px;box-shadow:0 30px 70px -12px rgba(0,0,0,.4);display:none;flex-direction:column;max-height:70vh;overflow:hidden}
+.chat.open{display:flex;animation:pop .45s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.97)}}
 .chat header{background:var(--ink);color:#fff;padding:16px 18px}
 .chat header small{display:block;color:var(--mint);font-size:12px}
 .msgs{padding:16px;overflow:auto;display:flex;flex-direction:column;gap:10px;flex:1}
-.m{padding:10px 14px;border-radius:14px;font-size:14px;max-width:85%}
-.m.bot{background:#eef4f3}.m.me{background:var(--ink);color:#fff;align-self:flex-end}
+.m{padding:10px 14px;border-radius:14px;font-size:14px;max-width:85%;color:var(--ink)}
+.m.bot{background:#edf3f2}.m.me{background:var(--ink);color:#fff;align-self:flex-end}
+.m a{color:var(--ink2);font-weight:600}
 .chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 16px}
-.chips button{border:1px solid var(--ink);background:#fff;color:var(--ink);border-radius:99px;padding:7px 12px;font:500 13px Inter;cursor:pointer}
+.chips button{border:1px solid var(--ink);background:#fff;color:var(--ink);border-radius:99px;padding:7px 12px;font:500 13px var(--sans);cursor:pointer}
+.chips button:hover{background:var(--ink);color:#fff}
 
-@media(max-width:900px){
- .nav{position:fixed;inset:0;height:100dvh;background:var(--ink);flex-direction:column;justify-content:center;gap:26px;transform:translateY(-100%);transition:transform .6s var(--ease)}
- .nav.open{transform:none}
- .nav a{color:#fff;font:300 34px Fraunces}
- .nav .btn{font:600 16px Inter;background:var(--mint);color:var(--ink)}
+@media(max-width:960px){
+ .nav{position:fixed;inset:0;height:100dvh;background:var(--deep);flex-direction:column;justify-content:center;gap:24px;transform:translateY(-100%);transition:transform .7s var(--ease),visibility 0s .7s;visibility:hidden}
+ .nav.open{transform:none;visibility:visible;transition:transform .7s var(--ease)}
+ .nav a{color:#fff;font:400 40px var(--serif)}
+ .nav .btn{font:600 16px var(--sans);background:var(--gold2);color:var(--deep);margin-top:10px}
  .burger{display:block}
- .hdr:has(.nav.open){background:transparent;box-shadow:none}
- .hero-grid,.quiz,.px,.split{grid-template-columns:1fr}
- .hero{padding-top:110px}
- .arch{max-width:340px;margin:10px auto 0;aspect-ratio:1/1.05}
- .tag{left:0}
+ .hero-grid,.quiz,.px,.vgrid,.story-grid{grid-template-columns:1fr}
+ .hero{padding-top:112px;padding-bottom:9vh}
+ .hero-media{max-width:360px;width:100%;margin:8px auto 0}
+ .arch{aspect-ratio:1/1.02}
+ .tag{left:0;bottom:24px;padding:16px 18px}.tag b{font-size:42px}
+ .scroll-cue,.story-vis{display:none}
+ .chap{min-height:0;opacity:1;padding:0 0 64px}
+ .chap-img{display:block;border-radius:20px;aspect-ratio:4/3;object-fit:cover;width:100%;margin-bottom:26px}
  .pillars{grid-template-columns:1fr 1fr}
+ .pl:nth-child(2){border-right:0}.pl{border-bottom:1px solid var(--line);min-height:0}
  .cats{position:static;flex-direction:row;overflow-x:auto;padding-bottom:6px}
- .cat{white-space:nowrap;gap:8px}
+ .cat{white-space:nowrap}
  .fin{grid-template-columns:1fr}
+ .team{grid-template-columns:1fr 1fr}
 }
-@media(max-width:560px){.pillars{grid-template-columns:1fr}.pl{min-height:0}.row b{font-size:19px}.rows{padding:4px 18px}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.hero h1 .ln>span{transform:none}}
+@media(max-width:560px){
+ .pillars,.team{grid-template-columns:1fr}.pl{border-right:0}
+ .row b{font-size:21px}.rows{padding:4px 18px}.res{padding:28px}
+ .hero h1{font-size:clamp(3rem,15vw,4.4rem)}
+ .chat-b span{display:none}.chat-b{padding:14px}
+}
+@media(prefers-reduced-motion:reduce){
+ *{animation:none!important;transition:none!important}
+ .chap{opacity:1}#gl{display:none}
+}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="prog-bar" id="progBar"></div>
 <header class="hdr" id="hdr"><div class="wrap">
  <a class="logo" href="#top" aria-label="Fairlands Dental home"><img src="img/logo-large.png" alt="Fairlands Dental &amp; Implant Centre" width="340" height="140"></a>
  <nav class="nav" id="nav" aria-label="Main">
-  <a href="#treatments">Treatments</a><a href="#finder">Smile finder</a><a href="#fees">Fees</a><a href="#team">Team</a><a href="#visit">Visit</a>
-  <a class="btn btn-d" href="https://appointmentor.com/webpages/r4pages/onlinebooking/LoginPatient.aspx?ClientID=578&amp;v=clean" target="_blank" rel="noopener">Book online</a>
+  <a href="#story">The practice</a><a href="#finder">Smile finder</a><a href="#fees">Fees</a><a href="#team">Team</a><a href="#visit">Visit</a>
+  <a class="btn btn-d mag" href="https://appointmentor.com/webpages/r4pages/onlinebooking/LoginPatient.aspx?ClientID=578&amp;v=clean" target="_blank" rel="noopener">Book online</a>
  </nav>
  <button class="burger" id="burger" aria-label="Open menu" aria-controls="nav" aria-expanded="false"><span></span></button>
 </div></header>
 
 <main id="main">
 <section class="hero" id="top">
- <div class="orb" style="width:520px;height:520px;background:#bfe6df;right:-120px;top:-80px"></div>
- <div class="orb" style="width:380px;height:380px;background:#f1d9b0;left:-120px;bottom:-60px"></div>
+ <div class="mesh" aria-hidden="true"></div>
+ <canvas id="gl" aria-hidden="true"></canvas>
  <div class="wrap hero-grid">
   <div>
    <div class="status" id="status" role="status"><i class="dot" id="dot"></i><span id="statusTxt">Checking opening hours</span></div>
    <h1><span class="ln"><span>Every smile,</span></span><span class="ln"><span><em>every specialist,</em></span></span><span class="ln"><span>one roof.</span></span></h1>
-   <p class="lead">Private family, implant and specialist dentistry at Fairlands Medical Centre, Guildford. New patient exams now £59, with children seen free alongside a paying adult.</p>
-   <div class="cta">
-    <a class="btn btn-d" href="https://appointmentor.com/webpages/r4pages/onlinebooking/LoginPatient.aspx?ClientID=578&amp;v=clean" target="_blank" rel="noopener">Book your £59 exam →</a>
-    <a class="btn btn-o" href="tel:01483233823">Call 01483 233 823</a>
+   <p class="lead hero-in">Private family, implant and specialist dentistry at Fairlands Medical Centre, Guildford. New patient exams now £59, with children seen free alongside a paying adult.</p>
+   <div class="cta hero-in">
+    <a class="btn btn-d mag" href="https://appointmentor.com/webpages/r4pages/onlinebooking/LoginPatient.aspx?ClientID=578&amp;v=clean" target="_blank" rel="noopener">Book your £59 exam <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    <a class="btn btn-o mag" href="tel:01483233823">Call 01483 233 823</a>
    </div>
   </div>
-  <div style="position:relative">
-   <div class="arch"><img id="heroImg" src="img/g151.jpg" alt="Fairlands dentist and nurse treating a patient in a bright surgery" width="850" height="531"></div>
+  <div class="hero-media hero-in">
+   <div class="arch"><img id="heroImg" src="img/g151.jpg" alt="Fairlands dentist and nurse treating a patient in a bright surgery" width="850" height="600" fetchpriority="high"></div>
    <div class="tag"><b>£59</b><small>New patient exam, was £70. Same day and Saturday visits £70.</small></div>
   </div>
  </div>
+ <div class="scroll-cue" aria-hidden="true">Scroll<i></i></div>
 </section>
 
 <div class="mq" aria-hidden="true"><div>
@@ -221,21 +282,59 @@ footer a{color:#fff}
  <span>Dental implants</span><i>✦</i><span>Invisalign</span><i>✦</i><span>Whitening</span><i>✦</i><span>Composite bonding</span><i>✦</i><span>Sedation</span><i>✦</i><span>Root canal under microscope</span><i>✦</i><span>Facial aesthetics</span><i>✦</i>
 </div></div>
 
+<section class="story" id="story"><div class="wrap">
+ <div class="sh"><div><p class="eyebrow">Your visit, in four chapters</p><h2 class="split">Good old-fashioned service, <em>modern kit.</em></h2></div><p>A modern, fully computerised private practice serving patients from across Surrey, Berkshire and Hampshire, with specialists in the same building.</p></div>
+ <div class="story-grid">
+  <div class="story-vis" aria-hidden="true">
+   <img src="img/g131.jpg" alt="" class="on" width="850" height="600" loading="lazy" data-i="0">
+   <img src="img/g141.jpg" alt="" width="850" height="600" loading="lazy" data-i="1">
+   <img src="img/g151.jpg" alt="" width="850" height="600" loading="lazy" data-i="2">
+   <span class="cap" id="cap">Fairlands Medical Centre</span>
+  </div>
+  <div>
+   <article class="chap on" data-i="0" data-cap="Fairlands Medical Centre">
+    <img class="chap-img" src="img/g131.jpg" alt="Fairlands Medical and Dental Centre building" width="850" height="600" loading="lazy">
+    <span class="num">01</span><h3>Arrive without the stress.</h3>
+    <p>First floor of Fairlands Medical Centre, Worplesdon, with plenty of free parking, lift access and an onsite pharmacy. Late Wednesdays until 6:30pm and Saturday mornings too.</p>
+    <div class="mini"><a href="#visit">Find us</a></div>
+   </article>
+   <article class="chap" data-i="1" data-cap="Modern, fully computerised surgeries">
+    <img class="chap-img" src="img/g141.jpg" alt="Treatment room at Fairlands Dental" width="850" height="600" loading="lazy">
+    <span class="num">02</span><h3>A plan, in writing.</h3>
+    <p>Your new patient exam is £59. Implant planning uses the on site CT scanner, and you always get a full itemised plan in writing before treatment starts.</p>
+    <div class="mini"><a href="#fees">See every fee</a></div>
+   </article>
+   <article class="chap" data-i="2" data-cap="Specialists under one roof">
+    <img class="chap-img" src="img/g151.jpg" alt="Fairlands dentist and nurse with a patient" width="850" height="600" loading="lazy">
+    <span class="num">03</span><h3>Specialists, same building.</h3>
+    <p>Root canal treatment by a specialist under the microscope, plus a specialist orthodontist and periodontist on the team.</p>
+    <div class="mini"><a href="#team">Meet the team</a></div>
+   </article>
+   <article class="chap" data-i="2" data-cap="At your pace">
+    <span class="num">04</span><h3>Calm, at your pace.</h3>
+    <p>Nervous patients are listened to and talked through each step, with numbing gel and IV or inhalation sedation available. Children are seen on the NHS with a fee paying adult.</p>
+    <div class="mini"><a href="#finder">Find your starting point</a></div>
+   </article>
+  </div>
+ </div>
+</div></section>
+
 <section id="treatments"><div class="wrap">
- <div class="sh rv"><div><p class="eyebrow">What we do</p><h2>From a check-up to a <em>whole new smile.</em></h2></div><p>A modern, fully computerised private practice serving patients from across Surrey, Berkshire and Hampshire, with specialists in the same building.</p></div>
- <div class="pillars">
-  <article class="pl rv"><span class="n">01</span><div><h3>Implants</h3><p>Single teeth, multiple teeth and denture stabilisation. Fully restored from £2,950, with a free consultation.</p></div></article>
-  <article class="pl rv"><span class="n">02</span><div><h3>Straighter teeth</h3><p>Invisalign from £3,000 and fixed braces, led by a specialist orthodontist.</p></div></article>
-  <article class="pl rv"><span class="n">03</span><div><h3>Brighter smiles</h3><p>Home whitening from £450, Enlighten, composite bonding from £295 and veneers.</p></div></article>
-  <article class="pl rv"><span class="n">04</span><div><h3>Calm care</h3><p>Nervous patients go at their own pace, with numbing gel, IV or inhalation sedation available.</p></div></article>
+ <div class="sh"><div><p class="eyebrow">What we do</p><h2 class="split">From a check-up to a <em>whole new smile.</em></h2></div><p>Four ways most patients begin. Every starting fee comes from the published Fairlands fee guide.</p></div>
+ <div class="pillars stg">
+  <article class="pl"><span class="n">i.</span><h3>Implants</h3><span class="fee">from £2,950</span><p>Single teeth, multiple teeth and denture stabilisation, fully restored. Free consultation.</p></article>
+  <article class="pl"><span class="n">ii.</span><h3>Straighter teeth</h3><span class="fee">from £3,000</span><p>Invisalign offer pricing and fixed braces, led by a specialist orthodontist.</p></article>
+  <article class="pl"><span class="n">iii.</span><h3>Brighter smiles</h3><span class="fee">from £295</span><p>Composite bonding from £295, home whitening from £450, Enlighten and veneers.</p></article>
+  <article class="pl"><span class="n">iv.</span><h3>Calm care</h3><span class="fee">£59 exam</span><p>Go at your own pace, with numbing gel and IV or inhalation sedation available.</p></article>
  </div>
 </div></section>
 
 <section class="finder" id="finder"><div class="wrap">
- <div class="sh rv"><div><p class="eyebrow">Smile finder</p><h2>Three taps to your <em style="color:var(--mint)">starting point.</em></h2></div><p>Answer three quick questions and we will point you at the right first appointment, with the real starting fee from the Fairlands price list.</p></div>
+ <div class="sh"><div><p class="eyebrow">Smile finder</p><h2 class="split">Three taps to your <em>starting point.</em></h2></div><p>Answer three quick questions and we will point you at the right first appointment, with the real starting fee from the Fairlands price list.</p></div>
  <div class="quiz">
   <div class="q" aria-live="polite">
    <div class="prog"><i id="prog"></i></div>
+   <p class="steps" id="steps">Question 1 of 3</p>
    <h3 id="qText"></h3>
    <div class="opts" id="opts"></div>
   </div>
@@ -244,18 +343,19 @@ footer a{color:#fff}
    <h4>Start with a new patient exam</h4>
    <p>Whatever your goal, most journeys begin with a thorough exam so your dentist can plan properly.</p>
    <div class="price">£59</div><p>New patient exam (adult)</p>
-   <a class="btn btn-d" href="https://appointmentor.com/webpages/r4pages/onlinebooking/LoginPatient.aspx?ClientID=578&amp;v=clean" target="_blank" rel="noopener">Book online</a>
+   <div class="cta"><a class="btn btn-d" href="https://appointmentor.com/webpages/r4pages/onlinebooking/LoginPatient.aspx?ClientID=578&amp;v=clean" target="_blank" rel="noopener">Book online</a></div>
   </div>
  </div>
 </div></section>
 
 <section id="fees"><div class="wrap">
- <div class="sh rv"><div><p class="eyebrow">Price explorer</p><h2>Clear fees, <em>no surprises.</em></h2></div><p>Every figure below comes from the published Fairlands fee guide. You always get a full itemised plan in writing before treatment starts.</p></div>
+ <div class="sh"><div><p class="eyebrow">Price explorer</p><h2 class="split">Clear fees, <em>no surprises.</em></h2></div><p>Every figure below comes from the published Fairlands fee guide. Search by treatment, or browse by category.</p></div>
  <div class="px">
   <div class="cats" role="tablist" id="cats" aria-label="Fee categories"></div>
   <div>
-   <label class="skip" for="q">Search treatments</label>
+   <label class="sr" for="q">Search treatments</label>
    <input class="search" id="q" type="search" placeholder="Search, for example crown, whitening, braces">
+   <p class="count" id="count"></p>
    <div class="rows" id="rows"></div>
    <p class="fine">Fees are a guide and depend on complexity and time taken. A deposit is normally taken when booking; please give 48 hours notice to cancel.</p>
    <div class="fin">
@@ -263,49 +363,45 @@ footer a{color:#fff}
     <div><b>£125</b>a month: £1,500 treatment over 12 months at 0% APR</div>
     <div><b>£23</b>a month: Denplan Care from category A</div>
    </div>
-   <p style="margin-top:18px"><a href="https://lead.tabeo.co.uk/fairlands-dental-centre/finance" target="_blank" rel="noopener">Check finance options with Tabeo →</a></p>
+   <p style="margin-top:20px"><a class="lnk" href="https://lead.tabeo.co.uk/fairlands-dental-centre/finance" target="_blank" rel="noopener">Check finance options with Tabeo</a></p>
   </div>
- </div>
-</div></section>
-
-<section style="padding-top:0"><div class="wrap split">
- <div class="stack rv"><img src="img/g131.jpg" alt="Fairlands Medical and Dental Centre building" loading="lazy" width="850" height="531"><img src="img/g141.jpg" alt="Treatment room at Fairlands Dental" loading="lazy" width="850" height="531"></div>
- <div class="rv">
-  <p class="eyebrow">The practice</p>
-  <h2 style="font-size:var(--s2);margin-top:14px">Good old-fashioned service, <em>modern kit.</em></h2>
-  <ul class="ticks">
-   <li>On site CT scanner for implant planning</li>
-   <li>Root canal treatment by a specialist under the microscope</li>
-   <li>Late Wednesday and Saturday morning appointments</li>
-   <li>Plenty of free parking, lift access and an onsite pharmacy</li>
-   <li>NHS treatment for children with a fee paying adult</li>
-  </ul>
-  <a class="btn btn-d" href="https://appointmentor.com/webpages/r4pages/onlinebooking/LoginPatient.aspx?ClientID=578&amp;v=clean" target="_blank" rel="noopener">Book a visit</a>
  </div>
 </div></section>
 
 <section id="team" style="padding-top:0"><div class="wrap">
- <div class="sh rv"><div><p class="eyebrow">Our clinicians</p><h2>Led by the <em>Vaidyas.</em></h2></div><p>Principal dentists Amit and Shilpa Vaidya lead a team of dentists, hygienists and specialists, all registered with the General Dental Council.</p></div>
- <div class="team" id="teamGrid"></div>
+ <div class="sh"><div><p class="eyebrow">Our clinicians</p><h2 class="split">Led by the <em>Vaidyas.</em></h2></div><p>Principal dentists Amit and Shilpa Vaidya lead a team of dentists, hygienists and specialists, all registered with the General Dental Council.</p></div>
+ <div class="team stg" id="teamGrid"></div>
 </div></section>
 
 <section class="quotes"><div class="wrap">
  <p class="eyebrow">From our patients</p>
- <blockquote class="qt" id="qt" style="margin-top:26px"></blockquote>
+ <blockquote class="qt" id="qt"></blockquote>
+ <div class="qdots" id="qdots"></div>
 </div></section>
 
-<section class="visit" id="visit"><div class="wrap split" style="align-items:stretch">
- <div>
-  <p class="eyebrow">Visit us</p>
-  <h2 style="font-size:var(--s2);margin:14px 0 18px">First floor, Fairlands Medical Centre.</h2>
-  <p>Fairlands Avenue, Worplesdon, Guildford, Surrey GU3 3NA<br><a href="tel:01483233823">01483 233 823</a> · <a href="mailto:info@fairlandsdental.co.uk">info@fairlandsdental.co.uk</a></p>
-  <ul class="hours" id="hours"></ul>
-  <div class="cta" style="margin-top:28px">
-   <a class="btn btn-l" href="https://appointmentor.com/webpages/r4pages/onlinebooking/LoginPatient.aspx?ClientID=578&amp;v=clean" target="_blank" rel="noopener">Book online</a>
-   <a class="btn btn-o" style="color:#fff" href="https://goo.gl/maps/tZzGF" target="_blank" rel="noopener">Directions</a>
+<section class="visit" id="visit"><div class="wrap">
+ <div class="climax">
+  <p class="eyebrow" style="justify-content:center">Ready when you are</p>
+  <h2 style="margin-top:22px">Your smile, <em>next.</em></h2>
+  <p>Book online in a few minutes, or call the reception team on 01483 233 823.</p>
+  <div class="cta">
+   <a class="btn btn-g mag" href="https://appointmentor.com/webpages/r4pages/onlinebooking/LoginPatient.aspx?ClientID=578&amp;v=clean" target="_blank" rel="noopener">Book online <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+   <a class="btn btn-o mag" href="tel:01483233823">Call 01483 233 823</a>
   </div>
  </div>
- <iframe class="map" title="Map to Fairlands Dental" loading="lazy" src="https://www.google.com/maps?q=Fairlands+Dental+%26+Implant+Centre,+GU3+3NA&amp;output=embed"></iframe>
+ <div class="vgrid">
+  <div>
+   <p class="eyebrow">Visit us</p>
+   <h3>First floor, Fairlands Medical Centre.</h3>
+   <p>Fairlands Avenue, Worplesdon, Guildford, Surrey GU3 3NA<br><a href="tel:01483233823">01483 233 823</a> · <a href="mailto:info@fairlandsdental.co.uk">info@fairlandsdental.co.uk</a></p>
+   <ul class="hours" id="hours"></ul>
+   <div class="cta" style="margin-top:28px">
+    <a class="btn btn-l" href="https://appointmentor.com/webpages/r4pages/onlinebooking/LoginPatient.aspx?ClientID=578&amp;v=clean" target="_blank" rel="noopener">Book online</a>
+    <a class="btn btn-o" style="color:#fff" href="https://goo.gl/maps/tZzGF" target="_blank" rel="noopener">Directions</a>
+   </div>
+  </div>
+  <iframe class="map" title="Map to Fairlands Dental" loading="lazy" src="https://www.google.com/maps?q=Fairlands+Dental+%26+Implant+Centre,+GU3+3NA&amp;output=embed"></iframe>
+ </div>
 </div></section>
 </main>
 
@@ -314,31 +410,93 @@ footer a{color:#fff}
  <span>Concept design by <a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener">The Tender Desk</a></span>
 </div></footer>
 
-<button class="chat-b" id="chatB" aria-expanded="false" aria-controls="chat">💬 Ask a question</button>
+<button class="chat-b" id="chatB" aria-expanded="false" aria-controls="chat" aria-label="Ask the demo assistant"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4h14v9H8l-4 3v-3H3z"/></svg><span>Ask a question</span></button>
 <div class="chat" id="chat" role="dialog" aria-label="Demo assistant">
  <header><strong>Fairlands assistant</strong><small>Demo assistant · scripted answers from the practice website</small></header>
  <div class="msgs" id="msgs"></div>
  <div class="chips" id="chips"></div>
 </div>
 
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 const BOOK="https://appointmentor.com/webpages/r4pages/onlinebooking/LoginPatient.aspx?ClientID=578&v=clean";
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FINE=matchMedia('(hover:hover) and (pointer:fine)').matches;
+const MOBILE=innerWidth<960;
+const hasG=typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined';
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
 /* smooth scroll */
-let lenis;try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){lenis=new Lenis({lerp:.09});const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf)}}catch(e){}
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(!t)return;e.preventDefault();closeNav();lenis?lenis.scrollTo(t,{offset:-70}):t.scrollIntoView({behavior:'smooth'})}));
-addEventListener('load',()=>document.body.classList.add('loaded'));setTimeout(()=>document.body.classList.add('loaded'),600);
+let lenis;
+try{if(!RM&&typeof Lenis!=='undefined'){lenis=new Lenis({lerp:.1});if(hasG){lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0)}else{const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf)}}}catch(e){}
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(!t)return;e.preventDefault();closeNav();lenis?lenis.scrollTo(t,{offset:-70}):t.scrollIntoView()}));
 
 /* header + nav */
-const hdr=document.getElementById('hdr'),nav=document.getElementById('nav'),bg=document.getElementById('burger');
-const heroImg=document.getElementById('heroImg');
-addEventListener('scroll',()=>{hdr.classList.toggle('solid',scrollY>40);if(scrollY<innerHeight)heroImg.style.transform=`translate3d(0,${-scrollY*.08}px,0)`},{passive:true});
-function closeNav(){nav.classList.remove('open');bg.setAttribute('aria-expanded','false');lenis&&lenis.start()}
+const hdr=document.getElementById('hdr'),nav=document.getElementById('nav'),bg=document.getElementById('burger'),pb=document.getElementById('progBar');
+function onScroll(){hdr.classList.toggle('solid',scrollY>40);const h=document.documentElement.scrollHeight-innerHeight;pb.style.transform=`scaleX(${h>0?scrollY/h:0})`}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+function closeNav(){nav.classList.remove('open');bg.setAttribute('aria-expanded','false');bg.setAttribute('aria-label','Open menu');lenis&&lenis.start()}
 bg.onclick=()=>{const o=nav.classList.toggle('open');bg.setAttribute('aria-expanded',o);bg.setAttribute('aria-label',o?'Close menu':'Open menu');o?lenis&&lenis.stop():lenis&&lenis.start()};
 
-/* reveal */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*.08+'s';io.observe(el)});
+/* motion */
+if(hasG&&!RM){
+ gsap.registerPlugin(ScrollTrigger);
+ const tl=gsap.timeline({defaults:{ease:'expo.out'}});
+ tl.from('.hero h1 .ln>span',{yPercent:110,duration:1.4,stagger:.1})
+   .from('.status',{opacity:0,y:12,duration:.8},0.1)
+   .from('.hero-in',{opacity:0,y:24,duration:1.1,stagger:.1},0.35)
+   .from('#heroImg',{scale:1.18,duration:2},0.2);
+ gsap.to('#heroImg',{yPercent:6,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+ document.querySelectorAll('.split').forEach(h=>gsap.from(h,{opacity:0,y:40,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 90%'}}));
+ document.querySelectorAll('.sh>p').forEach(p=>gsap.from(p,{opacity:0,y:16,duration:.9,ease:'power2.out',scrollTrigger:{trigger:p,start:'top 92%'}}));
+ document.querySelectorAll('.stg').forEach(g=>gsap.from(g.children,{opacity:0,y:24,duration:.7,stagger:{each:.06,grid:'auto'},ease:'power2.out',scrollTrigger:{trigger:g,start:'top 88%'}}));
+ gsap.from('.fin>div',{opacity:0,y:20,duration:.7,stagger:.08,ease:'power2.out',scrollTrigger:{trigger:'.fin',start:'top 95%'}});
+ if(!MOBILE)gsap.fromTo('.climax h2',{scale:.86},{scale:1,ease:'none',scrollTrigger:{trigger:'.climax',start:'top bottom',end:'center center',scrub:1}});
+ addEventListener('load',()=>ScrollTrigger.refresh());
+}
+
+/* story chapters: swap sticky visual */
+const vis=[...document.querySelectorAll('.story-vis img')],cap=document.getElementById('cap');
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const c=e.target,i=+c.dataset.i;document.querySelectorAll('.chap').forEach(x=>x.classList.toggle('on',x===c));vis.forEach(v=>v.classList.toggle('on',+v.dataset.i===i));cap.textContent=c.dataset.cap}),{rootMargin:'-45% 0px -45% 0px'});
+document.querySelectorAll('.chap').forEach(c=>cio.observe(c));
+
+/* magnetic buttons */
+if(FINE&&!RM&&hasG){document.querySelectorAll('.mag').forEach(b=>{
+ const xTo=gsap.quickTo(b,'x',{duration:.6,ease:'elastic.out(1,.4)'}),yTo=gsap.quickTo(b,'y',{duration:.6,ease:'elastic.out(1,.4)'});
+ b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();xTo((e.clientX-r.left-r.width/2)*.28);yTo((e.clientY-r.top-r.height/2)*.4)});
+ b.addEventListener('mouseleave',()=>{xTo(0);yTo(0)});
+})}
+
+/* WebGL gradient mesh: desktop only, low-res, paused offscreen. CSS mesh is the mobile / reduced-motion fallback */
+(function(){
+ if(RM||MOBILE)return;const c=document.getElementById('gl');const gl=c.getContext('webgl',{antialias:false,alpha:false,powerPreference:'low-power'});if(!gl)return;
+ const vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+ const fs=`precision mediump float;uniform vec2 r;uniform float t;uniform vec2 m;
+ float blob(vec2 uv,vec2 c,float s){return exp(-dot(uv-c,uv-c)/s);}
+ void main(){vec2 uv=gl_FragCoord.xy/r;float a=r.x/r.y;uv.x*=a;
+ vec3 col=vec3(.957,.945,.918);
+ vec2 c1=vec2(a*.82+.08*sin(t*.21),.80+.06*cos(t*.17))+m*.05;
+ vec2 c2=vec2(a*.12+.07*cos(t*.19),.12+.07*sin(t*.23))-m*.04;
+ vec2 c3=vec2(a*.5+.12*sin(t*.13),.5+.1*cos(t*.11));
+ col=mix(col,vec3(.78,.91,.88),blob(uv,c1,.09)*.9);col=mix(col,vec3(.93,.85,.70),blob(uv,c2,.08)*.8);col=mix(col,vec3(.86,.92,.93),blob(uv,c3,.14)*.35);
+ col+=(fract(sin(dot(gl_FragCoord.xy,vec2(12.9898,78.233)))*43758.5453)-.5)*.012;
+ gl_FragColor=vec4(col,1.);}`;
+ const sh=(ty,src)=>{const s=gl.createShader(ty);gl.shaderSource(s,src);gl.compileShader(s);return s};
+ const pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return;gl.useProgram(pr);
+ gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+ const l=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(l);gl.vertexAttribPointer(l,2,gl.FLOAT,false,0,0);
+ const ur=gl.getUniformLocation(pr,'r'),ut=gl.getUniformLocation(pr,'t'),um=gl.getUniformLocation(pr,'m');
+ let mx=0,my=0,tx=0,ty=0,on=true;const S=.5;
+ function size(){c.width=Math.max(1,c.clientWidth*S|0);c.height=Math.max(1,c.clientHeight*S|0);gl.viewport(0,0,c.width,c.height)}size();addEventListener('resize',size);
+ addEventListener('pointermove',e=>{tx=e.clientX/innerWidth-.5;ty=.5-e.clientY/innerHeight},{passive:true});
+ new IntersectionObserver(e=>on=e[0].isIntersecting).observe(c);
+ const t0=performance.now();
+ function draw(){mx+=(tx-mx)*.05;my+=(ty-my)*.05;gl.uniform2f(ur,c.width,c.height);gl.uniform1f(ut,(performance.now()-t0)/1000);gl.uniform2f(um,mx,my);gl.drawArrays(gl.TRIANGLES,0,3)}
+ draw();c.classList.add('on');
+ (function loop(){if(on&&!document.hidden)draw();requestAnimationFrame(loop)})();
+})();
 
 /* hours, live status (UK time) */
 const H=[null,[510,1050],[510,1050],[510,1110],[510,1050],[510,1050],[540,840]];
@@ -346,7 +504,7 @@ const DN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'
 const fmt=m=>{let h=Math.floor(m/60),mm=m%60,ap=h>=12?'pm':'am';h=h%12||12;return h+(mm?':'+String(mm).padStart(2,'0'):'')+ap};
 function uk(){const p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());const g=t=>p.find(x=>x.type==t).value;return{d:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g('weekday')),m:(+g('hour')%24)*60+ +g('minute')}}
 function status(){const {d,m}=uk(),h=H[d],dot=document.getElementById('dot'),t=document.getElementById('statusTxt');
- if(h&&m>=h[0]&&m<h[1]){dot.classList.add('on');t.textContent=`Open now · until ${fmt(h[1])} today${d==6?' (private only)':''}`;return}
+ if(h&&m>=h[0]&&m<h[1]){dot.classList.add('on');const left=h[1]-m;t.textContent=`Open now · until ${fmt(h[1])} today${d==6?' (private only)':''}${left<=60?` · closes in ${left} min`:''}`;return}
  dot.classList.remove('on');let nd=d,first=true;for(let i=0;i<8;i++){const hh=H[nd];if(hh&&(!first||m<hh[0])){t.textContent=`Closed now · opens ${i==0?'today':i==1?'tomorrow':DN[nd]} at ${fmt(hh[0])}`;return}first=false;nd=(nd+1)%7}}
 status();setInterval(status,60000);
 const hl=document.getElementById('hours'),td=uk().d;[1,2,3,4,5,6,0].forEach(d=>{const li=document.createElement('li');if(d==td)li.className='today';li.innerHTML=`<span>${DN[d]}${d==td?' · today':''}</span><span>${H[d]?fmt(H[d][0])+' to '+fmt(H[d][1])+(d==6?' (private)':''):'Closed'}</span>`;hl.appendChild(li)});
@@ -363,40 +521,48 @@ const FEES={
 "Dentures":[["Acrylic dentures","from £695"],["Next Day Denture Repairs","from £215"],["Flexi Dentures","from £695"],["Chrome Dentures","from £1,400"],["Titanium Dentures (ultra light)","from £1,500"]],
 "Sedation & Appliances":[["IV Sedation (per hour)","from £395"],["Inhalation Sedation (per hour)","£300"],["Anti-Snoring Device","from £895"],["Sports Guard","from £225"],["Night Guard","from £225"],["Michigan Splint","from £895"]],
 "Facial aesthetics":[["Botox","from £275"],["Botox for TMJ Pain","from £395"],["Botox for Excessive Sweating","from £395"],["Dermal Fillers","from £450"],["Profhilo","from £350"]]};
-const cats=document.getElementById('cats'),rows=document.getElementById('rows'),q=document.getElementById('q');let cur="Exams & X-rays";
-function draw(list){rows.innerHTML=list.length?list.map((r,i)=>`<div class="row" style="animation-delay:${i*.035}s"><span>${r[0]}${r[2]?`<small>${r[2]}</small>`:''}</span><b>${r[1]}</b></div>`).join(''):'<div class="row"><span>No match. Call 01483 233 823 for the extended specialist fee guide.</span></div>'}
-Object.keys(FEES).forEach(k=>{const b=document.createElement('button');b.className='cat';b.role='tab';b.innerHTML=`${k}<small>${FEES[k].length}</small>`;b.setAttribute('aria-selected',k==cur);b.onclick=()=>{cur=k;q.value='';[...cats.children].forEach(c=>c.setAttribute('aria-selected',c==b));draw(FEES[k])};cats.appendChild(b)});
-draw(FEES[cur]);
-q.oninput=()=>{const s=q.value.toLowerCase().trim();if(!s){draw(FEES[cur]);return}[...cats.children].forEach(c=>c.setAttribute('aria-selected',false));draw(Object.values(FEES).flat().filter(r=>(r[0]+' '+(r[2]||'')).toLowerCase().includes(s)))};
+const ALL=Object.values(FEES).flat();
+const cats=document.getElementById('cats'),rows=document.getElementById('rows'),q=document.getElementById('q'),cnt=document.getElementById('count');let cur="Exams & X-rays";
+function hi(s,t){if(!t)return esc(s);const i=s.toLowerCase().indexOf(t);return i<0?esc(s):esc(s.slice(0,i))+'<mark>'+esc(s.slice(i,i+t.length))+'</mark>'+esc(s.slice(i+t.length))}
+function draw(list,t,label){rows.innerHTML=list.length?list.map((r,i)=>`<div class="row" style="animation-delay:${i*.03}s"><span>${hi(r[0],t)}${r[2]?`<small>${r[2]}</small>`:''}</span><b>${r[1]}</b></div>`).join(''):'<div class="row"><span>No match. Call 01483 233 823 for the extended specialist fee guide.</span></div>';cnt.textContent=`${list.length} of ${ALL.length} fees · ${label}`}
+Object.keys(FEES).forEach(k=>{const b=document.createElement('button');b.className='cat';b.setAttribute('role','tab');b.dataset.k=k;b.innerHTML=`${esc(k)}<small>${FEES[k].length}</small>`;b.setAttribute('aria-selected',k==cur);b.onclick=()=>{cur=k;q.value='';[...cats.children].forEach(c=>c.setAttribute('aria-selected',c==b));draw(FEES[k],'',k)};cats.appendChild(b)});
+draw(FEES[cur],'',cur);
+q.oninput=()=>{const s=q.value.toLowerCase().trim();if(!s){[...cats.children].forEach(c=>c.setAttribute('aria-selected',c.dataset.k==cur));draw(FEES[cur],'',cur);return}[...cats.children].forEach(c=>c.setAttribute('aria-selected',false));draw(ALL.filter(r=>(r[0]+' '+(r[2]||'')).toLowerCase().includes(s)),s,'matching "'+q.value.trim()+'"')};
 
 /* smile finder */
 const QS=[["What brings you in?",[["A check-up or I'm new","new"],["Something hurts or broke","pain"],["I'd love a brighter smile","white"],["My teeth are crooked","ortho"],["I have a missing tooth","implant"]]],
 ["How do you feel about dentists?",[["Totally fine","calm"],["A bit nervous","nerv"],["Very anxious","very"]]],
 ["When suits you best?",[["Weekdays","wk"],["Wednesday evening","wed"],["Saturday morning","sat"]]]];
 const OUT={new:["New patient exam","£59","A thorough exam and plan. Children under 16 are seen free with a paying adult."],pain:["Same day or emergency appointment","£70","Call first thing and the team will try to see you the same day."],white:["Free whitening consultation","FREE","Worth £70. Home whitening then starts from £450, Enlighten from £850."],ortho:["Invisalign or braces consultation","from £3,000","Invisalign offer pricing; varies with case complexity. 0% finance over 12 months available."],implant:["Free implant consultation","FREE","Implants fully restored from £2,950, planned with the on site CT scanner."]};
-let step=0,ans=[];const qT=document.getElementById('qText'),opts=document.getElementById('opts'),res=document.getElementById('res'),prog=document.getElementById('prog');
-function ask(){if(step>=QS.length)return finish();prog.style.width=((step+1)/3*100)+'%';qT.textContent=QS[step][0];opts.innerHTML='';QS[step][1].forEach(([l,v])=>{const b=document.createElement('button');b.className='opt';b.textContent=l;b.setAttribute('aria-pressed','false');b.onclick=()=>{b.setAttribute('aria-pressed','true');ans[step]=v;step++;setTimeout(ask,260)};opts.appendChild(b)})}
+let step=0,ans=[];const qT=document.getElementById('qText'),opts=document.getElementById('opts'),res=document.getElementById('res'),prog=document.getElementById('prog'),stp=document.getElementById('steps');
+function ask(){if(step>=QS.length)return finish();prog.style.width=((step+1)/3*100)+'%';stp.textContent=`Question ${step+1} of 3`;qT.textContent=QS[step][0];opts.innerHTML='';QS[step][1].forEach(([l,v],i)=>{const b=document.createElement('button');b.className='opt';b.textContent=l;b.setAttribute('aria-pressed','false');b.onclick=()=>{b.setAttribute('aria-pressed','true');ans[step]=v;step++;setTimeout(ask,280)};opts.appendChild(b);if(!RM)b.animate([{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'none'}],{duration:450,delay:i*50,easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'})})}
 function finish(){const o=OUT[ans[0]];let extra=ans[1]=='very'?' Tell us when you book: IV or inhalation sedation is available.':ans[1]=='nerv'?' We go at your pace and explain every step.':'';let when=ans[2]=='sat'?'Saturday 9am to 2pm is private appointments only.':ans[2]=='wed'?'Wednesdays we open until 6:30pm.':'Weekdays 8:30am to 5:30pm.';
-res.innerHTML=`<p class="eyebrow">Your suggestion</p><h4>${o[0]}</h4><p>${o[2]}${extra}</p><div class="price">${o[1]}</div><p>${when}</p><div class="cta"><a class="btn btn-d" href="${BOOK}" target="_blank" rel="noopener">Book online</a><button class="btn btn-o" id="again">Start again</button></div>`;
-res.animate([{opacity:0,transform:'translateY(20px)'},{opacity:1,transform:'none'}],{duration:600,easing:'cubic-bezier(.2,.8,.2,1)'});
-qT.textContent='All done. Here is your starting point.';opts.innerHTML='';document.getElementById('again').onclick=()=>{step=0;ans=[];ask()}}
+const act=ans[0]=='pain'?`<a class="btn btn-d" href="tel:01483233823">Call 01483 233 823</a>`:`<a class="btn btn-d" href="${BOOK}" target="_blank" rel="noopener">Book online</a>`;
+res.innerHTML=`<p class="eyebrow">Your suggestion</p><h4>${o[0]}</h4><p>${o[2]}${extra}</p><div class="price">${o[1]}</div><p>${when}</p><div class="cta">${act}<button class="btn btn-o" id="again">Start again</button></div>`;
+if(!RM)res.animate([{opacity:0,transform:'translateY(20px)'},{opacity:1,transform:'none'}],{duration:700,easing:'cubic-bezier(.16,1,.3,1)'});
+prog.style.width='100%';stp.textContent='Done';qT.textContent='Here is your starting point.';opts.innerHTML='';document.getElementById('again').onclick=()=>{step=0;ans=[];ask()}}
 ask();
 
 /* team (from meet-the-team page) */
 const TEAM=[["Mr Amit Vaidya","Principal Dentist · BDS, M.Med.Sci, FDS RCS (Eng)","86138"],["Mrs Shilpa Vaidya","Principal Dentist · BDS","86189"],["Mr Ben Molyneux","Implant Dentist · BDS, Dip Imp Dent RCS","76460"],["Balaji Rajamani","Advanced Implant Dentist · MSc Dental Implantology","104848"],["Dr Nadia Alwash","Specialist Orthodontist · MOrth RCS Eng","80312"],["Alix L Davies","Specialist Endodontist · MClinDent Endo","85852"],["Dr Angela Boodhooa","Specialist in Periodontics · MClinDent (Perio)","209502"],["Amy Bachra","Dentist and Aesthetic Practitioner · BDS (Hons)","213203"]];
-document.getElementById('teamGrid').innerHTML=TEAM.map(t=>`<article class="tm rv in"><h3>${t[0]}</h3><p>${t[1]}</p><p class="gdc">GDC ${t[2]}</p></article>`).join('')+`<article class="tm" style="background:var(--ink);color:#fff"><h3>+ 10 more</h3><p style="color:#c5d6d4">Dentists, hygienists and a dental therapist, supported by a team of nurses and receptionists.</p></article>`;
+document.getElementById('teamGrid').innerHTML=TEAM.map(t=>`<article class="tm"><h3>${t[0]}</h3><p>${t[1]}</p><p class="gdc">GDC ${t[2]}</p></article>`).join('')+`<article class="tm more"><h3>+ 10 more</h3><p>Dentists, hygienists and a dental therapist, supported by a team of nurses and receptionists.</p></article>`;
 
 /* quotes (site testimonials) */
 const QT=[["Thank you so much for my beautiful new teeth. I cannot begin to express adequately how deeply thrilled I am with them.","A.W."],["Many thanks, again, for dealing with me in such a cordial and considerate manner.","L.T."],["Many thanks, I do hope that your work gives you as much satisfaction and pleasure as it gives your patients.","R.D."]];
-let qi=0;const qt=document.getElementById('qt');function showQ(){qt.style.opacity=0;setTimeout(()=>{qt.innerHTML=`“${QT[qi][0]}”<cite>${QT[qi][1]}, Fairlands patient</cite>`;qt.style.opacity=1;qi=(qi+1)%QT.length},500)}showQ();setInterval(showQ,6500);
+let qi=0,qtim;const qt=document.getElementById('qt'),qd=document.getElementById('qdots');
+QT.forEach((_,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Show quote '+(i+1));b.onclick=()=>{qi=i;showQ();clearInterval(qtim);if(!RM)qtim=setInterval(next,7000)};qd.appendChild(b)});
+function showQ(){qt.style.opacity=0;setTimeout(()=>{qt.innerHTML=`“${QT[qi][0]}”<cite>${QT[qi][1]}, Fairlands patient</cite>`;qt.style.opacity=1;[...qd.children].forEach((b,i)=>b.setAttribute('aria-current',i==qi))},RM?0:450)}
+function next(){qi=(qi+1)%QT.length;showQ()}
+showQ();if(!RM)qtim=setInterval(next,7000);
 
 /* demo assistant */
 const chat=document.getElementById('chat'),cb=document.getElementById('chatB'),msgs=document.getElementById('msgs'),chips=document.getElementById('chips');
-const A={"How much is a check-up?":"A new patient exam is £59 for adults (usually £70). Children under 16 are free with a fee paying adult.","Are you open now?":()=>document.getElementById('statusTxt').textContent+". Wednesdays we are open until 6:30pm.","Do you take NHS patients?":"Fairlands is a private practice. NHS treatment is available for children who come with a fee paying adult.","I'm nervous":"You are in good hands. The team goes at your pace, explains each step, uses numbing gel, and offers IV or inhalation sedation.","Where do I park?":"We are on the first floor of Fairlands Medical Centre, GU3 3NA, with plenty of free parking and a lift.","Can I spread the cost?":"Yes. 0% finance over 12 months is available through Tabeo, and Denplan Care starts at £23 a month.","Book me in":`You can book online here: <a href="${BOOK}" target="_blank" rel="noopener">Fairlands online booking</a>, or call 01483 233 823.`};
+const A={"How much is a check-up?":"A new patient exam is £59 for adults (usually £70). Children under 16 are free with a fee paying adult.","Are you open now?":()=>document.getElementById('statusTxt').textContent+". Wednesdays we are open until 6:30pm.","Do you take NHS patients?":"Fairlands is a private practice. NHS treatment is available for children who come with a fee paying adult.","I'm nervous":"You are in good hands. The team goes at your pace, explains each step, uses numbing gel, and offers IV or inhalation sedation.","Where do I park?":"We are on the first floor of Fairlands Medical Centre, GU3 3NA, with plenty of free parking and a lift.","Can I spread the cost?":`Yes. 0% finance over 12 months is available through <a href="https://lead.tabeo.co.uk/fairlands-dental-centre/finance" target="_blank" rel="noopener">Tabeo</a>, and Denplan Care starts at £23 a month.`,"How much are implants?":"Implants fully restored start from £2,950, with a free consultation.","Book me in":`You can book online here: <a href="${BOOK}" target="_blank" rel="noopener">Fairlands online booking</a>, or call <a href="tel:01483233823">01483 233 823</a>.`};
 function say(t,who){const d=document.createElement('div');d.className='m '+who;d.innerHTML=t;msgs.appendChild(d);msgs.scrollTop=1e5}
 say("Hi! I'm a demo assistant for Fairlands Dental. Pick a question below.","bot");
-Object.keys(A).forEach(k=>{const b=document.createElement('button');b.textContent=k;b.onclick=()=>{say(k,'me');setTimeout(()=>say(typeof A[k]=='function'?A[k]():A[k],'bot'),450)};chips.appendChild(b)});
+Object.keys(A).forEach(k=>{const b=document.createElement('button');b.textContent=k;b.onclick=()=>{say(esc(k),'me');setTimeout(()=>say(typeof A[k]=='function'?A[k]():A[k],'bot'),450)};chips.appendChild(b)});
 cb.onclick=()=>{const o=chat.classList.toggle('open');cb.setAttribute('aria-expanded',o)};
+addEventListener('keydown',e=>{if(e.key==='Escape'){closeNav();chat.classList.remove('open');cb.setAttribute('aria-expanded','false')}});
 </script>
 </body>
 </html>
