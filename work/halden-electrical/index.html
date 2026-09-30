@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Halden Electrical | Rewires, EV Chargers, Smart Homes, Testing</title>
+<meta name="description" content="Halden Electrical: full rewires, EV charger installs, smart home systems and electrical testing. Certified, tidy and on time.">
+<meta name="theme-color" content="#0c0d0f">
+<meta property="og:title" content="Halden Electrical">
+<meta property="og:description" content="Every room, properly powered.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+<nav class="nav"><a class="logo" href="#top">Halden<span>.</span></a><a class="cta" href="#contact">Book an electrician</a></nav>
+
+<main id="top">
+  <section class="hero" id="hero" aria-label="Halden Electrical">
+    <!-- HERO MEDIA SLOT: set data-on="1" once files exist in media/ (see README.md). -->
+    <div class="hero-media" aria-hidden="true" data-on="1" data-mp4-portrait="media/hero-portrait.mp4" data-mp4-landscape="media/hero-landscape.mp4" data-poster-portrait="media/hero-portrait.jpg" data-poster-landscape="media/hero-landscape.jpg"></div>
+    <div class="hcopy">
+      <p class="label cu">Halden Electrical</p>
+      <h1><span class="ln"><span>Every room,</span></span><span class="ln"><span><em>properly</em> powered.</span></span></h1>
+      <div class="readout" aria-live="polite"><span class="rk" id="rk">Circuit 00</span><span class="rn" id="rn">Mains off</span></div>
+    </div>
+    <div class="house-wrap">
+      <svg class="house" id="house" viewBox="0 0 640 520" role="img" aria-label="A dark house in cross section. Current runs from the consumer unit along the wiring and lights each room in turn.">
+        <defs>
+          <linearGradient id="lit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4dcaa"/><stop offset=".55" stop-color="#e3b575"/><stop offset="1" stop-color="#b9824a"/></linearGradient>
+          <radialGradient id="pool" cx=".5" cy="0" r="1"><stop offset="0" stop-color="#fff1d2" stop-opacity=".9"/><stop offset="1" stop-color="#fff1d2" stop-opacity="0"/></radialGradient>
+        </defs>
+        <!-- ground -->
+        <rect x="0" y="470" width="640" height="50" fill="#0a0b0c"/>
+        <line x1="0" y1="470" x2="640" y2="470" stroke="#2a2d31"/>
+        <!-- rooms: [id, x, y, w, h] filled by JS -->
+        <g id="rooms"></g>
+        <!-- structure -->
+        <g fill="none" stroke="#3a3e44" stroke-width="6" stroke-linejoin="round">
+          <path d="M90 470V210H550V470"/><path d="M70 214L320 70L570 214"/>
+          <path d="M90 340H550" stroke-width="7"/>
+          <path d="M250 210V340M390 210V340M230 340V470M400 340V470" stroke-width="4"/>
+        </g>
+        <!-- stairs silhouette -->
+        <path d="M236 470h30v-16h26v-16h26v-16h26v-16h26v-16h26" fill="none" stroke="#2b2e33" stroke-width="3"/>
+        <!-- consumer unit -->
+        <g id="cu"><rect x="238" y="380" width="30" height="36" rx="2" fill="#15171a" stroke="#4a4f56" stroke-width="1.5"/><rect x="243" y="388" width="20" height="6" fill="#2a2d31"/><rect id="cuLed" x="243" y="400" width="4" height="4" fill="#c8894f" opacity=".25"/></g>
+        <!-- wiring (dim) + current (segments) built by JS -->
+        <g id="wires" fill="none" stroke="#2c3036" stroke-width="2" stroke-linecap="round"></g>
+        <g id="current" stroke="#f1c98e" stroke-width="2.4" stroke-linecap="round"></g>
+        <!-- EV charger on the side wall -->
+        <g id="ev"><rect x="562" y="400" width="18" height="30" rx="3" fill="#15171a" stroke="#4a4f56" stroke-width="1.5"/><rect id="evLed" x="568" y="406" width="6" height="3" fill="#f1c98e" opacity="0"/><path d="M571 430c0 20 14 22 30 22" stroke="#3a3e44" stroke-width="2.5" fill="none"/></g>
+      </svg>
+    </div>
+    <span class="scrollcue label">Scroll to switch on <i></i></span>
+  </section>
+
+  <section class="scene statement"><p id="stmt">Good electrics are the ones you never think about. Safe, certified and hidden neatly in the walls, exactly where they should be.</p></section>
+
+  <section class="scene svc">
+    <div class="media"><picture><source media="(max-width:760px)" srcset="img/rewire-m.webp"><img src="img/rewire.webp" alt="Neatly dressed cables in a new consumer unit" loading="lazy"></picture></div>
+    <div class="shade"></div><span class="count">01 / 04</span>
+    <div class="copy inner"><div class="num">01</div><div class="line"><h2 class="h">Rewires</h2><p>Full and partial rewires with minimal disruption. Channels made good, sockets where you actually need them, dust sheets everywhere.</p></div></div>
+  </section>
+  <section class="scene svc">
+    <div class="media"><picture><source media="(max-width:760px)" srcset="img/ev-m.webp"><img src="img/ev.webp" alt="Car being plugged in to charge at home" loading="lazy"></picture></div>
+    <div class="shade"></div><span class="count">02 / 04</span>
+    <div class="copy inner"><div class="num">02</div><div class="line"><h2 class="h">EV chargers</h2><p>Home charge points fitted, load balanced and signed off, with smart scheduling for cheaper overnight tariffs.</p></div></div>
+  </section>
+  <section class="scene svc">
+    <div class="media"><picture><source media="(max-width:760px)" srcset="img/smart-m.webp"><img src="img/smart.webp" alt="Open plan living room with layered warm lighting at dusk" loading="lazy"></picture></div>
+    <div class="shade"></div><span class="count">03 / 04</span>
+    <div class="copy inner"><div class="num">03</div><div class="line"><h2 class="h">Smart home</h2><p>Scene lighting, heating, blinds and security on one quiet system. Designed around the way you live, not the app.</p></div></div>
+  </section>
+  <section class="scene svc">
+    <div class="media"><picture><source media="(max-width:760px)" srcset="img/test-m.webp"><img src="img/test.webp" alt="Test meter and cable laid out on a floor" loading="lazy"></picture></div>
+    <div class="shade"></div><span class="count">04 / 04</span>
+    <div class="copy inner"><div class="num">04</div><div class="line"><h2 class="h">Testing</h2><p>Electrical condition reports for homeowners and landlords, with clear findings in plain English and fixes quoted on the spot.</p></div></div>
+  </section>
+
+  <section class="scene certs" id="certs">
+    <p class="label cu head">Registered and insured</p>
+    <h2 class="h ch">Certified for<br><em>every</em> circuit.</h2>
+    <ul class="badges">
+      <li><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="46"/></svg><b>NICEIC</b><span>Approved contractor</span></li>
+      <li><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="46"/></svg><b>Part P</b><span>Registered</span></li>
+      <li><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="46"/></svg><b>BS 7671</b><span>18th Edition</span></li>
+      <li><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="46"/></svg><b>OZEV</b><span>EV installer</span></li>
+      <li><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="46"/></svg><b>TrustMark</b><span>Government endorsed</span></li>
+    </ul>
+  </section>
+
+  <section class="scene quote" id="testi">
+    <div class="media"><picture><source media="(max-width:760px)" srcset="img/testi-m.webp"><img src="img/testi.webp" alt="Warm filament pendant lights in a brick room" loading="lazy"></picture></div>
+    <div class="shade"></div>
+    <div class="copy">
+      <div class="stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="qs">
+        <figure class="q"><blockquote>A full rewire in a lived in house, and you would never know they had been. Every wall made good.</blockquote><figcaption class="label">Rachel, three bed rewire</figcaption></figure>
+        <figure class="q"><blockquote>Charger fitted in a morning, explained properly, and the paperwork was in my inbox that night.</blockquote><figcaption class="label">James, EV charge point</figcaption></figure>
+        <figure class="q"><blockquote>Turned up at eleven at night when half the house tripped. Calm, quick and fairly priced.</blockquote><figcaption class="label">Aisha, emergency call out</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene emg" id="emergency">
+    <div class="media"><picture><source media="(max-width:760px)" srcset="img/emg-m.webp"><img src="img/emg.webp" alt="Street lamp glowing at night" loading="lazy"></picture></div>
+    <div class="shade"></div>
+    <div class="copy">
+      <p class="label cu"><span class="live" aria-hidden="true"></span>Emergency call out, day and night</p>
+      <h2 class="h">Lights out?<br><em>We&rsquo;re on our way.</em></h2>
+      <a class="callbtn" href="tel:01632960418">Call 01632 960 418</a>
+    </div>
+  </section>
+
+  <section class="cta-s" id="contact">
+    <div>
+      <p class="label cu" style="margin-bottom:22px">Book a visit</p>
+      <h2 class="h">Let&rsquo;s get you<br><em>switched on.</em></h2>
+      <p class="lead">Tell us what you need. We reply within one working day with a time that suits you.</p>
+      <p class="direct"><a href="tel:01632960418">01632 960 418</a><a href="mailto:hello@haldenelectrical.co.uk">hello@haldenelectrical.co.uk</a></p>
+    </div>
+    <div>
+      <form id="qf" novalidate>
+        <div class="f"><label for="n">Name</label><input id="n" name="name" autocomplete="name" required></div>
+        <div class="f"><label for="p">Phone or email</label><input id="p" name="contact" autocomplete="email" required></div>
+        <div class="f"><label for="t">Service</label><select id="t" name="service"><option>Rewire</option><option>EV charger</option><option>Smart home</option><option>Testing and certificates</option><option>Something else</option></select></div>
+        <div class="f"><label for="m">Details</label><textarea id="m" name="message"></textarea></div>
+        <button type="submit">Send request</button>
+      </form>
+      <div class="thanks" role="status" aria-live="polite"><small>Received</small>Thank you. We will be in touch within one working day.</div>
+    </div>
+  </section>
+</main>
+
+<footer><span>&copy; Halden Electrical</span><span>Photography: <a href="https://unsplash.com/" rel="noopener">Unsplash</a></span><span>Site by <a href="https://thetenderdesk.co.uk/">The Tender Desk</a></span></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="heromedia.js?v=1"></script>
+<script src="main.js?v=2"></script>
+</body>
+</html>
