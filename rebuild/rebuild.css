@@ -261,3 +261,6 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-hei
 .end .stage>footer.ft,.end .stage>footer{position:relative;left:auto;right:auto;bottom:auto;margin-top:auto;width:100%}
 .end .stage{padding-bottom:26px}
 @media(min-width:761px){.end .stage{padding-top:18vh;justify-content:flex-start}}
+
+/* phone: solid fade behind top bar so headings never collide with the logo */
+@media (max-width:760px){.nav{mix-blend-mode:normal}.nav::before{content:"";position:absolute;inset:0 0 -22px;z-index:-1;background:linear-gradient(#0b0b0a 55%,rgba(11,11,10,0));pointer-events:none}}
