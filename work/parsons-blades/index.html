@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Simon Parsons Bladesmith | Pattern welded knives and swords</title>
+<meta name="description" content="Hand forged Damascus kitchen knives and historical pattern welded swords by bladesmith Simon Parsons. Commissions open.">
+<meta name="theme-color" content="#0b0907">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero.webp" media="(min-width:761px)">
+<link rel="preload" as="image" href="img/hero-m.webp" media="(max-width:760px)">
+<style>
+:root{--ink:#0b0907;--char:#14110e;--bone:#efe8dc;--steel:#a9a49b;--ember:#ff7a1f;--gold:#d9a35a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ink);color:var(--bone)}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:"Inter Tight",system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,canvas,video{display:block}
+a{color:inherit}
+.serif{font-family:"Cormorant Garamond",Georgia,serif;font-weight:300;letter-spacing:-.01em;line-height:.9}
+.label{font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;color:var(--gold)}
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(18px,4vw,48px);mix-blend-mode:difference}
+.logo{font-family:"Cormorant Garamond",serif;font-size:22px;text-decoration:none;letter-spacing:.02em}
+.logo small{font-family:"Inter Tight",sans-serif;font-size:9px;letter-spacing:.34em;text-transform:uppercase;margin-left:10px;opacity:.7}
+.nav .cta{font-size:11px;letter-spacing:.24em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px}
+.scene{position:relative;height:100vh;height:100svh;overflow:hidden;background:var(--ink)}
+.media{position:absolute;inset:0;will-change:transform}
+.media img,.media video{width:100%;height:100%;object-fit:cover}
+.media video.novid{display:none}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,9,7,.55) 0%,rgba(11,9,7,.05) 35%,rgba(11,9,7,.2) 60%,rgba(11,9,7,.92) 100%)}
+.copy{position:absolute;left:clamp(18px,4vw,48px);right:clamp(18px,4vw,48px);bottom:clamp(34px,8vh,84px);z-index:4}
+h1,h2{font-weight:300}
+.huge{font-size:clamp(58px,11.5vw,210px)}
+.big{font-size:clamp(48px,8vw,150px)}
+.ln{display:block;overflow:hidden;padding-bottom:.06em}
+.ln span{display:block;will-change:transform}
+.sub{max-width:34ch;font-size:15px;line-height:1.6;opacity:.8;margin-top:22px}
+.row{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.cue{font-size:11px;letter-spacing:.26em;text-transform:uppercase;display:flex;align-items:center;gap:12px;opacity:.75}
+.cue i{width:44px;height:1px;background:var(--ember);transform-origin:left;animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleX(0)}50%{transform:scaleX(1)}100%{transform:scaleX(0);transform-origin:right}}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:40;pointer-events:none;opacity:.9}
+.sparks{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+
+/* signature blade */
+.blade{background:radial-gradient(ellipse at 50% 55%,#1c1712 0%,#0b0907 70%)}
+.rig{position:absolute;inset:0;transform-origin:50% 60%;will-change:transform,clip-path;overflow:hidden}
+.rig video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+#bHeat{position:absolute;inset:0;background:radial-gradient(ellipse at 45% 62%,rgba(255,106,26,.85),rgba(160,30,0,.55) 45%,rgba(40,6,0,.2) 80%);mix-blend-mode:color-dodge;will-change:opacity}
+.rigshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,9,7,.75) 0%,rgba(11,9,7,0) 30%,rgba(11,9,7,0) 60%,rgba(11,9,7,.9) 100%)}
+.blade .hud{position:absolute;left:clamp(18px,4vw,48px);right:clamp(18px,4vw,48px);top:clamp(88px,15vh,140px);z-index:4;display:flex;justify-content:space-between;align-items:start;gap:20px}
+.count{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:clamp(64px,9vw,160px);line-height:.85;font-variant-numeric:tabular-nums;color:var(--bone)}
+.count small{display:block;font-family:"Inter Tight",sans-serif;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-top:12px}
+.temp{text-align:right;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--steel)}
+.temp b{display:block;font-family:"Cormorant Garamond",serif;font-weight:300;font-size:clamp(34px,4vw,64px);letter-spacing:0;color:var(--ember);margin-top:8px;font-variant-numeric:tabular-nums;text-transform:none}
+.blade .copy .t{position:absolute;left:0;bottom:0;opacity:0}
+.blade .copy{height:clamp(120px,22vh,230px)}
+.bar{position:absolute;left:0;bottom:0;height:2px;width:100%;background:linear-gradient(90deg,var(--ember),var(--gold));transform:scaleX(0);transform-origin:left;z-index:5}
+
+/* collection track */
+.track{display:flex;height:100%;will-change:transform}
+.panel{position:relative;flex:0 0 100vw;height:100%;display:grid;grid-template-rows:1fr auto;padding:clamp(90px,14vh,140px) clamp(18px,4vw,48px) clamp(34px,8vh,84px)}
+.panel .ph{position:relative;overflow:hidden;margin:0 0 22px}
+.panel .ph img{width:100%;height:100%;object-fit:cover}
+.panel .pc{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;border-top:1px solid rgba(239,232,220,.14);padding-top:22px}
+.panel h3{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:clamp(36px,5vw,84px);line-height:.95}
+.panel p{font-size:14px;line-height:1.6;opacity:.7;max-width:36ch}
+.panel .no{position:absolute;top:clamp(90px,14vh,140px);right:clamp(18px,4vw,48px);font-size:11px;letter-spacing:.26em;color:var(--gold)}
+.coll-h{position:absolute;top:clamp(90px,14vh,140px);left:clamp(18px,4vw,48px);z-index:3}
+
+/* swords list */
+.list{margin-top:28px;display:grid;gap:0;max-width:640px}
+.list div{display:flex;justify-content:space-between;gap:18px;padding:16px 0;border-top:1px solid rgba(239,232,220,.16);font-size:15px}
+.list div span:last-child{color:var(--steel);font-size:12px;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
+
+/* maker */
+.quote blockquote{font-size:clamp(34px,4.6vw,78px);max-width:18ch}
+.quote .w{display:inline-block;opacity:.12;will-change:opacity}
+
+/* enquire */
+.enq{min-height:100vh;height:auto;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:5vw;padding:clamp(100px,14vh,140px) clamp(18px,4vw,48px) 60px}
+.enq .media img{opacity:.35}
+.enq .shade{background:linear-gradient(90deg,rgba(11,9,7,.4),rgba(11,9,7,.95) 70%)}
+.enq > *:not(.media):not(.shade){position:relative;z-index:3}
+form{display:grid;gap:16px}
+.f{position:relative;padding-top:20px}
+.f label{position:absolute;left:0;top:0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.6}
+.f input,.f select,.f textarea{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(239,232,220,.3);color:var(--bone);font:inherit;font-size:17px;padding:10px 0;outline:none;border-radius:0;-webkit-appearance:none;appearance:none}
+.f select option{background:var(--char)}
+.f textarea{resize:vertical;min-height:90px}
+.f input:focus,.f select:focus,.f textarea:focus{border-bottom-color:var(--ember)}
+button{margin-top:10px;justify-self:start;background:var(--ember);color:var(--ink);border:0;font:inherit;font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;padding:20px 34px;cursor:pointer;transition:transform .3s}
+button:hover{transform:translateY(-2px)}
+.thanks{display:none}
+.thanks small{display:block;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.thanks p{font-size:clamp(34px,4vw,60px)}
+form.sent{display:none}
+form.sent + .thanks{display:block;animation:up .8s cubic-bezier(.2,.7,.2,1)}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+footer{padding:30px clamp(18px,4vw,48px);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;letter-spacing:.08em;color:var(--steel);border-top:1px solid rgba(239,232,220,.08)}
+footer a{text-decoration:none;border-bottom:1px solid rgba(217,163,90,.6)}
+
+@media (max-width:760px){
+  .rig video{object-position:30% 50%}
+  .nav{background:linear-gradient(180deg,rgba(11,9,7,.85),rgba(11,9,7,0));mix-blend-mode:normal;padding-bottom:30px}
+  #fx{display:none}
+  .panel{padding-top:130px}
+  .panel .no{top:96px}
+  .coll-h{top:96px}
+  .enq{grid-template-columns:1fr;gap:34px}
+  .enq .shade{background:rgba(11,9,7,.82)}
+  .shade{background:linear-gradient(180deg,rgba(11,9,7,.6) 0%,rgba(11,9,7,.1) 30%,rgba(11,9,7,.5) 58%,rgba(11,9,7,.96) 100%)}
+  .copy h1,.copy h2{text-shadow:0 2px 30px rgba(0,0,0,.6)}
+  .sub{font-size:14px}
+  .logo small{display:none}
+  footer{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){.cue i{animation:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><a class="logo" href="#top">Simon Parsons<small>Bladesmith</small></a><a class="cta" href="#commission">Commission</a></nav>
+<canvas id="fx" aria-hidden="true"></canvas>
+<main id="top">
+
+<section class="scene hero" data-scene>
+  <div class="media"><picture><source media="(max-width:760px)" srcset="img/hero-m.webp"><img src="img/hero.webp" alt="Bladesmith working at a roaring forge" fetchpriority="high"></picture><video muted autoplay loop playsinline poster="img/hero.webp" class="slot"></video></div>
+  <canvas class="sparks" data-sparks="70" aria-hidden="true"></canvas>
+  <div class="shade"></div>
+  <div class="copy">
+    <p class="label" style="margin-bottom:20px">Knives and swords, forged by hand</p>
+    <h1 class="serif huge"><span class="ln"><span>Written</span></span><span class="ln"><span><em>in steel.</em></span></span></h1>
+    <div class="row" style="margin-top:26px"><p class="sub" style="margin:0">Pattern welded Damascus, folded until the metal itself carries the drawing.</p><span class="cue"><i></i>Scroll</span></div>
+  </div>
+</section>
+
+<section class="scene blade" id="blade">
+  <div class="rig" id="rig"><video id="bVid" muted autoplay loop playsinline preload="auto" poster="img/blade-poster.webp"><source media="(max-width:760px)" src="vid/blade-m.mp4" type="video/mp4"><source src="vid/blade.mp4" type="video/mp4"></video><div id="bHeat"></div><div class="rigshade"></div></div>
+  <canvas class="sparks" id="bSparks" data-sparks="0" aria-hidden="true"></canvas>
+  <div class="hud">
+    <div class="count"><span id="layers">2</span><small>Layers of steel</small></div>
+    <div class="temp">Blade temperature<b id="temp">1180&deg;C</b></div>
+  </div>
+  <div class="copy">
+    <h2 class="serif big t" data-t="0"><span class="ln"><span>Two steels.</span></span></h2>
+    <h2 class="serif big t" data-t="1"><span class="ln"><span>Folded. Again.</span></span></h2>
+    <h2 class="serif big t" data-t="2"><span class="ln"><span>720 layers.</span></span></h2>
+    <h2 class="serif big t" data-t="3"><span class="ln"><span>The acid <em>tells.</em></span></span></h2>
+  </div>
+  <div class="bar" id="bbar"></div>
+</section>
+
+<section class="scene forge" data-scene>
+  <div class="media"><picture><source media="(max-width:760px)" srcset="img/forge-m.webp"><img src="img/forge.webp" alt="Glowing steel billet inside the forge"></picture><video muted autoplay loop playsinline poster="img/forge.webp" class="slot"></video></div>
+  <canvas class="sparks" data-sparks="45" aria-hidden="true"></canvas>
+  <div class="shade"></div>
+  <div class="copy">
+    <p class="label" style="margin-bottom:20px">The old method</p>
+    <h2 class="serif big"><span class="ln"><span>Mastered in the</span></span><span class="ln"><span><em>first millennium.</em></span></span></h2>
+    <p class="sub">Two alloys, forge welded, twisted and drawn out. The same process the smiths of northern Europe used a thousand years ago.</p>
+  </div>
+</section>
+
+<section class="scene coll" id="coll">
+  <div class="coll-h"><p class="label">The kitchen</p></div>
+  <div class="track" id="track">
+    <div class="panel"><span class="no">01 / 03</span><div class="ph"><img src="img/k1.webp" alt="Damascus blade tip resting on slate" loading="lazy"></div><div class="pc"><h3>720 layer<br>Damascus Gyuto</h3><p>The flagship. Seven hundred and twenty layers, a ripple you can follow from heel to tip.</p></div></div>
+    <div class="panel"><span class="no">02 / 03</span><div class="ph"><img src="img/k3.webp" alt="Pattern welded steel catching warm light" loading="lazy"></div><div class="pc"><h3>Ground by<br>hand</h3><p>Every bevel finished on the wheel by eye, then polished until the pattern floats.</p></div></div>
+    <div class="panel"><span class="no">03 / 03</span><div class="ph"><img src="img/k4.webp" alt="Blade bolster and handle in shadow" loading="lazy"></div><div class="pc"><h3>Integral<br>bolster</h3><p>Bolster and blade from one piece of steel, balanced right at the pinch grip.</p></div></div>
+  </div>
+</section>
+
+<section class="scene swords" data-scene>
+  <div class="media"><picture><source media="(max-width:760px)" srcset="img/hilt-m.webp"><img src="img/hilt.webp" alt="Sword hilt and scabbard resting in shadow"></picture><video muted autoplay loop playsinline poster="img/hilt.webp" class="slot"></video></div>
+  <div class="shade"></div>
+  <div class="copy">
+    <p class="label" style="margin-bottom:20px">The armoury</p>
+    <h2 class="serif big"><span class="ln"><span>Swords with</span></span><span class="ln"><span><em>ancestors.</em></span></span></h2>
+    <div class="list">
+      <div><span>Roman "Mainz" gladius</span><span>4 bar pattern weld</span></div>
+      <div><span>Romano-Germanic spatha</span><span>Three bar twist into serpent</span></div>
+      <div><span>Pattern welded Viking sword</span><span>With scabbard</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene grind" data-scene>
+  <div class="media"><picture><source media="(max-width:760px)" srcset="img/grind-m.webp"><img src="img/grind.webp" alt="Grinding a blade edge with sparks flying"></picture><video muted autoplay loop playsinline poster="img/grind.webp" class="slot"></video></div>
+  <div class="shade"></div>
+  <div class="copy">
+    <p class="label" style="margin-bottom:20px">Heat treated. Hand finished.</p>
+    <h2 class="serif big"><span class="ln"><span>Razor sharp,</span></span><span class="ln"><span><em>built to be used.</em></span></span></h2>
+  </div>
+</section>
+
+<section class="scene quote" data-scene>
+  <div class="media"><picture><source media="(max-width:760px)" srcset="img/anvil-m.webp"><img src="img/anvil.webp" alt="Hot metal being hammered on the anvil"></picture><video muted autoplay loop playsinline poster="img/anvil.webp" class="slot"></video></div>
+  <div class="shade" style="background:rgba(11,9,7,.62)"></div>
+  <div class="copy" style="bottom:auto;top:50%;transform:translateY(-50%)">
+    <p class="label" style="margin-bottom:26px">Meet the maker</p>
+    <blockquote class="serif" id="q">Seven years casting bronze bells. Now every blade carries the same patience.</blockquote>
+    <p class="sub">Simon Parsons learned mould making at one of the oldest bell foundries in the country before turning to the forge.</p>
+  </div>
+</section>
+
+<section class="scene enq" id="commission">
+  <div class="media"><picture><source media="(max-width:760px)" srcset="img/enquire-m.webp"><img src="img/enquire.webp" alt="The workshop forge glowing at night"></picture></div>
+  <div class="shade"></div>
+  <div>
+    <p class="label" style="margin-bottom:22px">Commissions open</p>
+    <h2 class="serif big"><span class="ln"><span>Your blade,</span></span><span class="ln"><span><em>from the first fold.</em></span></span></h2>
+    <p class="sub">A kitchen knife for the way you cook, or a sword faithful to its century. Tell Simon what you have in mind.</p>
+  </div>
+  <div>
+    <form id="form" novalidate>
+      <div class="f"><label for="n">Name</label><input id="n" name="name" required autocomplete="name"></div>
+      <div class="f"><label for="e">Email</label><input id="e" name="email" type="email" required autocomplete="email"></div>
+      <div class="f"><label for="k">I would like</label><select id="k" name="kind"><option>A Damascus kitchen knife</option><option>A carbon steel kitchen knife</option><option>A historical sword</option><option>Something else</option></select></div>
+      <div class="f"><label for="m">Tell me about it</label><textarea id="m" name="message" rows="3"></textarea></div>
+      <button type="submit">Send enquiry</button>
+    </form>
+    <div class="thanks" role="status" aria-live="polite"><small>Enquiry received</small><p class="serif">Thank you. Your idea is at the anvil.</p><p class="sub">Simon reads every commission personally and will reply by email within a few days.</p></div>
+  </div>
+</section>
+</main>
+<footer><span>&copy; <span id="yr">2026</span> Simon Parsons Bladesmith</span><span>Photography: <a href="https://unsplash.com/" rel="noopener">Unsplash</a></span><span><a href="https://thetenderdesk.co.uk/" rel="noopener">Site by The Tender Desk</a></span></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(()=>{
+const desk=matchMedia('(min-width:761px)').matches;
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+document.getElementById('yr').textContent=new Date().getFullYear();
+document.querySelectorAll('video.slot').forEach(v=>{if(!v.querySelector('source')&&!v.src)v.classList.add('novid')});
+
+/* ---------- value noise + damascus pattern ---------- */
+const P=new Uint8Array(512);{const p=[...Array(256).keys()];for(let i=255;i>0;i--){const j=(Math.sin(i*91.7)*43758.5453%1+1)%1*(i+1)|0;[p[i],p[j]]=[p[j],p[i]]}for(let i=0;i<512;i++)P[i]=p[i&255]}
+const fade=t=>t*t*(3-2*t);
+function vn(x,y){const X=Math.floor(x),Y=Math.floor(y),xf=x-X,yf=y-Y,a=P[(P[X&255]+Y)&511]/255,b=P[(P[(X+1)&255]+Y)&511]/255,c=P[(P[X&255]+Y+1)&511]/255,d=P[(P[(X+1)&255]+Y+1)&511]/255,u=fade(xf),v=fade(yf);return a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v}
+function fbm(x,y){return vn(x,y)*.55+vn(x*2.1,y*2.1)*.28+vn(x*4.3,y*4.3)*.17}
+function pattern(kind,W,H){
+  const c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getContext('2d'),im=g.createImageData(W,H),d=im.data;
+  for(let y=0;y<H;y++)for(let x=0;x<W;x++){
+    const u=x/W,v=y/H;let s;
+    if(kind==='twist'){const w=fbm(u*8,v*3)*1.2;s=Math.sin((u*60+Math.sin(v*6+u*40)*1.6+w)*3.1)}
+    else if(kind==='feather'){const w=fbm(u*6,v*6)*.6;s=Math.sin((Math.abs(v-.42)*40+u*-26+w)*3.2)}
+    else if(kind==='rain'){const w=fbm(u*10,v*10)*2.2;const r=Math.hypot((u*22%1)-.5,(v*5%1)-.5);s=Math.sin((v*38+w+r*6)*3)}
+    else if(kind==='carbon'){s=(fbm(u*30,v*6)-.5)*.6}
+    else {const w=fbm(u*3,v*2.5)*3.2+fbm(u*14,v*9)*.9+Math.sin(u*38+fbm(u*4,v*4)*4)*.5;s=Math.sin((v*30+w*2.6)*3.14)}
+    const t=kind==='carbon'?.5+s:(s*.5+.5);const k=Math.pow(t,1.4);
+    const L=62+k*125+(Math.random()*10-5),i=(y*W+x)*4;d[i]=L*1.0;d[i+1]=L*.98;d[i+2]=L*.94;d[i+3]=255}
+  g.putImageData(im,0,0);return c}
+/* blade profiles in a 1000x200 unit box, edge at bottom, spine at top */
+function profile(g,kind,W,H){
+  const s=W/1000,y=H/200;g.beginPath();
+  if(kind==='sword'){g.moveTo(40*s,95*y);g.lineTo(930*s,90*y);g.lineTo(995*s,100*y);g.lineTo(930*s,112*y);g.lineTo(40*s,108*y)}
+  else if(kind==='paring'){g.moveTo(330*s,64*y);g.lineTo(760*s,70*y);g.quadraticCurveTo(900*s,80*y,960*s,104*y);g.quadraticCurveTo(820*s,140*y,560*s,142*y);g.lineTo(330*s,142*y)}
+  else if(kind==='bunka'){g.moveTo(250*s,40*y);g.lineTo(830*s,46*y);g.lineTo(965*s,96*y);g.lineTo(930*s,150*y);g.quadraticCurveTo(600*s,160*y,250*s,160*y)}
+  else {g.moveTo(230*s,38*y);g.lineTo(700*s,44*y);g.quadraticCurveTo(900*s,60*y,985*s,112*y);g.quadraticCurveTo(820*s,160*y,520*s,164*y);g.lineTo(230*s,164*y)}
+  g.closePath()}
+function handle(g,kind,W,H){
+  const s=W/1000,y=H/200;if(kind==='sword')return;
+  const x0=kind==='paring'?330:kind==='bunka'?250:230;
+  const hg=g.createLinearGradient(0,70*y,0,150*y);hg.addColorStop(0,'#3a2a1d');hg.addColorStop(.5,'#1d140d');hg.addColorStop(1,'#0e0906');
+  g.fillStyle=hg;g.beginPath();g.moveTo((x0+4)*s,72*y);g.lineTo((x0-200)*s,76*y);g.quadraticCurveTo((x0-236)*s,106*y,(x0-200)*s,136*y);g.lineTo((x0+4)*s,142*y);g.closePath();g.fill();
+  g.fillStyle='rgba(217,163,90,.55)';g.fillRect((x0-6)*s,70*y,10*s,74*y)}
+function drawKnife(cv,kind,pat){
+  const W=cv.width,H=cv.height,g=cv.getContext('2d');const tex=pattern(pat,W/2|0,H/2|0);
+  g.save();profile(g,kind,W,H);g.clip();g.imageSmoothingEnabled=true;g.drawImage(tex,0,0,W,H);
+  const sh=g.createLinearGradient(0,0,0,H);sh.addColorStop(0,'rgba(255,255,255,.18)');sh.addColorStop(.45,'rgba(0,0,0,0)');sh.addColorStop(.8,'rgba(255,255,255,.1)');sh.addColorStop(1,'rgba(0,0,0,.35)');g.fillStyle=sh;g.fillRect(0,0,W,H);
+  g.restore();g.save();profile(g,kind,W,H);g.strokeStyle='rgba(239,232,220,.35)';g.lineWidth=2;g.stroke();g.restore();handle(g,kind,W,H)}
+
+/* collection canvases */
+
+
+const bH=document.getElementById('bHeat'),bV=document.getElementById('bVid');
+
+/* ---------- sparks (2D) ---------- */
+const sparkSystems=[];
+function Sparks(cv,n){
+  const g=cv.getContext('2d');let W,H,ps=[];const dpr=Math.min(devicePixelRatio||1,1.5);
+  const size=()=>{W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;g.setTransform(dpr,0,0,dpr,0,0)};size();addEventListener('resize',size);
+  const spawn=(x,y,burst)=>{const a=-Math.PI/2+(Math.random()-.5)*(burst?2.6:1.2),v=(burst?4:1.2)+Math.random()*(burst?6:2.4);ps.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:1,d:.006+Math.random()*.014,s:.6+Math.random()*1.8})};
+  const o={rate:n,active:false,burst(x,y,k){for(let i=0;i<k;i++)spawn(x,y,true)},
+    tick(){if(!o.active&&!ps.length)return;g.clearRect(0,0,W,H);
+      if(o.active)for(let i=0;i<o.rate/30;i++)if(Math.random()<.6)spawn(W*(.2+Math.random()*.6),H*(.75+Math.random()*.3),false);
+      g.globalCompositeOperation='lighter';
+      for(let i=ps.length-1;i>=0;i--){const p=ps[i];p.vy+=.045;p.vx*=.992;p.x+=p.vx;p.y+=p.vy;p.l-=p.d;if(p.l<=0||p.y>H+20){ps.splice(i,1);continue}
+        const c=p.l>.6?'255,236,190':p.l>.3?'255,150,60':'220,70,20';g.strokeStyle='rgba('+c+','+Math.min(1,p.l*1.4)+')';g.lineWidth=p.s;g.beginPath();g.moveTo(p.x,p.y);g.lineTo(p.x-p.vx*2.2,p.y-p.vy*2.2);g.stroke()}
+      g.globalCompositeOperation='source-over';if(ps.length>600)ps.splice(0,ps.length-600)}};
+  sparkSystems.push(o);return o}
+const heroSparks=[],bSp=Sparks(document.getElementById('bSparks'),0);
+if(desk&&!reduce)document.querySelectorAll('.sparks[data-sparks]').forEach(cv=>{if(+cv.dataset.sparks){const s=Sparks(cv,+cv.dataset.sparks);heroSparks.push([cv,s])}});
+else document.querySelectorAll('.sparks[data-sparks]').forEach(cv=>{if(+cv.dataset.sparks){const s=Sparks(cv,+cv.dataset.sparks/3);heroSparks.push([cv,s])}});
+
+/* ---------- WebGL grain + ember shader (desktop only) ---------- */
+let glTick=null;
+if(desk&&!reduce){
+  const cv=document.getElementById('fx'),gl=cv.getContext('webgl',{alpha:true,premultipliedAlpha:false,antialias:false});
+  if(gl){
+    const vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+    const fs=`precision mediump float;uniform vec2 r;uniform float t;uniform float heat;
+    float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+    float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+    void main(){vec2 uv=gl_FragCoord.xy/r;float g=h(gl_FragCoord.xy+fract(t*7.)*100.)-.5;
+      vec2 q=uv*vec2(r.x/r.y,1.)*14.;q.y-=t*.9;q.x+=sin(q.y*.3+t)*.4;vec2 c=floor(q);vec2 f=fract(q)-.5;
+      float e=h(c);vec2 o=vec2(h(c+3.1)-.5,h(c+7.7)-.5)*.6;float d=length(f-o);
+      float ember=step(.93,e)*smoothstep(.09,0.,d)*(.5+.5*sin(t*3.+e*40.));
+      float low=smoothstep(.55,0.,uv.y);float glow=n(uv*3.+vec2(0.,-t*.2))*low*.10*heat;
+      vec3 col=vec3(1.,.45,.12)*(ember*heat*low*1.4+glow)+vec3(g*.07);
+      float a=clamp(abs(g)*.14+ember*heat*low+glow,0.,1.);gl_FragColor=vec4(col,a);}`;
+    const sh=(t,s)=>{const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);return o};
+    const pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr);
+    if(gl.getProgramParameter(pr,gl.LINK_STATUS)){
+      gl.useProgram(pr);const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+      const loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+      const ur=gl.getUniformLocation(pr,'r'),ut=gl.getUniformLocation(pr,'t'),uh=gl.getUniformLocation(pr,'heat');
+      gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+      const dpr=Math.min(devicePixelRatio||1,1.5);const size=()=>{cv.width=innerWidth*dpr;cv.height=innerHeight*dpr;gl.viewport(0,0,cv.width,cv.height)};size();addEventListener('resize',size);
+      window.__heat=1;let frames=0,t0=performance.now(),dead=false;
+      glTick=(now)=>{if(dead)return;gl.uniform2f(ur,cv.width,cv.height);gl.uniform1f(ut,now/1000);gl.uniform1f(uh,window.__heat);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.drawArrays(gl.TRIANGLES,0,3);
+        frames++;const el=now-t0;if(el>3000){if(frames/(el/1000)<45){dead=true;cv.style.display='none'}frames=0;t0=now}};
+    }
+  }
+}
+
+/* ---------- scroll ---------- */
+gsap.registerPlugin(ScrollTrigger);
+const SECS=[...document.querySelectorAll('main > section')];const PR=el=>100-SECS.indexOf(el);
+const lenis=new Lenis({lerp:.09,smoothWheel:true});
+lenis.on('scroll',ScrollTrigger.update);
+gsap.ticker.add(t=>{lenis.raf(t*1000);const now=performance.now();sparkSystems.forEach(s=>s.tick());if(glTick)glTick(now)});
+gsap.ticker.lagSmoothing(0);
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const el=document.querySelector(a.getAttribute('href'));if(el){e.preventDefault();lenis.scrollTo(el,{duration:1.6})}}));
+
+/* sparks only while visible */
+heroSparks.forEach(([cv,s])=>ScrollTrigger.create({trigger:cv.parentElement,start:'top bottom',end:'bottom top',onToggle:self=>s.active=self.isActive}));
+
+/* intro */
+gsap.from('.hero .ln span',{yPercent:110,duration:1.4,ease:'expo.out',stagger:.12,delay:.15});
+gsap.from('.hero .label,.hero .row',{opacity:0,y:20,duration:1.2,ease:'power3.out',delay:.6,stagger:.1});
+
+/* generic full-bleed scenes: pin + slow push + masked lines */
+document.querySelectorAll('[data-scene]').forEach(sc=>{
+  const img=sc.querySelector('.media');
+  const tl=gsap.timeline({scrollTrigger:{trigger:sc,start:'top top',end:'+=100%',pin:true,scrub:true,refreshPriority:PR(sc)}});
+  tl.fromTo(img,{scale:1.02},{scale:1.16,ease:'none'},0);
+  if(!sc.classList.contains('hero')){
+    {const L=sc.querySelectorAll('.ln span');if(L.length)gsap.from(L,{yPercent:110,duration:1.2,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:sc,start:'top 60%'}});}
+    {const L=sc.querySelectorAll('.label,.sub,.list div');if(L.length)gsap.from(L,{opacity:0,y:24,duration:1,ease:'power3.out',stagger:.08,scrollTrigger:{trigger:sc,start:'top 55%'}});}
+    gsap.fromTo(img,{clipPath:'inset(12% 8% 12% 8%)'},{clipPath:'inset(0% 0% 0% 0%)',ease:'none',scrollTrigger:{trigger:sc,start:'top bottom',end:'top top',scrub:true}});
+  }else{
+    tl.to(sc.querySelector('.copy'),{yPercent:-30,opacity:0,ease:'none'},0);
+  }
+});
+
+/* maker quote: word by word */
+{const q=document.getElementById('q');q.innerHTML=q.textContent.split(' ').map(w=>'<span class="w">'+w+'</span>').join(' ');
+ gsap.to('#q .w',{opacity:1,stagger:.1,ease:'none',scrollTrigger:{trigger:'.quote',start:'top top',end:'+=90%',scrub:true}});}
+
+/* SIGNATURE: camera travels along the blade, steel cools, pattern etches in */
+{
+  const rig=document.getElementById('rig'),layers=document.getElementById('layers'),temp=document.getElementById('temp'),ts=[...document.querySelectorAll('.blade .t')];
+  const st={p:0};let lastT=-1,lastBurst=0;
+  function render(){
+    const p=st.p;
+    /* camera: macro push that settles to the full clip, wipe opens from a slit */
+    const ease=gsap.parseEase('power2.inOut');
+    const sc=gsap.utils.interpolate(1.55,1,ease(gsap.utils.clamp(0,1,p/.8)));
+    const op=gsap.utils.clamp(0,1,p/.18),ins=(1-ease(op))*38;
+    rig.style.transform=`scale(${sc})`;rig.style.clipPath=`inset(${ins}% 0 ${ins}% 0)`;
+    /* heat: glowing to cool */
+    const cool=gsap.utils.clamp(0,1,p/.6);
+    bH.style.opacity=(1-cool)*.95;
+    temp.textContent=Math.round(1180-cool*1160)+'\u00b0C';temp.style.color=cool>.85?'#a9a49b':'';
+    window.__heat=1-cool*.8;
+    /* layers counter: 2 -> 720 */
+    const lp=gsap.utils.clamp(0,1,(p-.08)/.5);layers.textContent=Math.round(2+Math.pow(lp,2.2)*718);
+    /* captions */
+    const ti=p<.2?0:p<.45?1:p<.68?2:3;if(ti!==lastT){ts.forEach((t,i)=>gsap.to(t,{opacity:i===ti?1:0,y:i===ti?0:20,duration:.6,ease:'power3.out',overwrite:true}));lastT=ti}
+    document.getElementById('bbar').style.transform=`scaleX(${p})`;
+    /* hammer bursts while hot */
+    const now=performance.now();if(cool<.6&&now-lastBurst>(desk?380:900)){lastBurst=now;const cv=document.getElementById('bSparks');bSp.burst(cv.clientWidth*(.35+Math.random()*.3),cv.clientHeight*(.5+Math.random()*.1),desk?38:14)}
+  }
+  const bst=ScrollTrigger.create({trigger:'#blade',refreshPriority:PR(document.getElementById('blade')),start:'top top',end:desk?'+=380%':'+=300%',pin:true});
+  gsap.ticker.add(()=>{const tgt=bst.progress;if(Math.abs(tgt-st.p)>.0004){st.p+=(tgt-st.p)*.14;render()}});
+  render();addEventListener('resize',render);
+}
+
+/* collection: horizontal pinned track */
+{
+  const tr=document.getElementById('track');const dist=()=>tr.scrollWidth-innerWidth;
+  gsap.to(tr,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'#coll',refreshPriority:PR(document.getElementById('coll')),start:'top top',end:()=>'+='+dist(),pin:true,scrub:.8,invalidateOnRefresh:true}});
+  tr.querySelectorAll('.panel .ph img').forEach(c=>gsap.fromTo(c,{scale:1.25,xPercent:6},{scale:1.05,xPercent:-6,ease:'none',scrollTrigger:{trigger:'#coll',start:'top top',end:()=>'+='+dist(),scrub:true}}));
+}
+
+/* form */
+document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();const f=e.target;const ok=[...f.querySelectorAll('[required]')].every(i=>i.value.trim()&&(i.type!=='email'||/.+@.+\..+/.test(i.value)));
+  if(!ok){f.querySelectorAll('[required]').forEach(i=>{if(!i.value.trim())i.style.borderBottomColor='#ff7a1f'});return}
+  f.classList.add('sent');ScrollTrigger.refresh()});
+addEventListener('load',()=>ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
