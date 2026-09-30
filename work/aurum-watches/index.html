@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Aurum | Mechanical Watches</title>
+<meta name="description" content="Aurum. Mechanical watches made by hand, measured in seconds, kept for generations.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero.webp">
+<style>
+:root{--bg:#0a0908;--ink:#f3ece0;--mute:#a39884;--gold:#d4a95a;--gold2:#f6d99a}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.serif{font-family:'Cormorant Garamond',serif;font-weight:300;letter-spacing:-.025em}
+.gold{background:linear-gradient(100deg,#b8893f,var(--gold2) 45%,#c99a4d 70%,var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:var(--mute)}
+nav{position:fixed;inset:0 0 auto;display:flex;justify-content:space-between;align-items:center;padding:22px 4vw;z-index:50;font-size:11px;letter-spacing:.3em;text-transform:uppercase}
+nav a{color:var(--ink);text-decoration:none;text-shadow:0 1px 12px #000}
+nav .logo{font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:.5em}
+section{position:relative;height:100vh;height:100svh;overflow:hidden}
+.bg{position:absolute;inset:0;overflow:hidden}
+.bg img,.ph img{width:100%;height:100%;object-fit:cover;display:block;will-change:transform}
+.shade{position:absolute;inset:0;pointer-events:none}
+.center{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 5vw}
+h1,h2{text-shadow:0 2px 40px rgba(0,0,0,.55)}
+/* hero */
+#hero .bg{will-change:transform}
+#hero .bg img{animation:kb 22s ease-in-out infinite alternate;object-position:40% 50%}
+@keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.18) translate3d(-1.5%,-1%,0)}}
+#hero .shade{background:linear-gradient(180deg,rgba(10,9,8,.55) 0%,rgba(10,9,8,0) 30%,rgba(10,9,8,.15) 55%,#0a0908 100%)}
+.hero-t{position:absolute;bottom:8vh;left:0;right:0;text-align:center}
+.hero-t h1{font-size:clamp(96px,21vw,340px);line-height:.8}
+.hero-t p{margin-top:14px}
+.cue{position:absolute;bottom:2.5vh;left:50%;width:1px;height:36px;background:linear-gradient(var(--gold),transparent);animation:cue 2s infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* dial */
+#dial .bg img{transform-origin:56% 46%;object-position:56% 50%}
+#dial .shade{background:radial-gradient(ellipse at 50% 50%,rgba(10,9,8,0) 30%,rgba(10,9,8,.8) 100%)}
+#dial .veil{position:absolute;inset:0;background:#0a0908;opacity:0}
+.big{font-size:clamp(60px,12vw,200px);line-height:.86}
+.dial-t{opacity:0;position:relative}
+.dial-t::before{content:"";position:absolute;inset:-30% -20%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,rgba(10,9,8,.8) 0%,rgba(10,9,8,.5) 45%,rgba(10,9,8,0) 70%)}
+.dial-t h2,.dial-t p{position:relative}
+/* movement */
+#move{background:#070605}
+#move .base img{transform:scale(1.25)}
+#move .base .shade{background:linear-gradient(180deg,rgba(7,6,5,.7),rgba(7,6,5,.55) 50%,rgba(7,6,5,.9))}
+.layer{position:absolute;overflow:hidden;will-change:transform;box-shadow:0 30px 80px rgba(0,0,0,.7)}
+.layer .ph{width:100%;height:100%}
+.l1{width:34vw;height:44vh;left:8vw;top:12vh}
+.l2{width:26vw;height:52vh;right:9vw;top:22vh}
+.l3{width:22vw;height:30vh;left:38vw;top:56vh}
+.move-t{position:absolute;left:5vw;bottom:8vh;z-index:3}
+/* materials + models: stacked full-bleed panels */
+.panel{position:absolute;inset:0;will-change:clip-path}
+.panel .shade{background:linear-gradient(180deg,rgba(10,9,8,.2) 0%,rgba(10,9,8,.15) 45%,rgba(10,9,8,.85) 100%)}
+.mat-t{position:absolute;left:5vw;right:5vw;bottom:8vh}
+.mat-t .n{font-size:clamp(140px,26vw,400px);line-height:.78}
+.mat-t h3{font-size:clamp(26px,3.4vw,52px);font-weight:300;margin-top:6px}
+.model-t{position:absolute;inset:auto 0 9vh 0;text-align:center}
+.model-t h3{font-size:clamp(84px,17vw,280px);line-height:.8;font-weight:300}
+.model-t p{margin-top:16px}
+.count{position:absolute;top:84px;right:5vw;font-size:11px;letter-spacing:.3em;color:var(--mute);z-index:4}
+/* cta */
+#cta .bg img{object-position:60% 50%}
+#cta .shade{background:linear-gradient(180deg,rgba(10,9,8,.75),rgba(10,9,8,.55) 50%,rgba(10,9,8,.92))}
+.btn{display:inline-block;margin-top:40px;padding:20px 44px;border:1px solid var(--gold);color:var(--gold2);text-decoration:none;border-radius:99px;font-size:12px;letter-spacing:.35em;text-transform:uppercase;transition:background .4s,color .4s;background:rgba(10,9,8,.35)}
+.btn:hover{background:var(--gold);color:#0a0908}
+footer{position:absolute;bottom:22px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--mute);line-height:2}
+footer a{color:var(--gold);text-decoration:none}
+@media (max-width:760px){
+ .l1{width:60vw;height:20vh;left:6vw;top:11vh}
+ .l2{width:54vw;height:19vh;right:6vw;top:34vh}
+ .l3{width:44vw;height:13vh;left:10vw;top:56.5vh}
+ .layer{box-shadow:0 18px 40px rgba(0,0,0,.8);outline:1px solid rgba(212,169,90,.18)}
+ #move .base .shade{background:linear-gradient(180deg,rgba(7,6,5,.8),rgba(7,6,5,.7) 50%,rgba(7,6,5,.96))}
+ .dial-t::before{inset:-40% -30%;background:radial-gradient(ellipse at center,rgba(10,9,8,.92) 0%,rgba(10,9,8,.75) 45%,rgba(10,9,8,0) 72%)}
+ .move-t{bottom:7vh}
+ .mat-t{bottom:9vh}
+ .btn{padding:18px 30px;letter-spacing:.28em}
+}
+</style>
+</head>
+<body>
+<nav><a class="logo" href="#hero">AURUM</a><a href="#cta">Private viewing</a></nav>
+<main>
+<section id="hero">
+ <div class="bg"><img src="img/hero.webp" alt="Gold chronograph watch in low light" fetchpriority="high"></div>
+ <div class="shade"></div>
+ <div class="hero-t"><h1 class="serif gold">Aurum</h1><p class="eyebrow">Time, made by hand</p></div>
+ <div class="cue"></div>
+</section>
+
+<section id="dial">
+ <div class="bg"><img src="img/dial.webp" alt="Macro of a watch dial"></div>
+ <div class="shade"></div><div class="veil"></div>
+ <div class="center"><div class="dial-t"><p class="eyebrow">The dial</p><h2 class="serif big">Every second<br><span class="gold">earned.</span></h2></div></div>
+</section>
+
+<section id="move">
+ <div class="bg base"><img src="img/gear1.webp" alt="Jewelled gold watch movement"><div class="shade"></div></div>
+ <div class="layer l1"><div class="ph"><img src="img/gear4.webp" alt="Gear train close up"></div></div>
+ <div class="layer l2"><div class="ph"><img src="img/skel.webp" alt="Skeleton dial and hands"></div></div>
+ <div class="layer l3"><div class="ph"><img src="img/gear3.webp" alt="Single wheel and pinion"></div></div>
+ <div class="move-t"><p class="eyebrow">Calibre A.01</p><h2 class="serif big">212 parts.<br><span class="gold">One heartbeat.</span></h2></div>
+</section>
+
+<section id="mat">
+ <div class="panel"><div class="bg"><img src="img/gear2.webp" alt="Steel movement wheels"></div><div class="shade"></div>
+  <div class="mat-t"><p class="eyebrow">Surgical steel</p><div class="n serif gold" data-to="316">316</div><h3 class="serif">L grade steel case</h3></div></div>
+ <div class="panel"><div class="bg"><img src="img/case.webp" alt="Gold case with open movement"></div><div class="shade"></div>
+  <div class="mat-t"><p class="eyebrow">Solid gold</p><div class="n serif gold" data-to="18">0</div><h3 class="serif">carat rose gold</h3></div></div>
+ <div class="panel"><div class="bg"><img src="img/m2.webp" alt="Sapphire crystal catching the light"></div><div class="shade"></div>
+  <div class="mat-t"><p class="eyebrow">Sapphire crystal</p><div class="n serif gold" data-to="9">0</div><h3 class="serif">on the Mohs scale</h3></div></div>
+</section>
+
+<section id="models">
+ <div class="count"><span class="ci">01</span> / 03</div>
+ <div class="panel"><div class="bg"><img src="img/m1.webp" alt="Meridian"></div><div class="shade"></div>
+  <div class="model-t"><p class="eyebrow">The collection</p><h3 class="serif gold">Meridian</h3><p class="eyebrow">Rose gold</p></div></div>
+ <div class="panel"><div class="bg"><img src="img/m3.webp" alt="Nocturne"></div><div class="shade"></div>
+  <div class="model-t"><p class="eyebrow">The collection</p><h3 class="serif gold">Nocturne</h3><p class="eyebrow">Bronze bezel, black dial</p></div></div>
+ <div class="panel"><div class="bg"><img src="img/m4.webp" alt="Solstice"></div><div class="shade"></div>
+  <div class="model-t"><p class="eyebrow">The collection</p><h3 class="serif gold">Solstice</h3><p class="eyebrow">Open heart</p></div></div>
+</section>
+
+<section id="cta">
+ <div class="bg"><img src="img/cta.webp" alt="Watchmaker at the bench" loading="lazy"></div>
+ <div class="shade"></div>
+ <div class="center"><div><p class="eyebrow">By appointment</p><h2 class="serif big">Hold it<br><span class="gold">yourself.</span></h2><a class="btn" href="mailto:viewing@aurum.watch">Book a private viewing</a></div></div>
+ <footer>Photography: Unsplash<br>Site by <a href="https://thetenderdesk.co.uk">The Tender Desk</a></footer>
+</section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const lenis = window.lenis = new Lenis({lerp:.09, smoothWheel:true});
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add(t => lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0);
+
+// 1 hero: parallax + fade
+gsap.to('#hero .bg',{yPercent:25,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+gsap.to('.hero-t',{yPercent:-50,opacity:0,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'70% top',scrub:true}});
+
+// 2 dial zoom
+gsap.timeline({scrollTrigger:{trigger:'#dial',start:'top top',end:'+=160%',scrub:1,pin:true}})
+ .fromTo('#dial .bg img',{scale:1.25},{scale:3.6,ease:'power2.in',duration:1})
+ .to('#dial .veil',{opacity:.55,duration:.35},'-=.35')
+ .fromTo('.dial-t',{opacity:0,y:40},{opacity:1,y:0,duration:.35},'-=.3')
+ .to({}, {duration:.2});
+
+// 3 exploded movement
+const mt = gsap.timeline({scrollTrigger:{trigger:'#move',start:'top top',end:'+=180%',scrub:1,pin:true}});
+mt.fromTo('#move .base img',{scale:1.35},{scale:1,ease:'none',duration:1},0);
+const L=matchMedia('(max-width:760px)').matches?[['.l1',0,-4,1],['.l2',0,0,1],['.l3',0,4,1]]:[['.l1',-18,-22,1.1],['.l2',20,-8,.9],['.l3',8,26,1.2]];
+L.forEach(([s,x,y,d],i)=>{
+ mt.fromTo(s,{clipPath:'inset(50% 50% 50% 50%)',x:0,y:0,scale:.8},
+  {clipPath:'inset(0% 0% 0% 0%)',scale:1,duration:.4,ease:'power2.out'},i*.12)
+   .to(s,{xPercent:x,yPercent:y,duration:.6,ease:'none'},'>' )
+   .fromTo(s+' img',{scale:1.3},{scale:1,duration:1-i*.12,ease:'none'},i*.12);
+});
+mt.fromTo('.move-t',{opacity:0,y:60},{opacity:1,y:0,duration:.3},.45);
+
+// 4 materials: wipe panels
+function stack(sel,end,onIdx){
+ const ps=gsap.utils.toArray(sel+' .panel');
+ const tl=gsap.timeline({scrollTrigger:{trigger:sel,start:'top top',end:'+='+end,scrub:1,pin:true,
+   onUpdate:onIdx?self=>onIdx(Math.min(ps.length-1,Math.floor(self.progress*ps.length*0.999))):null}});
+ ps.forEach((p,i)=>{
+  const img=p.querySelector('img');
+  if(i>0) tl.fromTo(p,{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1,ease:'power2.inOut'});
+  tl.fromTo(img,{scale:1.2},{scale:1,duration:i?1.6:1,ease:'none'},i?'<':0);
+  const n=p.querySelector('.n'); if(n&&i>0){const o={v:0};tl.to(o,{v:+n.dataset.to,duration:.8,onUpdate:()=>n.textContent=Math.round(o.v)},'<.4');}
+  const t=p.querySelector('.mat-t,.model-t'); if(i>0) tl.fromTo(t,{y:80,opacity:0},{y:0,opacity:1,duration:.6},'<.3');
+  tl.to({}, {duration:.4});
+ });
+}
+stack('#mat','260%');
+const ci=document.querySelector('.ci');
+stack('#models','260%',i=>ci.textContent='0'+(i+1));
+
+// 6 cta
+gsap.fromTo('#cta .bg img',{scale:1.2},{scale:1,ease:'none',scrollTrigger:{trigger:'#cta',start:'top bottom',end:'bottom bottom',scrub:true}});
+gsap.from('#cta .center > div > *',{y:60,opacity:0,stagger:.12,duration:1.1,ease:'power3.out',scrollTrigger:{trigger:'#cta',start:'top 60%'}});
+</script>
+</body>
+</html>

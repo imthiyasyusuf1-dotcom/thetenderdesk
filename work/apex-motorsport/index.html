@@ -81,7 +81,7 @@ video.vs.live{display:block}
 .svc .line{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
 .svc p{max-width:30ch;font-size:15px;color:#c8c9cc}
 .svc .inner{will-change:transform,opacity}
-.svc .wipe{position:absolute;inset:0;z-index:4;background:var(--red);transform-origin:right;pointer-events:none}
+.svc .wipe{position:absolute;inset:0;z-index:4;background:linear-gradient(90deg,var(--red) 0 1.5%,#050505 1.5% 100%);box-shadow:-10px 0 30px rgba(225,6,0,.6);transform-origin:right;pointer-events:none}
 .svc .count{position:absolute;top:50%;right:clamp(18px,4vw,48px);z-index:3;font-size:11px;letter-spacing:.24em;writing-mode:vertical-rl;opacity:.7}
 
 /* dyno */
@@ -324,7 +324,7 @@ footer a{text-decoration:none;color:var(--ink);border-bottom:1px solid rgba(225,
   // services: red wipe reveals each pinned scene
   gsap.utils.toArray('.svc').forEach(function(s){
     gsap.timeline({scrollTrigger:{trigger:s,start:'top top',end:'+=110%',scrub:true,pin:true}})
-      .fromTo(s.querySelector('.wipe'),{scaleX:1},{scaleX:0,ease:'power3.inOut',duration:.22},0)
+      .fromTo(s.querySelector('.wipe'),{scaleX:1},{scaleX:0,ease:'power3.inOut',duration:.14},0)
       .fromTo(s.querySelector('.media img'),{scale:1.28},{scale:1,ease:'none',duration:1},0)
       .fromTo(s.querySelector('.inner'),{y:90,opacity:0},{y:0,opacity:1,ease:'power2.out',duration:.3},.12)
       .to(s.querySelector('.inner'),{y:-60,opacity:0,ease:'power2.in',duration:.22},.78);

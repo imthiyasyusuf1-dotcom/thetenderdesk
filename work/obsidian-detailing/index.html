@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Obsidian Detailing | Paint Correction, Ceramic Coating, Interior Detailing</title>
+<meta name="description" content="Obsidian Detailing brings cars back to showroom condition. Paint correction, ceramic coating and full interior detailing, booked in a minute.">
+<meta name="theme-color" content="#070708">
+<meta property="og:title" content="Obsidian Detailing">
+<meta property="og:description" content="Showroom. Every time.">
+<meta property="og:image" content="https://thetenderdesk.co.uk/work/obsidian-detailing/img/gloss.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero.webp" media="(min-width:761px)">
+<link rel="preload" as="image" href="img/hero-m.webp" media="(max-width:760px)">
+<style>
+:root{--jet:#070708;--graph:#16171a;--graph2:#212329;--ink:#eef1f4;--mute:#8b9098;--cy:#3fe3ff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--jet);color:var(--ink);-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:"Inter Tight",system-ui,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.cy{color:var(--cy)}
+.label{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+.h{font-weight:300;letter-spacing:-.055em;line-height:.88}
+.pad{padding-left:clamp(18px,4vw,48px);padding-right:clamp(18px,4vw,48px)}
+
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(18px,4vw,48px);mix-blend-mode:difference;color:#fff;pointer-events:none}
+.nav a{pointer-events:auto;text-decoration:none}
+.logo{font-size:13px;letter-spacing:.34em;text-transform:uppercase;font-weight:600}
+.logo i{display:inline-block;width:7px;height:7px;background:var(--cy);border-radius:50%;margin-right:10px;vertical-align:1px;font-style:normal}
+.nav .cta{font-size:11px;letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:3px}
+
+.scene{position:relative;height:100vh;height:100svh;overflow:hidden;background:var(--jet)}
+.media{position:absolute;inset:0;will-change:transform}
+.media img{width:100%;height:100%;object-fit:cover}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(7,7,8,.55) 0%,rgba(7,7,8,0) 26%,rgba(7,7,8,.1) 55%,rgba(7,7,8,.9) 100%)}
+.copy{position:absolute;left:clamp(18px,4vw,48px);right:clamp(18px,4vw,48px);bottom:clamp(28px,7vh,72px);z-index:3}
+
+/* hero */
+.hero h1{font-weight:300;letter-spacing:-.06em;line-height:.86;font-size:clamp(64px,13vw,236px)}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.07em}
+.hero h1 .ln span{display:block;will-change:transform}
+.hero h1 em{font-style:normal;color:var(--cy)}
+.hero .shade{background:linear-gradient(180deg,rgba(7,7,8,.5) 0%,rgba(7,7,8,0) 30%,rgba(7,7,8,.2) 50%,rgba(7,7,8,.92) 100%)}
+.hero .sub{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-top:26px}
+.hero .sub p{max-width:30ch;font-size:15px;color:#c9ced4}
+.scrollcue{font-size:11px;letter-spacing:.22em;text-transform:uppercase;display:flex;align-items:center;gap:12px;white-space:nowrap}
+.scrollcue i{width:44px;height:1px;background:var(--cy);transform-origin:left;animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleX(0)}50%{transform:scaleX(1)}100%{transform:scaleX(0);transform-origin:right}}
+
+/* signature: dull to gloss */
+.xf .layer{position:absolute;inset:0}
+.xf .gloss{clip-path:inset(0 0 0 100%);-webkit-clip-path:inset(0 0 0 100%);will-change:clip-path}
+.xf .sweep{position:absolute;top:-20%;bottom:-20%;left:0;width:38%;z-index:2;pointer-events:none;mix-blend-mode:screen;opacity:0;will-change:transform,opacity;
+  background:linear-gradient(100deg,rgba(255,255,255,0) 0%,rgba(190,245,255,.05) 30%,rgba(235,252,255,.55) 49%,rgba(255,255,255,.8) 50%,rgba(190,245,255,.1) 62%,rgba(255,255,255,0) 100%);transform:translateX(-120%) skewX(-12deg)}
+.xf .seam{position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--cy);box-shadow:0 0 24px 2px rgba(63,227,255,.8);z-index:4;will-change:transform}
+.xf .tag{position:absolute;top:clamp(78px,13vh,120px);z-index:5;font-size:11px;letter-spacing:.22em;text-transform:uppercase;padding:9px 14px;background:rgba(7,7,8,.55);border:1px solid rgba(255,255,255,.12);white-space:nowrap}
+.xf .t1{left:clamp(18px,4vw,48px)}
+.xf .t2{right:clamp(18px,4vw,48px);opacity:0;border-color:rgba(63,227,255,.5);color:var(--cy)}
+.xf .big{position:absolute;inset:auto clamp(18px,4vw,48px) clamp(28px,7vh,72px);z-index:5;display:flex;justify-content:space-between;align-items:end;gap:20px}
+.xf .big .h{font-size:clamp(52px,9vw,168px)}
+.xf .big .h span{display:block}
+.xf .meter{text-align:right}
+.xf .pct{font-weight:300;font-size:clamp(48px,6.5vw,110px);letter-spacing:-.05em;line-height:.9;color:var(--cy);font-variant-numeric:tabular-nums}
+.xf .bar{position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--cy);transform:scaleX(0);transform-origin:left;z-index:6}
+
+/* services */
+.svc .media img{will-change:transform}
+.svc .num{color:var(--cy);font-size:13px;letter-spacing:.24em;margin-bottom:14px}
+.svc .h{font-size:clamp(56px,11.5vw,210px)}
+.svc .line{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.svc p{max-width:30ch;font-size:15px;color:#c9ced4}
+.svc .inner{will-change:transform,opacity}
+.svc .count{position:absolute;top:50%;right:clamp(18px,4vw,48px);z-index:3;font-size:11px;letter-spacing:.24em;writing-mode:vertical-rl;opacity:.7}
+
+/* beading */
+.bead .media img{will-change:transform}
+.bead .shade{background:radial-gradient(ellipse at 50% 50%,rgba(7,7,8,.25),rgba(7,7,8,.85) 80%)}
+.bead .wrap{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 18px}
+.bead .kick{margin-bottom:clamp(18px,3vh,34px)}
+.bead .stats{display:grid;grid-template-columns:repeat(3,auto);gap:clamp(28px,7vw,120px);align-items:end}
+.stat .v{font-weight:300;font-size:clamp(84px,13vw,230px);letter-spacing:-.06em;line-height:.85;font-variant-numeric:tabular-nums}
+.stat .v sup{font-size:.3em;color:var(--cy);vertical-align:top;margin-left:.04em;letter-spacing:0}
+.stat .label{margin-top:14px;color:#c9ced4}
+.stat{will-change:transform,opacity}
+
+/* gallery */
+.gal{background:var(--jet)}
+.gal .head{position:absolute;top:clamp(78px,13vh,120px);left:clamp(18px,4vw,48px);right:clamp(18px,4vw,48px);z-index:3;display:flex;justify-content:space-between;align-items:end;gap:20px}
+.gal .head .h{font-size:clamp(40px,5.5vw,96px)}
+.track{position:absolute;left:0;top:0;bottom:0;display:flex;align-items:center;gap:clamp(14px,2vw,28px);padding:0 clamp(18px,4vw,48px);will-change:transform}
+.pair{flex:0 0 auto;width:min(72vw,1000px);height:min(58vh,560px);position:relative;margin-top:clamp(60px,10vh,110px)}
+.pair .half{position:absolute;inset:0;overflow:hidden;background:var(--graph)}
+.pair .half img{width:100%;height:100%;object-fit:cover}
+.pair .b img{filter:saturate(.35) contrast(.8) brightness(.95)}
+.pair .a{clip-path:inset(0 0 0 50%);-webkit-clip-path:inset(0 0 0 50%)}
+.pair .div{position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--cy);z-index:2}
+.pair .l{position:absolute;bottom:14px;z-index:3;font-size:10px;letter-spacing:.24em;text-transform:uppercase;padding:6px 10px;background:rgba(7,7,8,.6);white-space:nowrap}
+.pair .lb{left:14px}.pair .la{right:14px;color:var(--cy)}
+.pair figcaption{position:absolute;left:0;top:-34px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+
+/* reviews */
+.rev{background:var(--graph)}
+.rev .media{opacity:.22}
+.rev .quotes{position:absolute;inset:0;z-index:3;display:flex;align-items:center}
+.q{position:absolute;left:clamp(18px,4vw,48px);right:clamp(18px,4vw,48px);opacity:0;will-change:transform,opacity}
+.q:first-child{opacity:1}
+.q .stars{color:var(--cy);letter-spacing:.3em;margin-bottom:24px;font-size:13px}
+.q blockquote{font-weight:300;font-size:clamp(36px,5.6vw,100px);line-height:1;letter-spacing:-.045em;max-width:17ch}
+.q cite{display:block;margin-top:28px;font-style:normal;color:var(--mute)}
+.rev .dots{position:absolute;bottom:clamp(28px,7vh,72px);left:clamp(18px,4vw,48px);display:flex;gap:10px;z-index:3}
+.rev .dots i{width:40px;height:2px;background:rgba(238,241,244,.18);position:relative;overflow:hidden}
+.rev .dots b{position:absolute;inset:0;background:var(--cy);transform:scaleX(0);transform-origin:left;will-change:transform}
+
+/* booking */
+.book{background:var(--jet);min-height:100vh;min-height:100svh;height:auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,90px);align-items:center;padding:clamp(100px,15vh,150px) clamp(18px,4vw,48px) clamp(50px,9vh,90px)}
+.book .h{font-size:clamp(64px,10vw,190px)}
+.book .lead{margin-top:24px;max-width:32ch;color:#c9ced4}
+form{display:grid;gap:22px}
+fieldset{border:0}
+legend{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative;cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:block;padding:12px 16px;border:1px solid rgba(238,241,244,.18);font-size:13px;letter-spacing:.06em;white-space:nowrap;transition:border-color .25s,color .25s,background .25s}
+.chips input:checked + span{border-color:var(--cy);color:var(--cy);background:rgba(63,227,255,.07)}
+.chips input:focus-visible + span{outline:1px solid var(--cy);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.f{position:relative}
+.f input{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(238,241,244,.22);color:var(--ink);font:inherit;font-size:17px;padding:24px 0 10px;border-radius:0;outline:none;-webkit-appearance:none;appearance:none;color-scheme:dark}
+.f label{position:absolute;left:0;top:0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+.f input:focus{border-color:var(--cy)}
+.f.err input{border-color:#ff6b6b}
+button{justify-self:start;background:var(--cy);color:var(--jet);border:0;font:inherit;font-weight:600;font-size:13px;letter-spacing:.2em;text-transform:uppercase;padding:20px 36px;cursor:pointer;transition:transform .3s}
+button:hover{transform:translateY(-2px)}
+.thanks{display:none;font-weight:300;font-size:clamp(34px,3.8vw,60px);line-height:1.02;letter-spacing:-.04em}
+.thanks small{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--cy);margin-bottom:18px;font-weight:500}
+form.sent{display:none}
+form.sent + .thanks{display:block;animation:up .8s cubic-bezier(.2,.7,.2,1)}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+footer{background:var(--jet);padding:34px clamp(18px,4vw,48px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;letter-spacing:.08em;color:var(--mute);border-top:1px solid rgba(238,241,244,.08)}
+footer a{text-decoration:none;color:var(--ink);border-bottom:1px solid rgba(63,227,255,.6)}
+
+@media (max-width:760px){
+  .hero .sub{flex-direction:column;align-items:start;gap:18px}
+  .hero h1{text-shadow:0 2px 30px rgba(0,0,0,.5)}
+  .xf .big{flex-direction:column;align-items:start}
+  .xf .meter{text-align:left}
+  .svc .count{display:none}
+  .bead .stats{grid-template-columns:1fr;gap:26px}
+  .stat .v{font-size:88px}
+  .pair{width:84vw;height:52vh}
+  .gal .head{flex-direction:column;align-items:start;gap:10px}
+  .book{grid-template-columns:1fr;padding-top:110px}
+  .row{grid-template-columns:1fr}
+  footer{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){.scrollcue i{animation:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><a class="logo" href="#top"><i></i>Obsidian</a><a class="cta" href="#book">Book a detail</a></nav>
+
+<main id="top">
+  <section class="scene hero">
+    <div class="media"><picture><source media="(max-width:760px)" srcset="img/hero-m.webp"><img src="img/hero.webp" alt="Front of a black luxury saloon with a mirror gloss finish in a dark studio" fetchpriority="high"></picture></div>
+    <div class="shade"></div>
+    <div class="copy">
+      <p class="label cy" style="margin-bottom:22px">Obsidian Detailing</p>
+      <h1><span class="ln"><span>Showroom.</span></span><span class="ln"><span><em>Every</em> time.</span></span></h1>
+      <div class="sub"><p>Paint correction, ceramic coating and interior detailing for people who notice everything.</p><span class="scrollcue">Scroll <i></i></span></div>
+    </div>
+  </section>
+
+  <section class="scene xf" id="xf">
+    <div class="layer dull"><div class="media"><picture><source media="(max-width:760px)" srcset="img/dull-m.webp"><img src="img/dull.webp" alt="Dark car with dull, weathered and water spotted paint"></picture></div></div>
+    <div class="layer gloss"><div class="media"><picture><source media="(max-width:760px)" srcset="img/gloss-m.webp"><img src="img/gloss.webp" alt="Black car front with deep mirror gloss paint after detailing"></picture></div><div class="sweep"></div></div>
+    <div class="shade" style="z-index:3"></div>
+    <div class="seam"></div>
+    <span class="tag t1">As it arrived</span><span class="tag t2">As it leaves</span>
+    <div class="big"><div class="h"><span>Dull to</span><span class="cy">deep.</span></div><div class="meter"><div class="pct"><span id="pct">0</span><span style="font-size:.45em">%</span></div><div class="label" style="margin-top:10px;color:#c9ced4">Gloss restored</div></div></div>
+    <div class="bar"></div>
+  </section>
+
+  <section class="scene svc">
+    <div class="media"><picture><source media="(max-width:760px)" srcset="img/correction-m.webp"><img src="img/correction.webp" alt="Dual action polisher refining black paint beside masking tape" loading="lazy"></picture></div>
+    <div class="shade"></div><span class="count">01 / 03</span>
+    <div class="copy inner"><div class="num">01</div><div class="line"><div class="h">Paint<br>correction</div><p>Swirls, haze and scratches machine polished out, stage by stage, until the paint reads like glass.</p></div></div>
+  </section>
+  <section class="scene svc">
+    <div class="media"><picture><source media="(max-width:760px)" srcset="img/ceramic-m.webp"><img src="img/ceramic.webp" alt="Coated dark grey door panel with water beading on the surface" loading="lazy"></picture></div>
+    <div class="shade"></div><span class="count">02 / 03</span>
+    <div class="copy inner"><div class="num">02</div><div class="line"><div class="h">Ceramic<br>coating</div><p>A hard, hydrophobic shell bonded to the clear coat. Dirt slides off, the gloss stays locked in.</p></div></div>
+  </section>
+  <section class="scene svc">
+    <div class="media"><picture><source media="(max-width:760px)" srcset="img/interior-m.webp"><img src="img/interior.webp" alt="Dark leather rear seats seen through a car window" loading="lazy"></picture></div>
+    <div class="shade"></div><span class="count">03 / 03</span>
+    <div class="copy inner"><div class="num">03</div><div class="line"><div class="h">Interior<br>detail</div><p>Leather fed, fabrics steamed, every vent and seam cleaned by hand. It smells like the day you bought it.</p></div></div>
+  </section>
+
+  <section class="scene bead" id="bead">
+    <div class="media"><picture><source media="(max-width:760px)" srcset="img/beading-m.webp"><img src="img/beading.webp" alt="Macro of water beading on coated black paint" loading="lazy"></picture></div>
+    <div class="shade"></div>
+    <div class="wrap">
+      <p class="label cy kick">Ceramic protection</p>
+      <div class="stats">
+        <div class="stat"><div class="v"><span data-to="9">0</span><sup>H</sup></div><div class="label">Hardness</div></div>
+        <div class="stat"><div class="v"><span data-to="5">0</span></div><div class="label">Years of protection</div></div>
+        <div class="stat"><div class="v"><span data-to="110">0</span><sup>°</sup></div><div class="label">Water contact angle</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene gal" id="gal">
+    <div class="head"><div class="h">Before. After.</div><p class="label" style="color:var(--mute)">Recent work</p></div>
+    <div class="track">
+      <figure class="pair"><figcaption>Snow foam pre wash</figcaption><div class="half b"><img src="img/foam.webp" alt="Car wheel and arch covered in snow foam before washing" loading="lazy"></div><div class="half a"><img src="img/ceramic.webp" alt="Clean coated panel with water beading" loading="lazy"></div><div class="div"></div><span class="l lb">Before</span><span class="l la">After</span></figure>
+      <figure class="pair"><figcaption>Wheels and tyres</figcaption><div class="half b"><img src="img/brush.webp" alt="Gloved hand brushing a tyre sidewall" loading="lazy"></div><div class="half a"><img src="img/hero.webp" alt="Gleaming black car front after detailing" loading="lazy"></div><div class="div"></div><span class="l lb">Before</span><span class="l la">After</span></figure>
+      <figure class="pair"><figcaption>Gloss enhancement</figcaption><div class="half b"><img src="img/dull.webp" alt="Weathered dark paint before correction" loading="lazy"></div><div class="half a"><img src="img/beads.webp" alt="Black paint with tight water beads after coating" loading="lazy"></div><div class="div"></div><span class="l lb">Before</span><span class="l la">After</span></figure>
+      <figure class="pair"><figcaption>Satin finish care</figcaption><div class="half b"><img src="img/foam.webp" alt="Foam covered panel mid wash" loading="lazy"></div><div class="half a"><img src="img/finish.webp" alt="Satin black car bonnet and headlight after detailing" loading="lazy"></div><div class="div"></div><span class="l lb">Before</span><span class="l la">After</span></figure>
+    </div>
+  </section>
+
+  <section class="scene rev" id="rev">
+    <div class="media"><picture><source media="(max-width:760px)" srcset="img/beads-m.webp"><img src="img/beads.webp" alt="" loading="lazy"></picture></div>
+    <div class="quotes">
+      <div class="q"><div class="stars">★★★★★</div><blockquote>I did not recognise my own car. It looks deeper than the day I collected it.</blockquote><cite class="label">Daniel R, paint correction</cite></div>
+      <div class="q"><div class="stars">★★★★★</div><blockquote>Eight months on and rain still just rolls off. Worth every minute.</blockquote><cite class="label">Priya S, ceramic coating</cite></div>
+      <div class="q"><div class="stars">★★★★★</div><blockquote>Two kids, one dog, zero trace. The interior is spotless.</blockquote><cite class="label">Marcus T, interior detail</cite></div>
+    </div>
+    <div class="dots"><i><b></b></i><i><b></b></i><i><b></b></i></div>
+  </section>
+
+  <section class="scene book" id="book">
+    <div>
+      <p class="label cy" style="margin-bottom:22px">Book a detail</p>
+      <div class="h">Bring it<br>back.</div>
+      <p class="lead">Choose your car and your package. We confirm a slot by text, then collect or you drop off.</p>
+    </div>
+    <div>
+      <form id="bf" novalidate>
+        <fieldset><legend>Vehicle size</legend><div class="chips">
+          <label><input type="radio" name="size" value="Small" checked><span>Small</span></label>
+          <label><input type="radio" name="size" value="Saloon"><span>Saloon</span></label>
+          <label><input type="radio" name="size" value="SUV"><span>SUV</span></label>
+          <label><input type="radio" name="size" value="Van"><span>Large or van</span></label>
+        </div></fieldset>
+        <fieldset><legend>Package</legend><div class="chips">
+          <label><input type="radio" name="pkg" value="Enhancement" checked><span>Gloss enhancement</span></label>
+          <label><input type="radio" name="pkg" value="Correction"><span>Paint correction</span></label>
+          <label><input type="radio" name="pkg" value="Ceramic"><span>Ceramic coating</span></label>
+          <label><input type="radio" name="pkg" value="Interior"><span>Interior detail</span></label>
+        </div></fieldset>
+        <div class="row">
+          <div class="f"><label for="n">Name</label><input id="n" name="name" autocomplete="name" required></div>
+          <div class="f"><label for="p">Mobile</label><input id="p" name="tel" type="tel" autocomplete="tel" inputmode="tel" required></div>
+        </div>
+        <div class="f"><label for="d">Preferred date</label><input id="d" name="date" type="date"></div>
+        <button type="submit">Book now</button>
+      </form>
+      <div class="thanks" role="status" aria-live="polite"><small>Confirmed</small>Booked. We will confirm by text within the hour.</div>
+    </div>
+  </section>
+</main>
+
+<footer><span>© Obsidian Detailing</span><span>Photography: <a href="https://unsplash.com/" rel="noopener">Unsplash</a></span><span>Site by <a href="https://thetenderdesk.co.uk/">The Tender Desk</a></span></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var bf=document.getElementById('bf');
+  bf.addEventListener('submit',function(e){e.preventDefault();
+    var ok=true;[].forEach.call(bf.querySelectorAll('[required]'),function(i){var bad=!i.value.trim();i.parentNode.classList.toggle('err',bad);if(bad)ok=false});
+    if(ok) bf.classList.add('sent');
+  });
+  if(!window.gsap||!window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mobile=matchMedia('(max-width:760px)').matches;
+  if(window.Lenis && !reduce){
+    var lenis=new Lenis({lerp:.09,smoothWheel:true});
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add(function(t){lenis.raf(t*1000)});gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{duration:1.6})}})});
+    window.__lenis=lenis;
+  }
+  ScrollTrigger.config({ignoreMobileResize:true});
+
+  // hero
+  gsap.from('.hero h1 .ln span',{yPercent:110,duration:1.4,ease:'expo.out',stagger:.1,delay:.15});
+  gsap.from('.hero .media',{scale:1.18,duration:2.4,ease:'expo.out'});
+  gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}})
+    .to('.hero .media',{yPercent:22,scale:1.06,ease:'none'},0)
+    .to('.hero .copy',{yPercent:-40,opacity:0,ease:'none'},0);
+
+  // signature: dull panel wiped to mirror gloss, light sweep across the gloss
+  var xf=document.getElementById('xf'),pct=document.getElementById('pct'),seam=xf.querySelector('.seam'),sweep=xf.querySelector('.sweep');
+  gsap.timeline({scrollTrigger:{trigger:xf,start:'top top',end:'+=280%',scrub:.6,pin:true,anticipatePin:1,
+      onUpdate:function(s){pct.textContent=Math.round(Math.min(1,Math.max(0,(s.progress-.06)/.6))*100)}}})
+    .to({},{duration:.06})
+    .fromTo('.xf .gloss',{clipPath:'inset(0% 0% 0% 100%)'},{clipPath:'inset(0% 0% 0% 0%)',ease:'none',duration:.6},.06)
+    .fromTo(seam,{x:function(){return xf.clientWidth}},{x:0,ease:'none',duration:.6},.06)
+    .fromTo('.xf .dull img',{scale:1.04},{scale:1.12,ease:'none',duration:.66},0)
+    .fromTo('.xf .gloss img',{scale:1.14},{scale:1,ease:'none',duration:1},.06)
+    .to('.xf .bar',{scaleX:1,ease:'none',duration:.6},.06)
+    .to('.xf .t1',{opacity:0,duration:.08},.4)
+    .to('.xf .t2',{opacity:1,duration:.08},.48)
+    .to(seam,{opacity:0,duration:.05},.64)
+    .fromTo(sweep,{xPercent:-120,opacity:0},{xPercent:320,opacity:1,ease:'power1.inOut',duration:.34},.66)
+    .to(sweep,{opacity:0,duration:.06},.94)
+    .to({},{duration:.06});
+
+  // services
+  gsap.utils.toArray('.svc').forEach(function(s){
+    gsap.timeline({scrollTrigger:{trigger:s,start:'top top',end:'+=110%',scrub:true,pin:true}})
+      .fromTo(s.querySelector('.media img'),{scale:1.24},{scale:1,ease:'none',duration:1},0)
+      .fromTo(s.querySelector('.inner'),{y:90,opacity:0},{y:0,opacity:1,ease:'power2.out',duration:.35},.05)
+      .to(s.querySelector('.inner'),{y:-60,opacity:0,ease:'power2.in',duration:.25},.75);
+  });
+
+  // beading counters
+  var btl=gsap.timeline({scrollTrigger:{trigger:'#bead',start:'top top',end:'+=120%',scrub:.4,pin:true}});
+  btl.fromTo('#bead .media img',{scale:1.3},{scale:1,ease:'none',duration:1.2},0)
+     .from('#bead .stat',{y:70,opacity:0,stagger:.12,duration:.35},0);
+  gsap.utils.toArray('#bead [data-to]').forEach(function(n,i){var v={x:0};btl.to(v,{x:+n.dataset.to,ease:'power1.out',duration:.7,onUpdate:function(){n.textContent=Math.round(v.x)}},.1+i*.1)});
+
+  // gallery: horizontal track, each pair wipes before to after
+  var track=document.querySelector('.track'),pairs=gsap.utils.toArray('.pair');
+  var dist=function(){return Math.max(0,track.scrollWidth-innerWidth)};
+  var gtl=gsap.timeline({scrollTrigger:{trigger:'#gal',start:'top top',end:function(){return '+='+(dist()+innerHeight*1.2)},scrub:.5,pin:true,invalidateOnRefresh:true}});
+  gtl.to(track,{x:function(){return -dist()},ease:'none',duration:1},0);
+  pairs.forEach(function(p,i){
+    var t=i/Math.max(1,pairs.length-1)*.8;
+    gtl.fromTo(p.querySelector('.a'),{clipPath:'inset(0% 0% 0% 100%)'},{clipPath:'inset(0% 0% 0% 0%)',ease:'none',duration:.22},Math.max(0,t-.05));
+    gtl.fromTo(p.querySelector('.div'),{xPercent:0,x:function(){return p.clientWidth/2}},{x:function(){return -p.clientWidth/2},ease:'none',duration:.22},Math.max(0,t-.05));
+  });
+
+  // reviews
+  var qs=gsap.utils.toArray('.q'),bars=gsap.utils.toArray('.rev .dots b');
+  var rtl=gsap.timeline({scrollTrigger:{trigger:'#rev',start:'top top',end:'+=240%',scrub:.5,pin:true}});
+  rtl.fromTo('#rev .media img',{scale:1.2},{scale:1,ease:'none',duration:3},0);
+  qs.forEach(function(q,i){
+    rtl.to(bars[i],{scaleX:1,ease:'none',duration:1},i);
+    if(i<qs.length-1){
+      rtl.to(q,{opacity:0,y:-50,duration:.2},i+.8).fromTo(qs[i+1],{opacity:0,y:50},{opacity:1,y:0,duration:.2},i+.9);
+    }
+  });
+
+  gsap.from('.book .h, .book .lead, form fieldset, form .row, form .f, form button',{y:40,opacity:0,stagger:.06,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.book',start:'top 70%'}});
+  addEventListener('load',function(){ScrollTrigger.refresh()});
+})();
+</script>
+</body>
+</html>

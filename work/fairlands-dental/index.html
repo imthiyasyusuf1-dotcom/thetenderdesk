@@ -237,7 +237,7 @@ footer a{color:#fff}
 .bk-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3vw,40px);box-shadow:0 40px 80px -50px rgba(13,34,38,.45);min-height:520px}
 .bk-card h3{font-size:var(--t3);margin-bottom:6px}
 .bk-card .sub{color:var(--mute);font-size:15px;margin-bottom:22px}
-.demo-pill{display:inline-block;font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;background:#f0dfb8;color:var(--deep);border-radius:99px;padding:6px 10px;margin-bottom:16px;white-space:nowrap}
+.req-pill{display:inline-block;font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;background:#f0dfb8;color:var(--deep);border-radius:99px;padding:6px 10px;margin-bottom:16px;white-space:nowrap}
 .tx{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tx button,.slot,.day{font:500 15px var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px;text-align:left;cursor:pointer;transition:border-color .25s,background .25s,transform .25s var(--ease)}
 .tx button small{display:block;color:var(--mute);font-size:13px;margin-top:4px}
@@ -647,7 +647,7 @@ prog.style.width='100%';stp.textContent='Done';qT.textContent='Here is your star
 ask();
 
 
-/* demo booking flow: slots from real opening hours, no backend */
+/* booking flow: slots from real opening hours, no backend */
 (function(){
  const card=document.getElementById('bkCard'),stepsEl=[...document.querySelectorAll('#bkSteps li')];
  const TX=[["New patient exam","£59 · 40 min"],["Hygiene appointment","from £115 · 30 min"],["Whitening consultation","Free · 20 min"],["Implant consultation","Free · 30 min"],["Invisalign consultation","Free · 30 min"],["Emergency appointment","£70 · same day"]];
@@ -655,7 +655,7 @@ ask();
  const days=[];const now=new Date();for(let i=0;days.length<12&&i<20;i++){const d=new Date(now);d.setDate(now.getDate()+i);days.push(d)}
  const DS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],MS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
  function slotsFor(d){const h=H[d.getDay()];if(!h)return[];const out=[];let seed=d.getDate()*7+d.getMonth();for(let m=h[0];m+40<=h[1];m+=40){seed=(seed*9301+49297)%233280;if(seed/233280>.42)out.push(m)}if(d.toDateString()===now.toDateString()){const c=now.getHours()*60+now.getMinutes()+60;return out.filter(m=>m>c)}return out}
- const pill='<span class="demo-pill">Booking request</span>';
+ const pill='<span class="req-pill">Booking request</span>';
  function mark(){stepsEl.forEach((l,i)=>{l.classList.toggle('on',i===st.s);l.classList.toggle('done',i<st.s)})}
  function nav(canNext,label){return `<div class="bk-nav">${st.s?'<button class="back" data-back>Back</button>':'<span></span>'}<button class="btn btn-d" data-next ${canNext?'':'disabled'}>${label} <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div>`}
  function render(){mark();let h='';
@@ -692,7 +692,7 @@ function showQ(){qt.style.opacity=0;setTimeout(()=>{qt.innerHTML=`“${QT[qi][0]
 function next(){qi=(qi+1)%QT.length;showQ()}
 showQ();if(!RM)qtim=setInterval(next,7000);
 
-/* demo assistant */
+/* assistant */
 const chat=document.getElementById('chat'),cb=document.getElementById('chatB'),msgs=document.getElementById('msgs'),chips=document.getElementById('chips');
 const A={"How much is a check-up?":"A new patient exam is £59 for adults (usually £70). Children under 16 are free with a fee paying adult.","Are you open now?":()=>document.getElementById('statusTxt').textContent+". Wednesdays we are open until 6:30pm.","Do you take NHS patients?":"Fairlands is a private practice. NHS treatment is available for children who come with a fee paying adult.","I'm nervous":"You are in good hands. The team goes at your pace, explains each step, uses numbing gel, and offers IV or inhalation sedation.","Where do I park?":"We are on the first floor of Fairlands Medical Centre, with plenty of free parking and a lift.","Can I spread the cost?":`Yes. 0% finance over 12 months is available through <a href="https://lead.tabeo.co.uk/fairlands-dental-centre/finance" target="_blank" rel="noopener">Tabeo</a>, and Denplan Care starts at £23 a month.`,"How much are implants?":"Implants fully restored start from £2,950, with a free consultation.","Book me in":`You can book online here: <a href="${BOOK}" target="_blank" rel="noopener">Fairlands online booking</a>, or call <a href="tel:01483233823">01483 233 823</a>.`};
 function say(t,who){const d=document.createElement('div');d.className='m '+who;d.innerHTML=t;msgs.appendChild(d);msgs.scrollTop=1e5}

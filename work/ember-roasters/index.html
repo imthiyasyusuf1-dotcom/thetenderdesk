@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ember Coffee Roasters | Specialty coffee, roasted like it matters</title>
+<meta name="description" content="Ember Coffee Roasters sources traceable lots and roasts them in small batches. Follow one bean from cherry to cup, then subscribe.">
+<meta name="theme-color" content="#1a110c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Ccircle cx=%228%22 cy=%228%22 r=%226%22 fill=%22%23e8622c%22/%3E%3C/svg%3E">
+<meta property="og:title" content="Ember Coffee Roasters">
+<meta property="og:description" content="Roasted like it matters.">
+<meta property="og:image" content="https://thetenderdesk.co.uk/work/ember-roasters/img/hero.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero.webp" media="(min-width:761px)">
+<link rel="preload" as="image" href="img/hero-m.webp" media="(max-width:760px)">
+<style>
+:root{--esp:#1a110c;--esp2:#2b1c14;--bean:#4a2f22;--cream:#f2e8d9;--cream2:#e4d5bf;--ember:#e8622c;--ember2:#ff8a3d}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--esp);color:var(--cream);-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:"Inter Tight",system-ui,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.label{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+.em{color:var(--ember)}
+h1,h2,.h{font-family:"Fraunces",Georgia,serif;font-weight:300;letter-spacing:-.035em;line-height:.9}
+h2{font-size:clamp(46px,8vw,140px)}
+.ln{display:block;overflow:hidden;padding-bottom:.08em}
+.ln>span{display:block;will-change:transform}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(18px,4vw,48px);color:var(--cream);pointer-events:none;mix-blend-mode:difference}
+.nav a{pointer-events:auto;text-decoration:none}
+.logo{font-family:"Fraunces",serif;font-size:19px;letter-spacing:-.01em}
+.logo i{font-style:normal;display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ember);margin-right:8px;vertical-align:2px;box-shadow:0 0 14px var(--ember)}
+.nav .cta{font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:3px}
+
+/* shared scene */
+.scene{position:relative;height:100vh;height:100svh;overflow:hidden}
+.media{position:absolute;inset:0;will-change:transform}
+.media img,.media picture,.media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vslot.novid{display:none}
+.shade{position:absolute;inset:0;pointer-events:none}
+
+/* hero */
+.hero .media{transform:scale(1.12)}
+.hero .shade{background:radial-gradient(ellipse at 70% 40%,rgba(26,17,12,0) 0%,rgba(26,17,12,.35) 55%,rgba(26,17,12,.85) 100%),linear-gradient(180deg,rgba(26,17,12,.45) 0%,rgba(26,17,12,0) 30%,rgba(26,17,12,.75) 100%)}
+.hero .copy{position:absolute;left:clamp(18px,4vw,48px);right:clamp(18px,4vw,48px);bottom:clamp(30px,8vh,80px);z-index:2}
+.hero h1{font-size:clamp(58px,11vw,200px);max-width:10ch}
+.hero h1 em{font-style:italic;color:var(--ember2)}
+.hero .sub{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-top:30px}
+.hero .sub p{max-width:32ch;font-size:15px;opacity:.82}
+.cue{display:flex;align-items:center;gap:12px}
+.cue b{width:44px;height:1px;background:var(--ember);transform-origin:left;animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleX(0)}50%{transform:scaleX(1)}100%{transform:scaleX(0);transform-origin:right}}
+.sweep{position:absolute;inset:-20% -60%;background:linear-gradient(105deg,transparent 40%,rgba(255,170,100,.16) 50%,transparent 60%);transform:translateX(-60%);pointer-events:none;z-index:1}
+
+/* journey */
+.journey{height:100vh;height:100svh}
+.journey .stage{position:absolute;inset:0}
+.journey .stage + .stage{clip-path:circle(0% at 50% 50%);-webkit-clip-path:circle(0% at 50% 50%);will-change:clip-path}
+.journey .stage .media{transform:scale(1.15)}
+.journey .shade{background:linear-gradient(180deg,rgba(26,17,12,.5) 0%,rgba(26,17,12,0) 28%,rgba(26,17,12,0) 55%,rgba(26,17,12,.8) 100%)}
+.ring{position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;border:1.5px solid var(--ember2);box-shadow:0 0 40px rgba(232,98,44,.7),inset 0 0 30px rgba(232,98,44,.4);z-index:5;opacity:0;pointer-events:none;will-change:transform,opacity}
+.jcap{position:absolute;left:clamp(18px,4vw,48px);bottom:clamp(30px,8vh,80px);z-index:6}
+.jcap .step{position:absolute;left:0;bottom:0;width:min(88vw,900px)}
+.jcap .step .label{display:block;margin-bottom:14px;color:var(--ember2)}
+.jcap .step h2{font-size:clamp(52px,9vw,160px)}
+.jcap .step + .step{opacity:0}
+.temp{position:absolute;right:clamp(18px,4vw,48px);top:clamp(80px,14vh,130px);z-index:6;text-align:right}
+.temp .num{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(56px,8vw,128px);line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.temp .num sup{font-size:.35em;vertical-align:.95em;color:var(--ember2);margin-left:4px}
+.temp .bar{height:2px;background:rgba(242,232,217,.18);margin-top:14px;overflow:hidden}
+.temp .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ember),var(--ember2));transform:scaleX(0);transform-origin:left;box-shadow:0 0 12px var(--ember)}
+.dots{position:absolute;right:clamp(18px,4vw,48px);bottom:clamp(30px,8vh,80px);z-index:6;display:flex;gap:10px}
+.dots span{width:26px;height:2px;background:rgba(242,232,217,.25)}
+.dots span.on{background:var(--ember2)}
+
+/* statement */
+.statement{background:var(--cream);color:var(--esp);display:flex;align-items:center;justify-content:center;padding:0 clamp(18px,6vw,80px)}
+.statement p{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(34px,5.4vw,90px);line-height:1.02;letter-spacing:-.03em;max-width:15ch;text-align:center}
+.statement .w{opacity:.12;display:inline-block;will-change:opacity}
+.statement .w.e{color:var(--ember);font-style:italic}
+
+/* origins track */
+.origins{background:var(--esp)}
+.otrack{position:absolute;top:0;left:0;height:100%;display:flex;will-change:transform}
+.ohead{flex:0 0 auto;width:min(46vw,640px);display:flex;flex-direction:column;justify-content:center;padding:0 clamp(18px,4vw,48px)}
+.ohead h2{margin-top:18px}
+.ohead p{margin-top:24px;max-width:30ch;opacity:.7}
+.ocard{position:relative;flex:0 0 auto;width:min(62vw,860px);height:100%;overflow:hidden;margin-right:2vw}
+.ocard .media{inset:0 -8%}
+.ocard .shade{background:linear-gradient(180deg,rgba(26,17,12,.1) 30%,rgba(26,17,12,.88) 100%)}
+.ocard .info{position:absolute;left:clamp(18px,3vw,40px);right:clamp(18px,3vw,40px);bottom:clamp(28px,6vh,60px);z-index:2}
+.ocard .info .label{color:var(--ember2)}
+.ocard h3{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(40px,5vw,84px);letter-spacing:-.03em;line-height:.95;margin:12px 0 18px}
+.notes{display:flex;flex-wrap:wrap;gap:8px}
+.notes span{font-size:12px;letter-spacing:.08em;padding:7px 12px;border:1px solid rgba(242,232,217,.35);border-radius:40px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);background:rgba(26,17,12,.3)}
+.oend{flex:0 0 auto;width:30vw}
+
+/* plans */
+.plans .media{transform:scale(1.1)}
+.plans .shade{background:linear-gradient(90deg,rgba(26,17,12,.92) 0%,rgba(26,17,12,.7) 45%,rgba(26,17,12,.25) 100%)}
+.plans .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(18px,4vw,48px)}
+.plist{margin-top:clamp(26px,5vh,50px);border-top:1px solid rgba(242,232,217,.2);max-width:1100px}
+.plan{display:grid;grid-template-columns:70px 1fr auto;align-items:baseline;gap:20px;padding:clamp(16px,2.6vh,26px) 0;border-bottom:1px solid rgba(242,232,217,.2);position:relative}
+.plan .n{font-size:12px;letter-spacing:.2em;opacity:.55}
+.plan .h{font-size:clamp(38px,5.6vw,96px);letter-spacing:-.035em}
+.plan .d{font-size:13px;opacity:.7;max-width:26ch;text-align:right}
+.plan::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--ember);transform:scaleX(var(--p,0));transform-origin:left}
+
+/* cafe finder */
+.cafe .media{transform:scale(1.15)}
+.cafe .shade{background:radial-gradient(circle at 50% 55%,rgba(26,17,12,.25) 0%,rgba(26,17,12,.85) 75%)}
+.cafe .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px}
+.cafe .inner h2{margin:18px 0 34px}
+.btn{display:inline-flex;align-items:center;gap:14px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:18px 28px;border-radius:60px;background:var(--ember);color:var(--esp);font-weight:600;border:0;cursor:pointer;font-family:inherit;position:relative;overflow:hidden}
+.btn::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);transition:transform .8s}
+.btn:hover::before{transform:translateX(120%)}
+.cafe .btn{background:var(--cream)}
+.pin{position:relative;width:12px;height:12px;border-radius:50%;background:var(--ember)}
+.pin::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px solid var(--ember);animation:ping 2s ease-out infinite}
+@keyframes ping{from{transform:scale(.4);opacity:1}to{transform:scale(2);opacity:0}}
+.cafe .msg{margin-top:22px;font-size:14px;opacity:0;transition:opacity .5s}
+.cafe .msg.on{opacity:.85}
+
+/* subscribe */
+.subscribe{display:grid;grid-template-columns:1fr 1fr;background:var(--cream);color:var(--esp)}
+.subscribe .ph{position:relative;overflow:hidden;clip-path:inset(12% 12% 12% 12%);-webkit-clip-path:inset(12% 12% 12% 12%);will-change:clip-path}
+.subscribe .ph .media{transform:scale(1.2)}
+.subscribe .form{display:flex;flex-direction:column;justify-content:center;padding:0 clamp(18px,5vw,80px)}
+.subscribe h2{font-size:clamp(46px,6.4vw,112px);margin:16px 0 30px}
+.subscribe h2 em{font-style:italic;color:var(--ember)}
+form{display:grid;gap:14px;max-width:460px}
+.field{position:relative}
+.field label{display:block;opacity:.55;font-size:10px;margin-top:6px}
+.field input,.field select{width:100%;font:inherit;font-size:16px;padding:10px 0 12px;border:0;border-bottom:1px solid rgba(26,17,12,.3);background:transparent;color:var(--esp);outline:none;border-radius:0;-webkit-appearance:none;appearance:none}
+.field input:focus,.field select:focus{border-color:var(--ember)}
+form .btn{margin-top:14px;justify-self:start}
+.ok{display:none;max-width:460px}
+.ok h3{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(34px,4vw,60px);letter-spacing:-.03em;line-height:1}
+.ok p{margin-top:12px;opacity:.7}
+.sent form{display:none}
+.sent .ok{display:block}
+
+footer{background:var(--esp);padding:34px clamp(18px,4vw,48px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;letter-spacing:.08em;opacity:.85;border-top:1px solid rgba(242,232,217,.08)}
+footer a{text-decoration:none;border-bottom:1px solid rgba(232,98,44,.7)}
+
+@media (max-width:760px){
+  .hero .sub{flex-direction:column;align-items:start}
+  .temp{top:84px}
+  .jcap .step h2{font-size:clamp(46px,14vw,80px)}
+  .dots{display:none}
+  .ohead{width:86vw}
+  .ocard{width:84vw;margin-right:3vw}
+  .oend{width:8vw}
+  .plan{grid-template-columns:40px 1fr}
+  .plan .d{grid-column:2;text-align:left}
+  .subscribe{grid-template-columns:1fr;height:auto;min-height:100svh}
+  .subscribe .ph{height:46vh;clip-path:inset(0 0 0 0);-webkit-clip-path:inset(0 0 0 0)}
+  .subscribe .form{padding:44px 20px 60px}
+  footer{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){.cue b,.pin::after{animation:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><a class="logo" href="#top"><i></i>Ember</a><a class="cta" href="#subscribe">Subscribe</a></nav>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="scene hero">
+  <div class="media">
+    <picture><source media="(max-width:760px)" srcset="img/hero-m.webp"><img src="img/hero.webp" alt="Freshly roasted coffee beans in close up" fetchpriority="high"></picture>
+    <video class="vslot novid" muted autoplay loop playsinline poster="img/hero.webp" data-slot="vid/hero.mp4" data-src=""></video>
+  </div>
+  <div class="sweep"></div>
+  <div class="shade"></div>
+  <div class="copy">
+    <span class="label em">Ember Coffee Roasters</span>
+    <h1 style="margin-top:18px"><span class="ln"><span>Roasted</span></span><span class="ln"><span>like it</span></span><span class="ln"><span><em>matters.</em></span></span></h1>
+    <div class="sub"><p>Small batch specialty coffee. Traceable lots, roasted by hand, shipped within days of the flame.</p><span class="label cue"><b></b>Follow one bean</span></div>
+  </div>
+</section>
+
+<!-- SIGNATURE: ONE BEAN'S JOURNEY -->
+<section class="scene journey" id="journey">
+  <div class="stage s1"><div class="media"><picture><source media="(max-width:760px)" srcset="img/cherry-m.webp"><img src="img/cherry.webp" alt="Ripe red coffee cherries on the branch" loading="lazy"></picture><video class="vslot novid" muted autoplay loop playsinline poster="img/cherry.webp" data-slot="vid/cherry.mp4" data-src=""></video></div><div class="shade"></div></div>
+  <div class="stage s2"><div class="media"><picture><source media="(max-width:760px)" srcset="img/green-m.webp"><img src="img/green.webp" alt="Raw green coffee beans" loading="lazy"></picture><video class="vslot novid" muted autoplay loop playsinline poster="img/green.webp" data-slot="vid/green.mp4" data-src=""></video></div><div class="shade"></div></div>
+  <div class="stage s3"><div class="media"><picture><source media="(max-width:760px)" srcset="img/roast-m.webp"><img src="img/roast.webp" alt="Roaster working over open flames" loading="lazy"></picture><video class="vslot novid" muted autoplay loop playsinline poster="img/roast.webp" data-slot="vid/roast.mp4" data-src=""></video></div><div class="shade"></div></div>
+  <div class="stage s4"><div class="media"><picture><source media="(max-width:760px)" srcset="img/pour-m.webp"><img src="img/pour.webp" alt="Pour over coffee brewing from above" loading="lazy"></picture><video class="vslot novid" muted autoplay loop playsinline poster="img/pour.webp" data-slot="vid/pour.mp4" data-src=""></video></div><div class="shade"></div></div>
+  <div class="ring"></div>
+  <div class="temp"><span class="label">Roast temperature</span><div class="num"><span id="tnum">22</span><sup>°C</sup></div><div class="bar"><i></i></div></div>
+  <div class="jcap">
+    <div class="step"><span class="label">01 / Cherry</span><h2>Picked<br>at peak.</h2></div>
+    <div class="step"><span class="label">02 / Green</span><h2>Washed,<br>dried, rested.</h2></div>
+    <div class="step"><span class="label">03 / Flame</span><h2>First crack<br>at dawn.</h2></div>
+    <div class="step"><span class="label">04 / Pour</span><h2>Then,<br>your cup.</h2></div>
+  </div>
+  <div class="dots"><span class="on"></span><span></span><span></span><span></span></div>
+</section>
+
+<!-- STATEMENT -->
+<section class="scene statement">
+  <p id="stmt">We roast in small batches, by ear and by eye, until every lot tastes like <span class="e">where it came from.</span></p>
+</section>
+
+<!-- ORIGINS -->
+<section class="scene origins" id="origins">
+  <div class="otrack">
+    <div class="ohead"><span class="label em">Current lots</span><h2>Three<br>origins.</h2><p>Single farm lots, bought direct and roasted to show them off.</p></div>
+    <article class="ocard"><div class="media"><picture><source media="(max-width:760px)" srcset="img/o1-m.webp"><img src="img/o1.webp" alt="Misty forested coffee hills" loading="lazy"></picture><video class="vslot novid" muted autoplay loop playsinline poster="img/o1.webp" data-slot="vid/origin1.mp4" data-src=""></video></div><div class="shade"></div><div class="info"><span class="label">Lot 01 / Washed</span><h3>Cloud Forest</h3><div class="notes"><span>Jasmine</span><span>Bergamot</span><span>White peach</span></div></div></article>
+    <article class="ocard"><div class="media"><picture><source media="(max-width:760px)" srcset="img/o2-m.webp"><img src="img/o2.webp" alt="Farmer holding freshly picked coffee cherries" loading="lazy"></picture><video class="vslot novid" muted autoplay loop playsinline poster="img/o2.webp" data-slot="vid/origin2.mp4" data-src=""></video></div><div class="shade"></div><div class="info"><span class="label">Lot 02 / Natural</span><h3>Red Harvest</h3><div class="notes"><span>Blackberry</span><span>Cacao nib</span><span>Molasses</span></div></div></article>
+    <article class="ocard"><div class="media"><picture><source media="(max-width:760px)" srcset="img/o3-m.webp"><img src="img/o3.webp" alt="Coffee plants growing under shade trees" loading="lazy"></picture><video class="vslot novid" muted autoplay loop playsinline poster="img/o3.webp" data-slot="vid/origin3.mp4" data-src=""></video></div><div class="shade"></div><div class="info"><span class="label">Lot 03 / Honey</span><h3>High Shade</h3><div class="notes"><span>Toffee</span><span>Red apple</span><span>Hazelnut</span></div></div></article>
+    <div class="oend"></div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="scene plans" id="plans">
+  <div class="media"><picture><source media="(max-width:760px)" srcset="img/plans-m.webp"><img src="img/plans.webp" alt="Cup of black coffee on a dark surface" loading="lazy"></picture><video class="vslot novid" muted autoplay loop playsinline poster="img/plans.webp" data-slot="vid/plans.mp4" data-src=""></video></div>
+  <div class="shade"></div>
+  <div class="inner">
+    <span class="label em">Subscriptions</span>
+    <div class="plist">
+      <div class="plan"><span class="n">01</span><span class="h">The Spark</span><span class="d">One bag of our house roast, on your schedule.</span></div>
+      <div class="plan"><span class="n">02</span><span class="h">The Regular</span><span class="d">Two bags, rotating across our current lots.</span></div>
+      <div class="plan"><span class="n">03</span><span class="h">Roaster's Choice</span><span class="d">Rare lots first, picked straight off the cooling tray.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAFE FINDER -->
+<section class="scene cafe" id="cafes">
+  <div class="media"><picture><source media="(max-width:760px)" srcset="img/cafe-m.webp"><img src="img/cafe.webp" alt="Espresso pouring into two glasses" loading="lazy"></picture><video class="vslot novid" muted autoplay loop playsinline poster="img/cafe.webp" data-slot="vid/cafe.mp4" data-src=""></video></div>
+  <div class="shade"></div>
+  <div class="inner">
+    <span class="label em">Pour near you</span>
+    <h2><span class="ln"><span>Find Ember</span></span><span class="ln"><span>on bar.</span></span></h2>
+    <button class="btn" id="finder" type="button"><span class="pin"></span>Find a cafe</button>
+    <p class="msg" id="findmsg">Our cafe map is brewing. Subscribe and we will tell you first.</p>
+  </div>
+</section>
+
+<!-- SUBSCRIBE -->
+<section class="scene subscribe" id="subscribe">
+  <div class="ph"><div class="media"><picture><source media="(max-width:760px)" srcset="img/sub-m.webp"><img src="img/sub.webp" alt="Roasted coffee beans spilling from a hessian sack" loading="lazy"></picture><video class="vslot novid" muted autoplay loop playsinline poster="img/sub.webp" data-slot="vid/subscribe.mp4" data-src=""></video></div></div>
+  <div class="form" id="fwrap">
+    <span class="label em">Subscribe</span>
+    <h2>Fresh from<br>the <em>flame.</em></h2>
+    <form id="sf" novalidate>
+      <div class="field"><label class="label" for="fn">Your name</label><input id="fn" type="text" name="name" required autocomplete="name"></div>
+      <div class="field"><label class="label" for="fe">Email address</label><input id="fe" type="email" name="email" required autocomplete="email"></div>
+      <div class="field"><label class="label" for="fp">Plan</label><select id="fp" name="plan" required><option value="">Choose a plan</option><option>The Spark</option><option>The Regular</option><option>Roaster's Choice</option></select></div>
+      <button class="btn" type="submit">Start my subscription</button>
+    </form>
+    <div class="ok"><h3>You are on the roast list.</h3><p>We will be in touch before your first batch comes off the flame.</p></div>
+  </div>
+</section>
+
+</main>
+
+<footer><span>© Ember Coffee Roasters</span><span>Photography: <a href="https://unsplash.com/" rel="noopener">Unsplash</a></span><span>Site by <a href="https://thetenderdesk.co.uk/">The Tender Desk</a></span></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  // video slots: set data-src to the data-slot path once the clip is in vid/
+  document.querySelectorAll('video.vslot').forEach(function(v){
+    var src=v.getAttribute('data-src'); if(!src) return;
+    fetch(src,{method:'HEAD'}).then(function(r){ if(r.ok){ v.src=src; v.classList.remove('novid'); var p=v.play(); if(p&&p.catch)p.catch(function(){}); } }).catch(function(){});
+  });
+
+  // forms
+  document.getElementById('sf').addEventListener('submit',function(e){e.preventDefault();document.getElementById('fwrap').classList.add('sent');});
+  document.getElementById('finder').addEventListener('click',function(){document.getElementById('findmsg').classList.add('on');});
+
+  // statement words
+  var st=document.getElementById('stmt');
+  st.innerHTML=st.innerHTML.replace(/<span class="e">(.*?)<\/span>/,'@@$1@@').split(/(@@.*?@@)/).map(function(ch){
+    if(ch.indexOf('@@')===0) return ch.replace(/@@/g,'').split(' ').map(function(w){return '<span class="w e">'+w+'</span>';}).join(' ');
+    return ch.split(' ').map(function(w){return w?'<span class="w">'+w+'</span>':'';}).join(' ');
+  }).join(' ');
+
+  if(!window.gsap||!window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mobile=matchMedia('(max-width:760px)').matches;
+
+  if(!reduce && window.Lenis){
+    var lenis=new Lenis({lerp:mobile?0.14:0.09,smoothWheel:true});
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add(function(t){lenis.raf(t*1000);});
+    gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t);}});});
+  }
+
+  // hero intro
+  gsap.from('.hero h1 .ln>span',{yPercent:110,duration:1.3,ease:'power4.out',stagger:.12,delay:.15});
+  gsap.from('.hero .sub, .hero .label.em',{opacity:0,y:20,duration:1,delay:.8});
+  gsap.to('.hero .media',{scale:1,duration:2.4,ease:'power2.out'});
+  gsap.to('.hero .sweep',{xPercent:60,duration:2.6,ease:'power2.inOut',delay:.4});
+  gsap.to('.hero .media',{yPercent:18,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.hero .copy',{yPercent:-40,opacity:0,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+  // SIGNATURE journey
+  var stages=gsap.utils.toArray('.journey .stage');
+  var steps=gsap.utils.toArray('.jcap .step');
+  var dots=gsap.utils.toArray('.dots span');
+  var tnum=document.getElementById('tnum');
+  var temps=[22,38,205,224]; // cherry, green, first crack, finish
+  var tv={v:22};
+  var tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'.journey',start:'top top',end:'+='+(mobile?320:420)+'%',pin:true,scrub:mobile?0.6:1,anticipatePin:1,
+    onUpdate:function(self){var i=Math.min(3,Math.floor(self.progress*4.0001-0.35));i=Math.max(0,i);dots.forEach(function(d,k){d.classList.toggle('on',k<=i);});}}});
+  tl.to(stages[0].querySelector('.media'),{scale:1,duration:1},0);
+  for(var i=1;i<4;i++){
+    var at=i*1.2-0.2;
+    tl.fromTo('.ring',{scale:0,opacity:0},{scale:mobile?40:60,opacity:1,duration:.4},at)
+      .to('.ring',{scale:mobile?220:320,opacity:0,duration:.6},at+.4)
+      .to(stages[i],{clipPath:'circle(150% at 50% 50%)',webkitClipPath:'circle(150% at 50% 50%)',duration:1,ease:'power2.in'},at)
+      .fromTo(stages[i].querySelector('.media'),{scale:1.35},{scale:1,duration:1.2},at)
+      .to(steps[i-1],{opacity:0,y:-40,duration:.35},at+.15)
+      .fromTo(steps[i],{opacity:0,y:50},{opacity:1,y:0,duration:.4},at+.55)
+      .to(tv,{v:temps[i],duration:1,ease:'power1.inOut',onUpdate:function(){tnum.textContent=Math.round(tv.v);}},at);
+  }
+  tl.to('.temp .bar i',{scaleX:1,duration:tl.duration()},0);
+  tl.to({},{duration:.4});
+
+  // statement words light up
+  gsap.to('#stmt .w',{opacity:1,stagger:.1,ease:'none',scrollTrigger:{trigger:'.statement',start:'top 70%',end:'bottom 60%',scrub:true}});
+
+  // origins horizontal track
+  var track=document.querySelector('.otrack');
+  function dist(){return track.scrollWidth-innerWidth;}
+  var htl=gsap.to(track,{x:function(){return -dist();},ease:'none',scrollTrigger:{trigger:'.origins',start:'top top',end:function(){return '+='+dist();},pin:true,scrub:1,invalidateOnRefresh:true}});
+  gsap.utils.toArray('.ocard .media').forEach(function(m){
+    gsap.fromTo(m,{xPercent:-6},{xPercent:6,ease:'none',scrollTrigger:{trigger:m.parentNode,containerAnimation:htl,start:'left right',end:'right left',scrub:true}});
+  });
+  gsap.utils.toArray('.ocard .info').forEach(function(m){
+    gsap.from(m.children,{y:40,opacity:0,stagger:.08,scrollTrigger:{trigger:m.parentNode,containerAnimation:htl,start:'left 70%',end:'left 30%',scrub:true}});
+  });
+
+  // plans
+  var ptl=gsap.timeline({scrollTrigger:{trigger:'.plans',start:'top top',end:'+=160%',pin:true,scrub:1}});
+  ptl.to('.plans .media',{scale:1,duration:3,ease:'none'},0);
+  gsap.utils.toArray('.plan').forEach(function(p,k){
+    ptl.from(p.children,{yPercent:60,opacity:0,stagger:.08,duration:.6},k*.7)
+       .to(p,{'--p':1,duration:.7,ease:'power2.inOut'},k*.7+.2);
+  });
+
+  // cafe
+  gsap.to('.cafe .media',{scale:1,yPercent:-6,ease:'none',scrollTrigger:{trigger:'.cafe',start:'top bottom',end:'bottom top',scrub:true}});
+  gsap.from('.cafe h2 .ln>span',{yPercent:110,stagger:.1,duration:1.1,ease:'power4.out',scrollTrigger:{trigger:'.cafe',start:'top 55%'}});
+
+  // subscribe image mask open
+  if(!mobile){
+    gsap.to('.subscribe .ph',{clipPath:'inset(0% 0% 0% 0%)',webkitClipPath:'inset(0% 0% 0% 0%)',ease:'none',scrollTrigger:{trigger:'.subscribe',start:'top 90%',end:'top 10%',scrub:true}});
+  }
+  gsap.to('.subscribe .ph .media',{scale:1,ease:'none',scrollTrigger:{trigger:'.subscribe',start:'top bottom',end:'bottom bottom',scrub:true}});
+
+  addEventListener('load',function(){ScrollTrigger.refresh();});
+})();
+</script>
+</body>
+</html>
