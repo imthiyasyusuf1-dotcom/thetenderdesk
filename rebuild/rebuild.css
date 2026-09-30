@@ -258,3 +258,6 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-hei
   .end .stage{justify-content:flex-start;padding-top:22vh}
 }
 @media(prefers-reduced-motion:reduce){.loader{display:none}.mq{animation:none}.mf .w{opacity:1}.sv figure{clip-path:none}.sv>div{opacity:1;transform:none}}
+.end .stage>footer.ft,.end .stage>footer{position:relative;left:auto;right:auto;bottom:auto;margin-top:auto;width:100%}
+.end .stage{padding-bottom:26px}
+@media(min-width:761px){.end .stage{padding-top:18vh;justify-content:flex-start}}
