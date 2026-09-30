@@ -5,13 +5,36 @@
   const seg = (p, a, b) => clamp((p - a) / (b - a));
   const ease = t => 1 - Math.pow(1 - t, 3);
 
+  // preloader counter (Lusion style)
+  const ld = $('.loader');
+  if (ld) {
+    const n = $('.ld-n', ld), t0 = performance.now(), D = RM ? 0 : 1100;
+    const step = t => { const k = D ? clamp((t - t0) / D) : 1; n.textContent = String(Math.round(ease(k) * 100)).padStart(2, '0');
+      if (k < 1) requestAnimationFrame(step); else { ld.classList.add('done'); setTimeout(() => { ld.remove(); intro(); }, 900); } };
+    requestAnimationFrame(step);
+  }
+  // hero lands on load (not only on scroll)
+  function intro() { document.body.classList.add('ready'); scramble(); }
+  function scramble() {
+    const el = $('[data-scramble]'); if (!el || RM) return;
+    const txt = el.textContent, G = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789';
+    let f = 0; const T = 28;
+    const tick = () => { f++; el.textContent = [...txt].map((c, i) => c === ' ' || c === '.' ? c : (i < f / T * txt.length ? c : G[Math.random() * G.length | 0])).join(''); if (f < T) requestAnimationFrame(tick); else el.textContent = txt; };
+    tick();
+  }
+  // scroll-scrubbed word reveal
+  const mf = $('[data-words]'); let words = [];
+  if (mf) {
+    const walk = n => [...n.childNodes].forEach(c => { if (c.nodeType === 3) { const f = document.createDocumentFragment(); c.textContent.split(/(\s+)/).forEach(w => { if (!w.trim()) f.append(w); else { const s = document.createElement('span'); s.className = 'w'; s.textContent = w; f.append(s); } }); c.replaceWith(f); } else walk(c); });
+    walk(mf); words = $$('.w', mf);
+  }
   // one-shot reveals
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
     e.target.classList.add('in'); io.unobserve(e.target);
     if (e.target.id === 'ai') chat();
   }), { threshold: .35 });
-  $$('[data-shot],.tender,.ai,.gads,.reel-intro').forEach(el => io.observe(el));
+  $$('[data-shot],.tender,.ai,.gads,.reel-intro,.sv').forEach(el => io.observe(el));
 
   function chat() {
     const ms = $$('.m');
@@ -68,7 +91,8 @@
       hint.style.opacity = 1 - seg(p, .02, .1);
       lines.forEach((l, i) => { const t = ease(seg(p, .5 + i * .08, .68 + i * .08)); l.style.opacity = t; l.style.transform = `translate3d(0,${(1 - t) * 40}px,0)`; });
       const k = ease(seg(p, .45, .6)); kick.style.opacity = k; kick.style.transform = `translate3d(0,${(1 - k) * 20}px,0)`;
-      const s = ease(seg(p, .7, .86)); sub.style.opacity = s; sub.style.transform = `translate3d(0,${(1 - s) * 20}px,0)`;
+      const s = ease(seg(p, .7, .86)) ; sub.style.opacity = s; sub.style.transform = `translate3d(0,${(1 - s) * 20}px,0)`;
+      if (words.length) { const b = mf.getBoundingClientRect(); const q = clamp((vh * .85 - b.top) / (b.height + vh * .3)); const on = Math.round(q * words.length); words.forEach((w, i) => w.classList.toggle('on', i < on)); }
       // showreel parallax zoom
       for (const im of shots) {
         const b = im.closest('.shot').getBoundingClientRect();

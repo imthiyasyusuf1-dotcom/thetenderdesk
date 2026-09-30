@@ -201,3 +201,60 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-hei
 .gads.in .s-stat{opacity:1}
 @media (max-width:760px){.gads .copy p:not(.kicker){display:none}.gads .stage{align-content:center;gap:28px}}
 @media (prefers-reduced-motion:reduce){.s-ad,.s-stat{transition:none}.s-q::after{animation:none}}
+
+/* ===== v5: award pass ===== */
+.loader{position:fixed;inset:0;z-index:100;background:#0b0b0a;display:flex;flex-direction:column;justify-content:space-between;padding:22px clamp(20px,4vw,48px) 28px;transition:transform 1s cubic-bezier(.77,0,.18,1)}
+.loader.done{transform:translate3d(0,-100%,0)}
+.ld-w{font:400 20px var(--serif);order:-1}
+.ld-n{font:400 clamp(96px,22vw,260px)/.8 var(--serif);letter-spacing:-.04em;font-variant-numeric:tabular-nums;align-self:flex-end}
+.cine img{animation:drift 22s ease-in-out infinite alternate}
+@keyframes drift{from{transform:scale(1.08) translate3d(0,0,0)}to{transform:scale(1.16) translate3d(-2%,-1%,0)}}
+.open-copy h1{font-size:clamp(64px,11vw,190px);line-height:.9}
+.open-copy .kicker{color:var(--acc)}
+.hint{color:#8d887f}
+.manifesto{padding:22vh clamp(20px,6vw,90px) 16vh;max-width:1300px}
+.mf{font:400 clamp(32px,4.6vw,72px)/1.08 var(--serif);letter-spacing:-.015em}
+.mf .w{opacity:.14;transition:opacity .4s}
+.mf .w.on{opacity:1}
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0}
+.mq{display:flex;gap:40px;width:max-content;animation:mq 26s linear infinite;align-items:center}
+.mq span{font:italic 400 clamp(34px,5vw,72px)/1 var(--serif);white-space:nowrap}
+.mq i{width:10px;height:10px;border-radius:50%;background:var(--acc)}
+@keyframes mq{to{transform:translate3d(-50%,0,0)}}
+.services{padding:20vh clamp(20px,6vw,90px) 12vh}
+.sv-head h2{font-size:clamp(46px,7vw,110px);max-width:900px}
+.sv-list{list-style:none;margin-top:10vh;display:grid;gap:12vh}
+.sv{display:grid;grid-template-columns:1.1fr 1fr;gap:6vw;align-items:center}
+.sv:nth-child(even) figure{order:2}
+.sv figure{border-radius:18px;overflow:hidden;aspect-ratio:4/5;max-height:78vh;clip-path:inset(12% 8% 12% 8% round 18px);transition:clip-path 1.3s cubic-bezier(.2,.7,.2,1)}
+.sv figure img{width:100%;height:100%;object-fit:cover;transform:scale(1.2);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.sv.in figure{clip-path:inset(0 0 0 0 round 18px)}
+.sv.in figure img{transform:scale(1)}
+.sv>div{opacity:0;transform:translate3d(0,40px,0);transition:opacity 1s .2s,transform 1s .2s cubic-bezier(.2,.7,.2,1)}
+.sv.in>div{opacity:1;transform:none}
+.sv-n{font:500 12px var(--sans);letter-spacing:.22em;color:var(--acc)}
+.sv h3{font-size:clamp(52px,6.6vw,104px);margin:14px 0 18px}
+.sv p{color:#bdb7ad;max-width:420px;font-size:17px}
+.sv a{display:inline-block;margin-top:26px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--acc);padding-bottom:4px}
+.scene-bg{position:absolute;inset:0;z-index:0}
+.scene-bg img{width:100%;height:100%;object-fit:cover;opacity:.55}
+.scene-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,11,10,.92),rgba(11,11,10,.55) 60%,rgba(11,11,10,.8))}
+.tender .copy,.tender .doc-wrap,.gads .copy,.gads .serp{position:relative;z-index:1}
+.ai-bg img{opacity:.8}
+.end-bg{position:absolute;inset:0}
+.end-bg img{width:100%;height:100%;object-fit:cover}
+.end-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,10,.55),rgba(11,11,10,.35) 40%,rgba(11,11,10,.95))}
+.end .stage>*:not(.end-bg){position:relative;z-index:1}
+.end .stage>footer{position:absolute}
+.end-sub{color:#cfc9bf;max-width:480px;margin-top:22px;font-size:17px}
+.btn{background:var(--acc);color:#0b0b0a}
+@media(max-width:760px){
+  .sv{grid-template-columns:1fr;gap:28px}.sv:nth-child(even) figure{order:0}
+  .sv figure{aspect-ratio:4/4.4}
+  .sv-list{gap:9vh;margin-top:7vh}
+  .services,.manifesto{padding-top:16vh}
+  .sv p,.end-sub{font-size:15px}
+  .scene-bg::after{background:linear-gradient(180deg,rgba(11,11,10,.75),rgba(11,11,10,.9))}
+  .end .stage{justify-content:flex-start;padding-top:22vh}
+}
+@media(prefers-reduced-motion:reduce){.loader{display:none}.mq{animation:none}.mf .w{opacity:1}.sv figure{clip-path:none}.sv>div{opacity:1;transform:none}}

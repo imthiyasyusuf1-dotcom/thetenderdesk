@@ -7,12 +7,13 @@
 <meta name="description" content="Cinematic websites, winning tender bids, Google Ads campaigns and AI that answers your customers day and night. Founded and run by Yusuf Imthiyas.">
 <link rel="preload" href="/assets/fonts/instrument-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/rebuild/rebuild.css?v=4">
+<link rel="stylesheet" href="/rebuild/rebuild.css?v=5">
 </head>
 <body>
+<div class="loader" aria-hidden="true"><span class="ld-n">00</span><span class="ld-w">The Tender Desk</span></div>
 <header class="nav">
   <a class="brand" href="/">The Tender Desk</a>
-  <nav><a href="#work">Work</a><a href="/about/">About</a><a class="nav-cta" href="#start">Start a project</a></nav>
+  <nav><a href="#services">Services</a><a href="#work">Work</a><a href="/about/">About</a><a class="nav-cta" href="#start">Start a project</a></nav>
 </header>
 <div class="progress" aria-hidden="true"><i></i></div>
 
@@ -56,16 +57,35 @@
       </div></div></div>
     <div class="cine" data-media="/rebuild/media/opening">
       <!-- MEDIA SLOT (opening): drop media/opening.mp4 (1920x1080) + media/opening-m.mp4 (1080x1920) + media/opening-poster.webp; falls back to the still below -->
-      <picture><source media="(max-width:760px)" srcset="/work/apex-motorsport/img/hero-m.webp"><img src="/work/apex-motorsport/img/hero.webp" alt="" fetchpriority="high"></picture>
+      <picture><source media="(max-width:760px)" srcset="/rebuild/img/hero-m.webp"><img src="/rebuild/img/hero.webp" alt="" fetchpriority="high"></picture>
       <div class="shade"></div>
     </div>
     <div class="open-copy">
-      <p class="kicker">The Tender Desk</p>
-      <h1><span class="l1">Your website is</span> <span class="l2"><em>losing you</em> customers.</span></h1>
-      <p class="sub">We rebuild it into the thing people remember. Then we win you the contracts and answer every enquiry.</p>
+      <p class="kicker" data-scramble>Websites. Tenders. Ads. AI.</p>
+      <h1><span class="l1">Be the one</span> <span class="l2">they <em>remember.</em></span></h1>
+      <p class="sub">Cinematic websites, winning bids, Google Ads and AI that answers at 3am. One studio, built to win you work.</p>
     </div>
     <p class="hint">Scroll</p>
   </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto" id="manifesto">
+  <p class="kicker">The short version</p>
+  <p class="mf" data-words>Most small business sites look the same, say the same and lose the same customers. We build the opposite: <em>sites people feel</em>, bids that score, ads that land and an assistant that never sleeps.</p>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="mq"><span>Websites</span><i></i><span>Tender writing</span><i></i><span>Google Ads</span><i></i><span>AI automation</span><i></i><span>Websites</span><i></i><span>Tender writing</span><i></i><span>Google Ads</span><i></i><span>AI automation</span><i></i></div></div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sv-head"><p class="kicker">What we do</p><h2>Four ways we <em>win you work.</em></h2></div>
+  <ol class="sv-list">
+    <li class="sv"><figure><img loading="lazy" src="/rebuild/img/s-web.webp" alt="Warm light through frosted glass in a dark studio"></figure><div><span class="sv-n">01</span><h3>Websites</h3><p>Cinematic, fast, built to turn a visit into an enquiry. Designed from scratch, never a template.</p><a href="#work">See the work</a></div></li>
+    <li class="sv"><figure><img loading="lazy" src="/rebuild/img/s-tender.webp" alt="Fountain pen on a stack of cream paper"></figure><div><span class="sv-n">02</span><h3>Tender writing</h3><p>Public and private sector bids written to the scoring criteria and delivered on deadline.</p><a href="#tender">How we bid</a></div></li>
+    <li class="sv"><figure><img loading="lazy" src="/rebuild/img/s-ads.webp" alt="A brass chess king standing alone in a spotlight"></figure><div><span class="sv-n">03</span><h3>Google Ads</h3><p>The right searches, a sharp landing page and every enquiry tracked back to the click.</p><a href="#ads">Be first</a></div></li>
+    <li class="sv"><figure><img loading="lazy" src="/rebuild/img/s-ai.webp" alt="A phone glowing face down on a nightstand at night"></figure><div><span class="sv-n">04</span><h3>AI automation</h3><p>An assistant trained on your business that answers, qualifies and books, day or night.</p><a href="#ai">Meet it</a></div></li>
+  </ol>
 </section>
 
 <!-- 2. SHOWREEL -->
@@ -111,18 +131,16 @@
     <div class="cap"><span class="n">06</span><h3>Crumble &amp; Co</h3><p>Dessert parlour</p><a href="/work/crumble-and-co/">View the site</a></div>
   </div>
 </section>
-<!-- SLOT: BUILDER showcase. Swap .slot for an <img>/<picture> + real link when work/<builder-slug>/ ships. -->
-<section class="scene shot slot" data-shot data-slot="builder">
+<section class="scene shot" data-shot>
   <div class="stage">
-    <div class="slot-art" aria-hidden="true"><span>07</span></div>
-    <div class="cap"><span class="n">07</span><h3>Builder</h3><p>Gutted room to finished home, in one scroll</p><span class="soon">In the workshop</span></div>
+    <picture><source media="(max-width:760px)" srcset="/work/oakhart-rowe/img/after-m.webp"><img loading="lazy" src="/work/oakhart-rowe/img/after.webp" alt="Finished open plan kitchen extension"></picture>
+    <div class="cap"><span class="n">07</span><h3>Oakhart &amp; Rowe</h3><p>Builders. Gutted room to finished home in one scroll</p><a href="/work/oakhart-rowe/">View the site</a></div>
   </div>
 </section>
-<!-- SLOT: ELECTRICIAN showcase. Swap .slot for an <img>/<picture> + real link when work/<electrician-slug>/ ships. -->
-<section class="scene shot slot" data-shot data-slot="electrician">
+<section class="scene shot" data-shot>
   <div class="stage">
-    <div class="slot-art wire" aria-hidden="true"><span>08</span></div>
-    <div class="cap"><span class="n">08</span><h3>Electrician</h3><p>Bare wiring that lights up the page</p><span class="soon">In the workshop</span></div>
+    <picture><source media="(max-width:760px)" srcset="/work/halden-electrical/img/rewire-m.webp"><img loading="lazy" src="/work/halden-electrical/img/rewire.webp" alt="Electrical rewire in progress"></picture>
+    <div class="cap"><span class="n">08</span><h3>Halden</h3><p>Electrical contractors</p><a href="/work/halden-electrical/">View the site</a></div>
   </div>
 </section>
 
@@ -152,6 +170,7 @@
 <!-- 4. TENDERS -->
 <section class="scene tender" id="tender">
   <div class="stage split">
+    <div class="scene-bg"><img loading="lazy" src="/rebuild/img/s-tender.webp" alt=""></div>
     <div class="copy"><p class="kicker">Tenders</p><h2>We write the bid. <em>You win the work.</em></h2><p>Public and private sector contracts, written to the scoring criteria, delivered on deadline.</p></div>
     <div class="doc-wrap">
       <div class="doc">
@@ -172,7 +191,7 @@
 <section class="scene ai" id="ai">
   <div class="stage split rev">
     <!-- MEDIA SLOT (ai): drop media/ai.mp4 (1920x1080) + media/ai-m.mp4 (1080x1920) + media/ai-poster.webp, or just media/ai.webp for a still -->
-    <div class="ai-bg" data-media="/rebuild/media/ai"><picture><img src="/rebuild/media/ai.webp" alt="" loading="lazy" decoding="async"></picture></div>
+    <div class="ai-bg" data-media="/rebuild/media/ai-x"><picture><img src="/rebuild/img/s-ai.webp" alt="" loading="lazy" decoding="async"></picture></div>
     <div class="copy"><p class="kicker">AI assistant</p><h2>03:07. You're asleep. <em>It's booked.</em></h2><p>An assistant trained on your business answers every enquiry, day or night, and puts the job in your diary.</p></div>
     <div class="phone" aria-label="Enquiry answered and booked at 3am">
       <div class="ph-top"><span class="clock">03:07</span><span class="ph-name">Enquiries</span></div>
@@ -191,6 +210,7 @@
 <!-- 5b. GOOGLE ADS -->
 <section class="scene gads" id="ads">
   <div class="stage split">
+    <div class="scene-bg"><img loading="lazy" src="/rebuild/img/s-ads.webp" alt=""></div>
     <div class="copy"><p class="kicker">Google Ads</p><h2>They search. <em>You're first.</em></h2><p>Google Ads campaigns built and managed for you. The right searches, a sharp landing page and every enquiry tracked, so you know what each pound brings in.</p></div>
     <div class="serp" aria-label="Your business at the top of Google">
       <div class="s-bar"><span class="s-g">G</span><span class="s-q">emergency electrician near me</span></div>
@@ -205,8 +225,10 @@
 <!-- 6. ENDING -->
 <section class="scene end" id="start">
   <div class="stage">
+    <div class="end-bg"><picture><source media="(max-width:760px)" srcset="/rebuild/img/end-m.webp"><img loading="lazy" src="/rebuild/img/end.webp" alt=""></picture></div>
     <p class="kicker">Start a project</p>
-    <h2>Let's make yours <em>the one they remember.</em></h2>
+    <h2>Your next customer is <em>searching right now.</em></h2>
+    <p class="end-sub">Tell us what you need. You hear back from Yusuf himself, usually the same day.</p>
     <div class="ctas">
       <a class="btn" href="mailto:hello@thetenderdesk.co.uk?subject=Start%20a%20project">Start a project</a>
       <a class="wa" href="https://wa.me/447534458327?text=Hi%20Yusuf%2C%20I%27d%20like%20to%20start%20a%20project." rel="noopener">Message on WhatsApp</a>
@@ -216,6 +238,6 @@
   </div>
 </section>
 </main>
-<script src="/rebuild/rebuild.js?v=3" defer></script>
+<script src="/rebuild/rebuild.js?v=5" defer></script>
 </body>
 </html>
