@@ -16,7 +16,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-hei
 .nav nav{display:flex;gap:26px;font-size:13px}
 .nav nav a{text-decoration:none;opacity:.85}
 .nav-cta{border-bottom:1px solid currentColor}
-@media(max-width:760px){.nav nav{gap:18px;font-size:13px}.nav nav a[href="#services"],.nav nav .nav-cta{display:none}}
+@media(max-width:760px){.nav nav{gap:18px;font-size:13px}.nav nav a[href$="#services"],.nav nav .nav-cta{display:none}}
 .progress{position:fixed;left:0;right:0;bottom:0;height:2px;z-index:50}
 .progress i{display:block;height:100%;background:var(--acc);transform-origin:0 50%;transform:scaleX(0)}
 
