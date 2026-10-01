@@ -162,13 +162,14 @@ footer a{text-decoration:none;color:var(--ink);border-bottom:1px solid rgba(63,2
 }
 @media (prefers-reduced-motion:reduce){.scrollcue i{animation:none}}
 </style>
+<style>.hv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;pointer-events:none}.hv.on{opacity:1}</style>
 </head>
 <body>
 <nav class="nav"><a class="logo" href="#top"><i></i>Obsidian</a><a class="cta" href="#book">Book a detail</a></nav>
 
 <main id="top">
   <section class="scene hero">
-    <div class="media"><picture><source media="(max-width:760px)" srcset="img/hero-m.webp"><img src="img/hero.webp" alt="Front of a black luxury saloon with a mirror gloss finish in a dark studio" fetchpriority="high"></picture></div>
+    <div class="media"><picture><source media="(max-width:760px)" srcset="img/hero-m.webp"><img src="img/hero.webp" alt="Front of a black luxury saloon with a mirror gloss finish in a dark studio" fetchpriority="high"></picture><video class="hv" muted loop playsinline autoplay preload="metadata" aria-hidden="true" data-d="/assets/site/vid/obsidian.mp4" data-m="/assets/site/vid/obsidian-m.mp4"></video><script>(function(v){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return v.remove();v.src=matchMedia("(max-width:760px)").matches?v.dataset.m:v.dataset.d;v.addEventListener("playing",function(){v.classList.add("on")},{once:true});})(document.currentScript.previousElementSibling)</script></div>
     <div class="shade"></div>
     <div class="copy">
       <p class="label cy" style="margin-bottom:22px">Obsidian Detailing</p>

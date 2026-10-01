@@ -81,12 +81,13 @@ footer a{color:var(--gold);text-decoration:none}
  .btn{padding:18px 30px;letter-spacing:.28em}
 }
 </style>
+<style>.hv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;pointer-events:none}.hv.on{opacity:1}</style>
 </head>
 <body>
 <nav><a class="logo" href="#hero">AURUM</a><a href="#cta">Private viewing</a></nav>
 <main>
 <section id="hero">
- <div class="bg"><img src="img/hero.webp" alt="Gold chronograph watch in low light" fetchpriority="high"></div>
+ <div class="bg"><img src="img/hero.webp" alt="Gold chronograph watch in low light" fetchpriority="high"><video class="hv" muted loop playsinline autoplay preload="metadata" aria-hidden="true" data-d="/assets/site/vid/aurum.mp4" data-m="/assets/site/vid/aurum-m.mp4"></video><script>(function(v){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return v.remove();v.src=matchMedia("(max-width:760px)").matches?v.dataset.m:v.dataset.d;v.addEventListener("playing",function(){v.classList.add("on")},{once:true});})(document.currentScript.previousElementSibling)</script></div>
  <div class="shade"></div>
  <div class="hero-t"><h1 class="serif gold">Aurum</h1><p class="eyebrow">Time, made by hand</p></div>
  <div class="cue"></div>
