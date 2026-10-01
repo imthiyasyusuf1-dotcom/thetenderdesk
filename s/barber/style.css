@@ -1,0 +1,89 @@
+:root{--bone:#ece4d6;--ink:#0f0d0b;--ox:#6b1a17;--mute:#8a8073}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ink)}
+body{background:var(--ink);color:var(--bone);font-family:"Inter Tight",system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+i,.it{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400}
+.kick{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+
+.nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px 40px;mix-blend-mode:difference;color:#fff}
+.logo{font-family:"Instrument Serif",serif;font-size:24px}
+.nav nav{display:flex;gap:28px;align-items:center;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.pill{border:1px solid currentColor;border-radius:99px;padding:9px 16px}
+
+/* HERO */
+.hero{position:relative;height:100svh;min-height:620px;overflow:hidden}
+.hero-img{position:absolute;inset:0;clip-path:inset(46% 0 46% 0);transform:scale(1.25)}
+.hero-img img{object-position:50% 35%;filter:contrast(1.08) saturate(.85)}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,13,11,.85) 0%,rgba(15,13,11,.25) 55%,rgba(15,13,11,.1));pointer-events:none}
+.hero-title{position:absolute;left:40px;bottom:96px;font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(84px,13.2vw,210px);line-height:.84;letter-spacing:-.02em;text-transform:none}
+.hero-title .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero-title .w{display:inline-block;transform:translateY(105%)}
+.hero-title .ital{font-style:italic;padding-left:1.1em;color:var(--bone)}
+.hero-title .ln:nth-child(4) .w{color:#d8b9a8}
+.hero-foot{position:absolute;right:40px;bottom:44px;display:flex;flex-direction:column;align-items:flex-end;gap:18px;text-align:right;font-size:15px;line-height:1.5;opacity:0}
+.scroll{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)}
+
+/* REVEAL */
+.reveal{height:300vh;background:var(--bone);color:var(--ink)}
+.reveal-pin{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center}
+.reveal-word{position:absolute;font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(90px,15vw,240px);line-height:.85;letter-spacing:-.03em;display:flex;gap:.25em;z-index:2;top:12vh;left:40px}
+.reveal-word.r2{top:auto;bottom:12vh;left:auto;right:40px;color:var(--ox)}
+.reveal-word span:last-child{font-style:italic}
+.reveal-frame{position:relative;z-index:1;width:100vw;height:100vh;clip-path:inset(30% 38% 30% 38% round 6px)}
+.reveal-frame img{transform:scale(1.4);filter:grayscale(.2) contrast(1.1)}
+.reveal-cap{position:absolute;z-index:3;left:40px;bottom:44px;max-width:360px;font-size:16px;line-height:1.5;color:var(--bone);opacity:0}
+
+/* KINETIC */
+.kinetic{background:var(--ink);padding:16vh 0;overflow:hidden}
+.row{display:flex;gap:.35em;white-space:nowrap;font-size:clamp(70px,10.5vw,170px);line-height:1.02;letter-spacing:-.03em;font-weight:500;will-change:transform}
+.row b{font-weight:300;color:var(--mute)}
+.row.ox{color:var(--ox);-webkit-text-stroke:0}
+.row .it{font-weight:400}
+.row:nth-child(1){transform:translateX(-10%)}
+.row:nth-child(2){transform:translateX(-40%)}
+.row:nth-child(3){transform:translateX(-20%)}
+
+/* HORIZONTAL */
+.hz{background:var(--ink)}
+.hz-pin{height:100vh;display:flex;align-items:center;overflow:hidden;position:relative}
+.hz-head{flex:0 0 auto;width:min(36vw,520px);align-self:center}
+.hz-head h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(64px,7.5vw,128px);line-height:.95;margin-top:12px}
+.hz-track{display:flex;gap:28px;padding-left:40px;padding-right:8vw;will-change:transform;align-items:center}
+.card{flex:0 0 auto;width:min(31vw,440px);position:relative}
+.card img{height:min(64vh,580px);border-radius:4px}
+.card div{display:grid;grid-template-columns:42px 1fr;column-gap:8px;padding-top:16px}
+.card span{font-size:12px;color:var(--mute);padding-top:10px;grid-row:span 2}
+.card h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:34px}
+.card p{color:var(--mute);font-size:14px;margin-top:4px}
+
+/* RITUAL */
+.ritual{height:320vh}
+.ritual-pin{position:sticky;top:0;height:100vh;overflow:hidden}
+.ritual-img{position:absolute;inset:0}
+.ritual-img img{filter:contrast(1.05) brightness(.75)}
+.ritual-img.top{clip-path:inset(0 0 0 100%)}
+.ritual-copy{position:absolute;left:40px;bottom:10vh;z-index:3}
+.ritual-copy ol{list-style:none;margin-top:14px}
+.ritual-copy li{font-family:"Instrument Serif",serif;font-size:clamp(48px,6vw,96px);line-height:1;opacity:.28;transition:opacity .4s,transform .4s;display:flex;gap:.4em;align-items:baseline}
+.ritual-copy li b{font-family:"Inter Tight";font-size:13px;font-weight:500;width:28px;letter-spacing:.1em}
+.ritual-copy li.on{opacity:1;transform:translateX(18px)}
+.ritual-pin::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,13,11,.8),rgba(15,13,11,0) 60%);z-index:2}
+
+/* BOOK */
+.book{min-height:100vh;background:var(--ox);color:var(--bone);display:flex;flex-direction:column;justify-content:center;padding:0 40px;gap:28px}
+.book-title{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(100px,17vw,280px);line-height:.82;letter-spacing:-.03em}
+.book-title span{display:block;overflow:hidden}
+.book p{font-size:18px;max-width:440px}
+.btn{align-self:flex-start;background:var(--bone);color:var(--ink);padding:18px 30px;border-radius:99px;font-weight:600;letter-spacing:.04em}
+footer{display:flex;justify-content:space-between;padding:24px 40px;font-size:13px;color:var(--mute);background:var(--ink)}
+
+@media (max-width:760px){
+ .nav{padding:18px 20px}.nav nav a:not(.pill){display:none}
+ .hero-title{left:20px;bottom:150px}.hero-foot{right:20px;left:20px;align-items:flex-start;text-align:left}
+ .reveal-word{left:20px}.reveal-word.r2{right:20px}.reveal-cap{left:20px;right:20px}
+ .card{width:76vw}.hz-track{padding-left:20px}.hz-head{width:80vw}
+ .ritual-copy,.book{left:20px;padding:0 20px}footer{padding:20px;flex-direction:column;gap:6px}
+}
+@media (prefers-reduced-motion:reduce){.hero-img{clip-path:none;transform:none}.hero-title .w{transform:none}.hero-foot{opacity:1}}
