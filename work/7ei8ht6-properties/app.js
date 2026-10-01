@@ -107,10 +107,17 @@
   }
 
   /* statement: words brighten as the paragraph passes */
+  const wrap = h => h.replace(/(<[^>]+>)|([^\s<]+)/g, (m, tag, w) => tag ? tag : `<span class="w">${w}</span>`);
   const stm = $$('[data-words]').map(el => {
-    el.innerHTML = el.innerHTML.replace(/(<[^>]+>)|([^\s<]+)/g, (m, tag, w) => tag ? tag : `<span class="w">${w}</span>`);
+    el.dataset.en = el.innerHTML;
+    el.innerHTML = wrap(el.innerHTML);
     return { el, ws: $$('.w', el), n: -1 };
   });
+  window.__wordsSet = (el, h) => {
+    const s = stm.find(x => x.el === el); if (!s) return;
+    el.innerHTML = wrap(h); s.ws = $$('.w', el); s.n = -1;
+    if (reduce) s.ws.forEach(w => w.classList.add('on')); else words();
+  };
   function words() {
     for (const s of stm) {
       const r = s.el.getBoundingClientRect();

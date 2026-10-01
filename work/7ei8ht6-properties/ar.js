@@ -3,7 +3,7 @@
   const root = document.documentElement;
   let dict = null, nodes = null, attrs = null;
   const norm = s => s.replace(/\s+/g, ' ').trim();
-  const skip = el => el.closest('script,style,svg,.credits,.ar,[lang="ar"]');
+  const skip = el => el.closest('script,style,svg,.credits,.ar,[lang="ar"],[data-words]');
   function collect() {
     nodes = []; attrs = [];
     const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
@@ -30,11 +30,17 @@
     nodes.forEach(([n, en, ar]) => { n.nodeValue = on ? ar : en; });
     attrs.forEach(([el, a, en, ar]) => el.setAttribute(a, on ? ar : en));
     document.title = on ? attrs.title[1] : attrs.title[0];
+    document.querySelectorAll('[data-words]').forEach(el => {
+      const en = el.dataset.en; if (!en || !window.__wordsSet) return;
+      const k = norm(en.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&'));
+      const ar = dict['__w__' + k];
+      if (ar) window.__wordsSet(el, on ? ar : en);
+    });
     root.setAttribute('lang', on ? 'ar' : 'en');
     root.setAttribute('dir', on ? 'rtl' : 'ltr');
   }
   window.__arApply = apply;
-  fetch('ar.json?v=1').then(r => r.json()).then(d => {
+  fetch('ar.json?v=3').then(r => r.json()).then(d => {
     dict = d;
     const sync = () => apply(root.classList.contains('ar-on'));
     sync();

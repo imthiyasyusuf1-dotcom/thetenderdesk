@@ -656,3 +656,4 @@ html[dir=rtl] .hdr,html[dir=rtl] .nav,html[dir=rtl] .hero-media,html[dir=rtl] .a
 html[dir=rtl] .nav a,html[dir=rtl] .hdr-r{direction:rtl}
 html[dir=rtl] .kicker,html[dir=rtl] .d2,html[dir=rtl] .body,html[dir=rtl] p,html[dir=rtl] li,html[dir=rtl] h1,html[dir=rtl] h2,html[dir=rtl] h3{letter-spacing:0;text-align:start}
 html[dir=rtl] .mc a[href^="tel:"],html[dir=rtl] .mc a[href^="mailto:"]{direction:ltr;unicode-bidi:isolate}
+html.ar-on h1,html.ar-on h2,html.ar-on .h1,html.ar-on .h2{line-height:1.3!important}
