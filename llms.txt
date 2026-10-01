@@ -1,0 +1,18 @@
+# The Tender Desk
+
+> The Tender Desk builds websites, writes tenders, runs Google Ads, sets up AI assistants and optimises sites for search and AI answers, for small and local businesses that want more of the right work. Founded and run by Yusuf Imthiyas. Contact: hello@thetenderdesk.co.uk
+
+## Services and prices (GBP)
+* [Websites](https://thetenderdesk.co.uk/websites/): custom, mobile first sites. From 295 one off, or 0 upfront and 29 a month for 12 months with hosting and changes included.
+* [Care plans](https://thetenderdesk.co.uk/websites/#care): hosting, backups, updates and small changes, 15 a month.
+* [SEO and AI search optimisation](https://thetenderdesk.co.uk/websites/#seo): schema, FAQ markup, llms.txt, search structure.
+* [Google Business Profile setup](https://thetenderdesk.co.uk/websites/#google-business)
+* [Google Ads](https://thetenderdesk.co.uk/google-ads/): campaigns built and managed, setup 195.
+* [Tender writing](https://thetenderdesk.co.uk/tenders/): finding contracts, go or no go, method statements, quality answers, social value, PQQ, SQ and frameworks. From 395 per bid.
+* [AI assistant and automation](https://thetenderdesk.co.uk/ai/): an assistant that answers and books customers 24/7, plus admin automations.
+
+## Company
+* [Pricing](https://thetenderdesk.co.uk/pricing/)
+* [About](https://thetenderdesk.co.uk/about/)
+* [Referral partners](https://thetenderdesk.co.uk/partners/): 10% of a referred client's first year.
+* [Start a project](https://thetenderdesk.co.uk/#start)
