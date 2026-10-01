@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Ferrow &amp; Kell | Extensions and whole house builds</title>
+<meta name="description" content="Ferrow &amp; Kell design and build rear, side return and wraparound extensions across Surrey and South West London. Drawn, built and finished by one team.">
+<meta property="og:title" content="Ferrow &amp; Kell | Extensions, built properly">
+<meta property="og:description" content="Rear, side return and wraparound extensions. Drawn, built and finished by one team.">
+<meta property="og:url" content="https://thetenderdesk.co.uk/s/builder/">
+<meta property="og:image" content="https://thetenderdesk.co.uk/s/builder/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/hero.webp">
+<style>
+:root{--paper:#EDE8DF;--ink:#14130F;--brick:#B4482B;--line:rgba(20,19,15,.18);--serif:"Instrument Serif",Georgia,serif;--sans:"Inter Tight",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html.lenis{height:auto}.lenis.lenis-smooth{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+/* nav */
+nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:20px 40px;color:var(--paper);pointer-events:none}
+nav a,nav span{pointer-events:auto;background:var(--ink);padding:9px 14px}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.02em;text-decoration:none}
+.logo i{font-family:var(--serif);font-weight:400;font-size:24px}
+nav .r{display:flex;gap:28px;align-items:center}
+nav .r a{text-decoration:none}
+/* hero */
+.hero{height:100vh;position:relative;overflow:hidden;background:var(--paper)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;opacity:.5}
+.h-title{position:absolute;left:40px;right:42%;top:50%;transform:translateY(-50%);z-index:3;pointer-events:none}
+.h-title h1{font-weight:800;font-size:clamp(52px,8.4vw,150px);line-height:.84;letter-spacing:-.055em;text-transform:uppercase}
+.h-title h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.04em}
+.h-title h1 .w>span{display:inline-block;transform:translateY(105%)}
+.h-title h1 em{font-family:var(--serif);font-weight:400;font-style:italic;text-transform:none;letter-spacing:-.03em;color:var(--brick)}
+.h-meta{position:absolute;left:40px;right:40px;bottom:32px;display:flex;justify-content:space-between;z-index:3}
+.h-win{position:absolute;z-index:2;left:50%;top:50%;width:100%;height:100%;transform:translate(-50%,-50%);clip-path:inset(18% 5% 20% 58%);will-change:clip-path}
+.h-win img{width:100%;height:100%;object-fit:cover;transform:scale(1.25)}
+.h-win:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 30%,rgba(0,0,0,.45))}
+.dim{position:absolute;z-index:3;color:var(--ink);display:flex;align-items:center;gap:10px}
+.dim.top{left:58%;right:5%;top:calc(18% - 28px);justify-content:center}
+.dim.top:before,.dim.top:after{content:"";flex:1;height:1px;background:var(--ink)}
+.h-end{position:absolute;inset:auto 40px 90px 40px;z-index:4;color:#fff;opacity:0}
+.h-end p{font-family:var(--serif);font-size:clamp(36px,4.2vw,68px);line-height:.98;max-width:16ch}
+/* beat 2 before after */
+.ba{height:100vh;position:relative;overflow:hidden;background:var(--ink);color:var(--paper)}
+.ba .layer{position:absolute;inset:0}
+.ba .layer img{width:100%;height:100%;object-fit:cover}
+.ba .before img{filter:grayscale(1) contrast(1.15) brightness(.9)}
+.ba .after{clip-path:inset(0 0 0 100%);will-change:clip-path}
+.ba .seam{position:absolute;top:0;bottom:0;left:100%;width:2px;background:var(--paper);z-index:3}
+.ba .seam span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--paper);color:var(--ink);padding:10px 14px;white-space:nowrap}
+.ba .lbl{position:absolute;top:96px;z-index:4;padding:8px 12px;background:var(--ink);color:var(--paper)}
+.ba .lbl.l{left:40px}.ba .lbl.r{right:40px;background:var(--paper);color:var(--ink)}
+.ba:after{content:"";position:absolute;inset:40% 0 0 0;z-index:3;background:linear-gradient(0deg,rgba(10,10,8,.75),transparent);pointer-events:none}
+.ba h2{position:absolute;left:40px;bottom:48px;z-index:4;font-family:var(--serif);font-weight:400;font-size:clamp(48px,7vw,120px);line-height:.9;max-width:11ch;color:#fff}
+/* beat 3 kinetic */
+.say{min-height:100vh;display:flex;align-items:center;padding:120px 40px;position:relative}
+.say p{font-weight:800;font-size:clamp(40px,6.4vw,108px);line-height:.95;letter-spacing:-.045em;max-width:16ch}
+.say p .k{color:transparent;-webkit-text-stroke:1.4px var(--ink);transition:none}
+.say p em{font-family:var(--serif);font-weight:400;letter-spacing:-.02em}
+.say .mono{position:absolute;top:60px;left:40px}
+/* beat 4 horizontal */
+.hz{height:100vh;overflow:hidden;position:relative;background:var(--paper)}
+.hz-track{display:flex;gap:32px;height:100%;align-items:center;padding:0 40px;will-change:transform;width:max-content}
+.hz-intro{width:38vw;flex:none}
+.hz-intro h2{font-weight:800;font-size:clamp(48px,6vw,104px);line-height:.88;letter-spacing:-.05em;text-transform:uppercase}
+.hz-intro h2 em{font-family:var(--serif);font-weight:400;text-transform:none;color:var(--brick)}
+.hz-intro p{margin-top:24px;max-width:34ch;font-size:18px;line-height:1.45}
+.card{flex:none;width:46vw;height:72vh;position:relative;overflow:hidden}
+.card.t{width:30vw}
+.card img{width:100%;height:100%;object-fit:cover;transform:scale(1.15)}
+.card figcaption{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:end;padding:20px 22px;color:#fff;background:linear-gradient(0deg,rgba(0,0,0,.6),transparent)}
+.card figcaption b{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1}
+/* beat 5 process */
+.proc{position:relative}
+.step{height:100vh;position:sticky;top:0;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink)}
+.step:nth-child(1){background:var(--paper)}.step:nth-child(2){background:#E2DBCF}.step:nth-child(3){background:#D6CDBE}.step:nth-child(4){background:var(--ink);color:var(--paper)}
+.step .n{font-weight:800;font-size:clamp(160px,26vw,420px);line-height:.8;letter-spacing:-.07em;padding:60px 40px}
+.step .n sup{font-family:var(--mono);font-size:13px;letter-spacing:.08em;vertical-align:top;font-weight:400}
+.step .tx{padding:110px 40px 60px;display:flex;flex-direction:column;justify-content:space-between}
+.step h3{font-family:var(--serif);font-weight:400;font-size:clamp(44px,5.4vw,92px);line-height:.92}
+.step p{font-size:19px;line-height:1.45;max-width:36ch}
+/* outro */
+.out{min-height:100vh;background:var(--brick);color:var(--paper);padding:120px 40px 40px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.out h2{font-weight:800;font-size:clamp(64px,15vw,260px);line-height:.8;letter-spacing:-.07em;text-transform:uppercase}
+.out h2 .row{display:block;white-space:nowrap}
+.out h2 em{font-family:var(--serif);font-weight:400;text-transform:none;letter-spacing:-.03em}
+.cta{display:flex;flex-wrap:wrap;gap:16px;margin-top:64px}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:20px 28px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;font-size:17px}
+.btn.o{background:transparent;border:1.5px solid var(--paper)}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid rgba(237,232,223,.4);padding-top:20px;margin-top:80px}
+@media (max-width:760px){
+ nav{padding:16px 20px}nav .r .hide{display:none}
+ .h-title,.h-meta{left:20px;right:20px}.h-title{top:34%}.h-win{clip-path:inset(56% 5% 12% 5%)}.dim.top{left:5%;right:5%;top:calc(56% - 28px)}.h-end{left:20px;right:20px}
+ .hz-intro{width:80vw}.card,.card.t{width:78vw;height:60vh}
+ .step{grid-template-columns:1fr;grid-template-rows:auto 1fr}.step .n{padding:80px 20px 0}.step .tx{padding:20px}
+ .say,.out{padding-left:20px;padding-right:20px}.ba:after{content:"";position:absolute;inset:40% 0 0 0;z-index:3;background:linear-gradient(0deg,rgba(10,10,8,.75),transparent);pointer-events:none}
+.ba h2{left:20px}.ba .lbl.l{left:20px}.ba .lbl.r{right:20px}
+}
+@media (prefers-reduced-motion:reduce){.h-title h1 .w>span{transform:none}.h-win{clip-path:none}.ba .after{clip-path:none}}
+</style>
+</head>
+<body>
+<nav><a class="logo" href="#top">Ferrow <i>&amp;</i> Kell</a><div class="r"><span class="mono hide">Extensions · Surrey &amp; SW London</span><a class="mono" href="#visit">Book a visit</a></div></nav>
+
+<header class="hero" id="top">
+  <div class="grid"></div>
+  <div class="dim top mono">4.8 m clear span</div>
+  <div class="h-win"><img src="assets/hero.webp" alt="Rear extension with full height glazing lit at dusk" fetchpriority="high"></div>
+  <div class="h-title"><h1><span class="w"><span>The&nbsp;room</span></span><br><span class="w"><span>you&rsquo;ve&nbsp;been</span></span><br><span class="w"><span><em>missing.</em></span></span></h1></div>
+  <div class="h-end"><p>Rear, side return and wraparound extensions. Drawn, built and finished by one team.</p></div>
+  <div class="h-meta mono"><span>Ferrow &amp; Kell Builders</span><span>Scroll</span></div>
+</header>
+
+<section class="ba" aria-label="From drawing to finished room">
+  <div class="layer before"><img src="assets/plans.webp" alt="Extension drawings being marked up on a site desk" loading="lazy"></div>
+  <div class="layer after"><img src="assets/room.webp" alt="Finished open plan kitchen and living extension with roof glazing" loading="lazy"></div>
+  <div class="seam"><span class="mono">Drawn → Built</span></div>
+  <span class="lbl l mono">Week 01 · Drawing</span><span class="lbl r mono">Handover</span>
+  <h2>Every line on the page, built to the millimetre.</h2>
+</section>
+
+<section class="say">
+  <span class="mono">Our approach</span>
+  <p id="kin">One team draws it, builds it and hands you the keys. No passing the problem down the line. <em>Just the room, done properly.</em></p>
+</section>
+
+<section class="hz" aria-label="Recent work">
+  <div class="hz-track">
+    <div class="hz-intro"><span class="mono">Recent work</span><h2 style="margin-top:18px">Built, <em>not</em> bolted on.</h2><p>Extensions that feel like they were always part of the house. Steel, glass, timber and brick, chosen for the street they sit on.</p></div>
+    <figure class="card"><img src="assets/facade.webp" alt="Timber clad two storey extension with steel framed glazing" loading="lazy"><figcaption><b>Two storey rear</b><span class="mono">Timber + steel</span></figcaption></figure>
+    <figure class="card t"><img src="assets/hall.webp" alt="Bright hallway with oak floor in a reconfigured ground floor" loading="lazy"><figcaption><b>Reconfigured hall</b><span class="mono">Oak floor</span></figcaption></figure>
+    <figure class="card"><img src="assets/living.webp" alt="Light filled living room with tall windows in a new extension" loading="lazy"><figcaption><b>Garden room</b><span class="mono">Wraparound</span></figcaption></figure>
+    <figure class="card t"><img src="assets/bedroom.webp" alt="Loft bedroom with full height crittall style doors" loading="lazy"><figcaption><b>Loft suite</b><span class="mono">Dormer</span></figcaption></figure>
+    <figure class="card"><img src="assets/site.webp" alt="Site team walking a prepared slab before the build" loading="lazy"><figcaption><b>Groundworks</b><span class="mono">Week 03</span></figcaption></figure>
+  </div>
+</section>
+
+<section class="proc" aria-label="How we work">
+  <div class="step"><div class="n"><sup>Stage</sup>01</div><div class="tx"><h3>Survey &amp; drawing</h3><p>We measure the house, talk through how you live, and draw the room before a single brick is ordered.</p></div></div>
+  <div class="step"><div class="n"><sup>Stage</sup>02</div><div class="tx"><h3>Planning &amp; structure</h3><p>Planning, party wall notices and structural calcs, handled for you and explained in plain words.</p></div></div>
+  <div class="step"><div class="n"><sup>Stage</sup>03</div><div class="tx"><h3>The build</h3><p>One site lead from groundworks to plaster. A weekly walk round so you always know where things stand.</p></div></div>
+  <div class="step"><div class="n"><sup>Stage</sup>04</div><div class="tx"><h3>Handover</h3><p>Snagged, cleaned and signed off. You get the keys to a finished room, not a list of jobs.</p></div></div>
+</section>
+
+<footer class="out" id="visit">
+  <span class="mono">Start with a site visit</span>
+  <div>
+    <h2><span class="row">Let&rsquo;s build</span><span class="row"><em>your</em> room.</span></h2>
+    <div class="cta"><a class="btn" href="mailto:hello@thetenderdesk.co.uk?subject=Site%20visit">Book a free site visit →</a><a class="btn o" href="#top">Back to top</a></div>
+  </div>
+  <div class="foot mono"><span>Ferrow &amp; Kell Builders · Surrey &amp; SW London</span><span>Site by The Tender Desk</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// split kinetic words
+const kin=document.getElementById('kin');
+(function split(el){[...el.childNodes].forEach(n=>{if(n.nodeType===3){const f=document.createDocumentFragment();n.textContent.split(/(\s+)/).forEach(w=>{if(!w.trim()){f.append(w);return}const s=document.createElement('span');s.className='k';s.textContent=w;f.append(s)});n.replaceWith(f)}else split(n)})})(kin);
+if(!RM){
+gsap.registerPlugin(ScrollTrigger);
+const lenis=new Lenis({lerp:.085,smoothWheel:true});
+lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+// intro: words rise, window opens slightly
+gsap.to('.h-title h1 .w>span',{y:0,duration:1.1,ease:'expo.out',stagger:.09,delay:.1});
+gsap.from('.h-win',{clipPath:'inset(50% 50% 50% 50%)',duration:1.3,ease:'expo.inOut',delay:.15});
+gsap.from('.dim.top,.h-meta',{opacity:0,duration:.8,delay:.9});
+// beat 1: window expands to full bleed
+const h=gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:'+=120%',pin:true,scrub:.6}});
+h.to('.h-win',{clipPath:'inset(0% 0% 0% 0%)',ease:'none'},0)
+ .to('.h-win img',{scale:1,ease:'none'},0)
+ .to('.h-title',{yPercent:-60,opacity:0,ease:'none'},0)
+ .to('.dim.top,.h-meta',{opacity:0,duration:.2},0)
+ .to('.h-end',{opacity:1,duration:.3},.6);
+// beat 2: drawing to finished room
+const b=gsap.timeline({scrollTrigger:{trigger:'.ba',start:'top top',end:'+=110%',pin:true,scrub:.6}});
+b.to('.ba .after',{clipPath:'inset(0 0 0 0%)',ease:'none'},0).to('.ba .seam',{left:'0%',ease:'none'},0)
+ .from('.ba h2',{y:60,opacity:0,duration:.3},0);
+// beat 3: words fill with ink
+const ks=gsap.utils.toArray('#kin .k');
+ScrollTrigger.create({trigger:'.say',start:'top 70%',end:'bottom 70%',scrub:true,onUpdate:s=>{const n=Math.round(s.progress*ks.length*1.15);ks.forEach((k,i)=>{const on=i<n;k.style.color=on?(k.closest('em')?'var(--brick)':'var(--ink)'):'transparent'})}});
+// beat 4: horizontal gallery
+const tr=document.querySelector('.hz-track');
+const dist=()=>tr.scrollWidth-innerWidth;
+gsap.to(tr,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'.hz',start:'top top',end:()=>'+='+dist(),pin:true,scrub:.6,invalidateOnRefresh:true}});
+gsap.utils.toArray('.card img').forEach(i=>gsap.to(i,{scale:1,ease:'none',scrollTrigger:{trigger:'.hz',start:'top top',end:()=>'+='+dist(),scrub:true}}));
+// beat 5: stacked stages
+gsap.utils.toArray('.step .n').forEach(n=>gsap.from(n,{yPercent:30,opacity:0,scrollTrigger:{trigger:n.parentNode,start:'top 80%',end:'top 20%',scrub:true}}));
+// outro rows slide
+gsap.from('.out h2 .row',{xPercent:i=>i?20:-20,ease:'none',scrollTrigger:{trigger:'.out',start:'top bottom',end:'top top',scrub:true}});
+}else{kin.querySelectorAll('.k').forEach(k=>k.style.color='inherit')}
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Ferrow & Kell Builders","areaServed":["Surrey","South West London"],"url":"https://thetenderdesk.co.uk/s/builder/"}</script>
+</body>
+</html>
