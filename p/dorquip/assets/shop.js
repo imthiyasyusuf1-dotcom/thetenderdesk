@@ -33,7 +33,7 @@ function badge(bump){const n=cart.count();$$('.bag b').forEach(b=>{b.textContent
 window.addEventListener('storage',()=>badge());
 
 let DATA=null;const byId={};
-async function load(){if(DATA)return DATA;const r=await fetch(ROOT+'data/cat.json');DATA=await r.json();DATA.forEach(p=>{byId[p.id]=p;p.f=(p.a.Finish||[])[0]||'';p.q=(p.n+' '+p.sku+' '+p.f+' '+p.c+' '+p.s).toLowerCase()});return DATA}
+async function load(){if(DATA)return DATA;const r=await fetch(ROOT+'data/cat.json');DATA=await r.json();DATA.forEach(p=>{p.p=Math.round(p.p/1.2*100)/100;if(p.w)p.w=Math.round(p.w/1.2*100)/100;byId[p.id]=p;p.f=(p.a.Finish||[])[0]||'';p.q=(p.n+' '+p.sku+' '+p.f+' '+p.c+' '+p.s).toLowerCase()});return DATA}
 const url=p=>ROOT+'product/?p='+encodeURIComponent(p.id);
 
 function totals(lines){const ex=lines.reduce((a,l)=>a+l.p.p*l.q,0);const ship=0;const vat=(ex+ship)*VAT;return{ex,ship,vat,inc:ex+ship+vat}}
