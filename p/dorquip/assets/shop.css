@@ -191,3 +191,8 @@ footer.sf a{text-decoration:none}footer.sf a:hover{color:var(--paper)}
 .sk{background:linear-gradient(90deg,var(--paper2),#f3f0e8,var(--paper2));background-size:200% 100%;animation:sk 1.2s infinite}
 @keyframes sk{to{background-position:-200% 0}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.form fieldset{border-top:0;padding-top:0}
+.form legend{float:left;width:100%;border-top:1px solid var(--ink);padding-top:1rem}
+.form legend+*{clear:both}
+@media (max-width:979px){.filters{visibility:hidden;transition:transform .4s cubic-bezier(.7,0,.2,1),visibility 0s .4s}.filters.open{visibility:visible;transition:transform .4s cubic-bezier(.7,0,.2,1)}}
+.done pre{max-height:none}

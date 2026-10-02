@@ -33,10 +33,10 @@ function badge(bump){const n=cart.count();$$('.bag b').forEach(b=>{b.textContent
 window.addEventListener('storage',()=>badge());
 
 let DATA=null;const byId={};
-async function load(){if(DATA)return DATA;const r=await fetch(ROOT+'data/cat.json');DATA=await r.json();DATA.forEach(p=>{p.p=Math.round(p.p/1.2*100)/100;if(p.w)p.w=Math.round(p.w/1.2*100)/100;byId[p.id]=p;p.f=(p.a.Finish||[])[0]||'';p.q=(p.n+' '+p.sku+' '+p.f+' '+p.c+' '+p.s).toLowerCase()});return DATA}
+async function load(){if(DATA)return DATA;const r=await fetch(ROOT+'data/cat.json');DATA=await r.json();DATA.forEach(p=>{p.pi=p.p;p.p=Math.round(p.p/1.2*100)/100;if(p.w)p.w=Math.round(p.w/1.2*100)/100;byId[p.id]=p;p.f=(p.a.Finish||[])[0]||'';p.q=(p.n+' '+p.sku+' '+p.f+' '+p.c+' '+p.s).toLowerCase()});return DATA}
 const url=p=>ROOT+'product/?p='+encodeURIComponent(p.id);
 
-function totals(lines){const ex=lines.reduce((a,l)=>a+l.p.p*l.q,0);const ship=0;const vat=(ex+ship)*VAT;return{ex,ship,vat,inc:ex+ship+vat}}
+function totals(lines){const inc=Math.round(lines.reduce((a,l)=>a+l.p.pi*l.q,0)*100)/100;const ex=Math.round(inc/(1+VAT)*100)/100;return{ex,ship:0,vat:Math.round((inc-ex)*100)/100,inc}}
 function resolve(){return cart.get().map(l=>({...l,p:byId[l.id]})).filter(l=>l.p)}
 
 let tt;function toast(p,q){let t=$('.toast');if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.append(t)}
@@ -102,7 +102,7 @@ async function product(){
  <div class="pd"><div class="gal"><div class="main" id="main"><img id="mi" src="${img(p.i[0])}" alt="${esc(p.n)}" width="800" height="800"></div>
  ${p.i.length>1?`<div class="thumbs">${p.i.map((k,i)=>`<button data-k="${k}" aria-current="${!i}" aria-label="Image ${i+1}"><img src="${img(k,1)}" alt="" loading="lazy"></button>`).join('')}</div>`:''}</div>
  <div class="info"><p class="sku mono">${esc(p.sku)}</p><h1>${esc(p.n)}</h1>
- <div class="bigpr"><b>${gbp(p.p)}</b>${p.w?`<s>${gbp(p.w)}</s>`:''}<small class="mono">ex VAT</small><span style="color:var(--mute);width:100%">${gbp(p.p*(1+VAT))} inc VAT</span></div>
+ <div class="bigpr"><b>${gbp(p.p)}</b>${p.w?`<s>${gbp(p.w)}</s>`:''}<small class="mono">ex VAT</small><span style="color:var(--mute);width:100%">${gbp(p.pi)} inc VAT</span></div>
  ${p.f?`<div class="opt"><h4>Finish: ${esc(p.f)}</h4><div class="chips"><span class="chip" aria-pressed="true"><i style="--c:${sw(p.f)}"></i>${esc(p.f)}</span>${sibs.slice(0,10).map(s=>`<a class="chip" href="${url(s)}"><i style="--c:${sw(s.f)}"></i>${esc(s.f)}</a>`).join('')}</div></div>`:''}
  <div class="buy"><div class="qty"><button type="button" data-d="-1" aria-label="Fewer">−</button><input id="qn" type="number" inputmode="numeric" min="1" max="999" value="1" aria-label="Quantity"><button type="button" data-d="1" aria-label="More">+</button></div><button class="btn" id="addb">Add to basket</button></div>
  <div class="assure"><div>Shipping in 2 to 3 working days</div><div>30-day money-back guarantee</div><div>Trade accounts and project pricing on request</div></div>
