@@ -16,8 +16,8 @@ h1,h2,h3{font-weight:760;font-variation-settings:"wdth" 72;line-height:.95;lette
 :focus-visible{outline:2px solid var(--brass);outline-offset:3px}
 
 /* header */
-.sh{position:sticky;top:0;z-index:50;background:rgba(239,236,228,.94);border-bottom:1px solid var(--line)}
-@supports (backdrop-filter:blur(8px)){.sh{background:rgba(239,236,228,.82);backdrop-filter:blur(12px) saturate(1.2)}}
+.sh{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);border-bottom:1px solid var(--line)}
+@supports (backdrop-filter:blur(8px)){.sh{background:rgba(255,255,255,.82);backdrop-filter:blur(12px) saturate(1.2)}}
 .sh .wrap{display:flex;align-items:center;gap:1.5rem;height:64px}
 .sh .logo img{height:36px;width:auto}
 .sh nav{display:flex;gap:1.6rem;margin-left:auto}
@@ -61,7 +61,7 @@ h1,h2,h3{font-weight:760;font-variation-settings:"wdth" 72;line-height:.95;lette
 }
 .fhead{display:none;justify-content:space-between;align-items:center;margin-bottom:1rem}
 .tools{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-bottom:1.2rem}
-.search{flex:1 1 260px;display:flex;align-items:center;border:1px solid var(--ink);background:#f6f4ee;min-height:48px;padding:0 .9rem;gap:.6rem}
+.search{flex:1 1 260px;display:flex;align-items:center;border:1px solid var(--ink);background:#ffffff;min-height:48px;padding:0 .9rem;gap:.6rem}
 .search input{border:0;background:none;outline:0;flex:1;min-width:0;font-size:1rem}
 select.sort,.btn-o{border:1px solid var(--ink);background:transparent;min-height:48px;padding:0 .9rem;cursor:pointer;font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase}
 .count{width:100%;color:var(--mute)}
@@ -145,7 +145,7 @@ select.sort,.btn-o{border:1px solid var(--ink);background:transparent;min-height
 .sum{background:var(--ink);color:var(--paper);padding:1.5rem}
 @media (min-width:980px){.sum{position:sticky;top:84px}}
 .sum h2{font-size:2rem;margin-bottom:1rem}
-.sum .r{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid rgba(239,236,228,.15)}
+.sum .r{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.15)}
 .sum .r.t{border:0;font-size:1.35rem;font-weight:760;padding-top:1rem}
 .sum .note{color:#b9b3a6;font-size:.85rem;margin-top:1rem}
 .sum .btn{width:100%;background:var(--paper);color:var(--ink);border-color:var(--paper);margin-top:1.2rem}
@@ -159,13 +159,13 @@ select.sort,.btn-o{border:1px solid var(--ink);background:transparent;min-height
 .fg{display:grid;gap:1rem}
 @media (min-width:640px){.fg{grid-template-columns:1fr 1fr}.fg .full{grid-column:1/-1}}
 .fd label{display:block;font:500 .7rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:.35rem}
-.fd input,.fd textarea,.fd select{width:100%;border:1px solid var(--line);background:#f6f4ee;min-height:50px;padding:.7rem .85rem;font-size:1rem;border-radius:0}
+.fd input,.fd textarea,.fd select{width:100%;border:1px solid var(--line);background:#ffffff;min-height:50px;padding:.7rem .85rem;font-size:1rem;border-radius:0}
 .fd textarea{min-height:110px;resize:vertical}
 .fd input:focus,.fd textarea:focus{outline:0;border-color:var(--ink);background:#fff}
 .fd.err input{border-color:#b3412e}
 .fd .em{color:#b3412e;font-size:.8rem;margin-top:.3rem;display:none}.fd.err .em{display:block}
 .radios{display:grid;gap:.6rem}
-.radio{display:flex;gap:.8rem;align-items:flex-start;border:1px solid var(--line);padding:1rem;cursor:pointer;background:#f6f4ee}
+.radio{display:flex;gap:.8rem;align-items:flex-start;border:1px solid var(--line);padding:1rem;cursor:pointer;background:#ffffff}
 .radio:has(input:checked){border-color:var(--ink);background:#fff}
 .radio input{margin-top:.25rem;accent-color:var(--ink)}
 .radio b{display:block}.radio small{color:var(--mute)}
@@ -174,7 +174,7 @@ select.sort,.btn-o{border:1px solid var(--ink);background:transparent;min-height
 .done{padding:5rem 0;text-align:left}
 .done h1{font-size:clamp(3rem,11vw,8rem);font-variation-settings:"wdth" 62}
 .done .ref{display:inline-block;margin:1.2rem 0;border:1px solid var(--ink);padding:.6rem .9rem}
-.done pre{white-space:pre-wrap;background:#f6f4ee;border:1px solid var(--line);padding:1rem;font:400 .82rem/1.5 var(--mono);max-height:340px;overflow:auto;margin-top:1rem}
+.done pre{white-space:pre-wrap;background:#ffffff;border:1px solid var(--line);padding:1rem;font:400 .82rem/1.5 var(--mono);max-height:340px;overflow:auto;margin-top:1rem}
 .acts{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.5rem}
 
 /* toast + drawer */
