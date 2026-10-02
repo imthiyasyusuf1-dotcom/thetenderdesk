@@ -176,6 +176,16 @@ footer a{text-decoration:none}footer a:hover{color:var(--paper)}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
 .hdr .bag{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid currentColor;padding:.5rem .7rem;margin-left:1rem;color:inherit}.hdr .bag b{display:inline-grid;place-items:center;min-width:1.3rem;height:1.3rem;border-radius:99px;background:currentColor;font-weight:500;font-size:.68rem;padding:0 .3rem}.hdr .bag b,.hdr.solid .bag b,.hdr.open .bag b{background:#a8823c;color:#14130f}@media(max-width:900px){.hdr .bag{margin-left:auto;margin-right:.8rem}}
+@media(max-width:900px){
+.hdr .wrap{gap:.6rem}
+.hdr .logo{margin-right:auto}
+.hdr .logo img{height:30px}
+.hdr .bag{order:2;margin:0;position:relative;z-index:2}
+.burger{order:3;margin-right:-10px}
+.nav{justify-content:flex-start;padding:96px 1.25rem 2rem;gap:0;overflow-y:auto}
+.nav a{font-size:2rem;line-height:1;padding:.85rem 0;width:100%;border-bottom:1px solid var(--line)}
+.nav a.call{width:auto;border:1px solid currentColor;margin-top:1.75rem;padding:.9rem 1.1rem}
+}
 </style>
 </head>
 <body>
