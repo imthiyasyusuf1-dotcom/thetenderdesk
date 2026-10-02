@@ -36,7 +36,7 @@ let DATA=null;const byId={};
 async function load(){if(DATA)return DATA;const r=await fetch(ROOT+'data/cat.json');DATA=await r.json();DATA.forEach(p=>{byId[p.id]=p;p.f=(p.a.Finish||[])[0]||'';p.q=(p.n+' '+p.sku+' '+p.f+' '+p.c+' '+p.s).toLowerCase()});return DATA}
 const url=p=>ROOT+'product/?p='+encodeURIComponent(p.id);
 
-function totals(lines){const ex=lines.reduce((a,l)=>a+l.p.p*l.q,0);const ship=ex===0||ex>=FREE?0:SHIP;const vat=(ex+ship)*VAT;return{ex,ship,vat,inc:ex+ship+vat}}
+function totals(lines){const ex=lines.reduce((a,l)=>a+l.p.p*l.q,0);const ship=0;const vat=(ex+ship)*VAT;return{ex,ship,vat,inc:ex+ship+vat}}
 function resolve(){return cart.get().map(l=>({...l,p:byId[l.id]})).filter(l=>l.p)}
 
 let tt;function toast(p,q){let t=$('.toast');if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.append(t)}
@@ -105,7 +105,7 @@ async function product(){
  <div class="bigpr"><b>${gbp(p.p)}</b>${p.w?`<s>${gbp(p.w)}</s>`:''}<small class="mono">ex VAT</small><span style="color:var(--mute);width:100%">${gbp(p.p*(1+VAT))} inc VAT</span></div>
  ${p.f?`<div class="opt"><h4>Finish: ${esc(p.f)}</h4><div class="chips"><span class="chip" aria-pressed="true"><i style="--c:${sw(p.f)}"></i>${esc(p.f)}</span>${sibs.slice(0,10).map(s=>`<a class="chip" href="${url(s)}"><i style="--c:${sw(s.f)}"></i>${esc(s.f)}</a>`).join('')}</div></div>`:''}
  <div class="buy"><div class="qty"><button type="button" data-d="-1" aria-label="Fewer">−</button><input id="qn" type="number" inputmode="numeric" min="1" max="999" value="1" aria-label="Quantity"><button type="button" data-d="1" aria-label="More">+</button></div><button class="btn" id="addb">Add to basket</button></div>
- <div class="assure"><div>Free UK delivery on orders over ${gbp(FREE)} ex VAT</div><div>Usually dispatched in 2 to 3 working days</div><div>Trade accounts and project pricing on request</div></div>
+ <div class="assure"><div>Shipping in 2 to 3 working days</div><div>30-day money-back guarantee</div><div>Trade accounts and project pricing on request</div></div>
  ${p.d.length?`<div class="desc">${descHTML(p.d)}</div>`:''}
  <table class="spec">${specs.map(([k,v])=>`<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join('')}</table></div></div>
  ${rel.length?`<section class="rel" style="padding-bottom:5rem"><h2>Pairs well with</h2><div class="grid">${rel.map(card).join('')}</div></section>`:''}`;
@@ -117,8 +117,8 @@ async function product(){
  const s=document.createElement('script');s.type='application/ld+json';s.textContent=JSON.stringify(ld);document.head.append(s)}
 
 /* ---------- BASKET ---------- */
-function sumHTML(t,btn){return `<div class="r"><span>Subtotal ex VAT</span><span>${gbp(t.ex)}</span></div><div class="r"><span>Delivery</span><span>${t.ship?gbp(t.ship):'Free'}</span></div><div class="r"><span>VAT 20%</span><span>${gbp(t.vat)}</span></div><div class="r t"><span>Total</span><span>${gbp(t.inc)}</span></div>
- ${t.ex&&t.ex<FREE?`<p class="note">Add ${gbp(FREE-t.ex)} more (ex VAT) for free delivery.</p>`:''}${btn||''}`}
+function sumHTML(t,btn){return `<div class="r"><span>Subtotal ex VAT</span><span>${gbp(t.ex)}</span></div><div class="r"><span>Delivery</span><span>Confirmed with order</span></div><div class="r"><span>VAT 20%</span><span>${gbp(t.vat)}</span></div><div class="r t"><span>Total inc VAT</span><span>${gbp(t.inc)}</span></div>
+ <p class="note">Delivery cost, if any, is confirmed by our sales team before you pay.</p>${btn||''}`}
 async function basket(){await load();const m=$('#bk');
  function r(){const L=resolve();if(!L.length){m.innerHTML=`<div class="done" style="padding:3rem 0"><h1 style="font-size:clamp(2.6rem,8vw,5rem)">Your basket is empty.</h1><p style="color:var(--mute)">Everything we stock is in the shop.</p><div class="acts"><a class="btn" href="${ROOT}shop/">Browse the shop</a></div></div>`;return}
   const t=totals(L);
@@ -144,7 +144,7 @@ async function checkout(){await load();const m=$('#ck');const L=resolve();
   <label class="radio"><input type="radio" name="pay" value="Trade account (30 days)"><span><b>Trade account</b><small>Existing account holders. Add your PO number in the delivery note.</small></span></label></div>
   <p style="margin-top:1.2rem"><label class="check"><input type="checkbox" id="tc" required><span>I agree to Dorquip's <a href="https://www.dorquip.com/legal/terms-and-conditions" target="_blank" rel="noopener">terms and conditions</a>.</span></label></p>
   <p class="em" id="tce" style="color:#b3412e;display:none;margin-top:.4rem">Please accept the terms to continue.</p></fieldset>
- <button class="btn" style="width:100%" type="submit">Place order · ${gbp(t.inc)}</button>
+ <button class="btn" style="width:100%" type="submit">Place order</button>
  <p style="margin-top:.8rem;color:var(--mute);font-size:.88rem">Nothing is charged now. Your order goes straight to our sales team, who confirm stock, delivery date and payment by email, normally the same working day.</p></form>
  <aside class="sum"><h2>Your order</h2><div class="mini">${L.map(l=>`<div><img src="${img(l.p.i[0],1)}" alt=""><span>${l.q} × ${esc(l.p.n)}</span><span>${gbp(l.p.p*l.q)}</span></div>`).join('')}</div>${sumHTML(t)}<p class="note"><a href="${ROOT}basket/" style="color:inherit">Edit basket</a></p></aside></div>`;
  const F=$('#cf');F.addEventListener('submit',e=>{e.preventDefault();let ok=true,first;
@@ -156,7 +156,7 @@ async function checkout(){await load();const m=$('#ck');const L=resolve();
   const pad=(s,n)=>(s+'').padEnd(n);
   const body=[`New web order ${ref}`,'',`CUSTOMER`,`${d.name}${d.company?' / '+d.company:''}`,`${d.email} / ${d.phone}`,'',`DELIVER TO`,d.addr1,d.addr2,`${d.town} ${d.postcode.toUpperCase()}`,'',d.note?`DELIVERY NOTE\n${d.note}\n`:'',`ITEMS`,
    ...L.map(l=>`${pad(l.q+' x',6)}${l.p.sku}  ${l.p.n}\n      ${gbp(l.p.p)} each = ${gbp(l.p.p*l.q)} ex VAT`),'',
-   `Subtotal ex VAT: ${gbp(t.ex)}`,`Delivery: ${t.ship?gbp(t.ship):'Free'}`,`VAT 20%: ${gbp(t.vat)}`,`TOTAL inc VAT: ${gbp(t.inc)}`,'',`PAYMENT: ${d.pay}`].filter(x=>x!=='').join('\n').replace(/\n(?=CUSTOMER|DELIVER TO|ITEMS|DELIVERY NOTE|Subtotal|PAYMENT)/g,'\n\n');
+   `Subtotal ex VAT: ${gbp(t.ex)}`,`Delivery: to be confirmed`,`VAT 20%: ${gbp(t.vat)}`,`TOTAL inc VAT: ${gbp(t.inc)}`,'',`PAYMENT: ${d.pay}`].filter(x=>x!=='').join('\n').replace(/\n(?=CUSTOMER|DELIVER TO|ITEMS|DELIVERY NOTE|Subtotal|PAYMENT)/g,'\n\n');
   const href=`mailto:${EMAIL}?cc=${encodeURIComponent(d.email)}&subject=${encodeURIComponent('Web order '+ref+' / '+(d.company||d.name))}&body=${encodeURIComponent(body)}`;
   location.href=href;cart.clear();
   m.innerHTML=`<div class="done"><p class="mono" style="color:var(--brass)">Order received</p><h1>Thank you, ${esc(d.name.split(' ')[0])}.</h1><span class="ref mono">Reference ${ref}</span>
