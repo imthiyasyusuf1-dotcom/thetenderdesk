@@ -24,7 +24,7 @@ h1,h2,h3{font-weight:760;font-variation-settings:"wdth" 72;line-height:.95;lette
 .sh nav a{text-decoration:none;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
 .sh nav a:hover,.sh nav a[aria-current]{color:var(--brass)}
 .bag{display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--ink);padding:.55rem .8rem;min-height:40px}
-.bag b{display:inline-grid;place-items:center;min-width:1.4rem;height:1.4rem;border-radius:99px;background:var(--ink);color:var(--paper);font-weight:500;font-size:.7rem;padding:0 .35rem}
+.bag b{display:inline-grid;place-items:center;min-width:1.4rem;height:1.4rem;border-radius:99px;background:var(--brass);color:var(--ink);font-weight:500;font-size:.7rem;padding:0 .35rem}
 .bag.bump b{animation:bump .5s}
 @keyframes bump{40%{transform:scale(1.45);background:var(--brass)}}
 @media (max-width:760px){.sh nav{display:none}.bag{margin-left:auto}}

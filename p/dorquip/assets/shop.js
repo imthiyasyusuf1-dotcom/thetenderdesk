@@ -36,7 +36,8 @@ let DATA=null;const byId={};
 async function load(){if(DATA)return DATA;const r=await fetch(ROOT+'data/cat.json');DATA=await r.json();DATA.forEach(p=>{p.pi=p.p;p.p=Math.round(p.p/1.2*100)/100;if(p.w)p.w=Math.round(p.w/1.2*100)/100;byId[p.id]=p;p.f=(p.a.Finish||[])[0]||'';p.q=(p.n+' '+p.sku+' '+p.f+' '+p.c+' '+p.s).toLowerCase()});return DATA}
 const url=p=>ROOT+'product/?p='+encodeURIComponent(p.id);
 
-function totals(lines){const inc=Math.round(lines.reduce((a,l)=>a+l.p.pi*l.q,0)*100)/100;const ex=Math.round(inc/(1+VAT)*100)/100;return{ex,ship:0,vat:Math.round((inc-ex)*100)/100,inc}}
+const lex=l=>Math.round(l.p.pi*l.q/(1+VAT)*100)/100;
+function totals(lines){const inc=Math.round(lines.reduce((a,l)=>a+l.p.pi*l.q,0)*100)/100;const ex=Math.round(lines.reduce((a,l)=>a+lex(l),0)*100)/100;return{ex,ship:0,vat:Math.round((inc-ex)*100)/100,inc}}
 function resolve(){return cart.get().map(l=>({...l,p:byId[l.id]})).filter(l=>l.p)}
 
 let tt;function toast(p,q){let t=$('.toast');if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.append(t)}
@@ -123,7 +124,7 @@ async function basket(){await load();const m=$('#bk');
  function r(){const L=resolve();if(!L.length){m.innerHTML=`<div class="done" style="padding:3rem 0"><h1 style="font-size:clamp(2.6rem,8vw,5rem)">Your basket is empty.</h1><p style="color:var(--mute)">Everything we stock is in the shop.</p><div class="acts"><a class="btn" href="${ROOT}shop/">Browse the shop</a></div></div>`;return}
   const t=totals(L);
   m.innerHTML=`<div class="two"><div><div class="lines">${L.map(l=>`<div class="line"><a href="${url(l.p)}"><img src="${img(l.p.i[0],1)}" alt=""></a><div><h3><a href="${url(l.p)}">${esc(l.p.n)}</a></h3><div class="var mono">${esc(l.p.sku)} · ${gbp(l.p.p)} each ex VAT</div>
-   <div class="ctl"><div class="qty"><button data-id="${esc(l.id)}" data-d="-1" aria-label="Fewer">−</button><input data-id="${esc(l.id)}" type="number" inputmode="numeric" min="1" value="${l.q}" aria-label="Quantity"><button data-id="${esc(l.id)}" data-d="1" aria-label="More">+</button></div><button class="rm" data-rm="${esc(l.id)}">Remove</button></div></div><div class="tot">${gbp(l.p.p*l.q)}</div></div>`).join('')}</div>
+   <div class="ctl"><div class="qty"><button data-id="${esc(l.id)}" data-d="-1" aria-label="Fewer">−</button><input data-id="${esc(l.id)}" type="number" inputmode="numeric" min="1" value="${l.q}" aria-label="Quantity"><button data-id="${esc(l.id)}" data-d="1" aria-label="More">+</button></div><button class="rm" data-rm="${esc(l.id)}">Remove</button></div></div><div class="tot">${gbp(lex(l))}</div></div>`).join('')}</div>
    <p style="margin-top:1.2rem"><a class="mono" href="${ROOT}shop/">← Continue shopping</a></p></div>
    <aside class="sum"><h2>Summary</h2>${sumHTML(t,`<a class="btn" href="${ROOT}checkout/">Checkout</a>`)}<p class="note">Ordering for a project? Send us the schedule and we'll quote the lot.</p></aside></div>`}
  m.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.rm){cart.qty(b.dataset.rm,0);r()}else if(b.dataset.d){const l=cart.get().find(x=>x.id===b.dataset.id);cart.qty(b.dataset.id,l.q+ +b.dataset.d);r()}});
@@ -146,7 +147,7 @@ async function checkout(){await load();const m=$('#ck');const L=resolve();
   <p class="em" id="tce" style="color:#b3412e;display:none;margin-top:.4rem">Please accept the terms to continue.</p></fieldset>
  <button class="btn" style="width:100%" type="submit">Place order</button>
  <p style="margin-top:.8rem;color:var(--mute);font-size:.88rem">Nothing is charged now. Your order goes straight to our sales team, who confirm stock, delivery date and payment by email, normally the same working day.</p></form>
- <aside class="sum"><h2>Your order</h2><div class="mini">${L.map(l=>`<div><img src="${img(l.p.i[0],1)}" alt=""><span>${l.q} × ${esc(l.p.n)}</span><span>${gbp(l.p.p*l.q)}</span></div>`).join('')}</div>${sumHTML(t)}<p class="note"><a href="${ROOT}basket/" style="color:inherit">Edit basket</a></p></aside></div>`;
+ <aside class="sum"><h2>Your order</h2><div class="mini">${L.map(l=>`<div><img src="${img(l.p.i[0],1)}" alt=""><span>${l.q} × ${esc(l.p.n)}</span><span>${gbp(lex(l))}</span></div>`).join('')}</div>${sumHTML(t)}<p class="note"><a href="${ROOT}basket/" style="color:inherit">Edit basket</a></p></aside></div>`;
  const F=$('#cf');F.addEventListener('submit',e=>{e.preventDefault();let ok=true,first;
   $$('input[required]:not([type=checkbox])',F).forEach(i=>{const bad=!i.value.trim()||(i.type==='email'&&!/^\S+@\S+\.\S+$/.test(i.value))||(i.name==='postcode'&&!/^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(i.value.trim()));i.closest('.fd').classList.toggle('err',bad);if(bad){ok=false;first=first||i}});
   $('#tce').style.display=$('#tc').checked?'none':'block';if(!$('#tc').checked)ok=false;
@@ -155,7 +156,7 @@ async function checkout(){await load();const m=$('#ck');const L=resolve();
   const ref='DQ-'+new Date().toISOString().slice(2,10).replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
   const pad=(s,n)=>(s+'').padEnd(n);
   const body=[`New web order ${ref}`,'',`CUSTOMER`,`${d.name}${d.company?' / '+d.company:''}`,`${d.email} / ${d.phone}`,'',`DELIVER TO`,d.addr1,d.addr2,`${d.town} ${d.postcode.toUpperCase()}`,'',d.note?`DELIVERY NOTE\n${d.note}\n`:'',`ITEMS`,
-   ...L.map(l=>`${pad(l.q+' x',6)}${l.p.sku}  ${l.p.n}\n      ${gbp(l.p.p)} each = ${gbp(l.p.p*l.q)} ex VAT`),'',
+   ...L.map(l=>`${pad(l.q+' x',6)}${l.p.sku}  ${l.p.n}\n      ${gbp(l.p.p)} each = ${gbp(lex(l))} ex VAT`),'',
    `Subtotal ex VAT: ${gbp(t.ex)}`,`Delivery: to be confirmed`,`VAT 20%: ${gbp(t.vat)}`,`TOTAL inc VAT: ${gbp(t.inc)}`,'',`PAYMENT: ${d.pay}`].filter(x=>x!=='').join('\n').replace(/\n(?=CUSTOMER|DELIVER TO|ITEMS|DELIVERY NOTE|Subtotal|PAYMENT)/g,'\n\n');
   const href=`mailto:${EMAIL}?cc=${encodeURIComponent(d.email)}&subject=${encodeURIComponent('Web order '+ref+' / '+(d.company||d.name))}&body=${encodeURIComponent(body)}`;
   location.href=href;cart.clear();
