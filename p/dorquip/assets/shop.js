@@ -16,7 +16,7 @@ const CATS=[
 ];
 const catBySlug=s=>CATS.find(c=>c[1]===s), slugOf=n=>(CATS.find(c=>c[0]===n)||[,''])[1];
 const catName=n=>n==='Onyx - Matt Black'?'Onyx Matt Black':n;
-const SW={'black':'#1b1b1b','matt black':'#222','polished chrome':'linear-gradient(135deg,#f4f6f8,#9aa3ab)','satin chrome':'#b9bec2','polished brass':'linear-gradient(135deg,#f3dc8a,#b38b2e)','satin brass':'#c2a35e','pewter':'#7d7f7c','beeswax':'#8a5a2b','polished nickel':'linear-gradient(135deg,#f2f0ea,#a9a596)','satin nickel':'#bdb9ad','polished stainless':'linear-gradient(135deg,#f4f4f4,#a2a4a6)','satin stainless':'#b5b7b8','satin stainless steel':'#b5b7b8','polished stainless steel':'linear-gradient(135deg,#f4f4f4,#a2a4a6)','aged brass':'#8f7440','bronze':'#6c4a2c','antique brass':'#8b6b33','white':'#fff','graphite':'#45484a'};
+const SW={'black':'#1b1b1b','matt black':'#222','polished chrome':'linear-gradient(135deg,#f4f6f8,#9aa3ab)','satin chrome':'#b9bec2','polished brass':'linear-gradient(135deg,#f3dc8a,#b38b2e)','satin brass':'#c2a35e','pewter':'#7d7f7c','beeswax':'#8a5a2b','polished nickel':'linear-gradient(135deg,#f2f0ea,#a9a596)','satin nickel':'#bdb9ad','polished stainless':'linear-gradient(135deg,#f4f4f4,#a2a4a6)','satin stainless':'#b5b7b8','satin stainless steel':'#b5b7b8','polished stainless steel':'linear-gradient(135deg,#f4f4f4,#a2a4a6)','aged brass':'#8f7440','bronze':'#6c4a2c','antique brass':'#8b6b33','white':'#fff','graphite':'#45484a','pewter patina':'#6f716c','aged bronze':'#5b3f27','polished bronze':'linear-gradient(135deg,#d6a46a,#7a4e25)','natural smooth':'#7b7468','anti-microbial stainless steel':'#b5b7b8','satin aluminium':'#c4c6c7','zinc plated':'#c9ccc8','antique pewter':'#5f605c'};
 const sw=f=>SW[(f||'').toLowerCase()]||'#9a958a';
 
 /* cart */
@@ -89,14 +89,14 @@ async function shop(){
 
 /* ---------- PRODUCT ---------- */
 function descHTML(d){let h='',ul=0;d.forEach(l=>{if(l.startsWith('•')){if(!ul){h+='<ul>';ul=1}h+=`<li>${esc(l.slice(1).trim())}</li>`;return}if(ul){h+='</ul>';ul=0}
- if(/^(IN STOCK|Product (Details|Features|Finish)|Other)/i.test(l)&&l.length<60)h+=`<p class="hl">${esc(l)}</p>`;else h+=`<p>${esc(l)}</p>`});if(ul)h+='</ul>';return h}
+ if(/^(IN STOCK|Product (Details|Features|Finish)|Other|KEY FEATURES|Application Guidelines|Important Advice|Specification|Technical)/i.test(l)&&l.length<60)h+=`<p class="hl">${esc(l)}</p>`;else h+=`<p>${esc(l)}</p>`});if(ul)h+='</ul>';return h}
 async function product(){
  await load();const id=new URLSearchParams(location.search).get('p');const p=byId[id];const m=$('#pd');
  if(!p){m.innerHTML=`<div class="done"><h1>Not found.</h1><p>That product has moved or been discontinued.</p><div class="acts"><a class="btn" href="${ROOT}shop/">Back to the shop</a></div></div>`;return}
  document.title=p.n+' | Dorquip Group';$('meta[name=description]')?.setAttribute('content',(p.d.find(x=>x.length>60)||p.n).slice(0,155));
  const c=slugOf(p.c);
- const sibs=DATA.filter(x=>x!==p&&x.c===p.c&&x.s===p.s&&x.n.replace(x.f,'').slice(0,18)===p.n.replace(p.f,'').slice(0,18)&&x.f&&x.f!==p.f);
- const rel=DATA.filter(x=>x!==p&&x.c===p.c&&x.s===p.s&&!sibs.includes(x)).sort(()=>Math.random()-.5).slice(0,4);
+ const sibs=DATA.filter(x=>x!==p&&x.g===p.g&&x.f&&x.f!==p.f).filter((x,i,a)=>a.findIndex(y=>y.f===x.f)===i);
+ const rel=DATA.filter(x=>x!==p&&x.c===p.c&&x.s===p.s&&x.g!==p.g&&(!p.f||x.f===p.f)).sort((a,b)=>((a.id.length*7+p.id.length)%13)-((b.id.length*7+p.id.length)%13)).slice(0,4);
  const specs=[['Code',p.sku],p.f&&['Finish',p.f],p.a.Brand&&['Brand',p.a.Brand[0]],['Range',catName(p.c)+(p.s?' / '+p.s:'')],...Object.entries(p.a).filter(([k])=>!['Finish','Brand'].includes(k)).map(([k,v])=>[k,v.join(', ')])].filter(Boolean);
  m.innerHTML=`<nav class="crumbs mono"><a href="${ROOT}shop/">Shop</a>/<a href="${ROOT}shop/?c=${c}">${esc(catName(p.c))}</a>${p.s?`/<a href="${ROOT}shop/?c=${c}&s=${encodeURIComponent(p.s)}">${esc(p.s)}</a>`:''}</nav>
  <div class="pd"><div class="gal"><div class="main" id="main"><img id="mi" src="${img(p.i[0])}" alt="${esc(p.n)}" width="800" height="800"></div>
