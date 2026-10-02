@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#0c1a24">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/office.webp">
+<link rel="preload" as="image" href="assets/fs-knights.webp">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":["LocalBusiness","HomeAndConstructionBusiness"],"@id":"https://freshspot.co.uk/#biz","name":"Fresh Spot Ltd","alternateName":"FreshSpot","url":"https://freshspot.co.uk","telephone":"+441252985710","email":"info@freshspot.co.uk","image":"https://thetenderdesk.co.uk/p/freshspot/assets/og.jpg",
@@ -70,7 +70,7 @@ em{font-style:italic;color:var(--spot)}
 .nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:16px 20px;transition:background .3s}
 .nav.s{background:rgba(243,242,237,.94);border-bottom:1px solid var(--line)}
 .logo{font-family:var(--serif);font-size:28px;text-decoration:none;display:flex;align-items:center;gap:8px}
-.logo i{width:12px;height:12px;border-radius:50%;background:var(--spot);display:inline-block}
+.logo img{height:40px;width:auto;display:block}.logo i{width:12px;height:12px;border-radius:50%;background:var(--spot);display:inline-block}
 .nav .links{display:flex;gap:28px;font-size:14px;font-weight:500}
 .nav .links a{text-decoration:none}
 .nav .tel{font-weight:700;font-size:14px;text-decoration:none;border:1px solid var(--ink);padding:9px 16px;border-radius:999px}
@@ -214,7 +214,7 @@ footer a{color:#fff}
 </head>
 <body>
 <header class="nav" id="nav">
-<a class="logo" href="#top" aria-label="Fresh Spot home"><i></i>Fresh Spot</a>
+<a class="logo" href="#top" aria-label="Fresh Spot home"><img src="assets/fs-logo.png" alt="Fresh Spot" width="124" height="55"></a>
 <nav class="links" aria-label="Main"><a href="#services">Services</a><a href="#sectors">Sectors</a><a href="#contract">How contracts work</a><a href="#faq">FAQ</a><a href="#survey">Site survey</a></nav>
 <a class="tel" href="tel:01252985710">01252 985710</a>
 </header>
@@ -228,11 +228,8 @@ footer a{color:#fff}
 <p class="lede">Offices, schools, care homes and housing association blocks kept clean, safe and compliant. One Farnborough team for daily cleaning, washrooms, floors, waste, windows and work at height.</p>
 <div class="ctas"><a class="btn solid" href="#survey">Book a free site survey</a><a class="btn ghost" href="tel:01252985710">Call 01252 985710</a></div>
 </div></div>
-<div class="wipe" id="wipe" role="slider" aria-label="Drag to see the before and after clean" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-<img src="assets/office.webp" alt="Open plan office cleaned to a contract specification by Fresh Spot" fetchpriority="high">
-<div class="before" style="position:absolute;inset:0"><img src="assets/office.webp" alt=""></div>
-<div class="bar"></div><div class="knob">DRAG</div>
-<span class="tag t1">After Fresh Spot</span><span class="tag t2">Before</span>
+<figure class="wipe" style="cursor:auto;margin:0"><img src="assets/fs-knights.webp" alt="Fresh Spot operative cleaning the glazing at The Knights Templar, Wetherspoon" fetchpriority="high" style="object-position:50% 45%"><span class="tag t1">On site with Fresh Spot</span></figure>
+</div>
 </div></div>
 <div class="proof">
 <div><b>25+</b><span>operatives in the field every day</span></div>
@@ -270,9 +267,9 @@ footer a{color:#fff}
 <div class="sec rv"><span class="ix">06 · RETAIL</span><h3>Retail</h3><p>Shopfronts, walkways, signage and public spaces kept inviting, day in and day out.</p></div>
 </div>
 <div class="mosaic">
-<figure class="rv"><img data-par src="assets/ward.webp" alt="Cleaner mopping a clinical corridor floor in a healthcare setting"><figcaption>Healthcare hygiene</figcaption></figure>
-<figure class="rv"><img data-par src="assets/rope.webp" alt="Rope access operative cleaning commercial building glazing at height"><figcaption>Rope access</figcaption></figure>
-<figure class="rv"><img data-par src="assets/desk.webp" alt="Gloved hands sanitising an office desk surface"><figcaption>Surface sanitising</figcaption></figure>
+<figure class="rv"><img data-par src="assets/fs-bridge.webp" alt="Fresh Spot cherry pickers working overnight on a footbridge"><figcaption>Overnight high level work</figcaption></figure>
+<figure class="rv"><img data-par src="assets/fs-cherrypicker.webp" alt="Fresh Spot team cleaning a commercial unit from a cherry picker"><figcaption>Cherry picker cleaning</figcaption></figure>
+<figure class="rv"><img data-par src="assets/fs-shopfront.webp" alt="Fresh Spot operative cleaning a shopfront with a water fed pole"><figcaption>Shopfront glazing</figcaption></figure>
 </div>
 </div>
 </section>
@@ -380,15 +377,6 @@ if(!rm)pars.forEach(i=>{const r=i.parentNode.getBoundingClientRect();if(r.bottom
 addEventListener('scroll',onS,{passive:true});onS();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -5% 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-// wipe
-const w=document.getElementById('wipe');let drag=false,x=50,raf;
-function set(v){x=Math.max(2,Math.min(98,v));w.style.setProperty('--x',x+'%');w.setAttribute('aria-valuenow',Math.round(x))}
-function pos(e){const r=w.getBoundingClientRect();set((e.clientX-r.left)/r.width*100)}
-w.addEventListener('pointerdown',e=>{drag=true;cancelAnimationFrame(raf);pos(e)});
-addEventListener('pointermove',e=>{if(drag)pos(e)});
-addEventListener('pointerup',()=>drag=false);
-w.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')set(x-5);if(e.key==='ArrowRight')set(x+5)});
-if(!rm){set(96);const t0=performance.now()+700;(function a(t){const k=Math.min(1,Math.max(0,(t-t0)/1800));const ez=1-Math.pow(1-k,3);set(96-ez*58);if(k<1)raf=requestAnimationFrame(a)})(t0)}else set(38);
 // form
 document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();const d=new FormData(e.target);let b='';for(const[k,v]of d)b+=k+': '+v+'\n';
 location.href='mailto:info@freshspot.co.uk?subject='+encodeURIComponent('Site survey request: '+(d.get('org')||d.get('name')))+'&body='+encodeURIComponent(b);document.getElementById('ok').style.display='block'});
