@@ -13,7 +13,7 @@
 <link rel="preload" as="image" href="img/cover.jpg">
 <style>
 :root{
-  --ink:#14130f; --ink2:#2a2823; --paper:#efece4; --paper2:#e5e1d6; --line:#c9c3b4; --mute:#6c675c;
+  --ink:#14130f; --ink2:#2a2823; --paper:#ffffff; --paper2:#f5f5f4; --line:#c9c3b4; --mute:#6c675c;
   --brass:#a8823c; --finish:#a8823c;
   --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2.5rem; --s5:4rem; --s6:7rem;
   --mono:"IBM Plex Mono",ui-monospace,monospace;
@@ -38,7 +38,7 @@ p{text-wrap:pretty;max-width:62ch}
 .hdr.solid{background:var(--paper);color:var(--ink);border-bottom:1px solid var(--line)}
 .hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{position:relative;z-index:2;display:flex;align-items:center;gap:.6rem;text-decoration:none}
-.logo img{height:22px;width:auto;filter:invert(1);transition:filter .3s}
+.logo img{height:40px;width:auto;filter:invert(1);transition:filter .3s}
 .hdr.solid .logo img,.hdr.open .logo img{filter:none}
 .nav{display:flex;gap:2rem;align-items:center}
 .nav a{text-decoration:none;font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
@@ -65,9 +65,9 @@ p{text-wrap:pretty;max-width:62ch}
 .tint{position:absolute;inset:0;z-index:-1;background:var(--finish);mix-blend-mode:color;opacity:.0;transition:opacity .5s,background .5s}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,19,15,.55) 0,rgba(20,19,15,.1) 30%,rgba(20,19,15,.25) 50%,rgba(20,19,15,.92) 78%)}
 .hero-copy{align-self:end;padding:7rem 0 1.5rem}
-.hero h1{font-size:clamp(3.2rem,13.5vw,10.5rem);font-variation-settings:"wdth" 64;max-width:11ch;text-shadow:0 1px 18px rgba(0,0,0,.5)}
+.hero h1{font-size:clamp(2.3rem,8vw,5.2rem);font-variation-settings:"wdth" 80;max-width:14ch;line-height:1.02;text-shadow:0 1px 18px rgba(0,0,0,.5)}
 .hero h1 em{font-style:normal;color:var(--finish);transition:color .5s}
-.hero p{margin-top:1.25rem;font-size:1.05rem;max-width:44ch;color:#ddd8cc;text-shadow:0 1px 14px rgba(0,0,0,.85)}
+.hero p{margin-top:1.25rem;font-size:1.05rem;max-width:44ch;color:#e8e8e8;text-shadow:0 1px 14px rgba(0,0,0,.85)}
 .finishbar{border-top:1px solid rgba(239,236,228,.22);padding:1rem 0 1.25rem}
 .finishbar .wrap{display:flex;gap:1rem 1.5rem;align-items:center;flex-wrap:wrap}
 .finishbar .lbl{color:#b9b3a6}
@@ -181,7 +181,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--paper)}
 <body>
 <header class="hdr" id="hdr">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="Dorquip home"><img src="img/logo1.png" alt="Dorquip" width="83" height="22"></a>
+    <a class="logo" href="#top" aria-label="Dorquip home"><img src="img/logo1.png" alt="Dorquip" width="150" height="40"></a>
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
     <nav class="nav" id="nav">
       <a href="#services">Services</a>

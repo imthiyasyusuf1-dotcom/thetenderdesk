@@ -1,5 +1,5 @@
 :root{
-  --ink:#14130f;--ink2:#2a2823;--paper:#efece4;--paper2:#e5e1d6;--line:#c9c3b4;--mute:#6c675c;--brass:#a8823c;
+  --ink:#14130f;--ink2:#2a2823;--paper:#ffffff;--paper2:#f5f5f4;--line:#c9c3b4;--mute:#6c675c;--brass:#a8823c;
   --mono:"IBM Plex Mono",ui-monospace,monospace;--sans:"Archivo",system-ui,sans-serif;
   --wrap:min(1320px,100% - 2.5rem);
 }
@@ -19,7 +19,7 @@ h1,h2,h3{font-weight:760;font-variation-settings:"wdth" 72;line-height:.95;lette
 .sh{position:sticky;top:0;z-index:50;background:rgba(239,236,228,.94);border-bottom:1px solid var(--line)}
 @supports (backdrop-filter:blur(8px)){.sh{background:rgba(239,236,228,.82);backdrop-filter:blur(12px) saturate(1.2)}}
 .sh .wrap{display:flex;align-items:center;gap:1.5rem;height:64px}
-.sh .logo img{height:22px;width:auto}
+.sh .logo img{height:36px;width:auto}
 .sh nav{display:flex;gap:1.6rem;margin-left:auto}
 .sh nav a{text-decoration:none;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
 .sh nav a:hover,.sh nav a[aria-current]{color:var(--brass)}
@@ -188,7 +188,7 @@ select.sort,.btn-o{border:1px solid var(--ink);background:transparent;min-height
 footer.sf{background:var(--ink);color:#8f897d;padding:2.5rem 0 calc(2.5rem + env(safe-area-inset-bottom))}
 footer.sf .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between}
 footer.sf a{text-decoration:none}footer.sf a:hover{color:var(--paper)}
-.sk{background:linear-gradient(90deg,var(--paper2),#f3f0e8,var(--paper2));background-size:200% 100%;animation:sk 1.2s infinite}
+.sk{background:linear-gradient(90deg,var(--paper2),#fafafa,var(--paper2));background-size:200% 100%;animation:sk 1.2s infinite}
 @keyframes sk{to{background-position:-200% 0}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 .form fieldset{border-top:0;padding-top:0}
