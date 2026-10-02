@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dorquip Group Ltd | Architectural Ironmongery and Washroom Hardware</title>
+<meta name="description" content="Architectural ironmongery, washroom hardware and hygiene products for main contractors, interior fitout, joinery and facilities management across the southern half of the UK.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#14130f">
+<link rel="icon" href="img/logo_type.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/cover.jpg">
+<style>
+:root{
+  --ink:#14130f; --ink2:#2a2823; --paper:#efece4; --paper2:#e5e1d6; --line:#c9c3b4; --mute:#6c675c;
+  --brass:#a8823c; --finish:#a8823c;
+  --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2.5rem; --s5:4rem; --s6:7rem;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sans:"Archivo",system-ui,sans-serif;
+  --wrap:min(1240px,100% - 2.5rem);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:64px}
+body{background:var(--paper);color:var(--ink);font:400 1rem/1.6 var(--sans);font-variation-settings:"wdth" 100;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+.wrap{width:var(--wrap);margin-inline:auto}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{font-weight:760;font-variation-settings:"wdth" 72;line-height:.92;letter-spacing:-.01em;text-wrap:balance}
+h2{font-size:clamp(2.6rem,9vw,6rem)}
+h3{font-size:clamp(1.5rem,4.5vw,2.1rem);line-height:1}
+p{text-wrap:pretty;max-width:62ch}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+/* header */
+.hdr{position:fixed;inset:0 0 auto;z-index:50;color:var(--paper);transition:background .3s,color .3s}
+.hdr.solid{background:var(--paper);color:var(--ink);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{position:relative;z-index:2;display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.logo img{height:22px;width:auto;filter:invert(1);transition:filter .3s}
+.hdr.solid .logo img,.hdr.open .logo img{filter:none}
+.nav{display:flex;gap:2rem;align-items:center}
+.nav a{text-decoration:none;font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.nav a:hover{color:var(--brass)}
+.nav .call{border:1px solid currentColor;padding:.6rem .9rem}
+.burger{display:none;background:none;border:0;color:inherit;width:44px;height:44px;cursor:pointer;position:relative}
+.burger span{position:absolute;left:10px;right:10px;height:2px;background:currentColor;transition:transform .3s}
+.burger span:first-child{top:17px}.burger span:last-child{top:25px}
+.hdr.open .burger span:first-child{transform:translateY(4px) rotate(45deg)}
+.hdr.open .burger span:last-child{transform:translateY(-4px) rotate(-45deg)}
+@media (max-width:860px){
+  .burger{display:block;z-index:2}
+  .nav{position:fixed;inset:0;height:100dvh;background:var(--paper);color:var(--ink);flex-direction:column;align-items:flex-start;justify-content:center;padding:0 1.25rem;gap:1.4rem;transform:translateY(-100%);transition:transform .45s cubic-bezier(.7,0,.2,1)}
+  .nav a{font-family:var(--sans);font-size:2.6rem;font-weight:760;font-variation-settings:"wdth" 70;text-transform:none;letter-spacing:0}
+  .nav .call{font-size:1rem;font-family:var(--mono);margin-top:1rem;padding:.9rem 1.1rem}
+  .hdr.open{color:var(--ink)}
+  .hdr.open .nav{transform:none}
+}
+
+/* hero */
+.hero{position:relative;min-height:100svh;background:var(--ink);color:var(--paper);display:grid;grid-template-rows:1fr auto;overflow:hidden;isolation:isolate}
+.hero-img{position:absolute;inset:0;z-index:-2}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:62% 50%}
+.tint{position:absolute;inset:0;z-index:-1;background:var(--finish);mix-blend-mode:color;opacity:.0;transition:opacity .5s,background .5s}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,19,15,.55) 0,rgba(20,19,15,.1) 30%,rgba(20,19,15,.25) 50%,rgba(20,19,15,.92) 78%)}
+.hero-copy{align-self:end;padding:7rem 0 1.5rem}
+.hero h1{font-size:clamp(3.2rem,13.5vw,10.5rem);font-variation-settings:"wdth" 64;max-width:11ch;text-shadow:0 1px 18px rgba(0,0,0,.5)}
+.hero h1 em{font-style:normal;color:var(--finish);transition:color .5s}
+.hero p{margin-top:1.25rem;font-size:1.05rem;max-width:44ch;color:#ddd8cc;text-shadow:0 1px 14px rgba(0,0,0,.85)}
+.finishbar{border-top:1px solid rgba(239,236,228,.22);padding:1rem 0 1.25rem}
+.finishbar .wrap{display:flex;gap:1rem 1.5rem;align-items:center;flex-wrap:wrap}
+.finishbar .lbl{color:#b9b3a6}
+.swatches{display:flex;gap:.5rem;flex-wrap:wrap}
+.sw{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.35);cursor:pointer;padding:0;position:relative;background:var(--c)}
+.sw[aria-pressed=true]{outline:2px solid var(--paper);outline-offset:3px}
+.fname{min-width:14ch;color:var(--paper)}
+
+/* sections */
+section{position:relative}
+.sec{padding:var(--s6) 0}
+.tag{display:flex;gap:1rem;align-items:baseline;border-top:1px solid var(--ink);padding-top:.8rem;margin-bottom:var(--s4)}
+.tag b{font-weight:500}
+.dark{background:var(--ink);color:var(--paper)}
+.dark .tag{border-color:rgba(239,236,228,.3)}
+.lede{font-size:clamp(1.25rem,3.2vw,1.9rem);line-height:1.3;font-weight:450;max-width:30ch;font-variation-settings:"wdth" 92}
+
+.intro{display:grid;gap:var(--s4)}
+@media (min-width:900px){.intro{grid-template-columns:1.1fr 1fr;align-items:end}}
+.intro .body p+p{margin-top:1rem}
+.intro .body{color:var(--ink2)}
+
+/* services: schedule table */
+.sched{border-top:1px solid var(--ink)}
+.row{display:grid;grid-template-columns:3.2rem 1fr;gap:0 1rem;padding:1.6rem 0;border-bottom:1px solid var(--line)}
+.row .no{font-family:var(--mono);font-size:.78rem;color:var(--mute);padding-top:.35rem}
+.row p{color:var(--ink2);margin-top:.6rem;grid-column:2}
+@media (min-width:900px){.row{grid-template-columns:6rem 1fr 1.3fr;padding:2.2rem 0}.row p{margin-top:0;grid-column:3}}
+.row h3{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover){.row:hover h3{transform:translateX(.5rem)}}
+
+/* products */
+.cats{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:var(--s4)}
+@media (min-width:700px){.cats{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.cats{grid-template-columns:repeat(3,1fr)}}
+.cat{background:var(--paper);display:grid;grid-template-rows:auto 1fr;text-decoration:none}
+.cat figure{aspect-ratio:4/3;overflow:hidden;background:var(--paper2)}
+.cat img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover){.cat:hover img{transform:scale(1.04)}}
+.cat div{padding:1.1rem 1.1rem 1.4rem;display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+.cat h3{font-size:1.5rem}
+.cat.txt{grid-template-rows:1fr;padding:1.4rem 1.1rem;align-content:space-between;gap:2rem;background:var(--paper2)}
+.cat.txt ul{list-style:none;padding:0;font-family:var(--mono);font-size:.8rem;line-height:2.1;text-transform:uppercase;letter-spacing:.06em}
+.arrow{font-family:var(--mono)}
+
+/* sectors */
+.sectors{display:grid;gap:0}
+.sector{border-top:1px solid rgba(239,236,228,.25);padding:1.6rem 0}
+.sector:last-child{border-bottom:1px solid rgba(239,236,228,.25)}
+.sector p{color:#c9c3b4;margin-top:.7rem}
+.sector .named{margin-top:.9rem;color:var(--brass)}
+@media (min-width:900px){.sectors{grid-template-columns:repeat(2,1fr);column-gap:3rem}.sector:nth-last-child(2){border-bottom:1px solid rgba(239,236,228,.25)}}
+
+/* case study */
+.case-hero{position:relative;overflow:hidden;background:var(--ink)}
+.case-hero img{width:100%;height:clamp(260px,55vw,640px);object-fit:cover;opacity:.92}
+.case-grid{display:grid;gap:var(--s4);margin-top:var(--s4)}
+@media (min-width:900px){.case-grid{grid-template-columns:1fr 1.4fr}}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink)}
+.facts div{padding:1rem 0;border-bottom:1px solid var(--line)}
+.facts div:nth-child(odd){padding-right:1rem}
+.facts dt{color:var(--mute)}
+.facts dd{font-size:1.35rem;font-weight:700;font-variation-settings:"wdth" 80;margin-top:.2rem}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;display:grid;grid-template-columns:3rem 1fr;padding:1.1rem 0;border-bottom:1px solid var(--line);color:var(--ink2)}
+.steps li::before{content:"0" counter(s);font-family:var(--mono);font-size:.78rem;color:var(--brass);padding-top:.2rem}
+.case-pair{display:grid;gap:1px;grid-template-columns:1fr 1fr;margin-top:var(--s4)}
+.case-pair img{aspect-ratio:1/1;object-fit:cover;width:100%}
+
+/* projects list */
+.proj{display:grid;gap:var(--s3)}
+@media (min-width:900px){.proj{grid-template-columns:repeat(3,1fr)}}
+.proj article figure{aspect-ratio:5/4;overflow:hidden;background:var(--paper2)}
+.proj article img{width:100%;height:100%;object-fit:cover}
+.proj article h3{margin-top:1rem}
+.proj article p{margin-top:.5rem;color:var(--ink2)}
+
+/* values */
+.vals{display:grid;grid-template-columns:1fr;border-top:1px solid var(--ink)}
+@media (min-width:700px){.vals{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.vals{grid-template-columns:repeat(4,1fr)}}
+.val{padding:1.4rem 1.2rem 1.6rem 0;border-bottom:1px solid var(--line)}
+.val h3{font-size:2.4rem}
+.val p{margin-top:.6rem;color:var(--ink2)}
+.accred{display:flex;align-items:center;gap:1.5rem;margin-top:var(--s5);padding-top:var(--s3);border-top:1px solid var(--line);flex-wrap:wrap}
+.accred img{height:64px;width:auto;mix-blend-mode:multiply}
+
+/* contact */
+.contact h2{font-size:clamp(3rem,14vw,9rem)}
+.cgrid{display:grid;gap:var(--s4);margin-top:var(--s5)}
+@media (min-width:900px){.cgrid{grid-template-columns:repeat(3,1fr)}}
+.cgrid a{text-decoration:none}
+.big{display:block;font-size:clamp(1.6rem,5.4vw,2.4rem);font-weight:700;font-variation-settings:"wdth" 78;line-height:1.1;margin-top:.5rem;word-break:break-word}
+a.big:hover{color:var(--brass)}
+.status{display:inline-flex;align-items:center;gap:.5rem;margin-top:.8rem}
+.dot{width:8px;height:8px;border-radius:50%;background:#8a857a}
+.status.on .dot{background:#6fae5b}
+.btn{display:inline-flex;align-items:center;gap:.8rem;min-height:52px;padding:0 1.4rem;background:var(--paper);color:var(--ink);text-decoration:none;font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;margin-top:var(--s4)}
+.btn:hover{background:var(--brass);color:var(--ink)}
+footer{background:var(--ink);color:#8f897d;padding:var(--s4) 0 calc(var(--s4) + env(safe-area-inset-bottom));border-top:1px solid rgba(239,236,228,.15)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between}
+footer a{text-decoration:none}footer a:hover{color:var(--paper)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+.hdr .bag{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid currentColor;padding:.5rem .7rem;margin-left:1rem;color:inherit}.hdr .bag b{display:inline-grid;place-items:center;min-width:1.3rem;height:1.3rem;border-radius:99px;background:currentColor;font-weight:500;font-size:.68rem;padding:0 .3rem}.hdr .bag b{color:#14130f}.hdr.solid .bag b,.hdr.open .bag b{color:#efece4}@media(max-width:900px){.hdr .bag{margin-left:auto;margin-right:.8rem}}
+</style>
+</head>
+<body>
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Dorquip home"><img src="img/logo1.png" alt="Dorquip" width="83" height="22"></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+    <nav class="nav" id="nav">
+      <a href="#services">Services</a>
+      <a href="#products">Products</a>
+      <a href="#sectors">Sectors</a>
+      <a href="#work">Projects</a>
+      <a href="#about">About</a>
+      <a href="shop/">Shop</a>
+      <a class="call" href="tel:+441483310333">01483 310333</a>
+    </nav>
+    <a class="bag" href="basket/" aria-label="Basket">Basket <b>0</b></a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-img"><img src="img/cover.jpg" alt="Lever handles on backplates, photographed on black" width="2000" height="1137" fetchpriority="high"></div>
+  <div class="tint" id="tint"></div>
+  <div class="hero-copy wrap">
+    <p class="mono" style="margin:0 0 1rem;color:#c9c3b4">Dorquip Group Ltd &middot; Architectural ironmongery and washroom hardware</p>
+    <h1>The hardware on <em>every door</em>, right first time.</h1>
+    <p>Specification, scheduling, bespoke and colour matched supply for main contractors, fitout, joinery and facilities teams across the southern half of the UK.</p>
+  </div>
+  <div class="finishbar">
+    <div class="wrap">
+      <span class="mono lbl">Colour and finishing</span>
+      <div class="swatches" role="group" aria-label="Preview a finish">
+        <button class="sw" style="--c:#b9bcbd" data-f="Satin Stainless" data-c="#9aa0a3" data-o="0" aria-pressed="true" aria-label="Satin Stainless"></button>
+        <button class="sw" style="--c:#2a2a2a" data-f="Onyx Black" data-c="#222" data-o=".85" aria-label="Onyx Black"></button>
+        <button class="sw" style="--c:#a8823c" data-f="Aged Brass" data-c="#a8823c" data-o=".75" aria-label="Aged Brass"></button>
+        <button class="sw" style="--c:#7c5a36" data-f="Beeswax" data-c="#8a6234" data-o=".75" aria-label="Beeswax"></button>
+        <button class="sw" style="--c:#6e7072" data-f="Pewter" data-c="#5f6466" data-o=".6" aria-label="Pewter"></button>
+      </div>
+      <span class="mono fname" id="fname" aria-live="polite">Satin Stainless</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="about-intro">
+  <div class="wrap intro">
+    <div class="rv">
+      <div class="tag mono"><b>00</b><span>What sets Dorquip apart</span></div>
+      <p class="lede">Over more than 40 years we've built our reputation on a collaborative spirit, and on helping customers define exactly what they need so we can meet it precisely and quickly.</p>
+    </div>
+    <div class="body rv">
+      <p>Dorquip provides architectural ironmongery, washroom hardware and hygiene products for interior fitout, joinery, main contractor and facilities management businesses.</p>
+      <p>Whether it's an end to end specification or a custom build for one specific need, we respond quickly and accurately to urgent requests and complex briefs, and we manage the supply chain so precisely the right hardware turns up on time.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="services" style="padding-top:0">
+  <div class="wrap">
+    <div class="tag mono rv"><b>01</b><span>Services</span></div>
+    <h2 class="rv" style="margin-bottom:var(--s4)">Capable, collaborative,<br>solutions focussed.</h2>
+    <div class="sched">
+      <div class="row rv"><span class="no">S.01</span><h3>Specification</h3><p>In-depth support at project specification stage. We advise on, source and supply to complex and detailed requirements, whatever the scale or urgency.</p></div>
+      <div class="row rv"><span class="no">S.02</span><h3>Scheduling</h3><p>Helping main contractors get precisely the right hardware for every door in a new building, from fire doors to climate controlled storage, private offices and secure entry systems.</p></div>
+      <div class="row rv"><span class="no">S.03</span><h3>Bespoke</h3><p>A proven partner for problem solving and one-off requirements. If the solution doesn't exist yet, we work with trusted partners to create it, so schedules don't suffer and timelines don't slip.</p></div>
+      <div class="row rv"><span class="no">S.04</span><h3>Colour and finishing</h3><p>With almost endless variation in composition, design, colour, finish and coating, we're the go-to for matching or replicating a finish on projects of every size.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="products" style="padding-top:0">
+  <div class="wrap">
+    <div class="tag mono rv"><b>02</b><span>Products</span></div>
+    <h2 class="rv">From the lever<br>to the soap dispenser.</h2>
+    <div class="cats">
+      <a class="cat rv" href="shop/?c=architectural-ironmongery"><figure style="background:#fff"><img src="img/p/product-145.webp" alt="Architectural Ironmongery" loading="lazy" width="800" height="800" style="object-fit:contain;padding:8%"></figure><div><h3>Architectural Ironmongery</h3><span class="arrow">191 &rarr;</span></div></a>
+      <a class="cat rv" href="shop/?c=from-the-anvil"><figure style="background:#fff"><img src="img/p/product-3342.webp" alt="From The Anvil" loading="lazy" width="800" height="800" style="object-fit:contain;padding:8%"></figure><div><h3>From The Anvil</h3><span class="arrow">397 &rarr;</span></div></a>
+      <a class="cat rv" href="shop/?c=onyx"><figure style="background:#fff"><img src="img/p/product-140.webp" alt="Onyx Matt Black" loading="lazy" width="800" height="800" style="object-fit:contain;padding:8%"></figure><div><h3>Onyx Matt Black</h3><span class="arrow">24 &rarr;</span></div></a>
+      <a class="cat rv" href="shop/?c=seals"><figure style="background:#fff"><img src="img/p/product-599.webp" alt="Intumescent and Fire Seals" loading="lazy" width="800" height="800" style="object-fit:contain;padding:8%"></figure><div><h3>Intumescent and Fire Seals</h3><span class="arrow">36 &rarr;</span></div></a>
+      <a class="cat rv" href="shop/?c=washroom"><figure style="background:#fff"><img src="img/p/product-513.webp" alt="Washroom and Hygiene+" loading="lazy" width="800" height="800" style="object-fit:contain;padding:8%"></figure><div><h3>Washroom and Hygiene+</h3><span class="arrow">31 &rarr;</span></div></a>
+      <a class="cat txt rv" href="shop/">
+        <ul><li>Shelving systems</li><li>Hygiene+ and infection control</li><li>Fire door hardware</li><li>Cabinet furniture</li><li>Window furniture</li></ul>
+        <div style="padding:0"><h3>Shop all 696 products</h3><span class="arrow">&rarr;</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="sectors">
+  <div class="wrap">
+    <div class="tag mono rv"><b>03</b><span>Who we work with</span></div>
+    <h2 class="rv" style="margin-bottom:var(--s4)">Built around<br>how you buy.</h2>
+    <div class="sectors">
+      <div class="sector rv"><h3>Main Contractors</h3><p>We work with procurement teams so the right products are in the right hands whenever they're needed, backed by in-depth knowledge and dependable supply chains.</p><p class="mono named">Including Laing O'Rourke and Orbit Southern</p></div>
+      <div class="sector rv"><h3>Interior Fitout</h3><p>The full range of hardware plus expert consultancy, so fitout contractors get premium results without snag or delay, even when the need is urgent or complex.</p><p class="mono named">Including Parkeray Interiors and Orchard Interior Project Management</p></div>
+      <div class="sector rv"><h3>Joinery Shops</h3><p>Making sure the doors you build carry the right specification and quality of ironmongery and door furniture, with consistently high standards behind them.</p></div>
+      <div class="sector rv"><h3>Facilities Management</h3><p>Stock and replacement hardware and consumables for the upkeep of buildings in use, kept consistent across a vast range, with finish matching wherever it's needed.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="case-hero"><img src="img/oxford-ext.jpg" alt="Oxford Biochemistry building exterior" loading="lazy" width="2000" height="918"></div>
+  <div class="sec" style="padding-top:var(--s5)">
+    <div class="wrap">
+      <div class="tag mono rv"><b>04</b><span>Case study</span></div>
+      <h2 class="rv">Oxford Biochemistry,<br>Phase 2.</h2>
+      <div class="case-grid">
+        <div class="rv">
+          <dl class="facts">
+            <div><dt class="mono">Building</dt><dd>&pound;70m</dd></div>
+            <div><dt class="mono">Started</dt><dd>March 2019</dd></div>
+            <div><dt class="mono">Client</dt><dd>University of Oxford</dd></div>
+            <div><dt class="mono">Scope</dt><dd>Door hardware</dd></div>
+          </dl>
+          <p style="margin-top:1.4rem;color:var(--ink2)">The Department of Biochemistry needed more space for specialised equipment. Phase 2 had to carry the finish of Phase 1 through, guarantee a long serviceable life with complete fire safe integrity, and give storage rooms controlled access that's easy to use under strict security policies.</p>
+        </div>
+        <div class="rv">
+          <p class="mono" style="color:var(--mute);margin-bottom:.4rem">The Dorquip solution</p>
+          <ol class="steps">
+            <li>Worked directly with the architect and main contractor on every detail.</li>
+            <li>Produced a qualified ironmongery schedule aligned with the drawings.</li>
+            <li>Supplied door preparation samples so the joinery contractor morticed every door and frame for the right hardware.</li>
+            <li>Packed ironmongery into door-sets and built delivery schedules with the main contractor, around other trades and campus life.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="case-pair rv"><img src="img/oxford.jpg" alt="Oxford Biochemistry interior" loading="lazy" width="2000" height="918"><img src="img/projects-01.jpg" alt="Lever handle on a glazed laboratory door" loading="lazy" width="959" height="640"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="tag mono rv"><b>05</b><span>More projects</span></div>
+    <div class="proj">
+      <article class="rv"><figure><img src="img/shiftimage-03.jpg" alt="Hand washing at a basin" loading="lazy" width="600" height="396"></figure><h3>NHS Health Foundation Trusts</h3><p>Medical-grade hand sanitiser, with a reliable supply chain regardless of surges in demand.</p></article>
+      <article class="rv"><figure><img src="img/projects-02.jpg" alt="Black infrared taps over white basins" loading="lazy" width="959" height="640"></figure><h3>Stevens Washrooms</h3><p>Colour and finish matched infrared contactless taps and washroom hardware expertise for a nationwide washroom designer and installer.</p></article>
+      <article class="rv"><figure><img src="img/oxford.jpg" alt="Oxford Biochemistry interior" loading="lazy" width="2000" height="918"></figure><h3>Oxford Biochemistry</h3><p>Ironmongery expertise for superior function and finish across a new training centre.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="about" style="background:var(--paper2)">
+  <div class="wrap">
+    <div class="tag mono rv"><b>06</b><span>What drives us</span></div>
+    <h2 class="rv" style="margin-bottom:var(--s4)">Making the unremarkable, remarkable.</h2>
+    <div class="vals">
+      <div class="val rv"><h3>Drive</h3><p>A hands-on, practical approach, always looking for new ways to add value by the most direct route.</p></div>
+      <div class="val rv"><h3>Prestige</h3><p>Reputation is everything. We uphold ours with professionalism in every part of the business.</p></div>
+      <div class="val rv"><h3>Trust</h3><p>True to our word in every sense, dependable to a fault and fully committed.</p></div>
+      <div class="val rv"><h3>Collaboration</h3><p>Open-handed with technical know-how and experience. The way we see it, we're in this together.</p></div>
+    </div>
+    <div class="accred rv"><img src="img/constructionline.jpg" alt="Constructionline" width="83" height="64" loading="lazy"><p class="mono" style="color:var(--mute)">Accredited by key industry bodies, including Constructionline</p></div>
+  </div>
+</section>
+
+<section class="sec dark contact" id="contact">
+  <div class="wrap">
+    <div class="tag mono"><b>07</b><span>Contact</span></div>
+    <h2>Send us<br>the schedule.</h2>
+    <div class="cgrid">
+      <div><span class="mono" style="color:#8f897d">Call</span><a class="big" href="tel:+441483310333">01483 310333</a><span class="status mono" id="status"><span class="dot"></span><span id="stxt">Mon to Fri, 07:30 to 16:30</span></span></div>
+      <div><span class="mono" style="color:#8f897d">Email</span><a class="big" href="mailto:sales@dorquip.com">sales@dorquip.com</a></div>
+      <div><span class="mono" style="color:#8f897d">Office</span><span class="big" style="font-weight:500">Gordon House, Bridge Close, Woking GU21 4PD</span></div>
+    </div>
+    <a class="btn" href="shop/">Browse the online shop <span>&rarr;</span></a>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap mono">
+    <span>&copy; Dorquip Group Ltd</span>
+    <span><a href="https://www.dorquip.com/legal/privacy-policies">Privacy</a> &middot; <a href="https://www.dorquip.com/legal/terms-and-conditions">Terms</a></span>
+    <span>Site concept by <a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener" style="text-decoration:underline">The Tender Desk</a></span>
+  </div>
+</footer>
+<script>
+(()=>{
+const hdr=document.getElementById('hdr'),b=document.getElementById('burger');
+const onS=()=>hdr.classList.toggle('solid',scrollY>innerHeight*.85);addEventListener('scroll',onS,{passive:true});onS();
+const close=()=>{hdr.classList.remove('open');b.setAttribute('aria-expanded','false');document.body.style.overflow=''};
+b.onclick=()=>{const o=hdr.classList.toggle('open');b.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''};
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',close));
+const tint=document.getElementById('tint'),fn=document.getElementById('fname'),root=document.documentElement;
+document.querySelectorAll('.sw').forEach(s=>s.onclick=()=>{
+  document.querySelectorAll('.sw').forEach(x=>x.setAttribute('aria-pressed','false'));s.setAttribute('aria-pressed','true');
+  tint.style.background=s.dataset.c;tint.style.opacity=s.dataset.o;fn.textContent=s.dataset.f;
+  root.style.setProperty('--finish',s.dataset.f==='Satin Stainless'?'#a8823c':s.dataset.f==='Onyx Black'?'#cfc9bb':s.style.getPropertyValue('--c'));
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// live open/closed from UK time
+try{const p=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+const m=+p.hour*60+ +p.minute,wd=!['Sat','Sun'].includes(p.weekday),open=wd&&m>=450&&m<990;
+const st=document.getElementById('status');if(open){st.classList.add('on');document.getElementById('stxt').textContent='Open now, until 16:30'}else{document.getElementById('stxt').textContent='Closed now. Mon to Fri, 07:30 to 16:30'}}catch(e){}
+})();
+</script>
+<script>(()=>{try{const n=(JSON.parse(localStorage.getItem("dq_cart_v1"))||[]).reduce((a,b)=>a+b.q,0);document.querySelectorAll(".bag b").forEach(b=>b.textContent=n)}catch(e){}})()</script>
+</body>
+</html>
