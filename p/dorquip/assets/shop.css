@@ -196,3 +196,4 @@ footer.sf a{text-decoration:none}footer.sf a:hover{color:var(--paper)}
 .form legend+*{clear:both}
 @media (max-width:979px){.filters{visibility:hidden;transition:transform .4s cubic-bezier(.7,0,.2,1),visibility 0s .4s}.filters.open{visibility:visible;transition:transform .4s cubic-bezier(.7,0,.2,1)}}
 .done pre{max-height:none}
+@media (max-width:979px){.ftoggle{align-items:center;justify-content:center;align-self:stretch}}
