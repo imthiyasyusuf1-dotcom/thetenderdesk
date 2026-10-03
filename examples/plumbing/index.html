@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Copperline Heating &amp; Plumbing | Boilers, Bathrooms, Repairs</title>
+<meta name="description" content="Boiler installs, servicing, bathrooms and emergency plumbing. Upfront quotes, tidy engineers, 10 year boiler warranties. Call or request a quote online.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Copperline Heating &amp; Plumbing">
+<meta property="og:description" content="Boilers, bathrooms and repairs, done properly.">
+<meta property="og:image" content="https://thetenderdesk.co.uk/examples/plumbing/img/bath2.webp">
+<meta name="theme-color" content="#14211d">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/bath2.webp">
+<style>
+:root{--cream:#f4ede3;--ink:#14211d;--copper:#b5652f;--muted:#5d6762;--line:rgba(20,33,29,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font:400 16px/1.6 Inter,system-ui,sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.serif{font-family:Fraunces,Georgia,serif;font-weight:300;letter-spacing:-.02em}
+.wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+header{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;transition:background .35s,box-shadow .35s}
+header.solid{background:rgba(244,237,227,.94);box-shadow:0 1px 0 var(--line)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;letter-spacing:-.01em}
+.logo i{width:30px;height:30px;border-radius:50%;background:var(--copper);display:grid;place-items:center;color:var(--cream);font:500 15px Fraunces,serif;font-style:normal}
+header nav{display:none;gap:28px;font-size:14px}
+header nav a{text-decoration:none;opacity:.75}
+.hcall{font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--ink);border-radius:99px;padding:8px 16px}
+/* hero */
+.hero{padding:96px 0 0}
+.hero h1{font-size:clamp(3rem,13vw,8.6rem);line-height:.92;margin:18px 0 22px}
+.hero h1 em{font-style:italic;color:var(--copper)}
+.kick{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;align-items:center}
+.kick:before{content:"";width:26px;height:1px;background:currentColor}
+.lede{max-width:34ch;color:var(--muted);font-size:17px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 34px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:15px 22px;border-radius:99px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid var(--ink)}
+.btn.fill{background:var(--ink);color:var(--cream)}
+.heroimg{position:relative;overflow:hidden;border-radius:22px 22px 0 0;height:62svh;min-height:380px;clip-path:inset(12% 8% 0 8% round 22px);animation:open 1.4s cubic-bezier(.7,0,.2,1) .15s forwards}
+.heroimg img{width:100%;height:118%;object-fit:cover;will-change:transform}
+@keyframes open{to{clip-path:inset(0 0 0 0 round 22px 22px 0 0)}}
+.badge{position:absolute;left:16px;bottom:16px;background:var(--cream);border-radius:14px;padding:12px 16px;font-size:13px;display:flex;gap:10px;align-items:center}
+.badge b{font:500 26px Fraunces,serif}
+/* strip */
+.strip{background:var(--ink);color:var(--cream);padding:22px 0;overflow:hidden;white-space:nowrap}
+.strip div{display:inline-block;animation:tick 32s linear infinite;font:300 22px Fraunces,serif}
+.strip span{margin:0 26px;color:var(--copper)}
+@keyframes tick{to{transform:translateX(-50%)}}
+section{padding:90px 0}
+h2{font-size:clamp(2.3rem,8vw,4.8rem);line-height:1;margin:14px 0 26px}
+h2 em{font-style:italic;color:var(--copper)}
+/* services */
+.svc{border-top:1px solid var(--line)}
+.svc li{list-style:none;display:grid;grid-template-columns:36px 1fr auto;gap:14px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line)}
+.svc .n{font-size:12px;color:var(--muted)}
+.svc h3{font:400 24px/1.15 Fraunces,serif}
+.svc p{grid-column:2/4;color:var(--muted);font-size:15px;max-width:52ch}
+.svc .pr{font-size:14px;white-space:nowrap}
+.svc .pr small{display:block;font-size:11px;color:var(--muted);text-align:right}
+/* feature */
+.feat{display:grid;gap:30px}
+.feat figure{border-radius:18px;overflow:hidden;aspect-ratio:4/5}
+.feat figure img{width:100%;height:100%;object-fit:cover}
+.steps{counter-reset:s;display:grid;gap:22px;margin-top:10px}
+.steps div{counter-increment:s;padding-left:46px;position:relative}
+.steps div:before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:2px;font:500 15px Fraunces,serif;color:var(--copper)}
+.steps h3{font-size:17px;font-weight:600}
+.steps p{color:var(--muted);font-size:15px}
+/* gallery */
+.gal{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 20px 10px;scrollbar-width:none}
+.gal::-webkit-scrollbar{display:none}
+.gal figure{flex:0 0 78%;scroll-snap-align:center;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:3/4}
+.gal img{width:100%;height:100%;object-fit:cover}
+.gal figcaption{position:absolute;left:12px;bottom:12px;background:rgba(20,33,29,.78);color:var(--cream);font-size:12px;padding:6px 10px;border-radius:99px}
+/* reviews */
+.rev{background:var(--ink);color:var(--cream)}
+.rev .kick{color:#b9c2bd}
+.stars{color:#e0a46f;letter-spacing:3px}
+.score{display:flex;align-items:center;gap:16px;margin-bottom:30px}
+.score b{font:300 64px/1 Fraunces,serif}
+.quotes{display:grid;gap:16px}
+.q{border:1px solid rgba(244,237,227,.16);border-radius:18px;padding:24px}
+.q p{font:300 21px/1.4 Fraunces,serif;margin:12px 0 16px}
+.q span{font-size:13px;color:#b9c2bd}
+/* quote form */
+form{display:grid;gap:12px;margin-top:6px}
+label{font-size:13px;font-weight:500;display:grid;gap:6px}
+input,select,textarea{font:inherit;font-size:16px;padding:14px 15px;border:1px solid var(--line);border-radius:12px;background:#fbf8f3;color:var(--ink);width:100%}
+textarea{min-height:110px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{display:block;position:relative}
+.chips input{position:absolute;opacity:0}
+.chips span{display:inline-block;padding:9px 14px;border:1px solid var(--line);border-radius:99px;font-size:14px;cursor:pointer;white-space:nowrap}
+.chips input:checked+span{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.ok{display:none;padding:20px;border-radius:14px;background:#e3eee8;font-weight:500}
+form.sent{display:none}form.sent+.ok{display:block}
+/* faq */
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;font:400 20px Fraunces,serif;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary:after{content:"+";color:var(--copper)}
+details[open] summary:after{content:"\2212"}
+details p{color:var(--muted);margin-top:10px}
+footer{padding:60px 0 120px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+footer .big{font:300 clamp(2.4rem,10vw,6rem)/1 Fraunces,serif;color:var(--ink);margin-bottom:24px}
+footer .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+.sticky{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:50;display:flex;gap:8px;transform:translateY(140%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.sticky.on{transform:none}
+.sticky a{flex:1;text-align:center;padding:16px;border-radius:99px;font-weight:600;text-decoration:none;background:var(--copper);color:#fff;box-shadow:0 10px 30px rgba(20,33,29,.25)}
+.sticky a.alt{flex:0 0 auto;background:var(--ink)}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(min-width:900px){
+ header{padding:20px 40px}header nav{display:flex}
+ .hero .top{display:grid;grid-template-columns:1.4fr 1fr;align-items:end;gap:40px}
+ .heroimg{height:78vh}
+ .svc li{grid-template-columns:60px 1fr 1.2fr auto}.svc p{grid-column:auto}
+ .feat{grid-template-columns:1fr 1fr;align-items:center;gap:80px}
+ .gal{padding:0 max(20px,calc((100% - 1200px)/2))}.gal figure{flex-basis:30%}
+ .quotes{grid-template-columns:repeat(3,1fr)}
+ .qwrap{display:grid;grid-template-columns:1fr 1.1fr;gap:80px}
+ .sticky{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.heroimg{clip-path:none}.rv{opacity:1;transform:none}}
+input,select,textarea,label{min-width:0;max-width:100%}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Plumber","name":"Copperline Heating & Plumbing","telephone":"+441632960418","priceRange":"££","openingHours":"Mo-Fr 07:30-18:00, Sa 08:00-13:00","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"212"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Combi boiler installation"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Boiler service"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Bathroom installation"}}]}}
+</script>
+</head>
+<body>
+<header id="hd">
+ <a class="logo" href="#top"><i>C</i>Copperline</a>
+ <nav><a href="#services">Services</a><a href="#work">Our work</a><a href="#reviews">Reviews</a><a href="#quote">Quote</a></nav>
+ <a class="hcall" href="tel:+441632960418">01632 960418</a>
+</header>
+
+<main id="top">
+<section class="hero" style="padding-bottom:0">
+ <div class="wrap top">
+  <div>
+   <p class="kick rv">Gas Safe registered heating engineers</p>
+   <h1 class="serif rv">Warm homes,<br><em>quietly</em> fixed.</h1>
+  </div>
+  <div class="rv">
+   <p class="lede">Boiler installs, servicing, bathrooms and the 7am leak. A fixed written quote before we lift a floorboard, and we leave it cleaner than we found it.</p>
+   <div class="cta"><a class="btn fill" href="#quote">Get a free quote</a><a class="btn" href="tel:+441632960418">Call now</a></div>
+  </div>
+ </div>
+ <div class="wrap">
+  <div class="heroimg"><img id="hi" src="img/bath2.webp" alt="Marble bathroom with a green vanity and brass taps" fetchpriority="high">
+   <div class="badge"><b>4.9</b><div><span class="stars">★★★★★</span><br>212 Google reviews</div></div>
+  </div>
+ </div>
+</section>
+<div class="strip" aria-hidden="true"><div>Combi swaps <span>•</span> Annual servicing <span>•</span> Bathrooms <span>•</span> Power flushing <span>•</span> Leaks and bursts <span>•</span> Smart thermostats <span>•</span> Combi swaps <span>•</span> Annual servicing <span>•</span> Bathrooms <span>•</span> Power flushing <span>•</span> Leaks and bursts <span>•</span> Smart thermostats <span>•</span></div></div>
+
+<section id="services">
+ <div class="wrap">
+  <p class="kick rv">What we do</p>
+  <h2 class="serif rv">Straight prices,<br><em>no surprises.</em></h2>
+  <ul class="svc">
+   <li class="rv"><span class="n">01</span><h3>Combi boiler installation</h3><p>Supply and fit an A rated combi, flush, filter and smart controls. Up to 10 years manufacturer warranty.</p><span class="pr">from £2,195<small>fitted</small></span></li>
+   <li class="rv"><span class="n">02</span><h3>Boiler service</h3><p>Full strip down, flue gas analysis and a digital certificate the same day. Reminder sent every year.</p><span class="pr">from £89</span></li>
+   <li class="rv"><span class="n">03</span><h3>Breakdown and repairs</h3><p>Most faults fixed on the first visit. Vans carry the parts that fail most often.</p><span class="pr">from £75<small>call out</small></span></li>
+   <li class="rv"><span class="n">04</span><h3>Bathrooms and en suites</h3><p>Design, strip out, tiling and fitting by one team, so you deal with one person start to finish.</p><span class="pr">from £5,800</span></li>
+   <li class="rv"><span class="n">05</span><h3>Power flush and radiators</h3><p>Cold spots and noisy pipes cleared. New radiators and valves fitted in a day.</p><span class="pr">from £350</span></li>
+  </ul>
+ </div>
+</section>
+
+<section style="padding-top:0">
+ <div class="wrap feat">
+  <figure class="rv"><img src="img/rad.webp" alt="Freshly fitted white radiator under a window" loading="lazy" width="1400" height="933"></figure>
+  <div>
+   <p class="kick rv">How it works</p>
+   <h2 class="serif rv">Booked in a call, <em>sorted</em> in a day.</h2>
+   <div class="steps">
+    <div class="rv"><h3>Tell us what's up</h3><p>Ring, or send the form with a photo of your boiler. We reply within two working hours.</p></div>
+    <div class="rv"><h3>Fixed written quote</h3><p>One price, itemised. No day rates, no extras that appear on the invoice.</p></div>
+    <div class="rv"><h3>Fitted and certified</h3><p>Dust sheets down, old kit taken away, warranty registered for you.</p></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="work" style="padding-top:20px">
+ <div class="wrap"><p class="kick rv">Recent work</p><h2 class="serif rv">Swipe through <em>the van.</em></h2></div>
+ <div class="gal">
+  <figure><img src="img/bath2.webp" alt="Marble bathroom with green vanity and brass fittings" loading="lazy"><figcaption>Family bathroom refit</figcaption></figure>
+  <figure><img src="img/boiler.webp" alt="Wall mounted combi boiler installation" loading="lazy"><figcaption>Combi swap, one day</figcaption></figure>
+  <figure><img src="img/bath1.webp" alt="Bathroom with freestanding bath and walnut vanity" loading="lazy"><figcaption>Freestanding bath</figcaption></figure>
+  <figure><img src="img/ensuite.webp" alt="White marble en suite with glass shower" loading="lazy"><figcaption>En suite, walk in shower</figcaption></figure>
+  <figure><img src="img/copper.webp" alt="Neat copper pipework" loading="lazy"><figcaption>First fix pipework</figcaption></figure>
+  <figure><img src="img/shower.webp" alt="Rainfall shower head running" loading="lazy"><figcaption>Pressure fixed</figcaption></figure>
+ </div>
+</section>
+
+<section class="rev" id="reviews">
+ <div class="wrap">
+  <p class="kick rv">Reviews</p>
+  <div class="score rv"><b>4.9</b><div><span class="stars">★★★★★</span><br><small>212 reviews on Google</small></div></div>
+  <div class="quotes">
+   <div class="q rv"><span class="stars">★★★★★</span><p>"Quoted on the Monday, new boiler in on the Thursday. Dust sheets everywhere and the airing cupboard looks better than the kitchen."</p><span>Hannah P, combi install</span></div>
+   <div class="q rv"><span class="stars">★★★★★</span><p>"Leak through the ceiling at 7am. Here by half eight, fixed by nine, and he showed me where the stopcock was."</p><span>Mark D, emergency repair</span></div>
+   <div class="q rv"><span class="stars">★★★★★</span><p>"Our bathroom came in on budget and on the day they said. The tiling is spotless."</p><span>Priya S, bathroom</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="quote">
+ <div class="wrap qwrap">
+  <div>
+   <p class="kick rv">Free quote</p>
+   <h2 class="serif rv">Tell us about <em>the job.</em></h2>
+   <p class="lede rv">We reply within two working hours, Monday to Saturday. Prefer to talk? <a href="tel:+441632960418">01632 960418</a></p>
+  </div>
+  <div>
+   <form id="f" class="rv">
+    <div class="chips" role="group" aria-label="Job type">
+     <label><input type="radio" name="t" checked><span>New boiler</span></label>
+     <label><input type="radio" name="t"><span>Service</span></label>
+     <label><input type="radio" name="t"><span>Repair</span></label>
+     <label><input type="radio" name="t"><span>Bathroom</span></label>
+    </div>
+    <label>Name<input required name="n" autocomplete="name"></label>
+    <label>Phone<input required name="p" type="tel" autocomplete="tel"></label>
+    <label>Postcode<input name="pc" autocomplete="postal-code"></label>
+    <label>Anything we should know?<textarea name="m" placeholder="Boiler age, number of bathrooms, when suits you"></textarea></label>
+    <button class="btn fill" style="justify-content:center;cursor:pointer">Send my request</button>
+   </form>
+   <div class="ok">Thanks, that's with us. We'll call you within two working hours.</div>
+  </div>
+ </div>
+</section>
+
+<section style="padding-top:0">
+ <div class="wrap">
+  <p class="kick rv">Questions</p>
+  <details class="rv"><summary>How long does a combi swap take?</summary><p>Most like for like swaps are done in one day. Conversions from a system or back boiler take two.</p></details>
+  <details class="rv"><summary>Are you Gas Safe registered?</summary><p>Yes. Every engineer carries their Gas Safe ID card, and you can check it on arrival.</p></details>
+  <details class="rv"><summary>Do you offer finance?</summary><p>Yes, spread the cost of a new boiler over 12 to 60 months, subject to status.</p></details>
+  <details class="rv"><summary>Which areas do you cover?</summary><p>Homes within about 20 miles of our base. Pop your postcode in the form and we'll confirm.</p></details>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <p class="big">Copperline</p>
+  <div class="row"><span>Mon to Fri 7.30 to 6, Sat 8 to 1</span><a href="tel:+441632960418">01632 960418</a><span>Website by <a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener">The Tender Desk</a></span></div>
+ </div>
+</footer>
+<div class="sticky" id="st"><a href="tel:+441632960418">Call now</a><a class="alt" href="#quote">Quote</a></div>
+<script>
+const hd=document.getElementById('hd'),st=document.getElementById('st'),hi=document.getElementById('hi');
+let t=0;function f(){const y=scrollY;hd.classList.toggle('solid',y>40);st.classList.toggle('on',y>innerHeight*.6);if(y<innerHeight*1.4)hi.style.transform=`translate3d(0,${-y*.12}px,0)`;t=0}
+addEventListener('scroll',()=>{if(!t){t=1;requestAnimationFrame(f)}},{passive:true});f();
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();e.target.classList.add('sent')});
+</script>
+</body>
+</html>
