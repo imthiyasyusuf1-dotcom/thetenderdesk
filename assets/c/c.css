@@ -29,6 +29,12 @@ img{max-width:100%;display:block}
 .burger span{display:block;width:22px;height:2px;background:var(--ink);box-shadow:0 7px 0 var(--ink),0 -7px 0 var(--ink)}
 .mnav{display:none;position:fixed;inset:64px 0 0;background:var(--paper);z-index:49;padding:28px var(--pad);flex-direction:column;gap:4px}
 .mnav.on{display:flex}
+html.menu-on .hd{background:var(--paper);-webkit-backdrop-filter:none;backdrop-filter:none}
+html.menu-on,html.menu-on body{overflow:hidden;overscroll-behavior:none}
+.mnav{height:calc(100dvh - 64px);overflow-y:auto;overscroll-behavior:contain}
+html.menu-on .burger span{background:transparent;box-shadow:none;position:relative}
+html.menu-on .burger span:before,html.menu-on .burger span:after{content:'';position:absolute;left:0;top:0;width:22px;height:2px;background:var(--ink);transform:rotate(45deg)}
+html.menu-on .burger span:after{transform:rotate(-45deg)}
 .mnav a{font:600 34px/1.25 Bricolage,sans-serif;letter-spacing:-.03em;text-decoration:none;padding:6px 0;border-bottom:1px solid var(--line)}
 @media(max-width:420px){.hd .btn.sm{padding:10px 13px;font-size:13px}.logo{font-size:16px}}
 html,body{max-width:100%;overflow-x:clip}
