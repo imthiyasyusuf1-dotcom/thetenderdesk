@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hallmark Build | Extensions, Renovations, Loft Conversions</title>
+<meta name="description" content="Single and double storey extensions, full renovations and loft conversions. One team from drawings to handover, with a written programme before we start.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Hallmark Build">
+<meta property="og:description" content="More room, more light, one team from drawings to handover.">
+<meta property="og:image" content="https://thetenderdesk.co.uk/examples/builder/img/hero.webp">
+<meta name="theme-color" content="#efe9df">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-m.webp" media="(max-width:760px)">
+<style>
+:root{--stone:#efe9df;--stone2:#e5ddcf;--ink:#1d211e;--olive:#3f4b36;--brass:#a8834a;--mute:#6d6a62}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font:400 16px/1.6 "Inter Tight",system-ui,sans-serif;background:var(--stone);color:var(--ink);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.serif{font-family:Fraunces,Georgia,serif}
+.wrap{width:min(1240px,100% - 40px);margin-inline:auto}
+header{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;transition:background .4s,color .4s;color:#fff}
+header.solid{background:rgba(239,233,223,.94);color:var(--ink);box-shadow:0 1px 0 rgba(29,33,30,.08)}
+.logo{font:600 21px Fraunces,serif;text-decoration:none;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.logo i{width:22px;height:22px;border:1.5px solid currentColor;display:grid;place-items:center;font:600 12px "Inter Tight",sans-serif;font-style:normal}
+header nav{display:none;gap:32px;font-size:14px}
+header nav a{text-decoration:none;opacity:.85}
+.hcall{font:600 14px "Inter Tight",sans-serif;text-decoration:none;border:1px solid currentColor;padding:9px 16px;border-radius:40px;white-space:nowrap}
+/* hero */
+.hero{position:relative;height:100svh;min-height:620px;overflow:hidden;color:#fff}
+.hero picture,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero img{transform:scale(1.08);animation:settle 2.6s cubic-bezier(.2,.7,.1,1) forwards}
+@keyframes settle{to{transform:scale(1)}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,20,.45) 0%,rgba(20,22,20,0) 26%,rgba(20,22,20,.25) 50%,rgba(20,22,20,.82) 100%)}
+.hero .in{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 20px 34px}
+.kick{font:500 12px "Inter Tight",sans-serif;letter-spacing:.22em;text-transform:uppercase}
+.hero .kick{opacity:.9;margin-bottom:14px}
+.hero h1{font:300 clamp(3.1rem,13.5vw,9.4rem)/.92 Fraunces,serif;letter-spacing:-.035em;text-shadow:0 2px 30px rgba(0,0,0,.25)}
+.hero h1 em{font-style:italic;color:#e9cf9f}
+.hero h1 span{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 span b{display:block;font-weight:inherit;transform:translateY(110%);animation:up 1.1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 span:nth-child(2) b{animation-delay:.14s}
+@keyframes up{to{transform:none}}
+.hero p{max-width:38ch;margin:18px 0 22px;color:#ece6da;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 22px;border-radius:40px;font:600 15px "Inter Tight",sans-serif;text-decoration:none;border:1px solid currentColor;cursor:pointer;background:none;color:inherit}
+.btn.fill{background:var(--brass);border-color:var(--brass);color:#fff}
+.btn.dark{background:var(--ink);border-color:var(--ink);color:var(--stone)}
+section{padding:96px 0}
+h2{font:300 clamp(2.4rem,9vw,5.6rem)/.98 Fraunces,serif;letter-spacing:-.03em;margin:14px 0 26px}
+h2 em{font-style:italic;color:var(--olive)}
+.lead{font-size:18px;color:var(--mute);max-width:46ch}
+/* intro strip */
+.intro{display:grid;gap:30px}
+.marks{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(29,33,30,.15);margin-top:40px}
+.marks div{padding:22px 8px 0;border-left:1px solid rgba(29,33,30,.15);padding-left:14px}
+.marks div:first-child{border-left:0;padding-left:0}
+.marks b{display:block;font:300 clamp(2rem,8vw,3.4rem)/1 Fraunces,serif}
+.marks span{font-size:12px;color:var(--mute);letter-spacing:.08em;text-transform:uppercase}
+/* signature: shell to home */
+.build{position:relative;height:340svh;background:var(--ink)}
+.build .stage{position:sticky;top:0;height:100svh;overflow:hidden;color:#fff}
+.build .ph{position:absolute;inset:0}
+.build .ph img{width:100%;height:100%;object-fit:cover}
+.build .ph.p2,.build .ph.p3{clip-path:inset(0 0 0 100%)}
+.build .stage:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,20,.35),rgba(20,22,20,0) 30%,rgba(20,22,20,.1) 55%,rgba(20,22,20,.85));pointer-events:none}
+.build .line{position:absolute;top:0;bottom:0;width:2px;background:#e9cf9f;z-index:3;left:100%;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.build .cap{position:absolute;left:20px;right:20px;bottom:44px;z-index:4}
+.build .cap .st{position:absolute;left:0;right:0;bottom:0;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
+.build .cap .st.on{opacity:1;transform:none}
+.build .cap .kick{color:#e9cf9f}
+.build .cap h3{font:300 clamp(2.2rem,9vw,4.8rem)/1 Fraunces,serif;letter-spacing:-.03em;margin:10px 0}
+.build .cap p{max-width:40ch;color:#e6e0d4}
+.build .top{position:absolute;top:84px;left:20px;right:20px;z-index:4;display:flex;justify-content:space-between;align-items:center}
+.build .top .kick{color:#fff}
+.dots{display:flex;gap:6px}
+.dots i{width:28px;height:2px;background:rgba(255,255,255,.3);transition:background .4s}
+.dots i.on{background:#e9cf9f}
+/* services */
+.svc{border-top:1px solid rgba(29,33,30,.18)}
+.svc a{display:grid;grid-template-columns:auto 1fr auto;gap:4px 18px;align-items:baseline;padding:26px 0;border-bottom:1px solid rgba(29,33,30,.18);text-decoration:none}
+.svc .no{font:500 13px "Inter Tight",sans-serif;color:var(--brass)}
+.svc h3{font:400 clamp(1.6rem,6vw,2.6rem)/1.05 Fraunces,serif;letter-spacing:-.02em}
+.svc .ar{font-size:22px;transition:transform .3s}
+.svc a:hover .ar{transform:translateX(6px)}
+.svc p{grid-column:2/-1;color:var(--mute);font-size:15px;max-width:52ch}
+/* projects */
+.proj{background:var(--stone2)}
+.pgrid{display:grid;gap:14px}
+.pgrid figure{position:relative;overflow:hidden;border-radius:2px}
+.pgrid img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;transition:transform 1.1s cubic-bezier(.2,.7,.1,1)}
+.pgrid figure:hover img{transform:scale(1.04)}
+.pgrid figcaption{display:flex;justify-content:space-between;gap:10px;padding:12px 2px 0;font-size:14px}
+.pgrid figcaption span{color:var(--mute)}
+.pgrid .wide img{aspect-ratio:3/2}
+/* craft band */
+.craft{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.craft img{width:100%;aspect-ratio:1;object-fit:cover}
+/* quote */
+.quoteband{background:var(--olive);color:var(--stone)}
+.quoteband blockquote{font:300 clamp(1.8rem,6.5vw,3.8rem)/1.12 Fraunces,serif;letter-spacing:-.02em;max-width:22ch}
+.quoteband blockquote em{color:#e9cf9f}
+.quoteband cite{display:block;margin-top:24px;font:500 13px "Inter Tight",sans-serif;letter-spacing:.16em;text-transform:uppercase;font-style:normal;opacity:.8}
+.rmini{display:grid;gap:24px;margin-top:56px;border-top:1px solid rgba(239,233,223,.25);padding-top:30px}
+.rmini p{font-size:16px;opacity:.92}
+.rmini span{display:block;margin-top:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.stars{color:#e9cf9f;letter-spacing:3px;font-size:14px}
+/* form */
+.qf{background:#fbf8f2;padding:28px 20px;border:1px solid rgba(29,33,30,.1)}
+form{display:grid;gap:14px}
+label{display:grid;gap:6px;font-size:13px;color:var(--mute)}
+input,select,textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--stone);border:1px solid rgba(29,33,30,.16);border-radius:2px;padding:14px}
+textarea{min-height:100px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ok{display:none;font:400 26px/1.2 Fraunces,serif}
+form.sent{display:none}form.sent+.ok{display:block}
+input,select,textarea,label{min-width:0;max-width:100%}
+details{border-top:1px solid rgba(29,33,30,.16);padding:20px 0}
+summary{list-style:none;cursor:pointer;font:400 21px Fraunces,serif;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--brass);font:300 26px/1 "Inter Tight",sans-serif}
+details[open] summary:after{content:"\2212"}
+details p{color:var(--mute);margin-top:10px;max-width:60ch}
+footer{background:var(--ink);color:#bdb8ad;padding:60px 0 120px;font-size:14px}
+footer .big{font:300 clamp(2.6rem,12vw,7rem)/.95 Fraunces,serif;color:var(--stone);letter-spacing:-.03em;margin-bottom:36px}
+footer .row{display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-between}
+.sticky{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:50;display:grid;grid-template-columns:1fr 1fr;gap:8px;transform:translateY(160%);transition:transform .4s}
+.sticky.on{transform:none}
+.sticky a{padding:15px;text-align:center;font:600 15px "Inter Tight",sans-serif;text-decoration:none;border-radius:40px;background:var(--ink);color:var(--stone);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.sticky a:last-child{background:var(--brass);color:#fff}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(min-width:900px){
+ header{padding:22px 44px}header nav{display:flex}
+ .hero .in{padding:0 44px 60px;display:grid;grid-template-columns:1.6fr 1fr;align-items:end;gap:50px}
+ .intro{grid-template-columns:1.2fr 1fr;align-items:end;gap:80px}
+ .build .cap{left:44px;bottom:70px;right:auto;width:560px}
+ .build .top{left:44px;right:44px;top:100px}
+ .svc a{grid-template-columns:80px 1fr 1.1fr auto;padding:34px 0}
+ .svc p{grid-column:auto}
+ .pgrid{grid-template-columns:repeat(12,1fr);gap:22px}
+ .pgrid figure:nth-child(1){grid-column:1/8}
+ .pgrid figure:nth-child(2){grid-column:8/13;margin-top:120px}
+ .pgrid figure:nth-child(3){grid-column:1/5}
+ .pgrid figure:nth-child(4){grid-column:5/13}
+ .pgrid figure:nth-child(5){grid-column:2/7}
+ .pgrid figure:nth-child(6){grid-column:7/12;margin-top:80px}
+ .pgrid figure:nth-child(1) img,.pgrid figure:nth-child(4) img{aspect-ratio:3/2}
+ .craft{grid-template-columns:repeat(4,1fr)}
+ .rmini{grid-template-columns:repeat(3,1fr);gap:40px}
+ .qgrid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+ .qf{padding:40px}
+ .sticky{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero h1 span b{transform:none}.rv{opacity:1;transform:none}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"GeneralContractor","name":"Hallmark Build","telephone":"+441632960418","openingHours":"Mo-Fr 07:30-17:30","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"118"},"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"House extensions"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Full renovations"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Loft conversions"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Structural alterations"}}]}
+</script>
+</head>
+<body>
+<header id="hd">
+ <a class="logo" href="#top"><i>H</i>Hallmark</a>
+ <nav><a href="#build">How we build</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#reviews">Reviews</a></nav>
+ <a class="hcall" href="tel:+441632960418">01632 960418</a>
+</header>
+<main id="top">
+<section class="hero" style="padding:0">
+ <picture><source media="(max-width:760px)" srcset="img/hero-m.webp"><img src="img/hero.webp" alt="Bright kitchen extension with roof lights and garden doors" fetchpriority="high"></picture>
+ <div class="in">
+  <div>
+   <p class="kick">Extensions and renovations</p>
+   <h1><span><b>Room to</b></span><span><b><em>breathe.</em></b></span></h1>
+  </div>
+  <div>
+   <p>Extensions, full renovations and loft conversions. One team from drawings to handover, and a written week by week programme before a single brick is laid.</p>
+   <div class="cta"><a class="btn fill" href="#quote">Book a site visit</a><a class="btn" href="#projects">See our work</a></div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <div class="intro">
+   <h2 class="rv">Built properly,<br><em>handed over</em> spotless.</h2>
+   <p class="lead rv">We manage the whole job ourselves: groundworks, steels, brickwork, roofing, plastering and the final snag list. One project lead, one number to call, and a site you'd be happy to walk round any day of the week.</p>
+  </div>
+  <div class="marks rv"><div><b>22</b><span>Years building</span></div><div><b>4.9</b><span>118 reviews</span></div><div><b>10yr</b><span>Structural guarantee</span></div></div>
+ </div>
+</section>
+
+<div class="build" id="build">
+ <div class="stage">
+  <div class="ph p1"><img src="img/shell.webp" alt="Room stripped back to bare block walls with props in place" loading="lazy"></div>
+  <div class="ph p2"><img src="img/frame.webp" alt="Rear extension under construction" loading="lazy"></div>
+  <div class="ph p3"><img src="img/done.webp" alt="Finished rear extension with wide glazed doors" loading="lazy"></div>
+  <div class="line" id="ln"></div>
+  <div class="top"><span class="kick">How we build</span><div class="dots"><i class="on"></i><i></i><i></i></div></div>
+  <div class="cap">
+   <div class="st on"><span class="kick">Weeks 1 to 3</span><h3>Strip, prop, dig.</h3><p>Walls opened, steels propped, footings dug and signed off by building control before we go a course higher.</p></div>
+   <div class="st"><span class="kick">Weeks 4 to 9</span><h3>Up and watertight.</h3><p>Blockwork, roof and glazing in. Your house stays sealed off behind dust screens while the shell goes up.</p></div>
+   <div class="st"><span class="kick">Weeks 10 to 14</span><h3>Finished. Lived in.</h3><p>Plaster, floors, electrics and decoration, then a walk round with you and a snag list we clear before handover.</p></div>
+  </div>
+ </div>
+</div>
+
+<section id="services">
+ <div class="wrap">
+  <p class="kick rv" style="color:var(--brass)">Services</p>
+  <h2 class="rv">Everything from<br><em>footings</em> to finish.</h2>
+  <div class="svc">
+   <a href="#quote" class="rv"><span class="no">01</span><h3>Single storey extensions</h3><p>Kitchen diners, garden rooms and side returns with roof lights and wide glazed doors.</p><span class="ar">→</span></a>
+   <a href="#quote" class="rv"><span class="no">02</span><h3>Double storey extensions</h3><p>A bigger kitchen downstairs and an extra bedroom or ensuite above, built as one job.</p><span class="ar">→</span></a>
+   <a href="#quote" class="rv"><span class="no">03</span><h3>Loft conversions</h3><p>Dormer, hip to gable and roof light conversions with stairs designed to sit naturally in your landing.</p><span class="ar">→</span></a>
+   <a href="#quote" class="rv"><span class="no">04</span><h3>Full renovations</h3><p>Whole house refurbishments: rewires, replumbs, new layouts, plastering and finishes, managed start to end.</p><span class="ar">→</span></a>
+   <a href="#quote" class="rv"><span class="no">05</span><h3>Structural alterations</h3><p>Knock throughs, steel beams and chimney breast removals, with calculations from our structural engineer.</p><span class="ar">→</span></a>
+  </div>
+ </div>
+</section>
+
+<section class="proj" id="projects">
+ <div class="wrap">
+  <p class="kick rv" style="color:var(--brass)">Recent projects</p>
+  <h2 class="rv">Homes we've<br><em>opened up.</em></h2>
+  <div class="pgrid">
+   <figure class="rv"><img src="img/island.webp" alt="Kitchen with a stone island and dark tap" loading="lazy"><figcaption>Kitchen extension <span>Single storey</span></figcaption></figure>
+   <figure class="rv"><img src="img/glass.webp" alt="Glazed garden room among trees" loading="lazy"><figcaption>Glass garden room <span>Oak and glass</span></figcaption></figure>
+   <figure class="rv"><img src="img/orangery.webp" alt="Orangery with slim black frames beside a garden path" loading="lazy"><figcaption>Orangery <span>Side return</span></figcaption></figure>
+   <figure class="rv"><img src="img/kitchen.webp" alt="Light open plan kitchen diner with marble worktops" loading="lazy"><figcaption>Open plan kitchen diner <span>Knock through</span></figcaption></figure>
+   <figure class="rv"><img src="img/brickwall.webp" alt="Renovated kitchen with an exposed brick wall" loading="lazy"><figcaption>Full renovation <span>Exposed brick</span></figcaption></figure>
+   <figure class="rv"><img src="img/rear.webp" alt="Brick house with a new timber clad rear extension and lawn" loading="lazy"><figcaption>Rear extension <span>Timber clad</span></figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<div class="craft" aria-label="Our trades at work">
+ <img src="img/trowel.webp" alt="Bricklayer's trowel loaded with mortar" loading="lazy">
+ <img src="img/blocks.webp" alt="Blockwork being laid" loading="lazy">
+ <img src="img/studs.webp" alt="Timber stud walls going up" loading="lazy">
+ <img src="img/shell.webp" alt="Room opened up with props in place" loading="lazy">
+</div>
+
+<section class="quoteband" id="reviews">
+ <div class="wrap">
+  <p class="stars rv">★★★★★ &nbsp;4.9 from 118 Google reviews</p>
+  <blockquote class="rv" style="margin-top:22px">"The programme said fourteen weeks. They handed us the keys in <em>thirteen and a half</em>, and the house was cleaner than when they arrived."<cite>Rachel and Tom, kitchen extension</cite></blockquote>
+  <div class="rmini">
+   <div class="rv"><p>"Every Friday we got photos and a note of what was happening next week. Never once had to chase."</p><span>Priya S, loft conversion</span></div>
+   <div class="rv"><p>"Building control signed off every stage first time. The steel went in on a Tuesday and you'd never know."</p><span>Martin K, knock through</span></div>
+   <div class="rv"><p>"We lived in the house through a full renovation with two kids. Dust screens up every night. Brilliant team."</p><span>Hannah D, full renovation</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="quote">
+ <div class="wrap qgrid">
+  <div>
+   <p class="kick rv" style="color:var(--brass)">Free site visit</p>
+   <h2 class="rv">Let's walk<br><em>your space.</em></h2>
+   <p class="lead rv">Tell us what you're thinking. We'll come round, measure up, talk through options and send a fully itemised quote with a programme. Prefer to talk? Call <a href="tel:+441632960418">01632 960418</a>.</p>
+  </div>
+  <div class="qf rv">
+   <form id="f">
+    <div class="two"><label>Name<input required autocomplete="name"></label><label>Phone<input required type="tel" autocomplete="tel"></label></div>
+    <label>Email<input type="email" autocomplete="email"></label>
+    <label>Project<select><option>Single storey extension</option><option>Double storey extension</option><option>Loft conversion</option><option>Full renovation</option><option>Knock through or steel beam</option><option>Something else</option></select></label>
+    <label>Tell us a little more<textarea placeholder="Rough size, plans drawn or not, ideal start date"></textarea></label>
+    <button class="btn dark">Request a site visit</button>
+   </form>
+   <p class="ok">Thank you. Your project lead will call within one working day to book a visit.</p>
+  </div>
+ </div>
+</section>
+
+<section style="padding-top:0">
+ <div class="wrap">
+  <p class="kick rv" style="color:var(--brass);margin-bottom:14px">Questions</p>
+  <details class="rv"><summary>Do you handle drawings and planning?</summary><p>Yes. Our architectural designer draws the plans and we submit planning or lawful development applications for you, plus building regulations drawings.</p></details>
+  <details class="rv"><summary>Can we stay in the house during the build?</summary><p>Almost always. We break through into the house as late as possible and keep dust screens and floor protection up throughout.</p></details>
+  <details class="rv"><summary>How do payments work?</summary><p>In stages tied to finished work, set out in the contract before we start. Never a large deposit up front.</p></details>
+  <details class="rv" style="border-bottom:1px solid rgba(29,33,30,.16)"><summary>Are you insured and guaranteed?</summary><p>Fully insured, and every extension and loft carries a 10 year insurance backed structural guarantee.</p></details>
+ </div>
+</section>
+</main>
+<footer>
+ <div class="wrap">
+  <p class="big">Hallmark Build</p>
+  <div class="row"><span>Mon to Fri 7.30 to 5.30</span><a href="tel:+441632960418">01632 960418</a><a href="#quote">Book a site visit</a><span>Website by <a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener">The Tender Desk</a></span></div>
+ </div>
+</footer>
+<div class="sticky" id="st"><a href="tel:+441632960418">Call us</a><a href="#quote">Site visit</a></div>
+<script>
+const hd=document.getElementById('hd'),st=document.getElementById('st'),B=document.querySelector('.build'),p2=B.querySelector('.p2'),p3=B.querySelector('.p3'),ln=document.getElementById('ln'),sts=B.querySelectorAll('.cap .st'),dots=B.querySelectorAll('.dots i');let cur=0,t=0;
+const ease=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2,cl=x=>Math.max(0,Math.min(1,x));
+function f(){const y=scrollY,h=innerHeight;const br=B.getBoundingClientRect();hd.classList.toggle('solid',y>h*.6&&!(br.top<=60&&br.bottom>60));st.classList.toggle('on',y>h*.7);
+ const r=B.getBoundingClientRect(),p=cl(-r.top/(r.height-h));
+ const a=ease(cl((p-.12)/.3)),b=ease(cl((p-.56)/.3));
+ p2.style.clipPath=`inset(0 0 0 ${(1-a)*100}%)`;p3.style.clipPath=`inset(0 0 0 ${(1-b)*100}%)`;
+ const lx=b>0&&b<1?(1-b):(a>0&&a<1?(1-a):2);ln.style.left=(lx*100)+'%';
+ const i=p<.3?0:p<.74?1:2;if(i!==cur){sts[cur].classList.remove('on');dots[cur].classList.remove('on');sts[i].classList.add('on');dots[i].classList.add('on');cur=i}t=0}
+addEventListener('scroll',()=>{if(!t){t=1;requestAnimationFrame(f)}},{passive:true});addEventListener('resize',f);f();
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();e.target.classList.add('sent')});
+</script>
+</body>
+</html>
