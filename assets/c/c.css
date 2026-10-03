@@ -30,7 +30,8 @@ img{max-width:100%;display:block}
 .mnav{display:none;position:fixed;inset:64px 0 0;background:var(--paper);z-index:49;padding:28px var(--pad);flex-direction:column;gap:4px}
 .mnav.on{display:flex}
 html.menu-on .hd{background:var(--paper);-webkit-backdrop-filter:none;backdrop-filter:none}
-html.menu-on,html.menu-on body{overflow:hidden;overscroll-behavior:none}
+html.menu-on{overflow:hidden;overscroll-behavior:none}
+html.menu-on .hd{position:fixed;left:0;right:0;top:0}
 .mnav{height:calc(100dvh - 64px);overflow-y:auto;overscroll-behavior:contain}
 html.menu-on .burger span{background:transparent;box-shadow:none;position:relative}
 html.menu-on .burger span:before,html.menu-on .burger span:after{content:'';position:absolute;left:0;top:0;width:22px;height:2px;background:var(--ink);transform:rotate(45deg)}
