@@ -109,3 +109,4 @@ html.cart-on{overflow:hidden}html.cart-on .sticky-buy{transform:translateY(140%)
 @media(min-width:761px){.shelf{grid-template-columns:repeat(2,minmax(0,420px));justify-content:center}}@media(max-width:760px){.shelf{grid-auto-columns:82%}}
 .item-img.photo img{height:100%;width:100%;object-fit:cover;filter:none}.item-img.photo{padding:0}
 [hidden]{display:none!important}.item-t{padding-bottom:84px}
+.medals,.done img,.rbve{height:auto}
