@@ -111,3 +111,5 @@ html.cart-on{overflow:hidden}html.cart-on .sticky-buy{transform:translateY(140%)
 [hidden]{display:none!important}.item-t{padding-bottom:84px}
 .medals,.done img,.rbve{height:auto}
 .tenp img{height:auto}
+.noor{transform:rotate(-3deg)}.noor-frame{transform:none}
+.noor figcaption{transform:none;left:0;right:0;bottom:20px;text-align:center;white-space:nowrap;font-size:clamp(14px,4vw,22px)}
