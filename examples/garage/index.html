@@ -130,7 +130,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-betw
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero h1 span{opacity:1;transform:none}.rv{opacity:1;transform:none}}
 input,select,textarea,label{min-width:0;max-width:100%}
-</style>
+/*qa1*/header.solid{background:#0c0c0c}</style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"AutoRepair","name":"Torque & Co Motors","telephone":"+441632960871","openingHours":["Mo-Fr 08:00-17:30","Sa 08:30-12:30"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"318"},"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"MOT test"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Full service"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Diagnostics"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Brakes and clutches"}}]}
 </script>
@@ -239,7 +239,7 @@ input,select,textarea,label{min-width:0;max-width:100%}
 <div class="sticky" id="st"><a href="tel:+441632960871">Call the workshop</a><a href="#book">Book</a></div>
 <script>
 const hd=document.getElementById('hd'),st=document.getElementById('st'),px=document.getElementById('px');let t=0;
-function f(){const y=scrollY;hd.classList.toggle('solid',y>40);st.classList.toggle('on',y>innerHeight*.7);const r=px.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)px.style.transform=`translate3d(0,${(r.top-innerHeight)*.12}px,0)`;t=0}
+function f(){const y=scrollY;hd.classList.toggle('solid',y>10);st.classList.toggle('on',y>innerHeight*.7);const r=px.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)px.style.transform=`translate3d(0,${(r.top-innerHeight)*.12}px,0)`;t=0}
 addEventListener('scroll',()=>{if(!t){t=1;requestAnimationFrame(f)}},{passive:true});f();
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.rv').forEach(e=>io.observe(e));

@@ -125,7 +125,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-betw
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero h1 span i{transform:none}.rv{opacity:1;transform:none}}
 input,select,textarea,label{min-width:0;max-width:100%}
-</style>
+/*qa1*/header.solid{background:#1b1e22;box-shadow:0 1px 0 rgba(255,255,255,.06)}.svc .pr small{font-size:11px}figcaption{font-size:12px!important}</style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"RoofingContractor","name":"Ridgeway Roofing","telephone":"+441632960733","openingHours":"Mo-Sa 07:30-17:30","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"164"},"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Pitched re-roof"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Roof repairs"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Flat roofing"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Chimney repairs"}}]}
 </script>
@@ -239,5 +239,5 @@ const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target
 document.querySelectorAll('.rv').forEach(e=>io.observe(e));
 document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();e.target.classList.add('sent')});
 </script>
-</body>
+<script>/*qa1hd*/(()=>{const h=document.querySelector('header');const f=()=>h.classList.toggle('solid',scrollY>40);addEventListener('scroll',f,{passive:true});f()})()</script></body>
 </html>
