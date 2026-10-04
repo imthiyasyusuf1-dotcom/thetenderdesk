@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-GB" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Checkout | Major Noor's</title>
+<meta name="description" content="Checkout for Major Noor's Chilli and Mint Sauce.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0e0b0a">
+<meta property="og:title" content="Checkout | Major Noor's">
+<meta property="og:image" content="https://thetenderdesk.co.uk/p/majornoors/assets/og.jpg">
+<link rel="icon" href="../assets/logo.webp">
+<link rel="stylesheet" href="../assets/site.css?v=10">
+<link rel="stylesheet" href="../assets/shop.css?v=2">
+</head>
+<body class="sub">
+<header class="nav solid" id="nav">
+  <a class="brand" href="../" aria-label="Major Noor's home"><img src="../assets/logo.webp" alt="Major Noor's logo" width="300" height="363"></a>
+  <nav class="links"><a href="../#heat">The sauce</a><a href="../#burma">Our story</a><a href="../#eat">Eat it with</a><a href="../shop/">Shop</a></nav>
+  <a class="pill" href="../shop/">Shop</a><a class="bag" href="#" aria-label="Open basket"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><b hidden>0</b></a>
+</header>
+<main>
+<section class="co" id="co">
+  <div>
+    <p class="crumb"><a href="../shop/">Shop</a> / Checkout</p>
+    <h1>Checkout</h1>
+    <form id="cf" novalidate>
+      <fieldset><legend>Contact</legend>
+        <label>Full name<input name="name" autocomplete="name" required></label>
+        <label>Phone<input name="phone" type="tel" autocomplete="tel" required></label>
+        <label class="w">Email<input name="email" type="email" autocomplete="email" required></label>
+      </fieldset>
+      <fieldset><legend>Delivery address</legend>
+        <label class="w">Address<input name="address1" autocomplete="address-line1" required></label>
+        <label class="w">Flat, suite (optional)<input name="address2" autocomplete="address-line2"></label>
+        <label>Town or city<input name="city" autocomplete="address-level2" required></label>
+        <label>Postcode<input name="postcode" autocomplete="postal-code" required></label>
+        <label class="w">Order notes (optional)<textarea name="notes" rows="3"></textarea></label>
+      </fieldset>
+      <button class="btn" type="submit">Place order <i>&rarr;</i></button>
+      <p class="fine">Placing your order sends it to the Major Noor's team, who will confirm delivery and payment by email. 10p from every bottle supports the Royal British Veterans Enterprise.</p>
+    </form>
+  </div>
+  <aside class="sum"><h2>Your order</h2><div id="sl"></div>
+    <div class="sum-r"><span>Subtotal</span><span id="ss"></span></div>
+    <div class="sum-r"><span>Delivery</span><span>Confirmed by email</span></div>
+    <div class="sum-r t"><span>Total</span><b id="st"></b></div>
+  </aside>
+</section>
+<section class="done" id="done" hidden>
+  <img src="../assets/medals.webp" alt="" width="354" height="161">
+  <span class="ref" id="ref"></span>
+  <h1>Order received.</h1>
+  <p>Thank you. The Major Noor's team will email you shortly to confirm delivery and payment.</p>
+  <a class="btn" href="../">Back to the sauce <i>&rarr;</i></a>
+</section>
+</main>
+<footer class="foot">
+  <div class="foot-word" aria-hidden="true">MAJOR NOOR'S</div>
+  <div class="foot-row">
+    <p>Major Noor's legacy lives on, one delicious bite at a time.</p>
+    <nav><a href="../shop/">Shop</a><a href="../#burma">Our story</a><a href="mailto:enquiries@majornoors.com">enquiries@majornoors.com</a></nav>
+  </div>
+  <p class="credit">Site concept by <a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">The Tender Desk</a></p>
+</footer>
+<script src="../assets/cart.js?v=1"></script>
+<script>
+(function(){const M=window.MN,f=document.getElementById('cf');
+function draw(){const c=M.get(),ls=M.lines(c);if(!ls.length&&!document.getElementById('done').hidden===false){}
+document.getElementById('sl').innerHTML=ls.length?ls.map(l=>`<div class="cl"><img src="../${l.img}" alt=""><div><b>${l.name}</b><span>${l.pack} &times; ${l.q}</span></div><strong>${M.money(l.q*l.price)}</strong></div>`).join(''):'<p class="cart-n">Your basket is empty. <a href="../shop/">Shop the sauce</a></p>';
+document.getElementById('ss').textContent=M.money(M.total(c));document.getElementById('st').textContent=M.money(M.total(c));}
+document.addEventListener('mn:cart',draw);draw();
+f.addEventListener('submit',e=>{e.preventDefault();const c=M.get(),ls=M.lines(c);
+if(!ls.length){M.open();return}
+let ok=true;f.querySelectorAll('[required]').forEach(i=>{const v=i.value.trim()&&(i.type!=='email'||/.+@.+\..+/.test(i.value));i.style.borderColor=v?'':'#b3121b';if(!v)ok=false});if(!ok){f.querySelector('[style*="b3121b"]').focus();return}
+const d=Object.fromEntries(new FormData(f)),ref='MN-'+Date.now().toString(36).toUpperCase().slice(-6);
+const body=`Order ${ref}\n\n`+ls.map(l=>`${l.q} x ${l.name} (${l.pack}) ${M.money(l.q*l.price)}`).join('\n')+`\nTotal: ${M.money(M.total(c))}\n\nName: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email}\nAddress: ${d.address1} ${d.address2}, ${d.city}, ${d.postcode}\nNotes: ${d.notes}`;
+location.href='mailto:enquiries@majornoors.com?subject='+encodeURIComponent('Order '+ref)+'&body='+encodeURIComponent(body);
+M.set({});document.getElementById('co').hidden=true;const dn=document.getElementById('done');dn.hidden=false;document.getElementById('ref').textContent='Order '+ref;scrollTo(0,0);});})();
+</script>
+</body>
+</html>
