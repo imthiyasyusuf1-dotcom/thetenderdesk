@@ -10,6 +10,7 @@
     const r = dim.getBoundingClientRect(), span = r.height - h;
     const p = Math.min(1, Math.max(0, -r.top / (span * .8)));
     dim.style.setProperty('--b', (.12 + p * .88).toFixed(3));
+    dim.querySelector('.dim-img').classList.toggle('lit', p >= .99);
     tick = false;
   };
   addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(onScroll); } }, { passive: true });

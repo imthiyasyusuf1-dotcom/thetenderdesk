@@ -79,7 +79,7 @@ h1,h2{font-family:Fraunces,Georgia,serif;font-weight:300;letter-spacing:-.02em;l
 .svc-pics{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,28px);margin-top:clamp(50px,7vw,90px)}
 .svc-pics figure{position:relative;overflow:hidden;border-radius:6px}
 .svc-pics figure:nth-child(2){margin-top:clamp(40px,9vw,140px)}
-.svc-pics img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.svc-pics img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
 .svc-pics figure:hover img{transform:scale(1.04)}
 .svc-pics figcaption{position:absolute;left:0;right:0;bottom:0;padding:50px 20px 18px;background:linear-gradient(transparent,rgba(0,0,0,.75));font:italic 300 clamp(15px,1.5vw,20px) Fraunces,serif}
 @media(max-width:600px){.svc li{grid-template-columns:44px 1fr;gap:10px;padding:24px 0}.svc-pics{grid-template-columns:1fr}.svc-pics figure:nth-child(2){margin-top:0}}
@@ -90,7 +90,7 @@ h1,h2{font-family:Fraunces,Georgia,serif;font-weight:300;letter-spacing:-.02em;l
 .reel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--pad) 20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .reel::-webkit-scrollbar{display:none}
 .reel figure{flex:0 0 min(560px,82vw);scroll-snap-align:center;border-radius:6px;overflow:hidden;position:relative}
-.reel img{width:100%;aspect-ratio:2/1;object-fit:cover;filter:saturate(.75) contrast(1.06)}
+.reel img{width:100%;height:auto;aspect-ratio:2/1;object-fit:cover}
 .reel figure::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);border-radius:6px}
 .reel-hint{padding:6px var(--pad) 0;font:600 11px Manrope;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
 .reel-hint::after{content:" →";color:var(--amber)}
@@ -155,3 +155,5 @@ h1,h2{font-family:Fraunces,Georgia,serif;font-weight:300;letter-spacing:-.02em;l
  .lede{font-size:15.5px}
  .hero-foot{padding-top:30px}
 }
+
+.dim-img.lit{filter:none;transform:none}
