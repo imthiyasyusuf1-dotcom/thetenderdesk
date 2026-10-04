@@ -11,7 +11,7 @@
     walk(el);
   });
   // reveal targets
-  $$('.burma-copy > *, .sons-copy > *, .eat-head, .e, .item, .give-in > *, .faq h2, .qs details, .shop-head, .kicker').forEach(e => e.classList.add('rv'));
+  $$('.bm-head > *, .sons-copy > *, .eat-head, .e, .item, .give-in > *, .faq h2, .qs details, .shop-head, .kicker').forEach(e => e.classList.add('rv'));
 
   const intro = $('.intro');
   if (intro) { if (SHOT || reduce) intro.remove(); else { document.documentElement.style.overflow='hidden'; const done=()=>{intro.classList.add('out'); document.documentElement.style.overflow=''; setTimeout(()=>intro.remove(),1100);}; (document.readyState==='complete'?Promise.resolve():new Promise(r=>addEventListener('load',r))).then(()=>setTimeout(done,700)); setTimeout(done,3500); } }
@@ -60,8 +60,8 @@
   $$('.panel img').forEach(img => gsap.fromTo(img, { xPercent: -4 }, { xPercent: 4, ease: 'none', scrollTrigger: { trigger: '.heat', start: 'top top', end: () => '+=' + (track.scrollWidth), scrub: true } }));
 
   // Burma: portrait settles, year drifts
-  gsap.fromTo('.noor-frame', { rotate: -9, y: 80 }, { rotate: -3, y: 0, ease: 'none', scrollTrigger: { trigger: '.burma', start: 'top bottom', end: 'center center', scrub: true } });
-  gsap.fromTo('.burma-year', { yPercent: 12 }, { yPercent: -12, ease: 'none', scrollTrigger: { trigger: '.burma', start: 'top bottom', end: 'bottom top', scrub: true } });
+  gsap.fromTo('.bm-img img', { scale: 1.3 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.bm-hero', start: 'top bottom', end: 'bottom top', scrub: true } });
+  gsap.fromTo('.bm-stamp', { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, ease: 'back.out(2)', duration: .6, scrollTrigger: { trigger: '.bm-hero', start: 'top 40%' } });
 
   gsap.fromTo('.sons-img img', { yPercent: -10 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: '.sons-img', start: 'top bottom', end: 'bottom top', scrub: true } });
   $$('.quote span').forEach((s, i) => gsap.fromTo(s, { xPercent: i % 2 ? 12 : -12 }, { xPercent: 0, ease: 'none', scrollTrigger: { trigger: '.quote', start: 'top bottom', end: 'bottom 60%', scrub: true } }));

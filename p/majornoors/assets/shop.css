@@ -113,3 +113,36 @@ html.cart-on{overflow:hidden}html.cart-on .sticky-buy{transform:translateY(140%)
 .tenp img{height:auto}
 .noor{transform:rotate(-3deg)}.noor-frame{transform:none}
 .noor figcaption{transform:none;left:0;right:0;bottom:20px;text-align:center;white-space:nowrap;font-size:clamp(14px,4vw,22px)}
+/* Burma chapter v2 */
+.burma{background:#14110c}
+.bm-hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden}
+.bm-img{position:absolute;inset:0}
+.bm-img img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:sepia(.6) contrast(1.12) saturate(.75) brightness(.9);will-change:transform}
+.bm-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 30%,transparent 35%,rgba(20,17,12,.7)),linear-gradient(transparent 40%,rgba(20,17,12,.55) 65%,#14110c 98%);pointer-events:none}
+.bm-stamp{position:absolute;z-index:2;top:clamp(92px,14vh,150px);right:var(--pad);transform:rotate(-8deg);font:700 13px DM;letter-spacing:.22em;text-transform:uppercase;color:#e0473f;border:2.5px solid #e0473f;padding:10px 14px;border-radius:6px;mix-blend-mode:screen;opacity:.9}
+.bm-head{position:absolute;z-index:2;left:var(--pad);right:var(--pad);bottom:clamp(36px,7vh,80px);max-width:900px}
+.bm-head .kicker{color:var(--gold)}
+.bm-head h2{font:400 clamp(40px,5.6vw,92px)/.98 IS,Georgia,serif;text-transform:none;color:#f4ead2;margin-top:16px;text-shadow:0 4px 30px rgba(0,0,0,.5)}
+.bm-head h2 em{display:block;color:var(--gold)}
+.bm-body{display:grid;grid-template-columns:minmax(0,440px) minmax(0,560px);justify-content:center;gap:clamp(36px,7vw,110px);align-items:center;padding:clamp(40px,8vw,120px) var(--pad) clamp(80px,12vw,160px);color:#e9dcc0}
+.dossier{background:#efe4cb;color:#2b2116;padding:26px 26px 22px;border-radius:4px;box-shadow:0 30px 70px rgba(0,0,0,.5);transform:rotate(-1.5deg);position:relative}
+.dossier::before{content:"";position:absolute;top:-12px;left:50%;width:110px;height:24px;transform:translateX(-50%) rotate(2deg);background:rgba(244,236,220,.55);box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.ds-t{font:700 12px DM;letter-spacing:.26em;text-transform:uppercase;color:#b3121b;border-bottom:1.5px solid #2b2116;padding-bottom:12px;margin-bottom:6px}
+.dossier dl{margin:0}
+.dossier dl div{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:12px 0;border-bottom:1px dashed rgba(43,33,22,.35)}
+.dossier dl div:last-child{border:0}
+.dossier dt{font:600 11px DM;letter-spacing:.2em;text-transform:uppercase;opacity:.6;padding-top:5px}
+.dossier dd{margin:0;font:italic 21px/1.2 IS,Georgia,serif}
+.bm-copy p{font-size:18px;line-height:1.6;color:rgba(233,220,192,.85);margin-bottom:18px}
+.bm-copy blockquote{margin:30px 0 0;padding-left:22px;border-left:2px solid var(--gold);font:italic clamp(26px,2.6vw,38px)/1.15 IS,Georgia,serif;color:#f4ead2}
+@media(max-width:860px){.bm-body{grid-template-columns:1fr}.dossier{margin:0 6px}.bm-stamp{font-size:11px;padding:8px 11px}}
+.bm-img::after{content:"";position:absolute;inset:0;opacity:.22;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.bm-img{overflow:hidden}
+@media(max-width:760px){.bm-head{bottom:104px}}
+@media(min-width:861px){
+ .bm-img{left:auto;width:min(46%,640px);right:var(--pad);top:120px;bottom:80px;border-radius:6px;box-shadow:0 40px 90px rgba(0,0,0,.6)}
+ .bm-hero::after{background:none}
+ .bm-head{max-width:min(50%,760px);bottom:auto;top:50%;transform:translateY(-40%)}
+ .bm-head h2{font-size:clamp(48px,5vw,88px)}
+ .bm-stamp{top:96px;right:calc(var(--pad) + 18px);z-index:3}
+}
