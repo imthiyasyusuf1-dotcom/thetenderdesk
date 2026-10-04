@@ -89,8 +89,8 @@ h1,h2{font-family:Fraunces,Georgia,serif;font-weight:300;letter-spacing:-.02em;l
 .work .sec-head{padding:0 var(--pad)}
 .reel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--pad) 20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .reel::-webkit-scrollbar{display:none}
-.reel figure{flex:0 0 min(560px,82vw);scroll-snap-align:center;border-radius:6px;overflow:hidden;position:relative}
-.reel img{width:100%;height:auto;aspect-ratio:2/1;object-fit:cover}
+.reel figure{flex:0 0 min(480px,82vw);scroll-snap-align:center;border-radius:6px;overflow:hidden;position:relative}
+.reel img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 .reel figure::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);border-radius:6px}
 .reel-hint{padding:6px var(--pad) 0;font:600 11px Manrope;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
 .reel-hint::after{content:" →";color:var(--amber)}
