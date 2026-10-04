@@ -53,3 +53,4 @@
   addEventListener('storage', render);
   render();
 })();
+document.addEventListener('click',e=>{const b=e.target.closest('.item-add');if(!b)return;const t=b.textContent;b.classList.add('ok');b.textContent='Added ✓';setTimeout(()=>{b.classList.remove('ok');b.textContent=t},1400)});
