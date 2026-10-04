@@ -44,7 +44,7 @@
   gsap.to('.w1', { xPercent: -18, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true } });
   gsap.to('.w2', { xPercent: 18, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true } });
   gsap.to('.hero-copy,.hero-top', { opacity: 0, y: -30, ease: 'none', scrollTrigger: { trigger: '.hero', start: '30% top', end: '60% top', scrub: true } });
-  gsap.to('.hero-fallback', { scale: 1.15, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true } });
+  gsap.to('.hero-photo img', { scale: 1.15, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true } });
 
   // manifesto word light-up
   if (!SHOT) {

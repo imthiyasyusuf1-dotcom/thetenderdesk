@@ -238,3 +238,14 @@ h1,h2,h3{font-family:BS,Impact,sans-serif;font-weight:900;text-transform:upperca
 .give h2 em{color:var(--pink)}
 @media(max-width:760px){.nav .pill{transition:opacity .3s}.buy-on .nav .pill{opacity:0;pointer-events:none}}
 .quote{padding-right:4px}
+/* gemini photo hero */
+.hero{background:#120a0a}
+.hero-word,.floor{display:none}
+.hero-photo{position:absolute;inset:0;z-index:1}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;will-change:transform}
+.hero-stage::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(10,4,4,.55),transparent 28%,transparent 50%,rgba(10,4,4,.85) 88%);pointer-events:none}
+.hero-top,.hero-top span,.hero-scroll{color:var(--cream)!important}.hero-scroll span{background:var(--cream)}
+.hero-copy h1 em{color:var(--cream)!important}.hero .link{color:var(--cream)}
+@media(min-width:761px){.hero-photo img{object-position:50% 45%}.hero-copy{max-width:460px}}
+.item-img.photo{padding:0;overflow:hidden}.item-img.photo img{height:100%;width:100%;object-fit:cover;filter:none;transform:none!important}
+.panel img{object-fit:cover}

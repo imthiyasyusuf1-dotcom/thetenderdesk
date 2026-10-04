@@ -17,8 +17,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/logo.webp">
 <link rel="preload" href="assets/f/bigsh.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/bottle.webp?v=3" as="image">
-<link rel="stylesheet" href="assets/site.css?v=7">
+<link rel="preload" href="assets/g-hero1-s.webp" as="image" media="(max-width:760px)"><link rel="preload" href="assets/g-hero1.webp" as="image" media="(min-width:761px)">
+<link rel="stylesheet" href="assets/site.css?v=8">
 <!-- Photo credits (Unsplash licence): green chilli by Hari Krishnan (f1BMuugVyyM); green chillies by Vipul Borade (FvvgvCO-0gI); mint by SIMON LEE (bHWRSq8fUUE); garlic by Tijana Drndarski (2yNBQFwZCA8). All product, family and food photography: majornoors.com -->
 </head>
 <body>
@@ -36,9 +36,9 @@
     <div class="hero-word w1" aria-hidden="true">MAJOR</div>
     <div class="hero-word w2" aria-hidden="true">NOOR'S</div>
     <div class="floor" aria-hidden="true"></div>
-    <canvas id="gl" aria-hidden="true"></canvas>
+    
     <div class="hero-word w3" aria-hidden="true">NOOR'S</div>
-    <img class="hero-fallback" src="assets/bottle.webp?v=3" alt="A bottle of Major Noor's Chilli and Mint Sauce" width="700" height="1700">
+    <picture class="hero-photo"><source media="(max-width:760px)" srcset="assets/g-hero1-s.webp"><img src="assets/g-hero1.webp" alt="A bottle of Major Noor's Chilli and Mint Sauce with fresh chillies" width="1400" height="1738"></picture>
     <div class="hero-top">
       <span>Chilli &amp; Mint Sauce</span><span>Staggeringly delicious</span>
     </div>
@@ -64,7 +64,7 @@
 <section class="heat" id="heat" aria-label="What goes in">
   <div class="heat-track">
     <article class="panel p-heat">
-      <img src="assets/chillies.webp" alt="A pile of fresh green chillies" loading="lazy" width="1600" height="1067">
+      <img src="assets/g-flat.webp" alt="Major Noor's bottle among fresh chillies, mint and garlic" loading="lazy" width="1400" height="1738">
       <div class="panel-in">
         <span class="num">01 / Heat</span>
         <h2>Fire<br>cracker.</h2>
@@ -72,7 +72,7 @@
       </div>
     </article>
     <article class="panel p-cool">
-      <img src="assets/mint.webp" alt="Fresh mint leaves" loading="lazy" width="1200" height="1800">
+      <img src="assets/g-macro.webp" alt="Close up of the chilli and mint sauce" loading="lazy" width="1400" height="1738">
       <div class="panel-in">
         <span class="num">02 / Cool</span>
         <h2>Then<br>the mint.</h2>
@@ -123,7 +123,7 @@
 <!-- 6 POUR -->
 <section class="pour" aria-label="One sauce, endless combinations">
   <div class="pour-stage">
-    <div class="pour-img"><img src="assets/pour.webp" alt="Major Noor's sauce poured over grilled chicken" loading="lazy" width="1400" height="1400"></div>
+    <div class="pour-img"><img src="assets/g-pour2.webp" alt="Major Noor's sauce poured over grilled kebabs" loading="lazy" width="1400" height="1738"></div>
     <h2 class="pour-t"><span>One sauce.</span><span>Endless</span><span>combinations.</span></h2>
   </div>
 </section>
@@ -132,7 +132,7 @@
 <section class="eat" id="eat" aria-label="Eat it with">
   <div class="eat-head"><p class="kicker">Perfect with</p><h2>Chicken. Wraps.<br>Rice. <em>Everything.</em></h2></div>
   <div class="eat-grid">
-    <figure class="e e1"><img src="assets/pour-s.webp" alt="Sauce over grilled chicken and kebabs" loading="lazy" width="720" height="720"><figcaption><b>Grilled chicken</b><span>Pour it on hot.</span></figcaption></figure>
+    <figure class="e e1"><img src="assets/g-pour2-s.webp" alt="Sauce over grilled kebabs" loading="lazy" width="720" height="720"><figcaption><b>Grilled chicken</b><span>Pour it on hot.</span></figcaption></figure>
     <figure class="e e2"><img src="assets/dip-s.webp" alt="A samosa dipped into a bowl of chilli and mint sauce" loading="lazy" width="720" height="720"><figcaption><b>Samosas</b><span>Dip, then dip again.</span></figcaption></figure>
     <figure class="e e3"><img src="assets/feast-s.webp" alt="A family table of rice, naan and curries with a bottle of Major Noor's" loading="lazy" width="720" height="720"><figcaption><b>Rice &amp; naan</b><span>The bottle that goes round the table.</span></figcaption></figure>
     <figure class="e e4"><img src="assets/herbs-s.webp" alt="Major Noor's bottle among fresh mint and green chillies" loading="lazy" width="720" height="720"><figcaption><b>Wraps</b><span>Street food, sorted.</span></figcaption></figure>
@@ -150,7 +150,7 @@
     </a>
     <a class="item feat" href="https://majornoors.com/product/twin-sauce-pack/">
       <span class="tag">Most picked</span>
-      <div class="item-img twin"><img src="assets/bottle.webp?v=3" alt="" loading="lazy" width="700" height="1700"><img src="assets/bottle.webp?v=3" alt="Twin pack of Chilli and Mint Sauce" loading="lazy" width="700" height="1700"></div>
+      <div class="item-img photo"><img src="assets/g-twin-s.webp" alt="Twin pack of Chilli and Mint Sauce" loading="lazy" width="760" height="944"></div>
       <div class="item-t"><h3>Twin Pack</h3><p>Two bottles</p><span class="price">£10.99</span></div>
       <span class="item-go">Buy &rarr;</span>
     </a>
@@ -203,7 +203,6 @@
 <script src="assets/js/gsap.min.js"></script>
 <script src="assets/js/ScrollTrigger.min.js"></script>
 <script src="assets/js/lenis.min.js"></script>
-<script src="assets/hero.js?v=8"></script>
-<script src="assets/main.js?v=4"></script>
+<script src="assets/main.js?v=5"></script>
 </body>
 </html>
