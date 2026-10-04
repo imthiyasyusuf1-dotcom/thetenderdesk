@@ -249,3 +249,4 @@ h1,h2,h3{font-family:BS,Impact,sans-serif;font-weight:900;text-transform:upperca
 @media(min-width:761px){.hero-photo img{object-position:50% 45%}.hero-copy{max-width:460px}}
 .item-img.photo{padding:0;overflow:hidden}.item-img.photo img{height:100%;width:100%;object-fit:cover;filter:none;transform:none!important}
 .panel img{object-fit:cover}
+@media(max-width:760px){.pour-t{font-size:14.5vw}}
