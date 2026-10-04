@@ -13,11 +13,13 @@
   // reveal targets
   $$('.burma-copy > *, .sons-copy > *, .eat-head, .e, .item, .give-in > *, .faq h2, .qs details, .shop-head, .kicker').forEach(e => e.classList.add('rv'));
 
+  const intro = $('.intro');
+  if (intro) { if (SHOT || reduce) intro.remove(); else { document.documentElement.style.overflow='hidden'; const done=()=>{intro.classList.add('out'); document.documentElement.style.overflow=''; setTimeout(()=>intro.remove(),1100);}; (document.readyState==='complete'?Promise.resolve():new Promise(r=>addEventListener('load',r))).then(()=>setTimeout(done,700)); setTimeout(done,3500); } }
   const nav = $('#nav'), buy = $('.sticky-buy'), hero = $('.hero');
   function onScroll() {
     const y = scrollY; nav.classList.toggle('solid', y > innerHeight * .6);
     const fr = $('.foot').getBoundingClientRect().top;
-    buy.classList.toggle('on', y > hero.offsetHeight - innerHeight && fr > innerHeight * .9);
+    const on = y > hero.offsetHeight - innerHeight && fr > innerHeight * .9; buy.classList.toggle('on', on); document.documentElement.classList.toggle('buy-on', on);
   }
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
@@ -69,8 +71,13 @@
   const tl = gsap.timeline({ scrollTrigger: { trigger: '.pour', start: 'top top', end: 'bottom bottom', scrub: true } });
   tl.fromTo('.pour-img', { clipPath: mob ? 'inset(18% 8% 18% 8% round 18px)' : 'inset(22% 30% 22% 30% round 24px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none' }, 0)
     .fromTo('.pour-img img', { scale: 1.25 }, { scale: 1, ease: 'none' }, 0)
-    .fromTo('.pour-t span', { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, stagger: .1, ease: 'none', duration: .35 }, 0);
+    .fromTo('.pour-t span', { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, stagger: .1, ease: 'none', duration: .3 }, .4);
 
+  gsap.to('.w3', { xPercent: 14, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true } });
+  gsap.to('.floor', { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: '20% top', end: '60% top', scrub: true } });
+  [['.fl1', -160, 50], ['.fl2', -320, -60], ['.fl3', -90, 30]].forEach(([s, y, r]) => gsap.to(s, { y, rotation: '+=' + r, ease: 'none', scrollTrigger: { trigger: '.manifesto', start: 'top bottom', end: 'bottom top', scrub: true } }));
+  gsap.fromTo('.manifesto', { backgroundColor: '#0e0b0a' }, { backgroundColor: '#13261b', ease: 'none', scrollTrigger: { trigger: '.manifesto', start: 'center 70%', end: 'bottom top', scrub: true } });
+  gsap.fromTo('.tenp img', { rotation: -40 }, { rotation: 20, ease: 'none', scrollTrigger: { trigger: '.give', start: 'top bottom', end: 'bottom top', scrub: true } });
   gsap.fromTo('.tenp', { scale: .7, opacity: 0 }, { scale: 1, opacity: 1, ease: 'none', scrollTrigger: { trigger: '.give', start: 'top 85%', end: 'top 35%', scrub: true } });
   gsap.fromTo('.foot-word', { xPercent: 10 }, { xPercent: 0, ease: 'none', scrollTrigger: { trigger: '.foot', start: 'top bottom', end: 'bottom bottom', scrub: true } });
 

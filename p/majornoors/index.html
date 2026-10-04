@@ -18,10 +18,11 @@
 <link rel="icon" href="assets/logo.webp">
 <link rel="preload" href="assets/f/bigsh.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/bottle.webp?v=3" as="image">
-<link rel="stylesheet" href="assets/site.css?v=5">
+<link rel="stylesheet" href="assets/site.css?v=7">
 <!-- Photo credits (Unsplash licence): green chilli by Hari Krishnan (f1BMuugVyyM); green chillies by Vipul Borade (FvvgvCO-0gI); mint by SIMON LEE (bHWRSq8fUUE); garlic by Tijana Drndarski (2yNBQFwZCA8). All product, family and food photography: majornoors.com -->
 </head>
 <body>
+<div class="intro" aria-hidden="true"><div class="intro-w"><span>MAJOR</span><span>NOOR'S</span></div><p>Campaigning epicurian delights</p></div>
 <header class="nav" id="nav">
   <a class="brand" href="#top" aria-label="Major Noor's home"><img src="assets/logo.webp" alt="Major Noor's logo" width="300" height="363"></a>
   <nav class="links"><a href="#heat">The sauce</a><a href="#burma">Our story</a><a href="#eat">Eat it with</a><a href="#shop">Shop</a></nav>
@@ -34,7 +35,9 @@
   <div class="hero-stage">
     <div class="hero-word w1" aria-hidden="true">MAJOR</div>
     <div class="hero-word w2" aria-hidden="true">NOOR'S</div>
+    <div class="floor" aria-hidden="true"></div>
     <canvas id="gl" aria-hidden="true"></canvas>
+    <div class="hero-word w3" aria-hidden="true">NOOR'S</div>
     <img class="hero-fallback" src="assets/bottle.webp?v=3" alt="A bottle of Major Noor's Chilli and Mint Sauce" width="700" height="1700">
     <div class="hero-top">
       <span>Chilli &amp; Mint Sauce</span><span>Staggeringly delicious</span>
@@ -49,6 +52,9 @@
 
 <!-- 2 MANIFESTO -->
 <section class="manifesto" aria-label="About the sauce">
+  <img class="fl fl1" src="assets/chilli-cut.webp?v=3" alt="" loading="lazy" width="900" height="341">
+  <img class="fl fl2" src="assets/chilli-cut.webp?v=3" alt="" loading="lazy" width="900" height="341">
+  <img class="fl fl3" src="assets/chilli-cut.webp?v=3" alt="" loading="lazy" width="900" height="341">
   <p class="kicker">Campaigning epicurian delights</p>
   <p class="big-say" data-split>Firecracker chilli, blended with a <em>surprise attack</em> of cleansing fresh mint.</p>
   <img class="medals" src="assets/medals.webp" alt="Major Noor's gold medals emblem" width="354" height="161" loading="lazy">
@@ -139,18 +145,18 @@
   <div class="shelf">
     <a class="item" href="https://majornoors.com/product/chilli-mint-sauce/">
       <div class="item-img"><img src="assets/bottle.webp?v=3" alt="Single bottle of Chilli and Mint Sauce" loading="lazy" width="700" height="1700"></div>
-      <div class="item-t"><h3>Chilli &amp; Mint Sauce</h3><p>Single bottle</p><span class="price">From £4.99</span></div>
+      <div class="item-t"><h3>Chilli &amp; Mint Sauce</h3><p>Single bottle</p><span class="price">£5.99</span></div>
       <span class="item-go">Buy &rarr;</span>
     </a>
     <a class="item feat" href="https://majornoors.com/product/twin-sauce-pack/">
       <span class="tag">Most picked</span>
       <div class="item-img twin"><img src="assets/bottle.webp?v=3" alt="" loading="lazy" width="700" height="1700"><img src="assets/bottle.webp?v=3" alt="Twin pack of Chilli and Mint Sauce" loading="lazy" width="700" height="1700"></div>
-      <div class="item-t"><h3>Twin Pack</h3><p>Two bottles</p><span class="price">£8.99</span></div>
+      <div class="item-t"><h3>Twin Pack</h3><p>Two bottles</p><span class="price">£10.99</span></div>
       <span class="item-go">Buy &rarr;</span>
     </a>
     <a class="item" href="https://majornoors.com/our-sauces/">
-      <div class="item-img multi"><img src="assets/bottle.webp?v=3" alt="" loading="lazy" width="700" height="1700"><img src="assets/bottle.webp?v=3" alt="" loading="lazy" width="700" height="1700"><img src="assets/bottle.webp?v=3" alt="Eight bottle multipack" loading="lazy" width="700" height="1700"></div>
-      <div class="item-t"><h3>MultiPack</h3><p>Eight bottles</p><span class="price">£29.99</span></div>
+      <div class="item-img multi"><img src="assets/bottle.webp?v=3" alt="" loading="lazy" width="700" height="1700"><img src="assets/bottle.webp?v=3" alt="" loading="lazy" width="700" height="1700"><img src="assets/bottle.webp?v=3" alt="The Major Noor's range" loading="lazy" width="700" height="1700"></div>
+      <div class="item-t"><h3>The Range</h3><p>Every Major Noor's sauce</p><span class="price">Shop all</span></div>
       <span class="item-go">Buy &rarr;</span>
     </a>
   </div>
@@ -160,10 +166,10 @@
 <!-- 9 RBVE -->
 <section class="give" aria-label="Supporting veterans">
   <div class="give-in">
-    <div class="tenp" aria-hidden="true">10<small>p</small></div>
+    <div class="tenp" aria-hidden="true"><img src="assets/medals.webp" alt="" loading="lazy" width="354" height="161"><b>10</b><small>p</small></div>
     <div>
       <p class="kicker">Supporting veterans with every bottle</p>
-      <h2>From every bottle sold, to those who served.</h2>
+      <h2>From every bottle sold, <em>to those who served.</em></h2>
       <p>Proudly supporting the Royal British Veterans Enterprise. 10p from every bottle sold is donated to support veteran-led businesses.</p>
     </div>
     <img class="rbve" src="assets/rbve.webp" alt="Royal British Veterans Enterprise logo" loading="lazy" width="500" height="505">
@@ -192,12 +198,12 @@
   <p class="credit">Site concept by <a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">The Tender Desk</a></p>
 </footer>
 
-<a class="sticky-buy" href="https://majornoors.com/product/chilli-mint-sauce/"><span>Chilli &amp; Mint Sauce <b>from £4.99</b></span><i>Buy</i></a>
+<a class="sticky-buy" href="https://majornoors.com/product/chilli-mint-sauce/"><span>Chilli &amp; Mint Sauce <b>£5.99</b></span><i>Buy</i></a>
 
 <script src="assets/js/gsap.min.js"></script>
 <script src="assets/js/ScrollTrigger.min.js"></script>
 <script src="assets/js/lenis.min.js"></script>
-<script src="assets/hero.js?v=7"></script>
-<script src="assets/main.js?v=2"></script>
+<script src="assets/hero.js?v=8"></script>
+<script src="assets/main.js?v=4"></script>
 </body>
 </html>
