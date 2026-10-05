@@ -1,8 +1,9 @@
 /* Woody's ordering: shared store, menu, item builder, basket, checkout. Vanilla JS, no build step. */
 (function(){
 "use strict";
-const B = window.BRANCHES, M = window.MENU || [];
-const KEY = "woodys_basket_v1";
+const B = window.BRANCHES, MS = window.MENUS || {};
+const Mn = () => MS[S.branch] || [];
+const KEY = "woodys_basket_v2";
 const $ = (s,r=document)=>r.querySelector(s), $$ = (s,r=document)=>[...r.querySelectorAll(s)];
 const gbp = n => "£" + (Math.round(n*100)/100).toFixed(2);
 const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -14,7 +15,8 @@ function save(){ localStorage.setItem(KEY, JSON.stringify(S)); render(); }
 const lineTotal = l => (l.base + l.sel.reduce((a,s)=>a+s[2],0)) * l.qty;
 const subTotal = () => S.items.reduce((a,l)=>a+lineTotal(l),0);
 const count = () => S.items.reduce((a,l)=>a+l.qty,0);
-function deliveryFee(){ const d=B[S.branch].delivery; return S.mode==="delivery" && typeof d.fee==="number" ? d.fee : 0; }
+function zoneFor(pc){ const z=B[S.branch].delivery.zones; if(!z||!pc) return null; const c=pc.toUpperCase(); let best=null,bl=0; z.forEach(r=>r.m.forEach(m=>{ const out=c.split(" ")[0]; const hit = m.includes(" ") ? c.startsWith(m) : out===m; if(hit && m.length>bl){ best=r; bl=m.length; } })); return best; }
+function deliveryFee(){ if(S.mode!=="delivery") return 0; const z=zoneFor(S.postcode); if(!z) return 0; const sub=subTotal(); if(z.freeOver && sub>=z.freeOver) return 0; if(z.over12 && sub>=12) return z.over12; return z.fee; }
 
 /* ---------- opening hours ---------- */
 function openState(key, now=new Date()){
@@ -37,15 +39,16 @@ const PC_RE=/^([A-Z]{1,2}[0-9][0-9A-Z]?)\s*([0-9][A-Z]{2})$/;
 function checkPostcode(raw){
   const pc=(raw||"").toUpperCase().replace(/\s+/g," ").trim(); const m=pc.replace(/\s/g,"").match(/^([A-Z]{1,2}[0-9][0-9A-Z]?)([0-9][A-Z]{2})$/);
   if(!m) return {ok:false,msg:"Enter a full UK postcode, e.g. GU11 1JZ"};
-  const out=m[1], zones=B[S.branch].delivery.outward, nice=m[1]+" "+m[2];
-  if(!zones) return {ok:false,pc:nice,msg:`Online delivery areas for ${B[S.branch].name} are being confirmed. Choose collection, or call ${B[S.branch].tel}.`};
-  if(zones.includes(out)) return {ok:true,pc:nice,msg:`Good news, ${B[S.branch].name} delivers to ${nice}.`};
+  const out=m[1], nice=m[1]+" "+m[2], zones=B[S.branch].delivery.zones;
+  if(!zones) return {ok:false,pc:nice,msg:`Call ${B[S.branch].name} on ${B[S.branch].tel} to check delivery to ${nice}, or choose collection.`};
+  const z=zoneFor(nice);
+  if(z) return {ok:true,pc:nice,msg:`${B[S.branch].name} delivers to ${nice}. ${z.freeOver?`£${z.fee} delivery, free over £${z.freeOver}.`:z.min?`£${z.fee} delivery, £${z.min} minimum order.`:`£${z.fee} delivery, £${z.over12} over £12.`}`};
   return {ok:false,pc:nice,msg:`Sorry, ${B[S.branch].name} does not deliver to ${out}. Try collection or another branch.`};
 }
 
 /* ---------- item builder modal ---------- */
 let cur=null;
-function findItem(id){ for(const c of M) for(const i of c.items) if(i.id===id) return i; }
+function findItem(id){ for(const c of Mn()) for(const i of c.items) if(i.id===id) return i; }
 function openItem(id){
   const it=findItem(id); if(!it) return; cur={it,qty:1};
   const m=$("#itemModal"); if(!m) return;
@@ -100,11 +103,11 @@ function basketHTML(){
 function totalsHTML(){
   const d=B[S.branch].delivery, sub=subTotal();
   let rows=`<div class="tot"><span>Subtotal</span><span>${gbp(sub)}</span></div>`;
-  if(S.mode==="delivery") rows+=`<div class="tot"><span>Delivery</span><span>${typeof d.fee==="number"?gbp(d.fee):"Confirmed by shop"}</span></div>`;
+  if(S.mode==="delivery") rows+=`<div class="tot"><span>Delivery</span><span>${deliveryFee()?gbp(deliveryFee()):"Free"}</span></div>`;
   rows+=`<div class="tot g"><span>Total</span><span>${gbp(sub+deliveryFee())}</span></div>`;
   return rows;
 }
-function canCheckout(){ if(!S.items.length) return "Add something to your basket first."; if(S.mode==="delivery" && !S.pcOk) return "Check your postcode for delivery, or switch to collection."; const d=B[S.branch].delivery; if(S.mode==="delivery" && typeof d.min==="number" && subTotal()<d.min) return `Minimum delivery order is ${gbp(d.min)}.`; return ""; }
+function canCheckout(){ if(!S.items.length) return "Add something to your basket first."; if(S.mode==="delivery" && !S.pcOk) return "Check your postcode for delivery, or switch to collection."; const z=zoneFor(S.postcode); if(S.mode==="delivery" && z && z.min && subTotal()<z.min) return `Minimum delivery order to ${S.postcode.split(" ")[0]} is ${gbp(z.min)}.`; return ""; }
 function render(){
   const n=count(), sub=subTotal();
   $$(".cnt").forEach(e=>e.textContent=n);
@@ -131,19 +134,27 @@ document.addEventListener("click",e=>{
 document.addEventListener("keydown",e=>{ if(e.key==="Escape") $$(".sheet.on").forEach(hide); });
 
 /* ---------- menu page ---------- */
+function menuHTML(){
+  const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,"-");
+  const M=Mn();
+  $("#cats").innerHTML=M.map(c=>`<a href="#c-${slug(c.c)}">${esc(c.c)}</a>`).join("");
+  $("#menu").innerHTML=M.map(c=>`<section class="cat" id="c-${slug(c.c)}" data-cat><div class="cat-h"><h3>${esc(c.c)}</h3><span>${c.items.length}</span></div>${c.note?`<p class="note">${esc(c.note)}</p>`:""}<div class="items">`+
+    c.items.map(i=>`<button class="item${i.img?" has-img":""}" data-id="${i.id}" data-s="${esc((i.n+" "+i.d+" "+c.c).toLowerCase())}">${i.img?`<span class="thumb ${i.k}"><img loading="lazy" decoding="async" src="assets/img/dish/${i.img}${i.k==="ph"?"-ph":""}.webp" alt="${esc(i.n)}" width="160" height="120"></span>`:""}<span class="t"><b>${esc(i.n)}</b>${i.d?`<span class="d">${esc(i.d)}</span>`:""}<span class="p">${i.g.some(g=>g.title==="Choose Size")?"From ":""}${gbp(i.p)}${i.g.length?`<span class="opt">Customise</span>`:""}</span></span><span class="add" aria-label="Add ${esc(i.n)}">+</span></button>`).join("")+`</div></section>`).join("");
+  const links=$$("#cats a");
+  const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ const id=en.target.id; links.forEach(a=>{ const on=a.getAttribute("href")==="#"+id; a.classList.toggle("on",on); if(on){ const n=$("#cats"); n.scrollTo({left:a.offsetLeft-n.clientWidth/2+a.clientWidth/2,behavior:"smooth"}); } }); } }),{rootMargin:"-160px 0px -65% 0px"});
+  $$("[data-cat]").forEach(s=>io.observe(s));
+  const q=$("#q"); if(q.value) q.dispatchEvent(new Event("input"));
+  document.dispatchEvent(new CustomEvent("menu:built"));
+}
 function buildMenu(){
   const host=$("#menu"); if(!host) return;
-  const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,"-");
-  $("#cats").innerHTML=M.map(c=>`<a href="#c-${slug(c.c)}">${esc(c.c)}</a>`).join("");
-  host.innerHTML=M.map(c=>`<section class="cat" id="c-${slug(c.c)}" data-cat><h3>${esc(c.c)}</h3>${c.note?`<p class="note">${esc(c.note)}</p>`:""}<div class="items">`+
-    c.items.map(i=>`<button class="item" data-id="${i.id}" data-s="${esc((i.n+" "+i.d+" "+c.c).toLowerCase())}"><span class="t"><b>${esc(i.n)}</b>${i.d?`<span class="d">${esc(i.d)}</span>`:""}<span class="p">${i.g.some(g=>g.title==="Choose Size")?"From ":""}${gbp(i.p)}${i.g.length?`<span class="opt">Customise</span>`:""}</span></span><span class="add" aria-label="Add ${esc(i.n)}">+</span></button>`).join("")+`</div></section>`).join("");
-  const links=$$("#cats a");
-  const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ const id=en.target.id; links.forEach(a=>{ const on=a.getAttribute("href")==="#"+id; a.classList.toggle("on",on); if(on) a.scrollIntoView({block:"nearest",inline:"center"}); }); } }),{rootMargin:"-160px 0px -65% 0px"});
-  $$("[data-cat]").forEach(s=>io.observe(s));
+  menuHTML();
   $("#q").addEventListener("input",e=>{ const v=e.target.value.toLowerCase().trim(); $$(".item").forEach(b=>b.hidden=v&&!b.dataset.s.includes(v)); $$("[data-cat]").forEach(s=>s.hidden=!$$(".item",s).some(b=>!b.hidden)); });
-  $("#branchSel").addEventListener("change",e=>{ S.branch=e.target.value; S.pcOk=false; if(S.postcode){ const r=checkPostcode(S.postcode); S.pcOk=r.ok; pcMsg(r);} save(); });
-  $$(".seg button").forEach(b=>b.addEventListener("click",()=>{ S.mode=b.dataset.mode; save(); if(S.mode==="delivery") $("#pc").focus(); }));
   const pcMsg=r=>{ const el=$("#pcMsg"); el.textContent=r.msg; el.className="pcmsg "+(r.ok?"ok":"bad"); };
+  const setBranch=v=>{ if(v===S.branch) return; if(S.items.length){ S.items=[]; toast("Basket cleared for the "+B[v].name+" menu"); } S.branch=v; S.pcOk=false; if(S.postcode){ const r=checkPostcode(S.postcode); S.pcOk=r.ok; pcMsg(r);} menuHTML(); save(); };
+  window.WOODY.setBranch=setBranch;
+  $("#branchSel").addEventListener("change",e=>setBranch(e.target.value));
+  $$(".seg button").forEach(b=>b.addEventListener("click",()=>{ S.mode=b.dataset.mode; save(); if(S.mode==="delivery") $("#pc").focus({preventScroll:true}); }));
   $("#pc").value=S.postcode||"";
   if(S.postcode){ pcMsg(checkPostcode(S.postcode)); }
   $("#pcForm").addEventListener("submit",e=>{ e.preventDefault(); const r=checkPostcode($("#pc").value); S.pcOk=r.ok; if(r.pc) { S.postcode=r.pc; $("#pc").value=r.pc; } pcMsg(r); save(); });
@@ -182,18 +193,19 @@ function buildCheckout(){
     // PAYMENT STUB: in production POST `order` to PAYMENT.endpoint, which validates prices server-side,
     // creates a Stripe Checkout Session and returns its URL; then location.href = session.url.
     sessionStorage.setItem("woodys_pending",JSON.stringify(order));
-    $("#stubTotal").textContent=gbp(order.total);
+    $("#stubTotal").textContent=gbp(order.total); $("#stubTotal2").textContent=gbp(order.total);
     show($("#payStub"));
   });
-  $("#stubPay").addEventListener("click",()=>{ const o=JSON.parse(sessionStorage.getItem("woodys_pending")); sessionStorage.setItem("woodys_last",JSON.stringify(o)); S.items=[]; save(); hide($("#payStub")); confirmScreen(o); });
+  const payNow=()=>{ const o=JSON.parse(sessionStorage.getItem("woodys_pending")); sessionStorage.setItem("woodys_last",JSON.stringify(o)); S.items=[]; save(); hide($("#payStub")); confirmScreen(o); };
+  $("#stubPay").addEventListener("click",payNow); $$("[data-pay]").forEach(b=>b.addEventListener("click",payNow));
   const last=sessionStorage.getItem("woodys_last"); if(location.hash==="#done" && last) confirmScreen(JSON.parse(last));
 }
 function confirmScreen(o){
   const br=B[o.branch]; history.replaceState(null,"","#done"); window.scrollTo(0,0);
-  $("#coMain").innerHTML=`<div class="done"><div class="tick">✓</div><p class="kick">Order received (test mode)</p><h1>Thanks, ${esc(o.customer.name.split(" ")[0])}</h1><div class="ref">Order ${o.ref}</div>
+  $("#coMain").innerHTML=`<div class="done"><div class="tick">✓</div><p class="kick">Order received</p><h1>Thanks, ${esc(o.customer.name.split(" ")[0])}</h1><div class="ref">Order ${o.ref}</div>
   <p>${o.mode==="delivery"?`Delivery to ${esc(o.customer.addr1)}, ${esc(o.postcode)}`:`Collect from Woody's ${br.name}, ${br.street}`}: <b>${esc(o.slotLabel||"")}</b>.</p>
   <div class="box" style="text-align:left;margin-top:22px"><h3>Your order</h3><ul class="bl">${o.items.map(l=>`<li><span class="nm">${l.qty} × ${esc(l.n)}</span><span>${gbp(lineTotal(l))}</span>${l.sel.length||l.note?`<span class="ex">${esc(l.sel.map(s=>s[1]).join(", "))}${l.note?" · Note: "+esc(l.note):""}</span>`:""}</li>`).join("")}</ul><div class="tot g"><span>Total</span><span>${gbp(o.total)}</span></div></div>
-  <p class="mini">Questions about your order? Call ${br.name} on <a href="tel:${br.tel.replace(/\s/g,"")}">${br.tel}</a>. This preview takes no payment and sends nothing to the shop.</p>
+  <p class="mini">Questions about your order? Call ${br.name} on <a href="tel:${br.tel.replace(/\s/g,"")}">${br.tel}</a>. Keep this reference handy when you collect or call.</p>
   <p style="margin-top:20px"><a class="btn btn-y" href="index.html#order">Back to the menu</a></p></div>`;
   $("#coSide") && ($("#coSide").hidden=true);
 }

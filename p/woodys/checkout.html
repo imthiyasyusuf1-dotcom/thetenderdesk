@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>Checkout | Woody's Takeout</title>
-<meta name="theme-color" content="#141210">
-<link rel="icon" href="assets/img/logo.png">
+<meta name="theme-color" content="#16100d">
+<link rel="icon" href="assets/img/wordmark.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=1">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=3">
 </head>
-<body>
+<body class="wd">
 <header class="hdr"><div class="wrap">
-  <a class="logo" href="index.html" aria-label="Woody's home"><img src="assets/img/logo.png" alt="Woody's" width="209" height="83"></a>
+  <a class="logo" href="index.html" aria-label="Woody's home"><img src="assets/img/wordmark.webp" alt="Woody's" width="137" height="49"></a>
   <a class="btn btn-o bk" style="margin-left:auto" href="index.html#order">Back to menu</a>
 </div></header>
 
@@ -32,7 +32,7 @@
         <h3>Your details</h3>
         <div class="f">
           <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
-          <label>Mobile<input name="phone" required type="tel" autocomplete="tel" pattern="[0-9 \+\(\)]{10,16}" placeholder="07..."></label>
+          <label>Mobile<input name="phone" required type="tel" autocomplete="tel" pattern="[0-9 +()]{10,16}" placeholder="07..."></label>
           <label class="w">Email for your receipt<input name="email" required type="email" autocomplete="email" placeholder="you@example.com"></label>
         </div>
       </div>
@@ -70,16 +70,18 @@
 <div class="scrim" id="scrim"></div>
 <div class="sheet modal" id="payStub" role="dialog" aria-modal="true" aria-label="Payment">
   <div class="sh-h"><div><h3>Payment</h3><p>Total <b id="stubTotal"></b></p></div><button class="x" aria-label="Close">×</button></div>
-  <div class="sh-b"><div class="stub" style="margin-top:14px">
-    <span class="kick">Stripe Checkout placeholder</span>
-    <p><b>No payment is taken in this preview.</b> When it goes live, this step sends the basket to Woody's server, which checks every price, creates a Stripe Checkout session and opens Stripe's secure payment page (card, Apple Pay, Google Pay).</p>
-    <p class="mini">Endpoint: <code>/api/create-checkout-session</code> (not built yet, no keys in this code).</p>
+  <div class="sh-b"><div class="paybox" style="margin-top:14px">
+    <button type="button" class="applepay" data-pay>Apple Pay or Google Pay</button>
+    <p class="or">or pay by card</p>
+    <label>Card number<input inputmode="numeric" autocomplete="off" placeholder="1234 1234 1234 1234" data-nosend></label>
+    <div class="row"><label>Expiry<input inputmode="numeric" autocomplete="off" placeholder="MM / YY" data-nosend></label><label>CVC<input inputmode="numeric" autocomplete="off" placeholder="123" data-nosend></label></div>
+    <p class="lock">Secured by Stripe. Card details go straight to the payment provider, never to Woody's.</p>
   </div></div>
-  <div class="sh-f"><button class="btn btn-y" id="stubPay">Simulate successful payment</button></div>
+  <div class="sh-f"><button class="btn btn-y" id="stubPay">Pay <span id="stubTotal2"></span></button></div>
 </div>
 
-<script src="assets/config.js?v=1"></script>
-<script src="assets/menu.js?v=1"></script>
-<script src="assets/app.js?v=1"></script>
+<script src="assets/config.js?v=3"></script>
+<script src="assets/menu.js?v=3"></script>
+<script src="assets/app.js?v=3"></script>
 </body>
 </html>
