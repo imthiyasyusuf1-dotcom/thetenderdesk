@@ -8,3 +8,4 @@ document.querySelectorAll('form.f').forEach(function(f){f.addEventListener('subm
 var s=f.getAttribute('data-subject')||'New enquiry';location.href='mailto:hello@thetenderdesk.co.uk?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent(lines.join('\n'));
 var n=f.querySelector('.sent');if(n)n.hidden=false})});
 })();
+;(function(){var w=document.querySelector('.wa'),t=document.querySelector('.tick');if(!w||!t)return;function u(){var r=t.getBoundingClientRect();w.classList.toggle('hid',r.top<innerHeight&&r.bottom>innerHeight-90)}addEventListener('scroll',u,{passive:true});u()})();
