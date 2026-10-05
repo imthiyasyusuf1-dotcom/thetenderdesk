@@ -186,6 +186,7 @@ function buildCheckout(){
   try{ const saved=JSON.parse(localStorage.getItem("woodys_customer")||"{}"); ["name","phone","email","addr1","addr2","town"].forEach(k=>{ if(saved[k] && f.elements[k]) f.elements[k].value=saved[k]; }); }catch(e){}
   f.addEventListener("submit",e=>{
     e.preventDefault(); const why=canCheckout(); if(why){ $("#coErr").textContent=why; return; }
+    const ph=(f.elements.phone.value||"").replace(/[^0-9+]/g,""); if(ph.length<10||ph.length>14){ $("#coErr").textContent="Please enter a valid mobile number so the shop can reach you."; f.elements.phone.focus(); return; }
     if(!f.reportValidity()) return;
     const data=Object.fromEntries(new FormData(f).entries());
     localStorage.setItem("woodys_customer",JSON.stringify({name:data.name,phone:data.phone,email:data.email,addr1:data.addr1,addr2:data.addr2,town:data.town}));
@@ -204,7 +205,7 @@ function confirmScreen(o){
   const br=B[o.branch]; history.replaceState(null,"","#done"); window.scrollTo(0,0);
   $("#coMain").innerHTML=`<div class="done"><div class="tick">✓</div><p class="kick">Order received</p><h1>Thanks, ${esc(o.customer.name.split(" ")[0])}</h1><div class="ref">Order ${o.ref}</div>
   <p>${o.mode==="delivery"?`Delivery to ${esc(o.customer.addr1)}, ${esc(o.postcode)}`:`Collect from Woody's ${br.name}, ${br.street}`}: <b>${esc(o.slotLabel||"")}</b>.</p>
-  <div class="box" style="text-align:left;margin-top:22px"><h3>Your order</h3><ul class="bl">${o.items.map(l=>`<li><span class="nm">${l.qty} × ${esc(l.n)}</span><span>${gbp(lineTotal(l))}</span>${l.sel.length||l.note?`<span class="ex">${esc(l.sel.map(s=>s[1]).join(", "))}${l.note?" · Note: "+esc(l.note):""}</span>`:""}</li>`).join("")}</ul><div class="tot g"><span>Total</span><span>${gbp(o.total)}</span></div></div>
+  <div class="box" style="text-align:left;margin-top:22px"><h3>Your order</h3><ul class="bl">${o.items.map(l=>`<li><span class="nm">${l.qty} × ${esc(l.n)}</span><span>${gbp(lineTotal(l))}</span>${l.sel.length||l.note?`<span class="ex">${esc(l.sel.map(s=>s[1]).join(", "))}${l.note?" · Note: "+esc(l.note):""}</span>`:""}</li>`).join("")}</ul>${o.delivery?`<div class="tot"><span>Delivery</span><span>${gbp(o.delivery)}</span></div>`:""}<div class="tot g"><span>Total</span><span>${gbp(o.total)}</span></div></div>
   <p class="mini">Questions about your order? Call ${br.name} on <a href="tel:${br.tel.replace(/\s/g,"")}">${br.tel}</a>. Keep this reference handy when you collect or call.</p>
   <p style="margin-top:20px"><a class="btn btn-y" href="index.html#order">Back to the menu</a></p></div>`;
   $("#coSide") && ($("#coSide").hidden=true);
