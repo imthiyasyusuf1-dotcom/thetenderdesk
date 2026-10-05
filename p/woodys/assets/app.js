@@ -60,7 +60,7 @@ function openItem(id){
     return `<div class="grp" data-gi="${gi}"><div class="grp-h"><b>${esc(g.title)}</b><span class="tag ${req?"req":""}">${lab}</span></div>`+
       g.opts.map((o,oi)=>`<label class="ch"><input type="${single?"radio":"checkbox"}" name="g${gi}" value="${oi}"><span>${esc(o[0])}</span>${o[1]?`<em>+${gbp(o[1])}</em>`:""}</label>`).join("")+`</div>`;
   }).join("") + `<div class="grp"><div class="grp-h"><b>Anything we should know?</b><span class="tag">Optional</span></div><textarea class="note" maxlength="200" placeholder="e.g. no onion, extra crispy"></textarea></div>
-  <p class="allergy"><b>Allergies?</b> Please call ${esc(B[S.branch].name)} on <a href="tel:${B[S.branch].tel.replace(/\s/g,"")}">${B[S.branch].tel}</a> before you order. Full allergen information for every dish will be listed here before launch.</p>`;
+  <p class="allergy"><b>Allergies?</b> Please call ${esc(B[S.branch].name)} on <a href="tel:${B[S.branch].tel.replace(/\s/g,"")}">${B[S.branch].tel}</a> before you order. They can talk you through every ingredient.</p>`;
   body.scrollTop=0;
   $$("input",body).forEach(inp=>inp.addEventListener("change",e=>{
     const gi=+e.target.name.slice(1), g=it.g[gi];
