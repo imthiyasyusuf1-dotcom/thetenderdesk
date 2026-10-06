@@ -185,7 +185,7 @@ footer a{color:var(--cream)}
 .f label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700}
 .f label.w{grid-column:1/-1}
 .f input,.f select,.f textarea{min-height:48px;border-radius:12px;border:1px solid var(--line);background:var(--ink);padding:10px 14px;font-weight:500}
-.f input:invalid:not(:placeholder-shown){border-color:#ff8a73}
+.f input:user-invalid{border-color:#ff8a73}
 @media(max-width:560px){.f{grid-template-columns:1fr}}
 .stub{border:2px dashed var(--yel);border-radius:var(--r);padding:20px;background:rgba(255,210,31,.06)}
 .stub .kick{display:block;margin-bottom:8px}
