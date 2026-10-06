@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Help, allergens and contact | Woody's Takeout</title>
+<meta name="theme-color" content="#16100d">
+<link rel="icon" href="assets/img/wordmark.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=6">
+</head>
+<body class="wd">
+<header class="hdr"><div class="wrap">
+  <a class="logo" href="index.html" aria-label="Woody's home"><img src="assets/img/wordmark.webp" alt="Woody's" width="137" height="49"></a>
+  <a class="btn btn-o bk" style="margin-left:auto" href="index.html#order">Order now</a>
+</div></header>
+
+<main class="co"><div class="wrap narrow">
+  <p class="kick">Help</p>
+  <h2 style="margin:6px 0 18px">Good to know</h2>
+  <nav class="chips" style="margin-bottom:18px"><a class="chip" href="#offers">Offers</a><a class="chip" href="#faq">FAQs</a><a class="chip" href="#allergens">Allergens</a><a class="chip" href="#contact">Contact</a><a class="chip" href="#gallery">Gallery</a></nav>
+
+  <section class="box" id="offers"><h3>Offers and notices</h3>
+    <ul class="plain" id="offerList"></ul>
+    <p class="mini">Offers are set by each branch and applied at checkout.</p>
+  </section>
+
+  <section class="box" id="faq"><h3>FAQs</h3>
+    <details><summary>How long will my order take?</summary><p>Collection is usually ready in 15 to 20 minutes. Delivery is usually 35 to 50 minutes, longer on Friday and Saturday nights. You can also pick a time later today at checkout.</p></details>
+    <details><summary>Where do you deliver?</summary><p id="faqDel"></p></details>
+    <details><summary>Is there a service charge?</summary><p>No. You pay the menu price, plus delivery if you choose it. Tips are optional and go to the team.</p></details>
+    <details><summary>How do I pay?</summary><p>Card, Apple Pay or Google Pay online, or cash when you collect or on delivery.</p></details>
+    <details><summary>Can I order ahead?</summary><p>Yes. Choose a time at checkout, even when the shop is closed, and it will be cooked for that time.</p></details>
+    <details><summary>Something wrong with my order?</summary><p>Call the branch straight away with your order reference and they will put it right.</p></details>
+    <details><summary>Do I need an account?</summary><p>No, you can check out as a guest. An account saves your details and lets you repeat past orders in one tap.</p></details>
+  </section>
+
+  <section class="box" id="allergens"><h3>Allergens</h3>
+    <p>Our food is cooked fresh in small kitchens that handle all 14 major allergens, including gluten, milk, egg, mustard, sesame, soya, celery and crustaceans (the prawn sauce). We cannot promise any dish is free from traces.</p>
+    <p style="margin-top:10px"><b>If you have an allergy or intolerance, please call your branch before you order.</b> They will talk you through every ingredient. You can also add a note to any item.</p>
+    <p class="mini">Halal status, oils and the full allergen matrix to be confirmed by Woody's before launch.</p>
+  </section>
+
+  <section class="box" id="contact"><h3>Contact</h3><div id="ctList" class="ct"></div></section>
+
+  <section id="gallery" style="margin-top:22px"><h3 class="h-m" style="margin-bottom:12px">Gallery</h3>
+    <div class="gal"><img src="assets/img/hero-m.webp" alt="Woody's food" loading="lazy" decoding="async"><img src="assets/img/plate-m.webp" alt="Woody's food" loading="lazy" decoding="async"><img src="assets/img/chicken-m.webp" alt="Woody's food" loading="lazy" decoding="async"><img src="assets/img/spread-farn-m.webp" alt="Woody's food" loading="lazy" decoding="async"><img src="assets/img/dish/extravaganza.webp" alt="Woody's food" loading="lazy" decoding="async"><img src="assets/img/dish/rack-ribs.webp" alt="Woody's food" loading="lazy" decoding="async"><img src="assets/img/dish/disney-burger.webp" alt="Woody's food" loading="lazy" decoding="async"><img src="assets/img/dish/oreo-milkshake.webp" alt="Woody's food" loading="lazy" decoding="async"></div>
+  </section>
+</div></main>
+<footer class="ft"><div class="wrap">
+  <img class="ft-wm" src="assets/img/wordmark.webp" alt="Woody's" width="274" height="99" loading="lazy">
+  <p class="ft-line">Burgers, chicken and ribs. Aldershot, Farnborough and Yiewsley.</p>
+  <div class="ft-row">
+    <p class="ft-links"><a href="index.html#order">Menu</a><a href="info.html">Help and FAQs</a><a href="info.html#allergens">Allergens</a><a href="info.html#contact">Contact</a><a href="account.html">My account</a></p>
+    <p class="credit">Site concept by <a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">The Tender Desk</a></p>
+  </div>
+</div></footer>
+<div class="scrim" id="scrim"></div>
+<script src="assets/config.js?v=6"></script>
+<script src="assets/menu.js?v=6"></script>
+<script src="assets/app.js?v=6"></script>
+<script>
+(function(){
+  var B=window.BRANCHES,O=window.OFFERS||{},g=window.WOODY.gbp;
+  var off=[];
+  if(O.reward) off.push("<b>"+O.reward.label+".</b> Pick it at checkout.");
+  Object.keys(O.promos||{}).forEach(function(k){off.push("<b>"+O.promos[k].label+"</b> with code <code>"+k+"</code>.")});
+  off.push("<b>No service charge</b> on any order.");
+  off.push("<b>Christmas:</b> Aldershot and Farnborough 24 Dec 11am to 9pm, closed 25 Dec. Yiewsley 24 Dec 5pm to 9pm, closed 25 and 26 Dec.");
+  document.getElementById("offerList").innerHTML=off.map(function(x){return "<li>"+x+"</li>"}).join("");
+  document.getElementById("faqDel").innerHTML=Object.keys(B).map(function(k){return "<b>"+B[k].name+":</b> "+B[k].delivery.areaText}).join("<br>")+"<br>Pop your postcode in on the menu page to see the fee.";
+  document.getElementById("ctList").innerHTML=Object.keys(B).map(function(k){var b=B[k];return '<div><b>'+b.name+'</b><p>'+b.street+', '+b.town+' '+b.postcode+'</p><p><a href="tel:'+b.tel.replace(/\s/g,"")+'">'+b.tel+'</a> · <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent("Woody's Takeout "+b.street+" "+b.postcode)+'">Directions</a></p></div>'}).join("");
+})();
+</script>
+</body>
+</html>

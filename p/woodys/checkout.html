@@ -9,7 +9,7 @@
 <link rel="icon" href="assets/img/wordmark.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=5">
+<link rel="stylesheet" href="assets/style.css?v=6">
 </head>
 <body class="wd">
 <header class="hdr"><div class="wrap">
@@ -19,7 +19,8 @@
 
 <main class="co"><div class="wrap" id="coMain">
   <p class="kick">Checkout</p>
-  <h2 style="margin:6px 0 18px">Nearly there</h2>
+  <h2 style="margin:6px 0 10px">Nearly there</h2>
+  <p class="testbar">Preview in test mode. No order is sent and no card is charged.</p>
   <div class="co-grid">
     <form id="coForm" novalidate>
       <div class="box">
@@ -30,6 +31,7 @@
       </div>
       <div class="box">
         <h3>Your details</h3>
+        <p class="mini" style="margin:0 0 12px" id="acctLine"><a href="account.html?next=checkout">Sign in</a> to fill this in for you, or carry on as a guest.</p>
         <div class="f">
           <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
           <label>Mobile<input name="phone" required type="tel" autocomplete="tel" inputmode="tel" minlength="10" maxlength="16" placeholder="07..."></label>
@@ -49,13 +51,16 @@
         <h3>When</h3>
         <div class="f">
           <label class="w">Time<select name="slot" id="slot" required></select></label>
+          <fieldset class="w rad"><legend>Updates about this order by</legend><label><input type="radio" name="notify" value="text" checked> Text</label><label><input type="radio" name="notify" value="email"> Email</label></fieldset>
           <label class="w">Order notes<textarea name="notes" maxlength="300" placeholder="Anything for the kitchen or driver, e.g. ring the bell, no sauce on the side"></textarea></label>
         </div>
       </div>
+      <div id="coExtras"></div>
       <div class="box">
         <h3>Payment</h3>
-        <p>Pay securely by card, Apple Pay or Google Pay on the next screen.</p>
-        <button class="btn btn-y" style="width:100%;margin-top:14px" type="submit">Continue to payment</button>
+        <fieldset class="rad pay"><label><input type="radio" name="pay" value="card" checked> <span><b>Card, Apple Pay or Google Pay</b><small>Secure hosted payment on the next screen</small></span></label><label id="payCash"><input type="radio" name="pay" value="cash"> <span><b>Cash</b><small>Pay when you collect or on delivery</small></span></label></fieldset>
+        <label class="optin"><input type="checkbox" name="marketing" value="1"> <span>Send me Woody's offers now and then. Unsubscribe any time.</span></label>
+        <button class="btn btn-y" style="width:100%;margin-top:14px" type="submit">Place order</button>
         <p class="err" id="coErr"></p>
         <p class="mini">By ordering you confirm you have told the branch about any allergies.</p>
       </div>
@@ -69,19 +74,20 @@
 
 <div class="scrim" id="scrim"></div>
 <div class="sheet modal" id="payStub" role="dialog" aria-modal="true" aria-label="Payment">
+  <p class="testbar" style="margin:0;border-radius:0">Test mode: nothing will be charged</p>
   <div class="sh-h"><div><h3>Payment</h3><p>Total <b id="stubTotal"></b></p></div><button class="x" aria-label="Close">×</button></div>
   <div class="sh-b"><div class="paybox" style="margin-top:14px">
     <button type="button" class="applepay" data-pay>Apple Pay or Google Pay</button>
     <p class="or">or pay by card</p>
     <label>Card number<input inputmode="numeric" autocomplete="off" placeholder="1234 1234 1234 1234" data-nosend></label>
     <div class="row"><label>Expiry<input inputmode="numeric" autocomplete="off" placeholder="MM / YY" data-nosend></label><label>CVC<input inputmode="numeric" autocomplete="off" placeholder="123" data-nosend></label></div>
-    <p class="lock">Secured by Stripe. Card details go straight to the payment provider, never to Woody's.</p>
+    <p class="lock">When live this is Stripe Checkout: card details go straight to Stripe, never to Woody's. In this preview, just press Pay.</p>
   </div></div>
   <div class="sh-f"><button class="btn btn-y" id="stubPay">Pay <span id="stubTotal2"></span></button></div>
 </div>
 
-<script src="assets/config.js?v=5"></script>
-<script src="assets/menu.js?v=5"></script>
-<script src="assets/app.js?v=5"></script>
+<script src="assets/config.js?v=6"></script>
+<script src="assets/menu.js?v=6"></script>
+<script src="assets/app.js?v=6"></script>
 </body>
 </html>

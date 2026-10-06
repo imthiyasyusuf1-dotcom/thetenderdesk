@@ -378,3 +378,31 @@ em{font-family:var(--serif);font-style:italic;font-weight:400;text-transform:non
 .paybox input{min-height:48px;border-radius:10px;border:1px solid rgba(60,30,10,.25);background:#fff;padding:0 12px;color:var(--ink)}
 .paybox .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .paybox .lock{font-size:12px;color:#7a6656;margin-top:8px}
+
+/* v6: checkout extras, account, info */
+.testbar{background:#ffd21f;color:#141210;font-weight:800;font-size:13px;padding:8px 12px;border-radius:10px;margin:0 0 16px}
+.nosc{font-size:12px;color:var(--mut);margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:40px;padding:0 14px;border-radius:999px;border:0;background:rgba(255,255,255,.08);color:var(--cream);font-weight:700;cursor:pointer;display:inline-flex;align-items:center;text-decoration:none;font-size:14px}
+.chip.on{background:var(--yel);color:#141210}
+.rad{border:0;display:flex;flex-wrap:wrap;gap:8px}.rad legend{font-size:13px;color:var(--mut);margin-bottom:6px;width:100%}
+.rad label{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.06);cursor:pointer}
+.rad.pay{flex-direction:column}.rad.pay label{align-items:flex-start}.rad.pay small{display:block;color:var(--mut);font-size:13px}
+.rad input,.optin input{accent-color:var(--yel);width:18px;height:18px;flex:none;margin-top:2px}
+.optin{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:14px;cursor:pointer}
+.track{list-style:none;display:flex;gap:6px;margin:18px auto 10px;max-width:420px;counter-reset:t}
+.track li{flex:1;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);padding-top:12px;border-top:4px solid rgba(255,255,255,.12);transition:border-color .4s,color .4s}
+.track li.on{border-color:var(--yel);color:var(--cream)}.track li.now{color:var(--yel)}
+.narrow{max-width:720px}
+.plain{list-style:none;display:grid;gap:10px}.plain li{padding-left:14px;border-left:3px solid var(--yel)}
+.plain code{background:rgba(255,255,255,.1);padding:1px 6px;border-radius:6px}
+details{border-top:1px solid var(--line);padding:12px 0}details:first-of-type{border-top:0}
+summary{font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between}summary::after{content:"+";color:var(--yel)}details[open] summary::after{content:"×"}
+details p{margin-top:8px;color:var(--mut)}
+.ct{display:grid;gap:14px}.ct p{color:var(--mut)}.ct a{color:var(--yel)}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:8px}.gal img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;background:#221c17}
+.ft-links{display:flex;flex-wrap:wrap;gap:6px 16px}.ft-links a{text-decoration:underline;text-underline-offset:3px}
+@media(min-width:760px){.gal{grid-template-columns:repeat(4,1fr)}}
+
+#payStub input{min-width:0;width:100%;box-sizing:border-box}#payStub .f>*,#payStub [class*=row]>*{min-width:0}
+.reo{grid-column:1/-1;margin-top:10px;display:block}.reo .btn{min-height:40px;padding:0 18px;opacity:1}

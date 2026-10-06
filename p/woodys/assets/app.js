@@ -9,13 +9,20 @@ const gbp = n => "£" + (Math.round(n*100)/100).toFixed(2);
 const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 /* ---------- store ---------- */
-function load(){ try{ return Object.assign({branch:"aldershot",mode:"collection",postcode:"",pcOk:false,items:[]}, JSON.parse(localStorage.getItem(KEY)||"{}")); }catch(e){ return {branch:"aldershot",mode:"collection",postcode:"",pcOk:false,items:[]}; } }
+function load(){ try{ return Object.assign({branch:"aldershot",mode:"collection",postcode:"",pcOk:false,items:[],promo:"",tip:0,reward:""}, JSON.parse(localStorage.getItem(KEY)||"{}")); }catch(e){ return {branch:"aldershot",mode:"collection",postcode:"",pcOk:false,items:[]}; } }
 let S = load();
 function save(){ localStorage.setItem(KEY, JSON.stringify(S)); render(); }
 const lineTotal = l => (l.base + l.sel.reduce((a,s)=>a+s[2],0)) * l.qty;
 const subTotal = () => S.items.reduce((a,l)=>a+lineTotal(l),0);
 const count = () => S.items.reduce((a,l)=>a+l.qty,0);
 function zoneFor(pc){ const z=B[S.branch].delivery.zones; if(!z||!pc) return null; const c=pc.toUpperCase(); let best=null,bl=0; z.forEach(r=>r.m.forEach(m=>{ const out=c.split(" ")[0]; const hit = m.includes(" ") ? c.startsWith(m) : out===m; if(hit && m.length>bl){ best=r; bl=m.length; } })); return best; }
+const O = window.OFFERS || {};
+function rewardOk(){ return !!(O.reward && subTotal()>=O.reward.over); }
+function rewardItems(){ const c=Mn().find(c=>c.c===(O.reward&&O.reward.cat)); return c?c.items.filter(i=>!i.g.length):[]; }
+function promoInfo(){ const c=(S.promo||"").toUpperCase(), p=O.promos&&O.promos[c]; if(!p) return null; if(p.min && subTotal()<p.min) return {code:c,p,amt:0,why:`Spend ${gbp(p.min)} to use ${c}`}; const amt=p.pct?Math.round(subTotal()*p.pct)/100:Math.min(p.off,subTotal()); return {code:c,p,amt}; }
+const discount = () => { const i=promoInfo(); return i?i.amt:0; };
+const tipAmt = () => +S.tip||0;
+const grand = () => Math.max(0, subTotal()+deliveryFee()-discount()+tipAmt()+(O.serviceCharge||0));
 function deliveryFee(){ if(S.mode!=="delivery") return 0; const z=zoneFor(S.postcode); if(!z) return 0; const sub=subTotal(); if(z.freeOver && sub>=z.freeOver) return 0; if(z.over12 && sub>=12) return z.over12; return z.fee; }
 
 /* ---------- opening hours ---------- */
@@ -104,7 +111,11 @@ function totalsHTML(){
   const d=B[S.branch].delivery, sub=subTotal();
   let rows=`<div class="tot"><span>Subtotal</span><span>${gbp(sub)}</span></div>`;
   if(S.mode==="delivery") rows+=`<div class="tot"><span>Delivery</span><span>${deliveryFee()?gbp(deliveryFee()):"Free"}</span></div>`;
-  rows+=`<div class="tot g"><span>Total</span><span>${gbp(sub+deliveryFee())}</span></div>`;
+  if(S.reward && rewardOk()) rows+=`<div class="tot"><span>Free: ${esc(S.reward)}</span><span>£0.00</span></div>`;
+  const pi=promoInfo(); if(pi && pi.amt) rows+=`<div class="tot"><span>Code ${esc(pi.code)}</span><span>−${gbp(pi.amt)}</span></div>`;
+  if(tipAmt()) rows+=`<div class="tot"><span>Tip for the team</span><span>${gbp(tipAmt())}</span></div>`;
+  rows+=`<div class="tot g"><span>Total</span><span>${gbp(grand())}</span></div>`;
+  rows+=`<p class="nosc">No service charge. No card fee.</p>`;
   return rows;
 }
 function canCheckout(){ if(!S.items.length) return "Add something to your basket first."; if(S.mode==="delivery" && !S.pcOk) return "Check your postcode for delivery, or switch to collection."; const z=zoneFor(S.postcode); if(S.mode==="delivery" && z && z.min && subTotal()<z.min) return `Minimum delivery order to ${S.postcode.split(" ")[0]} is ${gbp(z.min)}.`; return ""; }
@@ -184,37 +195,70 @@ function buildCheckout(){
   $("#slot").innerHTML = slots().map(s=>`<option value="${s[0]}">${s[1]}</option>`).join("") || `<option value="">No times available</option>`;
   const st=statusText(S.branch); $("#coStatus").innerHTML=`<i class="dot ${st.on?"on":"off"}"></i>${br.name}: ${st.txt}${st.on?"":". You can order now for later."}`;
   try{ const saved=JSON.parse(localStorage.getItem("woodys_customer")||"{}"); ["name","phone","email","addr1","addr2","town"].forEach(k=>{ if(saved[k] && f.elements[k]) f.elements[k].value=saved[k]; }); }catch(e){}
+  buildExtras();
+  try{ const a=JSON.parse(localStorage.getItem("woodys_account")||"null"); if(a&&a.signedIn&&$("#acctLine")) $("#acctLine").innerHTML=`Signed in as <b>${esc(a.email)}</b>. <a href="account.html">Account</a>`; }catch(e){}
   f.addEventListener("submit",e=>{
     e.preventDefault(); const why=canCheckout(); if(why){ $("#coErr").textContent=why; return; }
     const ph=(f.elements.phone.value||"").replace(/[^0-9+]/g,""); if(ph.length<10||ph.length>14){ $("#coErr").textContent="Please enter a valid mobile number so the shop can reach you."; f.elements.phone.focus(); return; }
     if(!f.reportValidity()) return;
     const data=Object.fromEntries(new FormData(f).entries());
     localStorage.setItem("woodys_customer",JSON.stringify({name:data.name,phone:data.phone,email:data.email,addr1:data.addr1,addr2:data.addr2,town:data.town}));
-    const order={ ref:"W"+Date.now().toString(36).toUpperCase().slice(-6), placed:new Date().toISOString(), branch:S.branch, mode:S.mode, postcode:S.postcode, slot:data.slot, slotLabel:$("#slot").selectedOptions[0]?.textContent, customer:data, items:S.items, subtotal:subTotal(), delivery:deliveryFee(), total:subTotal()+deliveryFee() };
+    const order={ ref:"W"+Date.now().toString(36).toUpperCase().slice(-6), placed:new Date().toISOString(), branch:S.branch, mode:S.mode, postcode:S.postcode, slot:data.slot, slotLabel:$("#slot").selectedOptions[0]?.textContent, customer:data, items:S.items, subtotal:subTotal(), delivery:deliveryFee(), discount:discount(), promo:(promoInfo()||{}).code||"", tip:tipAmt(), reward:(S.reward&&rewardOk())?S.reward:"", pay:data.pay||"card", notify:data.notify||"text", marketing:!!data.marketing, total:grand() };
     // PAYMENT STUB: in production POST `order` to PAYMENT.endpoint, which validates prices server-side,
     // creates a Stripe Checkout Session and returns its URL; then location.href = session.url.
     sessionStorage.setItem("woodys_pending",JSON.stringify(order));
+    if(order.pay==="cash"){ payNow(); return; }
     $("#stubTotal").textContent=gbp(order.total); $("#stubTotal2").textContent=gbp(order.total);
     show($("#payStub"));
   });
-  const payNow=()=>{ const o=JSON.parse(sessionStorage.getItem("woodys_pending")); sessionStorage.setItem("woodys_last",JSON.stringify(o)); S.items=[]; save(); hide($("#payStub")); confirmScreen(o); };
+  function payNow(){ const o=JSON.parse(sessionStorage.getItem("woodys_pending")); sessionStorage.setItem("woodys_last",JSON.stringify(o));
+    try{ const h=JSON.parse(localStorage.getItem("woodys_orders")||"[]"); h.unshift(o); localStorage.setItem("woodys_orders",JSON.stringify(h.slice(0,20))); }catch(e){}
+    S.items=[]; S.promo=""; S.tip=0; S.reward=""; save(); hide($("#payStub")); confirmScreen(o); }
   $("#stubPay").addEventListener("click",payNow); $$("[data-pay]").forEach(b=>b.addEventListener("click",payNow));
   const last=sessionStorage.getItem("woodys_last"); if(location.hash==="#done" && last) confirmScreen(JSON.parse(last));
 }
 function confirmScreen(o){
   const br=B[o.branch]; history.replaceState(null,"","#done"); window.scrollTo(0,0);
   $("#coMain").innerHTML=`<div class="done"><div class="tick">✓</div><p class="kick">Order received</p><h1>Thanks, ${esc(o.customer.name.split(" ")[0])}</h1><div class="ref">Order ${o.ref}</div>
+  <ol class="track" id="track" data-placed="${o.placed}" data-mode="${o.mode}"><li>Received</li><li>Cooking</li><li>${o.mode==="delivery"?"On its way":"Ready to collect"}</li></ol>
+  <p class="mini">${o.pay==="cash"?`Pay ${gbp(o.total)} in cash on ${o.mode==="delivery"?"delivery":"collection"}.`:"Paid by card (test mode, nothing was charged)."} We will ${o.notify==="email"?"email":"text"} you when it moves on.</p>
   <p>${o.mode==="delivery"?`Delivery to ${esc(o.customer.addr1)}, ${esc(o.postcode)}`:`Collect from Woody's ${br.name}, ${br.street}`}: <b>${esc(o.slotLabel||"")}</b>.</p>
-  <div class="box" style="text-align:left;margin-top:22px"><h3>Your order</h3><ul class="bl">${o.items.map(l=>`<li><span class="nm">${l.qty} × ${esc(l.n)}</span><span>${gbp(lineTotal(l))}</span>${l.sel.length||l.note?`<span class="ex">${esc(l.sel.map(s=>s[1]).join(", "))}${l.note?" · Note: "+esc(l.note):""}</span>`:""}</li>`).join("")}</ul>${o.delivery?`<div class="tot"><span>Delivery</span><span>${gbp(o.delivery)}</span></div>`:""}<div class="tot g"><span>Total</span><span>${gbp(o.total)}</span></div></div>
+  <div class="box" style="text-align:left;margin-top:22px"><h3>Your order</h3><ul class="bl">${o.items.map(l=>`<li><span class="nm">${l.qty} × ${esc(l.n)}</span><span>${gbp(lineTotal(l))}</span>${l.sel.length||l.note?`<span class="ex">${esc(l.sel.map(s=>s[1]).join(", "))}${l.note?" · Note: "+esc(l.note):""}</span>`:""}</li>`).join("")}</ul>${o.delivery?`<div class="tot"><span>Delivery</span><span>${gbp(o.delivery)}</span></div>`:""}${o.reward?`<div class="tot"><span>Free: ${esc(o.reward)}</span><span>£0.00</span></div>`:""}${o.discount?`<div class="tot"><span>Code ${esc(o.promo)}</span><span>−${gbp(o.discount)}</span></div>`:""}${o.tip?`<div class="tot"><span>Tip</span><span>${gbp(o.tip)}</span></div>`:""}<div class="tot g"><span>Total</span><span>${gbp(o.total)}</span></div></div>
   <p class="mini">Questions about your order? Call ${br.name} on <a href="tel:${br.tel.replace(/\s/g,"")}">${br.tel}</a>. Keep this reference handy when you collect or call.</p>
   <p style="margin-top:20px"><a class="btn btn-y" href="index.html#order">Back to the menu</a></p></div>`;
   $("#coSide") && ($("#coSide").hidden=true);
+  tickTrack(); clearInterval(window.__tt); window.__tt=setInterval(tickTrack,15000);
+}
+// Order status: in production the kitchen tablet moves the order on; here it steps by time so the flow can be seen.
+function tickTrack(){ const t=$("#track"); if(!t) return; const m=(Date.now()-new Date(t.dataset.placed))/60000; const st=m<2?0:m<12?1:2; $$("li",t).forEach((li,i)=>{ li.classList.toggle("on",i<=st); li.classList.toggle("now",i===st); }); }
+function buildExtras(){
+  const host=$("#coExtras"); if(!host) return;
+  const draw=()=>{
+    const ok=rewardOk(), items=rewardItems();
+    let h="";
+    if(O.reward && items.length){ h+=`<div class="box"><h3>${ok?"Free item unlocked":"Free item"}</h3>${ok?`<p>Pick one on the house.</p><div class="chips">${items.map(i=>`<button type="button" class="chip${S.reward===i.n?" on":""}" data-rw="${esc(i.n)}">${esc(i.n)}</button>`).join("")}${S.reward?`<button type="button" class="chip" data-rw="">No thanks</button>`:""}</div>`:`<p>${esc(O.reward.label)}. Add ${gbp(O.reward.over-subTotal())} more to unlock it.</p>`}</div>`; }
+    const pi=promoInfo();
+    h+=`<div class="box"><h3>Offer code</h3><div class="pc"><input id="promo" placeholder="Enter code" value="${esc(S.promo||"")}" autocapitalize="characters" aria-label="Offer code"><button type="button" class="btn btn-y" id="promoBtn">${S.promo?"Remove":"Apply"}</button></div><p class="pcmsg ${pi&&pi.amt?"ok":S.promo?"bad":""}">${S.promo?(pi?(pi.amt?`${esc(pi.p.label)} applied.`:esc(pi.why)):"That code is not recognised."):""}</p></div>`;
+    if(O.tips && O.tips.length) h+=`<div class="box"><h3>Tip the team</h3><p class="mini" style="margin:0 0 10px">100% goes to the kitchen and drivers.</p><div class="chips">${O.tips.map(t=>`<button type="button" class="chip${(+S.tip||0)===t?" on":""}" data-tip="${t}">${t?gbp(t):"No tip"}</button>`).join("")}</div></div>`;
+    host.innerHTML=h;
+  };
+  draw();
+  host.addEventListener("click",e=>{
+    const r=e.target.closest("[data-rw]"); if(r){ S.reward=r.dataset.rw; save(); draw(); return; }
+    const t=e.target.closest("[data-tip]"); if(t){ S.tip=+t.dataset.tip; save(); draw(); return; }
+    if(e.target.id==="promoBtn"){ if(S.promo){ S.promo=""; } else { S.promo=($("#promo").value||"").trim().toUpperCase(); } save(); draw(); }
+  });
+  host.addEventListener("keydown",e=>{ if(e.target.id==="promo" && e.key==="Enter"){ e.preventDefault(); $("#promoBtn").click(); } });
+  const cashOpt=$("#payCash"); if(cashOpt) cashOpt.hidden=!O.cash;
+  window.__drawExtras=draw;
 }
 
 /* ---------- reveal ---------- */
 function reveal(){ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} }),{rootMargin:"0px 0px -8% 0px"}); $$(".rv-in").forEach(el=>io.observe(el)); }
 
 document.addEventListener("click",e=>{ if(e.target.id==="itemAdd"||e.target.closest("#itemAdd")) addCurrent(); });
+window.WOODY.reorder=o=>{ S.branch=o.branch; S.mode=o.mode; S.postcode=o.postcode||""; S.pcOk=!!o.postcode||o.mode!=="delivery"; S.items=o.items.map(l=>Object.assign({},l)); save(); };
+window.WOODY.lineTotal=lineTotal; window.WOODY.gbp=gbp;
 buildMenu(); buildStatus(); buildCheckout(); render(); reveal();
 setInterval(buildStatus,60000);
 const mbar=$("#mbar"); if(mbar){ const f=()=>mbar.hidden = !count() && scrollY<420; addEventListener("scroll",f,{passive:true}); document.addEventListener("click",()=>setTimeout(f,50)); f(); }

@@ -33,3 +33,14 @@ window.BRANCHES = {
 };
 // Card payments go through a secure hosted checkout once connected. Nothing is charged from this page.
 window.PAYMENT = { provider: "stripe-checkout", endpoint: "/api/create-checkout-session", live: false };
+// Offers, matching what the current ordering site does. All values are set by the shop.
+// reward: spend over `over` and claim one free item from category `cat` (mirrors "Free Item Available, Claim Now").
+// promos: codes typed at checkout. tips: tip chips in pounds. cash: allow pay on collection/delivery.
+// serviceCharge: the current site adds £1 to every order; this site does not.
+window.OFFERS = {
+  reward: { over: 15, cat: "Dips", label: "Free dip with orders over £15" },
+  promos: { WELCOME10: { pct: 10, label: "10% off your first order" }, WOODYS2: { off: 2, min: 15, label: "£2 off orders over £15" } },
+  tips: [0, 1, 2, 3],
+  cash: true,
+  serviceCharge: 0
+};
