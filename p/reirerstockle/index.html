@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>RS Cabinet Maker | Bespoke joinery by Reiner Stöckle, North Shields</title>
+<meta name="description" content="Bespoke kitchens, fitted furniture, commercial interiors and spray finishing, designed and made in North Shields by master craftsman Reiner Stöckle.">
+<meta name="theme-color" content="#1c1612">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero.webp">
+<style>
+:root{--ink:#1c1612;--ink2:#2a211b;--paper:#f4ede3;--paper2:#ebe1d3;--oak:#b5844f;--oak2:#8a5f33;--mute:#7b6d60;--line:rgba(28,22,18,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font:400 16px/1.6 Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);overflow-x:hidden;padding-bottom:76px}
+img{display:block;max-width:100%}
+a{color:inherit}
+.serif{font-family:Fraunces,Georgia,serif}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.eyebrow{font:600 11px/1 Inter;letter-spacing:.22em;text-transform:uppercase;color:var(--oak2)}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:300;letter-spacing:-.01em;line-height:1.05}
+h2{font-size:clamp(34px,8vw,60px);margin:14px 0 18px}
+h2 em,h1 em{font-style:italic;color:var(--oak)}
+p.lead{font-size:18px;color:#4a3f36;max-width:36em}
+
+/* header */
+header{position:absolute;top:0;left:0;right:0;z-index:5;padding:18px 0}
+header .wrap{display:flex;justify-content:space-between;align-items:center}
+.mark{font:500 15px/1 Fraunces,serif;color:#f4ede3;text-decoration:none;letter-spacing:.04em}
+.mark b{display:inline-grid;place-items:center;width:34px;height:34px;border:1px solid rgba(244,237,227,.6);border-radius:50%;margin-right:10px;font-weight:400;font-style:italic}
+header a.tel{color:#f4ede3;font:500 13px Inter;text-decoration:none;border-bottom:1px solid var(--oak)}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:var(--paper);background:var(--ink)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.78}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,22,18,.55) 0%,rgba(28,22,18,0) 30%,rgba(28,22,18,.35) 55%,rgba(28,22,18,.95) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:56px;width:100%}
+.hero .eyebrow{color:#e0bd8f}
+.hero h1{font-size:clamp(44px,12vw,96px);margin:16px 0 18px}
+.hero p{font-size:17px;max-width:30em;color:#e9dfd2}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 22px;border-radius:2px;font:600 14px Inter;text-decoration:none;letter-spacing:.02em}
+.btn.solid{background:var(--oak);color:#1c1612}
+.btn.ghost{border:1px solid rgba(244,237,227,.5);color:var(--paper)}
+
+/* facts strip */
+.facts{background:var(--ink);color:var(--paper);padding:30px 0}
+.facts ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:22px 18px}
+.facts li{font-size:13px;color:#cbbfb0;border-top:1px solid rgba(244,237,227,.18);padding-top:12px}
+.facts strong{display:block;font:300 24px/1.1 Fraunces,serif;color:var(--paper);margin-bottom:4px}
+@media(min-width:760px){.facts ul{grid-template-columns:repeat(4,1fr)}}
+
+section{padding:84px 0}
+/* story */
+.story{display:grid;gap:36px}
+.story figure{position:relative}
+.story figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.story figcaption{font-size:12px;color:var(--mute);margin-top:8px;font-style:italic}
+.quote{font:300 italic 24px/1.35 Fraunces,serif;border-left:2px solid var(--oak);padding-left:18px;margin:26px 0;color:var(--ink2)}
+@media(min-width:860px){.story{grid-template-columns:1fr 1.1fr;align-items:center;gap:64px}}
+
+/* work */
+.work{background:var(--paper2)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:34px}
+.grid figure{position:relative;overflow:hidden;background:#d8cbb9}
+.grid img{width:100%;height:100%;object-fit:cover;aspect-ratio:822/712;transition:transform .8s ease}
+.grid figure:hover img{transform:scale(1.04)}
+.grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 8px;font:500 11px Inter;letter-spacing:.06em;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.grid .wide{grid-column:span 2}
+@media(min-width:760px){.grid{grid-template-columns:repeat(3,1fr);gap:14px}.grid .wide{grid-column:span 2}}
+
+/* services */
+.svc{list-style:none;margin-top:30px;border-top:1px solid var(--line)}
+.svc li{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:22px 0;border-bottom:1px solid var(--line)}
+.svc .n{font:300 italic 20px Fraunces,serif;color:var(--oak)}
+.svc h3{font-size:24px;font-weight:400}
+.svc p{grid-column:2;color:#5a4d42;font-size:15px}
+@media(min-width:860px){.svc{display:grid;grid-template-columns:1fr 1fr;column-gap:56px}}
+
+/* process */
+.process{background:var(--ink);color:var(--paper)}
+.process .eyebrow{color:#e0bd8f}
+.process p.lead{color:#cbbfb0}
+.steps{display:grid;gap:12px;margin-top:34px}
+.step{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:center;border-top:1px solid rgba(244,237,227,.15);padding-top:12px}
+.step img{width:110px;height:140px;object-fit:cover}
+.step h3{font-size:22px;font-weight:400;margin-bottom:6px}
+.step p{font-size:14px;color:#cbbfb0}
+@media(min-width:860px){.steps{grid-template-columns:repeat(4,1fr)}.step{grid-template-columns:1fr}.step img{width:100%;height:300px}}
+
+/* contact */
+.contact{display:grid;gap:34px}
+.card{background:#fff8ef;border:1px solid var(--line);padding:26px}
+.card dt{font:600 11px Inter;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-top:18px}
+.card dt:first-child{margin-top:0}
+.card dd{font:300 22px/1.3 Fraunces,serif;margin-top:4px}
+.card dd a{text-decoration:none;border-bottom:1px solid var(--oak)}
+.card small{display:block;font-size:12px;color:var(--mute);margin-top:6px}
+form{display:grid;gap:12px}
+label{font:600 11px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+input,select,textarea{width:100%;font:16px Inter;padding:13px 14px;border:1px solid var(--line);background:#fffaf4;border-radius:2px;color:var(--ink)}
+textarea{min-height:110px;resize:vertical}
+form .btn{border:0;cursor:pointer;width:100%}
+.note{font-size:12px;color:var(--mute)}
+@media(min-width:860px){.contact{grid-template-columns:1fr 1.2fr;gap:56px}}
+
+footer{background:var(--ink);color:#a89a8b;padding:40px 0 30px;font-size:13px}
+footer .wrap{display:grid;gap:10px}
+footer a{color:#d9c8b3}
+.credit{font-size:11px;opacity:.7;margin-top:14px}
+
+/* sticky bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:1fr 1fr 1fr;background:rgba(28,22,18,.96);backdrop-filter:blur(8px);border-top:1px solid rgba(181,132,79,.4);padding-bottom:env(safe-area-inset-bottom)}
+.bar a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:11px 4px 12px;color:var(--paper);text-decoration:none;font:600 12px Inter;letter-spacing:.04em}
+.bar a+a{border-left:1px solid rgba(244,237,227,.1)}
+.bar a.pri{background:var(--oak);color:var(--ink)}
+.bar svg{width:20px;height:20px}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="mark" href="#top"><b>rs</b>RS Cabinet Maker</a>
+  <a class="tel" href="tel:+447732827485">07732 827485</a>
+</div></header>
+
+<main id="top">
+<section class="hero" style="padding:0">
+  <img src="img/hero.webp" alt="Bespoke fitted kitchen with dark timber island made by RS Cabinet Maker" fetchpriority="high">
+  <div class="wrap">
+    <span class="eyebrow">Bespoke joinery · North Shields</span>
+    <h1>Made to measure.<br><em>Made to last.</em></h1>
+    <p>Kitchens, fitted furniture and commercial interiors, designed in CAD and handcrafted in our Tyneside workshop by master craftsman Reiner Stöckle.</p>
+    <div class="cta">
+      <a class="btn solid" href="tel:+447732827485">Call Reiner</a>
+      <a class="btn ghost" href="#work">See the work</a>
+    </div>
+  </div>
+</section>
+
+<div class="facts"><div class="wrap"><ul>
+  <li><strong>Master</strong>Certified Master Craftsman, trained in Immenstadt, Germany</li>
+  <li><strong>20+ years</strong>in the bespoke joinery trade</li>
+  <li><strong>In house</strong>CAD, manufacture, spray finishing and fitting</li>
+  <li><strong>Tristone</strong>Approved solid surface worktop supplier and installer</li>
+</ul></div></div>
+
+<section id="about"><div class="wrap story">
+  <figure class="reveal"><img src="img/chisel.webp" alt="Chisel and fresh shavings on the workshop bench" loading="lazy" width="664" height="1172"><figcaption>From the workshop bench</figcaption></figure>
+  <div class="reveal">
+    <span class="eyebrow">The maker</span>
+    <h2>Reiner <em>Stöckle</em></h2>
+    <p class="lead">Reiner served his apprenticeship in Immenstadt, Germany, a renowned centre for traditional crafts, and is now a certified Master Craftsman.</p>
+    <p class="quote">Traditional joinery techniques, modern technology, and meticulous attention to detail.</p>
+    <p>Before founding RS Cabinet Maker he worked as senior cabinet maker and project manager on Huf Houses, where only the most exacting workmanship is accepted. Today the workshop designs and makes bespoke joinery for homes and businesses across the North East, with a personable approach and fixed project deadlines.</p>
+  </div>
+</div></section>
+
+<section class="work" id="work"><div class="wrap">
+  <span class="eyebrow">Selected work</span>
+  <h2>Every piece <em>one of a kind</em></h2>
+  <p class="lead">Kitchens, dining rooms, wardrobes, home cinemas, staircases, church doors and yacht interiors. A few pieces from the workshop.</p>
+  <div class="grid">
+    <figure class="wide reveal"><img src="img/k1.webp" alt="Modern fitted kitchen and dining room" loading="lazy"><figcaption>Fitted kitchen and dining room</figcaption></figure>
+    <figure class="reveal"><img src="img/sideboard.webp" alt="Glass fronted dining room sideboard" loading="lazy"><figcaption>Dining room cabinet</figcaption></figure>
+    <figure class="reveal"><img src="img/k3.webp" alt="Traditional painted kitchen" loading="lazy"><figcaption>Traditional kitchen</figcaption></figure>
+    <figure class="reveal"><img src="img/wine.webp" alt="Timber wine racking in a dining room" loading="lazy"><figcaption>Wine racking</figcaption></figure>
+    <figure class="reveal"><img src="img/stair.webp" alt="Staircase with dark timber balustrade" loading="lazy"><figcaption>Staircase and handrail</figcaption></figure>
+    <figure class="reveal"><img src="img/k2.webp" alt="Modern kitchen with pendant lights" loading="lazy"><figcaption>Modern kitchen</figcaption></figure>
+    <figure class="reveal"><img src="img/cinema.webp" alt="Home cinema room cabinetry" loading="lazy"><figcaption>Home cinema</figcaption></figure>
+    <figure class="reveal"><img src="img/door.webp" alt="Timber door in a stone church archway" loading="lazy"><figcaption>Heritage door</figcaption></figure>
+    <figure class="wide reveal"><img src="img/table.webp" alt="Bespoke dining table set for a function" loading="lazy"><figcaption>Function room table</figcaption></figure>
+    <figure class="reveal"><img src="img/yacht.webp" alt="Yacht interior and deck work" loading="lazy"><figcaption>Marine fitting</figcaption></figure>
+    <figure class="reveal"><img src="img/shelves.webp" alt="Built in gable balcony shelving" loading="lazy"><figcaption>Built in shelving</figcaption></figure>
+    <figure class="reveal"><img src="img/wardrobe.webp" alt="Fitted wardrobes in a hallway" loading="lazy"><figcaption>Fitted wardrobes</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="services"><div class="wrap">
+  <span class="eyebrow">What we make</span>
+  <h2>From one piece to <em>the whole house</em></h2>
+  <ul class="svc">
+    <li class="reveal"><span class="n">01</span><h3>Bespoke kitchens</h3><p>Designed around how you cook and live, built from the latest materials and fitted by the people who made them.</p></li>
+    <li class="reveal"><span class="n">02</span><h3>Whole house interiors</h3><p>Storage, bookcases, wardrobes, staircases and handrails, lounge furniture, office desks and audio visual cabinets.</p></li>
+    <li class="reveal"><span class="n">03</span><h3>Office, shop and bar fit outs</h3><p>Reception desks, boardroom furniture, counters, bar, restaurant and retail fittings for commercial and public clients.</p></li>
+    <li class="reveal"><span class="n">04</span><h3>Spray painting and lacquering</h3><p>In house spray facility for high gloss paints and spray lacquers. Also available to other cabinet makers.</p></li>
+    <li class="reveal"><span class="n">05</span><h3>Yacht interiors</h3><p>Panelling replacement, re lacquering and navigation deck refits. Reiner is a keen yachtsman himself.</p></li>
+    <li class="reveal"><span class="n">06</span><h3>Furniture adaptation</h3><p>A well loved piece that no longer fits the room? We can adapt or renovate it so it lives on.</p></li>
+    <li class="reveal"><span class="n">07</span><h3>Tristone worktops</h3><p>Approved supplier and installer of Tristone solid surface, with seamless curves and integrated sinks.</p></li>
+    <li class="reveal"><span class="n">08</span><h3>Project management</h3><p>We can run the whole job, or dovetail with the trades you already have on site.</p></li>
+  </ul>
+</div></section>
+
+<section class="process"><div class="wrap">
+  <span class="eyebrow">CAD to completion</span>
+  <h2>One workshop, <em>start to finish</em></h2>
+  <p class="lead">No hand offs between firms. The same team takes your project from the first drawing to the final fit.</p>
+  <div class="steps">
+    <div class="step reveal"><img src="img/plans.webp" alt="Technical drawing on the bench" loading="lazy"><div><h3>Consult and design</h3><p>We listen, then model your scheme in CAD so you can see it before any timber is cut.</p></div></div>
+    <div class="step reveal"><img src="img/drill.webp" alt="Drill bit boring into timber" loading="lazy"><div><h3>Make</h3><p>Handcrafted in North Shields using traditional joinery and modern machinery.</p></div></div>
+    <div class="step reveal"><img src="img/drawer.webp" alt="Varnished drawer corner joint" loading="lazy"><div><h3>Finish</h3><p>Painted or lacquered in our own spray shop, to the finish your room calls for.</p></div></div>
+    <div class="step reveal"><img src="img/newel.webp" alt="Turned staircase newel post" loading="lazy"><div><h3>Fit</h3><p>Installed by the makers, on a fixed deadline, with every detail considered.</p></div></div>
+  </div>
+</div></section>
+
+<section id="enquire"><div class="wrap contact">
+  <div class="reveal">
+    <span class="eyebrow">Start a project</span>
+    <h2>Tell Reiner what <em>you have in mind</em></h2>
+    <dl class="card">
+      <dt>Mobile</dt><dd><a href="tel:+447732827485">07732 827485</a></dd>
+      <dt>WhatsApp</dt><dd><a href="https://wa.me/447732827485">Message on WhatsApp</a></dd>
+      <dt>Workshop</dt><dd>Tyne Tunnel Trading Estate, North Shields, Tyne and Wear</dd>
+      <dt>Covering</dt><dd>North Shields, Tyneside and the North East</dd>
+    </dl>
+  </div>
+  <form class="reveal" id="f">
+    <div><label for="n">Your name</label><input id="n" required autocomplete="name"></div>
+    <div><label for="t">Project</label><select id="t"><option>Kitchen</option><option>Fitted furniture or wardrobes</option><option>Commercial fit out</option><option>Spray finishing</option><option>Yacht interior</option><option>Something else</option></select></div>
+    <div><label for="m">A few details</label><textarea id="m" placeholder="Room, rough size, timing, anything you love the look of"></textarea></div>
+    <button class="btn solid" type="submit">Send via WhatsApp</button>
+    <p class="note">Opens WhatsApp with your message ready to send. Photos of the space help.</p>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="mark"><b>rs</b>RS Cabinet Maker</div>
+  <div>Bespoke joinery by Reiner Stöckle · North Shields, Tyne and Wear · <a href="tel:+447732827485">07732 827485</a></div>
+  <div class="credit">Site concept by <a href="https://thetenderdesk.co.uk/">The Tender Desk</a></div>
+</div></footer>
+
+<nav class="bar" aria-label="Contact">
+  <a href="tel:+447732827485"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+  <a href="https://wa.me/447732827485"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>WhatsApp</a>
+  <a class="pri" href="#enquire"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>Enquire</a>
+</nav>
+
+<script>
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();
+var t='Hi Reiner, my name is '+document.getElementById('n').value+'. Project: '+document.getElementById('t').value+'. '+document.getElementById('m').value;
+window.open('https://wa.me/447732827485?text='+encodeURIComponent(t),'_blank');});
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+</script>
+</body>
+</html>
