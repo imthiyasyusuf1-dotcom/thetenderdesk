@@ -111,6 +111,7 @@ footer .credit{opacity:.7;font-size:.74rem}
 /* sticky bar */
 .bar{position:fixed;inset:auto 0 0;z-index:60;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px;padding-bottom:max(10px,env(safe-area-inset-bottom));background:rgba(17,18,20,.96);border-top:1px solid var(--line)}
 .bar .btn{min-height:52px}
+.bar{transform:translateY(110%);transition:transform .3s}.bar.on{transform:none}
 @media(min-width:900px){.bar{left:auto;right:20px;bottom:20px;border-radius:999px;border:1px solid var(--line);grid-template-columns:auto auto}body{padding-bottom:0}}
 .rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}.rv.on{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
@@ -229,7 +230,7 @@ footer .credit{opacity:.7;font-size:.74rem}
 </div>
 
 <script>
-const hd=document.getElementById('hd');addEventListener('scroll',()=>hd.classList.toggle('s',scrollY>40),{passive:true});
+const hd=document.getElementById('hd');const bar=document.querySelector('.bar');addEventListener('scroll',()=>{hd.classList.toggle('s',scrollY>40);bar.classList.toggle('on',scrollY>innerHeight*.6)},{passive:true});
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 </script>
