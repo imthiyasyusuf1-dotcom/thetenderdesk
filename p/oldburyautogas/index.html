@@ -149,9 +149,9 @@ footer a{color:var(--ink)}
 .bar .btn{min-height:48px;padding:0 8px;font-size:.84rem}
 .bar .b-ln{background:transparent;color:#fff;border-color:rgba(255,255,255,.25)}
 @media(min-width:900px){.bar{display:none}footer{padding-bottom:44px}}
-.rv{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+.rv{transform:translateY(16px);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{transform:none}
+@media(prefers-reduced-motion:reduce){.rv{transform:none;transition:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
