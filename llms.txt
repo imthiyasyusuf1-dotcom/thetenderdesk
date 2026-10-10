@@ -3,11 +3,11 @@
 > The Tender Desk builds websites, writes tenders, runs Google Ads, sets up AI assistants and optimises sites for search and AI answers, for small and local businesses that want more of the right work. Contact: hello@thetenderdesk.co.uk
 
 ## Services
-Every job is quoted individually after a quick chat. No fixed price list.
+Websites are £25 for the first 6 months (site and hosting), then £75 a year. Everything else is quoted individually after a quick chat.
 * [Websites](https://thetenderdesk.co.uk/websites/): custom, mobile first sites.
-* [Care plans](https://thetenderdesk.co.uk/websites/#care): hosting, backups, updates and small changes.
-* [SEO and AI search optimisation](https://thetenderdesk.co.uk/websites/#seo): schema, FAQ markup, llms.txt, search structure.
-* [Google Business Profile setup](https://thetenderdesk.co.uk/websites/#google-business)
+* [Care plans](https://thetenderdesk.co.uk/care/): hosting, backups, updates and small changes.
+* [SEO and AI search optimisation](https://thetenderdesk.co.uk/seo/): schema, FAQ markup, llms.txt, search structure.
+* [Google Business Profile setup](https://thetenderdesk.co.uk/google-business/)
 * [Google Ads](https://thetenderdesk.co.uk/google-ads/): campaigns built and managed.
 * [Tender writing](https://thetenderdesk.co.uk/tenders/): finding contracts, go or no go, method statements, quality answers, social value, PQQ, SQ and frameworks.
 * [AI assistant and automation](https://thetenderdesk.co.uk/ai/): an assistant that answers and books customers 24/7, plus admin automations.
@@ -17,4 +17,4 @@ Every job is quoted individually after a quick chat. No fixed price list.
 * [Example sites](https://thetenderdesk.co.uk/examples/): example designs for trades and local businesses.
 * [About](https://thetenderdesk.co.uk/about/)
 * [Referral partners](https://thetenderdesk.co.uk/partners/): 10% of a referred client's first year.
-* [Start a project](https://thetenderdesk.co.uk/#start)
+* [Start a project](https://thetenderdesk.co.uk/#contact)
