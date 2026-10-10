@@ -85,14 +85,14 @@ function Work({ n }: { n: string }) {
       <div className="case">
         <Reveal>
           <a className="frame" href="https://7ei8ht6properties.com/" target="_blank" rel="noopener">
-            <img className="shot" src={B + 'img/786-team-1440.webp'} srcSet={`${B}img/786-team-800.webp 800w, ${B}img/786-team-1440.webp 1440w`} sizes="(max-width: 900px) 92vw, 760px" width={1440} height={900} alt="Team page of the 7ei8ht6 Properties website" loading="lazy" decoding="async" />
+            <img className="shot" src={B + 'img/786-home-1520.webp'} srcSet={`${B}img/786-home-800.webp 800w, ${B}img/786-home-1520.webp 1520w`} sizes="(max-width: 900px) 92vw, 760px" width={1520} height={950} alt="Homepage of the 7ei8ht6 Properties website" loading="lazy" decoding="async" />
           </a>
         </Reveal>
         <Reveal delay={0.1}>
           <div className="casetext">
             <p className="small">Client</p>
             <h3>7ei8ht6 Properties</h3>
-            <p>A bilingual English and Arabic site for a 38 person property brokerage. Every one of the team has their own profile with direct contact details, and the whole site loads fast on a phone.</p>
+            <p>A bilingual English and Arabic site for a property brokerage, with a profile for every member of the team and direct contact details, and the whole site loads fast on a phone.</p>
             <a className="textlink" href="https://7ei8ht6properties.com/" target="_blank" rel="noopener">Visit the live site <span aria-hidden="true">↗</span></a>
           </div>
         </Reveal>
