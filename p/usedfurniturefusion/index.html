@@ -55,7 +55,9 @@ footer{padding:26px 0 30px;font-size:.82rem;color:var(--ink2)}footer a{text-deco
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px;padding-bottom:max(10px,env(safe-area-inset-bottom));background:rgba(241,233,220,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
 .bar .btn{min-height:48px}
 @media(min-width:900px){.bar{left:auto;right:20px;bottom:20px;width:380px;border-radius:999px;border:1px solid var(--line)}body{padding-bottom:0}}
-</style></head><body>
+</style><script>/*td-motion*/(function(h){if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&h.dataset.motion!=="off"){h.classList.add("m-on");setTimeout(function(){h.classList.add("m-ready")},2500)}})(document.documentElement)</script>
+<link rel="stylesheet" href="/p/_motion/motion.css?v=1">
+</head><body>
 <header class="hd"><div class="wrap"><a class="logo" href="#top">Used Furniture Fusion<small>Coatbridge</small></a><a class="fb" href="https://www.facebook.com/Usedfurniturefusion" target="_blank" rel="noopener">Facebook</a></div></header>
 <main id="top">
 <div class="hero"><div class="wrap"><div>
@@ -107,4 +109,9 @@ footer{padding:26px 0 30px;font-size:.82rem;color:var(--ink2)}footer a{text-deco
 </main>
 <footer><div class="wrap">&copy; 2026 Used Furniture Fusion. <a href="https://www.facebook.com/Usedfurniturefusion" target="_blank" rel="noopener">Facebook</a>. Site concept by <a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener">The Tender Desk</a></div></footer>
 <div class="bar"><a class="btn call" href="tel:+447842188484">Call Rob</a><a class="btn wa" href="https://wa.me/447842188484?text=Hi%20Rob%2C%20I%20saw%20your%20site%20and%20wanted%20to%20ask%20about..." target="_blank" rel="noopener">WhatsApp</a></div>
+<!--td-motion-->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous" defer></script>
+<script src="/p/_motion/motion.js?v=1" defer></script>
 </body></html>

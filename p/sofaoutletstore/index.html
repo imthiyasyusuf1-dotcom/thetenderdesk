@@ -111,6 +111,8 @@ footer a{color:#fff}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
 .gal figure{position:relative}.gal .ask{position:absolute;right:10px;top:10px;z-index:2;display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;background:#25d366;color:#fff;font:700 .78rem/1 var(--b);text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}
 </style>
+<script>/*td-motion*/(function(h){if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&h.dataset.motion!=="off"){h.classList.add("m-on");setTimeout(function(){h.classList.add("m-ready")},2500)}})(document.documentElement)</script>
+<link rel="stylesheet" href="/p/_motion/motion.css?v=1">
 </head>
 <body>
 <header class="hd" id="hd">
@@ -226,5 +228,10 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 (()=>{const n=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/London'}));const d=n.getDay(),m=n.getHours()*60+n.getMinutes();const o=d>=3&&d<=6&&m>=570&&m<990;const el=document.querySelector('#open span');const dot=document.querySelector('#open i');
 if(o){el.textContent='Open now until 4:30pm'}else{dot.style.background='#d9a35b';dot.style.boxShadow='0 0 0 4px rgba(217,163,91,.25)';el.textContent='Open Wednesday to Saturday, 9:30am to 4:30pm'}})();
 </script>
+<!--td-motion-->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous" defer></script>
+<script src="/p/_motion/motion.js?v=1" defer></script>
 </body>
 </html>

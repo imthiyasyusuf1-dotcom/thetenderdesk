@@ -1,0 +1,16 @@
+/* Tender Desk motion kit v1: tasteful GSAP + Lenis layer for /p/ mock-ups.
+   Everything here is opt-in via html.m-on (set only when motion is allowed),
+   so content is fully visible when JS fails or reduced motion is on. */
+html.lenis,html.lenis body{height:auto}
+html.lenis{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+.lenis [data-lenis-prevent]{overscroll-behavior:contain}
+/* hide the hero headline until it is split, max 2.5s (head failsafe removes m-on) */
+html.m-on:not(.m-ready) h1{opacity:0}
+.m-w{display:inline-block;will-change:transform,opacity}
+.m-w.m-done{will-change:auto}
+.m-n{display:inline-block;font-variant-numeric:tabular-nums;text-align:inherit}
+/* ShinyText (React Bits) port: a soft light sweep through one accent word */
+.m-shine{background:linear-gradient(110deg,var(--m-c) 42%,var(--m-hi,rgba(255,255,255,.9)) 50%,var(--m-c) 58%) 120% 0/250% 100% no-repeat;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:m-shine 5.5s cubic-bezier(.6,0,.3,1) 0.4s infinite}
+@keyframes m-shine{0%{background-position:120% 0}45%,100%{background-position:-20% 0}}
+@media (prefers-reduced-motion:reduce){.m-shine{animation:none;background:none;-webkit-text-fill-color:currentColor}}
