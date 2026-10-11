@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Waf Waf Café | Homemade food, sweet treats and coffee in Leamington Spa</title>
+<meta name="description" content="Waf Waf Café on Warwick Street, Leamington Spa. Fresh homemade food, sweet treats and incredible coffee, run by Cansu and Uğur. Open Wednesday to Monday, 9:00 to 16:30.">
+<meta name="theme-color" content="#f5ecdf">
+<meta property="og:title" content="Waf Waf Café, Leamington Spa">
+<meta property="og:description" content="Fresh homemade food, sweet treats and incredible coffee. 75 Warwick Street, Leamington Spa.">
+<meta property="og:image" content="https://thetenderdesk.co.uk/p/waf-waf-cafe/img/og.jpg">
+<link rel="icon" href="img/logo-mark.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,50..100;1,9..144,400..700,50..100&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/shopfront.webp">
+<style>
+:root{
+  --cream:#f5ecdf;--paper:#fbf6ee;--oat:#ead9c2;
+  --ink:#2a1c17;--mute:#6e5a4d;--line:rgba(42,28,23,.14);
+  --terra:#c0532a;--terra-d:#9e4020;--slate:#3d5263;--slate-d:#2f4150;
+  --night:#241d24;--crema:#e9c79b;
+  --h:'Fraunces',Georgia,'Times New Roman',serif;--b:'Figtree',system-ui,-apple-system,sans-serif;
+  --r:22px;--pad:clamp(20px,5vw,56px);--max:1220px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:16px}
+body{background:var(--cream);color:var(--ink);font:17px/1.6 var(--b);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.serif{font-family:var(--h)}
+.kick{display:inline-flex;align-items:center;gap:10px;font:600 12px/1 var(--b);letter-spacing:.18em;text-transform:uppercase;color:var(--terra)}
+.kick svg{width:16px;height:16px;flex:none}
+h1,h2,h3{font-family:var(--h);font-weight:500;font-variation-settings:"SOFT" 100,"opsz" 144;letter-spacing:-.02em;line-height:1.02}
+h2{font-size:clamp(36px,8.4vw,72px);margin:16px 0 22px}
+h2 em,h1 .acc{font-style:italic;color:var(--terra);font-weight:400}
+p{max-width:62ch}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:999px;font:600 16px/1 var(--b);text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.btn svg{width:18px;height:18px;flex:none}
+.btn.p{background:var(--terra);color:#fff8f0}.btn.p:hover{background:var(--terra-d)}
+.btn.o{border:1.5px solid var(--ink);color:var(--ink)}.btn.o:hover{background:var(--ink);color:var(--cream)}
+.btn.l{background:var(--cream);color:var(--ink)}.btn.l:hover{background:#fff}
+.btn.ol{border:1.5px solid rgba(245,236,223,.5);color:var(--cream)}.btn.ol:hover{border-color:var(--cream)}
+
+/* header */
+.top{position:relative;z-index:5}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:16px;padding-bottom:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.brand img{width:46px;height:46px;border-radius:50%;flex:none;box-shadow:0 0 0 3px var(--cream),0 0 0 4.5px var(--line)}
+.brand b{font:600 22px/1 var(--h);font-variation-settings:"SOFT" 100,"opsz" 40;letter-spacing:-.01em;white-space:nowrap}
+.nav{display:none;gap:30px;font-weight:500;font-size:15px}
+.nav a{text-decoration:none;position:relative}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1.5px;background:var(--terra);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav a:hover::after{transform:scaleX(1)}
+.top .call{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;background:var(--ink);color:var(--cream);font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap;flex:none}
+.top .call svg{width:16px;height:16px}
+
+/* hero */
+.hero{position:relative;padding:18px 0 72px}
+.hero .wrap{display:grid;gap:40px}
+.status{display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 12px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:14px;font-weight:500;color:var(--ink)}
+.status i{width:9px;height:9px;border-radius:50%;background:#6f8f5a;box-shadow:0 0 0 4px rgba(111,143,90,.18);flex:none}
+.status.shut i{background:var(--terra);box-shadow:0 0 0 4px rgba(192,83,42,.15)}
+.hero h1{font-size:clamp(46px,12.4vw,104px);margin:22px 0 22px;max-width:12ch}
+.hero .lead{font-size:clamp(17px,4.4vw,20px);color:var(--mute);max-width:40ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.figure{position:relative;justify-self:center;width:100%;max-width:520px}
+.arch{position:relative;border-radius:999px 999px 26px 26px;overflow:hidden;aspect-ratio:4/5;background:var(--oat);box-shadow:0 30px 60px -30px rgba(42,28,23,.45)}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 78%}
+.badge{position:absolute;left:-6px;bottom:44px;width:128px;height:128px;border-radius:50%;background:var(--terra);color:#fff8f0;display:grid;place-items:center;box-shadow:0 14px 30px -12px rgba(158,64,32,.6)}
+.badge svg.ring{position:absolute;inset:0;width:100%;height:100%;animation:spin 28s linear infinite}
+.badge svg.ring text{font:600 10.4px var(--b);letter-spacing:.2em;text-transform:uppercase;fill:#fff8f0}
+.badge .paw{width:34px;height:34px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cap{display:flex;justify-content:space-between;gap:12px;margin-top:14px;font:italic 400 15px/1.3 var(--h);color:var(--mute)}
+
+/* marquee */
+.band{background:var(--slate);color:var(--cream);overflow:hidden;white-space:nowrap;padding:20px 0;border-block:1px solid var(--slate-d)}
+.band .t{display:inline-flex;align-items:center;animation:mq 40s linear infinite;will-change:transform}
+.band span{font:italic 400 clamp(24px,5.4vw,40px)/1 var(--h);font-variation-settings:"SOFT" 100;padding:0 22px}
+.band svg{width:20px;height:20px;color:var(--crema);flex:none}
+@keyframes mq{to{transform:translate3d(-50%,0,0)}}
+
+/* story */
+.story-s{position:relative;padding:96px 0 104px;background:var(--paper);isolation:isolate}
+.story-s::before{content:"";position:absolute;inset:0;background:url(img/tile.webp) 0 0/300px 300px;opacity:.16;mix-blend-mode:multiply;z-index:-1;pointer-events:none}
+.story-s .wrap{display:grid;gap:56px}
+.polaroid{position:relative;justify-self:center;width:min(100%,400px);background:#fffdf9;padding:14px 14px 0;border-radius:6px;box-shadow:0 30px 50px -28px rgba(42,28,23,.5),0 2px 6px rgba(42,28,23,.08);transform:rotate(-2.2deg)}
+.polaroid .ph{aspect-ratio:4/5;overflow:hidden;border-radius:3px;background:var(--oat)}
+.polaroid img{width:100%;height:100%;object-fit:cover;object-position:50% 34%}
+.polaroid figcaption{font:italic 400 24px/1 var(--h);text-align:center;padding:18px 0 20px;color:var(--ink)}
+.tape{position:absolute;top:-12px;left:50%;width:110px;height:28px;margin-left:-55px;background:rgba(233,199,155,.75);transform:rotate(3deg)}
+.story-s p.big{font:400 clamp(21px,5vw,27px)/1.42 var(--h);font-variation-settings:"SOFT" 100,"opsz" 30;max-width:30ch}
+.years{list-style:none;margin:36px 0 0;border-top:1px solid var(--line)}
+.years li{display:grid;grid-template-columns:86px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.years b{font:500 30px/1 var(--h);color:var(--terra);font-variation-settings:"SOFT" 100}
+.years p{color:var(--mute);font-size:16.5px}
+blockquote{margin-top:36px;padding-left:22px;border-left:3px solid var(--terra)}
+blockquote p{font:italic 400 clamp(19px,4.6vw,23px)/1.45 var(--h)}
+blockquote cite{display:block;margin-top:12px;font:600 13px/1 var(--b);letter-spacing:.16em;text-transform:uppercase;font-style:normal;color:var(--mute)}
+
+/* menu */
+.menu-s{background:var(--night);color:var(--cream);padding:100px 0 104px;position:relative;overflow:hidden}
+.menu-s .kick{color:var(--crema)}
+.menu-s h2 em{color:var(--crema)}
+.menu-s .intro{color:rgba(245,236,223,.72);font-size:18px}
+.courses{display:grid;gap:18px;margin-top:44px}
+.course{background:rgba(245,236,223,.05);border:1px solid rgba(245,236,223,.12);border-radius:var(--r);padding:28px 24px 10px}
+.course header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.course h3{font-size:32px;font-weight:500}
+.course header small{font-size:13px;color:var(--crema);letter-spacing:.04em}
+.course ul{list-style:none}
+.course li{padding:16px 0;border-top:1px solid rgba(245,236,223,.1)}
+.course li:first-child{border-top:0}
+.course li b{display:block;font:500 19px/1.3 var(--h);font-variation-settings:"SOFT" 100,"opsz" 24;color:#fff8f0}
+.course li span{display:block;font-size:14.5px;line-height:1.5;color:rgba(245,236,223,.62);margin-top:4px}
+.course li em{font-style:normal;display:inline-block;margin-top:8px;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--night);background:var(--crema);border-radius:999px;padding:5px 10px}
+.coffee{margin-top:18px;display:grid;gap:28px;background:var(--terra);color:#fff8f0;border-radius:var(--r);padding:34px 24px}
+.coffee h3{font-size:clamp(34px,8vw,52px);font-weight:500}
+.coffee h3 em{font-style:italic;font-weight:400}
+.coffee p{color:rgba(255,248,240,.85);margin-top:12px;font-size:15.5px}
+.prices{list-style:none;display:grid;gap:0 36px}
+.prices li{display:flex;align-items:baseline;gap:10px;padding:11px 0;border-bottom:1px dashed rgba(255,248,240,.35);font-weight:500}
+.prices li i{flex:1;min-width:12px}
+.prices li span{font:500 18px/1 var(--h);font-variant-numeric:tabular-nums}
+.diet{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;margin-top:40px;padding-top:30px;border-top:1px solid rgba(245,236,223,.14)}
+.diet p{color:rgba(245,236,223,.75);font-size:16px;max-width:52ch}
+
+/* gallery */
+.gal-s{padding:100px 0}
+.gal-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 30px}
+.gal-head p{color:var(--mute)}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:36px}
+.gal figure{position:relative;overflow:hidden;border-radius:18px;background:var(--oat)}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.gal figure:hover img{transform:scale(1.035)}
+.gal figcaption{position:absolute;left:10px;bottom:10px;right:10px;font:italic 400 15px/1.2 var(--h);color:var(--ink);background:rgba(251,246,238,.92);padding:8px 12px;border-radius:12px;width:max-content;max-width:calc(100% - 20px)}
+.g1{grid-column:1/-1;aspect-ratio:1/1}
+.g1 img{object-position:50% 60%}
+.g2,.g3{aspect-ratio:3/4}
+.g3 img{object-position:18% 60%}
+
+/* hours */
+.hours-s{padding:0 0 100px}
+.hours-card{display:grid;gap:36px;background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:40px 24px}
+.hours-card .now{margin-top:6px;font:italic 400 22px/1.35 var(--h);color:var(--ink);max-width:22ch}
+.hours-card .now b{font-style:normal;font-weight:600;color:var(--terra)}
+.days{list-style:none}
+.days li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 16px;margin:0 -16px;border-radius:14px;font-size:17px;border-bottom:1px solid var(--line)}
+.days li:last-child{border-bottom-color:transparent}
+.days li span:last-child{font-variant-numeric:tabular-nums;font-weight:600}
+.days li.off span:last-child{color:var(--mute);font-weight:500;font-style:italic}
+.days li.today{background:var(--ink);color:var(--cream);border-bottom-color:transparent}
+.days li.today span:first-child::after{content:"Today";margin-left:10px;font:700 10.5px/1 var(--b);letter-spacing:.14em;text-transform:uppercase;background:var(--terra);color:#fff8f0;padding:5px 8px;border-radius:999px;vertical-align:2px}
+.days li.today.off span:last-child{color:var(--crema)}
+
+/* find us */
+.find-s{padding:0 0 110px}
+.find{display:grid;border-radius:28px;overflow:hidden;background:var(--slate);color:var(--cream)}
+.find .in{padding:44px 24px}
+.find .kick{color:var(--crema)}
+.addr{font:500 clamp(32px,8vw,54px)/1.05 var(--h);font-variation-settings:"SOFT" 100;letter-spacing:-.02em;margin:18px 0 18px;font-style:normal}
+.find p{color:rgba(245,236,223,.78)}
+.find .ctas .btn{flex:1 1 210px}
+.map{min-height:340px;background:var(--slate-d);position:relative}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.75) sepia(.12)}
+
+/* footer */
+.foot{background:var(--night);color:rgba(245,236,223,.84);padding:72px 0 120px;font-size:15px}
+.foot .wrap{display:grid;gap:36px}
+.foot .logo{width:150px;height:auto;border-radius:12px}
+.foot h3{font-size:26px;color:var(--cream);margin-bottom:10px;font-weight:500}
+.foot a{text-decoration:none}.foot a:hover{color:var(--cream)}
+.soc{display:flex;gap:10px;margin-top:16px}
+.soc a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid rgba(245,236,223,.35);border-radius:999px;color:var(--cream);font-weight:500}
+.soc svg{width:18px;height:18px}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;border-top:1px solid rgba(245,236,223,.12);padding-top:24px;font-size:13px;color:rgba(245,236,223,.68)}
+
+/* phone dock */
+.dock{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));display:flex;gap:8px;z-index:30;padding:6px;border-radius:20px;background:rgba(42,28,23,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 16px 40px -16px rgba(0,0,0,.5)}
+.dock a{flex:1;min-height:50px;border-radius:15px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;text-decoration:none;color:var(--cream)}
+.dock a.p{background:var(--terra);color:#fff8f0}
+.dock svg{width:17px;height:17px}
+
+@media (min-width:640px){
+  .courses{grid-template-columns:1fr 1fr}
+  .course:last-child{grid-column:1/-1}
+  .prices{grid-template-columns:1fr 1fr}
+  .find .ctas .btn{flex:0 0 auto}
+}
+@media (min-width:960px){
+  .nav{display:flex}
+  .hero{padding:20px 0 100px}
+  .hero .wrap{grid-template-columns:1.15fr .85fr;align-items:center;gap:64px}
+  .hero h1{font-size:clamp(54px,5.6vw,84px);max-width:13.5ch;margin:18px 0 18px}
+  .figure{max-width:470px}
+  .badge{left:-56px;bottom:70px;width:150px;height:150px}
+  .story-s{padding:140px 0}
+  .story-s .wrap{grid-template-columns:.85fr 1.15fr;gap:96px;align-items:center}
+  .polaroid{justify-self:start}
+  .menu-s{padding:140px 0}
+  .menu-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end}
+  .menu-head .intro{margin-bottom:28px}
+  .courses{grid-template-columns:repeat(3,1fr)}
+  .course:last-child{grid-column:auto}
+  .coffee{grid-template-columns:.8fr 1.2fr;padding:48px;gap:56px;align-items:start}
+  .gal-s{padding:140px 0}
+  .gal{grid-template-columns:1.2fr 1fr 1fr;gap:20px;align-items:start}
+  .g1,.g2,.g3{grid-column:auto;aspect-ratio:4/5}
+  .g2{margin-top:72px}
+  .g3{margin-top:24px}
+  .hours-card{grid-template-columns:1fr 1fr;padding:64px;gap:80px;align-items:center}
+  .hours-s,.find-s{padding-bottom:140px}
+  .find{grid-template-columns:1fr 1fr}
+  .find .in{padding:64px}
+  .map{min-height:480px}
+  .foot{padding:88px 0 48px}
+  .foot .wrap{grid-template-columns:auto 1fr 1fr 1fr;align-items:start;gap:56px}
+  .legal{grid-column:1/-1}
+  .dock{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .band .t,.badge svg.ring{animation:none}
+  .gal img{transition:none}
+}
+</style>
+<script>/*td-motion*/(function(h){if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&h.dataset.motion!=="off"){h.classList.add("m-on");setTimeout(function(){h.classList.add("m-ready")},2500)}})(document.documentElement)</script>
+<link rel="stylesheet" href="/p/_motion/motion.css?v=1">
+</head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="paw" viewBox="0 0 32 32"><ellipse cx="16" cy="21.5" rx="7" ry="6"/><ellipse cx="6.5" cy="13.5" rx="3" ry="3.8" transform="rotate(-18 6.5 13.5)"/><ellipse cx="12.3" cy="7.6" rx="3" ry="4" transform="rotate(-6 12.3 7.6)"/><ellipse cx="19.7" cy="7.6" rx="3" ry="4" transform="rotate(6 19.7 7.6)"/><ellipse cx="25.5" cy="13.5" rx="3" ry="3.8" transform="rotate(18 25.5 13.5)"/></symbol>
+  <symbol id="tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="ig" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="fb" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21.5v-8h2.7l.4-3.2h-3.1V8.3c0-.9.3-1.5 1.6-1.5h1.7V4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.3H7.6v3.2h2.8v8z"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Waf Waf Café, back to top"><img src="img/logo-mark.webp" alt="" width="46" height="46"><b>Waf Waf Café</b></a>
+    <nav class="nav" aria-label="Main"><a href="#story">Our story</a><a href="#menu">Menu</a><a href="#gallery">Gallery</a><a href="#hours">Hours</a><a href="#find">Find us</a></nav>
+    <a class="call" href="tel:+447923319834"><svg aria-hidden="true"><use href="#tel"/></svg>Call us</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="copy">
+      <div class="status" data-status><i></i><span>Open Wednesday to Monday, 9:00 to 16:30</span></div>
+      <h1>Fresh homemade food, sweet treats and <span class="acc">incredible coffee.</span></h1>
+      <p class="lead">A little family café on Warwick Street in Leamington Spa, run by Cansu and Uğur. Hearty breakfasts until midday, homemade lunches, waffles, pancakes and a proper good cup of coffee.</p>
+      <div class="ctas">
+        <a class="btn p" href="tel:+447923319834"><svg aria-hidden="true"><use href="#tel"/></svg>Call 07923 319834</a>
+        <a class="btn o" href="https://www.google.com/maps/search/?api=1&amp;query=Waf+Waf+Cafe+75+Warwick+Street+Leamington+Spa+CV32+4RR" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#pin"/></svg>Get directions</a>
+      </div>
+    </div>
+    <figure class="figure">
+      <div class="arch"><img src="img/shopfront.webp" alt="The Waf Waf Café shopfront on Warwick Street, with bistro tables outside" width="1100" height="1373" fetchpriority="high"></div>
+      <div class="badge" aria-hidden="true">
+        <svg class="ring" viewBox="0 0 120 120"><defs><path id="circ" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#circ">Dog friendly · Vegan · Gluten free ·</textPath></text></svg>
+        <svg class="paw" fill="currentColor"><use href="#paw"/></svg>
+      </div>
+      <figcaption class="cap"><span>75 Warwick Street</span><span>Est. 2021</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true"><div class="t">
+  <span>Coffee &amp; cake</span><svg fill="currentColor"><use href="#paw"/></svg><span>Breakfast</span><svg fill="currentColor"><use href="#paw"/></svg><span>Lunch</span><svg fill="currentColor"><use href="#paw"/></svg><span>Panini</span><svg fill="currentColor"><use href="#paw"/></svg><span>Toasties</span><svg fill="currentColor"><use href="#paw"/></svg><span>Lasagne</span><svg fill="currentColor"><use href="#paw"/></svg><span>Matcha</span><svg fill="currentColor"><use href="#paw"/></svg><span>Milkshakes</span><svg fill="currentColor"><use href="#paw"/></svg><span>Smoothies</span><svg fill="currentColor"><use href="#paw"/></svg>
+  <span>Coffee &amp; cake</span><svg fill="currentColor"><use href="#paw"/></svg><span>Breakfast</span><svg fill="currentColor"><use href="#paw"/></svg><span>Lunch</span><svg fill="currentColor"><use href="#paw"/></svg><span>Panini</span><svg fill="currentColor"><use href="#paw"/></svg><span>Toasties</span><svg fill="currentColor"><use href="#paw"/></svg><span>Lasagne</span><svg fill="currentColor"><use href="#paw"/></svg><span>Matcha</span><svg fill="currentColor"><use href="#paw"/></svg><span>Milkshakes</span><svg fill="currentColor"><use href="#paw"/></svg><span>Smoothies</span><svg fill="currentColor"><use href="#paw"/></svg>
+</div></div>
+
+<section class="story-s" id="story">
+  <div class="wrap">
+    <figure class="polaroid">
+      <span class="tape" aria-hidden="true"></span>
+      <div class="ph"><img src="img/cansu-ugur.webp" alt="Cansu and Uğur inside Waf Waf Café" width="900" height="1600" loading="lazy"></div>
+      <figcaption>Cansu &amp; Uğur</figcaption>
+    </figure>
+    <div>
+      <span class="kick"><svg fill="currentColor" aria-hidden="true"><use href="#paw"/></svg>Our story</span>
+      <h2>It all started in our <em>kitchen.</em></h2>
+      <p class="big">What began as a small lockdown project quickly turned into a passion that brought joy to our friends, neighbours and community.</p>
+      <ul class="years">
+        <li><b>2020</b><p>During lockdown we started making and selling homemade food from our own kitchen.</p></li>
+        <li><b>2021</b><p>We took the next step and opened our very own café. Since then we have run it together as a couple, pouring our hearts into every dish, every coffee and every smile we serve.</p></li>
+      </ul>
+      <blockquote>
+        <p>“For us, this café is more than just a business. It’s a place built on love, creativity and the happiness that comes from sharing good moments.”</p>
+        <cite>Cansu &amp; Uğur</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="menu-s" id="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <div>
+        <span class="kick"><svg fill="currentColor" aria-hidden="true"><use href="#paw"/></svg>On the menu</span>
+        <h2>From first coffee to <em>last waffle.</em></h2>
+      </div>
+      <p class="intro">Breakfast until midday, homemade lunches after that, and sweet treats whenever you fancy one. A few favourites from the board:</p>
+    </div>
+    <div class="courses">
+      <article class="course">
+        <header><h3>Breakfast</h3><small>Served until midday</small></header>
+        <ul>
+          <li><b>Full English</b><span>Smoked bacon, sausages, hash browns, fried egg, tomato, portobello mushroom, beans and toast. Veggie and vegan versions too.</span></li>
+          <li><b>Turkish breakfast</b><span>Egg, soft cheese, cucumber, tomato, olives, cheesy pastry roll, sujuk sausage, honey, jam, toast and butter.</span><em>Start your day the Turkish way</em></li>
+          <li><b>Homemade buttermilk pancakes</b><span>Smoked bacon, fried egg and maple syrup, or blueberry, strawberry, vanilla yogurt and maple.</span></li>
+        </ul>
+      </article>
+      <article class="course">
+        <header><h3>Lunch</h3><small>Homemade and hearty</small></header>
+        <ul>
+          <li><b>Toasties</b><span>White bloomer with cheddar and mozzarella, topped with béchamel and served with fries.</span></li>
+          <li><b>Focaccia panini</b><span>Italian, French, Spanish or Mediterranean, all served with crisps.</span></li>
+          <li><b>Bombay waffle</b><span>Panko chicken, katsu mayo, spring onions and Bombay mix on a homemade savoury waffle.</span><em>New in town, here to wow</em></li>
+        </ul>
+      </article>
+      <article class="course">
+        <header><h3>Sweet treats</h3><small>Waffles or pancakes</small></header>
+        <ul>
+          <li><b>Lotus Biscoff</b><span>Crushed Lotus Biscoff and Biscoff sauce.</span></li>
+          <li><b>Old Friends</b><span>Nutella, banana, strawberry and mixed chocolate curls.</span></li>
+          <li><b>Milkshakes</b><span>Vanilla, banana, blueberry, Oreo, Lotus Biscoff, strawberry or chocolate, with whipped cream.</span></li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="coffee">
+      <div>
+        <h3>The <em>coffee</em> list</h3>
+        <p>Hot, iced or freddo. Oat, soy, coconut or almond milk for 50p, plus vanilla, caramel, hazelnut, pumpkin spice or gingerbread syrup.</p>
+      </div>
+      <ul class="prices">
+        <li>Americano<i></i><span>£3.20</span></li>
+        <li>Flat white<i></i><span>£3.60</span></li>
+        <li>Cappuccino<i></i><span>£3.60</span></li>
+        <li>Latte<i></i><span>£3.60</span></li>
+        <li>Cortado<i></i><span>£3.60</span></li>
+        <li>Mocha<i></i><span>£3.90</span></li>
+        <li>Turkish coffee<i></i><span>£3.00</span></li>
+        <li>Matcha latte<i></i><span>£4.00</span></li>
+        <li>Dirty chai<i></i><span>£4.30</span></li>
+        <li>Freddo espresso<i></i><span>£3.50</span></li>
+      </ul>
+    </div>
+
+    <div class="diet">
+      <p>We respect dietary needs and have vegan and gluten free options. Please let the team know about any allergies when you order.</p>
+      <a class="btn l" href="img/menu.webp" target="_blank" rel="noopener">See the full menu<svg aria-hidden="true"><use href="#arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="gal-s" id="gallery">
+  <div class="wrap">
+    <div class="gal-head">
+      <div>
+        <span class="kick"><svg fill="currentColor" aria-hidden="true"><use href="#paw"/></svg>A peek inside</span>
+        <h2>Pull up a <em>chair.</em></h2>
+      </div>
+      <p>More from the counter on <a href="https://www.instagram.com/cafewafwaf/" target="_blank" rel="noopener">Instagram @cafewafwaf</a></p>
+    </div>
+    <div class="gal">
+      <figure class="g1"><img src="img/turkish-breakfast.webp" alt="Turkish breakfast platter with egg, cheese, olives, tomato, cucumber and pastry" width="1000" height="1131" loading="lazy"><figcaption>The Turkish breakfast</figcaption></figure>
+      <figure class="g2"><img src="img/latte-art.webp" alt="Latte art being poured at the counter" width="1000" height="1303" loading="lazy"><figcaption>Latte art, every time</figcaption></figure>
+      <figure class="g3"><img src="img/shopfront-windows.webp" alt="Café windows painted with Vegan, Gluten Free and Dog Friendly" width="1100" height="756" loading="lazy"><figcaption>Dogs welcome</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="hours-s" id="hours">
+  <div class="wrap">
+    <div class="hours-card">
+      <div>
+        <span class="kick"><svg fill="currentColor" aria-hidden="true"><use href="#paw"/></svg>Opening hours</span>
+        <h2>Pop in, the <em>kettle’s on.</em></h2>
+        <p class="now" data-now>Open six days a week, 9:00 to 16:30. Closed on Tuesdays.</p>
+      </div>
+      <ul class="days" data-days>
+        <li data-d="1"><span>Monday</span><span>9:00 to 16:30</span></li>
+        <li data-d="2" class="off"><span>Tuesday</span><span>Closed</span></li>
+        <li data-d="3"><span>Wednesday</span><span>9:00 to 16:30</span></li>
+        <li data-d="4"><span>Thursday</span><span>9:00 to 16:30</span></li>
+        <li data-d="5"><span>Friday</span><span>9:00 to 16:30</span></li>
+        <li data-d="6"><span>Saturday</span><span>9:00 to 16:30</span></li>
+        <li data-d="0"><span>Sunday</span><span>9:00 to 16:30</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="find-s" id="find">
+  <div class="wrap">
+    <div class="find">
+      <div class="in">
+        <span class="kick"><svg fill="currentColor" aria-hidden="true"><use href="#paw"/></svg>Find us</span>
+        <address class="addr">75 Warwick Street, Leamington&nbsp;Spa, CV32&nbsp;4RR</address>
+        <p>Look for the blue shopfront with the orange sign and the bistro tables outside. Bring the dog, they are very welcome.</p>
+        <div class="ctas">
+          <a class="btn l" href="https://www.google.com/maps/search/?api=1&amp;query=Waf+Waf+Cafe+75+Warwick+Street+Leamington+Spa+CV32+4RR" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#pin"/></svg>Open in Google Maps</a>
+          <a class="btn ol" href="tel:+447923319834"><svg aria-hidden="true"><use href="#tel"/></svg>07923 319834</a>
+        </div>
+      </div>
+      <div class="map"><iframe title="Map showing Waf Waf Café, 75 Warwick Street, Leamington Spa" src="https://maps.google.com/maps?q=75%20Warwick%20Street%2C%20Leamington%20Spa%20CV32%204RR&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <img class="logo" src="img/logo-badge.webp" alt="Waf Waf Café logo" width="581" height="499" loading="lazy">
+    <div>
+      <h3>Waf Waf Café</h3>
+      <p>Fresh homemade food, sweet treats and incredible coffee.</p>
+      <div class="soc">
+        <a href="https://www.instagram.com/cafewafwaf/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ig"/></svg>Instagram</a>
+        <a href="https://www.facebook.com/wafwafwaffleleamington/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#fb"/></svg>Facebook</a>
+      </div>
+    </div>
+    <div>
+      <h3>Visit</h3>
+      <p>75 Warwick Street<br>Leamington Spa<br>CV32 4RR</p>
+      <p style="margin-top:10px"><a href="tel:+447923319834">07923 319834</a></p>
+    </div>
+    <div>
+      <h3>Hours</h3>
+      <p>Monday 9:00 to 16:30<br>Tuesday closed<br>Wednesday to Sunday<br>9:00 to 16:30</p>
+    </div>
+    <div class="legal"><span>&copy; 2026 Waf Waf Café</span><span>Site concept by <a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">The Tender Desk</a></span></div>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="Quick actions">
+  <a class="p" href="tel:+447923319834"><svg aria-hidden="true"><use href="#tel"/></svg>Call</a>
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=Waf+Waf+Cafe+75+Warwick+Street+Leamington+Spa+CV32+4RR" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#pin"/></svg>Directions</a>
+</nav>
+
+<script>
+(function(){
+  // Today's hours, worked out on UK time
+  var hrs={0:[540,990],1:[540,990],2:null,3:[540,990],4:[540,990],5:[540,990],6:[540,990]};
+  var names=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var now=new Date(),day=now.getDay(),mins=now.getHours()*60+now.getMinutes();
+  try{
+    var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(now),o={};
+    p.forEach(function(x){o[x.type]=x.value});
+    day=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(o.weekday);mins=(+o.hour)*60+(+o.minute);
+  }catch(e){}
+  var li=document.querySelector('[data-days] li[data-d="'+day+'"]');if(li)li.classList.add('today');
+  var t=hrs[day],msg,open=false;
+  if(!t)msg='Closed today, back tomorrow from 9:00';
+  else if(mins<t[0])msg='Opens today at 9:00';
+  else if(mins<t[1]){msg='Open now until 16:30';open=true}
+  else{var nd=(day+1)%7;msg=hrs[nd]?'Closed now, open tomorrow from 9:00':'Closed now, back Wednesday from 9:00'}
+  var st=document.querySelector('[data-status]');
+  if(st){st.querySelector('span').textContent=msg;if(!open)st.classList.add('shut')}
+  var nw=document.querySelector('[data-now]');
+  if(nw)nw.innerHTML='It’s '+names[day]+'. <b>'+msg+'.</b> We’re open six days a week and closed on Tuesdays.';
+})();
+</script>
+<!--td-motion-->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous" defer></script>
+<script src="/p/_motion/motion.js?v=1" defer></script>
+</body></html>
