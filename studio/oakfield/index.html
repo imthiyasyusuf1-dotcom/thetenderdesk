@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#070605">
+<title>Oakfield Barber Co. | Hot towel. Sharp fade.</title>
+<meta name="description" content="Oakfield Barber Co. Skin fades, beard sculpting and hot towel shaves, done by hand. Book a chair.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Manrope:wght@300..700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070605;--ink:#f1e8d6;--brass:#c9a24b;--brass2:#ecd28a;--mut:#9a8f7a;--line:rgba(201,162,75,.28);--serif:'Fraunces',Georgia,serif;--sans:'Manrope',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);color:var(--ink);-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:var(--sans);font-weight:400;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+em{font-style:italic;font-weight:300;background:linear-gradient(100deg,#8a6a22,var(--brass2) 45%,#b98f35);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em}
+
+/* preloader */
+#pre{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;transition:opacity .9s ease,visibility .9s}
+#pre.done{opacity:0;visibility:hidden;pointer-events:none}
+.pre-in{text-align:center;font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.6rem);letter-spacing:.32em;text-transform:uppercase;font-weight:300}
+.pre-in i{display:block;height:1px;margin:18px auto 0;width:140px;background:linear-gradient(90deg,transparent,var(--brass),transparent);transform-origin:left;animation:ld 1.6s ease-in-out infinite}
+@keyframes ld{0%{transform:scaleX(.05);opacity:.4}60%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:.3}}
+
+/* cursor */
+#cd,#cr{position:fixed;left:0;top:0;z-index:90;pointer-events:none;border-radius:50%;opacity:0;transition:opacity .3s}
+#cd{width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--brass2)}
+#cr{width:38px;height:38px;margin:-19px 0 0 -19px;border:1px solid rgba(236,210,138,.55);transition:opacity .3s,width .3s,height .3s,margin .3s,background .3s}
+#cr.big{width:68px;height:68px;margin:-34px 0 0 -34px;background:rgba(201,162,75,.12)}
+html.has-cursor,html.has-cursor a,html.has-cursor button{cursor:none}
+html.has-cursor #cd,html.has-cursor #cr{opacity:1}
+@media (hover:none),(pointer:coarse){#cd,#cr{display:none}}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px 5vw;pointer-events:none}
+.nav>*{pointer-events:auto}
+.mark{font-family:var(--serif);font-size:1.05rem;letter-spacing:.34em;text-transform:uppercase;font-weight:400}
+.mark small{display:block;font-family:var(--sans);font-size:.62rem;letter-spacing:.32em;color:var(--brass);margin-top:2px}
+.pill{border:1px solid var(--line);padding:10px 22px;border-radius:99px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;backdrop-filter:blur(8px);background:rgba(7,6,5,.35);transition:background .3s,color .3s,border-color .3s}
+.pill:hover{background:var(--brass);color:#120d05;border-color:var(--brass)}
+
+/* story */
+.story{position:relative;height:500vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:radial-gradient(120% 90% at 70% 40%,#15100a 0%,#0a0806 55%,#050403 100%)}
+#gl{position:absolute;inset:0}
+#gl canvas{display:block;width:100%;height:100%}
+.vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 45%,rgba(3,2,1,.7) 100%)}
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");animation:gr 1s steps(4) infinite}
+@keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(0,0)}}
+#lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4}
+#lines line{stroke:var(--brass2);stroke-width:1;stroke-dasharray:1;stroke-dashoffset:1;opacity:.9}
+#lines circle{fill:var(--brass2)}
+.co{position:absolute;left:0;top:0;z-index:5;opacity:0;pointer-events:none;white-space:nowrap;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);padding:0 0 6px;border-bottom:1px solid var(--line)}
+.co b{font-family:var(--serif);font-weight:400;font-size:1.25rem;letter-spacing:.02em;color:var(--brass2);margin-left:10px;text-transform:none}
+
+.ph{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;padding:0 6vw;pointer-events:none;will-change:transform,opacity}
+.ph h1,.ph h2{font-family:var(--serif);font-weight:300;line-height:.95;letter-spacing:-.025em;font-size:clamp(3.1rem,9.2vw,9.4rem)}
+.kick{font-size:.7rem;letter-spacing:.38em;text-transform:uppercase;color:var(--brass);margin-bottom:22px;display:block}
+.sub{max-width:34ch;margin-top:26px;color:var(--mut);font-size:clamp(.95rem,1.2vw,1.1rem)}
+.p1{justify-content:flex-end;padding-bottom:13vh}
+.p2{justify-content:center}
+.p2 h2{font-size:clamp(2.8rem,7.4vw,7.4rem);max-width:9ch}
+.p3{align-items:center;text-align:center;justify-content:flex-start;padding-top:14vh}
+.p3 h2{font-size:clamp(2.6rem,6.4vw,6rem)}
+.p3 .sub{margin-left:auto;margin-right:auto}
+.p4{justify-content:center;align-items:center}
+.cue{position:absolute;right:5vw;bottom:5vh;font-size:.62rem;letter-spacing:.38em;text-transform:uppercase;color:var(--mut);display:flex;align-items:center;gap:14px}
+.cue i{display:block;width:1px;height:46px;background:linear-gradient(var(--brass),transparent);animation:cue 2s ease-in-out infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+.panel{pointer-events:auto;width:min(1020px,100%);padding:clamp(22px,3.4vw,52px);background:rgba(10,8,6,.62);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line)}
+.panel h2{font-size:clamp(2.2rem,5vw,4.6rem);margin-bottom:clamp(14px,2.4vw,34px)}
+.cols{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(22px,4vw,64px)}
+.panel h3{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--brass);font-weight:500;margin-bottom:12px}
+.row{display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px solid rgba(241,232,214,.09);font-size:1.02rem}
+.row span:first-child{white-space:nowrap}
+.row i{flex:1;border-bottom:1px dotted rgba(154,143,122,.4);transform:translateY(-4px)}
+.row b{font-family:var(--serif);font-weight:400;font-size:1.3rem;color:var(--brass2)}
+.hrs .row{font-size:.95rem}
+.hrs .row span:last-child{color:var(--mut)}
+.btn{display:inline-flex;align-items:center;gap:14px;margin-top:22px;padding:16px 30px;background:var(--brass);color:#120d05;font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.78rem;transition:background .3s,transform .3s}
+.btn:hover{background:var(--brass2);transform:translateY(-2px)}
+.tel{display:block;margin-top:12px;color:var(--mut);font-size:.9rem}
+.tel a{color:var(--ink);border-bottom:1px solid var(--line)}
+
+.hud{position:absolute;left:6vw;right:6vw;bottom:4.4vh;z-index:7;display:flex;align-items:center;gap:18px;font-size:.62rem;letter-spacing:.3em;color:var(--mut);pointer-events:none}
+.hud .bar{flex:1;height:1px;background:rgba(241,232,214,.12);position:relative;overflow:hidden}
+.hud .bar i{position:absolute;inset:0;background:var(--brass);transform-origin:left;transform:scaleX(0)}
+.p1 .cue{display:none}
+
+/* shop */
+.shop{position:relative;background:var(--bg);padding:14vh 0 10vh;overflow:hidden}
+.marq{white-space:nowrap;font-family:var(--serif);font-weight:300;font-size:clamp(3rem,10vw,10rem);line-height:1;letter-spacing:-.03em;color:transparent;-webkit-text-stroke:1px rgba(201,162,75,.45);margin-bottom:10vh}
+.marq span{display:inline-block}
+.shop-h{padding:0 6vw;margin-bottom:6vh;display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.shop-h h2{font-family:var(--serif);font-weight:300;font-size:clamp(2.4rem,5.4vw,5rem);letter-spacing:-.02em;line-height:1}
+.shop-h p{max-width:36ch;color:var(--mut)}
+.strip{display:grid;grid-template-columns:1.2fr .9fr 1.1fr;gap:clamp(12px,1.6vw,26px);padding:0 6vw;align-items:end}
+.strip figure{overflow:hidden;position:relative;background:#120e0a}
+.strip figure:nth-child(1){aspect-ratio:4/5}
+.strip figure:nth-child(2){aspect-ratio:3/4;margin-bottom:8vh}
+.strip figure:nth-child(3){aspect-ratio:4/5}
+.strip img{position:absolute;left:0;top:-10%;width:100%;height:120%;object-fit:cover;filter:saturate(.8) contrast(1.05) sepia(.18)}
+.strip figure::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px var(--line);pointer-events:none}
+
+footer{background:#050403;border-top:1px solid var(--line);padding:9vh 6vw 5vh}
+.ft{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.ft .big{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,3.6rem);line-height:1.02;letter-spacing:-.02em}
+.ft h4{font-size:.65rem;letter-spacing:.34em;text-transform:uppercase;color:var(--brass);font-weight:500;margin-bottom:14px}
+.ft p,.ft a{color:var(--mut);font-size:.95rem;display:block}
+.ft a:hover{color:var(--ink)}
+.legal{margin-top:9vh;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.72rem;color:#6d6454;letter-spacing:.08em}
+.legal a{color:#8c8269;border-bottom:1px solid rgba(140,130,105,.35)}
+.legal a:hover{color:var(--brass2)}
+
+/* static layout: reduced motion or no WebGL */
+.reduce .story{height:auto}
+.reduce .stage{position:relative;height:auto;overflow:visible}
+.reduce #gl{position:absolute;inset:0 0 auto 0;height:100vh;height:100svh}
+.reduce .ph{position:relative;inset:auto;opacity:1!important;transform:none!important;visibility:visible!important;pointer-events:auto;min-height:80vh;padding-top:12vh;padding-bottom:12vh}
+.reduce .p1{min-height:100vh;min-height:100svh}
+.reduce .co,.reduce #lines,.reduce .hud,.reduce .grain{display:none}
+.reduce .p2,.reduce .p3,.reduce .p4{background:linear-gradient(rgba(7,6,5,.0),rgba(7,6,5,.9) 20%)}
+.reduce *{animation:none!important}
+.nogl #gl{display:none}
+
+@media (max-width:760px){
+ .nav{padding:16px 5vw}
+ .mark{font-size:.9rem}
+ .pill{padding:8px 16px}
+ .ph{padding:0 6vw}
+ .p1{padding-bottom:9vh}
+ .p2 h2{max-width:none}
+ .cols{grid-template-columns:1fr;gap:16px}
+ .panel{padding:20px 18px}
+ .panel h2{font-size:2.2rem;margin-bottom:12px}
+ .row{padding:6px 0;font-size:.92rem}
+ .row b{font-size:1.1rem}
+ .hrs .row{font-size:.85rem}
+ .btn{margin-top:14px;padding:14px 24px}
+ .tel{display:none}
+ .co{font-size:.58rem;letter-spacing:.14em}
+ .co b{font-size:1rem;margin-left:6px}
+ .strip{grid-template-columns:1fr}
+ .strip figure:nth-child(2){margin-bottom:0}
+ .ft{grid-template-columns:1fr}
+ .hud{bottom:2.4vh}
+}
+</style>
+<script>setTimeout(function(){var p=document.getElementById('pre');if(p)p.classList.add('done')},8000)</script>
+<script type="importmap">
+{"imports":{"three":"https://unpkg.com/three@0.169.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.169.0/examples/jsm/"}}
+</script>
+</head>
+<body>
+<div id="pre"><div class="pre-in">Oakfield<i></i></div></div>
+<div id="cd"></div><div id="cr"></div>
+
+<header class="nav">
+  <a class="mark" href="#top">Oakfield<small>Barber Co.</small></a>
+  <a class="pill" href="tel:07700900789">Book a chair</a>
+</header>
+
+<main id="top">
+<section class="story" id="story">
+  <div class="stage" id="stage">
+    <div id="gl"></div>
+    <div class="vig"></div>
+    <div class="grain"></div>
+    <svg id="lines" aria-hidden="true">
+      <g data-k="0"><line pathLength="1"/><circle r="3"/></g>
+      <g data-k="1"><line pathLength="1"/><circle r="3"/></g>
+      <g data-k="2"><line pathLength="1"/><circle r="3"/></g>
+    </svg>
+    <div class="co" data-k="0">Skin fade<b>£25</b></div>
+    <div class="co" data-k="1">Beard sculpt<b>£15</b></div>
+    <div class="co" data-k="2">Hot towel shave<b>£20</b></div>
+
+    <div class="ph p1" id="p1">
+      <span class="kick rv">Oakfield Barber Co.</span>
+      <h1 class="rv">Hot towel.<br><em>Sharp fade.</em></h1>
+      <p class="sub rv">Cuts, shaves and beard work, done properly. Walk in or book your chair.</p>
+    </div>
+    <div class="ph p2" id="p2">
+      <span class="kick">The craft</span>
+      <h2>Every cut, <em>done by hand.</em></h2>
+      <p class="sub">Scissors, straight razor and a steady hand. No shortcuts, no rush.</p>
+    </div>
+    <div class="ph p3" id="p3">
+      <span class="kick">Three tools. One chair.</span>
+      <h2>Book the <em>chair.</em></h2>
+    </div>
+    <div class="ph p4" id="p4">
+      <div class="panel">
+        <h2>Pull up <em>a chair.</em></h2>
+        <div class="cols">
+          <div>
+            <h3>The list</h3>
+            <div class="row"><span>Skin fade</span><i></i><b>£25</b></div>
+            <div class="row"><span>Classic cut</span><i></i><b>£22</b></div>
+            <div class="row"><span>Beard sculpt</span><i></i><b>£15</b></div>
+            <div class="row"><span>Hot towel shave</span><i></i><b>£20</b></div>
+            <div class="row"><span>Cut and beard</span><i></i><b>£35</b></div>
+            <div class="row"><span>Kids cut</span><i></i><b>£16</b></div>
+          </div>
+          <div class="hrs">
+            <h3>Opening hours</h3>
+            <div class="row"><span>Mon to Fri</span><i></i><span>9am to 6pm</span></div>
+            <div class="row"><span>Saturday</span><i></i><span>8am to 5pm</span></div>
+            <div class="row"><span>Sunday</span><i></i><span>Closed</span></div>
+            <a class="btn" href="tel:07700900789">Book a chair</a>
+            <span class="tel">Or call <a href="tel:07700900789">07700 900789</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hud"><span id="chap">01 / 04</span><div class="bar"><i id="barfill"></i></div><span>Scroll</span></div>
+  </div>
+</section>
+
+<section class="shop">
+  <div class="marq" id="marq"><span>Skin fades &bull; Beard sculpts &bull; Hot towel shaves &bull; Skin fades &bull; Beard sculpts &bull; Hot towel shaves</span></div>
+  <div class="shop-h">
+    <h2>Inside the <em>shop.</em></h2>
+    <p>Leather, brass and a good mirror. Take a seat and tell us what you want.</p>
+  </div>
+  <div class="strip">
+    <figure><img src="barber_hero.jpg" alt="A barber at work in the shop" loading="lazy"></figure>
+    <figure><img src="barber_interior.jpg" alt="Chairs and mirrors inside the shop" loading="lazy"></figure>
+    <figure><img src="barber_tools.jpg" alt="Barber tools laid out on the counter" loading="lazy"></figure>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="ft">
+    <div class="big">Fresh cut.<br><em>Clear head.</em></div>
+    <div><h4>Hours</h4><p>Mon to Fri 9am to 6pm</p><p>Saturday 8am to 5pm</p><p>Sunday closed</p></div>
+    <div><h4>Book</h4><a href="tel:07700900789">07700 900789</a><a href="tel:07700900789">Book a chair</a></div>
+  </div>
+  <div class="legal"><span>&copy; 2026 Oakfield Barber Co.</span><a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener">Site by The Tender Desk</a></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, t) => a + (b - a) * t;
+const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+const win = (p, a, b, c, d) => smooth(a, b, p) * (1 - smooth(c, d, p));
+function kf(p, keys) {
+  if (p <= keys[0][0]) return keys[0][1];
+  for (let i = 1; i < keys.length; i++) {
+    if (p <= keys[i][0]) return lerp(keys[i - 1][1], keys[i][1], smooth(keys[i - 1][0], keys[i][0], p));
+  }
+  return keys[keys.length - 1][1];
+}
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const touch = matchMedia('(hover: none), (pointer: coarse)').matches;
+const small = innerWidth < 760;
+const stage = $('#stage');
+const mount = $('#gl');
+if (reduce) document.documentElement.classList.add('reduce');
+
+/* ---------- renderer ---------- */
+let renderer = null;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: 'high-performance' });
+} catch (e) { renderer = null; }
+if (!renderer) {
+  document.documentElement.classList.add('reduce', 'nogl');
+}
+
+const DPR = Math.min(devicePixelRatio || 1, small || touch ? 1.5 : 2);
+let W = mount.clientWidth || innerWidth, H = mount.clientHeight || innerHeight;
+let aspect = W / H;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(36, aspect, 0.05, 80);
+let composer = null, bloom = null;
+
+const ru = {
+  uTime: { value: 0 }, uUn: { value: 0 }, uG: { value: 0 }, uShift: { value: 0 }, uSweep: { value: 0 },
+  uTilt: { value: 0.32 }, uRingA: { value: 0 }, uAlpha: { value: 1 }, uR: { value: 3.6 },
+  uOff: { value: new THREE.Vector3() }
+};
+const poleU = { uShift: ru.uShift };
+
+const poleGroup = new THREE.Group();
+const shell = new THREE.Group();
+let poleInner = null, ribbons = [], smoke = null, smokeU = null;
+const ringTools = [];
+const toolRoot = new THREE.Group();
+
+if (renderer) {
+  renderer.setPixelRatio(DPR);
+  renderer.setSize(W, H);
+  renderer.setClearColor(0x070605, 1);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+  mount.appendChild(renderer.domElement);
+
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  scene.environmentIntensity = 0.55;
+
+  const key = new THREE.PointLight(0xffc880, 90, 0, 2); key.position.set(3.5, 3.5, 6);
+  const rim = new THREE.PointLight(0xff9d55, 70, 0, 2); rim.position.set(-4.5, 2, -3);
+  const cool = new THREE.DirectionalLight(0x8fa8ff, 0.35); cool.position.set(-3, 1, 4);
+  scene.add(key, rim, cool);
+
+  const brassM = new THREE.MeshStandardMaterial({ color: 0xc9a24b, metalness: 1, roughness: 0.28, envMapIntensity: 1.5 });
+  const steelM = new THREE.MeshStandardMaterial({ color: 0xe6e0d2, metalness: 1, roughness: 0.16, envMapIntensity: 1.4 });
+  const ebonyM = new THREE.MeshStandardMaterial({ color: 0x2a1c12, metalness: 0.1, roughness: 0.45 });
+
+  /* ----- pole: stripe shader cylinder ----- */
+  const COLORS = `
+    const vec3 RED=vec3(0.80,0.12,0.16); const vec3 WHITE=vec3(0.95,0.91,0.82); const vec3 NAVY=vec3(0.07,0.17,0.46);
+  `;
+  const poleMat = new THREE.ShaderMaterial({
+    uniforms: poleU,
+    vertexShader: `varying vec3 vPos; void main(){ vPos=position; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+    fragmentShader: `
+      varying vec3 vPos; uniform float uShift;
+      ${COLORS}
+      void main(){
+        float ang=atan(vPos.z,vPos.x);
+        float s=fract(ang/6.28318530718 + vPos.y/1.2 - uShift);
+        float b=floor(s*3.0); float f=fract(s*3.0);
+        vec3 c = b<0.5 ? RED : (b<1.5 ? WHITE : NAVY);
+        float edge=smoothstep(0.0,0.05,f)*smoothstep(1.0,0.95,f);
+        c*=mix(0.3,1.0,edge);
+        c*=0.72+0.28*cos(ang-0.9);
+        c*=0.5+0.5*smoothstep(1.75,1.35,abs(vPos.y));
+        gl_FragColor=vec4(pow(c,vec3(2.2)),1.0);
+      }`
+  });
+  poleInner = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 3.4, 96, 1, true), poleMat);
+  poleGroup.add(poleInner);
+
+  const glass = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.57, 0.57, 3.4, 64, 1, true),
+    new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0, roughness: 0.05, transmission: 1, thickness: 0.3, ior: 1.45, clearcoat: 1, clearcoatRoughness: 0.05, envMapIntensity: 1.6, side: THREE.FrontSide })
+  );
+  shell.add(glass);
+  for (const s of [1, -1]) {
+    const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.64, 0.64, 0.2, 64), brassM);
+    cap.position.y = s * 1.72;
+    const lip = new THREE.Mesh(new THREE.TorusGeometry(0.62, 0.03, 16, 64), brassM);
+    lip.rotation.x = Math.PI / 2; lip.position.y = s * 1.62;
+    shell.add(cap, lip);
+  }
+  const fin = new THREE.Mesh(new THREE.SphereGeometry(0.3, 48, 32), brassM); fin.position.y = 2.1;
+  const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.22, 0.26, 32), brassM); neck.position.y = 1.9;
+  shell.add(fin, neck);
+  poleGroup.add(shell);
+  scene.add(poleGroup);
+
+  /* ----- ribbons ----- */
+  const ribbonVS = `
+    uniform float uTime,uUn,uG,uShift,uSweep,uTilt,uRingA,uK,uR;
+    uniform vec3 uOff;
+    varying float vShade; varying float vSide;
+    const float PI2=6.28318530718;
+    vec3 rotX(vec3 v,float a){float c=cos(a),s=sin(a);return vec3(v.x,v.y*c-v.z*s,v.y*s+v.z*c);}
+    void main(){
+      float t=uv.x; float side=uv.y-0.5; vSide=side;
+      float y=(t-0.5)*3.2;
+      float a=PI2*((uK+0.5)/3.0 - y/1.2 + uShift);
+      vec3 hp=vec3(0.506*cos(a),y,0.506*sin(a))+uOff;
+      float wh=1.2/3.0*0.97;
+      float tw=t*8.0+uTime*0.9+uK*2.0;
+      vec3 fp=vec3((t-0.5)*34.0+mix(9.0,-9.0,uSweep),
+                   sin(t*7.0-uTime*1.1+uK*2.1)*1.4+(uK-1.0)*0.9+sin(t*2.0+uTime*0.5)*0.8,
+                   cos(t*5.0-uTime*0.9+uK*1.7)*1.8-1.0);
+      float wf=0.8*(0.35+0.65*sin(3.14159*t));
+      float a2=t*PI2+uRingA;
+      float rr=uR+(uK-1.0)*uR*0.08;
+      vec3 rp=rotX(vec3(rr*cos(a2),(uK-1.0)*0.12,rr*sin(a2)),uTilt);
+      float u1=smoothstep(0.0,1.0,clamp(uUn*1.7-t*0.7,0.0,1.0));
+      float u2=smoothstep(0.0,1.0,clamp(uG*1.7-(1.0-t)*0.7,0.0,1.0));
+      vec3 pos=mix(mix(hp,fp,u1),rp,u2);
+      vec3 wdF=vec3(0.0,cos(tw),sin(tw));
+      vec3 wd=normalize(mix(mix(vec3(0.0,1.0,0.0),wdF,u1),rotX(vec3(0.0,1.0,0.0),uTilt),u2));
+      float w=mix(mix(wh,wf,u1),0.1,u2);
+      pos+=wd*side*w;
+      vShade=mix(0.72+0.28*cos(a-0.9),0.55+0.45*abs(wdF.z),u1);
+      gl_Position=projectionMatrix*viewMatrix*vec4(pos,1.0);
+    }`;
+  const ribbonFS = `
+    uniform vec3 uCol; uniform float uAlpha; varying float vShade; varying float vSide;
+    void main(){
+      vec3 c=uCol*vShade;
+      c*=1.0+0.7*smoothstep(0.36,0.5,abs(vSide));
+      gl_FragColor=vec4(pow(c,vec3(2.2)),uAlpha);
+    }`;
+  const ribCols = [new THREE.Color(0.80, 0.12, 0.16), new THREE.Color(0.95, 0.91, 0.82), new THREE.Color(0.07, 0.17, 0.46)];
+  const ribGeo = new THREE.PlaneGeometry(1, 1, 260, 1);
+  for (let k = 0; k < 3; k++) {
+    const m = new THREE.ShaderMaterial({
+      uniforms: { ...ru, uK: { value: k }, uCol: { value: ribCols[k] } },
+      vertexShader: ribbonVS, fragmentShader: ribbonFS,
+      side: THREE.DoubleSide, transparent: true
+    });
+    const mesh = new THREE.Mesh(ribGeo, m);
+    mesh.frustumCulled = false; mesh.visible = false;
+    ribbons.push(mesh); scene.add(mesh);
+  }
+
+  /* ----- brass tools ----- */
+  const coneG = new THREE.ConeGeometry(0.075, 1, 4);
+  const cyl = (r) => new THREE.CylinderGeometry(r, r, 1, 12);
+  function seg(geo, mat, ax, ay, bx, by) {
+    const m = new THREE.Mesh(geo, mat); const dx = bx - ax, dy = by - ay;
+    m.position.set((ax + bx) / 2, (ay + by) / 2, 0);
+    m.rotation.z = -Math.atan2(dx, dy); m.scale.set(1, Math.hypot(dx, dy), 1);
+    return m;
+  }
+  function scissors() {
+    const g = new THREE.Group(), inner = new THREE.Group();
+    for (const s of [1, -1]) {
+      const b = seg(coneG, steelM, s * 0.07, -0.1, -s * 0.13, 1.0); b.scale.z = 0.3; b.position.z = s * 0.02;
+      const sh = seg(cyl(0.03), brassM, s * 0.21, -0.42, s * 0.07, -0.1); sh.position.z = s * 0.02;
+      const h = new THREE.Mesh(new THREE.TorusGeometry(0.17, 0.042, 14, 36), brassM);
+      h.position.set(s * 0.25, -0.62, s * 0.02); h.scale.y = 1.15;
+      inner.add(b, sh, h);
+    }
+    const pv = new THREE.Mesh(new THREE.SphereGeometry(0.06, 20, 14), brassM); pv.position.set(0, 0.285, 0);
+    inner.add(pv); inner.position.y = -0.35; g.add(inner); g.scale.setScalar(1.1);
+    return g;
+  }
+  function comb() {
+    const g = new THREE.Group(), inner = new THREE.Group();
+    inner.add(Object.assign(new THREE.Mesh(new THREE.BoxGeometry(1.45, 0.2, 0.07), brassM), {}));
+    inner.children[0].position.y = 0.3;
+    for (let i = 0; i < 12; i++) {
+      const t = new THREE.Mesh(new THREE.BoxGeometry(0.065, 0.55, 0.045), brassM);
+      t.position.set(-0.65 + i * 0.118, -0.02, 0); inner.add(t);
+    }
+    inner.rotation.z = 0.15; g.add(inner); g.scale.setScalar(1.05);
+    return g;
+  }
+  function razor() {
+    const g = new THREE.Group(), inner = new THREE.Group();
+    const handle = new THREE.Mesh(new THREE.CapsuleGeometry(0.09, 0.75, 4, 14), ebonyM);
+    handle.rotation.z = Math.PI / 2; handle.position.set(-0.35, -0.15, 0);
+    const pv = new THREE.Mesh(new THREE.SphereGeometry(0.07, 20, 14), brassM); pv.position.set(0.05, -0.15, 0);
+    const a = 0.95;
+    const blade = new THREE.Mesh(new THREE.BoxGeometry(1, 0.17, 0.02), steelM);
+    blade.position.set(0.05 + Math.cos(a) * 0.5, -0.15 + Math.sin(a) * 0.5, 0); blade.rotation.z = a;
+    const rib = new THREE.Mesh(new THREE.BoxGeometry(1, 0.035, 0.032), brassM); rib.position.y = 0.09; blade.add(rib);
+    const tip = new THREE.Mesh(new THREE.SphereGeometry(0.05, 14, 10), brassM); tip.position.set(-0.8, -0.15, 0);
+    inner.add(handle, pv, blade, tip); inner.position.set(0.1, -0.1, 0); g.add(inner); g.scale.setScalar(1.15);
+    return g;
+  }
+  [scissors(), comb(), razor()].forEach((g, k) => {
+    const holder = new THREE.Group(); holder.add(g); holder.scale.setScalar(0);
+    toolRoot.add(holder); ringTools.push({ holder, g, base: k * 2.0944 });
+  });
+  scene.add(toolRoot);
+
+  /* ----- smoke ----- */
+  const N = small || touch ? 360 : 950;
+  const pos = new Float32Array(N * 3), seed = new Float32Array(N * 4);
+  for (let i = 0; i < N; i++) {
+    pos[i * 3] = (Math.random() - 0.5) * 18;
+    pos[i * 3 + 1] = (Math.random() - 0.5) * 12;
+    pos[i * 3 + 2] = -8 + Math.random() * 11;
+    for (let j = 0; j < 4; j++) seed[i * 4 + j] = Math.random();
+  }
+  const sg = new THREE.BufferGeometry();
+  sg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  sg.setAttribute('aSeed', new THREE.BufferAttribute(seed, 4));
+  smokeU = { uTime: ru.uTime, uScale: { value: H * DPR * 0.75 }, uOpacity: { value: small || touch ? 0.05 : 0.032 }, uMax: { value: 300 * DPR } };
+  smoke = new THREE.Points(sg, new THREE.ShaderMaterial({
+    uniforms: smokeU, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    vertexShader: `
+      attribute vec4 aSeed; uniform float uTime,uScale,uMax; varying float vA; varying float vRot; varying float vMix;
+      void main(){
+        vec3 p=position; float sp=0.25+aSeed.z*0.5;
+        p.y=mod(p.y+6.0+uTime*sp*0.5,12.0)-6.0;
+        p.x+=sin(uTime*0.15*sp+p.y*0.6+aSeed.x*6.28)*1.2+sin(uTime*0.07+aSeed.y*9.0)*0.8;
+        p.z+=cos(uTime*0.12*sp+p.y*0.5+aSeed.y*6.28)*1.0;
+        vec4 mv=modelViewMatrix*vec4(p,1.0);
+        float d=-mv.z;
+        float size=(1.6+aSeed.w*2.6)*uScale/max(d,0.1);
+        gl_PointSize=d<0.2?0.0:clamp(size,2.0,uMax);
+        vA=smoothstep(6.0,3.5,abs(p.y))*smoothstep(0.4,3.0,d);
+        vRot=aSeed.x*6.28; vMix=aSeed.y;
+        gl_Position=projectionMatrix*mv;
+      }`,
+    fragmentShader: `
+      varying float vA; varying float vRot; varying float vMix; uniform float uOpacity;
+      void main(){
+        vec2 c=gl_PointCoord-0.5; float r=length(c)*2.0;
+        float ca=cos(vRot),sa=sin(vRot); vec2 q=mat2(ca,-sa,sa,ca)*c;
+        float a=smoothstep(1.0,0.0,r); a*=a;
+        a*=0.6+0.4*(0.5+0.5*sin(q.x*11.0+vRot*7.0)*sin(q.y*9.0+vRot*5.0));
+        vec3 col=mix(vec3(0.62,0.46,0.24),vec3(0.52,0.52,0.56),vMix);
+        gl_FragColor=vec4(col,a*uOpacity*vA);
+      }`
+  }));
+  smoke.frustumCulled = false; smoke.renderOrder = 2;
+  scene.add(smoke);
+
+  /* ----- post ----- */
+  const rt = new THREE.WebGLRenderTarget(W * DPR, H * DPR, { type: THREE.HalfFloatType });
+  rt['sam' + 'ples'] = small || touch ? 0 : 4;
+  composer = new EffectComposer(renderer, rt);
+  composer.setPixelRatio(DPR); composer.setSize(W, H);
+  composer.addPass(new RenderPass(scene, camera));
+  bloom = new UnrealBloomPass(new THREE.Vector2(W, H), small ? 0.45 : 0.6, 0.75, 0.82);
+  composer.addPass(bloom);
+  composer.addPass(new OutputPass());
+}
+
+/* ---------- state ---------- */
+const labels = $$('.co'), lineG = $$('#lines g');
+const ph = [$('#p1'), $('#p2'), $('#p3'), $('#p4')];
+const chap = $('#chap'), barfill = $('#barfill');
+let target = 0, P = 0, T = 0, mx = 0, my = 0, smx = 0, smy = 0, lastChap = '';
+const lastVis = [-1, -1, -1, -1];
+function setPh(i, v) {
+  if (Math.abs(v - lastVis[i]) < 0.002) return; lastVis[i] = v;
+  const el = ph[i];
+  el.style.opacity = v.toFixed(3);
+  el.style.transform = `translate3d(0,${((1 - v) * 26).toFixed(1)}px,0)`;
+  el.style.visibility = v < 0.01 ? 'hidden' : 'visible';
+  el.style.pointerEvents = v > 0.6 ? 'auto' : 'none';
+}
+const tmp = new THREE.Vector3();
+const ZK = [[0, 7.8], [0.2, 7.2], [0.34, 1.2], [0.5, 1.2], [0.72, 10.5], [0.86, 10.5], [1, 15.5]];
+const YK = [[0, 0.1], [0.5, 0], [0.72, 0.8], [1, 2.2]];
+const FK = [[0, 36], [0.2, 38], [0.34, 64], [0.5, 64], [0.72, 38], [1, 38]];
+const SK = [[0, 1], [0.3, 1.5], [0.5, 1.1], [0.72, 0.8], [1, 0.6]];
+
+function frame(dt) {
+  T += dt;
+  P += (target - P) * (1 - Math.exp(-dt * 7));
+  const p = reduce || !renderer ? 0 : P;
+  smx += (mx - smx) * (1 - Math.exp(-dt * 3)); smy += (my - smy) * (1 - Math.exp(-dt * 3));
+
+  if (!reduce) {
+    for (let i = 0; i < 4; i++) {
+      const v = i === 0 ? win(p, -1, -0.5, 0.1, 0.2) : i === 1 ? win(p, 0.24, 0.32, 0.46, 0.54) : i === 2 ? win(p, 0.6, 0.68, 0.78, 0.86) : win(p, 0.88, 0.95, 9, 10);
+      setPh(i, v);
+    }
+    const c = p < 0.25 ? '01' : p < 0.55 ? '02' : p < 0.86 ? '03' : '04';
+    if (c !== lastChap) { lastChap = c; chap.textContent = c + ' / 04'; }
+    barfill.style.transform = `scaleX(${p.toFixed(4)})`;
+  }
+  if (!renderer) return;
+
+  const portrait = aspect < 1;
+  const ringR = portrait ? 1.7 : 3.6;
+  const poleX = (aspect > 1.15 ? 1.9 : 0) * (1 - smooth(0, 0.2, p));
+  const poleY = (portrait ? 0.75 : 0) * (1 - smooth(0, 0.2, p));
+  poleGroup.position.set(poleX, poleY, 0);
+  ru.uOff.value.set(poleX, poleY, 0);
+
+  ru.uTime.value = T; ru.uShift.value = T * 0.1;
+  ru.uUn.value = smooth(0.3, 0.52, p); ru.uG.value = smooth(0.52, 0.72, p); ru.uSweep.value = smooth(0.34, 0.6, p);
+  ru.uRingA.value = -T * 0.18 - p * 2.2; ru.uR.value = ringR;
+  ru.uAlpha.value = lerp(1, 0.4, smooth(0.82, 1, p));
+  poleInner.visible = p < 0.3;
+  const sh = 1 - smooth(0.3, 0.42, p);
+  shell.visible = sh > 0.002; shell.scale.setScalar(Math.max(sh, 0.001));
+  for (const r of ribbons) r.visible = p >= 0.3;
+  poleGroup.rotation.z = Math.sin(T * 0.4) * 0.025;
+
+  /* tools */
+  const ts = (ringR / 3.6) * smooth(0.6, 0.74, p) * (1 - 0.25 * smooth(0.88, 1, p));
+  const tilt = ru.uTilt.value;
+  ringTools.forEach((o, k) => {
+    const a = o.base + ru.uRingA.value;
+    const x = ringR * Math.cos(a), z0 = ringR * Math.sin(a);
+    const y = -z0 * Math.sin(tilt) + Math.sin(T * 0.8 + k * 2) * 0.12, z = z0 * Math.cos(tilt);
+    o.holder.position.set(x, y, z); o.holder.scale.setScalar(Math.max(ts, 0.0001));
+    o.holder.visible = ts > 0.01;
+    o.g.rotation.y = T * 0.7 + k * 2.0; o.g.rotation.x = 0.15 + Math.sin(T * 0.5 + k) * 0.1;
+  });
+
+  /* camera */
+  const zMul = portrait ? lerp(1, 1.15, smooth(0.5, 0.72, p)) : 1;
+  camera.fov = kf(p, FK);
+  camera.position.set(smx * 0.35, kf(p, YK) + smy * 0.2, kf(p, ZK) * zMul);
+  camera.lookAt(smx * 0.1, kf(p, YK) * 0.3, 0);
+  camera.updateProjectionMatrix();
+  camera.updateMatrixWorld();
+
+  smokeU.uOpacity.value = (small || touch ? 0.05 : 0.032) * kf(p, SK);
+  bloom.strength = (small ? 0.45 : 0.6) + 0.25 * win(p, 0.3, 0.4, 0.5, 0.6);
+
+  /* callouts */
+  if (!reduce) {
+    const v3 = win(p, 0.66, 0.74, 0.84, 0.9);
+    const off = portrait ? 56 : 130;
+    ringTools.forEach((o, k) => {
+      const el = labels[k], g = lineG[k], ln = g.firstElementChild, dot = g.lastElementChild;
+      tmp.copy(o.holder.position).project(camera);
+      const sx = (tmp.x * 0.5 + 0.5) * W, sy = (-tmp.y * 0.5 + 0.5) * H;
+      const front = smooth(-1.2, 1.6, o.holder.position.z);
+      const v = v3 * front;
+      const dx = sx < W * 0.5 ? -1 : 1;
+      const ex = sx + dx * off, ey = sy - off * 0.7;
+      ln.setAttribute('x1', sx.toFixed(1)); ln.setAttribute('y1', sy.toFixed(1));
+      ln.setAttribute('x2', ex.toFixed(1)); ln.setAttribute('y2', ey.toFixed(1));
+      ln.style.strokeDashoffset = (1 - v).toFixed(3); ln.style.opacity = v.toFixed(3);
+      dot.setAttribute('cx', sx.toFixed(1)); dot.setAttribute('cy', sy.toFixed(1)); dot.style.opacity = v.toFixed(3);
+      el.style.opacity = clamp((v - 0.3) / 0.7).toFixed(3);
+      el.style.transform = `translate3d(${(dx < 0 ? ex - el.offsetWidth : ex).toFixed(1)}px,${(ey - el.offsetHeight).toFixed(1)}px,0)`;
+    });
+  }
+  composer.render();
+}
+
+/* ---------- resize ---------- */
+function resize() {
+  W = mount.clientWidth || innerWidth; H = mount.clientHeight || innerHeight; aspect = W / H;
+  if (!renderer) return;
+  camera.aspect = aspect;
+  renderer.setSize(W, H); composer.setSize(W, H);
+  smokeU.uScale.value = H * DPR * 0.75;
+  if (reduce) frame(0);
+}
+addEventListener('resize', resize);
+
+/* ---------- scroll + loop ---------- */
+gsap.registerPlugin(ScrollTrigger);
+if (!reduce) {
+  const lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((t) => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+  ScrollTrigger.create({ trigger: '#story', start: 'top top', end: 'bottom bottom', onUpdate: (s) => { target = s.progress; } });
+  gsap.ticker.add((t, dtms) => frame(Math.min((dtms || 16) / 1000, 0.05)));
+
+  gsap.utils.toArray('.strip figure').forEach((f) => {
+    gsap.fromTo($('img', f), { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: f, start: 'top bottom', end: 'bottom top', scrub: true } });
+    gsap.from(f, { opacity: 0, y: 60, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: f, start: 'top 88%', once: true } });
+  });
+  gsap.to('#marq span', { xPercent: -32, ease: 'none', scrollTrigger: { trigger: '#marq', start: 'top bottom', end: 'bottom top', scrub: true } });
+  gsap.from('.shop-h > *', { opacity: 0, y: 40, stagger: 0.12, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.shop-h', start: 'top 85%', once: true } });
+} else if (renderer) {
+  frame(0);
+}
+
+/* ---------- pointer + cursor ---------- */
+if (!touch) {
+  addEventListener('pointermove', (e) => { mx = e.clientX / innerWidth - 0.5; my = -(e.clientY / innerHeight - 0.5); });
+  document.documentElement.classList.add('has-cursor');
+  const cd = $('#cd'), cr = $('#cr');
+  let cx = innerWidth / 2, cy = innerHeight / 2, rx = cx, ry = cy;
+  addEventListener('pointermove', (e) => { cx = e.clientX; cy = e.clientY; cd.style.transform = `translate3d(${cx}px,${cy}px,0)`; });
+  const loop = () => { rx += (cx - rx) * 0.16; ry += (cy - ry) * 0.16; cr.style.transform = `translate3d(${rx}px,${ry}px,0)`; requestAnimationFrame(loop); };
+  loop();
+  $$('a,button').forEach((el) => {
+    el.addEventListener('pointerenter', () => cr.classList.add('big'));
+    el.addEventListener('pointerleave', () => cr.classList.remove('big'));
+  });
+}
+
+/* ---------- preloader ---------- */
+const ready = Promise.all([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise((r) => setTimeout(r, 1300))]);
+ready.then(() => {
+  $('#pre').classList.add('done');
+  if (!reduce) gsap.from('.p1 .rv', { y: 40, opacity: 0, duration: 1.3, stagger: 0.14, ease: 'power3.out', delay: 0.25 });
+});
+</script>
+</body>
+</html>
