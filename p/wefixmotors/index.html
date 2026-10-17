@@ -6,12 +6,12 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#14161A">
 <title>WeFix Motors | Mobile mechanic, recovery and MOT in Aldershot</title>
-<meta name="description" content="99 Mobile Mechanic and Recovery 24/7. MOT, servicing, brakes, tyres, diagnostics and breakdown recovery. 159B Ash Road, Aldershot GU12 4DB. Call 07935 025706.">
+<meta name="description" content="Mobile mechanic and recovery, 24/7. MOT, servicing, brakes, tyres, diagnostics and breakdown recovery. 159B Ash Road, Aldershot GU12 4DB. Call 07935 025706.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2314161A'/%3E%3Cpath d='M7 9l4 14 5-9 5 9 4-14' fill='none' stroke='%23FFB400' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#14161A;--ink2:#1E2127;--paper:#EFEBE3;--paper2:#E4DFD4;--amber:#FFB400;--mute:#6B6F76;--line:rgba(20,22,26,.14)}
+:root{--ink:#14161A;--ink2:#1E2127;--paper:#EFEBE3;--paper2:#E4DFD4;--amber:#FFB400;--mute:#55595f;--line:rgba(20,22,26,.14)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:Barlow,system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.5;overflow-x:hidden}
@@ -33,7 +33,7 @@ nav.links{display:none;gap:28px;font-weight:500}
 .dot{width:9px;height:9px;border-radius:50%;background:#2e9e5b;box-shadow:0 0 0 0 rgba(46,158,91,.5);animation:pulse 2s infinite}
 .dot.off{background:#c0392b;animation:none}
 @keyframes pulse{70%{box-shadow:0 0 0 9px rgba(46,158,91,0)}100%{box-shadow:0 0 0 0 rgba(46,158,91,0)}}
-.hero h1{font-size:clamp(64px,17vw,176px);font-weight:800;margin:22px 0 22px}
+.hero h1{overflow:visible;font-size:clamp(64px,17vw,176px);font-weight:800;margin:22px 0 22px}
 .hero h1 em{font-style:normal;background:var(--amber);padding:0 .08em;display:inline-block;transform:rotate(-1.5deg)}
 .hero p.lead{font-size:clamp(18px,2.4vw,23px);max-width:560px;color:#33363c}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
@@ -112,8 +112,8 @@ footer a{color:var(--amber)}
 <main id="top">
 <div class="hero"><div class="wrap">
  <span class="badge"><i class="dot" id="dot"></i><span id="open">Mobile recovery 24/7</span></span>
- <h1 class="rv">Broken down?<br><em>We come to you.</em></h1>
- <p class="lead rv">99 Mobile Mechanic and Recovery 24/7. Honest, efficient, affordable help right where you are, so you lose as little time as possible. MOT and servicing at the Ash Road garage.</p>
+ <h1 data-m="off" class="rv">Broken down?<br><em>We come to you.</em></h1>
+ <p class="lead rv">Mobile mechanic and recovery, 24/7. Honest, efficient, affordable help right where you are, so you lose as little time as possible. MOT and servicing at the Ash Road garage.</p>
  <div class="cta rv">
   <a class="btn pri" href="tel:07935025706">Call 07935 025706</a>
   <a class="btn sec" href="https://wa.me/447935025706?text=Hi%20WeFix%20Motors%2C%20I%20need%20some%20help%20with%20my%20car." target="_blank" rel="noopener">WhatsApp us</a>
@@ -204,7 +204,7 @@ footer a{color:var(--amber)}
  var n=new Date(),d=n.getDay(),m=n.getHours()*60+n.getMinutes();
  var open=d>=1&&d<=5&&m>=480&&m<1050;
  document.getElementById('open').textContent=open?'Garage open now, mobile recovery 24/7':'Garage closed, mobile recovery still 24/7';
- if(!open)document.getElementById('dot').className='dot';
+ if(!open)document.getElementById('dot').className='dot off';
  var tr=document.querySelector('#hours tr[data-d="'+d+'"]');if(tr)tr.className='today';
  var sel={};
  document.querySelectorAll('.chip').forEach(function(c){c.onclick=function(){var p=c.getAttribute('aria-pressed')==='true';c.setAttribute('aria-pressed',!p);if(p)delete sel[c.textContent];else sel[c.textContent]=1;upd()}});
