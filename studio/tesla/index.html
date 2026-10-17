@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<!-- Tesla Roadster product page. Spec numbers are the public figures on https://www.tesla.com/roadster (checked 17 Oct 2026):
+     0-60 mph 1.9 s, 0-100 mph 4.2 s, 1/4 mile 8.8 s, top speed over 250 mph, 10,000 Nm wheel torque, 620 mile range, seats 4, all wheel drive, base reservation $50,000.
+     All imagery is generated for this page. No photos taken from tesla.com. -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b0b0d">
+<title>Roadster | Tesla</title>
+<meta name="description" content="Roadster. 0 to 60 mph in 1.9 seconds, over 250 mph, 620 miles of range. Gravity defying.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/car-white-m.webp" media="(max-width:800px)">
+<link rel="preload" as="image" href="img/car-white.webp" media="(min-width:801px)">
+<style>
+:root{--ink:#0b0b0d;--fg:#f4f4f5;--dim:rgba(244,244,245,.78);--line:rgba(244,244,245,.2);--sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;--vh:1vh}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ink)}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:var(--sans);font-weight:300;color:var(--fg);-webkit-font-smoothing:antialiased;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+img{-webkit-user-drag:none;user-select:none}
+
+/* preloader */
+#pre{position:fixed;inset:0;z-index:200;background:var(--ink);display:grid;place-items:center;transition:opacity 1s ease,visibility 1s}
+#pre.gone{opacity:0;visibility:hidden}
+#pre .w{font-weight:300;font-size:13px;letter-spacing:.9em;padding-left:.9em;text-transform:uppercase;text-align:center}
+#pre .bar{width:min(260px,56vw);height:1px;background:rgba(255,255,255,.14);margin:28px auto 0;overflow:hidden}
+#pre .bar i{display:block;height:100%;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .4s}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:20px 34px;transition:color .5s}
+.nav .mk{font-weight:500;letter-spacing:.62em;font-size:15px;padding-left:.1em}
+.nav .lk{display:flex;gap:6px;font-size:13px;font-weight:400}
+.nav .lk a{padding:8px 14px;border-radius:6px;transition:background .3s}
+.nav .lk a:hover{background:rgba(255,255,255,.12)}
+.nav .cta{padding:9px 20px;border-radius:6px;background:rgba(255,255,255,.14);font-size:13px;font-weight:500;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+body.light .nav{color:#111}
+body.light .nav .cta{background:rgba(0,0,0,.07)}
+
+/* fixed flight stage */
+#fly{position:fixed;inset:0;z-index:1;overflow:hidden;background:#20151d;pointer-events:none;perspective:1400px}
+.pl{position:absolute;left:-6%;top:-6%;width:112%;height:112%;will-change:transform,opacity}
+.pl img{width:100%;height:100%;object-fit:cover;display:block}
+#pClouds{opacity:0}
+#haze{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,12,24,.32),transparent 22%,transparent 70%,rgba(20,10,16,.45));z-index:3}
+#wisps{position:absolute;inset:0;z-index:7;opacity:0}
+#wisps i{position:absolute;left:100%;height:3.5vh;border-radius:50%;background:radial-gradient(closest-side,rgba(255,240,230,.75),transparent);filter:blur(4px);will-change:transform}
+#fog{position:absolute;inset:-10%;z-index:8;opacity:0;background:radial-gradient(60% 50% at 50% 50%,rgba(255,246,238,.97),rgba(255,226,214,.85) 55%,rgba(255,214,200,.6));will-change:opacity}
+#fogb{position:absolute;left:-20%;right:-20%;bottom:-30%;height:70%;z-index:9;opacity:0;background:url(img/clouds-p.webp) center 85%/cover;-webkit-mask:linear-gradient(transparent,#000 45%);mask:linear-gradient(transparent,#000 45%);will-change:transform,opacity}
+#glow{position:absolute;left:-40vw;top:-7vh;width:80vw;height:14vh;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%,rgba(255,236,220,.9),rgba(255,190,170,.35) 40%,transparent 70%);mix-blend-mode:screen;opacity:0;will-change:opacity,transform}
+#ttl{position:absolute;left:0;right:0;top:15%;text-align:center;z-index:4;will-change:transform,opacity}
+#ttl h1{font-weight:200;font-size:clamp(72px,17.5vw,300px);letter-spacing:-.045em;line-height:.85;color:#fff;opacity:.94}
+#ttl p{font-size:clamp(13px,1.05vw,16px);letter-spacing:.42em;text-transform:uppercase;font-weight:400;margin-top:2.2vh;color:rgba(255,255,255,.86)}
+#ground{position:absolute;left:50%;top:80%;width:0;height:0;z-index:5;will-change:transform,opacity}
+#shadow{position:absolute;left:-36vw;top:-4vh;width:72vw;height:8vh;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%,rgba(10,4,10,.82),rgba(10,4,10,.4) 45%,transparent 72%);will-change:transform,opacity}
+#dust{position:absolute;left:-60vw;top:-12vh;width:120vw;height:20vh;opacity:0;will-change:transform,opacity}
+#dust img{width:100%;height:100%;filter:brightness(1.25)}
+#rig{position:absolute;left:50%;top:80%;z-index:6;width:min(62vw,1100px);will-change:transform;transform:translate(-50%,-92%);transform-style:preserve-3d}
+#bob{position:relative;will-change:transform}
+#bob.on{animation:bob 4.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate3d(0,0,0) rotate(0deg)}50%{transform:translate3d(0,-1.6vh,0) rotate(-.6deg)}}
+#car{position:relative;width:100%;aspect-ratio:1894/678;will-change:transform}
+#car img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.tint{position:absolute;inset:0;mix-blend-mode:soft-light;-webkit-mask:url(img/car-white.webp) center/100% 100% no-repeat;mask:url(img/car-white.webp) center/100% 100% no-repeat;will-change:opacity}
+#tint{background:linear-gradient(100deg,rgba(255,110,150,.9),rgba(255,170,140,.6) 50%,rgba(100,90,210,.8));opacity:1;mix-blend-mode:overlay}
+#tint2{background:linear-gradient(255deg,rgba(255,160,50,1),rgba(255,150,100,.7) 50%,rgba(240,120,140,.75));opacity:0;mix-blend-mode:overlay}
+#rim{position:absolute;inset:0;mix-blend-mode:screen;background:linear-gradient(180deg,rgba(255,200,180,.28),transparent 30%);-webkit-mask:url(img/car-white.webp) center/100% 100% no-repeat;mask:url(img/car-white.webp) center/100% 100% no-repeat;opacity:.8}
+.jet{position:absolute;top:80%;width:12%;aspect-ratio:160/520;transform-origin:50% 0;opacity:0;will-change:transform,opacity;mix-blend-mode:screen;z-index:-1}
+.jet::before{content:"";position:absolute;left:-60%;right:-60%;top:-8%;height:30%;border-radius:50%;background:radial-gradient(50% 50% at 50% 40%,rgba(255,255,255,.95),rgba(190,215,255,.55) 35%,transparent 70%);filter:blur(2px)}
+.jet::after{content:"";position:absolute;left:-40%;right:-40%;top:0;bottom:0;background:radial-gradient(40% 55% at 50% 30%,rgba(170,200,255,.55),transparent 70%);filter:blur(8px)}
+.jet i{position:absolute;inset:0;background:url(img/plume.png) center/100% 100%;animation:flick .09s steps(2) infinite alternate}
+@keyframes flick{from{transform:scale(1,1);opacity:.85}to{transform:scale(1.08,1.06);opacity:1}}
+#cue{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:7;font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:rgba(255,255,255,.8);text-align:center;opacity:0}
+#cue i{display:block;width:1px;height:42px;background:linear-gradient(#fff,transparent);margin:12px auto 0;animation:cue 1.8s infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+#hud{position:absolute;left:34px;bottom:28px;z-index:7;display:flex;gap:36px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.92);text-shadow:0 1px 12px rgba(0,0,0,.45);opacity:0;font-weight:400}
+#hud b{display:block;font-weight:200;font-size:34px;letter-spacing:0;color:#fff;font-variant-numeric:tabular-nums;margin-bottom:4px}
+#hud b small{font-size:12px;letter-spacing:.2em;margin-left:6px;color:rgba(255,255,255,.75)}
+.fcap::before{content:"";position:absolute;inset:-60px -80px;z-index:-1;background:radial-gradient(closest-side,rgba(20,10,20,.38),transparent);pointer-events:none}
+.fcap{position:absolute;z-index:7;left:7vw;bottom:15vh;max-width:min(560px,86vw);opacity:0;will-change:transform,opacity}
+.fcap.r{left:auto;right:7vw;text-align:right}
+.fcap .k{font-size:12px;letter-spacing:.42em;text-transform:uppercase;font-weight:400;color:rgba(255,255,255,.82);margin-bottom:14px}
+.fcap h2{font-weight:200;font-size:clamp(46px,6.4vw,110px);letter-spacing:-.035em;line-height:.95;text-shadow:0 2px 40px rgba(0,0,0,.35)}
+.fcap p{font-size:clamp(16px,1.3vw,20px);line-height:1.5;color:#fff;margin-top:18px;font-weight:400;text-shadow:0 1px 18px rgba(0,0,0,.5)}
+.fcap .k{text-shadow:0 1px 14px rgba(0,0,0,.5)}
+
+/* scene stage */
+#stage{position:fixed;inset:0;z-index:0;background:var(--ink);overflow:hidden}
+.sc{position:absolute;inset:0;opacity:0;visibility:hidden}
+.sc.live{visibility:visible;will-change:opacity,clip-path}
+.sc img{position:absolute;left:-4%;top:-4%;width:108%;height:108%;object-fit:cover;will-change:transform}
+#sv{position:absolute;inset:0;z-index:20;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.42),transparent 26%,transparent 58%,rgba(0,0,0,.62))}
+
+main{position:relative;z-index:5}
+#hero{height:520vh}
+.sec{position:relative;height:230vh}
+.pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 7vw 14vh;pointer-events:none}
+.pin>*{will-change:transform,opacity}
+.sec.top .pin{justify-content:flex-start;padding-top:16vh}
+.sec.r .pin{align-items:flex-end;text-align:right}
+.sec.c .pin{align-items:center;text-align:center}
+.k{font-size:12px;letter-spacing:.42em;text-transform:uppercase;font-weight:400;color:var(--dim);margin-bottom:16px}
+h2.big{font-weight:200;font-size:clamp(50px,8.4vw,150px);letter-spacing:-.04em;line-height:.92;text-shadow:0 2px 50px rgba(0,0,0,.4)}
+h2.big small{font-size:.3em;letter-spacing:0;margin-left:.15em;font-weight:300}
+.sub{max-width:34ch;font-size:clamp(16px,1.35vw,21px);line-height:1.5;color:rgba(255,255,255,.9);margin-top:18px;text-shadow:0 1px 20px rgba(0,0,0,.6)}
+.n{font-variant-numeric:tabular-nums}
+
+/* white spec band */
+.specs{position:relative;z-index:6;background:#fff;color:#111;padding:16vh 7vw 14vh}
+.specs .k{color:#5c5e62}
+.specs h3{font-weight:300;font-size:clamp(34px,4vw,60px);letter-spacing:-.03em;line-height:1.05;max-width:18ch}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4vw;margin-top:10vh}
+.st b{display:block;font-weight:200;font-size:clamp(54px,6.4vw,108px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.st b small{font-size:.32em;font-weight:300;letter-spacing:0;margin-left:.12em}
+.st span{display:block;margin-top:12px;font-size:14px;color:#5c5e62;font-weight:400}
+.st{border-top:1px solid #e3e3e3;padding-top:22px}
+.specs .row{display:flex;gap:14px;margin-top:9vh;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-width:220px;padding:13px 26px;border-radius:6px;font-size:14px;font-weight:500;transition:background .3s,color .3s,transform .3s}
+.btn.dk{background:#171a20;color:#fff}.btn.dk:hover{background:#000}
+.btn.lt{background:#f4f4f4;color:#171a20}.btn.lt:hover{background:#e8e8e8}
+.btn.wh{background:rgba(255,255,255,.92);color:#171a20}
+
+/* design strip */
+.gal{position:relative;z-index:6;background:#fff;color:#111;padding:0 0 14vh}
+.gal .hd{padding:0 7vw 6vh}
+.gal .hd h3{font-weight:300;font-size:clamp(30px,3.4vw,52px);letter-spacing:-.03em}
+.gal .hd p{color:#5c5e62;margin-top:12px;max-width:52ch;line-height:1.55;font-size:16px}
+.gwrap{overflow:hidden}
+.gtrack{display:flex;gap:18px;padding:0 7vw;width:max-content;will-change:transform}
+.gc{width:min(62vw,940px);aspect-ratio:16/9;border-radius:10px;overflow:hidden;position:relative;background:#eee}
+.gc img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.08);will-change:transform}
+.gc em{position:absolute;left:20px;bottom:16px;font-style:normal;font-size:13px;font-weight:500;color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.7)}
+
+/* configurator */
+.cfg{position:relative;z-index:6;background:#fff;color:#171a20;min-height:100vh;display:grid;grid-template-columns:1.55fr 1fr;align-items:center;gap:3vw;padding:12vh 5vw 14vh}
+.stagebox{position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:radial-gradient(70% 60% at 50% 62%,#ffffff,#eceef1 70%,#e2e5e9)}
+.stagebox .fl{position:absolute;left:8%;right:8%;bottom:17%;height:9%;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.32),transparent 70%)}
+.stagebox .cw{position:absolute;left:6%;right:6%;bottom:16%;aspect-ratio:1896/680}
+.stagebox .cw img{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .7s}
+.stagebox .cw img.on{opacity:1}
+.panel h3{font-weight:400;font-size:clamp(34px,3vw,46px);letter-spacing:-.02em}
+.panel .ln{color:#5c5e62;font-size:14px;margin-top:6px}
+.kv{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:28px 0 30px;text-align:center}
+.kv b{display:block;font-weight:400;font-size:24px}
+.kv span{font-size:12px;color:#5c5e62}
+.panel h4{font-size:15px;font-weight:500;margin-bottom:14px}
+.sw{display:flex;gap:14px}
+.sw button{width:44px;height:44px;border-radius:50%;position:relative;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.sw button.on::after{content:"";position:absolute;inset:-5px;border-radius:50%;box-shadow:0 0 0 2px #3e6ae1}
+.cn{font-size:14px;color:#5c5e62;margin:12px 0 30px}
+.pr{display:flex;justify-content:space-between;font-size:15px;padding:16px 0;border-top:1px solid #e6e6e6}
+.rsv{width:100%;margin-top:18px;padding:15px;border-radius:6px;background:#3e6ae1;color:#fff;font-weight:500;font-size:15px;position:relative;overflow:hidden;transition:background .3s}
+.rsv:hover{background:#3457b1}
+.rsv .pg{position:absolute;left:0;top:0;bottom:0;width:100%;background:rgba(255,255,255,.22);transform:scaleX(0);transform-origin:left}
+.rsv span{position:relative}
+.ok{display:none;margin-top:16px;padding:16px;border-radius:8px;background:#f4f6fb;font-size:14px;line-height:1.5;color:#171a20}
+.ok.on{display:block}
+.fine{font-size:12px;color:#8e8e8e;margin-top:14px;line-height:1.5}
+footer{position:relative;z-index:6;background:#fff;color:#5c5e62;font-size:12px;display:flex;justify-content:center;gap:28px;padding:26px 20px 34px;flex-wrap:wrap}
+footer a:hover{color:#171a20}
+
+@media (max-width:800px){
+.nav{padding:14px 18px}.nav .lk{display:none}.nav .mk{font-size:13px}.nav .cta{padding:8px 16px}
+#ttl{top:14%}#ttl h1{font-size:22vw}#cue i{display:none}#ttl p{font-size:12px;letter-spacing:.34em}
+#rig{width:84vw;top:79%}
+#ground{top:79%}
+#shadow{left:-46vw;width:92vw;height:6vh;top:-3vh}
+#glow{left:-55vw;width:110vw}
+#dust{left:-80vw;width:160vw}
+#cue{left:auto;right:20px;transform:none;bottom:22px}
+#hud{left:20px;bottom:22px;gap:40px}#hud b{font-size:28px}
+.fcap{left:20px;right:20px;top:15vh;bottom:auto}.fcap.r{right:20px;left:20px;text-align:left}
+.pin{padding:0 20px 12vh}
+.sec.r .pin{align-items:flex-start;text-align:left}
+.sc img{left:-10%;width:120%}
+.grid{grid-template-columns:1fr 1fr;gap:28px 20px;margin-top:6vh}
+.specs{padding:12vh 20px 10vh}
+.btn{min-width:0;flex:1}
+.gal .hd{padding:0 20px 4vh}.gtrack{padding:0 20px;gap:12px}.gc{width:84vw;aspect-ratio:4/3}
+.cfg{grid-template-columns:1fr;padding:10vh 20px 8vh;gap:30px}
+.stagebox{aspect-ratio:4/3}
+}
+@media (max-width:800px){.tint,#rim{-webkit-mask-image:url(img/car-white-m.webp);mask-image:url(img/car-white-m.webp)}}
+@media (prefers-reduced-motion:reduce){#bob.on,.jet i,#cue i{animation:none}}
+</style>
+</head>
+<body>
+<div id="pre"><div><div class="w">Roadster</div><div class="bar"><i id="pb"></i></div></div></div>
+
+<header class="nav">
+  <a class="mk" href="#top" data-go="0">TESLA</a>
+  <nav class="lk"><a href="#specs" data-go="specs">Specs</a><a href="#design" data-go="design">Design</a><a href="#order" data-go="order">Order</a></nav>
+  <a class="cta" href="#order" data-go="order">Reserve</a>
+</header>
+
+<div id="stage" aria-hidden="true">
+  <div class="sc" data-k="salt"><picture><source media="(max-width:800px)" srcset="img/salt-m.webp"><img src="img/salt.webp" alt="" style="object-position:62% 50%"></picture></div>
+  <div class="sc" data-k="road"><picture><source media="(max-width:800px)" srcset="img/road-m.webp"><img src="img/road.webp" alt="" style="object-position:40% 50%"></picture></div>
+  <div class="sc" data-k="rear"><picture><source media="(max-width:800px)" srcset="img/rear-m.webp"><img src="img/rear.webp" alt="" style="object-position:50% 50%"></picture></div>
+  <div class="sc" data-k="interior"><picture><source media="(max-width:800px)" srcset="img/interior-m.webp"><img src="img/interior.webp" alt="" style="object-position:50% 50%"></picture></div>
+  <div id="sv"></div>
+</div>
+
+<div id="fly" aria-hidden="true">
+  <div class="pl" id="pSky"><picture><source media="(max-width:800px)" srcset="img/sky-p.webp"><img src="img/sky.webp" alt=""></picture></div>
+  <div class="pl" id="pClouds"><picture><source media="(max-width:800px)" srcset="img/clouds-p.webp"><img src="img/clouds.webp" alt=""></picture></div>
+  <div id="haze"></div><div id="fog"></div><div id="fogb"></div>
+  <div id="ttl"><h1>Roadster</h1><p>Gravity defying</p></div>
+  <div id="ground"><div id="glow"></div><div id="shadow"></div><div id="dust"><img src="img/dust.webp" alt=""></div></div>
+  <div id="rig"><div id="bob"><div id="car">
+    <div class="jet" style="left:5%"><i></i></div>
+    <div class="jet" style="left:30%;top:80%;width:6.5%"><i></i></div>
+    <div class="jet" style="left:53%"><i></i></div>
+    <div class="jet" style="left:80%;top:80%;width:6.5%"><i></i></div>
+    <picture><source media="(max-width:800px)" srcset="img/car-white-m.webp"><img src="img/car-white.webp" alt="Tesla Roadster in white, hovering"></picture>
+    <div class="tint" id="tint"></div><div class="tint" id="tint2"></div><div id="rim"></div>
+  </div></div></div>
+  <div class="fcap" id="cap1"><div class="k">Lift off</div><h2>The fastest car<br>ever made.</h2><p>Then it leaves the ground.</p></div>
+  <div class="fcap r" id="cap2"><div class="k">Above it all</div><h2>Gravity,<br>optional.</h2><p>Designed for performance and aero efficiency, from the first line to the last.</p></div>
+  <div id="hud"><div><b><span id="hA">0</span><small>ft</small></b>Altitude</div><div><b><span id="hS">0</span><small>mph</small></b>Speed</div></div>
+  <div id="cue">Scroll<i></i></div>
+</div>
+
+<main id="top">
+  <section id="hero" aria-label="Roadster"></section>
+
+  <section class="specs" id="specs">
+    <div class="k">Roadster</div>
+    <h3>The first supercar to set every performance record and still seat four.</h3>
+    <div class="grid">
+      <div class="st"><b><span class="n" data-to="1.9" data-d="1">0</span><small>s</small></b><span>0 to 60 mph</span></div>
+      <div class="st"><b><span class="n" data-to="250">0</span><small>+ mph</small></b><span>Top speed</span></div>
+      <div class="st"><b><span class="n" data-to="620">0</span><small>mi</small></b><span>Range</span></div>
+      <div class="st"><b><span class="n" data-to="10000" data-c="1">0</span><small>Nm</small></b><span>Wheel torque</span></div>
+    </div>
+    <div class="row"><a class="btn dk" href="#order" data-go="order">Reserve now</a><a class="btn lt" href="#design" data-go="design">Explore the design</a></div>
+  </section>
+
+  <section class="sec" data-sc="0"><div class="pin">
+    <div class="k rv">Drive</div>
+    <h2 class="big rv">Built for<br>the horizon.</h2>
+    <p class="sub rv">All wheel drive and 10,000 Nm at the wheels, on any surface you point it at.</p>
+  </div></section>
+
+  <section class="sec r" data-sc="1"><div class="pin">
+    <div class="k rv">Acceleration</div>
+    <h2 class="big rv cnt"><span class="n" data-to="4.2" data-d="1">0</span><small>s</small></h2>
+    <p class="sub rv">0 to 100 mph. Most cars are still finding second gear.</p>
+  </div></section>
+
+  <section class="sec" data-sc="2"><div class="pin">
+    <div class="k rv">Quarter mile</div>
+    <h2 class="big rv cnt"><span class="n" data-to="8.8" data-d="1">0</span><small>s</small></h2>
+    <p class="sub rv">One thin line of light, and then it is gone.</p>
+  </div></section>
+
+  <section class="sec c top" data-sc="3"><div class="pin">
+    <div class="k rv">Interior</div>
+    <h2 class="big rv">Seats four.<br>Sees everything.</h2>
+    <p class="sub rv">A full glass roof, a yoke and a cabin that feels made around you.</p>
+  </div></section>
+
+  <section class="gal" id="design">
+    <div class="hd" style="padding-top:14vh"><div class="k" style="color:#5c5e62">Design</div><h3>Designed for performance and aero efficiency.</h3><p>One continuous canopy, a nose drawn with a single line of light and a body shaped by the air.</p></div>
+    <div class="gwrap"><div class="gtrack" id="gtrack">
+      <div class="gc"><img src="img/side.webp" alt="Roadster side profile" loading="lazy"><em>Profile</em></div>
+      <div class="gc"><img src="img/hero4.webp" alt="Roadster front three quarter" loading="lazy"><em>Light line</em></div>
+      <div class="gc"><img src="img/rear.webp" alt="Roadster rear at night" loading="lazy"><em>Tail</em></div>
+      <div class="gc"><img src="img/interior.webp" alt="Roadster interior" loading="lazy"><em>Cabin</em></div>
+      <div class="gc"><img src="img/salt.webp" alt="Roadster at speed on a salt flat" loading="lazy"><em>Aero</em></div>
+    </div></div>
+  </section>
+
+  <section class="cfg" id="order">
+    <div class="stagebox"><div class="fl"></div><div class="cw" id="cw">
+      <img class="on" data-f="white" src="img/car-white-m.webp" alt="Roadster in white" loading="lazy">
+      <img data-f="silver" src="img/car-silver-m.webp" alt="Roadster in silver" loading="lazy">
+    </div></div>
+    <div class="panel">
+      <h3>Roadster</h3>
+      <div class="ln">All Wheel Drive</div>
+      <div class="kv"><div><b>620 mi</b><span>Range</span></div><div><b>250+ mph</b><span>Top speed</span></div><div><b>1.9 s</b><span>0 to 60 mph</span></div></div>
+      <h4>Paint</h4>
+      <div class="sw" id="sw">
+        <button class="on" data-f="white" aria-label="White" style="background:radial-gradient(circle at 35% 30%,#fff,#e9e9ec)"></button>
+        <button data-f="silver" aria-label="Silver" style="background:radial-gradient(circle at 35% 30%,#f2f3f5,#9a9ea6)"></button>
+      </div>
+      <div class="cn" id="cn">White</div>
+      <div class="pr"><span>Base reservation</span><b style="font-weight:500">$50,000</b></div>
+      <button class="rsv" id="rsv"><div class="pg"></div><span id="rl">Reserve now</span></button>
+      <div class="ok" id="ok">Your Roadster is reserved in <b id="okc">White</b>. We will be in touch before production.</div>
+      <p class="fine">Figures from Tesla. Reservation amount shown for the base car.</p>
+    </div>
+  </section>
+  <footer><span>Tesla Roadster</span><a href="#specs" data-go="specs">Specs</a><a href="#order" data-go="order">Reserve</a><a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener">Site by The Tender Desk</a></footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const mobile=matchMedia('(max-width:800px)').matches||matchMedia('(pointer:coarse)').matches;
+gsap.registerPlugin(ScrollTrigger);
+if(mobile)ScrollTrigger.config({ignoreMobileResize:true});
+
+/* preload the images that are on screen first */
+const crit=[...$$('#fly img'),...$$('#stage img')];let done=0;const pb=$('#pb');
+const ready=new Promise(res=>{crit.forEach(im=>{const d=()=>{done++;pb.style.transform=`scaleX(${done/crit.length})`;if(done>=crit.length)res()};if(im.complete&&im.naturalWidth)d();else{im.addEventListener('load',d,{once:true});im.addEventListener('error',d,{once:true})}})});
+let started=false;
+Promise.all([ready,document.fonts?document.fonts.ready:0,new Promise(r=>setTimeout(r,900))]).then(()=>setTimeout(start,250));
+setTimeout(()=>{if(!started)start()},12000);
+
+function start(){if(started)return;started=true;
+  $('#pre').classList.add('gone');
+  const lenis=new Lenis({lerp:.075,wheelMultiplier:.8,smoothWheel:true});
+  lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+  $$('[data-go]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();const g=b.dataset.go;lenis.scrollTo(g==='0'?0:'#'+g,{duration:2.2})}));
+
+  const rig=$('#rig'),bob=$('#bob'),jets=$$('.jet'),shadow=$('#shadow'),dust=$('#dust'),ttl=$('#ttl'),cue=$('#cue');
+
+  /* intro: car sits on the lake bed, thrusters light, dust blasts out, it lifts and settles into a hover */
+  const car=$('#car'),glow=$('#glow');
+  gsap.set(rig,{xPercent:-50,yPercent:-92});
+  const intro=gsap.timeline({delay:.3});
+  intro.fromTo(ttl,{opacity:0,y:40},{opacity:1,y:0,duration:2,ease:'power3.out'},0)
+    .fromTo(rig,{scale:.94},{scale:1,duration:1.6,ease:'power2.out'},0)
+    .fromTo(car,{rotationX:0},{rotationX:4,duration:.5,yoyo:true,repeat:1,ease:'sine.inOut'},.75)
+    .to(jets,{opacity:1,duration:.25,stagger:.05,ease:'power1.out'},.8)
+    .fromTo(jets,{scaleY:.15,scaleX:.6},{scaleY:1,scaleX:1,duration:.7,stagger:.05,ease:'power2.out'},.8)
+    .fromTo(glow,{opacity:0,scale:.5},{opacity:1,scale:1,duration:.7,ease:'power2.out'},.85)
+    .fromTo(dust,{opacity:0,scale:.3},{opacity:1,scale:1.15,duration:1.5,ease:'expo.out'},.95)
+    .to(rig,{y:()=>-innerHeight*(mobile?.15:.17),duration:2.6,ease:'power3.inOut'},1.15)
+    .to(car,{rotationZ:-1.5,duration:2.6,ease:'power2.inOut'},1.15)
+    .to(shadow,{scaleX:.62,scaleY:.5,opacity:.45,duration:2.6,ease:'power3.inOut'},1.15)
+    .to(glow,{opacity:.55,scaleX:.8,duration:2.6,ease:'power2.inOut'},1.4)
+    .to(dust,{opacity:.6,scale:1.5,duration:3,ease:'power2.out'},2.2)
+    .add(()=>bob.classList.add('on'),3.5)
+    .to(cue,{opacity:1,duration:1},3.2);
+
+  /* scroll flight: climb with a banked turn toward the camera, punch through the cloud deck, cruise, then leave frame */
+  const H=$('#hero'),hA=$('#hA'),hS=$('#hS'),hud=$('#hud');
+  const fl=gsap.timeline({scrollTrigger:{trigger:H,start:'top top',end:'bottom bottom',scrub:mobile?.5:1.1}});
+  fl.to(cue,{opacity:0,duration:.03},0)
+    .to(ttl,{y:()=>-innerHeight*.06,opacity:0,duration:.09,ease:'power1.in'},0)
+    .to('#pSky',{scale:1.32,y:()=>innerHeight*.18,duration:.36,ease:'power1.in'},0)
+    .to('#ground',{y:()=>innerHeight*.75,scale:1.6,duration:.3,ease:'power2.in'},0)
+    .to(dust,{opacity:0,duration:.14},0)
+    .to([shadow,glow],{opacity:0,duration:.14},.02)
+    .to(rig,{y:()=>-innerHeight*(mobile?.32:.3),scale:mobile?1.05:1.1,duration:.3,ease:'power1.inOut'},0)
+    .to(car,{rotationX:10,rotationY:-14,rotationZ:-6,duration:.3,ease:'power1.inOut'},0)
+    .to(jets,{scaleY:1.35,duration:.2},0)
+    .fromTo('#cap1',{opacity:0,y:40},{opacity:1,y:0,duration:.06},.1)
+    .to('#cap1',{opacity:0,y:-30,duration:.05},.27)
+    /* break through the cloud deck */
+    .fromTo('#fogb',{opacity:0,y:()=>innerHeight*.4},{opacity:1,y:()=>-innerHeight*.5,duration:.14,ease:'none'},.27)
+    .to('#fog',{opacity:1,duration:.05,ease:'power1.in'},.31)
+    .set('#pSky',{opacity:0},.36)
+    .set('#pClouds',{opacity:1},.36)
+    .set('#tint',{opacity:0},.36).set('#tint2',{opacity:1},.36)
+    .to('#fog',{opacity:0,duration:.07,ease:'power1.out'},.36)
+    .to('#fogb',{opacity:0,duration:.04},.38)
+    .fromTo('#pClouds',{scale:1.35,y:()=>innerHeight*.12},{scale:1.04,y:()=>-innerHeight*.04,duration:.5,ease:'none'},.36)
+    .to(rig,{y:()=>-innerHeight*(mobile?.26:.24),x:()=>mobile?0:-innerWidth*.1,scale:mobile?1:1.1,duration:.2,ease:'power1.inOut'},.36)
+    .to(car,{rotationX:4,rotationY:12,rotationZ:3,duration:.3,ease:'power1.inOut'},.36)
+    .to(jets,{scaleY:.6,opacity:.75,duration:.15},.4)
+    .fromTo('#cap2',{opacity:0,y:40},{opacity:1,y:0,duration:.06},.5)
+    .to(car,{rotationY:-6,rotationZ:-2,duration:.2,ease:'sine.inOut'},.62)
+    .to(rig,{x:()=>mobile?-innerWidth*.04:innerWidth*.06,y:()=>-innerHeight*(mobile?.3:.28),duration:.3,ease:'sine.inOut'},.56)
+    .to('#cap2',{opacity:0,y:-30,duration:.04},.8)
+    /* boost and leave */
+    .to(jets,{scaleY:1.7,opacity:1,duration:.06},.84)
+    .to(car,{rotationX:12,rotationY:-24,rotationZ:-10,duration:.16,ease:'power2.in'},.84)
+    .to(rig,{y:()=>-innerHeight*.95,x:()=>innerWidth*.5,scale:mobile?1.9:2.1,duration:.16,ease:'power2.in'},.84)
+    .to('#pClouds',{scale:1.2,duration:.16,ease:'power2.in'},.84)
+    .set({},{},1);
+  const lerp=(a,b,t)=>a+(b-a)*Math.max(0,Math.min(1,t));
+  ScrollTrigger.create({trigger:H,start:'top top',end:'bottom bottom',onUpdate:s=>{const p=s.progress;
+    gsap.set(hud,{opacity:p>.03&&p<.96?1:0});
+    hA.textContent=Math.round(p<.36?lerp(12,1800,p/.36):lerp(9000,12500,(p-.36)/.44)).toLocaleString('en-GB');
+    hS.textContent=Math.round(p<.78?lerp(0,180,p/.78):lerp(180,250,(p-.78)/.12))}});
+  /* fly layer only paints while the hero is on screen */
+  ScrollTrigger.create({trigger:H,start:'top top',end:'bottom top',onToggle:s=>{$('#fly').style.visibility=s.isActive||s.progress===0?'visible':'hidden'}});
+
+  /* desktop pointer parallax for real depth */
+  if(!mobile){const qx=gsap.quickTo('#pSky',"xPercent",{duration:1.2}),qx2=gsap.quickTo('#pClouds',"xPercent",{duration:1.2}),qb=gsap.quickTo(bob,"x",{duration:1.4}),qt=gsap.quickTo(ttl,"xPercent",{duration:1.2});
+    addEventListener('pointermove',e=>{const k=e.clientX/innerWidth-.5;qx(k*-1.6);qx2(k*-1.6);qb(k*26);qt(k*-3)})}
+
+  /* white spec band counters */
+  const fmt=(v,d,c)=>d?v.toFixed(d):c?Math.round(v).toLocaleString('en-GB'):Math.round(v).toString();
+  $$('.specs .n').forEach((n,i)=>{const o={v:0},to=+n.dataset.to,d=+n.dataset.d||0,c=n.dataset.c;
+    gsap.to(o,{v:to,duration:2.2,delay:i*.12,ease:'expo.out',onUpdate:()=>n.textContent=fmt(o.v,d,c),scrollTrigger:{trigger:'.specs .grid',start:'top 85%',once:true}})});
+  gsap.from('.specs h3,.specs .st,.specs .row',{y:40,opacity:0,duration:1.2,stagger:.08,ease:'power3.out',scrollTrigger:{trigger:'.specs',start:'top 70%',once:true}});
+
+  /* image scenes */
+  const SC=$$('.sc'),secs=$$('main>.sec');const first={},last={};
+  secs.forEach(s=>{const k=+s.dataset.sc;if(first[k]===undefined)first[k]=s;last[k]=s});
+  SC.forEach((sc,i)=>{const img=sc.querySelector('img'),a=first[i],b=last[i],dir=i%2?1:-1;
+    ScrollTrigger.create({trigger:a,start:'top bottom',endTrigger:b,end:'bottom top',toggleClass:{targets:sc,className:'live'}});
+    gsap.fromTo(img,{scale:1.04,xPercent:-1.4*dir},{scale:1.2,xPercent:1.4*dir,ease:'none',scrollTrigger:{trigger:a,start:'top bottom',endTrigger:b,end:'bottom top',scrub:mobile?.5:1.2}});
+    gsap.set(sc,{zIndex:i+1});
+    if(i===0){gsap.fromTo(sc,{opacity:0},{opacity:1,ease:'none',scrollTrigger:{trigger:a,start:'top 100%',end:'top 40%',scrub:.6}});return}
+    const kind=['','iris','wipe','fade'][i];const st={trigger:a,start:'top 95%',end:'top 15%',scrub:mobile?.5:1.2};
+    if(kind==='fade')gsap.fromTo(sc,{opacity:0},{opacity:1,ease:'none',scrollTrigger:st});
+    if(kind==='iris')gsap.fromTo(sc,{opacity:1,clipPath:'circle(0% at 50% 55%)'},{clipPath:'circle(80% at 50% 55%)',ease:'power1.inOut',scrollTrigger:st});
+    if(kind==='wipe')gsap.fromTo(sc,{opacity:1,clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',ease:'power1.inOut',scrollTrigger:st})});
+  secs.forEach(sec=>{const it=sec.querySelectorAll('.rv');gsap.set(it,{opacity:0,y:50});
+    const tl=gsap.timeline({scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:mobile?.5:1}});
+    tl.to(it,{opacity:1,y:0,duration:.18,stagger:.05,ease:'power2.out'},.06);
+    sec.querySelectorAll('.cnt .n').forEach(n=>{const o={v:0},to=+n.dataset.to,d=+n.dataset.d||0;tl.to(o,{v:to,duration:.36,ease:'power2.out',onUpdate:()=>n.textContent=fmt(o.v,d)},.08)});
+    tl.to(it,{opacity:0,y:-40,duration:.14,stagger:.03,ease:'power2.in'},.8).set({},{},1)});
+
+  /* design gallery: horizontal drift with inner parallax */
+  const gt=$('#gtrack');
+  gsap.fromTo(gt,{x:()=>innerWidth*.12},{x:()=>-(gt.scrollWidth-innerWidth*.88),ease:'none',scrollTrigger:{trigger:'#design',start:'top 85%',end:'bottom 15%',scrub:mobile?.5:1,invalidateOnRefresh:true}});
+  $$('.gc img').forEach(im=>gsap.fromTo(im,{xPercent:-4},{xPercent:4,ease:'none',scrollTrigger:{trigger:'#design',start:'top bottom',end:'bottom top',scrub:true}}));
+
+  /* light nav over white sections */
+  $$('.specs,.gal,.cfg,footer').forEach(el=>ScrollTrigger.create({trigger:el,start:'top 40px',end:'bottom 40px',onToggle:s=>{if(s.isActive)document.body.classList.add('light');else if(!$$('.specs,.gal,.cfg,footer').some(x=>{const r=x.getBoundingClientRect();return r.top<40&&r.bottom>40}))document.body.classList.remove('light')}}));
+  gsap.to('#stage',{opacity:0,ease:'none',scrollTrigger:{trigger:'#design',start:'top 100%',end:'top 60%',scrub:true}});
+
+  /* configurator */
+  const cw=$('#cw');
+  gsap.from(cw,{x:-80,opacity:0,duration:1.6,ease:'power3.out',scrollTrigger:{trigger:'#order',start:'top 70%',once:true}});
+  $$('#sw button').forEach(b=>b.onclick=()=>{$$('#sw button').forEach(x=>x.classList.remove('on'));b.classList.add('on');const f=b.dataset.f;
+    $$('#cw img').forEach(m=>m.classList.toggle('on',m.dataset.f===f));$('#cn').textContent=b.getAttribute('aria-label');$('#okc').textContent=b.getAttribute('aria-label');
+    gsap.fromTo(cw,{scale:1.025},{scale:1,duration:1,ease:'power3.out'})});
+  const rsv=$('#rsv');rsv.onclick=()=>{if(rsv.dataset.b)return;rsv.dataset.b=1;$('#rl').textContent='Reserving';
+    gsap.fromTo(rsv.querySelector('.pg'),{scaleX:0},{scaleX:1,duration:1.3,ease:'power2.inOut',onComplete:()=>{$('#rl').textContent='Reserved';$('#ok').classList.add('on')}})};
+
+  ScrollTrigger.refresh();
+}
+</script>
+</body>
+</html>
