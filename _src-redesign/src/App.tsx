@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -36,7 +36,7 @@ const Head = ({ n, text, id }: { n: string; text: string; id: string }) => (
     <div className="rule" />
     <div className="sechead">
       <p className="num">{n}</p>
-      <h2 id={id} className="h2">{reduce ? text : <BlurText text={text} animateBy="words" delay={90} direction="bottom" />}</h2>
+      <h2 id={id} className="h2">{reduce ? text : <BlurText text={text.replace(/ (\S+)$/, '\u00a0$1')} animateBy="words" delay={90} direction="bottom" />}</h2>
     </div>
   </>
 )
@@ -392,6 +392,7 @@ function Partners() {
 /* ---------------- shell ---------------- */
 
 const navItems: [string, string][] = [['websites', 'Websites'], ['motion', 'Reels'], ['tenders', 'Tenders'], ['google-ads', 'Google Ads'], ['ai', 'AI'], ['about', 'About'], ['partners', 'Partners']]
+const menuItems: [string, string, string][] = [['websites', 'Websites', `${B}websites/`], ['motion', 'Reels and video ads', `${B}motion/`], ['tenders', 'Tenders', `${B}tenders/`], ['google-ads', 'Google Ads', `${B}google-ads/`], ['ai', 'AI', `${B}ai/`], ['work', 'Our work', '/work/'], ['about', 'About', `${B}about/`], ['partners', 'Partners', `${B}partners/`]]
 
 function route() {
   const seg = window.location.pathname.slice(B.length).split('/')[0]
@@ -402,22 +403,50 @@ export default function App() {
   const r = route()
   const s = services.find(x => x.slug === r)
   const [menu, setMenu] = useState(false)
+  const lenisRef = useRef<Lenis | null>(null)
+  const burgerRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('menu-on', menu)
+    if (menu) lenisRef.current?.stop(); else lenisRef.current?.start()
+    if (!menu) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setMenu(false); burgerRef.current?.focus() } }
+    const onResize = () => { if (window.innerWidth > 900) setMenu(false) }
+    window.addEventListener('keydown', onKey)
+    window.addEventListener('resize', onResize)
+    return () => { window.removeEventListener('keydown', onKey); window.removeEventListener('resize', onResize) }
+  }, [menu])
 
   useEffect(() => {
     if (reduce) return
     const lenis = new Lenis({ lerp: 0.1, smoothWheel: true })
+    lenisRef.current = lenis
     lenis.on('scroll', ScrollTrigger.update)
     const tick = (t: number) => lenis.raf(t * 1000)
     gsap.ticker.add(tick)
     gsap.ticker.lagSmoothing(0)
     document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(a =>
-      a.addEventListener('click', e => { const id = a.getAttribute('href')!; if (id.length > 1 && document.querySelector(id)) { e.preventDefault(); setMenu(false); lenis.scrollTo(id, { offset: -16 }) } }))
+      a.addEventListener('click', e => { const id = a.getAttribute('href')!; if (id.length > 1 && document.querySelector(id)) { e.preventDefault(); setMenu(false); lenis.start(); lenis.scrollTo(id, { offset: -16, force: true }) } }))
     const ctx = gsap.context(() => {
       gsap.utils.toArray<HTMLElement>('.shot').forEach(el => gsap.fromTo(el, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }))
       gsap.utils.toArray<HTMLElement>('.rule').forEach(el =>
         gsap.fromTo(el, { scaleX: 0 }, { scaleX: 1, ease: 'power2.out', duration: 1.2, scrollTrigger: { trigger: el, start: 'top 90%' } }))
     })
-    return () => { ctx.revert(); gsap.ticker.remove(tick); lenis.destroy() }
+    return () => { ctx.revert(); gsap.ticker.remove(tick); lenis.destroy(); lenisRef.current = null }
+  }, [])
+
+  useEffect(() => {
+    const h = window.location.hash
+    if (h.length < 2) return
+    const t = window.setTimeout(() => {
+      let el: Element | null = null
+      try { el = document.querySelector(h) } catch { return }
+      if (!el) return
+      const y = el.getBoundingClientRect().top + window.scrollY - 16
+      if (lenisRef.current) lenisRef.current.scrollTo(y, { immediate: true, force: true }); else window.scrollTo(0, y)
+      ScrollTrigger.refresh()
+    }, 150)
+    return () => window.clearTimeout(t)
   }, [])
 
   return (
@@ -425,14 +454,31 @@ export default function App() {
       <a className="skip" href="#main">Skip to content</a>
       <header className="nav wrap">
         <a href={B} className="brand" aria-label="The Tender Desk, home">The Tender Desk</a>
-        <nav aria-label="Main" className={menu ? 'open' : ''}>
+        <nav aria-label="Main" className="dnav">
           {navItems.map(([slug, label]) => <a key={slug} href={`${B}${slug}/`} aria-current={r === slug ? 'page' : undefined}>{label}</a>)}
         </nav>
         <div className="navr">
           <a className="navcta" href="#contact">Start a project</a>
-          <button className="burger" aria-expanded={menu} aria-label="Menu" onClick={() => setMenu(!menu)}><i /><i /></button>
+          <button ref={burgerRef} className="burger" aria-expanded={menu} aria-controls="menu" aria-label={menu ? 'Close menu' : 'Open menu'} onClick={() => setMenu(!menu)}><i /><i /></button>
         </div>
       </header>
+      <div id="menu" className={'menu' + (menu ? ' on' : '')} aria-hidden={!menu} inert={!menu}>
+        <div className="menubar wrap">
+          <a href={B} className="brand" aria-label="The Tender Desk, home" onClick={() => setMenu(false)}>The Tender Desk</a>
+          <button className="burger" aria-expanded="true" aria-label="Close menu" onClick={() => { setMenu(false); burgerRef.current?.focus() }}><i /><i /></button>
+        </div>
+        <nav aria-label="Menu" className="menulinks wrap">
+          {menuItems.map(([slug, label, href], i) => (
+            <a key={slug} href={href} style={{ '--i': i } as React.CSSProperties} aria-current={r === slug ? 'page' : undefined} onClick={() => setMenu(false)}>
+              <span className="mi">{String(i + 1).padStart(2, '0')}</span><span className="ml">{label}</span>
+            </a>
+          ))}
+        </nav>
+        <div className="menufoot wrap">
+          <a className="btn primary" href="#contact" onClick={() => setMenu(false)}>Start a project</a>
+          <a className="menumail" href={MAIL}>hello@thetenderdesk.co.uk</a>
+        </div>
+      </div>
 
       <main id="main">
         {s ? <ServicePage s={s} /> : r === 'about' ? <About /> : r === 'partners' ? <Partners /> : <Home />}
