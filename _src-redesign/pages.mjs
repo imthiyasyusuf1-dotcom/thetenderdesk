@@ -7,9 +7,10 @@ const SITE = 'https://thetenderdesk.co.uk'
 const src = new URL(live ? '../_live/' : '../preview/', import.meta.url)
 const root = new URL('../', import.meta.url)
 const html = fs.readFileSync(new URL('index.html', src), 'utf8')
-const D = 'Websites, tenders, Google Ads and AI for businesses that want more of the right work.'
+const D = 'Websites, reels and video ads, tenders, Google Ads and AI for businesses that want more of the right work.'
 const pages = {
-  '': ['The Tender Desk | Websites, Tenders, Google Ads and AI', 'The Tender Desk builds websites, writes tenders, runs Google Ads and sets up AI assistants for businesses that want more of the right work.'],
+  '': ['The Tender Desk | Websites, Reels, Tenders, Google Ads and AI', 'The Tender Desk builds websites, makes reels and video ads, writes tenders, runs Google Ads and sets up AI assistants for businesses that want more of the right work.'],
+  motion: ['Motion Design, Video Ads and Reels | The Tender Desk', 'Motion design videos, video ads and Instagram and TikTok reels made for your business. Clean, Apple style motion with sound design. Priced per project, ask us.'],
   websites: ['Websites | The Tender Desk', 'Custom websites, fast on a phone and built to win work. Free mock-up first. £25 for the first 6 months including hosting, then £75 a year.'],
   tenders: ['Tender Writing | The Tender Desk', 'Clear, compliant bids for small businesses. We find the right contracts and write answers that follow the scoring criteria. Free go or no go first.'],
   'google-ads': ['Google Ads | The Tender Desk', 'Google Ads campaigns built and managed for you, with every enquiry tracked so you know what each pound brings in.'],
@@ -17,7 +18,7 @@ const pages = {
   'google-business': ['Google Business Profile | The Tender Desk', 'Your Google Business Profile set up and optimised properly, with reviews that count.'],
   seo: ['SEO and AI Search | The Tender Desk', 'Found on Google. Quoted by AI. Structured data, FAQ markup and llms.txt so search engines and AI assistants recommend you.'],
   care: ['Care Plans | The Tender Desk', 'Hosting, updates, backups and small changes handled every month, so your site stays fast and secure.'],
-  about: ['About Us | The Tender Desk', 'About The Tender Desk: websites, tenders, Google Ads and AI from one desk. Founded and run by Yusuf Imthiyas.'],
+  about: ['About Us | The Tender Desk', 'About The Tender Desk: websites, reels, tenders, Google Ads and AI from one desk. Founded and run by Yusuf Imthiyas.'],
   partners: ['Referral Partners | The Tender Desk', 'Introduce a business to The Tender Desk and receive a thank you of 10% of what they pay in their first year.'],
 }
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;')

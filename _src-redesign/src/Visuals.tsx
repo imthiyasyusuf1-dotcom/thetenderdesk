@@ -103,7 +103,32 @@ function Care() {
   )
 }
 
-const map: Record<Visual, () => React.ReactElement> = { site: Site, bid: Bid, ads: Ads, chat: Chat, gbp: Gbp, seo: Seo, care: Care }
+// muted looping clip that only loads and plays while on screen (kind to phones)
+export function ReelClip({ name, label }: { name: string; label: string }) {
+  const ref = useRef<HTMLVideoElement>(null)
+  useEffect(() => {
+    const v = ref.current
+    if (!v || reduce) return
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { v.play().catch(() => {}) } else v.pause() }, { threshold: 0.35 })
+    io.observe(v)
+    return () => io.disconnect()
+  }, [])
+  const base = import.meta.env.BASE_URL + 'img/reels/' + name
+  return (
+    <video ref={ref} className="reelvid" src={base + '.mp4'} poster={base + '.webp'} muted loop playsInline preload="none" width={540} height={960} aria-label={label} />
+  )
+}
+
+function Reel() {
+  return (
+    <div className="v-reel">
+      <div className="reelphone"><ReelClip name="morph" label="Motion design reel made by The Tender Desk" /></div>
+      <div className="vcap">Made by us, for our own feed</div>
+    </div>
+  )
+}
+
+const map: Record<Visual, () => React.ReactElement> = { site: Site, bid: Bid, ads: Ads, chat: Chat, gbp: Gbp, seo: Seo, care: Care, reel: Reel }
 
 export function ServiceVisual({ kind }: { kind: Visual }) {
   const [ref, inView] = useInView<HTMLDivElement>()

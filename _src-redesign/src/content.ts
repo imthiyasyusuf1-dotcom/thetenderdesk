@@ -3,7 +3,7 @@ export const wa = (msg: string) => WA_NUM + encodeURIComponent(msg)
 export const MAIL = 'mailto:hello@thetenderdesk.co.uk'
 export const B = import.meta.env.BASE_URL
 
-export type Visual = 'site' | 'bid' | 'ads' | 'chat' | 'gbp' | 'seo' | 'care'
+export type Visual = 'site' | 'bid' | 'ads' | 'chat' | 'gbp' | 'seo' | 'care' | 'reel'
 
 export type Service = {
   slug: string
@@ -58,6 +58,40 @@ export const services: Service[] = [
     ],
     cta: { title: 'See your new site before you pay.', text: 'Send us your business name and what you do. We will reply with a free mock-up, usually within a day.', label: 'Get my free mock-up', msg: "Hi, I'd like a free mock-up of a website for my business." },
     summary: 'Custom sites designed from scratch, fast on a phone and built to turn a visit into an enquiry.',
+  },
+  {
+    slug: 'motion', nav: 'Reels', name: 'Motion, ads and reels', eyebrow: 'Motion design, video ads and reels',
+    title: 'Ads that stop the scroll.',
+    lede: 'Motion design videos, video ads and Instagram and TikTok reels made for your business. Clean, Apple style motion with sharp type and sound design, built to make people stop, watch and get in touch.',
+    price: { label: 'Priced per project, ask us', note: 'A clear quote after a quick chat about what you need.' },
+    visual: 'reel',
+    listTitle: 'Motion that sells, not just moves.',
+    list: [
+      ['Instagram and TikTok reels', 'Short vertical videos made for the feed, with a hook in the first second and a clear ask at the end.'],
+      ['Video ads', 'Ads for Instagram, Facebook, TikTok and YouTube, cut to the right length and shape for each one.'],
+      ['Motion design', 'Animated type, product and app style screens, and logo reveals that make your business look as good as your work.'],
+      ['Script and story', 'We write the idea and the words with you, so every second earns its place.'],
+      ['Sound design', 'Sound effects and voiceover timed to every cut. Trending music can be added in the app when you post.'],
+      ['Ready to post', 'Delivered in the right sizes for each platform, with a caption and cover frame to go with it.'],
+    ],
+    extraTitle: 'What we make.',
+    extraIntro: 'One clip for a launch or a steady run of reels every month. Every video is made from scratch around your business, never a template.',
+    extra: ['Reels', 'TikToks', 'Video ads', 'Motion graphics', 'Logo reveals', 'Launch films', 'Explainer videos', 'Story ads'],
+    stepsTitle: 'From idea to posted.',
+    steps: [
+      ['Tell us the goal', 'More calls, more bookings, a launch or a sale. A few lines on WhatsApp or email is plenty.'],
+      ['Script and look', 'We send the idea, the script and the style before anything is animated.'],
+      ['We make it', 'Motion, type, sound and edit, done by us. You get a first cut to watch on your phone.'],
+      ['Ready to post', 'Your changes made, then delivered in every size you need.'],
+    ],
+    faqs: [
+      ['How much does a reel cost?', 'Every project is priced on its own, depending on length, style and how many videos you want. Ask us and you get a clear quote before anything starts.'],
+      ['Do I need to film anything?', 'No. Most of our motion work is made from scratch. If you have photos or clips of your work we can use them too.'],
+      ['Can you make a set of reels each month?', 'Yes. Many businesses want a steady run of posts. We plan them together and deliver in batches.'],
+      ['Who owns the videos?', 'You do. Once paid for, the videos are yours to post wherever you like.'],
+    ],
+    cta: { title: 'Get your business moving.', text: 'Tell us what you sell and where you post. We will come back with an idea and a clear quote.', label: 'Ask about a reel', msg: "Hi, I'd like to ask about a reel or video ad for my business." },
+    summary: 'Motion design videos, video ads and Instagram and TikTok reels made for your business, ready to post.',
   },
   {
     slug: 'tenders', nav: 'Tenders', name: 'Tenders', eyebrow: 'Tender writing',
@@ -250,14 +284,14 @@ export const moves: [string, string][] = [
 ]
 
 export const whyUs: [string, string][] = [
-  ['One team, every channel', 'Your site, ads, bids and AI from one desk, so nothing gets lost between agencies.'],
+  ['One team, every channel', 'Your site, reels, ads, bids and AI from one desk, so nothing gets lost between agencies.'],
   ['Honest from the start', 'If something will not earn its keep, we say so before you spend on it.'],
   ['Yours to own', 'Your domain, your content, your accounts. No lock in.'],
   ['Tracked from day one', 'Calls, forms and bookings measured, so decisions come from numbers.'],
 ]
 
 export const homeFaqs: [string, string][] = [
-  ['How much does it cost?', 'A website is £25 for the first 6 months, site and hosting, then £75 a year after that. Tenders, Google Ads, AI and the rest are quoted individually after a quick chat, with a clear quote before anything starts.'],
+  ['How much does it cost?', 'A website is £25 for the first 6 months, site and hosting, then £75 a year after that. Reels, tenders, Google Ads, AI and the rest are priced per project after a quick chat, with a clear quote before anything starts.'],
   ['How fast can you start?', 'Usually within a week. A website mock-up usually reaches you within a day.'],
   ['Do I need every service?', 'No. Most clients start with one, often a website or a single tender, and add more when it pays.'],
   ['Will I own my website?', 'Yes. The domain, content and accounts are yours.'],

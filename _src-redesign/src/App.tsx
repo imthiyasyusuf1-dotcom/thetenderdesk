@@ -11,7 +11,7 @@ import Magnet from './bits/Magnet'
 import StarBorder from './bits/StarBorder'
 import { services, moves, whyUs, homeFaqs, wa, MAIL, B } from './content'
 import type { Service } from './content'
-import { ServiceVisual, reduce } from './Visuals'
+import { ServiceVisual, ReelClip, reduce } from './Visuals'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -101,6 +101,33 @@ function Work({ n }: { n: string }) {
   )
 }
 
+const reels: [string, string, string][] = [
+  ['morph', 'From scribble to site', 'Shape morph and type, 10 seconds'],
+  ['type', 'Your website has one second', 'Kinetic type and sound, 10 seconds'],
+  ['apple', 'They search on their phone', 'App style motion, 20 seconds'],
+]
+
+function Reels({ n, more = true }: { n: string; more?: boolean }) {
+  return (
+    <section className="wrap block" id="reels" aria-labelledby="reels-h">
+      <Head n={n} text="Reels that stop the scroll" id="reels-h" />
+      <div className="indent"><Reveal><p className="lede">Motion design, video ads and reels for Instagram and TikTok. These are a few we made for The Tender Desk's own feed. Yours would be made from scratch around your business.</p></Reveal></div>
+      <ul className="reelrow">
+        {reels.map(([name, t, d], i) => (
+          <li key={name}><Reveal delay={i * 0.08}>
+            <div className="reelphone"><ReelClip name={name} label={t} /></div>
+            <h3>{t}</h3><p>{d}</p>
+          </Reveal></li>
+        ))}
+      </ul>
+      <div className="indent">
+        {more ? <a className="textlink" href={`${B}motion/`}>Motion, ads and reels <span aria-hidden="true">→</span></a>
+          : <a className="textlink" href="https://www.instagram.com/thetenderdesk.co.uk/" target="_blank" rel="noopener">More on our Instagram <span aria-hidden="true">↗</span></a>}
+      </div>
+    </section>
+  )
+}
+
 function PriceBlock({ s }: { s: Service }) {
   return (
     <div className="price">
@@ -118,10 +145,10 @@ function Home() {
   return (
     <>
       <section className="hero wrap" id="top">
-        <p className="eyebrow"><ShinyText text="Websites, tenders, Google Ads and AI" color="#6b6459" shineColor="#1b1a17" speed={4} delay={3} disabled={reduce} /></p>
+        <p className="eyebrow"><ShinyText text="Websites, reels, tenders, Google Ads and AI" color="#6b6459" shineColor="#1b1a17" speed={4} delay={3} disabled={reduce} /></p>
         <Display text="Built to win you work." />
         <div className="herogrid">
-          <Reveal delay={0.5}><p className="lede">Websites, tenders, Google Ads and AI for businesses that want more of the right work. One desk, so nothing gets lost between agencies.</p></Reveal>
+          <Reveal delay={0.5}><p className="lede">Websites, reels and video ads, tenders, Google Ads and AI for businesses that want more of the right work. One desk, so nothing gets lost between agencies.</p></Reveal>
           <Reveal delay={0.65}>
             <div className="ctas">
               <Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary" href="#contact">Start a project</a></Magnet>
@@ -182,21 +209,23 @@ function Home() {
         </div>
       </section>
 
-      <Work n="05" />
+      <Reels n="05" />
+
+      <Work n="06" />
 
       <section className="wrap block" aria-labelledby="why-h">
-        <Head n="06" text="Why us" id="why-h" />
+        <Head n="07" text="Why us" id="why-h" />
         <ol className="grid4">{whyUs.map(([t, d], i) => <li key={t}><Reveal delay={i * 0.06}><h3>{t}</h3><p>{d}</p></Reveal></li>)}</ol>
       </section>
 
-      <PartnerTeaser n="07" />
+      <PartnerTeaser n="08" />
 
       <section className="faqsec wrap" aria-labelledby="faq-h">
-        <Head n="08" text="Questions" id="faq-h" />
+        <Head n="09" text="Questions" id="faq-h" />
         <Faq items={homeFaqs} />
       </section>
 
-      <Contact n="09" title="Your next customer is searching now." text="Tell us what you need. We reply the same working day." msg="Hi, I'd like to talk about my business." />
+      <Contact n="10" title="Your next customer is searching now." text="Tell us what you need. We reply the same working day." msg="Hi, I'd like to talk about my business." />
     </>
   )
 }
@@ -270,6 +299,7 @@ function ServicePage({ s }: { s: Service }) {
       </section>
 
       {s.slug === 'websites' && <Work n="Work" />}
+      {s.slug === 'motion' && <Reels n="Work" more={false} />}
 
       <section className="faqsec wrap" aria-labelledby="faq-h">
         <Head n="FAQ" text="Good to know" id="faq-h" />
@@ -293,7 +323,7 @@ function About() {
     ['Measured, not guessed', 'Decisions come from numbers you can see, not opinions.'],
     ['Work anywhere', 'We work remotely with businesses wherever they are, on your time zone.'],
   ]
-  const method: [string, string][] = [['Find', 'Where your next customers and contracts are.'], ['Write', 'Pages, bids and ads written to what gets scored and clicked.'], ['Win', 'Every enquiry and booking tracked and measured.'], ['Build', 'Sites and systems that keep working after handover.']]
+  const method: [string, string][] = [['Find', 'Where your next customers and contracts are.'], ['Write', 'Pages, bids, ads and reels made to what gets scored, watched and clicked.'], ['Win', 'Every enquiry and booking tracked and measured.'], ['Build', 'Sites and systems that keep working after handover.']]
   return (
     <>
       <section className="hero wrap" id="top">
@@ -333,7 +363,7 @@ function Partners() {
         <p className="eyebrow"><ShinyText text="Referral partners" color="#6b6459" shineColor="#1b1a17" speed={4} delay={3} disabled={reduce} /></p>
         <Display text="Know a business that needs more work?" />
         <div className="herogrid">
-          <Reveal delay={0.5}><p className="lede">Introduce them to The Tender Desk. We look after their website, ads, enquiries and tenders. You get a thank you of 10% of their first year.</p></Reveal>
+          <Reveal delay={0.5}><p className="lede">Introduce them to The Tender Desk. We look after their website, reels, ads, enquiries and tenders. You get a thank you of 10% of their first year.</p></Reveal>
           <Reveal delay={0.65}><div className="ctas"><Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary" href="#contact">Become a partner</a></Magnet></div></Reveal>
         </div>
       </section>
@@ -361,7 +391,7 @@ function Partners() {
 
 /* ---------------- shell ---------------- */
 
-const navItems: [string, string][] = [['websites', 'Websites'], ['tenders', 'Tenders'], ['google-ads', 'Google Ads'], ['ai', 'AI'], ['about', 'About'], ['partners', 'Partners']]
+const navItems: [string, string][] = [['websites', 'Websites'], ['motion', 'Reels'], ['tenders', 'Tenders'], ['google-ads', 'Google Ads'], ['ai', 'AI'], ['about', 'About'], ['partners', 'Partners']]
 
 function route() {
   const seg = window.location.pathname.slice(B.length).split('/')[0]
@@ -410,7 +440,7 @@ export default function App() {
 
       <footer className="foot wrap">
         <div className="fcols">
-          <div><p className="brand">The Tender Desk</p><p>Websites, tenders, Google Ads and AI for businesses that want more of the right work.</p><p>Founded and run by Yusuf Imthiyas.</p></div>
+          <div><p className="brand">The Tender Desk</p><p>Websites, reels, tenders, Google Ads and AI for businesses that want more of the right work.</p><p>Founded and run by Yusuf Imthiyas.</p></div>
           <div><p className="small">Services</p>{services.map(x => <a key={x.slug} href={`${B}${x.slug}/`}>{x.name}</a>)}</div>
           <div><p className="small">Company</p><a href={`${B}about/`}>About</a><a href="/work/">Our work</a><a href={`${B}partners/`}>Referral partners</a><a href={MAIL}>hello@thetenderdesk.co.uk</a></div>
         </div>
