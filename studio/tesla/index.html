@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!-- Tesla Roadster product page. Spec numbers are the public figures on https://www.tesla.com/roadster (checked 17 Oct 2026):
-     0-60 mph 1.9 s, 0-100 mph 4.2 s, 1/4 mile 8.8 s, top speed over 250 mph, 10,000 Nm wheel torque, 620 mile range, seats 4, all wheel drive, base reservation $50,000.
+     0-60 mph under 1.6 s (Performance), top speed over 230 mph, over 300 mile range, seats 2 (Tesla, Oct 2026 reveal); 0-100 mph 4.2 s, 1/4 mile 8.8 s, 10,000 Nm wheel torque, all wheel drive, base reservation $50,000.
      Three motors and the removable glass roof that stows in the trunk are from Tesla's Roadster unveiling.
-     3D model: "Car Concept" by Eric Chadwick / Darmstadt Graphics Group, CC BY 4.0 (Khronos glTF Sample Assets), from a CC0 model by Unity Fan.
+     3D car: built in three.js by The Tender Desk from public reference of the 2026 Roadster.
      Recoloured, logos removed, compressed with glTF Transform. Battery, motors, sensors and airflow are built in code for this page. -->
 <html lang="en-GB">
 <head>
@@ -11,9 +11,8 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#0b0b0d">
 <title>Roadster | Tesla</title>
-<meta name="description" content="Roadster. 0 to 60 mph in 1.9 seconds, over 250 mph, 620 miles of range. Every part of it, nose to tail.">
+<meta name="description" content="Roadster. 0 to 60 mph in under 1.6 seconds, over 230 mph, over 300 miles of range. Every part of it, nose to tail.">
 <link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="car.glb" as="fetch" crossorigin>
 <link rel="modulepreload" href="js/three.module.min.js">
 <style>
 @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/inter.woff2) format('woff2')}
@@ -222,9 +221,9 @@ footer a:hover{color:#fff}
     <div class="k" style="text-align:left">Performance</div>
     <h2 style="text-align:left;margin-bottom:6vh">The quickest car<br>in the world.</h2>
     <div class="ctr" style="text-align:left">
-      <div><b><span class="n" data-to="1.9" data-d="1">0</span><small>s</small></b><span>0 to 60 mph</span></div>
-      <div><b><span class="n" data-to="250">0</span><small>+ mph</small></b><span>Top speed</span></div>
-      <div><b><span class="n" data-to="620">0</span><small>mi</small></b><span>Range</span></div>
+      <div><b><span class="n" data-to="1.6" data-d="1">0</span><small>s</small></b><span>0 to 60 mph, under</span></div>
+      <div><b><span class="n" data-to="230">0</span><small>+ mph</small></b><span>Top speed</span></div>
+      <div><b><span class="n" data-to="300">0</span><small>+ mi</small></b><span>Range</span></div>
       <div><b><span class="n" data-to="8.8" data-d="1">0</span><small>s</small></b><span>Quarter mile</span></div>
     </div>
   </div></div>
@@ -246,15 +245,15 @@ footer a:hover{color:#fff}
   </div></div>
   <div class="cp l dk" data-c="roof"><div class="in">
     <div class="k">Glass roof</div><h2>The roof<br>comes off.</h2>
-    <p class="sub">Lift the glass roof out and stow it in the trunk. Open sky, four seats.</p>
+    <p class="sub">Lift the glass roof out and stow it in the trunk. Open sky, two seats.</p>
   </div></div>
   <div class="cp l b sh" data-c="cockpit"><div class="in">
     <div class="k">Cockpit</div><h2>Made<br>around you.</h2>
     <p class="sub">A yoke, a floating display and nothing you do not need. Everything sits at your fingertips.</p>
   </div></div>
   <div class="cp r sh" data-c="seats"><div class="in">
-    <div class="k">Seats four</div><h2>Two plus two.</h2>
-    <p class="sub">Sculpted seats front and back. A supercar you can take your friends in.</p>
+    <div class="k">Seats two</div><h2>Two seats. Nothing spare.</h2>
+    <p class="sub">Two fixed, sculpted seats, set low and close. Built for the driver and one friend.</p>
   </div></div>
   <div class="cp l sh" data-c="battery"><div class="in">
     <div class="k">Battery</div><h2>The heart,<br>laid flat.</h2>
@@ -267,7 +266,7 @@ footer a:hover{color:#fff}
   <div class="cp l sh" data-c="charge"><div class="in">
     <div class="k">Charging</div><div class="chg"><span id="cg">10</span><small>%</small></div>
     <div class="bar2"><i id="cgb"></i></div>
-    <p class="sub">Plug in at any Supercharger. 620 miles of range for the long way home.</p>
+    <p class="sub">Plug in at any Supercharger. Over 300 miles of range for the long way home.</p>
   </div></div>
   <div class="cp l b sh" data-c="auto"><div class="in">
     <div class="k">Autopilot</div><h2>Sees all<br>around.</h2>
@@ -290,7 +289,7 @@ footer a:hover{color:#fff}
     <div class="cfgp">
       <div class="k" style="margin:0">Make it yours</div>
       <div class="sw" id="sw"></div>
-      <div class="cn" id="cn">Red Multi-Coat</div>
+      <div class="cn" id="cn">Pearl White</div>
       <div class="pr">Base reservation $50,000</div>
     </div>
   </div></div>
@@ -298,7 +297,7 @@ footer a:hover{color:#fff}
     <div class="k">Roadster</div><h2>Reserve yours.</h2>
     <p class="sub" style="text-align:center">Be first in line when production starts.</p>
     <button class="rsv wt" id="rsv">Reserve now</button>
-    <p class="ok" id="ok">Reserved in <b id="okc">Red Multi-Coat</b>. We will be in touch before production.</p>
+    <p class="ok" id="ok">Reserved in <b id="okc">Pearl White</b>. We will be in touch before production.</p>
   </div></div>
 </div>
 
@@ -326,20 +325,20 @@ footer a:hover{color:#fff}
     <div class="k">Specifications</div>
     <h3>Every number, in one place.</h3>
     <div class="tbl">
-      <div><span>0 to 60 mph</span><b>1.9 s</b></div>
+      <div><span>0 to 60 mph</span><b>Under 1.6 s</b></div>
       <div><span>0 to 100 mph</span><b>4.2 s</b></div>
       <div><span>Quarter mile</span><b>8.8 s</b></div>
-      <div><span>Top speed</span><b>Over 250 mph</b></div>
-      <div><span>Range</span><b>620 mi</b></div>
+      <div><span>Top speed</span><b>Over 230 mph</b></div>
+      <div><span>Range</span><b>Over 300 mi</b></div>
       <div><span>Wheel torque</span><b>10,000 Nm</b></div>
       <div><span>Motors</span><b>Three</b></div>
       <div><span>Drive</span><b>All wheel drive</b></div>
-      <div><span>Seating</span><b>4 adults</b></div>
+      <div><span>Seating</span><b>2 adults</b></div>
       <div><span>Roof</span><b>Removable glass</b></div>
       <div><span>Charging</span><b>Supercharger</b></div>
       <div><span>Base reservation</span><b>$50,000</b></div>
     </div>
-    <p class="fine">Performance and range figures as published by Tesla. Features and figures may change before production. 3D model by Eric Chadwick and Darmstadt Graphics Group, CC BY 4.0.</p>
+    <p class="fine">Performance and range figures as published by Tesla. Features and figures may change before production.</p>
   </section>
   <section class="ch" data-k="reserve"></section>
 </main>

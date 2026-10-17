@@ -1,6 +1,5 @@
 import * as THREE from 'three';
-import {GLTFLoader} from './js/GLTFLoader.js';
-import {MeshoptDecoder} from './js/meshopt_decoder.module.js';
+import {buildRoadster} from './js/roadster.js';
 import {RoomEnvironment} from './js/RoomEnvironment.js';
 
 const PHONE = Math.min(innerWidth, innerHeight) < 700 || matchMedia('(pointer:coarse)').matches && innerWidth < 900;
@@ -87,28 +86,28 @@ const beamMat = new THREE.ShaderMaterial({transparent: true, depthWrite: false, 
   fragmentShader: 'uniform float uOp;varying vec2 vUv;varying vec3 vN;varying vec3 vV;void main(){float f=pow(abs(dot(vN,vV)),1.5);float a=pow(vUv.y,2.2)*f*.5;gl_FragColor=vec4(vec3(.85,.92,1.)*a*uOp,1.);}'});
 const beamGeo = new THREE.ConeGeometry(.9, 6, 32, 1, true); beamGeo.translate(0, -3, 0); beamGeo.rotateX(-Math.PI / 2);
 const beams = new THREE.Group(); model.add(beams);
-[.52, -.52].forEach(x => { const b = new THREE.Mesh(beamGeo, beamMat); b.position.set(x, .64, 2.24); b.rotation.x = .05; beams.add(b); });
+[.42, -.42].forEach(x => { const b = new THREE.Mesh(beamGeo, beamMat); b.position.set(x, .47, 2.2); b.rotation.x = .05; beams.add(b); });
 
 /* light blade across the nose */
 const bladeTex = ctex(1024, 64, (g, w, h) => { const lg = g.createLinearGradient(0, 0, w, 0); lg.addColorStop(0, 'rgba(255,255,255,0)'); lg.addColorStop(.08, 'rgba(210,228,255,.9)'); lg.addColorStop(.5, 'rgba(255,255,255,1)'); lg.addColorStop(.92, 'rgba(210,228,255,.9)'); lg.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = lg; g.fillRect(0, 0, w, h); const vg = g.createLinearGradient(0, 0, 0, h); vg.addColorStop(0, 'rgba(0,0,0,1)'); vg.addColorStop(.42, 'rgba(0,0,0,0)'); vg.addColorStop(.58, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,1)'); g.globalCompositeOperation = 'destination-out'; g.fillStyle = vg; g.fillRect(0, 0, w, h); });
 const bladeMat = additive({map: bladeTex, opacity: 0, side: THREE.DoubleSide});
-const blade = new THREE.Mesh(new THREE.PlaneGeometry(1.75, .16), bladeMat); blade.position.set(0, .66, 2.275); model.add(blade);
+const blade = new THREE.Mesh(new THREE.PlaneGeometry(1.2, .12), bladeMat); blade.position.set(0, .438, 2.262); model.add(blade);
 const haloMat = new THREE.SpriteMaterial({map: radial([[0, 'rgba(235,242,255,.95)'], [.12, 'rgba(190,212,255,.45)'], [.4, 'rgba(120,160,255,.12)'], [1, 'rgba(100,140,255,0)']]), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0, toneMapped: false});
-const halos = [.62, -.62, 0].map(x => { const s = new THREE.Sprite(haloMat); s.position.set(x, .66, 2.32); s.scale.setScalar(x ? 1.1 : 2.2); model.add(s); return s; });
+const halos = [.42, -.42, 0].map(x => { const s = new THREE.Sprite(haloMat); s.position.set(x, .45, 2.3); s.scale.setScalar(x ? 1.1 : 2.2); model.add(s); return s; });
 const lpoolMat = additive({map: radial([[0, 'rgba(200,220,255,.55)'], [.4, 'rgba(160,190,255,.18)'], [1, 'rgba(120,160,255,0)']]), opacity: 0});
 const lpool = new THREE.Mesh(new THREE.PlaneGeometry(4, 6), lpoolMat); lpool.rotation.x = -Math.PI / 2; lpool.position.set(0, .008, 4.6); model.add(lpool);
 const tailHaloMat = new THREE.SpriteMaterial({map: radial([[0, 'rgba(255,120,110,.95)'], [.15, 'rgba(255,40,30,.45)'], [1, 'rgba(255,0,0,0)']]), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0, toneMapped: false});
-[.5, -.5, 0].forEach(x => { const s = new THREE.Sprite(tailHaloMat); s.position.set(x, .965, -1.66); s.scale.setScalar(x ? .9 : 1.6); model.add(s); });
+[.5, -.5, 0].forEach(x => { const s = new THREE.Sprite(tailHaloMat); s.position.set(x, .712, -2.0); s.scale.setScalar(x ? .9 : 1.6); model.add(s); });
 
 /* tail light trails */
 const trailMat = new THREE.ShaderMaterial({transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, uniforms: {uOp: {value: 0}, uT: {value: 0}},
   vertexShader: 'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
   fragmentShader: 'uniform float uOp,uT;varying vec2 vUv;void main(){float e=1.-abs(vUv.x-.5)*2.;float a=pow(e,2.)*pow(1.-vUv.y,1.4)*(.75+.25*sin(vUv.y*40.+uT*30.));gl_FragColor=vec4(vec3(1.,.12,.1)*a*uOp*1.6,1.);}'});
 const trails = new THREE.Group(); model.add(trails);
-[.62, -.62, .3, -.3].forEach((x, i) => { const g = new THREE.PlaneGeometry(i < 2 ? .07 : .04, 14); g.rotateX(-Math.PI / 2); g.translate(0, 0, -7); const m = new THREE.Mesh(g, trailMat); m.position.set(x, i < 2 ? .96 : .5, -1.6); trails.add(m); });
+[.72, -.72, .3, -.3].forEach((x, i) => { const g = new THREE.PlaneGeometry(i < 2 ? .07 : .04, 14); g.rotateX(-Math.PI / 2); g.translate(0, 0, -7); const m = new THREE.Mesh(g, trailMat); m.position.set(x, i < 2 ? .712 : .47, -1.98); trails.add(m); });
 
 /* aero streamlines (car space) */
-const prof = [[7, .4], [2.6, .44], [2.42, .56], [2.2, .7], [1.7, .87], [.9, 1.04], [.07, 1.17], [-.45, 1.19], [-1., 1.13], [-1.63, 1.01], [-1.95, .98], [-2.7, .96], [-8, .9]];
+const prof = [[7, .38], [2.5, .42], [2.3, .5], [1.9, .7], [1.4, .88], [.9, 1.0], [.2, 1.12], [-.4, 1.16], [-.9, 1.06], [-1.5, .96], [-2.05, 1.08], [-2.7, .98], [-8, .9]];
 function profY(z) { for (let i = 0; i < prof.length - 1; i++) { const a = prof[i], b = prof[i + 1]; if (z <= a[0] && z >= b[0]) { const t = (a[0] - z) / (a[0] - b[0]); const s = t * t * (3 - 2 * t); return lerp(a[1], b[1], s); } } return .9; }
 const AL = PHONE ? 26 : 44, AS = 140;
 const aPos = new Float32Array(AL * AS * 3), aT = new Float32Array(AL * AS), aSeed = new Float32Array(AL * AS), aIdx = [];
@@ -176,15 +175,15 @@ const scrTex = ctex(1024, 620, (g, w, h) => {
   g.font = '500 26px Inter, sans-serif'; g.fillStyle = 'rgba(255,255,255,.6)'; g.fillText('MPH', 64, 296);
   g.font = '400 30px Inter, sans-serif'; g.fillStyle = '#fff'; g.fillText('P  R  N  D', 64, 380);
   g.fillStyle = 'rgba(255,255,255,.12)'; rr(60, 450, 290, 14, 7); g.fill(); g.fillStyle = '#6ff0b4'; rr(60, 450, 262, 14, 7); g.fill();
-  g.fillStyle = 'rgba(255,255,255,.75)'; g.font = '400 28px Inter, sans-serif'; g.fillText('620 mi', 60, 515);
+  g.fillStyle = 'rgba(255,255,255,.75)'; g.font = '400 28px Inter, sans-serif'; g.fillText('300 mi', 60, 515);
   g.fillStyle = 'rgba(255,255,255,.9)'; g.font = '500 30px Inter, sans-serif'; g.fillText('Navigate', w * .47, 70);
 });
 const screenM = new THREE.Mesh(new THREE.PlaneGeometry(.62, .375), new THREE.MeshBasicMaterial({map: scrTex, toneMapped: false, transparent: true, opacity: 0}));
-screenM.position.set(0, .98, 1.14); screenM.rotation.set(-.32, Math.PI, 0); model.add(screenM);
+screenM.position.set(0, .9, .9); screenM.rotation.set(-.22, Math.PI, 0); model.add(screenM);
 
 /* charge port glow (car space) */
 const portMat = additive({map: radial([[0, 'rgba(180,255,220,1)'], [.3, 'rgba(110,240,180,.55)'], [1, 'rgba(110,240,180,0)']]), opacity: 0});
-const port = new THREE.Mesh(new THREE.PlaneGeometry(.6, .6), portMat); port.position.set(1.02, .82, -1.5); port.rotation.y = Math.PI / 2; model.add(port);
+const port = new THREE.Mesh(new THREE.PlaneGeometry(.6, .6), portMat); port.position.set(.985, .62, -1.3); port.rotation.y = Math.PI / 2; model.add(port);
 
 /* sensors (world) */
 const sensors = new THREE.Group(); world.add(sensors);
@@ -213,32 +212,24 @@ const fadeable = [], ghosts = [], paintMats = [], interiorM = [];
 const ghostMat = new THREE.ShaderMaterial({transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, uniforms: {uOp: {value: 0}, uCol: {value: new THREE.Color(0x5cc8ff)}},
   vertexShader: 'varying vec3 vN;varying vec3 vV;void main(){vec4 mv=modelViewMatrix*vec4(position,1.);vN=normalize(normalMatrix*normal);vV=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}',
   fragmentShader: 'uniform float uOp;uniform vec3 uCol;varying vec3 vN;varying vec3 vV;void main(){float f=1.-abs(dot(normalize(vN),vV));f=pow(f,2.2);gl_FragColor=vec4(uCol*(f*1.1+.035)*uOp,1.);}'});
-const glassMat = new THREE.MeshPhysicalMaterial({color: 0x0a0c10, metalness: 0, roughness: .04, transparent: true, opacity: .42, envMapIntensity: 1.6, clearcoat: 1, depthWrite: false});
-const paint = {cur: new THREE.Color('#8f0a14'), tgt: new THREE.Color('#8f0a14'), metal: .55, mt: .55};
+const glassMat = new THREE.MeshPhysicalMaterial({color: 0x3a2414, metalness: 0, roughness: .04, transparent: true, opacity: .62, side: THREE.DoubleSide, envMapIntensity: 1.6, clearcoat: 1, depthWrite: false});
+const paint = {cur: new THREE.Color('#e7e6e2'), tgt: new THREE.Color('#e7e6e2'), metal: .15, mt: .15};
 const mats = {};
 const base = {};
 
-const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
 const pb = $('#pb'), pc = $('#pc');
-loader.load('car.glb', g => { car = g.scene; setup(); }, e => { if (e.total) { const f = e.loaded / e.total; pb.style.transform = `scaleX(${f})`; pc.textContent = Math.round(f * 100); } }, err => { console.warn(err); $('#pre').classList.add('gone'); });
+requestAnimationFrame(() => { car = buildRoadster(glassMat); pb.style.transform = 'scaleX(1)'; pc.textContent = 100; setup(); });
 
 function under(o, re) { while (o) { if (re.test(o.name)) return true; o = o.parent; } return false; }
 function setup() {
   model.add(car);
   car.traverse(o => { if (o.name) parts[o.name] = o; });
-  car.traverse(o => { if (o.isMesh && (o.material.name === 'License' || /License/.test(o.name))) { o.visible = false; o.material = o.material.clone(); o.material.visible = false; } });
-  if (parts.Engine) parts.Engine.visible = false;
-  if (parts.InteriorSteeringEmblem) parts.InteriorSteeringEmblem.visible = false;
-  // strip every logo texture from the source model
-  car.traverse(o => { if (!o.isMesh) return; const m = o.material; if (m.emissiveMap) { m.emissiveMap = null; m.emissive.set(0x000000); m.needsUpdate = true; } if (m.name === 'Tireside') { m.map = null; m.color.set(0x0b0b0c); m.roughness = .55; m.needsUpdate = true; } if (m.name === 'Rim1') { m.color.set(0x1c1d20); m.metalness = .9; m.roughness = .28; } if (m.name === 'Rim2') { m.color.set(0xc9ccd1); m.metalness = 1; m.roughness = .18; } });
   car.traverse(o => {
     if (!o.isMesh) return;
     o.frustumCulled = true;
     let m = o.material; mats[m.name] = m;
     if (m.name === 'Glass') { o.material = glassMat; m = glassMat; }
-    if (/^Paint 1/.test(m.name)) { m.color.copy(paint.cur); m.metalness = paint.metal; m.roughness = .32; if ('clearcoat' in m) { m.clearcoat = 1; m.clearcoatRoughness = .04; } paintMats.push(m); }
-    if (/^Interior 3/.test(m.name)) { m.color.set('#e9e6e1'); }
-    if (/^Dashboard/.test(m.name)) { m.emissive && m.emissive.set('#9fc4ff'); }
+    if (/^Paint 1/.test(m.name)) { m.color.copy(paint.cur); m.metalness = paint.metal; if (!paintMats.includes(m)) paintMats.push(m); }
     const isWheel = under(o, /^Wheel|^Axles/);
     if (isWheel) return;
     const isInt = /^Interior/.test(o.name) || under(o, /^Interior/);
@@ -247,7 +238,7 @@ function setup() {
     fadeable.push(rec);
     if (!isInt) { const gm = new THREE.Mesh(o.geometry, ghostMat); gm.visible = false; gm.matrixAutoUpdate = false; o.parent.add(gm); ghosts.push({g: gm, m: o}); }
   });
-  ['InteriorSeatsColor1', 'InteriorSeatsColor2', 'InteriorSeatsFrame1', 'InteriorSeatsFrame2', 'InteriorCage', 'InteriorPillar', 'BodyRoofPanel', 'InteriorRearHatch', 'BodyRearwindow', 'BodyPillars'].forEach(n => { const o = parts[n]; if (o) o.traverse(m => { if (m.isMesh) { cabMeshes.push(m); cabSet.add(m); } }); });
+  ['InteriorSeatsColor1', 'InteriorSeatsColor2', 'InteriorSeatsFrame1', 'InteriorSeatsFrame2', 'InteriorCage', 'InteriorPillar', 'BodyRoofPanel', 'InteriorRearHatch', 'BodyRearwindow', 'BodyPillars', 'BodyCanopyTrim'].forEach(n => { const o = parts[n]; if (o) o.traverse(m => { if (m.isMesh) { cabMeshes.push(m); cabSet.add(m); } }); });
   // headlights / taillights
   ['Headlight', 'Brakelight', 'Signallight', 'Dashboard'].forEach(n => { const m = mats[n]; if (m) { m.emissive = m.emissive || new THREE.Color(); m.toneMapped = true; } });
   if (mats.Headlight) mats.Headlight.emissive.set('#eaf2ff');
@@ -338,7 +329,7 @@ lenis.stop();
 $$('[data-go]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); const g = a.dataset.go; const t = g === 'spec' ? specEl : chs.find(c => c.k === g)?.el; if (t) lenis.scrollTo(t, {offset: g === 'spec' ? 0 : 2, duration: 2.4}); }));
 
 /* ---------------- configurator ---------------- */
-const PAINTS = [['Red Multi-Coat', '#8f0a14', .55], ['Pearl White', '#e7e6e2', .15], ['Stealth Grey', '#3a3d41', .6], ['Deep Blue', '#14295a', .65], ['Quicksilver', '#8e9398', .85], ['Diamond Black', '#060607', .5]];
+const PAINTS = [['Pearl White', '#e7e6e2', .15], ['Red Multi-Coat', '#8f0a14', .55], ['Stealth Grey', '#3a3d41', .6], ['Deep Blue', '#14295a', .65], ['Quicksilver', '#8e9398', .85], ['Diamond Black', '#060607', .5]];
 const sw = $('#sw');
 PAINTS.forEach((p, i) => { const b = document.createElement('button'); b.setAttribute('aria-label', p[0]); b.style.background = `radial-gradient(circle at 35% 30%, ${p[1] === '#060607' ? '#4a4a4c' : '#ffffff55'}, ${p[1]} 60%)`; b.style.backgroundColor = p[1]; if (!i) b.classList.add('on'); b.onclick = () => { $$('#sw button').forEach(x => x.classList.remove('on')); b.classList.add('on'); paint.tgt.set(p[1]); paint.mt = p[2]; $('#cn').textContent = p[0]; $('#okc').textContent = p[0]; }; sw.appendChild(b); });
 $('#rsv').onclick = () => { $('#rsv').textContent = 'Reserved'; $('#ok').style.opacity = 1; };
@@ -481,7 +472,7 @@ function animateCar(dt) {
   const gh = S.ghost;
   const cabHide = S.cab > .5;
   cabMeshes.forEach(o => o.visible = !cabHide);
-  fadeable.forEach(f => { if (cabHide && cabSet.has(f.mesh)) return; const op = f.int ? Math.min(1 - gh, S.interior) * (f.mesh === parts.BodyRoofPanel ? 1 : 1) : 1 - gh; let mat; if (f.mesh.material === glassMat || !f.fade) { f.mesh.visible = op > .01; glassMat.opacity = .42 * S.glass * (1 - gh); return; } if (op >= .995) mat = f.orig; else { mat = f.fade; f.fade.opacity = op; } f.mesh.material = mat; f.mesh.visible = op > .01; });
+  fadeable.forEach(f => { if (cabHide && cabSet.has(f.mesh)) return; const op = f.int ? Math.min(1 - gh, S.interior) * (f.mesh === parts.BodyRoofPanel ? 1 : 1) : 1 - gh; let mat; if (f.mesh.material === glassMat || !f.fade) { f.mesh.visible = op > .01; glassMat.opacity = .62 * S.glass * (1 - gh); return; } if (op >= .995) mat = f.orig; else { mat = f.fade; f.fade.opacity = op; } f.mesh.material = mat; f.mesh.visible = op > .01; });
   ghostMat.uniforms.uOp.value = gh;
   ghosts.forEach(g => { g.g.visible = gh > .01; if (g.g.visible) { g.m.updateMatrix(); g.g.matrix.copy(g.m.matrix); } });
   // paint
@@ -501,10 +492,10 @@ function animateCar(dt) {
   // doors: swing up and out
   const dr = S.doors, ex = S.explode;
   const dl = parts.BodyDoorLColor1, drr = parts.BodyDoorRColor1;
-  if (dl) { dl.rotation.set(dr * 38 * D2R, -dr * 32 * D2R, 0, 'YXZ'); dl.position.copy(base.BodyDoorLColor1.p).add(tmpL.set(ex * 1.2, ex * .35, 0)); }
-  if (drr) { drr.rotation.set(dr * 38 * D2R, dr * 32 * D2R, 0, 'YXZ'); drr.position.copy(base.BodyDoorRColor1.p).add(tmpL.set(-ex * 1.2, ex * .35, 0)); }
-  const hd = parts.BodyHood; if (hd) { hd.rotation.x = S.hood * 52 * D2R + ex * 10 * D2R; hd.position.copy(base.BodyHood.p).add(tmpL.set(0, ex * .9, ex * 1.1)); }
-  const rp = parts.BodyRearPanelsColor1; if (rp) { rp.rotation.x = -S.hatch * 48 * D2R - ex * 8 * D2R; rp.position.copy(base.BodyRearPanelsColor1.p).add(tmpL.set(0, ex * .8, -ex * 1.1)); }
+  if (dl) { dl.rotation.set(dr * 72 * D2R, dr * 9 * D2R, 0, 'YXZ'); dl.position.copy(base.BodyDoorLColor1.p).add(tmpL.set(ex * 1.2, ex * .35, 0)); }
+  if (drr) { drr.rotation.set(dr * 72 * D2R, -dr * 9 * D2R, 0, 'YXZ'); drr.position.copy(base.BodyDoorRColor1.p).add(tmpL.set(-ex * 1.2, ex * .35, 0)); }
+  const hd = parts.BodyHood; if (hd) { hd.rotation.x = -S.hood * 48 * D2R - ex * 10 * D2R; hd.position.copy(base.BodyHood.p).add(tmpL.set(0, ex * .9, ex * 1.1)); }
+  const rp = parts.BodyRearPanelsColor1; if (rp) { rp.rotation.x = S.hatch * 44 * D2R + ex * 8 * D2R; rp.position.copy(base.BodyRearPanelsColor1.p).add(tmpL.set(0, ex * .8, -ex * 1.1)); }
   const rf = parts.BodyRoofPanel; if (rf) { rf.position.copy(base.BodyRoofPanel.p).add(tmpL.set(0, S.roof * 1.15 + ex * 1.4, -S.roof * .25)); rf.rotation.set(-S.roof * 8 * D2R, S.roof * 6 * D2R, 0); }
   ['BodyWindshield', 'BodyWindshieldGasket', 'BodyWindshieldWipers', 'BodyWindshieldWipersBase'].forEach(n => { const o = parts[n]; if (o) o.position.copy(base[n].p).add(tmpL.set(0, ex * 1.0, ex * .55)); });
   if (parts.BodyPillars) parts.BodyPillars.position.copy(base.BodyPillars.p).add(tmpL.set(0, ex * 1.2, 0));
