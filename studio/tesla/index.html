@@ -54,14 +54,14 @@ body.light .nav .cta{background:rgba(0,0,0,.07)}
 #fog{position:absolute;inset:-10%;z-index:8;opacity:0;background:radial-gradient(60% 50% at 50% 50%,rgba(255,246,238,.97),rgba(255,226,214,.85) 55%,rgba(255,214,200,.6));will-change:opacity}
 #fogb{position:absolute;left:-20%;right:-20%;bottom:-30%;height:70%;z-index:9;opacity:0;background:url(img/clouds-p.webp) center 85%/cover;-webkit-mask:linear-gradient(transparent,#000 45%);mask:linear-gradient(transparent,#000 45%);will-change:transform,opacity}
 #glow{position:absolute;left:-40vw;top:-7vh;width:80vw;height:14vh;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%,rgba(255,236,220,.9),rgba(255,190,170,.35) 40%,transparent 70%);mix-blend-mode:screen;opacity:0;will-change:opacity,transform}
-#ttl{position:absolute;left:0;right:0;top:15%;text-align:center;z-index:4;will-change:transform,opacity}
+#ttl{position:absolute;left:0;right:0;top:10%;text-align:center;z-index:4;will-change:transform,opacity}
 #ttl h1{font-weight:200;font-size:clamp(72px,17.5vw,300px);letter-spacing:-.045em;line-height:.85;color:#fff;opacity:.94}
-#ttl p{font-size:clamp(13px,1.05vw,16px);letter-spacing:.42em;text-transform:uppercase;font-weight:400;margin-top:2.2vh;color:rgba(255,255,255,.86)}
+#ttl p{font-size:clamp(13px,1.05vw,16px);letter-spacing:.42em;padding-left:.42em;text-transform:uppercase;font-weight:500;margin-bottom:1.4vh;color:rgba(255,255,255,.92)}
 #ground{position:absolute;left:50%;top:80%;width:0;height:0;z-index:5;will-change:transform,opacity}
 #shadow{position:absolute;left:-36vw;top:-4vh;width:72vw;height:8vh;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%,rgba(10,4,10,.82),rgba(10,4,10,.4) 45%,transparent 72%);will-change:transform,opacity}
 #dust{position:absolute;left:-60vw;top:-12vh;width:120vw;height:20vh;opacity:0;will-change:transform,opacity}
 #dust img{width:100%;height:100%;filter:brightness(1.25)}
-#rig{position:absolute;left:50%;top:80%;z-index:6;width:min(62vw,1100px);will-change:transform;transform:translate(-50%,-92%);transform-style:preserve-3d}
+#rig{position:absolute;left:50%;top:80%;z-index:6;width:min(56vw,1000px);will-change:transform;transform-style:preserve-3d}
 #bob{position:relative;will-change:transform}
 #bob.on{animation:bob 4.2s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translate3d(0,0,0) rotate(0deg)}50%{transform:translate3d(0,-1.6vh,0) rotate(-.6deg)}}
@@ -95,7 +95,7 @@ body.light .nav .cta{background:rgba(0,0,0,.07)}
 .sc{position:absolute;inset:0;opacity:0;visibility:hidden}
 .sc.live{visibility:visible;will-change:opacity,clip-path}
 .sc img{position:absolute;left:-4%;top:-4%;width:108%;height:108%;object-fit:cover;will-change:transform}
-#sv{position:absolute;inset:0;z-index:20;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.42),transparent 26%,transparent 58%,rgba(0,0,0,.62))}
+#sv{position:absolute;inset:0;z-index:20;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.42),transparent 24%,transparent 46%,rgba(0,0,0,.72)),linear-gradient(90deg,rgba(0,0,0,.3),transparent 55%)}
 
 main{position:relative;z-index:5}
 #hero{height:520vh}
@@ -105,10 +105,11 @@ main{position:relative;z-index:5}
 .sec.top .pin{justify-content:flex-start;padding-top:16vh}
 .sec.r .pin{align-items:flex-end;text-align:right}
 .sec.c .pin{align-items:center;text-align:center}
-.k{font-size:12px;letter-spacing:.42em;text-transform:uppercase;font-weight:400;color:var(--dim);margin-bottom:16px}
+.k{font-size:12px;letter-spacing:.42em;text-transform:uppercase;font-weight:500;color:rgba(255,255,255,.95);margin-bottom:16px;text-shadow:0 1px 14px rgba(0,0,0,.55)}
+.specs .k,.gal .k{text-shadow:none}
 h2.big{font-weight:200;font-size:clamp(50px,8.4vw,150px);letter-spacing:-.04em;line-height:.92;text-shadow:0 2px 50px rgba(0,0,0,.4)}
 h2.big small{font-size:.3em;letter-spacing:0;margin-left:.15em;font-weight:300}
-.sub{max-width:34ch;font-size:clamp(16px,1.35vw,21px);line-height:1.5;color:rgba(255,255,255,.9);margin-top:18px;text-shadow:0 1px 20px rgba(0,0,0,.6)}
+.sub{max-width:34ch;font-size:clamp(17px,1.35vw,21px);line-height:1.5;color:#fff;font-weight:400;margin-top:18px;text-shadow:0 1px 20px rgba(0,0,0,.6)}
 .n{font-variant-numeric:tabular-nums}
 
 /* white spec band */
@@ -116,9 +117,9 @@ h2.big small{font-size:.3em;letter-spacing:0;margin-left:.15em;font-weight:300}
 .specs .k{color:#5c5e62}
 .specs h3{font-weight:300;font-size:clamp(34px,4vw,60px);letter-spacing:-.03em;line-height:1.05;max-width:18ch}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4vw;margin-top:10vh}
-.st b{display:block;font-weight:200;font-size:clamp(54px,6.4vw,108px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.st b{display:block;white-space:nowrap;font-weight:200;font-size:clamp(46px,5.4vw,96px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
 .st b small{font-size:.32em;font-weight:300;letter-spacing:0;margin-left:.12em}
-.st span{display:block;margin-top:12px;font-size:14px;color:#5c5e62;font-weight:400}
+.st>span{display:block;margin-top:12px;font-size:14px;color:#5c5e62;font-weight:400}
 .st{border-top:1px solid #e3e3e3;padding-top:22px}
 .specs .row{display:flex;gap:14px;margin-top:9vh;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-width:220px;padding:13px 26px;border-radius:6px;font-size:14px;font-weight:500;transition:background .3s,color .3s,transform .3s}
@@ -140,7 +141,7 @@ h2.big small{font-size:.3em;letter-spacing:0;margin-left:.15em;font-weight:300}
 /* configurator */
 .cfg{position:relative;z-index:6;background:#fff;color:#171a20;min-height:100vh;display:grid;grid-template-columns:1.55fr 1fr;align-items:center;gap:3vw;padding:12vh 5vw 14vh}
 .stagebox{position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:radial-gradient(70% 60% at 50% 62%,#ffffff,#eceef1 70%,#e2e5e9)}
-.stagebox .fl{position:absolute;left:8%;right:8%;bottom:17%;height:9%;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.32),transparent 70%)}
+.stagebox .fl{position:absolute;left:9%;right:9%;bottom:15.5%;height:8%;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.55),rgba(0,0,0,.18) 45%,transparent 72%)}
 .stagebox .cw{position:absolute;left:6%;right:6%;bottom:16%;aspect-ratio:1896/680}
 .stagebox .cw img{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .7s}
 .stagebox .cw img.on{opacity:1}
@@ -162,7 +163,7 @@ h2.big small{font-size:.3em;letter-spacing:0;margin-left:.15em;font-weight:300}
 .ok{display:none;margin-top:16px;padding:16px;border-radius:8px;background:#f4f6fb;font-size:14px;line-height:1.5;color:#171a20}
 .ok.on{display:block}
 .fine{font-size:12px;color:#8e8e8e;margin-top:14px;line-height:1.5}
-footer{position:relative;z-index:6;background:#fff;color:#5c5e62;font-size:12px;display:flex;justify-content:center;gap:28px;padding:26px 20px 34px;flex-wrap:wrap}
+footer{position:relative;z-index:6;background:#fff;color:#5c5e62;font-size:13px;display:flex;justify-content:center;gap:28px;padding:40px 20px 48px;flex-wrap:wrap;border-top:1px solid #eee}
 footer a:hover{color:#171a20}
 
 @media (max-width:800px){
@@ -175,7 +176,7 @@ footer a:hover{color:#171a20}
 #dust{left:-80vw;width:160vw}
 #cue{left:auto;right:20px;transform:none;bottom:22px}
 #hud{left:20px;bottom:22px;gap:40px}#hud b{font-size:28px}
-.fcap{left:20px;right:20px;top:15vh;bottom:auto}.fcap.r{right:20px;left:20px;text-align:left}
+.fcap{left:20px;right:20px;bottom:13vh}.fcap.r{right:20px;left:20px;text-align:left}
 .pin{padding:0 20px 12vh}
 .sec.r .pin{align-items:flex-start;text-align:left}
 .sc img{left:-10%;width:120%}
@@ -211,7 +212,7 @@ footer a:hover{color:#171a20}
   <div class="pl" id="pSky"><picture><source media="(max-width:800px)" srcset="img/sky-p.webp"><img src="img/sky.webp" alt=""></picture></div>
   <div class="pl" id="pClouds"><picture><source media="(max-width:800px)" srcset="img/clouds-p.webp"><img src="img/clouds.webp" alt=""></picture></div>
   <div id="haze"></div><div id="fog"></div><div id="fogb"></div>
-  <div id="ttl"><h1>Roadster</h1><p>Gravity defying</p></div>
+  <div id="ttl"><p>Gravity defying</p><h1>Roadster</h1></div>
   <div id="ground"><div id="glow"></div><div id="shadow"></div><div id="dust"><img src="img/dust.webp" alt=""></div></div>
   <div id="rig"><div id="bob"><div id="car">
     <div class="jet" style="left:5%"><i></i></div>
@@ -336,7 +337,7 @@ function start(){if(started)return;started=true;
     .fromTo(jets,{scaleY:.15,scaleX:.6},{scaleY:1,scaleX:1,duration:.7,stagger:.05,ease:'power2.out'},.8)
     .fromTo(glow,{opacity:0,scale:.5},{opacity:1,scale:1,duration:.7,ease:'power2.out'},.85)
     .fromTo(dust,{opacity:0,scale:.3},{opacity:1,scale:1.15,duration:1.5,ease:'expo.out'},.95)
-    .to(rig,{y:()=>-innerHeight*(mobile?.15:.17),duration:2.6,ease:'power3.inOut'},1.15)
+    .to(rig,{y:()=>-innerHeight*(mobile?.15:.1),duration:2.6,ease:'power3.inOut'},1.15)
     .to(car,{rotationZ:-1.5,duration:2.6,ease:'power2.inOut'},1.15)
     .to(shadow,{scaleX:.62,scaleY:.5,opacity:.45,duration:2.6,ease:'power3.inOut'},1.15)
     .to(glow,{opacity:.55,scaleX:.8,duration:2.6,ease:'power2.inOut'},1.4)
@@ -353,7 +354,7 @@ function start(){if(started)return;started=true;
     .to('#ground',{y:()=>innerHeight*.75,scale:1.6,duration:.3,ease:'power2.in'},0)
     .to(dust,{opacity:0,duration:.14},0)
     .to([shadow,glow],{opacity:0,duration:.14},.02)
-    .to(rig,{y:()=>-innerHeight*(mobile?.32:.3),scale:mobile?1.05:1.1,duration:.3,ease:'power1.inOut'},0)
+    .to(rig,{y:()=>-innerHeight*(mobile?.42:.34),x:()=>mobile?0:innerWidth*.16,scale:mobile?1.05:1.04,duration:.3,ease:'power1.inOut'},0)
     .to(car,{rotationX:10,rotationY:-14,rotationZ:-6,duration:.3,ease:'power1.inOut'},0)
     .to(jets,{scaleY:1.35,duration:.2},0)
     .fromTo('#cap1',{opacity:0,y:40},{opacity:1,y:0,duration:.06},.1)
@@ -386,7 +387,8 @@ function start(){if(started)return;started=true;
     hA.textContent=Math.round(p<.36?lerp(12,1800,p/.36):lerp(9000,12500,(p-.36)/.44)).toLocaleString('en-GB');
     hS.textContent=Math.round(p<.78?lerp(0,180,p/.78):lerp(180,250,(p-.78)/.12))}});
   /* fly layer only paints while the hero is on screen */
-  ScrollTrigger.create({trigger:H,start:'top top',end:'bottom top',onToggle:s=>{$('#fly').style.visibility=s.isActive||s.progress===0?'visible':'hidden'}});
+  const flyVis=s=>{$('#fly').style.visibility=s.progress<1?'visible':'hidden'};
+  ScrollTrigger.create({trigger:H,start:'top top',end:'bottom top',onToggle:flyVis,onRefresh:flyVis,onLeave:flyVis,onEnterBack:flyVis});
 
   /* desktop pointer parallax for real depth */
   if(!mobile){const qx=gsap.quickTo('#pSky',"xPercent",{duration:1.2}),qx2=gsap.quickTo('#pClouds',"xPercent",{duration:1.2}),qb=gsap.quickTo(bob,"x",{duration:1.4}),qt=gsap.quickTo(ttl,"xPercent",{duration:1.2});
@@ -406,9 +408,10 @@ function start(){if(started)return;started=true;
     gsap.fromTo(img,{scale:1.04,xPercent:-1.4*dir},{scale:1.2,xPercent:1.4*dir,ease:'none',scrollTrigger:{trigger:a,start:'top bottom',endTrigger:b,end:'bottom top',scrub:mobile?.5:1.2}});
     gsap.set(sc,{zIndex:i+1});
     if(i===0){gsap.fromTo(sc,{opacity:0},{opacity:1,ease:'none',scrollTrigger:{trigger:a,start:'top 100%',end:'top 40%',scrub:.6}});return}
-    const kind=['','iris','wipe','fade'][i];const st={trigger:a,start:'top 95%',end:'top 15%',scrub:mobile?.5:1.2};
+    const kind=['','wipe','side','fade'][i];const st={trigger:a,start:'top 95%',end:'top 15%',scrub:mobile?.5:1.2};
     if(kind==='fade')gsap.fromTo(sc,{opacity:0},{opacity:1,ease:'none',scrollTrigger:st});
     if(kind==='iris')gsap.fromTo(sc,{opacity:1,clipPath:'circle(0% at 50% 55%)'},{clipPath:'circle(80% at 50% 55%)',ease:'power1.inOut',scrollTrigger:st});
+    if(kind==='side')gsap.fromTo(sc,{opacity:1,clipPath:'inset(0% 0% 0% 100%)'},{clipPath:'inset(0% 0% 0% 0%)',ease:'power1.inOut',scrollTrigger:st});
     if(kind==='wipe')gsap.fromTo(sc,{opacity:1,clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',ease:'power1.inOut',scrollTrigger:st})});
   secs.forEach(sec=>{const it=sec.querySelectorAll('.rv');gsap.set(it,{opacity:0,y:50});
     const tl=gsap.timeline({scrollTrigger:{trigger:sec,start:'top top',end:'bottom bottom',scrub:mobile?.5:1}});
@@ -423,7 +426,7 @@ function start(){if(started)return;started=true;
 
   /* light nav over white sections */
   $$('.specs,.gal,.cfg,footer').forEach(el=>ScrollTrigger.create({trigger:el,start:'top 40px',end:'bottom 40px',onToggle:s=>{if(s.isActive)document.body.classList.add('light');else if(!$$('.specs,.gal,.cfg,footer').some(x=>{const r=x.getBoundingClientRect();return r.top<40&&r.bottom>40}))document.body.classList.remove('light')}}));
-  gsap.to('#stage',{opacity:0,ease:'none',scrollTrigger:{trigger:'#design',start:'top 100%',end:'top 60%',scrub:true}});
+  ScrollTrigger.create({trigger:'#design',start:'top top',onToggle:s=>{$('#stage').style.visibility=s.isActive?'hidden':'visible'}});
 
   /* configurator */
   const cw=$('#cw');
