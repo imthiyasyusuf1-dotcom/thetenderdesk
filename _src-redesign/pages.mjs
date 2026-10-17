@@ -21,6 +21,17 @@ const pages = {
   about: ['About Us | The Tender Desk', 'About The Tender Desk: websites, reels, tenders, Google Ads and AI from one desk. Founded and run by Yusuf Imthiyas.'],
   partners: ['Referral Partners | The Tender Desk', 'Introduce a business to The Tender Desk and receive a thank you of 10% of what they pay in their first year.'],
 }
+const SVC = [
+  ['websites', 'Websites', 'Custom, mobile first websites with hosting.'],
+  ['motion', 'Motion design, video ads and reels', 'Motion design videos, video ads and Instagram and TikTok reels, priced per project.'],
+  ['tenders', 'Tender writing', 'Finding contracts, go or no go, method statements, quality and social value answers.'],
+  ['google-ads', 'Google Ads', 'Google Ads campaigns built and managed, with every enquiry tracked.'],
+  ['ai', 'AI assistant and automation', 'An AI assistant that answers customers and books jobs 24/7, plus admin automations.'],
+  ['google-business', 'Google Business Profile setup', 'Google Business Profile set up and optimised.'],
+  ['seo', 'SEO and AI search optimisation', 'Structured data, FAQ markup and llms.txt for search engines and AI assistants.'],
+  ['care', 'Website care plans', 'Hosting, updates, backups and small changes every month.'],
+]
+const catalog = { '@type': 'OfferCatalog', name: 'Services', itemListElement: SVC.map(([slug, name, description]) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name, description, url: `${SITE}/${slug}/`, provider: { '@id': SITE + '/#org' } } })) }
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;')
 for (const [slug, [title, desc]] of Object.entries(pages)) {
   const path = slug ? `/${slug}/` : '/'
@@ -31,7 +42,7 @@ for (const [slug, [title, desc]] of Object.entries(pages)) {
     live ? `<link rel="canonical" href="${url}" />` : `<meta name="robots" content="noindex, nofollow" />`,
     `<meta property="og:type" content="website"><meta property="og:site_name" content="The Tender Desk"><meta property="og:locale" content="en_GB"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${SITE}/assets/img/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">`,
     `<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(desc)}"><meta name="twitter:image" content="${SITE}/assets/img/og.png">`,
-    `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', '@id': SITE + '/#org', name: 'The Tender Desk', url: SITE + '/', email: 'hello@thetenderdesk.co.uk', description: D, logo: SITE + '/assets/img/icon-512.png', founder: { '@type': 'Person', name: 'Yusuf Imthiyas' } })}</script>`,
+    `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', '@id': SITE + '/#org', name: 'The Tender Desk', url: SITE + '/', email: 'hello@thetenderdesk.co.uk', description: D, logo: SITE + '/assets/img/icon-512.png', founder: { '@type': 'Person', name: 'Yusuf Imthiyas' }, knowsAbout: SVC.map(x => x[1]), hasOfferCatalog: catalog })}</script>`,
   ].join('\n    ')
   const out = html.replace('<!--HEAD-->', head)
   const dir = live ? new URL(slug ? slug + '/' : '', root) : new URL(slug ? slug + '/' : '', src)
