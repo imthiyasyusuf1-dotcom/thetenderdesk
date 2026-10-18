@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import {buildRoadster} from './js/roadster.js';
+import {GLTFLoader} from './js/GLTFLoader.js';
 import {RoomEnvironment} from './js/RoomEnvironment.js';
 
 const PHONE = Math.min(innerWidth, innerHeight) < 700 || matchMedia('(pointer:coarse)').matches && innerWidth < 900;
@@ -18,7 +18,7 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 let DPR = Math.min(devicePixelRatio || 1, PHONE ? 1.6 : 1.75);
 renderer.setPixelRatio(DPR);
-const scene = new THREE.Scene();
+const scene = new THREE.Scene(); window.__scene = scene;
 const pmrem = new THREE.PMREMGenerator(renderer);
 scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 const camera = new THREE.PerspectiveCamera(32, innerWidth / innerHeight, 0.03, 300);
@@ -212,14 +212,17 @@ const fadeable = [], ghosts = [], paintMats = [], interiorM = [];
 const ghostMat = new THREE.ShaderMaterial({transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, uniforms: {uOp: {value: 0}, uCol: {value: new THREE.Color(0x5cc8ff)}},
   vertexShader: 'varying vec3 vN;varying vec3 vV;void main(){vec4 mv=modelViewMatrix*vec4(position,1.);vN=normalize(normalMatrix*normal);vV=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}',
   fragmentShader: 'uniform float uOp;uniform vec3 uCol;varying vec3 vN;varying vec3 vV;void main(){float f=1.-abs(dot(normalize(vN),vV));f=pow(f,2.2);gl_FragColor=vec4(uCol*(f*1.1+.035)*uOp,1.);}'});
-const glassMat = new THREE.MeshPhysicalMaterial({color: 0x3a2414, metalness: 0, roughness: .04, transparent: true, opacity: .62, side: THREE.DoubleSide, envMapIntensity: 1.6, clearcoat: 1, depthWrite: false});
+const glassMat = new THREE.MeshPhysicalMaterial({color: 0x16181d, metalness: 0, roughness: .04, transparent: true, opacity: .62, side: THREE.DoubleSide, envMapIntensity: 1.6, clearcoat: 1, depthWrite: false});
 const paint = {cur: new THREE.Color('#e7e6e2'), tgt: new THREE.Color('#e7e6e2'), metal: .15, mt: .15};
 const mats = {};
 const base = {};
 
 const pb = $('#pb'), pc = $('#pc');
-requestAnimationFrame(() => { car = buildRoadster(glassMat); pb.style.transform = 'scaleX(1)'; pc.textContent = 100; setup(); });
+new GLTFLoader().load('models/roadster.glb?v=5', gl => { car = gl.scene.getObjectByName('Roadster') || gl.scene; pb.style.transform = 'scaleX(1)'; pc.textContent = 100; setup(); },
+  e => { if (e.total) { const f = e.loaded / e.total; pb.style.transform = `scaleX(${f})`; pc.textContent = Math.round(f * 100); } },
+  err => console.warn('model load failed', err));
 
+const upg = {};
 function under(o, re) { while (o) { if (re.test(o.name)) return true; o = o.parent; } return false; }
 function setup() {
   model.add(car);
@@ -227,8 +230,10 @@ function setup() {
   car.traverse(o => {
     if (!o.isMesh) return;
     o.frustumCulled = true;
-    let m = o.material; mats[m.name] = m;
+    let m = o.material;
     if (m.name === 'Glass') { o.material = glassMat; m = glassMat; }
+    else if (/^Paint 1|GlossBlack|RimFace|Carbon/.test(m.name)) { if (!upg[m.name]) upg[m.name] = new THREE.MeshPhysicalMaterial({name: m.name, color: m.color, metalness: m.metalness, roughness: m.roughness, emissive: m.emissive, clearcoat: 1, clearcoatRoughness: .06, envMapIntensity: 1.1}); o.material = m = upg[m.name]; }
+    mats[m.name] = m;
     if (/^Paint 1/.test(m.name)) { m.color.copy(paint.cur); m.metalness = paint.metal; if (!paintMats.includes(m)) paintMats.push(m); }
     const isWheel = under(o, /^Wheel|^Axles/);
     if (isWheel) return;
@@ -242,7 +247,7 @@ function setup() {
   // headlights / taillights
   ['Headlight', 'Brakelight', 'Signallight', 'Dashboard'].forEach(n => { const m = mats[n]; if (m) { m.emissive = m.emissive || new THREE.Color(); m.toneMapped = true; } });
   if (mats.Headlight) mats.Headlight.emissive.set('#eaf2ff');
-  if (mats.Brakelight) mats.Brakelight.emissive.set('#ff1a14');
+  if (mats.Brakelight) mats.Brakelight.emissive.set('#e00a00');
   if (mats.Signallight) mats.Signallight.emissive.set('#ff9a2a');
   ['BodyDoorLColor1', 'BodyDoorRColor1', 'BodyHood', 'BodyRearPanelsColor1', 'BodyRoofPanel', 'BodyWindshield', 'BodyWindshieldGasket', 'BodyWindshieldWipers', 'BodyWindshieldWipersBase', 'BodyPillars', 'BodyPanelsColor2', 'WheelFrontL', 'WheelFrontR', 'WheelRearL', 'WheelRearR'].forEach(n => { const o = parts[n]; if (o) base[n] = {p: o.position.clone(), r: o.rotation.clone()}; });
   // wheel sub parts
@@ -279,7 +284,7 @@ const CH = {
     keys: [{p: 0, az: 44, el: 8, dist: 8.8, ty: .6, doors: 0, shift: -.12}, {p: .6, doors: 1}, {p: 1, az: 26, el: 14, dist: 8.2, doors: 1, shift: -.12}]},
   roof: {h: 340, base: {bg: '#e1e4e8', lt: 1, floor: 1, floorCol: '#ffffff', env: 1.25, rimLight: .5},
     keys: [{p: 0, az: 24, el: 30, dist: 10, ty: .6, roof: 0, shift: .14}, {p: .5, az: 4, el: 62, dist: 9, roof: 1, ty: 1}, {p: 1, az: -18, el: 74, dist: 9.4, roof: 1, glass: .5, ty: 1, shift: .14}]},
-  cockpit: {h: 380, base: {bg: '#0e1013', road: 1, floor: .3, env: 1, lights: 1, glass: .35, fov: 40},
+  cockpit: {h: 380, base: {bg: '#0e1013', road: 0, floor: .3, env: 1, lights: 1, glass: .35, fov: 40},
     keys: [{p: 0, az: 180, el: 22, dist: 6.5, tx: 0, ty: .8, tz: .9, fov: 32}, {p: .3, cab: 0}, {p: .42, dist: 1.15, el: 9, ty: .86, tz: 1.0, fov: 52, cab: 1}, {p: .55, screen: 1}, {p: 1, screen: 1, cab: 1, dist: 1.05, el: 7, ty: .86, tz: 1.0, az: 186, fov: 54}]},
   seats: {h: 300, base: {bg: '#121317', roof: 1, ghost: .7, floor: .4, floorCol: '#8e98ad', env: 1},
     keys: [{p: 0, az: 140, el: 42, dist: 8.8, ty: .6, shift: -.2, shY: .04}, {p: 1, az: 215, el: 54, dist: 8.2, shift: -.2, shY: .04}]},
@@ -479,8 +484,8 @@ function animateCar(dt) {
   paint.cur.lerp(paint.tgt, 1 - Math.exp(-4 * dt)); paint.metal = damp(paint.metal, paint.mt, 4, dt);
   paintMats.forEach(m => { m.color.copy(paint.cur); m.metalness = paint.metal; });
   // lights
-  const hl = S.lights; if (mats.Headlight) mats.Headlight.emissiveIntensity = hl * 6;
-  if (mats.Brakelight) mats.Brakelight.emissiveIntensity = (S.brake * (.75 + .25 * Math.sin(time * 3))) * 7 + hl * .8;
+  const hl = S.lights; if (mats.Headlight) mats.Headlight.emissiveIntensity = hl * 2.6;
+  if (mats.Brakelight) mats.Brakelight.emissiveIntensity = (S.brake * (.75 + .25 * Math.sin(time * 3))) * 2.6 + hl * .6;
   if (mats.Dashboard) mats.Dashboard.emissiveIntensity = .5 + S.screen * 2;
   beamMat.uniforms.uOp.value = S.beams; beams.visible = S.beams > .01;
   bladeMat.opacity = Math.min(1, hl * 1.1); blade.visible = hl > .01; haloMat.opacity = S.beams * .9 + hl * .12 * (S.env < .6 ? 1 : 0); lpoolMat.opacity = S.beams * .9; lpool.visible = S.beams > .01;
