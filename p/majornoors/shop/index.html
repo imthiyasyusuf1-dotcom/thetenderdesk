@@ -12,6 +12,7 @@
 <link rel="icon" href="../assets/logo.webp">
 <link rel="stylesheet" href="../assets/site.css?v=10">
 <link rel="stylesheet" href="../assets/shop.css?v=9">
+<link rel="stylesheet" href="/p/_motion/details.css?v=2"><!--td-details-->
 </head>
 <body class="sub">
 <header class="nav solid" id="nav">
@@ -85,5 +86,6 @@ document.getElementById('qm').onclick=()=>{q=Math.max(1,q-1);upd()};document.get
 document.querySelectorAll('.pk').forEach(p=>p.onclick=()=>{document.querySelectorAll('.pk').forEach(x=>{x.classList.toggle('on',x===p);x.setAttribute('aria-checked',x===p)});add.dataset.add=p.dataset.k});
 if(location.hash==='#twin')document.querySelector('.pk[data-k=twin]').click();})();
 </script>
+<script src="/p/_motion/details.js?v=2" defer></script><!--td-details-->
 </body>
 </html>

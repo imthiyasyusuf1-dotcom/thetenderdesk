@@ -12,6 +12,7 @@
 <link rel="icon" href="../assets/logo.webp">
 <link rel="stylesheet" href="../assets/site.css?v=10">
 <link rel="stylesheet" href="../assets/shop.css?v=9">
+<link rel="stylesheet" href="/p/_motion/details.css?v=2"><!--td-details-->
 </head>
 <body class="sub">
 <header class="nav solid" id="nav">
@@ -78,5 +79,6 @@ const body=`Order ${ref}\n\n`+ls.map(l=>`${l.q} x ${l.name} (${l.pack}) ${M.mone
 location.href='mailto:enquiries@majornoors.com?subject='+encodeURIComponent('Order '+ref)+'&body='+encodeURIComponent(body);
 M.set({});document.getElementById('co').hidden=true;const dn=document.getElementById('done');dn.hidden=false;document.getElementById('ref').textContent='Order '+ref;scrollTo(0,0);});})();
 </script>
+<script src="/p/_motion/details.js?v=2" defer></script><!--td-details-->
 </body>
 </html>

@@ -1,0 +1,47 @@
+/* Tender Desk detail kit v1 (/p/_motion/details.css)
+   Small moving details, vanilla ports of Magic UI ideas (MIT, magicui.design):
+   shimmer CTA, border beam, number ticker, marquee strip, animated list.
+   Colours come from the page itself (--td-accent is set by details.js), so every mock-up keeps its own art direction.
+   Transform and opacity only; loops pause off screen. */
+
+/* shimmer CTA: a slow sheen across the button */
+.td-sh{position:relative;overflow:hidden;isolation:isolate}
+span.td-sheen{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(105deg,transparent 30%,var(--td-sheen,rgba(255,255,255,.3)) 50%,transparent 70%);transform:translate3d(-130%,0,0);animation:td-sheen 5s cubic-bezier(.6,0,.3,1) 1.8s infinite}
+@keyframes td-sheen{0%{transform:translate3d(-130%,0,0)}38%,100%{transform:translate3d(130%,0,0)}}
+
+/* border beam: a light that travels round the card edge */
+.td-bm{position:relative}
+span.td-beam{position:absolute;inset:0;border-radius:inherit;padding:var(--td-beam-w,1.5px);pointer-events:none;overflow:hidden;z-index:1;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.td-beam::before{content:"";position:absolute;left:50%;top:50%;width:260%;aspect-ratio:1;margin:-130% 0 0 -130%;background:conic-gradient(from 0deg,transparent 0 78%,color-mix(in srgb,var(--td-accent,currentColor) 25%,transparent) 88%,var(--td-accent,currentColor) 97%,transparent 100%);animation:td-beam var(--td-beam-d,9s) linear infinite;animation-play-state:paused}
+.td-beam.run::before{animation-play-state:running}
+@keyframes td-beam{to{transform:rotate(1turn)}}
+
+/* number ticker: each digit rolls on its own strip */
+.td-tk{display:inline-flex;font-variant-numeric:tabular-nums;white-space:nowrap}
+.td-col{position:relative;display:inline-block;overflow:hidden;vertical-align:top}
+.td-ghost{display:block;visibility:hidden}
+.td-strip{position:absolute;left:0;top:0;display:flex;flex-direction:column;transform:translate3d(0,0,0);transition:transform 2s cubic-bezier(.16,1,.3,1)}
+.td-strip span{display:block}
+.td-tk.go .td-strip{transform:translate3d(0,calc(var(--to) * -5%),0)}
+
+/* marquee strip of the services a business does (never client logos) */
+.td-mq{overflow:hidden;border-block:1px solid color-mix(in srgb,currentColor 14%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.td-mq-track{display:flex;width:max-content;animation:td-mq var(--td-mq-d,40s) linear infinite;animation-play-state:paused;will-change:transform}
+.td-mq.run .td-mq-track{animation-play-state:running}
+@media (hover:hover){.td-mq:hover .td-mq-track{animation-play-state:paused}}
+.td-mq ul{display:flex;list-style:none;flex:none;margin:0;padding:0}
+.td-mq li{display:flex;align-items:center;white-space:nowrap;padding:clamp(16px,2.4vh,24px) 0;font-size:clamp(22px,3vw,38px);line-height:1;letter-spacing:-.01em;margin:0}
+.td-mq li::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--td-accent,currentColor);opacity:.7;margin:0 clamp(20px,3vw,44px)}
+@keyframes td-mq{to{transform:translate3d(-50%,0,0)}}
+
+/* animated list: items drop in at the top, the rest slide down to make room */
+[data-alist]{display:flex;flex-direction:column}
+.td-al-item{transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .45s ease}
+.td-al-in{opacity:0;transform:translate3d(0,-14px,0) scale(.94)}
+.td-al-out{opacity:0;transform:scale(.96)}
+
+@media (prefers-reduced-motion:reduce){
+  .td-sheen,.td-beam{display:none}
+  .td-mq-track{animation:none;flex-wrap:wrap;width:auto}.td-mq ul[aria-hidden]{display:none}.td-mq ul{flex-wrap:wrap}
+  .td-al-item{transition:none}
+}

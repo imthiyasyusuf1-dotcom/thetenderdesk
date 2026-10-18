@@ -117,7 +117,8 @@ footer .credit{opacity:.7;font-size:.74rem}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 </style>
 <script>/*td-motion*/(function(h){if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&h.dataset.motion!=="off"){h.classList.add("m-on");setTimeout(function(){h.classList.add("m-ready")},2500)}})(document.documentElement)</script>
-<link rel="stylesheet" href="/p/_motion/motion.css?v=1">
+<link rel="stylesheet" href="/p/_motion/motion.css?v=2">
+<link rel="stylesheet" href="/p/_motion/details.css?v=2"><!--td-details-->
 </head>
 <body>
 <header class="hd" id="hd">
@@ -236,10 +237,11 @@ const hd=document.getElementById('hd');const bar=document.querySelector('.bar');
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 </script>
+<script src="/p/_motion/details.js?v=2" defer></script><!--td-details-->
 <!--td-motion-->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous" defer></script>
-<script src="/p/_motion/motion.js?v=1" defer></script>
+<script src="/p/_motion/motion.js?v=2" defer></script>
 </body>
 </html>

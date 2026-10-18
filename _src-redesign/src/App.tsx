@@ -5,10 +5,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SplitText from './bits/SplitText'
 import BlurText from './bits/BlurText'
 import ShinyText from './bits/ShinyText'
-import CountUp from './bits/CountUp'
 import AnimatedContent from './bits/AnimatedContent'
 import Magnet from './bits/Magnet'
 import StarBorder from './bits/StarBorder'
+import { Marquee, Ticker } from './bits/Details'
 import { services, moves, whyUs, homeFaqs, wa, MAIL, B } from './content'
 import type { Service } from './content'
 import { ServiceVisual, ReelClip, reduce } from './Visuals'
@@ -58,7 +58,7 @@ function Faq({ items }: { items: [string, string][] }) {
 }
 
 const Amount = ({ n }: { n: number }) => (
-  <p className="amount"><span className="cur">£</span>{reduce ? n : <CountUp from={0} to={n} duration={1.4} />}</p>
+  <p className="amount"><span className="cur">£</span><Ticker value={String(n)} /></p>
 )
 
 function Contact({ n, title, text, msg }: { n: string; title: string; text: string; msg: string }) {
@@ -70,7 +70,7 @@ function Contact({ n, title, text, msg }: { n: string; title: string; text: stri
         <h2 id="contact-h" className="display light">{title}</h2>
         <p className="lede light">{text}</p>
         <div className="ctas">
-          <a className="btn cream" href={wa(msg)} target="_blank" rel="noopener">Message on WhatsApp</a>
+          <a className="btn cream shimmer" href={wa(msg)} target="_blank" rel="noopener">Message on WhatsApp</a>
           <StarBorder as="a" href={MAIL} className="btn outline" color="#f4f0e7" trailColor="rgba(244,239,232,.25)" backgroundColor="#1b1a17" textColor="#f4f0e7" borderColor="rgba(244,239,232,.22)" radius={999} duration={7} stars={1} glow={0} sparkle={false} clickPulse={false}>hello@thetenderdesk.co.uk</StarBorder>
         </div>
       </div>
@@ -138,6 +138,8 @@ function PriceBlock({ s }: { s: Service }) {
   )
 }
 
+const whatWeDo = ['Websites', 'Motion design', 'Reels', 'Video ads', 'Tender writing', 'Google Ads', 'AI assistants', 'Google Business Profile', 'SEO and AI search', 'Care plans']
+
 /* ---------------- pages ---------------- */
 
 function Home() {
@@ -151,12 +153,14 @@ function Home() {
           <Reveal delay={0.5}><p className="lede">Websites, reels and video ads, tenders, Google Ads and AI for businesses that want more of the right work. One desk, so nothing gets lost between agencies.</p></Reveal>
           <Reveal delay={0.65}>
             <div className="ctas">
-              <Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary" href="#contact">Start a project</a></Magnet>
+              <Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary shimmer" href="#contact">Start a project</a></Magnet>
               <a className="btn ghost" href="#services">See the services</a>
             </div>
           </Reveal>
         </div>
       </section>
+
+      <Marquee label="What we do" items={whatWeDo} />
 
       <section className="wrap block" id="services" aria-labelledby="svc-h">
         <Head n="01" text="Everything that brings work in" id="svc-h" />
@@ -181,13 +185,14 @@ function Home() {
         <div className="wrap">
           <div className="sechead"><p className="num">02</p><h2 id="price-h" className="h2">{reduce ? 'A website for £25' : <BlurText text="A website for £25" animateBy="words" delay={90} direction="bottom" />}</h2></div>
           <div className="pricegrid">
-            <PriceBlock s={web} />
-            <Reveal>
-              <div>
+            <div className="homeprice">
+              <PriceBlock s={web} />
+              <Reveal>
                 <ul className="incl">{['Your website, designed and built', 'Hosting for the first 6 months', 'Works properly on phones', 'Set up for Google search', 'Your own domain connected', 'Free mock-up before you pay'].map(x => <li key={x}>{x}</li>)}</ul>
                 <a className="textlink" href={`${B}websites/`}>How websites work <span aria-hidden="true">→</span></a>
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
+            <ServiceVisual kind="site" />
           </div>
         </div>
       </section>
@@ -236,7 +241,7 @@ function PartnerTeaser({ n }: { n: string }) {
       <div className="wrap">
         <div className="sechead"><p className="num">{n}</p><h2 id="ref-h" className="h2">{reduce ? 'Know a business that needs more work?' : <BlurText text="Know a business that needs more work?" animateBy="words" delay={70} direction="bottom" />}</h2></div>
         <div className="pricegrid">
-          <div className="price"><p className="small">Referral thank you</p><p className="amount">{reduce ? 10 : <CountUp from={0} to={10} duration={1.2} />}<span className="cur pct">%</span></p><p className="then">of what they pay in their first year.</p></div>
+          <div className="price"><p className="small">Referral thank you</p><p className="amount"><Ticker value="10" /><span className="cur pct">%</span></p><p className="then">of what they pay in their first year.</p></div>
           <Reveal><div><p className="lede">Introduce them to The Tender Desk. If they become a client, you receive your thank you once they have paid. Nothing to sign up to, and no targets.</p><a className="textlink" href={`${B}partners/`}>Become a partner <span aria-hidden="true">→</span></a></div></Reveal>
         </div>
       </div>
@@ -255,7 +260,7 @@ function ServicePage({ s }: { s: Service }) {
           <Reveal delay={0.5}><p className="lede">{s.lede}</p></Reveal>
           <Reveal delay={0.65}>
             <div className="ctas">
-              <Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary" href="#contact">{s.cta.label}</a></Magnet>
+              <Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary shimmer" href="#contact">{s.cta.label}</a></Magnet>
               <a className="btn ghost" href="#price">See the price</a>
             </div>
           </Reveal>
@@ -331,7 +336,7 @@ function About() {
         <Display text="One desk. Every way to win work." />
         <div className="herogrid">
           <Reveal delay={0.5}><p className="lede">The Tender Desk exists because good businesses keep losing work they should win: great reviews and a dated website, capable of public contracts and never bidding. We fix both, and the bits in between.</p></Reveal>
-          <Reveal delay={0.65}><div className="ctas"><Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary" href="#contact">Start a project</a></Magnet><a className="btn ghost" href={`${B}#services`}>Our services</a></div></Reveal>
+          <Reveal delay={0.65}><div className="ctas"><Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary shimmer" href="#contact">Start a project</a></Magnet><a className="btn ghost" href={`${B}#services`}>Our services</a></div></Reveal>
         </div>
       </section>
       <section className="wrap block" aria-labelledby="who-h">
@@ -364,7 +369,7 @@ function Partners() {
         <Display text="Know a business that needs more work?" />
         <div className="herogrid">
           <Reveal delay={0.5}><p className="lede">Introduce them to The Tender Desk. We look after their website, reels, ads, enquiries and tenders. You get a thank you of 10% of their first year.</p></Reveal>
-          <Reveal delay={0.65}><div className="ctas"><Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary" href="#contact">Become a partner</a></Magnet></div></Reveal>
+          <Reveal delay={0.65}><div className="ctas"><Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary shimmer" href="#contact">Become a partner</a></Magnet></div></Reveal>
         </div>
       </section>
       <section className="wrap block" aria-labelledby="w-h">
@@ -379,7 +384,7 @@ function Partners() {
         <div className="wrap">
           <div className="sechead"><p className="num">03</p><h2 id="t-h" className="h2">The thank you</h2></div>
           <div className="pricegrid">
-            <div className="price"><p className="small">Per client introduced</p><p className="amount">{reduce ? 10 : <CountUp from={0} to={10} duration={1.2} />}<span className="cur pct">%</span></p><p className="then">of what they pay in their first year.</p></div>
+            <div className="price"><p className="small">Per client introduced</p><p className="amount"><Ticker value="10" /><span className="cur pct">%</span></p><p className="then">of what they pay in their first year.</p></div>
             <Reveal><p className="lede">Paid once they have paid. Nothing to sign up to, and no targets. You put your reputation on the line with an introduction. We treat it that way.</p></Reveal>
           </div>
         </div>

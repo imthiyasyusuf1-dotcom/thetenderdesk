@@ -223,3 +223,49 @@ section{scroll-margin-top:16px}
  .menumail{font-size:14px;color:var(--muted);text-decoration:none;text-align:center}
 }
 @media (prefers-reduced-motion:reduce){.menu,.menulinks a,.menufoot{transition:none!important;transform:none!important}}
+
+/* ---- detail kit (Magic UI ideas, MIT, restyled): marquee, ticker, border beam, animated list, shimmer ---- */
+/* marquee strip of what we do */
+.mq{overflow:hidden;border-block:1px solid var(--line);-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);margin-bottom:clamp(40px,7vh,80px)}
+.mq-track{display:flex;width:max-content;animation:mq 46s linear infinite;animation-play-state:paused;will-change:transform}
+.mq.run .mq-track{animation-play-state:running}
+@media (hover:hover){.mq:hover .mq-track{animation-play-state:paused}}
+.mq-row{display:flex;list-style:none;flex:none}
+.mq-row li{display:flex;align-items:center;white-space:nowrap;padding:clamp(18px,2.6vh,26px) 0;font:italic 400 clamp(26px,3.2vw,42px)/1 var(--serif);letter-spacing:-.01em}
+.mq-row li::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--ink);opacity:.3;margin:0 clamp(22px,3vw,46px)}
+@keyframes mq{to{transform:translate3d(-50%,0,0)}}
+/* number ticker: each digit rolls on its own strip */
+.tk{display:inline-flex;font-variant-numeric:tabular-nums}
+.tk-col{position:relative;display:inline-block;overflow:hidden;vertical-align:top;line-height:1.3;margin-block:calc((var(--tk-lh,.9) - 1.3) / 2 * 1em)}
+.tk-ghost{display:block;visibility:hidden}
+.tk-strip{position:absolute;left:0;top:0;display:flex;flex-direction:column;transform:translate3d(0,0,0);transition:transform 2s cubic-bezier(.16,1,.3,1)}
+.tk-strip span{display:block}
+.tk.go .tk-strip{transform:translate3d(0,calc(var(--to) * -5%),0)}
+/* border beam: a soft travelling light on the card edge */
+.v-card,.phone{position:relative}
+.beam{position:absolute;inset:0;border-radius:inherit;padding:1.5px;pointer-events:none;overflow:hidden;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.phone>.beam{inset:-1px;background:none;opacity:1!important;transform:none!important;border-radius:30px}
+.beam::before{content:"";position:absolute;left:50%;top:50%;width:260%;aspect-ratio:1;margin:-130% 0 0 -130%;background:conic-gradient(from 0deg,transparent 0 76%,rgba(27,26,23,.08) 82%,rgba(27,26,23,.42) 97%,transparent 100%);animation:beam var(--bd,9s) linear infinite;animation-play-state:paused}
+.beam.run::before{animation-play-state:running}
+@keyframes beam{to{transform:rotate(1turn)}}
+/* animated list: enquiries landing on a phone */
+.ping-phone{padding:18px 11px;gap:10px;overflow:hidden}
+.ping-time{text-align:center;font:500 13px/1 var(--sans);letter-spacing:.02em;color:var(--muted);margin:4px 0 6px}
+.alist{position:relative;display:flex;flex-direction:column;gap:8px}
+.alist-item{will-change:transform,opacity}
+.ping{display:flex;gap:9px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 11px;box-shadow:0 8px 18px -14px rgba(27,26,23,.4);font-size:11.5px;line-height:1.35}
+.ping-dot{width:8px;height:8px;border-radius:50%;background:var(--ink);margin-top:4px;flex:none}
+.ping-k{font-weight:600;display:flex;justify-content:space-between;gap:6px}.ping-k span{font-weight:400;color:var(--muted)}
+.ping-b{flex:1;min-width:0}.ping-t{color:#3b3832}
+.pricing .vcap{display:none}
+.homeprice .incl{margin-top:36px}
+.pricegrid:has(.homeprice){align-items:center}
+@media (min-width:901px){.pricegrid:has(.homeprice) .phone{width:236px}}
+@media (max-width:900px){.homeprice .incl{margin-top:20px}}
+/* shimmer CTA: a slow sheen across the primary buttons */
+.shimmer{position:relative;overflow:hidden;isolation:isolate}
+.shimmer::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 30%,var(--sh,rgba(255,255,255,.22)) 50%,transparent 70%);transform:translate3d(-130%,0,0);animation:shim 5s cubic-bezier(.6,0,.3,1) 2s infinite;pointer-events:none}
+.btn.primary.shimmer{z-index:0}
+.btn.cream.shimmer{--sh:rgba(255,255,255,.95)}
+@keyframes shim{0%{transform:translate3d(-130%,0,0)}38%,100%{transform:translate3d(130%,0,0)}}
+@media (prefers-reduced-motion:reduce){.shimmer::after,.beam{display:none}.mq-track{animation:none;flex-wrap:wrap;width:auto}.mq-row[aria-hidden]{display:none}.mq-row{flex-wrap:wrap}}

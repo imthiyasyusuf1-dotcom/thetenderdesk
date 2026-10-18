@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import type { Visual } from './content'
+import { AnimatedList, BorderBeam } from './bits/Details'
 
 export const reduce = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -16,13 +17,23 @@ export function useInView<T extends HTMLElement>() {
   return [ref, inView] as const
 }
 
+const pings = [
+  { id: 'q', k: 'Quote request', t: 'Kitchen fitting, from your website', w: 'now' },
+  { id: 'c', k: 'Call back', t: 'Boiler service, tapped Call now', w: '2m' },
+  { id: 'b', k: 'Booking', t: 'Saturday 10:00, site visit', w: '5m' },
+  { id: 'r', k: 'New review', t: '\u2605\u2605\u2605\u2605\u2605 Tidy job, on time', w: '9m' },
+  { id: 'm', k: 'Message', t: 'Do you cover my area?', w: '12m' },
+]
+
 function Site() {
   return (
     <div className="v-site" aria-hidden="true">
-      <div className="phone">
-        <span className="bar w40" /><span className="hero-b" /><span className="bar w80" /><span className="bar w60" />
-        <span className="pill">Call now</span>
-        <div className="tiles"><span /><span /><span /></div>
+      <div className="phone ping-phone">
+        <BorderBeam duration={10} />
+        <p className="ping-time">09:41</p>
+        <AnimatedList pool={pings} max={4} every={2100} render={p => (
+          <div className="ping"><span className="ping-dot" /><div className="ping-b"><p className="ping-k">{p.k}<span>{p.w}</span></p><p className="ping-t">{p.t}</p></div></div>
+        )} />
       </div>
       <div className="vcap"><b>£25</b> first 6 months</div>
     </div>
@@ -32,7 +43,7 @@ function Site() {
 function Bid() {
   const rows: [string, string, number][] = [['Selection questionnaire', 'Passed', 100], ['Method statement', '40%', 40], ['Quality answers', '30%', 30], ['Social value', '10%', 10], ['Compliance check', 'Done', 100]]
   return (
-    <div className="v-card v-bid" aria-hidden="true">
+    <div className="v-card v-bid" aria-hidden="true"><BorderBeam />
       <p className="vk">Invitation to tender</p>
       {rows.map(([l, v, w], i) => (
         <div className="brow" key={l} style={{ ['--i' as string]: i }}>
@@ -46,7 +57,7 @@ function Bid() {
 
 function Ads() {
   return (
-    <div className="v-card v-ads" aria-hidden="true">
+    <div className="v-card v-ads" aria-hidden="true"><BorderBeam />
       <div className="search"><span className="glass" /><span className="typed">emergency electrician near me</span></div>
       <div className="ad">
         <p className="spons">Sponsored <span>yourbusiness.co.uk</span></p>
@@ -60,7 +71,7 @@ function Ads() {
 
 function Chat() {
   return (
-    <div className="v-card v-chat" aria-hidden="true">
+    <div className="v-card v-chat" aria-hidden="true"><BorderBeam />
       <p className="vk">03:07 · Website chat</p>
       <p className="msg them" style={{ ['--i' as string]: 0 }}>Hi, are you free this week? Need a quote for a new bathroom.</p>
       <p className="msg us" style={{ ['--i' as string]: 1 }}>Hi Sam. We can visit Thursday at 10:00 or Friday at 14:00. Which suits you?</p>
@@ -73,7 +84,7 @@ function Chat() {
 
 function Gbp() {
   return (
-    <div className="v-card v-gbp" aria-hidden="true">
+    <div className="v-card v-gbp" aria-hidden="true"><BorderBeam />
       <div className="map"><span className="pin" /></div>
       <p className="gname">Your Business</p>
       <p className="stars"><span className="s">{'\u2605\u2605\u2605\u2605\u2605'}</span><span className="s fill">{'\u2605\u2605\u2605\u2605\u2605'}</span></p>
@@ -86,7 +97,7 @@ function Gbp() {
 function Seo() {
   const lines = ['# llms.txt', '> What we do, in plain words.', '', '## Services', '- /services/repairs', '- /services/installs', '', '"@type": "Service"', '"@type": "FAQPage"']
   return (
-    <div className="v-card v-seo" aria-hidden="true">
+    <div className="v-card v-seo" aria-hidden="true"><BorderBeam />
       <pre>{lines.map((l, i) => <span key={i} style={{ ['--i' as string]: i }}>{l || '\u00a0'}{'\n'}</span>)}</pre>
     </div>
   )
@@ -95,7 +106,7 @@ function Seo() {
 function Care() {
   const items = ['Backed up', 'Updated', 'Speed checked', 'Uptime checked', 'Report sent']
   return (
-    <div className="v-card v-care" aria-hidden="true">
+    <div className="v-card v-care" aria-hidden="true"><BorderBeam />
       <p className="vk">This month</p>
       <ul>{items.map((x, i) => <li key={x} style={{ ['--i' as string]: i }}><span className="tick">{'\u2713'}</span>{x}</li>)}</ul>
       <svg viewBox="0 0 300 60" className="pulse"><path d="M0 40 H90 L100 40 L110 22 L120 50 L130 40 H300" /></svg>
