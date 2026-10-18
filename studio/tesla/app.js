@@ -218,7 +218,7 @@ const mats = {};
 const base = {};
 
 const pb = $('#pb'), pc = $('#pc');
-new GLTFLoader().load('models/roadster.glb?v=5', gl => { car = gl.scene.getObjectByName('Roadster') || gl.scene; pb.style.transform = 'scaleX(1)'; pc.textContent = 100; setup(); },
+new GLTFLoader().load('models/roadster.glb?v=7', gl => { car = gl.scene.getObjectByName('Roadster') || gl.scene; pb.style.transform = 'scaleX(1)'; pc.textContent = 100; setup(); },
   e => { if (e.total) { const f = e.loaded / e.total; pb.style.transform = `scaleX(${f})`; pc.textContent = Math.round(f * 100); } },
   err => console.warn('model load failed', err));
 

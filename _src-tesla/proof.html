@@ -27,6 +27,7 @@ const fl = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMater
 if (q.has('hide')) { const re = new RegExp(q.get('hide')); car.traverse(o => { if (re.test(o.name)) o.visible = false; }); }
 window.car = car; window.THREE = THREE;
 { const b = new THREE.Box3().setFromObject(car); window.bbox = [b.min.toArray(), b.max.toArray()]; }
-if (q.has('doors')) ['BodyDoorLColor1', 'BodyDoorRColor1'].forEach(n => { const d = car.getObjectByName(n); if (d && d.userData.open) d.userData.open(1); });
+if (q.has('doors')) [['BodyDoorLColor1', 1], ['BodyDoorRColor1', -1]].forEach(([n, s]) => { const d = car.getObjectByName(n); if (d) d.rotation.set(72 * Math.PI / 180, s * 9 * Math.PI / 180, 0, 'YXZ'); });
+if (q.has('wing')) { const w = car.getObjectByName('RearWing'); if (w) w.rotation.x = g('wing', 24) * Math.PI / 180; }
 r.render(sc, cam); document.title = 'done';
 </script></body></html>

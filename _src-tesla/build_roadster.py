@@ -61,15 +61,15 @@ bpy.ops.wm.read_factory_settings(use_empty=True)
 MAT.clear()
 for n, c, me, r in [('Paint 1', '#e8e8e5', .1, .32), ('GlossBlack', '#060607', .2, .18), ('Carbon', '#111214', .3, .35),
                     ('Glass', '#0b0c0f', 0, .05), ('Underbody', '#050506', 0, .9), ('Chrome', '#d9dce0', 1, .15),
-                    ('Tireside', '#0b0b0c', 0, .62), ('RimFace', '#1c1d20', .5, .32), ('Rim1', '#070708', .4, .2),
-                    ('Insert', '#45484d', .7, .3), ('Bronze', '#7a5a3c', .9, .3), ('Disc', '#7d8085', 1, .45),
+                    ('Tireside', '#0b0b0c', 0, .62), ('RimFace', '#25272b', .6, .3), ('Rim1', '#2b2d31', .6, .28),
+                    ('Insert', '#a0613a', .75, .3), ('Bronze', '#7a5a3c', .9, .3), ('Disc', '#7d8085', 1, .45),
                     ('Caliper', '#1e2024', .6, .35), ('Interior 3', '#ecebe7', 0, .55), ('Interior Suede', '#2a2b2e', 0, .97),
                     ('Interior Black', '#0b0b0c', 0, .6), ('Dashboard', '#05070a', 0, .2),
                     ('Liner', '#08080a', 0, .85), ('Plate', '#f2f2f0', 0, .5), ('PlateText', '#0a0a0a', 0, .5),
                     ('Port', '#020203', 0, .6), ('Lens', '#0a0a0c', .1, .1)]:
     mat(n, srgb(c), me, r)
 mat('Headlight', srgb('#e8eef8'), 0, .15, emit=srgb('#f2f6ff'), strength=9)
-mat('Brakelight', srgb('#5a0a08'), 0, .2, emit=srgb('#ff1408'), strength=6)
+mat('Brakelight', srgb('#9a0000'), 0, .2, emit=(1, 0, .01), strength=1.2)
 mat('Signallight', srgb('#ff8a1a'), 0, .3, emit=srgb('#ff8a1a'), strength=4)
 mat('Ambient', srgb('#ff2a22'), 0, .5, emit=srgb('#ff2a22'), strength=4)
 
@@ -325,7 +325,7 @@ def separate(src, name, poly, sel, gap=GAP, bis_x=()):
 BAND_MATS = ['Paint 1', 'GlossBlack', 'Underbody']
 def body_mat(b, d): return 0 if b < 5 else (1 if b == 5 else 2)
 DS = stations(D0, D1, .02, extra=[-.74, -.6, -.4, -.15, .05, .22, .5, .8, 1.2, 1.6, 2.0, 2.4, 2.8, 3.15])
-body = loft_closed('Body', DS, body_section, body_mat, BAND_MATS, cap0=1, cap1=0)
+body = loft_closed('Body', DS, body_section, body_mat, BAND_MATS, cap0=0, cap1=0)
 
 cav = prism('cavCut', [(.08, .30), (.08, 1.4), (2.30, 1.4), (2.30, .30)], -.74, .74, mats=('Interior Black',))
 boolean(body, cav); remove(cav)
@@ -433,7 +433,7 @@ ZN = zd(D0)
 # full-width white light bar on the knife leading edge of the nose
 b0 = BODY(D0)
 lp = [(x, b0[0] - .004, ZN + .006) for x in [i / 40 * 2 * (b0[5] - .01) - (b0[5] - .01) for i in range(41)]]
-head = ribbon('Headlights', lp, .02, .014, 'Headlight')
+head = ribbon('Headlights', lp, .03, .014, 'Headlight')
 ribbon('HeadHousing', [(x, y - .002, z - .004) for x, y, z in lp], .03, .02, 'GlossBlack')
 # angular headlight slashes: thin shards on the crest, pointed at the back, swept up the fender
 def surf_y(x, d):
@@ -456,8 +456,8 @@ def tri_lamp(name, P0, P1, w0, matn, lift):
             lst.append((x, surf_y(x, d) + lift, zd(d)))
     return strip(name, A, B, matn)
 for sg in (1, -1):
-    for nm, w, lift, mt in (('HeadHousing', .085, .008, 'GlossBlack'), ('HeadBlade', .04, .014, 'Headlight')):
-        o = tri_lamp(nm, (.80, -.765), (.50, -.34), w, mt, lift)
+    for nm, w, lift, mt in (('HeadHousing', .12, .008, 'GlossBlack'), ('HeadBlade', .065, .014, 'Headlight')):
+        o = tri_lamp(nm, (.79, -.775), (.44, -.27), w, mt, lift)
         if sg < 0:
             o.scale.x = -1; bpy.context.view_layer.objects.active = o; o.select_set(True)
             bpy.ops.object.select_all(action='DESELECT'); o.select_set(True)
@@ -477,12 +477,13 @@ for sg in (1, -1):
     ribbon('SideMarker', pts, .008, .004, 'Signallight')
 spl = [(x, .168, ZN + .03) for x in [i / 30 * 1.50 - .75 for i in range(31)]]
 ribbon('Splitter', spl, .018, .26, 'Carbon')
-prism('Chin', [(-.80, .46), (-.80, .15), (-.835, .155), (-.84, .20)], -.76, .76, mats=('GlossBlack',))
+prism('Chin', [(-.80, .30), (-.80, .15), (-.835, .155), (-.84, .20)], -.76, .76, mats=('GlossBlack',))
+
 
 # ---------------------------------------------------------------- rear
 TAILZ = zd(D1)
 bt = BODY(D1)
-ribbon('Taillight', [(x, .79, TAILZ + .006) for x in [i / 40 * 1.84 - .92 for i in range(41)]], .016, .016, 'Brakelight')
+ribbon('Taillight', [(x, .79, TAILZ + .006) for x in [i / 40 * 1.84 - .92 for i in range(41)]], .03, .016, 'Brakelight')
 ribbon('TailLens', [(x, .79, TAILZ + .004) for x in [i / 40 * 1.86 - .93 for i in range(41)]], .036, .012, 'Lens')
 box('RearValance', (0, .385, TAILZ + .004), (1.78, .27, .012), ('GlossBlack',))
 # diffuser block with four recessed thruster ports
@@ -527,8 +528,9 @@ def wing():
         if f.normal.z < -.3: f.material_index = 1   # underside black (blender Z = up)
     return ob
 wg = wing()
+wkids = [wg]
 for sg in (1, -1):
-    prism('WingEndplate', [(3.18, .90), (3.53, .91), (3.53, .76), (3.40, .70), (3.18, .82)], sg * .955, sg * .975, mats=('GlossBlack',))
+    wkids.append(prism('WingEndplate', [(3.18, .90), (3.53, .91), (3.53, .76), (3.40, .70), (3.18, .82)], sg * .955, sg * .975, mats=('GlossBlack',)))
 
 # ---------------------------------------------------------------- wheels: near-flush dark aero face, swept blades, light inserts
 def revolve(name, prof, seg, matn):
@@ -611,10 +613,11 @@ screen = box('Screen', (0, .80, zd(.52)), (.36, .20, .012), ('Dashboard',), rot=
 # yoke in front of the driver (left seat)
 yk = bpy.data.objects.new('Yoke', None); bpy.context.collection.objects.link(yk)
 yk.location = V(.38, .70, zd(.78)); yk.rotation_euler = (math.radians(-22), 0, 0)
-ybar = box('YokeBar', (0, 0, 0), (.30, .03, .035), ('Interior Black',)); ybar.parent = yk
+ybar = box('YokeBar', (0, -.105, 0), (.37, .035, .04), ('Interior 3',)); ybar.parent = yk
 for b in (-1, 1):
-    gr = box('YokeGrip', (b * .15, -.05, 0), (.04, .14, .04), ('Interior Suede',)); gr.parent = yk
+    gr = box('YokeGrip', (b * .16, -.03, 0), (.05, .17, .045), ('Interior 3',)); gr.parent = yk
 hubb = box('YokeHub', (0, -.01, 0), (.10, .07, .04), ('Interior Black',)); hubb.parent = yk
+clus = box('Cluster', (.38, .80, zd(.60)), (.30, .07, .01), ('Dashboard',), rot=(math.radians(-20), 0, 0))
 col = box('YokeCol', (.38, .66, zd(.62)), (.05, .05, .30), ('Interior Black',), rot=(math.radians(-22), 0, 0))
 floor = box('CabinFloor', (0, .23, zd(1.2)), (1.55, .02, 2.2), ('Interior Suede',))
 amb = []
@@ -636,6 +639,7 @@ for nm, (sk, gl) in doors.items():
     smooth(sk, 12); smooth(gl, 12)
     group(nm, (sg * .80, .86, zd(.60)), [sk, gl])
 group('BodyHood', (0, .80, zd(-.02)), [hood]); smooth(hood, 12)
+group('RearWing', (0, .88, zd(3.08)), wkids)   # active aero: rotate about X, pivot at leading edge
 group('BodyRearPanelsColor1', (0, .93, zd(2.95)), [deck]); smooth(deck, 12)
 group('BodyRoofPanel', (0, 1.16, zd(1.47)), [roofL, roofR, spineob]); smooth(roofL, 12); smooth(roofR, 12)
 deck.name = 'BodyDeck'; hood.name = 'BodyHoodPanel'
@@ -646,7 +650,7 @@ for o in list(bpy.data.objects):
         o.parent = root
 for n, items in (('InteriorSeatsColor1', seats1), ('InteriorSeatsColor2', seats2)):
     group(n, (0, 0, 0), items)
-group('InteriorDash', (0, 0, 0), [dash, screen, tunnel, floor, col, yk] + amb)
+group('InteriorDash', (0, 0, 0), [dash, screen, tunnel, floor, col, yk, clus] + amb)
 for o in bpy.data.objects:
     if o.type == 'MESH' and not o.name.startswith(('Interior', 'Seat', 'Dash', 'Screen', 'Tunnel', 'Yoke', 'Cabin', 'Plate', 'Rear', 'Body', 'Canopy', 'Wing', 'Diffuser', 'Head', 'Roof')):
         smooth(o, 40)
