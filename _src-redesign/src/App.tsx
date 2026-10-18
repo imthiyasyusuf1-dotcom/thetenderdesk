@@ -181,7 +181,7 @@ function Home() {
         </ul>
       </section>
 
-      <section className="pricing" aria-labelledby="price-h">
+      <section className="pricing" id="price" aria-labelledby="price-h">
         <div className="wrap">
           <div className="sechead"><p className="num">02</p><h2 id="price-h" className="h2">{reduce ? 'A website for £25' : <BlurText text="A website for £25" animateBy="words" delay={90} direction="bottom" />}</h2></div>
           <div className="pricegrid">
