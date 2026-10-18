@@ -45,7 +45,7 @@
 
   // Flight: scroll-scrubbed frame sequence, three chapters with a dip to black between them
   (() => {
-    const N = 212, CH = [[1, 82], [83, 140], [141, 212]];
+    const N = 140, CH = [[1, 82], [83, 140]];
     const cv = $('#fcv'), cx = cv.getContext('2d'), sec = $('#fly');
     const port = () => innerWidth <= 800, dir = innerWidth <= 800 ? 'm' : 'd';
     const fr = new Array(N + 1), caps = $$('.fly .fc'), bars = $$('.fly .pg b');
@@ -60,7 +60,7 @@
       const s = port() ? (W / iw) * [1.08, 1.22, 1.4][chapter(want)] : Math.max(W / iw, H / ih);
       const w = iw * s, h = ih * s, y = port() ? H * .56 - h / 2 : (H - h) / 2;
       const c = CH[chapter(want)], t = (want - c[0]) / (c[1] - c[0]), e = .07;
-      let a = 1; if (c !== CH[0]) a = Math.min(a, t / e); a = Math.min(a, (1 - t) / (c === CH[2] ? .12 : e));
+      let a = 1; if (c !== CH[0]) a = Math.min(a, t / e); a = Math.min(a, (1 - t) / (c === CH[CH.length - 1] ? .12 : e));
       cx.fillStyle = '#000'; cx.fillRect(0, 0, W, H);
       cx.globalAlpha = Math.max(0, Math.min(1, a)); cx.drawImage(im, (W - w) / 2, y, w, h); cx.globalAlpha = 1;
       if (port()) { const f = h * .22; let g = cx.createLinearGradient(0, y, 0, y + f); g.addColorStop(0, '#000'); g.addColorStop(1, 'rgba(0,0,0,0)'); cx.fillStyle = g; cx.fillRect(0, y - 2, W, f + 2);
@@ -75,7 +75,7 @@
       const q = order.slice(); const worker = async () => { while (q.length) await load(q.shift()); }; await Promise.all([worker(), worker(), worker(), worker()]); };
     new IntersectionObserver((en, o) => { if (en[0].isIntersecting) { start(); o.disconnect(); } }, { rootMargin: '150% 0px' }).observe(sec);
     addEventListener('resize', size);
-    const capAt = (p, k) => { const c = CH[k], a = (c[0] - 1) / N, b = c[1] / N, m = (b - a) * .18; return Math.max(0, Math.min(1, Math.min(k ? (p - a) / m : 1, k < 2 ? (b - p) / m : 1))); };
+    const capAt = (p, k) => { const c = CH[k], a = (c[0] - 1) / N, b = c[1] / N, m = (b - a) * .18; return Math.max(0, Math.min(1, Math.min(k ? (p - a) / m : 1, k < CH.length - 1 ? (b - p) / m : 1))); };
     ScrollTrigger.create({ trigger: sec, start: 'top top', end: 'bottom bottom', scrub: true, onUpdate: self => {
       const p = self.progress; want = Math.max(1, Math.min(N, Math.round(p * (N - 1)) + 1)); draw();
       caps.forEach((el, k) => { const v = reduce ? (chapter(want) === k ? 1 : 0) : capAt(p, k); el.style.opacity = v; el.style.transform = 'translateY(' + (1 - v) * 20 + 'px)'; });
