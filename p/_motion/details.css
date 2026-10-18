@@ -18,7 +18,7 @@ span.td-beam{position:absolute;inset:0;border-radius:inherit;padding:var(--td-be
 
 /* number ticker: each digit rolls on its own strip */
 .td-tk{display:inline-flex;font-variant-numeric:tabular-nums;white-space:nowrap}
-.td-col{position:relative;display:inline-block;overflow:hidden;vertical-align:top}
+.td-col{position:relative;display:inline-block;overflow:hidden;vertical-align:top;-webkit-mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent)}
 .td-ghost{display:block;visibility:hidden}
 .td-strip{position:absolute;left:0;top:0;display:flex;flex-direction:column;transform:translate3d(0,0,0);transition:transform 2s cubic-bezier(.16,1,.3,1)}
 .td-strip span{display:block}

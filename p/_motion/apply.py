@@ -6,7 +6,7 @@ Pages that already load their own GSAP/Lenis get only the detail kit (details.cs
 Never run on client sites (dorquip, freshspot)."""
 import pathlib, re, sys
 
-V = "2"
+V = "3"
 SKIP = {"dorquip", "freshspot", "_motion"}
 DET_HEAD = f'<link rel="stylesheet" href="/p/_motion/details.css?v={V}"><!--td-details-->\n'
 DET_TAIL = f'<script src="/p/_motion/details.js?v={V}" defer></script><!--td-details-->\n'

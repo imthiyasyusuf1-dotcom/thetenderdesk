@@ -153,7 +153,7 @@ footer a{text-decoration:none;color:var(--paper)}
 .rv{opacity:0;transform:translateY(40px)}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.track{animation:none}.hero .media{clip-path:none}.hero .media img{transform:none}}
 </style>
-<link rel="stylesheet" href="/p/_motion/details.css?v=2"><!--td-details-->
+<link rel="stylesheet" href="/p/_motion/details.css?v=3"><!--td-details-->
 </head>
 <body>
 <header class="nav"><a class="logo" href="#top">Chapman<b>.</b></a><a class="tel" href="tel:+441252405252">01252 405252</a></header>
@@ -285,6 +285,6 @@ if(window.gsap&&!reduce){
   gsap.utils.toArray('[data-par]').forEach(function(el){gsap.fromTo(el,{yPercent:-8},{yPercent:0,ease:'none',scrollTrigger:{trigger:el.parentNode,scrub:true}})});
 }else{document.querySelectorAll('.rv').forEach(function(e){e.style.opacity=1;e.style.transform='none'})}
 </script>
-<script src="/p/_motion/details.js?v=2" defer></script><!--td-details-->
+<script src="/p/_motion/details.js?v=3" defer></script><!--td-details-->
 </body>
 </html>
