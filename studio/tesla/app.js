@@ -1,89 +1,176 @@
+/* The new Roadster. Six scroll scenes, each pinned and scrubbed. */
 (() => {
-  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-  const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const mob = matchMedia('(max-width:800px)').matches;
+  if (/rec/.test(location.search)) document.documentElement.classList.add('rec');
   gsap.registerPlugin(ScrollTrigger);
 
-  let lenis = null;
-  if (!reduce && window.Lenis) {
-    lenis = new Lenis({ lerp: .09, smoothWheel: true });
+  // Smooth scroll on desktop only; phones keep native scrolling.
+  if (!mob && window.Lenis && !/rec/.test(location.search)) {
+    const lenis = new Lenis({ lerp: 0.085, smoothWheel: true });
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add(t => lenis.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
-  }
-  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
-    const t = $(a.getAttribute('href')); if (!t) return; e.preventDefault();
-    lenis ? lenis.scrollTo(t, { offset: 0, duration: 1.4 }) : t.scrollIntoView({ behavior: 'smooth' });
-  }));
-
-  if (!reduce) {
-    const port = innerWidth <= 800;
-    gsap.fromTo('.hero h1', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1.4, ease: 'power3.out' });
-    gsap.fromTo('.hero .ph img', { scale: port ? 1.06 : 1.12 }, { scale: 1, duration: 2.2, ease: 'power2.out' });
-    gsap.to('.hero .ph img', { scale: port ? 1.04 : 1.08, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-    gsap.to('.hero .tt', { y: -60, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: '70% top', scrub: true } });
-
-    if (!port) $$('.scene').forEach(s => gsap.fromTo(s.querySelector('.ph'), { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: s, start: 'top bottom', end: 'bottom top', scrub: true } }));
-    $$('.rv').forEach(el => gsap.to(el, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true } }));
+    $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+      const t = $(a.getAttribute('href')); if (!t) return; e.preventDefault(); lenis.scrollTo(t, { duration: 2 });
+    }));
   }
 
-  $$('.n').forEach(el => {
-    const to = +el.dataset.to, d = +(el.dataset.d || 0), o = { v: 0 };
-    const set = v => el.textContent = v.toFixed(d);
-    if (reduce) return set(to);
-    ScrollTrigger.create({ trigger: el, start: 'top 92%', once: true, onEnter: () => gsap.to(o, { v: to, duration: 2.2, ease: 'power2.out', onUpdate: () => set(o.v) }) });
+  // Lazy paint images, right size for the device
+  $$('#paint .pc').forEach(im => { im.src = mob ? im.dataset.m : im.dataset.src; im.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;clip-path:inset(0 0 0 100%)'; });
+
+  const pin = (sel, len, tl) => ScrollTrigger.create({ trigger: sel, start: 'top top', end: '+=' + len, pin: true, scrub: true, animation: tl, anticipatePin: 1 });
+  const E = 'none';
+
+  /* 1. HERO: blueprint draws itself on load, scroll floods in the sketch then the real car */
+  const strokes = $$('#hero .bp path, #hero .bp ellipse');
+  strokes.forEach(p => { const L = p.getTotalLength ? p.getTotalLength() : 2000; p.style.strokeDasharray = L + ' ' + L; p.style.strokeDashoffset = L; });
+  const intro = gsap.timeline({ delay: 0.35, paused: /rec/.test(location.search) });
+  window.__intro = intro;
+  intro.from('#hero .grid', { opacity: 0, duration: 1.2 })
+    .to($$('#hero .bp .cn path'), { strokeDashoffset: 0, duration: 1.1, stagger: 0.12, ease: 'power2.inOut' }, 0.1)
+    .to($$('#hero .bp .ln > *'), { strokeDashoffset: 0, duration: 1.8, stagger: 0.13, ease: 'power2.inOut' }, 0.5)
+    .from('#hero .bp text', { opacity: 0, duration: 0.8 }, 1.4)
+    .from('#hero .tt .k', { opacity: 0, y: 14, duration: 0.8 }, 1.6)
+    .from('#hero h1 span', { opacity: 0, y: 40, filter: 'blur(14px)', duration: 1, stagger: 0.06, ease: 'power3.out' }, 1.7)
+    .from('#hero .hint', { opacity: 0, duration: 0.6 }, 2.6);
+
+  const h = gsap.timeline({ defaults: { ease: E } });
+  h.to('#hero .hint', { opacity: 0, duration: 0.1 }, 0)
+    .to('#hero .sk', { clipPath: 'inset(0 0% 0 0)', duration: 1 }, 0)
+    .fromTo('#hero .blade', { left: '0%', opacity: 1 }, { left: '100%', duration: 1 }, 0)
+    .to('#hero .blade', { opacity: 0, duration: 0.1 }, 1)
+    .set('#hero .blade', { left: '0%' }, 1.15)
+    .to('#hero .blade', { opacity: 1, duration: 0.05 }, 1.15)
+    .to('#hero .car', { clipPath: 'inset(0 0% 0 0)', duration: 1.1 }, 1.15)
+    .to('#hero .blade', { left: '100%', duration: 1.1 }, 1.15)
+    .to('#hero .blade', { opacity: 0, duration: 0.15 }, 2.2)
+    .to('#hero .bp', { opacity: 0, duration: 0.6 }, 1.6)
+    .to('#hero .sk', { opacity: 0, duration: 0.6 }, 1.8)
+    .fromTo('#hero .flash', { opacity: 0 }, { opacity: 1, duration: 0.12 }, 2.2)
+    .to('#hero .flash', { opacity: 0, duration: 0.5 }, 2.32)
+    .to('#hero .grid', { opacity: 0, duration: 0.6 }, 2.2)
+    .to('#hero .stage', { scale: 1.06, duration: 1 }, 2.2)
+    .to('#hero .tt', { y: -30, opacity: 0.25, duration: 1 }, 2.4)
+    .to('#hero .tt', { opacity: 0, duration: 0.4 }, 3.0)
+    .to({}, { duration: 0.3 }, 3.4);
+  pin('#hero', mob ? '220%' : '260%', h);
+
+  /* 2. SPEED: stopwatch counts to 1.6, speedo to 230, the car blasts through and slices the type */
+  const n1 = $$('#speed .n1'), n2 = $$('#speed .n2'), st = { a: 0, b: 0 };
+  const s = gsap.timeline({ defaults: { ease: E } });
+  s.fromTo('#speed .g1 .big', { scale: 2.6, opacity: 0, filter: 'blur(24px)' }, { scale: 1, opacity: 1, filter: 'blur(0px)', duration: 0.35, ease: 'power4.out' }, 0)
+    .from('#speed .cap', { opacity: 0, y: 20, duration: 0.25 }, 0.1)
+    .fromTo('#spf', { opacity: 0 }, { opacity: 0.8, duration: 0.15 }, 1.1)
+    .to(st, { a: 1.6, duration: 0.9, onUpdate: () => n1.forEach(e => e.textContent = st.a.toFixed(1)) }, 0.2)
+    .to('#speed .lines', { opacity: 1, duration: 0.05 }, 0.75)
+    .fromTo($$('#speed .lines i'), { x: '110vw' }, { x: '-60vw', duration: 0.5, stagger: 0.03 }, 0.75)
+    .to('#speed .blast', { x: '-170vw', duration: 0.6, ease: 'power1.in' }, 0.8)
+    .to('#speed .g1 .half.a', { x: '-5vw', y: '-1.5vw', rotation: -1.5, duration: 0.12 }, 1.0)
+    .to('#speed .g1 .half.b', { x: '5vw', y: '1.5vw', rotation: 1.5, duration: 0.12 }, 1.0)
+    .to('#speed .g1 .half', { x: 0, y: 0, rotation: 0, duration: 0.3, ease: 'power3.out' }, 1.12)
+    .to('#speed .lines', { opacity: 0, duration: 0.1 }, 1.3)
+    .to('#speed .g1', { opacity: 0, scale: 0.8, filter: 'blur(12px)', duration: 0.25 }, 1.6)
+    .call(() => {}, null, 1.6)
+    .to('#spl', { opacity: 0, duration: 0.1 }, 1.6)
+    .set('#spl', { textContent: 'Top speed, mph' }, 1.71)
+    .to('#spf', { opacity: 0, duration: 0.1 }, 1.6)
+    .set('#spf', { textContent: 'Over 230 mph.' }, 1.71)
+    .to('#spf', { opacity: 0.8, duration: 0.15 }, 2.75)
+    .to('#spl', { opacity: 1, duration: 0.15 }, 1.72)
+    .fromTo('#speed .g2', { opacity: 0, scale: 2.6, filter: 'blur(24px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.35, ease: 'power4.out' }, 1.75)
+    .to(st, { b: 230, duration: 0.9, onUpdate: () => n2.forEach(e => e.textContent = Math.round(st.b)) }, 1.85)
+    .set('#speed .blast', { x: '110vw' }, 2.3)
+    .to('#speed .lines', { opacity: 1, duration: 0.05 }, 2.45)
+    .fromTo($$('#speed .lines i'), { x: '110vw' }, { x: '-60vw', duration: 0.45, stagger: 0.03 }, 2.45)
+    .to('#speed .blast', { x: '-170vw', duration: 0.5, ease: 'power1.in' }, 2.5)
+    .to('#speed .g2 .half.a', { x: '-6vw', y: '-1.8vw', rotation: -2, duration: 0.1 }, 2.66)
+    .to('#speed .g2 .half.b', { x: '6vw', y: '1.8vw', rotation: 2, duration: 0.1 }, 2.66)
+    .to('#speed .g2 .half', { x: 0, y: 0, rotation: 0, duration: 0.3, ease: 'power3.out' }, 2.76)
+    .to('#speed .lines', { opacity: 0, duration: 0.1 }, 3.0)
+    .to({}, { duration: 0.3 }, 3.2);
+  pin('#speed', mob ? '260%' : '320%', s);
+
+  /* 3. EXPLODE: body lifts, wheels and drivetrain float apart, labelled, then click back together */
+  const x = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
+  x.from('#explode .ttl', { opacity: 0, y: 30, duration: 0.4 }, 0)
+    .from('#xs', { x: '60vw', duration: 0.6, ease: 'power3.out' }, 0)
+    .to('#explode .ints', { opacity: 1, duration: 0.4 }, 0.6)
+    .to('#explode .body', { y: '-36%', opacity: 0.35, duration: 1 }, 0.6)
+    .to('#explode .w0', { x: '-55%', y: '30%', rotation: -200, duration: 1 }, 0.6)
+    .to('#explode .w1', { x: '55%', y: '30%', rotation: 200, duration: 1 }, 0.6)
+    .to('#explode .mf', { x: -40, y: 70, duration: 1 }, 0.6)
+    .to('#explode .mr', { x: 40, y: 70, duration: 1 }, 0.6)
+    .to('#explode .bat', { y: 110, duration: 1 }, 0.6)
+    .to('#explode .tk', { y: -40, duration: 1 }, 0.6)
+    .to('#explode .th', { x: 60, duration: 1 }, 0.6)
+    .to('#explode .l1', { opacity: 1, x: '-2vw', y: '4vw', duration: 0.3 }, 1.4)
+    .to('#explode .l2', { opacity: 1, y: '5.5vw', duration: 0.3 }, 1.45)
+    .to('#explode .l3', { opacity: 1, x: '2vw', y: '4vw', duration: 0.3 }, 1.5)
+    .to('#explode .l4', { opacity: 1, y: '-3vw', duration: 0.3 }, 1.55)
+    .to('#explode .l5', { opacity: 1, x: '3vw', duration: 0.3 }, 1.6)
+    .to('#explode .lab', { opacity: 0, duration: 0.25 }, 2.4)
+    .to('#explode .body', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.in' }, 2.5)
+    .to('#explode .w0, #explode .w1', { x: 0, y: 0, rotation: 0, duration: 0.8, ease: 'power3.in' }, 2.5)
+    .to('#explode .mf, #explode .mr, #explode .bat, #explode .tk, #explode .th', { x: 0, y: 0, duration: 0.8, ease: 'power3.in' }, 2.5)
+    .to('#explode .ints', { opacity: 0, duration: 0.2 }, 3.2)
+    .fromTo('#xs', { scale: 1 }, { scale: 1.025, duration: 0.06, yoyo: true, repeat: 1, ease: 'power1.out' }, 3.3)
+    .to({}, { duration: 0.3 }, 3.4);
+  pin('#explode', mob ? '260%' : '320%', x);
+
+  /* 4. PAINT: one sweep repaints the car white, red, black, silver */
+  const layers = $$('#paint .stage img'), names = $$('#paint .names span'), dots = $$('#paint .dots i');
+  const tones = ['#2a3346', '#5a0d14', '#262a33', '#3c424d'];
+  gsap.set(names, { opacity: 0, y: 24 }); gsap.set(names[0], { opacity: 1, y: 0 });
+  const p = gsap.timeline({ defaults: { ease: E } });
+  p.from('#paint .ttl', { opacity: 0, y: 30, duration: 0.3 }, 0)
+    .from('#paint .wrap', { x: '70vw', duration: 0.5, ease: 'power3.out' }, 0);
+  [1, 2, 3].forEach((i, k) => {
+    const t0 = 0.6 + k * 0.9;
+    p.set('#paint .blade', { left: '100%', opacity: 1 }, t0)
+      .to(layers[i], { clipPath: 'inset(0 0 0 0%)', duration: 0.6 }, t0)
+      .to('#paint .blade', { left: '0%', duration: 0.6 }, t0)
+      .to('#paint .blade', { opacity: 0, duration: 0.08 }, t0 + 0.6)
+      .to('#paint', { '--pc': tones[i], duration: 0.6 }, t0)
+      .to(names[i - 1], { opacity: 0, y: -24, duration: 0.2 }, t0 + 0.2)
+      .to(names[i], { opacity: 1, y: 0, duration: 0.2 }, t0 + 0.32)
+      .call(() => dots.forEach((d, j) => d.classList.toggle('on', j === (p.reversed() ? i - 1 : i))), null, t0 + 0.3);
   });
+  p.to({}, { duration: 0.4 }, 3.3);
+  ScrollTrigger.create({ trigger: '#paint', start: 'top top', end: '+=' + (mob ? '260%' : '320%'), pin: true, scrub: true, animation: p, anticipatePin: 1,
+    onUpdate: self => { const t = p.time(); const i = t < 0.9 ? 0 : t < 1.8 ? 1 : t < 2.7 ? 2 : 3; dots.forEach((d, j) => d.classList.toggle('on', j === i)); } });
 
-  const imgs = $$('#stage img'), sw = $$('#sw button');
-  sw.forEach(b => b.addEventListener('click', () => {
-    const i = +b.dataset.i;
-    imgs.forEach((m, k) => m.classList.toggle('on', k === i));
-    sw.forEach((s, k) => s.classList.toggle('on', k === i));
-    $('#cn').textContent = imgs[i].dataset.c;
-    $('#okc').textContent = imgs[i].dataset.c;
-  }));
-  $('#rsv').addEventListener('click', () => { $('#rsv').textContent = 'Reserved'; $('#ok').style.opacity = 1; });
+  /* 5. FLIGHT: the reveal night. Each shot zooms into the car and dissolves into the next */
+  const frs = $$('#flight .fr'), caps = $$('#flight .cap');
+  const f = gsap.timeline({ defaults: { ease: E } });
+  const F0 = 0.8;
+  frs.forEach((fr, i) => {
+    const im = $('img', fr); gsap.set(im, { transformOrigin: fr.dataset.o }); if (mob) im.style.objectPosition = fr.dataset.o;
+    const t0 = F0 + i * 1;
+    f.fromTo(im, { scale: i ? 1.25 : 1.04 }, { scale: 1.32, duration: 1.4 }, t0 - (i ? 0.3 : 0));
+    f.fromTo(fr, { opacity: 0 }, { opacity: 1, duration: i ? 0.3 : 0.6 }, i ? t0 - 0.3 : 0.2);
+    f.fromTo(caps[i], { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.2 }, t0 + 0.05)
+      .to(caps[i], { opacity: 0, y: -30, duration: 0.15 }, t0 + 0.7);
+  });
+  f.to('#flight .whiteout', { opacity: 1, duration: 0.25, ease: 'power2.in' }, F0 + 3.85);
+  pin('#flight', mob ? '380%' : '460%', f);
 
-  // Flight: scroll-scrubbed frame sequence, three chapters with a dip to black between them
-  (() => {
-    const N = 140, CH = [[1, 82], [83, 140]];
-    const cv = $('#fcv'), cx = cv.getContext('2d'), sec = $('#fly');
-    const port = () => innerWidth <= 800, dir = innerWidth <= 800 ? 'm' : 'd';
-    const fr = new Array(N + 1), caps = $$('.fly .fc'), bars = $$('.fly .pg b');
-    let cur = 1, want = 1, loaded = 0, dpr = Math.min(devicePixelRatio || 1, 2);
-    const size = () => { dpr = Math.min(devicePixelRatio || 1, 2); cv.width = cv.clientWidth * dpr; cv.height = cv.clientHeight * dpr; draw(true); };
-    const near = i => { for (let d = 0; d < N; d++) { if (fr[i - d] && fr[i - d].ok) return fr[i - d]; if (fr[i + d] && fr[i + d].ok) return fr[i + d]; } return null; };
-    const chapter = i => CH.findIndex(c => i >= c[0] && i <= c[1]);
-    let last = null;
-    function draw(force) {
-      const im = near(want); if (!im || (im === last && !force && cur === want)) return; last = im; cur = want;
-      const W = cv.width, H = cv.height, iw = im.naturalWidth, ih = im.naturalHeight;
-      const s = port() ? (W / iw) * [1.08, 1.22, 1.4][chapter(want)] : Math.max(W / iw, H / ih);
-      const w = iw * s, h = ih * s, y = port() ? H * .56 - h / 2 : (H - h) / 2;
-      const c = CH[chapter(want)], t = (want - c[0]) / (c[1] - c[0]), e = .07;
-      let a = 1; if (c !== CH[0]) a = Math.min(a, t / e); a = Math.min(a, (1 - t) / (c === CH[CH.length - 1] ? .12 : e));
-      cx.fillStyle = '#000'; cx.fillRect(0, 0, W, H);
-      cx.globalAlpha = Math.max(0, Math.min(1, a)); cx.drawImage(im, (W - w) / 2, y, w, h); cx.globalAlpha = 1;
-      if (port()) { const f = h * .22; let g = cx.createLinearGradient(0, y, 0, y + f); g.addColorStop(0, '#000'); g.addColorStop(1, 'rgba(0,0,0,0)'); cx.fillStyle = g; cx.fillRect(0, y - 2, W, f + 2);
-        g = cx.createLinearGradient(0, y + h - f, 0, y + h); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, '#000'); cx.fillStyle = g; cx.fillRect(0, y + h - f, W, f + 2); }
-    }
-    const load = i => new Promise(r => { if (fr[i]) return r(); const im = new Image(); im.decoding = 'async'; fr[i] = im;
-      im.onload = () => { im.ok = true; loaded++; if (Math.abs(i - want) < 6) draw(true); r(); }; im.onerror = r;
-      im.src = 'seq/' + dir + '/' + String(i).padStart(4, '0') + '.webp'; });
-    const order = []; for (const step of [8, 4, 2, 1]) for (let i = 1; i <= N; i += step) if (!order.includes(i)) order.push(i);
-    let started = false;
-    const start = async () => { if (started) return; started = true; await load(1); size(); $('#fld').style.opacity = 0;
-      const q = order.slice(); const worker = async () => { while (q.length) await load(q.shift()); }; await Promise.all([worker(), worker(), worker(), worker()]); };
-    new IntersectionObserver((en, o) => { if (en[0].isIntersecting) { start(); o.disconnect(); } }, { rootMargin: '150% 0px' }).observe(sec);
-    addEventListener('resize', size);
-    const capAt = (p, k) => { const c = CH[k], a = (c[0] - 1) / N, b = c[1] / N, m = (b - a) * .18; return Math.max(0, Math.min(1, Math.min(k ? (p - a) / m : 1, k < CH.length - 1 ? (b - p) / m : 1))); };
-    ScrollTrigger.create({ trigger: sec, start: 'top top', end: 'bottom bottom', scrub: true, onUpdate: self => {
-      const p = self.progress; want = Math.max(1, Math.min(N, Math.round(p * (N - 1)) + 1)); draw();
-      caps.forEach((el, k) => { const v = reduce ? (chapter(want) === k ? 1 : 0) : capAt(p, k); el.style.opacity = v; el.style.transform = 'translateY(' + (1 - v) * 20 + 'px)'; });
-      $('.fly .pg').style.opacity = p > .97 ? 0 : 1;
-      bars.forEach((b, k) => { const c = CH[k]; b.style.transform = 'scaleX(' + Math.max(0, Math.min(1, (want - c[0]) / (c[1] - c[0]))) + ')'; });
-    } });
-  })();
+  /* 6. SPACE: punch up through the clouds, Earth turns below, title lands */
+  const sp = gsap.timeline({ defaults: { ease: E }, delay: 0 });
+  sp.to({}, { duration: 1 }, 0);
+  sp.fromTo('#space .cl', { opacity: 0 }, { opacity: 1, duration: 0.45 }, 0.55)
+    .to('#space .cl.a', { scale: 3.2, opacity: 0, duration: 1 }, 1.0)
+    .fromTo('#space .cl.b', { scale: 1.6 }, { scale: 4.2, duration: 1.2 }, 1.0)
+    .to('#space .cl.b', { opacity: 0, duration: 0.6 }, 1.6)
+    .fromTo('#space', { backgroundColor: '#ffffff' }, { backgroundColor: '#000', duration: 0.8 }, 1.0)
+    .to('#space .stars', { opacity: 0.9, duration: 0.6 }, 1.6)
+    .fromTo('#space .earth', { y: '40vh', scale: 1.1 }, { y: '0vh', scale: 1, duration: 1.4, ease: 'power2.out' }, 1.5)
+    .fromTo('#space .earth', { '--ex': '0px' }, { '--ex': mob ? '-500px' : '-900px', duration: 2.6 }, 1.4)
+    .to('#space .stars', { y: -60, duration: 2.6 }, 1.4)
+    .fromTo('#space .end', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 2.5)
+    .from('#space .end h2', { letterSpacing: '.5em', duration: 0.9, ease: 'power3.out' }, 2.5);
+  pin('#space', mob ? '300%' : '340%', sp);
 
-  const light = new Set();
-  ['#spec'].forEach(s => ScrollTrigger.create({ trigger: s, start: 'top 60px', end: 'bottom 60px', onToggle: self => { self.isActive ? light.add(s) : light.delete(s); $('#nav').classList.toggle('lt', light.size > 0); } }));
+  // Pause off-screen hint animation work, refresh after images land
+  addEventListener('load', () => ScrollTrigger.refresh());
 })();
