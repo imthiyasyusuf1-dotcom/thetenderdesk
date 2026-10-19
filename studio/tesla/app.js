@@ -38,7 +38,8 @@
   const h = gsap.timeline({ defaults: { ease: E } });
   h.to('#hero .hint', { opacity: 0, duration: 0.1 }, 0)
     .to('#hero .sk', { clipPath: 'inset(0 0% 0 0)', duration: 1 }, 0)
-    .fromTo('#hero .blade', { left: '0%', opacity: 1 }, { left: '100%', duration: 1 }, 0)
+    .fromTo('#hero .blade', { left: '0%', opacity: 0 }, { left: '100%', duration: 1 }, 0)
+    .to('#hero .blade', { opacity: 1, duration: 0.08 }, 0)
     .to('#hero .blade', { opacity: 0, duration: 0.1 }, 1)
     .set('#hero .blade', { left: '0%' }, 1.15)
     .to('#hero .blade', { opacity: 1, duration: 0.05 }, 1.15)
