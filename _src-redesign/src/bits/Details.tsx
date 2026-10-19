@@ -74,25 +74,27 @@ export function BorderBeam({ duration = 9 }: { duration?: number }) {
 }
 
 /* ---------- AnimatedList: new items drop in at the top, the rest make room ---------- */
-export function AnimatedList<T extends { id: string }>({ pool, render, max = 4, every = 2200 }: { pool: T[]; render: (x: T) => React.ReactNode; max?: number; every?: number }) {
+// seed: how many items are already on screen before the first one drops in (so the list never starts empty)
+export function AnimatedList<T extends { id: string }>({ pool, render, max = 4, every = 2200, seed = 0 }: { pool: T[]; render: (x: T, i: number) => React.ReactNode; max?: number; every?: number; seed?: number }) {
   const [ref, on] = useOnScreen<HTMLDivElement>('0px')
-  const [shown, setShown] = useState<(T & { key: number })[]>(() => reduce ? pool.slice(0, max).map((x, i) => ({ ...x, key: i })) : [])
-  const n = useRef(0)
+  const start = reduce ? max : Math.min(seed, max)
+  const [shown, setShown] = useState<(T & { key: number })[]>(() => pool.slice(0, start).reverse().map((x, i) => ({ ...x, key: start - 1 - i })))
+  const n = useRef(start)
   useEffect(() => {
     if (reduce || !on) return
     const add = () => { const x = pool[n.current % pool.length]; const key = n.current++; setShown(s => [{ ...x, key }, ...s].slice(0, max)) }
-    if (n.current === 0) add()
+    if (n.current === start) add()
     const t = window.setInterval(add, every)
     return () => window.clearInterval(t)
-  }, [on, pool, max, every])
+  }, [on, pool, max, every, start])
   return (
     <div ref={ref} className="alist">
       <AnimatePresence initial={false} mode="popLayout">
-        {shown.map(x => (
+        {shown.map((x, i) => (
           <motion.div key={x.key} layout className="alist-item"
-            initial={{ opacity: 0, scale: 0.92, y: -14 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96 }}
+            initial={{ opacity: 0, scale: 0.92, y: -14 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.18 } }}
             transition={{ type: 'spring', stiffness: 320, damping: 32, mass: 0.9 }}>
-            {render(x)}
+            {render(x, i)}
           </motion.div>
         ))}
       </AnimatePresence>

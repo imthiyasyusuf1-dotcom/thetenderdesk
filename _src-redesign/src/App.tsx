@@ -11,7 +11,7 @@ import StarBorder from './bits/StarBorder'
 import { Marquee, Ticker } from './bits/Details'
 import { services, moves, whyUs, homeFaqs, wa, MAIL, B } from './content'
 import type { Service } from './content'
-import { ServiceVisual, ReelClip, reduce } from './Visuals'
+import { ServiceVisual, ReelClip, HeroVisual, reduce } from './Visuals'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -146,18 +146,21 @@ function Home() {
   const web = services[0]
   return (
     <>
-      <section className="hero wrap" id="top">
-        <p className="eyebrow"><ShinyText text="Websites, reels, tenders, Google Ads and AI" color="#6b6459" shineColor="#1b1a17" speed={4} delay={3} disabled={reduce} /></p>
-        <Display text="Built to win you work." />
-        <div className="herogrid">
-          <Reveal delay={0.5}><p className="lede">Websites, reels and video ads, tenders, Google Ads and AI for businesses that want more of the right work. One desk, so nothing gets lost between agencies.</p></Reveal>
-          <Reveal delay={0.65}>
-            <div className="ctas">
-              <Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary shimmer" href="#contact">Start a project</a></Magnet>
-              <a className="btn ghost" href="#services">See the services</a>
-            </div>
-          </Reveal>
+      <section className="hero wrap homehero" id="top">
+        <div className="herotext">
+          <p className="eyebrow"><ShinyText text={'Websites, reels, tenders, Google\u00a0Ads\u00a0and\u00a0AI'} color="#6b6459" shineColor="#1b1a17" speed={4} delay={3} disabled={reduce} /></p>
+          <Display text="Built to win you work." />
+          <div className="herogrid">
+            <Reveal delay={0.5}><p className="lede">Websites, reels and video ads, tenders, Google Ads and AI for businesses that want more of the right work. One desk, so nothing gets lost between agencies.</p></Reveal>
+            <Reveal delay={0.65}>
+              <div className="ctas">
+                <Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary shimmer" href="#contact">Start a project</a></Magnet>
+                <a className="btn ghost" href="#services">See the services</a>
+              </div>
+            </Reveal>
+          </div>
         </div>
+        <HeroVisual />
       </section>
 
       <Marquee label="What we do" items={whatWeDo} />

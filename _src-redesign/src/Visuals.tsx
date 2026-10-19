@@ -18,12 +18,19 @@ export function useInView<T extends HTMLElement>() {
 }
 
 const pings = [
-  { id: 'q', k: 'Quote request', t: 'Kitchen fitting, from your website', w: 'now' },
-  { id: 'c', k: 'Call back', t: 'Boiler service, tapped Call now', w: '2m' },
-  { id: 'b', k: 'Booking', t: 'Saturday 10:00, site visit', w: '5m' },
-  { id: 'r', k: 'New review', t: '\u2605\u2605\u2605\u2605\u2605 Tidy job, on time', w: '9m' },
-  { id: 'm', k: 'Message', t: 'Do you cover my area?', w: '12m' },
+  { id: 'q', k: 'Quote request', t: 'Kitchen fit, via website' },
+  { id: 'c', k: 'Call back', t: 'Boiler service this week' },
+  { id: 'b', k: 'Booking', t: 'Saturday 10:00, site visit' },
+  { id: 'r', k: 'New review', t: '\u2605\u2605\u2605\u2605\u2605 Tidy job, on time' },
+  { id: 'm', k: 'Message', t: 'Do you cover my area?' },
+  { id: 'f', k: 'Form enquiry', t: 'Full rewire, three bed' },
+  { id: 'w', k: 'WhatsApp', t: 'Sent photos for a quote' },
+  { id: 'g', k: 'New lead', t: 'Found you on Google' },
 ]
+const ago = ['now', '1m', '4m', '9m', '16m', '24m', '31m', '38m']
+const Ping = (p: { k: string; t: string }, i: number) => (
+  <div className="ping"><span className="ping-dot" /><div className="ping-b"><p className="ping-k">{p.k}<span>{ago[i] ?? '1h'}</span></p><p className="ping-t">{p.t}</p></div></div>
+)
 
 function Site() {
   return (
@@ -31,11 +38,29 @@ function Site() {
       <div className="phone ping-phone">
         <BorderBeam duration={10} />
         <p className="ping-time">09:41</p>
-        <AnimatedList pool={pings} max={4} every={2100} render={p => (
-          <div className="ping"><span className="ping-dot" /><div className="ping-b"><p className="ping-k">{p.k}<span>{p.w}</span></p><p className="ping-t">{p.t}</p></div></div>
-        )} />
+        <AnimatedList pool={pings} max={8} seed={8} every={2400} render={Ping} />
       </div>
       <div className="vcap"><b>£25</b> first 6 months</div>
+    </div>
+  )
+}
+
+// desktop hero: one of our own reels on a phone, with enquiries landing beside it
+export function HeroVisual() {
+  const [wide, set] = useState(false)
+  useEffect(() => {
+    const m = window.matchMedia('(min-width: 1100px)')
+    const f = () => set(m.matches)
+    f(); m.addEventListener('change', f)
+    return () => m.removeEventListener('change', f)
+  }, [])
+  if (!wide) return null
+  return (
+    <div className="herovis" aria-hidden="true">
+      <div className="reelphone hv-phone"><ReelClip name="type" label="" /></div>
+      <div className="hv-pings">
+        <AnimatedList pool={pings} max={3} seed={2} every={2600} render={Ping} />
+      </div>
     </div>
   )
 }
