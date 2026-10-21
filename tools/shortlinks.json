@@ -1,14 +1,13 @@
 {
  "apex": "apex-garden-buildings",
  "armitage": "d-r-armitage",
- "atwotwo": "a22-hand-car-wash",
  "barwell": "balls-of-barwell",
- "ben": "ben-norris-co",
  "chapman": "chapman-plumbing",
  "dobsons": "dobson-s-building-landscaping",
  "dragon": "dragon-construction",
  "enterprise": "enterprise-roofing",
  "genlec": "genlec",
+ "handcarwash": "a22-hand-car-wash",
  "hitchen": "h-j-hitchen-electrical",
  "lanewenden": "lane-wenden",
  "marble": "the-marble-shop",
@@ -19,7 +18,6 @@
  "pgvillage": "pg-village-garage",
  "phoenix": "phoenix-timber-buildings",
  "richmond": "richmond-bridge-mot-centre",
- "roof": "roof-cleaning-moss-removal-canterbury",
  "titans": "titans-auto-service",
  "wirral": "wirral-roofers"
 }
