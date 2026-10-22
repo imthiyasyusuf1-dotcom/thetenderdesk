@@ -90,32 +90,63 @@ function Work({ n }: { n: string }) {
         </Reveal>
         <Reveal delay={0.1}>
           <div className="casetext">
-            <p className="small">Client</p>
+            <p className="small">Property brokerage</p>
             <h3>7ei8ht6 Properties</h3>
             <p>A bilingual English and Arabic site for a property brokerage, with a profile for every member of the team and direct contact details, and the whole site loads fast on a phone.</p>
             <a className="textlink" href="https://7ei8ht6properties.com/" target="_blank" rel="noopener">Visit the live site <span aria-hidden="true">↗</span></a>
           </div>
         </Reveal>
       </div>
+      <WorkGrid />
+      <div className="indent"><a className="textlink" href="/work/">All our work <span aria-hidden="true">→</span></a></div>
     </section>
   )
 }
 
+// best reels, audio stripped (their songs are added in the Instagram app, not licensed for the site)
 const reels: [string, string, string][] = [
-  ['morph', 'From scribble to site', 'Shape morph and type, 10 seconds'],
-  ['type', 'Your website has one second', 'Kinetic type and sound, 10 seconds'],
-  ['apple', 'They search on their phone', 'App style motion, 20 seconds'],
+  ['r-nevercloses', 'It is 2am. You are asleep.', 'AI receptionist story, 17 seconds'],
+  ['r-roof', 'Storm last night', 'Shape morph for a roofer, 14 seconds'],
+  ['r-tender', '£184,000 from one tender', 'Tender win story, 15 seconds'],
+  ['r-plumberweek', 'AI ran a plumber for a week', 'Screen story with live numbers, 25 seconds'],
+  ['r-services', 'Built for small businesses', 'Services showreel, 19 seconds'],
+  ['r-receptionist', 'You are under a sink', 'Photo led AI receptionist, 29 seconds'],
+  ['r-onedesk', 'Fourteen tabs. One desk.', 'App style motion, 29 seconds'],
+  ['r-premium', 'Finally feels premium', 'Product style motion, 14 seconds'],
 ]
 
+function ReelPlayer({ name, label, onClose }: { name: string; label: string; onClose: () => void }) {
+  const closeRef = useRef<HTMLButtonElement>(null)
+  useEffect(() => {
+    const prev = document.activeElement as HTMLElement | null
+    closeRef.current?.focus()
+    window.dispatchEvent(new Event('td:lock'))
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', onKey)
+    return () => { window.removeEventListener('keydown', onKey); window.dispatchEvent(new Event('td:unlock')); prev?.focus() }
+  }, [onClose])
+  const base = B + 'img/reels/' + name
+  return (
+    <div className="reelbox" role="dialog" aria-modal="true" aria-label={label} onClick={onClose} data-lenis-prevent>
+      <video className="reelbig" src={base + '.mp4'} poster={base + '.webp'} autoPlay muted loop playsInline controls={false} onClick={e => e.stopPropagation()} width={720} height={1280} />
+      <button ref={closeRef} className="reelx" aria-label="Close reel" onClick={onClose}><i /><i /></button>
+      <p className="reelcap">{label}</p>
+    </div>
+  )
+}
+
 function Reels({ n, more = true }: { n: string; more?: boolean }) {
+  const [open, setOpen] = useState<number | null>(null)
   return (
     <section className="wrap block" id="reels" aria-labelledby="reels-h">
-      <Head n={n} text="Reels that stop the scroll" id="reels-h" />
-      <div className="indent"><Reveal><p className="lede">Motion design, video ads and reels for Instagram and TikTok. These are a few we made for The Tender Desk's own feed. Yours would be made from scratch around your business.</p></Reveal></div>
-      <ul className="reelrow">
+      <Head n={n} text="Reels we make" id="reels-h" />
+      <div className="indent"><Reveal><p className="lede">Motion design, video ads and reels for Instagram and TikTok. These are our best from The Tender Desk feed, shown here without their songs. Tap any reel to watch it full screen.</p></Reveal></div>
+      <ul className="reelrow eight">
         {reels.map(([name, t, d], i) => (
-          <li key={name}><Reveal delay={i * 0.08}>
-            <div className="reelphone"><ReelClip name={name} label={t} /></div>
+          <li key={name}><Reveal delay={(i % 4) * 0.06}>
+            <button className="reeltap" onClick={() => setOpen(i)} aria-label={`Play reel: ${t}`}>
+              <div className="reelphone"><ReelClip name={name} label="" /><span className="reelplay" aria-hidden="true" /></div>
+            </button>
             <h3>{t}</h3><p>{d}</p>
           </Reveal></li>
         ))}
@@ -124,7 +155,36 @@ function Reels({ n, more = true }: { n: string; more?: boolean }) {
         {more ? <a className="textlink" href={`${B}motion/`}>Motion, ads and reels <span aria-hidden="true">→</span></a>
           : <a className="textlink" href="https://www.instagram.com/thetenderdesk.co.uk/" target="_blank" rel="noopener">More on our Instagram <span aria-hidden="true">↗</span></a>}
       </div>
+      {open !== null && <ReelPlayer name={reels[open][0]} label={reels[open][1]} onClose={() => setOpen(null)} />}
     </section>
+  )
+}
+
+const work: [string, string, string, string, string][] = [
+  ['hartley', 'Hartley Plumbing and Heating', 'Plumbing and heating', 'Plumbing and heating site with the booking on the first screen.', '/studio/hartley/'],
+  ['builder', 'Ferrow and Kell', 'Builders', 'Extensions site that sells the room you gain, not the bricks.', '/s/builder/'],
+  ['oakfield', 'Oakfield Barber Co.', 'Barbers', 'Barber site built around booking a chair in two taps.', '/studio/oakfield/'],
+  ['ironclad', 'Ironclad Detailing', 'Car detailing', 'Detailing site with a chrome finish to match the work.', '/studio/ironclad/'],
+  ['asterbay', 'Aster Bay Residences', 'Property', 'Residences site with live availability and a time of day view.', '/studio/asterbay/'],
+  ['barber', 'Ashgrove and Hale', 'Barbers', 'Photo led barber site built around the booking.', '/s/barber/'],
+  ['detailing', 'Nocturne', 'Detailing studio', 'Appointment led studio site, dark, slow and glossy.', '/s/detailing/'],
+  ['aeris', 'AERIS Model Zero', 'Product launch', 'Launch site told scene by scene as you scroll.', '/studio/aeris/'],
+]
+
+function WorkGrid() {
+  return (
+    <ul className="exgrid">
+      {work.map(([img, name, trade, line, href], i) => (
+        <li key={img}><Reveal delay={(i % 4) * 0.06}>
+          <a className="excard" href={href} target="_blank" rel="noopener">
+            <span className="exshot"><img src={`${B}img/sites/${img}.webp`} width={540} height={1004} alt={`${name} website on a phone`} loading="lazy" decoding="async" /></span>
+            <span className="extrade">{trade}</span>
+            <span className="exname">{name} <span aria-hidden="true">↗</span></span>
+            <span className="exline">{line}</span>
+          </a>
+        </Reveal></li>
+      ))}
+    </ul>
   )
 }
 
@@ -441,6 +501,13 @@ export default function App() {
         gsap.fromTo(el, { scaleX: 0 }, { scaleX: 1, ease: 'power2.out', duration: 1.2, scrollTrigger: { trigger: el, start: 'top 90%' } }))
     })
     return () => { ctx.revert(); gsap.ticker.remove(tick); lenis.destroy(); lenisRef.current = null }
+  }, [])
+
+  useEffect(() => {
+    const lock = () => { document.documentElement.classList.add('menu-on'); lenisRef.current?.stop() }
+    const unlock = () => { document.documentElement.classList.remove('menu-on'); lenisRef.current?.start() }
+    window.addEventListener('td:lock', lock); window.addEventListener('td:unlock', unlock)
+    return () => { window.removeEventListener('td:lock', lock); window.removeEventListener('td:unlock', unlock) }
   }, [])
 
   useEffect(() => {
