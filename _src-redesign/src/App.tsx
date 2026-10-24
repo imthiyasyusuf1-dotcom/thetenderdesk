@@ -192,7 +192,7 @@ function PriceBlock({ s }: { s: Service }) {
   return (
     <div className="price">
       <p className="small">{s.price.label}</p>
-      {s.price.big ? <Amount n={Number(s.price.big)} /> : <p className="quoted">Quoted</p>}
+      {s.price.big ? <Amount n={Number(s.price.big)} /> : <p className="quoted">{s.slug === 'customers' ? 'No jobs, no fee' : 'Quoted'}</p>}
       <p className="then">{s.price.note}</p>
     </div>
   )
@@ -358,10 +358,10 @@ function ServicePage({ s }: { s: Service }) {
 
       <section className="pricing" id="price" aria-labelledby="price-h">
         <div className="wrap">
-          <div className="sechead"><p className="num">Price</p><h2 id="price-h" className="h2">{s.price.big ? 'One simple price' : 'A clear quote first'}</h2></div>
+          <div className="sechead"><p className="num">Price</p><h2 id="price-h" className="h2">{s.price.big ? 'One simple price' : s.slug === 'customers' ? 'Pay only when it works' : 'A clear quote first'}</h2></div>
           <div className="pricegrid">
             <PriceBlock s={s} />
-            <Reveal><p className="lede">{s.price.big ? 'Your website, built and live, with hosting for the first 6 months. After that it is £75 a year to keep it running. No contract and no lock in.' : 'Every job is quoted individually after a quick chat about what you need. You get a clear quote before anything starts.'}</p></Reveal>
+            <Reveal><p className="lede">{s.slug === 'customers' ? 'You pay Google for the ads. Our fee only starts once the phone is ringing and you are getting jobs from it. We agree the number with you before anything goes live.' : s.price.big ? 'Your website, built and live, with hosting for the first 6 months. After that it is £75 a year to keep it running. No contract and no lock in.' : 'Every job is quoted individually after a quick chat about what you need. You get a clear quote before anything starts.'}</p></Reveal>
           </div>
         </div>
       </section>
@@ -459,8 +459,8 @@ function Partners() {
 
 /* ---------------- shell ---------------- */
 
-const navItems: [string, string][] = [['websites', 'Websites'], ['motion', 'Reels'], ['tenders', 'Tenders'], ['google-ads', 'Google Ads'], ['ai', 'AI'], ['about', 'About'], ['partners', 'Partners']]
-const menuItems: [string, string, string][] = [['websites', 'Websites', `${B}websites/`], ['motion', 'Reels and video ads', `${B}motion/`], ['tenders', 'Tenders', `${B}tenders/`], ['google-ads', 'Google Ads', `${B}google-ads/`], ['ai', 'AI', `${B}ai/`], ['work', 'Our work', '/work/'], ['about', 'About', `${B}about/`], ['partners', 'Partners', `${B}partners/`]]
+const navItems: [string, string][] = [['websites', 'Websites'], ['customers', 'More customers'], ['motion', 'Reels'], ['tenders', 'Tenders'], ['google-ads', 'Google Ads'], ['ai', 'AI'], ['about', 'About'], ['partners', 'Partners']]
+const menuItems: [string, string, string][] = [['websites', 'Websites', `${B}websites/`], ['customers', 'More customers', `${B}customers/`], ['motion', 'Reels and video ads', `${B}motion/`], ['tenders', 'Tenders', `${B}tenders/`], ['google-ads', 'Google Ads', `${B}google-ads/`], ['ai', 'AI', `${B}ai/`], ['work', 'Our work', '/work/'], ['about', 'About', `${B}about/`], ['partners', 'Partners', `${B}partners/`]]
 
 function route() {
   const seg = window.location.pathname.slice(B.length).split('/')[0]
