@@ -7,31 +7,31 @@ const SITE = 'https://thetenderdesk.co.uk'
 const src = new URL(live ? '../_live/' : '../preview/', import.meta.url)
 const root = new URL('../', import.meta.url)
 const html = fs.readFileSync(new URL('index.html', src), 'utf8')
-const D = 'Lead generation for trades, websites, Google SEO, Google Business Profiles, reels, tenders and AI for businesses that want more of the right work.'
+const D = 'More calls for local trades: Google ads with the first month free, a proper website for £25 and a £49 Google listing fix. Founded and run by Yusuf Imthiyas.'
 const pages = {
-  '': ['The Tender Desk | Lead Generation, Websites and Google SEO', 'Lead generation for trades: Google ads that make your phone ring, first month free. Plus websites, Google SEO, Google Business Profiles, reels, tenders and AI.'],
-  customers: ['Lead Generation for Trades | The Tender Desk', 'We run Google ads for your trade so people searching ring your phone. First month free, then a set monthly fee agreed up front. Ask us.'],
-  motion: ['Motion Design, Video Ads and Reels | The Tender Desk', 'Motion design videos, video ads and Instagram and TikTok reels made for your business. Clean, Apple style motion with sound design. Priced per project, ask us.'],
-  websites: ['Websites | The Tender Desk', 'Custom websites, fast on a phone and built to win work. Free mock-up first. £25 for the first 6 months including hosting, then £75 a year.'],
+  '': ['The Tender Desk | More calls for local trades', 'More calls from local customers for plumbers, builders, electricians and every local trade. First month free on calls, websites from £25, Google listing fix £49.'],
+  customers: ['Get More Calls for Your Trade | The Tender Desk', 'We run Google ads for your trade so people nearby ring your phone. Calls come straight to you, never shared. First month free, then a set monthly fee agreed up front.'],
+  'google-business': ['Google Listing Fix for Trades | The Tender Desk', 'Your Google listing set up or fixed so you show up properly on Maps with your reviews, plus a review QR card. A one off £49.'],
+  websites: ['Websites for Trades | The Tender Desk', 'A proper website that works on a phone and makes it easy to ring you. Free mock-up first. £25 for the first 6 months including hosting, then £75 a year.'],
+  seo: ['Google SEO for Trades | The Tender Desk', 'Your website set up to climb Google for your trade and be recommended by AI answers. Priced to your site after a quick look, ask us.'],
+  motion: ['Reels and Video Ads | The Tender Desk', 'Reels and video ads for Instagram and TikTok, made for your business. Priced per project, ask us.'],
   tenders: ['Tender Writing | The Tender Desk', 'Clear, compliant bids for small businesses. We find the right contracts and write answers that follow the scoring criteria. Free go or no go first.'],
-  'google-ads': ['Google Ads | The Tender Desk', 'Google Ads campaigns built and managed for you, with every enquiry tracked so you know what each pound brings in.'],
-  ai: ['AI Assistant and Automation | The Tender Desk', 'An AI assistant trained on your business that answers customers 24/7, qualifies the lead and books the job.'],
-  'google-business': ['Google Business Profiles | The Tender Desk', 'Your Google listing set up or fixed so you show up properly on Maps, with a review QR card. A one off £49.'],
-  seo: ['Google SEO Optimisation | The Tender Desk', 'Google SEO for small businesses: your website set up to rank for your trade and be recommended by AI answers. Priced to your site, ask us.'],
-  care: ['Care Plans | The Tender Desk', 'Hosting, updates, backups and small changes handled every month, so your site stays fast and secure.'],
-  about: ['About Us | The Tender Desk', 'About The Tender Desk: websites, reels, tenders, Google Ads and AI from one desk. Founded and run by Yusuf Imthiyas.'],
-  partners: ['Referral Partners | The Tender Desk', 'Introduce a business to The Tender Desk and receive a thank you of 10% of what they pay in their first year.'],
+  'google-ads': ['Google Ads | The Tender Desk', 'Already have a website? We build and run your Google Ads, with every enquiry tracked so you know what each pound brings in.'],
+  ai: ['AI Receptionist | The Tender Desk', 'An AI receptionist trained on your business that answers customers day and night, asks the right questions and books the job.'],
+  care: ['Website Care | The Tender Desk', 'Hosting, updates, backups and small changes handled for you, so your site stays fast and secure.'],
+  about: ['About Us | The Tender Desk', 'The Tender Desk helps small trades get more calls, a proper website and a Google listing that works. Founded and run by Yusuf Imthiyas.'],
+  partners: ['Referral Partners | The Tender Desk', 'Introduce a trade to The Tender Desk and receive a thank you of 10% of what they pay in their first year.'],
 }
 const SVC = [
-  ['customers', 'Lead generation', 'Google ads for trades with calls straight to your phone. First month free, then a set monthly fee.'],
-  ['websites', 'Websites', 'Custom, mobile first websites with hosting.'],
-  ['motion', 'Motion design, video ads and reels', 'Motion design videos, video ads and Instagram and TikTok reels, priced per project.'],
+  ['customers', 'Get more calls', 'Google ads for trades with calls straight to your phone. First month free, then a set monthly fee.'],
+  ['google-business', 'Google listing fix', 'Google listing set up or fixed, one off £49.'],
+  ['websites', 'Websites', 'Websites for trades that work on a phone. £25 for the first 6 months, then £75 a year.'],
+  ['seo', 'Google SEO', 'Websites set up to rank on Google and be recommended by AI answers.'],
+  ['motion', 'Reels and video ads', 'Reels and video ads for Instagram and TikTok, priced per project.'],
   ['tenders', 'Tender writing', 'Finding contracts, go or no go, method statements, quality and social value answers.'],
   ['google-ads', 'Google Ads', 'Google Ads campaigns built and managed, with every enquiry tracked.'],
-  ['ai', 'AI assistant and automation', 'An AI assistant that answers customers and books jobs 24/7, plus admin automations.'],
-  ['google-business', 'Google Business Profiles', 'Google listing set up or fixed, one off £49.'],
-  ['seo', 'Google SEO optimisation', 'Websites set up to rank on Google and be recommended by AI answers.'],
-  ['care', 'Website care plans', 'Hosting, updates, backups and small changes every month.'],
+  ['ai', 'AI receptionist', 'An AI receptionist that answers customers and books jobs day and night.'],
+  ['care', 'Website care', 'Hosting, updates, backups and small changes every month.'],
 ]
 const catalog = { '@type': 'OfferCatalog', name: 'Services', itemListElement: SVC.map(([slug, name, description]) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name, description, url: `${SITE}/${slug}/`, provider: { '@id': SITE + '/#org' } } })) }
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;')

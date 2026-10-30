@@ -1,44 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
-import Lenis from 'lenis'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import SplitText from './bits/SplitText'
-import BlurText from './bits/BlurText'
-import ShinyText from './bits/ShinyText'
-import AnimatedContent from './bits/AnimatedContent'
-import Magnet from './bits/Magnet'
-import StarBorder from './bits/StarBorder'
-import { Marquee, Ticker } from './bits/Details'
-import { services, moves, whyUs, homeFaqs, wa, MAIL, B } from './content'
+import { services, homeFaqs, wa, MAIL, B } from './content'
 import type { Service } from './content'
-import { ServiceVisual, ReelClip, HeroVisual, reduce } from './Visuals'
 
-gsap.registerPlugin(ScrollTrigger)
+// Plain, calm site for small trades: no smooth scroll, no text effects, no scroll animation.
 
-const Reveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) =>
-  reduce ? <>{children}</> : (
-    <AnimatedContent distance={28} duration={0.9} ease="power3.out" initialOpacity={0} threshold={0.12} delay={delay}>
-      {children}
-    </AnimatedContent>
-  )
+const HELLO = "Hi, I'd like more calls for my business."
 
-const Display = ({ text }: { text: string }) => (
-  <h1 className="display">
-    {reduce ? text : (
-      <SplitText text={text} tag="span" splitType="words" delay={70} duration={1.1} ease="power4.out"
-        from={{ opacity: 0, y: 40 }} to={{ opacity: 1, y: 0 }} threshold={0} rootMargin="0px" textAlign="left" />
-    )}
-  </h1>
+const WaIcon = () => (
+  <svg className="waicon" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z" /></svg>
 )
 
-const Head = ({ n, text, id }: { n: string; text: string; id: string }) => (
-  <>
-    <div className="rule" />
-    <div className="sechead">
-      <p className="num">{n}</p>
-      <h2 id={id} className="h2">{reduce ? text : <BlurText text={text.replace(/ (\S+)$/, '\u00a0$1')} animateBy="words" delay={90} direction="bottom" />}</h2>
-    </div>
-  </>
+const WaBtn = ({ msg = HELLO, label = 'Message us on WhatsApp', big = false }: { msg?: string; label?: string; big?: boolean }) => (
+  <a className={'btn wa' + (big ? ' big' : '')} href={wa(msg)} target="_blank" rel="noopener"><WaIcon />{label}</a>
 )
 
 function Faq({ items }: { items: [string, string][] }) {
@@ -50,69 +23,154 @@ function Faq({ items }: { items: [string, string][] }) {
           <button aria-expanded={open === i} onClick={() => setOpen(open === i ? null : i)}>
             <span>{q}</span><i aria-hidden="true" />
           </button>
-          <div className="ans" role="region"><div><p>{a}</p></div></div>
+          {open === i && <p className="ans">{a}</p>}
         </div>
       ))}
     </div>
   )
 }
 
-const Amount = ({ n }: { n: number }) => (
-  <p className="amount"><span className="cur">£</span><Ticker value={String(n)} /></p>
-)
-
-function Contact({ n, title, text, msg }: { n: string; title: string; text: string; msg: string }) {
+function Contact({ title, text, msg }: { title: string; text: string; msg: string }) {
   return (
     <section className="contact" id="contact" aria-labelledby="contact-h">
-      <span id="start" />
       <div className="wrap">
-        <p className="num light">{n}</p>
-        <h2 id="contact-h" className="display light">{title}</h2>
-        <p className="lede light">{text}</p>
-        <div className="ctas">
-          <a className="btn cream shimmer" href={wa(msg)} target="_blank" rel="noopener">Message on WhatsApp</a>
-          <StarBorder as="a" href={MAIL} className="btn outline" color="#f4f0e7" trailColor="rgba(244,239,232,.25)" backgroundColor="#1b1a17" textColor="#f4f0e7" borderColor="rgba(244,239,232,.22)" radius={999} duration={7} stars={1} glow={0} sparkle={false} clickPulse={false}>hello@thetenderdesk.co.uk</StarBorder>
+        <div className="contactbox">
+          <h2 id="contact-h">{title}</h2>
+          <p>{text}</p>
+          <div className="ctas">
+            <WaBtn msg={msg} big />
+            <a className="btn plain" href={MAIL}>Or email hello@thetenderdesk.co.uk</a>
+          </div>
         </div>
       </div>
     </section>
   )
 }
 
-function Work({ n }: { n: string }) {
+const Founder = () => (
+  <section className="wrap sec" aria-labelledby="who-h">
+    <div className="founder">
+      <h2 id="who-h">Who you deal with</h2>
+      <p>Founded and run by Yusuf Imthiyas. You talk to the person doing the work, on WhatsApp, in plain words. No call centre, no account managers, no jargon.</p>
+      <a className="textlink" href={`${B}about/`}><u>About us</u> <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+)
+
+// ---------- home ----------
+
+const three: { slug: string; title: string; text: string; price: string; sub: string }[] = [
+  { slug: 'customers', title: 'Get more calls', text: 'We run Google ads for your trade, so people nearby searching for what you do ring your phone. The calls come straight to you and are never shared.', price: 'First month free', sub: 'Then a set monthly fee, agreed up front.' },
+  { slug: 'google-business', title: 'Get found on Google', text: 'We sort your Google listing so you show up on Maps with your reviews, and set your website up to climb the search results.', price: '£49', sub: 'One off Google listing fix.' },
+  { slug: 'websites', title: 'A proper website', text: 'A clean site that works on a phone and makes it easy to ring you. We build you a free mock‑up first, so you see it before you pay.', price: '£25', sub: 'For the first 6 months, then £75 a year.' },
+]
+
+const steps: [string, string][] = [
+  ['Message us', 'Send a WhatsApp. Tell us your trade and the jobs you want more of.'],
+  ['We set it up', 'We do all of it. You see everything and say yes before it goes live.'],
+  ['Your phone rings', 'Customers call you direct. You get on with the work.'],
+]
+
+const prices: [string, string, string][] = [
+  ['More calls (Google ads)', 'First month free', 'Then a set monthly fee, agreed with you before anything starts. The ad money goes to Google on your own card, and you choose the budget.'],
+  ['Google listing fix', '£49', 'One off. Your listing set up or fixed, plus a review QR card.'],
+  ['Website', '£25', 'Site and hosting for the first 6 months, then £75 a year. No contract.'],
+  ['Google SEO', 'Ask us', 'Priced to your site after a quick look.'],
+]
+
+const alsoDo: [string, string, string][] = [
+  ['motion', 'Reels and video ads', 'Short videos for Instagram and TikTok.'],
+  ['tenders', 'Tender writing', 'Bids for council and public contracts.'],
+  ['ai', 'AI receptionist', 'Answers customers and books jobs when you cannot.'],
+  ['google-ads', 'Google Ads only', 'Already have a site? We just run the ads.'],
+  ['care', 'Website care', 'Changes, updates and hosting looked after.'],
+]
+
+function Home() {
   return (
-    <section className="work wrap" id="work" aria-labelledby="work-h">
-      <Head n={n} text="Recent work" id="work-h" />
-      <div className="case">
-        <Reveal>
-          <a className="frame" href="https://7ei8ht6properties.com/" target="_blank" rel="noopener">
-            <img className="shot" src={B + 'img/786-home-1520.webp'} srcSet={`${B}img/786-home-800.webp 800w, ${B}img/786-home-1520.webp 1520w`} sizes="(max-width: 900px) 92vw, 760px" width={1520} height={950} alt="Homepage of the 7ei8ht6 Properties website" loading="lazy" decoding="async" />
-          </a>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <div className="casetext">
-            <p className="small">Property brokerage</p>
-            <h3>7ei8ht6 Properties</h3>
-            <p>A bilingual English and Arabic site for a property brokerage, with a profile for every member of the team and direct contact details, and the whole site loads fast on a phone.</p>
-            <a className="textlink" href="https://7ei8ht6properties.com/" target="_blank" rel="noopener">Visit the live site <span aria-hidden="true">↗</span></a>
-          </div>
-        </Reveal>
-      </div>
-      <WorkGrid />
-      <div className="indent"><a className="textlink" href="/work/">All our work <span aria-hidden="true">→</span></a></div>
-    </section>
+    <>
+      <section className="hero homehero wrap" id="top">
+        <h1>More calls from local customers.</h1>
+        <p className="lede">Your first month is free. You only carry on if the phone is ringing.</p>
+        <WaBtn big />
+      </section>
+
+      <section className="wrap sec" id="services" aria-labelledby="svc-h">
+        <h2 id="svc-h">What we do for trades</h2>
+        <p className="secsub">For plumbers, builders, electricians, roofers and every other local trade.</p>
+        <ul className="boxes">
+          {three.map(x => (
+            <li key={x.slug} className="box">
+              <h3>{x.title}</h3>
+              <p>{x.text}</p>
+              <p className="boxprice"><strong>{x.price}</strong> <span>{x.sub}</span></p>
+              <p className="boxlinks">
+                <a className="textlink" href={`${B}${x.slug}/`}><u>Find out more</u> <span aria-hidden="true">→</span></a>
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="wrap sec" id="how" aria-labelledby="how-h">
+        <h2 id="how-h">How it works</h2>
+        <ol className="steps">
+          {steps.map(([t, d], i) => <li key={t}><span className="stepn">{i + 1}</span><div><h3>{t}</h3><p>{d}</p></div></li>)}
+        </ol>
+      </section>
+
+      <section className="wrap sec" id="prices" aria-labelledby="prices-h">
+        <h2 id="prices-h">Prices</h2>
+        <p className="secsub">Real prices, up front. You see a free mock‑up of your website before you pay a penny.</p>
+        <ul className="pricelist">
+          {prices.map(([n, p, d]) => <li key={n}><span className="pn">{n}</span><span className="pp">{p}</span><span className="pd">{d}</span></li>)}
+        </ul>
+      </section>
+
+      <section className="wrap sec" aria-labelledby="faq-h">
+        <h2 id="faq-h">Questions</h2>
+        <Faq items={homeFaqs} />
+      </section>
+
+      <Founder />
+
+      <section className="wrap sec" id="also" aria-labelledby="also-h">
+        <h2 id="also-h">We also do</h2>
+        <ul className="also">
+          {alsoDo.map(([slug, n, d]) => <li key={slug}><a href={`${B}${slug}/`}><span className="an">{n}</span><span className="ad">{d}</span><span aria-hidden="true" className="arrow">→</span></a></li>)}
+        </ul>
+      </section>
+
+      <Contact title="Want more calls?" text="Send us a WhatsApp with your trade. We reply the same working day." msg={HELLO} />
+    </>
   )
 }
 
-// best reels, audio stripped (their songs are added in the Instagram app, not licensed for the site)
-const reels: [string, string, string][] = [
-  ['r-nevercloses', 'It is 2am. You are asleep.', 'AI receptionist story, 17 seconds'],
-  ['r-roof', 'Storm last night', 'Shape morph for a roofer, 14 seconds'],
-  ['r-tender', '£184,000 from one tender', 'Tender win story, 15 seconds'],
-  ['r-plumberweek', 'AI ran a plumber for a week', 'Screen story with live numbers, 25 seconds'],
-  ['r-services', 'Built for small businesses', 'Services showreel, 19 seconds'],
-  ['r-receptionist', 'You are under a sink', 'Photo led AI receptionist, 29 seconds'],
-  ['r-onedesk', 'Fourteen tabs. One desk.', 'App style motion, 29 seconds'],
-  ['r-premium', 'Finally feels premium', 'Product style motion, 14 seconds'],
+// ---------- reels and example sites (own pages only) ----------
+
+// muted looping clip that only loads and plays while on screen
+function ReelClip({ name }: { name: string }) {
+  const ref = useRef<HTMLVideoElement>(null)
+  useEffect(() => {
+    const v = ref.current
+    if (!v || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause() }, { threshold: 0.35 })
+    io.observe(v)
+    return () => io.disconnect()
+  }, [])
+  const base = B + 'img/reels/' + name
+  return <video ref={ref} className="reelvid" src={base + '.mp4'} poster={base + '.webp'} muted loop playsInline preload="none" width={540} height={960} aria-hidden="true" />
+}
+
+const reels: [string, string][] = [
+  ['r-nevercloses', 'It is 2am. You are asleep.'],
+  ['r-roof', 'Storm last night'],
+  ['r-tender', '£184,000 from one tender'],
+  ['r-plumberweek', 'AI ran a plumber for a week'],
+  ['r-services', 'Built for small businesses'],
+  ['r-receptionist', 'You are under a sink'],
+  ['r-onedesk', 'Fourteen tabs. One desk.'],
+  ['r-premium', 'Finally feels premium'],
 ]
 
 function ReelPlayer({ name, label, onClose }: { name: string; label: string; onClose: () => void }) {
@@ -120,226 +178,81 @@ function ReelPlayer({ name, label, onClose }: { name: string; label: string; onC
   useEffect(() => {
     const prev = document.activeElement as HTMLElement | null
     closeRef.current?.focus()
-    window.dispatchEvent(new Event('td:lock'))
+    document.documentElement.classList.add('lock')
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', onKey)
-    return () => { window.removeEventListener('keydown', onKey); window.dispatchEvent(new Event('td:unlock')); prev?.focus() }
+    return () => { window.removeEventListener('keydown', onKey); document.documentElement.classList.remove('lock'); prev?.focus() }
   }, [onClose])
   const base = B + 'img/reels/' + name
   return (
-    <div className="reelbox" role="dialog" aria-modal="true" aria-label={label} onClick={onClose} data-lenis-prevent>
-      <video className="reelbig" src={base + '.mp4'} poster={base + '.webp'} autoPlay muted loop playsInline controls={false} onClick={e => e.stopPropagation()} width={720} height={1280} />
+    <div className="reelbox" role="dialog" aria-modal="true" aria-label={label} onClick={onClose}>
+      <video className="reelbig" src={base + '.mp4'} poster={base + '.webp'} autoPlay muted loop playsInline onClick={e => e.stopPropagation()} width={720} height={1280} />
       <button ref={closeRef} className="reelx" aria-label="Close reel" onClick={onClose}><i /><i /></button>
       <p className="reelcap">{label}</p>
     </div>
   )
 }
 
-function Reels({ n, more = true }: { n: string; more?: boolean }) {
+function Reels() {
   const [open, setOpen] = useState<number | null>(null)
   return (
-    <section className="wrap block" id="reels" aria-labelledby="reels-h">
-      <Head n={n} text="Reels we make" id="reels-h" />
-      <div className="indent"><Reveal><p className="lede">Motion design, video ads and reels for Instagram and TikTok. These are our best from The Tender Desk feed, shown here without their songs. Tap any reel to watch it full screen.</p></Reveal></div>
-      <ul className="reelrow eight">
-        {reels.map(([name, t, d], i) => (
-          <li key={name}><Reveal delay={(i % 4) * 0.06}>
+    <section className="wrap sec" id="reels" aria-labelledby="reels-h">
+      <h2 id="reels-h">Reels we have made</h2>
+      <p className="secsub">From The Tender Desk feed, shown without their songs. Tap one to watch it.</p>
+      <ul className="reelrow">
+        {reels.map(([name, t], i) => (
+          <li key={name}>
             <button className="reeltap" onClick={() => setOpen(i)} aria-label={`Play reel: ${t}`}>
-              <div className="reelphone"><ReelClip name={name} label="" /><span className="reelplay" aria-hidden="true" /></div>
+              <div className="reelphone"><ReelClip name={name} /><span className="reelplay" aria-hidden="true" /></div>
             </button>
-            <h3>{t}</h3><p>{d}</p>
-          </Reveal></li>
+            <p>{t}</p>
+          </li>
         ))}
       </ul>
-      <div className="indent">
-        {more ? <a className="textlink" href={`${B}motion/`}>Motion, ads and reels <span aria-hidden="true">→</span></a>
-          : <a className="textlink" href="https://www.instagram.com/thetenderdesk.co.uk/" target="_blank" rel="noopener">More on our Instagram <span aria-hidden="true">↗</span></a>}
-      </div>
+      <a className="textlink" href="https://www.instagram.com/thetenderdesk.co.uk/" target="_blank" rel="noopener"><u>More on our Instagram</u> <span aria-hidden="true">↗</span></a>
       {open !== null && <ReelPlayer name={reels[open][0]} label={reels[open][1]} onClose={() => setOpen(null)} />}
     </section>
   )
 }
 
-const work: [string, string, string, string, string][] = [
-  ['hartley', 'Hartley Plumbing and Heating', 'Plumbing and heating', 'Plumbing and heating site with the booking on the first screen.', '/studio/hartley/'],
-  ['builder', 'Ferrow and Kell', 'Builders', 'Extensions site that sells the room you gain, not the bricks.', '/s/builder/'],
-  ['oakfield', 'Oakfield Barber Co.', 'Barbers', 'Barber site built around booking a chair in two taps.', '/studio/oakfield/'],
-  ['ironclad', 'Ironclad Detailing', 'Car detailing', 'Detailing site with a chrome finish to match the work.', '/studio/ironclad/'],
-  ['asterbay', 'Aster Bay Residences', 'Property', 'Residences site with live availability and a time of day view.', '/studio/asterbay/'],
-  ['barber', 'Ashgrove and Hale', 'Barbers', 'Photo led barber site built around the booking.', '/s/barber/'],
-  ['detailing', 'Nocturne', 'Detailing studio', 'Appointment led studio site, dark, slow and glossy.', '/s/detailing/'],
-  ['aeris', 'AERIS Model Zero', 'Product launch', 'Launch site told scene by scene as you scroll.', '/studio/aeris/'],
+const work: [string, string, string, string][] = [
+  ['hartley', 'Hartley Plumbing and Heating', 'Plumbing and heating', '/studio/hartley/'],
+  ['builder', 'Ferrow and Kell', 'Builders', '/s/builder/'],
+  ['oakfield', 'Oakfield Barber Co.', 'Barbers', '/studio/oakfield/'],
+  ['ironclad', 'Ironclad Detailing', 'Car detailing', '/studio/ironclad/'],
 ]
 
-function WorkGrid() {
+function Sites() {
   return (
-    <ul className="exgrid">
-      {work.map(([img, name, trade, line, href], i) => (
-        <li key={img}><Reveal delay={(i % 4) * 0.06}>
-          <a className="excard" href={href} target="_blank" rel="noopener">
-            <span className="exshot"><img src={`${B}img/sites/${img}.webp`} width={540} height={1004} alt={`${name} website on a phone`} loading="lazy" decoding="async" /></span>
-            <span className="extrade">{trade}</span>
-            <span className="exname">{name} <span aria-hidden="true">↗</span></span>
-            <span className="exline">{line}</span>
-          </a>
-        </Reveal></li>
-      ))}
-    </ul>
-  )
-}
-
-function PriceBlock({ s }: { s: Service }) {
-  return (
-    <div className="price">
-      <p className="small">{s.price.label}</p>
-      {s.price.big ? <Amount n={Number(s.price.big)} /> : <p className={'quoted' + (s.price.headline ? ' long' : '')}>{s.price.headline ?? 'Quoted'}</p>}
-      <p className="then">{s.price.note}</p>
-    </div>
-  )
-}
-
-const whatWeDo = ['Lead generation', 'Websites', 'Google SEO', 'Motion design', 'Reels', 'Video ads', 'Tender writing', 'Google Ads', 'AI assistants', 'Google Business Profiles', 'AI search', 'Care plans']
-
-/* ---------------- pages ---------------- */
-
-function Home() {
-  const web = services.find(x => x.slug === 'websites')!
-  const lead = services.find(x => x.slug === 'customers')!
-  const gbp = services.find(x => x.slug === 'google-business')!
-  const seo = services.find(x => x.slug === 'seo')!
-  return (
-    <>
-      <section className="hero wrap homehero" id="top">
-        <div className="herotext">
-          <p className="eyebrow"><ShinyText text={'Lead generation, websites, Google\u00a0SEO\u00a0and\u00a0more'} color="#6b6459" shineColor="#1b1a17" speed={4} delay={3} disabled={reduce} /></p>
-          <Display text="More calls. More jobs." />
-          <div className="herogrid">
-            <Reveal delay={0.5}><p className="lede">We get your phone ringing. Google ads for your trade, with calls straight to you and your first month free. Plus websites, Google SEO, your Google listing, reels, tenders and AI, all from one desk.</p></Reveal>
-            <Reveal delay={0.65}>
-              <div className="ctas">
-                <Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary shimmer" href={`${B}customers/`}>Get more calls</a></Magnet>
-                <a className="btn ghost" href="#leads">How it works</a>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-        <HeroVisual />
-      </section>
-
-      <Marquee label="What we do" items={whatWeDo} />
-
-      <section className="pricing" id="leads" aria-labelledby="lead-h">
-        <div className="wrap">
-          <div className="sechead"><p className="num">01</p><h2 id="lead-h" className="h2">{reduce ? 'Lead generation' : <BlurText text="Lead generation" animateBy="words" delay={90} direction="bottom" />}</h2></div>
-          <div className="pricegrid">
-            <div className="homeprice">
-              <PriceBlock s={lead} />
-              <Reveal>
-                <ul className="incl">{['Google ads run for your trade', 'Calls straight to your phone', 'Your own page with your number', 'Never shared with other firms', 'You set the ad budget', 'Plain updates on every call'].map(x => <li key={x}>{x}</li>)}</ul>
-                <a className="textlink" href={`${B}customers/`}>How lead generation works <span aria-hidden="true">→</span></a>
-              </Reveal>
-            </div>
-            <ServiceVisual kind="ads" />
-          </div>
-          <ul className="leadmore">
-            {[gbp, seo].map(x => (
-              <li key={x.slug}><Reveal>
-                <a href={`${B}${x.slug}/`} className="leadcard">
-                  <span className="small">{x.price.short}</span>
-                  <span className="lname">{x.name}</span>
-                  <span className="lsum">{x.summary}</span>
-                  <span className="arrow" aria-hidden="true">→</span>
-                </a>
-              </Reveal></li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="wrap block" id="services" aria-labelledby="svc-h">
-        <Head n="02" text="Everything that brings work in" id="svc-h" />
-        <ul className="svclist">
-          {services.map((s, i) => (
-            <li key={s.slug}>
-              <Reveal delay={(i % 2) * 0.06}>
-                <a href={`${B}${s.slug}/`} className="svc">
-                  <span className="stepn">{String(i + 1).padStart(2, '0')}</span>
-                  <span className="svcname">{s.name}</span>
-                  <span className="svcsum">{s.summary}</span>
-                  <span className="svcprice">{s.price.short ?? s.price.label}</span>
-                  <span className="arrow" aria-hidden="true">→</span>
-                </a>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="pricing" id="price" aria-labelledby="price-h">
-        <div className="wrap">
-          <div className="sechead"><p className="num">03</p><h2 id="price-h" className="h2">{reduce ? 'A website for £25' : <BlurText text="A website for £25" animateBy="words" delay={90} direction="bottom" />}</h2></div>
-          <div className="pricegrid">
-            <div className="homeprice">
-              <PriceBlock s={web} />
-              <Reveal>
-                <ul className="incl">{['Your website, designed and built', 'Hosting for the first 6 months', 'Works properly on phones', 'Set up for Google search', 'Your own domain connected', 'Free mock-up before you pay'].map(x => <li key={x}>{x}</li>)}</ul>
-                <a className="textlink" href={`${B}websites/`}>How websites work <span aria-hidden="true">→</span></a>
-              </Reveal>
-            </div>
-            <ServiceVisual kind="site" />
-          </div>
-        </div>
-      </section>
-
-      <section className="wrap block" aria-labelledby="moves-h">
-        <Head n="04" text="Four moves" id="moves-h" />
-        <ol className="moves">
-          {moves.map(([t, d], i) => (
-            <li key={t}><Reveal delay={i * 0.08}><span className="moveword">{t}.</span><p>{d}</p></Reveal></li>
-          ))}
-        </ol>
-      </section>
-
-      <section className="wrap block" aria-labelledby="ai-h">
-        <Head n="05" text="03:07. You're asleep." id="ai-h" />
-        <div className="split">
-          <Reveal><p className="lede">A customer asks for a quote. The assistant answers, asks the right questions and books the visit into your diary. You wake up to the details.</p><a className="textlink" href={`${B}ai/`}>Meet the AI assistant <span aria-hidden="true">→</span></a></Reveal>
-          <ServiceVisual kind="chat" />
-        </div>
-      </section>
-
-      <Reels n="06" />
-
-      <Work n="07" />
-
-      <section className="wrap block" aria-labelledby="why-h">
-        <Head n="08" text="Why us" id="why-h" />
-        <ol className="grid4">{whyUs.map(([t, d], i) => <li key={t}><Reveal delay={i * 0.06}><h3>{t}</h3><p>{d}</p></Reveal></li>)}</ol>
-      </section>
-
-      <PartnerTeaser n="09" />
-
-      <section className="faqsec wrap" aria-labelledby="faq-h">
-        <Head n="10" text="Questions" id="faq-h" />
-        <Faq items={homeFaqs} />
-      </section>
-
-      <Contact n="11" title="Your next customer is searching now." text="Tell us what you need. We reply the same working day." msg="Hi, I'd like to talk about my business." />
-    </>
-  )
-}
-
-function PartnerTeaser({ n }: { n: string }) {
-  return (
-    <section className="pricing" aria-labelledby="ref-h">
-      <div className="wrap">
-        <div className="sechead"><p className="num">{n}</p><h2 id="ref-h" className="h2">{reduce ? 'Know a business that needs more work?' : <BlurText text="Know a business that needs more work?" animateBy="words" delay={70} direction="bottom" />}</h2></div>
-        <div className="pricegrid">
-          <div className="price"><p className="small">Referral thank you</p><p className="amount"><Ticker value="10" /><span className="cur pct">%</span></p><p className="then">of what they pay in their first year.</p></div>
-          <Reveal><div><p className="lede">Introduce them to The Tender Desk. If they become a client, you receive your thank you once they have paid. Nothing to sign up to, and no targets.</p><a className="textlink" href={`${B}partners/`}>Become a partner <span aria-hidden="true">→</span></a></div></Reveal>
-        </div>
-      </div>
+    <section className="wrap sec" id="work" aria-labelledby="work-h">
+      <h2 id="work-h">Sites we have built</h2>
+      <ul className="exgrid">
+        {work.map(([img, name, trade, href]) => (
+          <li key={img}>
+            <a className="excard" href={href} target="_blank" rel="noopener">
+              <span className="exshot"><img src={`${B}img/sites/${img}.webp`} width={540} height={1004} alt={`${name} website on a phone`} loading="lazy" decoding="async" /></span>
+              <span className="extrade">{trade}</span>
+              <span className="exname">{name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a className="textlink" href="/work/"><u>See all our work</u> <span aria-hidden="true">→</span></a>
     </section>
+  )
+}
+
+// ---------- service pages ----------
+
+function PriceBox({ s }: { s: Service }) {
+  const big = s.price.big ? '£' + s.price.big : s.price.headline ?? 'Ask us'
+  return (
+    <div className="pricebox" id="price">
+      <p className="plabel">{s.price.label}</p>
+      <p className="pbig">{big}</p>
+      <p className="pnote">{s.price.note}</p>
+      {s.price.text && <p className="ptext">{s.price.text}</p>}
+    </div>
   )
 }
 
@@ -348,166 +261,114 @@ function ServicePage({ s }: { s: Service }) {
   return (
     <>
       <section className="hero wrap" id="top">
-        <p className="eyebrow"><ShinyText text={s.eyebrow} color="#6b6459" shineColor="#1b1a17" speed={4} delay={3} disabled={reduce} /></p>
-        <Display text={s.title} />
-        <div className="herogrid">
-          <Reveal delay={0.5}><p className="lede">{s.lede}</p></Reveal>
-          <Reveal delay={0.65}>
-            <div className="ctas">
-              <Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary shimmer" href="#contact">{s.cta.label}</a></Magnet>
-              <a className="btn ghost" href="#price">See the price</a>
-            </div>
-          </Reveal>
-        </div>
+        <p className="eyebrow">{s.eyebrow}</p>
+        <h1>{s.title}</h1>
+        <p className="lede">{s.lede}</p>
+        <WaBtn msg={s.cta.msg} label={s.cta.label} big />
       </section>
 
-      <section className="wrap block" aria-labelledby="what-h">
-        <Head n="01" text={s.listTitle} id="what-h" />
-        <div className="split">
-          <ol className="feat">{s.list.map(([t, d], i) => <li key={t}><Reveal delay={(i % 3) * 0.05}><h3>{t}</h3><p>{d}</p></Reveal></li>)}</ol>
-          <div className="sticky"><ServiceVisual kind={s.visual} /></div>
-        </div>
+      <section className="wrap sec" aria-label="Price"><PriceBox s={s} /></section>
+
+      <section className="wrap sec" aria-labelledby="what-h">
+        <h2 id="what-h">What you get</h2>
+        <ul className="checks">{s.list.map(([t, d]) => <li key={t}><h3>{t}</h3><p>{d}</p></li>)}</ul>
       </section>
 
-      {s.extra && (
-        <section className="wrap block" aria-labelledby="extra-h">
-          <Head n="02" text={s.extraTitle!} id="extra-h" />
-          <div className="indent">
-            {s.extraIntro && <Reveal><p className="lede">{s.extraIntro}</p></Reveal>}
-            <ul className="chips">{s.extra.map(x => <li key={x}>{x}</li>)}</ul>
-          </div>
+      <section className="wrap sec" aria-labelledby="how-h">
+        <h2 id="how-h">How it works</h2>
+        <ol className="steps">{s.steps.map(([t, d], i) => <li key={t}><span className="stepn">{i + 1}</span><div><h3>{t}</h3><p>{d}</p></div></li>)}</ol>
+      </section>
+
+      {(s.extra || s.extraIntro) && (
+        <section className="wrap sec" aria-labelledby="extra-h">
+          {s.extraTitle && <h2 id="extra-h">{s.extraTitle}</h2>}
+          {s.extraIntro && <p className="secsub wide">{s.extraIntro}</p>}
+          {s.extra && <ul className="chips">{s.extra.map(x => <li key={x}>{x}</li>)}</ul>}
         </section>
       )}
-      {!s.extra && s.extraIntro && (
-        <section className="wrap block"><div className="indent"><Reveal><p className="lede">{s.extraIntro}</p></Reveal></div></section>
-      )}
 
-      <section className="wrap block" aria-labelledby="how-h">
-        <Head n={s.extra ? '03' : '02'} text={s.stepsTitle} id="how-h" />
-        <ol className="steps four">{s.steps.map(([t, d], i) => <li key={t}><Reveal delay={i * 0.08}><span className="stepn">{String(i + 1).padStart(2, '0')}</span><h3>{t}</h3><p>{d}</p></Reveal></li>)}</ol>
-      </section>
+      {s.slug === 'websites' && <Sites />}
+      {s.slug === 'motion' && <Reels />}
 
-      <section className="pricing" id="price" aria-labelledby="price-h">
-        <div className="wrap">
-          <div className="sechead"><p className="num">Price</p><h2 id="price-h" className="h2">{s.price.title ?? 'A clear quote first'}</h2></div>
-          <div className="pricegrid">
-            <PriceBlock s={s} />
-            <Reveal><p className="lede">{s.price.text ?? 'Every job is quoted individually after a quick chat about what you need. You get a clear quote before anything starts.'}</p></Reveal>
-          </div>
-        </div>
-      </section>
-
-      {s.slug === 'websites' && <Work n="Work" />}
-      {s.slug === 'motion' && <Reels n="Work" more={false} />}
-
-      <section className="faqsec wrap" aria-labelledby="faq-h">
-        <Head n="FAQ" text="Good to know" id="faq-h" />
+      <section className="wrap sec" aria-labelledby="faq-h">
+        <h2 id="faq-h">Questions</h2>
         <Faq items={s.faqs} />
       </section>
 
-      <section className="wrap block" aria-labelledby="more-h">
-        <Head n="More" text="Also from the desk" id="more-h" />
+      <section className="wrap sec" aria-labelledby="more-h">
+        <h2 id="more-h">Other things we do</h2>
         <ul className="morelist">{others.map(o => <li key={o.slug}><a href={`${B}${o.slug}/`}><span>{o.name}</span><span aria-hidden="true">→</span></a></li>)}</ul>
       </section>
 
-      <Contact n="Next step" title={s.cta.title} text={s.cta.text} msg={s.cta.msg} />
+      <Contact title={s.cta.title} text={s.cta.text} msg={s.cta.msg} />
     </>
   )
 }
 
 function About() {
-  const principles: [string, string][] = [
-    ['No handoffs', 'No account managers or juniors in between. The people who plan it build it.'],
-    ['Straight answers', 'If something will not earn its keep, we say so before you spend on it.'],
-    ['Measured, not guessed', 'Decisions come from numbers you can see, not opinions.'],
-    ['Work anywhere', 'We work remotely with businesses wherever they are, on your time zone.'],
-  ]
-  const method: [string, string][] = [['Find', 'Where your next customers and contracts are.'], ['Write', 'Pages, bids, ads and reels made to what gets scored, watched and clicked.'], ['Win', 'Every enquiry and booking tracked and measured.'], ['Build', 'Sites and systems that keep working after handover.']]
   return (
     <>
       <section className="hero wrap" id="top">
-        <p className="eyebrow"><ShinyText text="About" color="#6b6459" shineColor="#1b1a17" speed={4} delay={3} disabled={reduce} /></p>
-        <Display text="One desk. Every way to win work." />
-        <div className="herogrid">
-          <Reveal delay={0.5}><p className="lede">The Tender Desk exists because good businesses keep losing work they should win: great reviews and a dated website, capable of public contracts and never bidding. We fix both, and the bits in between.</p></Reveal>
-          <Reveal delay={0.65}><div className="ctas"><Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary shimmer" href="#contact">Start a project</a></Magnet><a className="btn ghost" href={`${B}#services`}>Our services</a></div></Reveal>
+        <p className="eyebrow">About</p>
+        <h1>Founded and run by Yusuf Imthiyas.</h1>
+        <p className="lede">The Tender Desk helps small trades get more work: more calls from Google, a proper website and a Google listing that shows up. One person, plain words, real prices.</p>
+        <WaBtn msg="Hi, I'd like to talk about my business." label="Say hello on WhatsApp" big />
+      </section>
+      <section className="wrap sec" aria-labelledby="story-h">
+        <h2 id="story-h">Why it exists</h2>
+        <div className="prose">
+          <p>Plenty of good trades lose work they should win. Great reviews, a phone that should be ringing, and a website or Google listing that lets them down. That is the bit we fix.</p>
+          <p>Yusuf is a final year Chemical Engineering student who worked in a testing lab, where a missed detail means a wrong result. The same care goes into every site and every ad. You deal with him from the first message to the day it goes live.</p>
         </div>
       </section>
-      <section className="wrap block" aria-labelledby="who-h">
-        <Head n="01" text="Founded and run by Yusuf Imthiyas." id="who-h" />
-        <div className="indent prose">
-          <Reveal><p className="lede">Founded and run by Yusuf Imthiyas, a final year BEng Chemical Engineering student who previously worked in a lab at Element Materials Technology running SAR testing. Precise work, where a missed detail means a wrong result.</p></Reveal>
-          <Reveal delay={0.1}><p className="lede">That same care goes into every page and every bid. You deal with the person who plans your project and builds it, from first message to launch.</p></Reveal>
-        </div>
+      <section className="wrap sec" aria-labelledby="count-h">
+        <h2 id="count-h">What you can count on</h2>
+        <ul className="checks">
+          {([['Straight answers', 'If something will not bring you work, we say so before you spend a penny on it.'], ['Yours to own', 'Your website, your domain, your Google listing, your ads account.'], ['No contract', 'No long tie in. If it is not working for you, you stop.'], ['Real reviews only', 'We never write fake reviews or claim clients we do not have.']] as [string, string][]).map(([t, d]) => <li key={t}><h3>{t}</h3><p>{d}</p></li>)}
+        </ul>
       </section>
-      <section className="wrap block" aria-labelledby="m-h">
-        <Head n="02" text="The Desk Method" id="m-h" />
-        <ol className="moves">{method.map(([t, d], i) => <li key={t}><Reveal delay={i * 0.08}><span className="moveword">{t}.</span><p>{d}</p></Reveal></li>)}</ol>
-      </section>
-      <section className="wrap block" aria-labelledby="p-h">
-        <Head n="03" text="What you can count on" id="p-h" />
-        <ol className="grid4">{principles.map(([t, d], i) => <li key={t}><Reveal delay={i * 0.06}><h3>{t}</h3><p>{d}</p></Reveal></li>)}</ol>
-      </section>
-      <Contact n="Next step" title="Let's talk about your business." text="Tell us what you need. We reply the same working day." msg="Hi, I'd like to talk about my business." />
+      <Contact title="Let's talk about your business." text="Send a WhatsApp. We reply the same working day." msg="Hi, I'd like to talk about my business." />
     </>
   )
 }
 
 function Partners() {
-  const who = ['Accountants and bookkeepers', 'Business coaches', 'Sign makers and printers', 'Insurance brokers', 'Business bank managers', 'Co working spaces', 'Shopfitters', 'IT support', 'Anyone with good clients']
-  const steps: [string, string][] = [['Introduce', 'Send us their name and number, or copy us into an email. Ask them first, of course.'], ['We take it from there', 'A straight conversation about what would actually help. No hard sell, and we keep you posted.'], ['You get thanked', 'If they become a client, you receive your thank you once they have paid.']]
+  const steps: [string, string][] = [['Introduce', 'Send us their name and number, or copy us into an email. Ask them first, of course.'], ['We take it from there', 'A straight conversation about what would actually help. No hard sell, and we keep you posted.'], ['You get thanked', 'If they become a client, you get 10% of what they pay in their first year, once they have paid.']]
   return (
     <>
       <section className="hero wrap" id="top">
-        <p className="eyebrow"><ShinyText text="Referral partners" color="#6b6459" shineColor="#1b1a17" speed={4} delay={3} disabled={reduce} /></p>
-        <Display text="Know a business that needs more work?" />
-        <div className="herogrid">
-          <Reveal delay={0.5}><p className="lede">Introduce them to The Tender Desk. We look after their website, reels, ads, enquiries and tenders. You get a thank you of 10% of their first year.</p></Reveal>
-          <Reveal delay={0.65}><div className="ctas"><Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary shimmer" href="#contact">Become a partner</a></Magnet></div></Reveal>
-        </div>
+        <p className="eyebrow">Referral partners</p>
+        <h1>Know a trade that needs more work?</h1>
+        <p className="lede">Introduce them to us. If they become a client, you get a thank you of 10% of what they pay in their first year. Nothing to sign up to, no targets.</p>
+        <WaBtn msg="Hi, I'd like to become a referral partner." label="Become a partner" big />
       </section>
-      <section className="wrap block" aria-labelledby="w-h">
-        <Head n="01" text="People who meet new businesses" id="w-h" />
-        <div className="indent"><Reveal><p className="lede">If business owners ask you who can sort their website or help them win more work, this is for you.</p></Reveal><ul className="chips">{who.map(x => <li key={x}>{x}</li>)}</ul></div>
+      <section className="wrap sec" aria-labelledby="h-h">
+        <h2 id="h-h">How it works</h2>
+        <ol className="steps">{steps.map(([t, d], i) => <li key={t}><span className="stepn">{i + 1}</span><div><h3>{t}</h3><p>{d}</p></div></li>)}</ol>
       </section>
-      <section className="wrap block" aria-labelledby="h-h">
-        <Head n="02" text="Three steps. No paperwork." id="h-h" />
-        <ol className="steps">{steps.map(([t, d], i) => <li key={t}><Reveal delay={i * 0.08}><span className="stepn">{String(i + 1).padStart(2, '0')}</span><h3>{t}</h3><p>{d}</p></Reveal></li>)}</ol>
-      </section>
-      <section className="pricing" aria-labelledby="t-h">
-        <div className="wrap">
-          <div className="sechead"><p className="num">03</p><h2 id="t-h" className="h2">The thank you</h2></div>
-          <div className="pricegrid">
-            <div className="price"><p className="small">Per client introduced</p><p className="amount"><Ticker value="10" /><span className="cur pct">%</span></p><p className="then">of what they pay in their first year.</p></div>
-            <Reveal><p className="lede">Paid once they have paid. Nothing to sign up to, and no targets. You put your reputation on the line with an introduction. We treat it that way.</p></Reveal>
-          </div>
-        </div>
-      </section>
-      <Contact n="04" title="Let's work together." text="Tell us a little about you. We reply the same working day." msg="Hi, I'd like to become a referral partner." />
+      <Contact title="Let's work together." text="Tell us a little about you. We reply the same working day." msg="Hi, I'd like to become a referral partner." />
     </>
   )
 }
 
-/* ---------------- shell ---------------- */
+// ---------- shell ----------
 
-const navItems: [string, string][] = [['customers', 'Lead generation'], ['websites', 'Websites'], ['seo', 'Google SEO'], ['google-business', 'Google Business'], ['motion', 'Reels'], ['tenders', 'Tenders'], ['ai', 'AI'], ['about', 'About']]
-const menuItems: [string, string, string][] = [['customers', 'Lead generation', `${B}customers/`], ['websites', 'Websites', `${B}websites/`], ['seo', 'Google SEO', `${B}seo/`], ['google-business', 'Google Business Profiles', `${B}google-business/`], ['motion', 'Reels and video ads', `${B}motion/`], ['tenders', 'Tenders', `${B}tenders/`], ['google-ads', 'Google Ads', `${B}google-ads/`], ['ai', 'AI', `${B}ai/`], ['work', 'Our work', '/work/'], ['about', 'About', `${B}about/`], ['partners', 'Partners', `${B}partners/`]]
+const navItems: [string, string, string][] = [['customers', 'More calls', `${B}customers/`], ['google-business', 'Google listing', `${B}google-business/`], ['websites', 'Websites', `${B}websites/`], ['prices', 'Prices', `${B}#prices`], ['about', 'About', `${B}about/`]]
+const menuItems: [string, string, string][] = [
+  ['customers', 'Get more calls', `${B}customers/`], ['google-business', 'Google listing fix', `${B}google-business/`], ['seo', 'Google SEO', `${B}seo/`], ['websites', 'Websites', `${B}websites/`], ['prices', 'Prices', `${B}#prices`],
+  ['motion', 'Reels and video ads', `${B}motion/`], ['tenders', 'Tender writing', `${B}tenders/`], ['ai', 'AI receptionist', `${B}ai/`], ['work', 'Our work', '/work/'], ['about', 'About', `${B}about/`], ['partners', 'Referral partners', `${B}partners/`],
+]
 
-function route() {
-  const seg = window.location.pathname.slice(B.length).split('/')[0]
-  return seg
-}
+const route = () => window.location.pathname.slice(B.length).split('/')[0]
 
 export default function App() {
   const r = route()
   const s = services.find(x => x.slug === r)
   const [menu, setMenu] = useState(false)
-  const lenisRef = useRef<Lenis | null>(null)
   const burgerRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    document.documentElement.classList.toggle('menu-on', menu)
-    if (menu) lenisRef.current?.stop(); else lenisRef.current?.start()
+    document.documentElement.classList.toggle('lock', menu)
     if (!menu) return
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setMenu(false); burgerRef.current?.focus() } }
     const onResize = () => { if (window.innerWidth > 900) setMenu(false) }
@@ -516,72 +377,31 @@ export default function App() {
     return () => { window.removeEventListener('keydown', onKey); window.removeEventListener('resize', onResize) }
   }, [menu])
 
-  useEffect(() => {
-    if (reduce) return
-    const lenis = new Lenis({ lerp: 0.1, smoothWheel: true })
-    lenisRef.current = lenis
-    lenis.on('scroll', ScrollTrigger.update)
-    const tick = (t: number) => lenis.raf(t * 1000)
-    gsap.ticker.add(tick)
-    gsap.ticker.lagSmoothing(0)
-    document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(a =>
-      a.addEventListener('click', e => { const id = a.getAttribute('href')!; if (id.length > 1 && document.querySelector(id)) { e.preventDefault(); setMenu(false); lenis.start(); lenis.scrollTo(id, { offset: -16, force: true }) } }))
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>('.shot').forEach(el => gsap.fromTo(el, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }))
-      gsap.utils.toArray<HTMLElement>('.rule').forEach(el =>
-        gsap.fromTo(el, { scaleX: 0 }, { scaleX: 1, ease: 'power2.out', duration: 1.2, scrollTrigger: { trigger: el, start: 'top 90%' } }))
-    })
-    return () => { ctx.revert(); gsap.ticker.remove(tick); lenis.destroy(); lenisRef.current = null }
-  }, [])
-
-  useEffect(() => {
-    const lock = () => { document.documentElement.classList.add('menu-on'); lenisRef.current?.stop() }
-    const unlock = () => { document.documentElement.classList.remove('menu-on'); lenisRef.current?.start() }
-    window.addEventListener('td:lock', lock); window.addEventListener('td:unlock', unlock)
-    return () => { window.removeEventListener('td:lock', lock); window.removeEventListener('td:unlock', unlock) }
-  }, [])
-
-  useEffect(() => {
-    const h = window.location.hash
-    if (h.length < 2) return
-    const t = window.setTimeout(() => {
-      let el: Element | null = null
-      try { el = document.querySelector(h) } catch { return }
-      if (!el) return
-      const y = el.getBoundingClientRect().top + window.scrollY - 16
-      if (lenisRef.current) lenisRef.current.scrollTo(y, { immediate: true, force: true }); else window.scrollTo(0, y)
-      ScrollTrigger.refresh()
-    }, 150)
-    return () => window.clearTimeout(t)
-  }, [])
-
   return (
     <>
       <a className="skip" href="#main">Skip to content</a>
       <header className="nav wrap">
         <a href={B} className="brand" aria-label="The Tender Desk, home">The Tender Desk</a>
         <nav aria-label="Main" className="dnav">
-          {navItems.map(([slug, label]) => <a key={slug} href={`${B}${slug}/`} aria-current={r === slug ? 'page' : undefined}>{label}</a>)}
+          {navItems.map(([slug, label, href]) => <a key={slug} href={href} aria-current={r === slug ? 'page' : undefined}>{label}</a>)}
         </nav>
         <div className="navr">
-          <a className="navcta" href="#contact">Start a project</a>
-          <button ref={burgerRef} className="burger" aria-expanded={menu} aria-controls="menu" aria-label={menu ? 'Close menu' : 'Open menu'} onClick={() => setMenu(!menu)}><i /><i /></button>
+          <a className="navcta" href={wa(HELLO)} target="_blank" rel="noopener"><WaIcon />WhatsApp us</a>
+          <button ref={burgerRef} className="burger" aria-expanded={menu} aria-controls="menu" aria-label={menu ? 'Close menu' : 'Open menu'} onClick={() => setMenu(!menu)}><i /><i /><i /></button>
         </div>
       </header>
       <div id="menu" className={'menu' + (menu ? ' on' : '')} aria-hidden={!menu} inert={!menu}>
         <div className="menubar wrap">
           <a href={B} className="brand" aria-label="The Tender Desk, home" onClick={() => setMenu(false)}>The Tender Desk</a>
-          <button className="burger" aria-expanded="true" aria-label="Close menu" onClick={() => { setMenu(false); burgerRef.current?.focus() }}><i /><i /></button>
+          <button className="burger x" aria-label="Close menu" onClick={() => { setMenu(false); burgerRef.current?.focus() }}><i /><i /></button>
         </div>
         <nav aria-label="Menu" className="menulinks wrap">
-          {menuItems.map(([slug, label, href], i) => (
-            <a key={slug} href={href} style={{ '--i': i } as React.CSSProperties} aria-current={r === slug ? 'page' : undefined} onClick={() => setMenu(false)}>
-              <span className="mi">{String(i + 1).padStart(2, '0')}</span><span className="ml">{label}</span>
-            </a>
+          {menuItems.map(([slug, label, href]) => (
+            <a key={slug} href={href} aria-current={r === slug ? 'page' : undefined} onClick={() => setMenu(false)}>{label}</a>
           ))}
         </nav>
         <div className="menufoot wrap">
-          <a className="btn primary" href="#contact" onClick={() => setMenu(false)}>Start a project</a>
+          <WaBtn big />
           <a className="menumail" href={MAIL}>hello@thetenderdesk.co.uk</a>
         </div>
       </div>
@@ -592,11 +412,11 @@ export default function App() {
 
       <footer className="foot wrap">
         <div className="fcols">
-          <div><p className="brand">The Tender Desk</p><p>Lead generation, websites, Google SEO, reels, tenders and AI for businesses that want more of the right work.</p><p>Founded and run by Yusuf Imthiyas.</p></div>
-          <div><p className="small">Services</p>{services.map(x => <a key={x.slug} href={`${B}${x.slug}/`}>{x.name}</a>)}</div>
-          <div><p className="small">Company</p><a href={`${B}about/`}>About</a><a href="/work/">Our work</a><a href={`${B}partners/`}>Referral partners</a><a href={MAIL}>hello@thetenderdesk.co.uk</a></div>
+          <div><p className="brand">The Tender Desk</p><p>More calls, a proper website and a Google listing that works, for small trades.</p><p>Founded and run by Yusuf Imthiyas.</p></div>
+          <div><p className="fh">Services</p>{services.slice(0, 4).map(x => <a key={x.slug} href={`${B}${x.slug}/`}>{x.name}</a>)}<a href={`${B}#also`}>Everything else</a></div>
+          <div><p className="fh">Company</p><a href={`${B}about/`}>About</a><a href="/work/">Our work</a><a href={`${B}partners/`}>Referral partners</a><a href={MAIL}>hello@thetenderdesk.co.uk</a></div>
         </div>
-        <div className="fbase"><p>The Desk Method: Find. Write. Win. Build.</p><p>© {new Date().getFullYear()} The Tender Desk</p></div>
+        <p className="fbase">© {new Date().getFullYear()} The Tender Desk</p>
       </footer>
     </>
   )
