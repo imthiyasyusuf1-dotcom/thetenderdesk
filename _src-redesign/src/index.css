@@ -40,7 +40,9 @@ section{scroll-margin-top:16px}
 
 /* hero */
 .hero{padding:clamp(48px,10vh,110px) 0 clamp(48px,8vh,90px)}
-.homehero{min-height:calc(100svh - 81px);display:flex;flex-direction:column;justify-content:center;padding-block:40px 64px}
+.homehero{display:flex;flex-direction:column;justify-content:flex-start;padding-block:clamp(40px,9vh,96px) clamp(48px,8vh,80px)}
+.homehero .eyebrow{margin:0 0 14px}
+.homehero .herolink{margin-top:18px;font-weight:600;color:var(--text);text-decoration:underline;text-underline-offset:4px;align-self:flex-start}
 .homehero .btn{align-self:flex-start}
 .homehero{box-shadow:0 0 0 100vmax var(--soft);clip-path:inset(0 -100vmax);background:var(--soft)}
 .homehero+.sec{border-top:0}
@@ -182,7 +184,7 @@ section{scroll-margin-top:16px}
  .dnav,.navcta{display:none}
  .burger{display:block;margin-right:-12px}
  .nav{padding:12px 0}
- .homehero{min-height:calc(100svh - 73px);padding-block:24px 96px}
+ .homehero{padding-block:36px 56px}
  .homehero .btn{align-self:stretch}
  .heroticks{flex-direction:column;gap:12px;margin-top:30px}
  .hero h1{font-size:clamp(40px,11vw,56px)}

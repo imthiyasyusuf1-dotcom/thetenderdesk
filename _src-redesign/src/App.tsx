@@ -90,9 +90,11 @@ function Home() {
   return (
     <>
       <section className="hero homehero wrap" id="top">
+        <p className="eyebrow">For plumbers, builders, electricians and every local trade</p>
         <h1>More calls from local customers.</h1>
         <p className="lede">Your first month is free. You only carry on if the phone is ringing.</p>
         <WaBtn big />
+        <a className="herolink" href="#prices">See our prices</a>
       </section>
 
       <section className="wrap sec" id="services" aria-labelledby="svc-h">
