@@ -60,30 +60,31 @@ const Founder = () => (
 // ---------- home ----------
 
 const three: { slug: string; title: string; text: string; price: string; sub: string }[] = [
-  { slug: 'customers', title: 'Get more calls', text: 'We run Google ads for your trade, so people nearby searching for what you do ring your phone. The calls come straight to you and are never shared.', price: 'First month free', sub: 'Then a set monthly fee, agreed up front.' },
-  { slug: 'google-business', title: 'Get found on Google', text: 'We sort your Google listing so you show up on Maps with your reviews, and set your website up to climb the search results.', price: '£49', sub: 'One off Google listing fix.' },
-  { slug: 'websites', title: 'A proper website', text: 'A clean site that works on a phone and makes it easy to ring you. We build you a free mock‑up first, so you see it before you pay.', price: '£25', sub: 'For the first 6 months, then £75 a year.' },
+  { slug: 'customers', title: 'Get more calls', text: 'We run Google ads for your trade, so people nearby searching for what you do ring your phone. The calls come straight to you and are never shared.', price: 'Monthly', sub: 'A set fee agreed with you, paid up front.' },
+  { slug: 'google-business', title: 'Get found on Google', text: 'We sort your Google listing so you show up on Maps with your reviews, and set your website up to climb the search results.', price: '£49', sub: 'One off, paid up front.' },
+  { slug: 'websites', title: 'A proper website', text: 'A clean site that works on a phone, shows off your work and makes it easy to ring you.', price: '£25', sub: 'For the first 6 months, then £75 a year.' },
 ]
 
 const steps: [string, string][] = [
-  ['Message us', 'Send a WhatsApp. Tell us your trade and the jobs you want more of.'],
-  ['We set it up', 'We do all of it. You see everything and say yes before it goes live.'],
+  ['Message us', 'Send a WhatsApp. Tell us your trade and what you need.'],
+  ['Pay up front', 'We agree a clear price. You pay before we start, so there are no surprises later.'],
+  ['We set it up', 'We do all of it. You see everything before it goes live.'],
   ['Your phone rings', 'Customers call you direct. You get on with the work.'],
 ]
 
 const prices: [string, string, string][] = [
-  ['More calls (Google ads)', 'First month free', 'Then a set monthly fee, agreed with you before anything starts. The ad money goes to Google on your own card, and you choose the budget.'],
-  ['Google listing fix', '£49', 'One off. Your listing set up or fixed, plus a review QR card.'],
-  ['Website', '£25', 'Site and hosting for the first 6 months, then £75 a year. No contract.'],
-  ['Google SEO', 'Ask us', 'Priced to your site after a quick look.'],
+  ['More calls (Google ads)', 'Monthly', 'A set monthly fee, agreed with you before we start and paid up front each month. The ad money goes to Google on your own card, and you choose the budget.'],
+  ['Google listing fix', '£49', 'One off, paid up front. Your listing set up or fixed, plus a review QR card.'],
+  ['Website', '£25', 'Paid up front. Site and hosting for the first 6 months, then £75 a year. No contract.'],
+  ['Google SEO', 'Ask us', 'A fixed price after a quick look at your site, paid up front.'],
 ]
 
 const alsoDo: [string, string, string][] = [
   ['motion', 'Reels and video ads', 'Short videos for Instagram and TikTok.'],
   ['tenders', 'Tender writing', 'Bids for council and public contracts.'],
   ['ai', 'AI receptionist', 'Answers customers and books jobs when you cannot.'],
-  ['google-ads', 'Google Ads only', 'Already have a site? We just run the ads.'],
-  ['care', 'Website care', 'Changes, updates and hosting looked after.'],
+  ['google-ads', 'Google Ads only', 'Already have a website? We just run the ads.'],
+  ['care', 'Website care', 'Hosting, updates and small changes looked after.'],
 ]
 
 function Home() {
@@ -92,7 +93,7 @@ function Home() {
       <section className="hero homehero wrap" id="top">
         <p className="eyebrow">For plumbers, builders and electricians</p>
         <h1>More calls from local customers.</h1>
-        <p className="lede">Your first month is free. You only carry on if the phone is ringing.</p>
+        <p className="lede">Google ads, a proper website and a Google listing that works. Clear prices, paid up front, no contract.</p>
         <WaBtn big />
         <a className="herolink" href="#prices">See our prices</a>
       </section>
@@ -123,7 +124,7 @@ function Home() {
 
       <section className="wrap sec" id="prices" aria-labelledby="prices-h">
         <h2 id="prices-h">Prices</h2>
-        <p className="secsub">Real prices, up front. You see a free mock‑up of your website before you pay a penny.</p>
+        <p className="secsub">Clear prices. Everything is paid up front, before we start, so there are never any surprise bills.</p>
         <ul className="pricelist">
           {prices.map(([n, p, d]) => <li key={n}><span className="pn">{n}</span><span className="pp">{p}</span><span className="pd">{d}</span></li>)}
         </ul>
@@ -200,7 +201,7 @@ function Reels() {
   return (
     <section className="wrap sec" id="reels" aria-labelledby="reels-h">
       <h2 id="reels-h">Reels we have made</h2>
-      <p className="secsub">From The Tender Desk feed, shown without their songs. Tap one to watch it.</p>
+      <p className="secsub">Short videos we have made. Tap one to watch it.</p>
       <ul className="reelrow">
         {reels.map(([name, t], i) => (
           <li key={name}>
@@ -211,7 +212,6 @@ function Reels() {
           </li>
         ))}
       </ul>
-      <a className="textlink" href="https://www.instagram.com/thetenderdesk.co.uk/" target="_blank" rel="noopener"><u>More on our Instagram</u> <span aria-hidden="true">↗</span></a>
       {open !== null && <ReelPlayer name={reels[open][0]} label={reels[open][1]} onClose={() => setOpen(null)} />}
     </section>
   )
@@ -266,7 +266,7 @@ function ServicePage({ s }: { s: Service }) {
         <p className="eyebrow">{s.eyebrow}</p>
         <h1>{s.title}</h1>
         <p className="lede">{s.lede}</p>
-        <WaBtn msg={s.cta.msg} label={s.cta.label} big />
+        <WaBtn msg={s.cta.msg} big />
       </section>
 
       <section className="wrap sec" aria-label="Price"><PriceBox s={s} /></section>
@@ -314,7 +314,7 @@ function About() {
         <p className="eyebrow">About</p>
         <h1>Founded and run by Yusuf Imthiyas.</h1>
         <p className="lede">The Tender Desk helps small trades get more work: more calls from Google, a proper website and a Google listing that shows up. One person, plain words, real prices.</p>
-        <WaBtn msg="Hi, I'd like to talk about my business." label="Say hello on WhatsApp" big />
+        <WaBtn msg="Hi, I'd like to talk about my business." big />
       </section>
       <section className="wrap sec" aria-labelledby="story-h">
         <h2 id="story-h">Why it exists</h2>
@@ -342,7 +342,7 @@ function Partners() {
         <p className="eyebrow">Referral partners</p>
         <h1>Know a trade that needs more work?</h1>
         <p className="lede">Introduce them to us. If they become a client, you get a thank you of 10% of what they pay in their first year. Nothing to sign up to, no targets.</p>
-        <WaBtn msg="Hi, I'd like to become a referral partner." label="Become a partner" big />
+        <WaBtn msg="Hi, I'd like to become a referral partner." big />
       </section>
       <section className="wrap sec" aria-labelledby="h-h">
         <h2 id="h-h">How it works</h2>
