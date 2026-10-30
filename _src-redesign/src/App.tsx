@@ -60,7 +60,7 @@ const Founder = () => (
 // ---------- home ----------
 
 const three: { slug: string; title: string; text: string; price: string; sub: string }[] = [
-  { slug: 'customers', title: 'Get more calls', text: 'We run Google ads for your trade, so people nearby searching for what you do ring your phone. The calls come straight to you and are never shared.', price: 'Monthly', sub: 'A set fee agreed with you, paid up front.' },
+  { slug: 'customers', title: 'Get more calls', text: 'We run Google ads for your trade, so people nearby searching for what you do ring your phone. The calls come straight to you and are never shared.', price: 'Weekly', sub: 'Ads included, paid up front each week.' },
   { slug: 'google-business', title: 'Get found on Google', text: 'We sort your Google listing so you show up on Maps with your reviews, and set your website up to climb the search results.', price: '£49', sub: 'One off, paid up front.' },
   { slug: 'websites', title: 'A proper website', text: 'A clean site that works on a phone, shows off your work and makes it easy to ring you.', price: '£25', sub: 'For the first 6 months, then £75 a year.' },
 ]
@@ -73,7 +73,7 @@ const steps: [string, string][] = [
 ]
 
 const prices: [string, string, string][] = [
-  ['More calls (Google ads)', 'Monthly', 'A set monthly fee, agreed with you before we start and paid up front each month. The ad money goes to Google on your own card, and you choose the budget.'],
+  ['More calls (Google ads)', 'Weekly', 'One set weekly price, agreed before we start and paid up front each week. We pay Google for the ads and run them for you.'],
   ['Google listing fix', '£49', 'One off, paid up front. Your listing set up or fixed, plus a review QR card.'],
   ['Website', '£25', 'Paid up front. Site and hosting for the first 6 months, then £75 a year. No contract.'],
   ['Google SEO', 'Ask us', 'A fixed price after a quick look at your site, paid up front.'],
@@ -298,7 +298,7 @@ function About() {
       <section className="wrap sec" aria-labelledby="count-h">
         <h2 id="count-h">What you can count on</h2>
         <ul className="checks">
-          {([['Straight answers', 'If something will not bring you work, we say so before you spend a penny on it.'], ['Yours to own', 'Your website, your domain, your Google listing, your ads account.'], ['No contract', 'No long tie in. If it is not working for you, you stop.'], ['Real reviews only', 'We never write fake reviews or claim clients we do not have.']] as [string, string][]).map(([t, d]) => <li key={t}><h3>{t}</h3><p>{d}</p></li>)}
+          {([['Straight answers', 'If something will not bring you work, we say so before you spend a penny on it.'], ['Yours to own', 'Your website, your domain, your Google listing.'], ['No contract', 'No long tie in. If it is not working for you, you stop.'], ['Real reviews only', 'We never write fake reviews or claim clients we do not have.']] as [string, string][]).map(([t, d]) => <li key={t}><h3>{t}</h3><p>{d}</p></li>)}
         </ul>
       </section>
       <Contact title="Let's talk about your business." text="Send a WhatsApp. We reply the same working day." msg="Hi, I'd like to talk about my business." />
