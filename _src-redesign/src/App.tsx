@@ -100,7 +100,7 @@ function Home() {
 
       <section className="wrap sec" id="services" aria-labelledby="svc-h">
         <h2 id="svc-h">What we do for trades</h2>
-        <p className="secsub">For plumbers, builders, electricians, fitters, roofers and every other local trade.</p>
+        <p className="secsub">Pick what you need. Clear prices, all paid up front.</p>
         <ul className="boxes">
           {three.map(x => (
             <li key={x.slug} className="box">
