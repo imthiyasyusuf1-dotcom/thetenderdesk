@@ -9,7 +9,7 @@ const root = new URL('../', import.meta.url)
 const html = fs.readFileSync(new URL('index.html', src), 'utf8')
 const D = 'More calls for local trades: Google ads, a proper website from £25 and a £49 Google listing fix. Clear prices, paid up front. Founded and run by Yusuf Imthiyas.'
 const pages = {
-  '': ['The Tender Desk | More calls for local trades', 'More calls from local customers for plumbers, builders, electricians and every local trade. Google ads, websites from £25 and a £49 Google listing fix. Clear prices, paid up front.'],
+  '': ['The Tender Desk | More calls for local trades', 'More calls from local customers for plumbers, builders, electricians, fitters and every local trade. Google ads, websites from £25 and a £49 Google listing fix. Clear prices, paid up front.'],
   customers: ['Get More Calls for Your Trade | The Tender Desk', 'We run Google ads for your trade so people nearby ring your phone. Calls come straight to you, never shared. A set monthly fee, paid up front.'],
   'google-business': ['Google Listing Fix for Trades | The Tender Desk', 'Your Google listing set up or fixed so you show up properly on Maps with your reviews, plus a review QR card. A one off £49.'],
   websites: ['Websites for Trades | The Tender Desk', 'A proper website that works on a phone and makes it easy to ring you. £25 up front for the first 6 months including hosting, then £75 a year.'],

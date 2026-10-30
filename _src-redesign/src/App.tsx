@@ -91,7 +91,7 @@ function Home() {
   return (
     <>
       <section className="hero homehero wrap" id="top">
-        <p className="eyebrow">For plumbers, builders and electricians</p>
+        <p className="eyebrow">For plumbers, builders, electricians and fitters</p>
         <h1>More calls from local customers.</h1>
         <p className="lede">Google ads, a proper website and a Google listing that works. Clear prices, paid up front, no contract.</p>
         <WaBtn big />
@@ -100,7 +100,7 @@ function Home() {
 
       <section className="wrap sec" id="services" aria-labelledby="svc-h">
         <h2 id="svc-h">What we do for trades</h2>
-        <p className="secsub">For plumbers, builders, electricians, roofers and every other local trade.</p>
+        <p className="secsub">For plumbers, builders, electricians, fitters, roofers and every other local trade.</p>
         <ul className="boxes">
           {three.map(x => (
             <li key={x.slug} className="box">
@@ -217,33 +217,6 @@ function Reels() {
   )
 }
 
-const work: [string, string, string, string][] = [
-  ['hartley', 'Hartley Plumbing and Heating', 'Plumbing and heating', '/studio/hartley/'],
-  ['builder', 'Ferrow and Kell', 'Builders', '/s/builder/'],
-  ['oakfield', 'Oakfield Barber Co.', 'Barbers', '/studio/oakfield/'],
-  ['ironclad', 'Ironclad Detailing', 'Car detailing', '/studio/ironclad/'],
-]
-
-function Sites() {
-  return (
-    <section className="wrap sec" id="work" aria-labelledby="work-h">
-      <h2 id="work-h">Sites we have built</h2>
-      <ul className="exgrid">
-        {work.map(([img, name, trade, href]) => (
-          <li key={img}>
-            <a className="excard" href={href} target="_blank" rel="noopener">
-              <span className="exshot"><img src={`${B}img/sites/${img}.webp`} width={540} height={1004} alt={`${name} website on a phone`} loading="lazy" decoding="async" /></span>
-              <span className="extrade">{trade}</span>
-              <span className="exname">{name}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <a className="textlink" href="/work/"><u>See all our work</u> <span aria-hidden="true">→</span></a>
-    </section>
-  )
-}
-
 // ---------- service pages ----------
 
 function PriceBox({ s }: { s: Service }) {
@@ -289,7 +262,6 @@ function ServicePage({ s }: { s: Service }) {
         </section>
       )}
 
-      {s.slug === 'websites' && <Sites />}
       {s.slug === 'motion' && <Reels />}
 
       <section className="wrap sec" aria-labelledby="faq-h">
@@ -358,7 +330,7 @@ function Partners() {
 const navItems: [string, string, string][] = [['customers', 'More calls', `${B}customers/`], ['google-business', 'Google listing', `${B}google-business/`], ['websites', 'Websites', `${B}websites/`], ['prices', 'Prices', `${B}#prices`], ['about', 'About', `${B}about/`]]
 const menuItems: [string, string, string][] = [
   ['customers', 'Get more calls', `${B}customers/`], ['google-business', 'Google listing fix', `${B}google-business/`], ['seo', 'Google SEO', `${B}seo/`], ['websites', 'Websites', `${B}websites/`], ['prices', 'Prices', `${B}#prices`],
-  ['motion', 'Reels and video ads', `${B}motion/`], ['tenders', 'Tender writing', `${B}tenders/`], ['ai', 'AI receptionist', `${B}ai/`], ['work', 'Our work', '/work/'], ['about', 'About', `${B}about/`], ['partners', 'Referral partners', `${B}partners/`],
+  ['motion', 'Reels and video ads', `${B}motion/`], ['tenders', 'Tender writing', `${B}tenders/`], ['ai', 'AI receptionist', `${B}ai/`], ['about', 'About', `${B}about/`], ['partners', 'Referral partners', `${B}partners/`],
 ]
 
 const route = () => window.location.pathname.slice(B.length).split('/')[0]
@@ -416,7 +388,7 @@ export default function App() {
         <div className="fcols">
           <div><p className="brand">The Tender Desk</p><p>More calls, a proper website and a Google listing that works, for small trades.</p><p>Founded and run by Yusuf Imthiyas.</p></div>
           <div><p className="fh">Services</p>{services.slice(0, 4).map(x => <a key={x.slug} href={`${B}${x.slug}/`}>{x.name}</a>)}<a href={`${B}#also`}>Everything else</a></div>
-          <div><p className="fh">Company</p><a href={`${B}about/`}>About</a><a href="/work/">Our work</a><a href={`${B}partners/`}>Referral partners</a><a href={MAIL}>hello@thetenderdesk.co.uk</a></div>
+          <div><p className="fh">Company</p><a href={`${B}about/`}>About</a><a href={`${B}partners/`}>Referral partners</a><a href={MAIL}>hello@thetenderdesk.co.uk</a></div>
         </div>
         <p className="fbase">© {new Date().getFullYear()} The Tender Desk</p>
       </footer>
