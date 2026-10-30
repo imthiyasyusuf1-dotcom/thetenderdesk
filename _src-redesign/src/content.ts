@@ -12,7 +12,7 @@ export type Service = {
   eyebrow: string
   title: string
   lede: string
-  price: { big?: string; label: string; note: string }
+  price: { big?: string; label: string; note: string; headline?: string; short?: string; text?: string; title?: string }
   visual: Visual
   listTitle: string
   list: [string, string][]
@@ -28,10 +28,50 @@ export type Service = {
 
 export const services: Service[] = [
   {
+    slug: 'customers', nav: 'Lead generation', name: 'Lead generation', eyebrow: 'Lead generation for trades',
+    title: 'More people ringing you for work.',
+    lede: 'When someone searches for your trade, we make sure your phone is the one that rings. We run the Google ads, the calls come straight to you, and your first month with us is free, so you see it working before you pay us a penny.',
+    price: { headline: 'First month free', short: 'First month free', title: 'Try it for a month', label: 'Our fee', note: 'Then a set monthly fee, agreed before anything goes live. Ask us.', text: 'Your first month of our work is free, so you can see the calls coming in before you pay us anything. After that it is a set monthly fee, agreed with you up front, so there are no surprises. The ad money goes to Google on your own card and you choose the budget.' },
+    visual: 'ads',
+    listTitle: 'How it works for you.',
+    list: [
+      ['We run your Google ads', 'We set up and look after the ads for your trade, so you show up when people search for what you do.'],
+      ['Calls go to your phone', 'People tap your ad and ring you direct. No middleman, no shared leads, no waiting.'],
+      ['Your own page', 'Every ad sends people to a page with your name, your work and your number, built by us.'],
+      ['You set the budget', 'The ad money goes to Google on your own card. Spend more in busy months, less when you are booked up.'],
+      ['First month free', 'Our work costs you nothing for the first month, so you see what it brings in before you commit.'],
+      ['Plain updates', 'You hear how many calls came in and what they cost, in normal words.'],
+    ],
+    extraTitle: 'Show up for free as well.',
+    extraIntro: 'Ads get you calls today. Your Google listing and your website bring calls in for free over time. We sort those too: a one off £49 Google listing fix, and Google SEO so your site climbs the results.',
+    extra: [
+      'Your Google listing fixed up so it looks right and says what you do',
+      'A QR card for the counter or the van that takes happy customers straight to your review page',
+      'Google SEO so your own website ranks for your trade',
+      'Real reviews from real customers only. Never fake or paid ones',
+    ],
+    stepsTitle: 'Simple from day one.',
+    steps: [
+      ['Chat', 'Tell us your trade and the jobs you want more of.'],
+      ['Set up', 'We build the ads and your page. You approve it before anything goes live.'],
+      ['Calls', 'People searching for your trade ring your phone.'],
+      ['Decide', 'After your free month, carry on for a set monthly fee or walk away.'],
+    ],
+    faqs: [
+      ['What do I pay?', 'Your first month with us is free. After that it is a set monthly fee, agreed with you before anything starts, so ask us. Separately, you pay Google for the ads on your own card, and you choose the budget.'],
+      ['Are the leads shared with other firms?', 'No. The ads are yours and the calls come straight to your phone. We do not sell the same enquiry to anyone else.'],
+      ['Who owns the ads account?', 'You do. It is your account and your card, and you can see everything.'],
+      ['Which trades is this for?', 'Driveways, roofing, kitchens, landscaping, plumbing, electrics and other trades where one job is worth a lot.'],
+      ['What if it is not working?', 'We tell you straight and fix it, or tell you to stop. You will never be kept paying for something that is not bringing work in.'],
+    ],
+    cta: { title: 'Get the phone ringing.', text: 'Tell us your trade and the jobs you want more of. Your first month is free.', label: 'Get more calls', msg: "Hi, I'd like more customers for my business through lead generation." },
+    summary: 'Google ads for your trade, with calls straight to your phone. Never shared with other firms.',
+  },
+  {
     slug: 'websites', nav: 'Websites', name: 'Websites', eyebrow: 'Websites',
     title: 'Websites that win work.',
     lede: 'Custom websites for trades and local businesses. Designed from scratch, fast on a phone and built to turn a visit into a call, a booking or a quote request. We build a free mock-up first, so you see your site before you pay.',
-    price: { big: '25', label: 'First 6 months, site and hosting', note: 'Then £75 a year. No contract.' },
+    price: { big: '25', short: '£25 first 6 months', title: 'One simple price', text: 'Your website, built and live, with hosting for the first 6 months. After that it is £75 a year to keep it running. No contract and no lock in.', label: 'First 6 months, site and hosting', note: 'Then £75 a year. No contract.' },
     visual: 'site',
     listTitle: 'Everything a site needs to sell.',
     list: [
@@ -60,44 +100,65 @@ export const services: Service[] = [
     summary: 'Custom sites designed from scratch, fast on a phone and built to turn a visit into an enquiry.',
   },
   {
-    slug: 'customers', nav: 'More customers', name: 'More customers', eyebrow: 'More customers',
-    title: 'More people ringing you for work.',
-    lede: 'When someone searches for your trade, we make sure your phone is the one that rings. We run the Google ads, the calls come straight to you, and you only pay us when you are getting jobs from it.',
-    price: { label: 'Pay only when it works', note: 'You pay Google for the ads. Our fee only starts once the jobs are coming in.' },
-    visual: 'ads',
-    listTitle: 'How it works for you.',
+    slug: 'google-business', nav: 'Google Business', name: 'Google Business Profiles', eyebrow: 'Google listing fix',
+    title: 'Show up on Maps and search.',
+    lede: 'For most trades the Google listing gets more views than the website. When someone looks you up on Maps, it should look right, say what you do and show real reviews. We set it up or fix it for a one off £49.',
+    price: { big: '49', short: '£49 one off', title: 'One simple price', label: 'One off Google listing fix', note: 'No monthly fee. Pay once.', text: 'For £49 we set up or fix your Google listing, give you a QR card that takes happy customers to your review page, and a short text you can send to past customers asking for a review. Pay once, no monthly fee.' },
+    visual: 'gbp',
+    listTitle: 'A profile that gets the call.',
     list: [
-      ['We run your Google ads', 'We set up and look after the ads for your trade, so you show up when people search for what you do.'],
-      ['Calls go to your phone', 'People tap your ad and ring you direct. No middleman, no forms, no waiting.'],
-      ['You pay Google for the ads', 'The ad money goes to Google on your own card, and you set the budget.'],
-      ['We only get paid when you do', 'Nothing to us until jobs are coming in. If the phone does not ring, you do not pay our fee.'],
-      ['Your own page', 'Every ad sends people to a page with your name, your work and your number.'],
-      ['Plain updates', 'You hear how many calls came in and what they cost, in normal words.'],
+      ['Created or claimed', 'Your profile created or claimed, and verified.'],
+      ['Set up right', 'Categories, services, photos and hours filled in properly.'],
+      ['Review QR card', 'A card for the counter or the van that takes happy customers straight to your review page.'],
+      ['Review text', 'A short message you send to past customers asking for a review.'],
+      ['Linked up', 'Connected to your website so people can find the rest of your work.'],
     ],
-    extraTitle: 'Want to climb Google Maps first?',
-    extraIntro: 'The firm at the top of the map gets the calls, and that is mostly down to reviews. Our door opener is Get more Google reviews, for a one off £49.',
-    extra: [
-      'We fix up your Google listing so it looks right and says what you do',
-      'A QR card for the counter or the van that takes happy customers straight to your review page',
-      'A short text you send to past customers asking for a review',
-      'Real reviews from real customers only. Never fake or paid ones, Google bans them and it is against the law',
-    ],
-    stepsTitle: 'Simple from day one.',
+    stepsTitle: 'Sorted in four steps.',
     steps: [
-      ['Chat', 'Tell us your trade and the jobs you want more of.'],
-      ['Set up', 'We build the ads and your page. You approve it before anything goes live.'],
-      ['Calls', 'People searching for your trade ring your phone.'],
-      ['Pay', 'You pay Google for the ads. Our fee only starts when you are getting jobs.'],
+      ['Check', 'We look at what customers see when they search for you now.'],
+      ['Claim', 'Your profile created or claimed and verified in your name.'],
+      ['Fill in', 'Categories, services, photos and hours set up right.'],
+      ['Grow', 'Review requests going out, and the profile linked to your site.'],
     ],
     faqs: [
-      ['What do I pay?', 'You pay Google for the ads on your own card, and you choose the budget. Our fee only starts once you are getting jobs from it.'],
-      ['What if I get no calls?', 'Then you do not pay our fee. We would rather say so and fix it than take your money.'],
-      ['Who owns the ads account?', 'You do. It is your account and your card, and you can see everything.'],
-      ['Which trades is this for?', 'Driveways, roofing, kitchens, landscaping and other trades where one job is worth a lot.'],
-      ['Are the reviews real?', 'Always. We help you ask your real customers. We never write or buy reviews.'],
+      ['Who owns the profile?', 'You do. It is set up in your name, and we work on it with your permission.'],
+      ['What do I get for £49?', 'Your listing set up or fixed, a review QR card and a review request text. Pay once, no monthly fee.'],
+      ['Will you write reviews for me?', 'Never. Fake or paid reviews are banned by Google and against the law. We help you ask your real customers.'],
+      ['Do I need a website too?', 'Not to start. It works best linked to a site, which we can build.'],
     ],
-    cta: { title: 'Get the phone ringing.', text: 'Tell us your trade and we will show you what it could look like.', label: 'Get more customers', msg: "Hi, I'd like more customers for my business." },
-    summary: 'We run Google ads so people searching for your trade ring you. You pay Google for the ads, and our fee only starts when you are getting jobs.',
+    cta: { title: 'Sort my Google profile.', text: 'Tell us your business name and we will look at your profile for you.', label: 'Sort my profile', msg: "Hi, I'd like help with my Google Business Profile." },
+    summary: 'Your Google listing set up or fixed so you show up properly on Maps, with a review QR card for happy customers.',
+  },
+  {
+    slug: 'seo', nav: 'Google SEO', name: 'Google SEO', eyebrow: 'Google SEO optimisation',
+    title: 'Higher up Google. Found by AI.',
+    lede: 'When someone searches for your trade, your website should be on the first page. We set your site up so Google understands exactly what you do, and so the AI answers people now ask, like ChatGPT and Gemini, recommend you too.',
+    price: { short: 'Ask us', headline: 'Ask us', title: 'Priced to your site', label: 'Google SEO', note: 'SEO basics come free with every website we build.', text: 'Every site and every trade is different, so we do not make up a number. Send us your site, we take a quick look and give you a clear price before anything starts.' },
+    visual: 'seo',
+    listTitle: 'Built for how people search now.',
+    list: [
+      ['Structured data', 'Organization, LocalBusiness or ProfessionalService, Service and Review schema so search engines read your business correctly.'],
+      ['FAQ markup', 'Real customer questions answered on the page and marked up with FAQPage schema.'],
+      ['llms.txt', 'A plain summary file at your site root that tells AI assistants what you do and where to look.'],
+      ['Search structure', 'One clear page per service, fast load times, clean titles and internal links.'],
+      ['Search Console', 'Google Search Console and Bing Webmaster Tools set up, with your sitemap submitted.'],
+      ['Monthly checks', 'Rankings, AI mentions and enquiries reviewed, then improved.'],
+    ],
+    stepsTitle: 'Measured, then improved.',
+    steps: [
+      ['Audit', 'How search engines and AI assistants read your site today.'],
+      ['Structure', 'Schema, FAQ markup, llms.txt and one page per service.'],
+      ['Submit', 'Search Console and Bing Webmaster Tools set up, sitemap in.'],
+      ['Review', 'Rankings, AI mentions and enquiries checked every month.'],
+    ],
+    faqs: [
+      ['How much is it?', 'It depends on your site and how busy your trade is online, so ask us and we will give you a clear price after a quick look. SEO basics come free with every website we build.'],
+      ['How long does it take?', 'Google takes time. Expect to see movement over a few months, not days. If you need calls this week, lead generation is the faster route.'],
+      ['What is llms.txt?', 'A plain summary file at your site root that tells AI assistants what you do and where to look.'],
+      ['Does it work on my current site?', 'Usually, yes. If the site makes it hard, we will tell you straight before you spend on it.'],
+    ],
+    cta: { title: 'Get found.', text: 'Tell us what you do and we will show you how search and AI see you now.', label: 'Get found', msg: "Hi, I'd like help being found on Google and AI search." },
+    summary: 'Your website set up to rank on Google and be recommended by AI answers, checked every month.',
   },
   {
     slug: 'motion', nav: 'Reels', name: 'Motion, ads and reels', eyebrow: 'Motion design, video ads and reels',
@@ -232,62 +293,6 @@ export const services: Service[] = [
     summary: 'An assistant trained on your business that answers, qualifies and books customers 24/7, plus automations that save hours.',
   },
   {
-    slug: 'google-business', nav: 'Google Business', name: 'Google Business Profile', eyebrow: 'Google Business Profile',
-    title: 'Show up on Maps and search.',
-    lede: 'For many businesses the Google profile gets more views than the website. We set it up and optimise it properly, with reviews that count.',
-    price: { label: 'Quoted after a quick chat', note: 'Often added alongside a new website.' },
-    visual: 'gbp',
-    listTitle: 'A profile that gets the call.',
-    list: [
-      ['Created or claimed', 'Your profile created or claimed, and verified.'],
-      ['Set up right', 'Categories, services, photos and hours filled in properly.'],
-      ['Reviews', 'A simple review request system for happy customers.'],
-      ['Linked and tracked', 'Connected to your website, with calls and clicks tracked.'],
-    ],
-    stepsTitle: 'Sorted in four steps.',
-    steps: [
-      ['Check', 'We look at what customers see when they search for you now.'],
-      ['Claim', 'Your profile created or claimed and verified in your name.'],
-      ['Fill in', 'Categories, services, photos and hours set up right.'],
-      ['Grow', 'Review requests going out, and the profile linked to your site.'],
-    ],
-    faqs: [
-      ['Who owns the profile?', 'You do. It is set up in your name, and we work on it with your permission.'],
-      ['Do I need a website too?', 'Not to start. It works best linked to a site, which we can build.'],
-    ],
-    cta: { title: 'Sort my Google profile.', text: 'Tell us your business name and we will look at your profile for you.', label: 'Sort my profile', msg: "Hi, I'd like help with my Google Business Profile." },
-    summary: 'Your Google Business Profile set up and optimised, so you show up properly on Maps and search with reviews that count.',
-  },
-  {
-    slug: 'seo', nav: 'SEO', name: 'SEO and AI search', eyebrow: 'SEO and AI search',
-    title: 'Found on Google. Quoted by AI.',
-    lede: 'People now ask ChatGPT, Gemini and Google\u2019s AI answers who to call. We structure your site so search engines and AI assistants understand exactly what you do, and recommend you.',
-    price: { label: 'Quoted after a quick chat', note: 'SEO basics come with every website we build.' },
-    visual: 'seo',
-    listTitle: 'Built for how people search now.',
-    list: [
-      ['Structured data', 'Organization, LocalBusiness or ProfessionalService, Service and Review schema so search engines read your business correctly.'],
-      ['FAQ markup', 'Real customer questions answered on the page and marked up with FAQPage schema.'],
-      ['llms.txt', 'A plain summary file at your site root that tells AI assistants what you do and where to look.'],
-      ['Search structure', 'One clear page per service, fast load times, clean titles and internal links.'],
-      ['Search Console', 'Google Search Console and Bing Webmaster Tools set up, with your sitemap submitted.'],
-      ['Monthly checks', 'Rankings, AI mentions and enquiries reviewed, then improved.'],
-    ],
-    stepsTitle: 'Measured, then improved.',
-    steps: [
-      ['Audit', 'How search engines and AI assistants read your site today.'],
-      ['Structure', 'Schema, FAQ markup, llms.txt and one page per service.'],
-      ['Submit', 'Search Console and Bing Webmaster Tools set up, sitemap in.'],
-      ['Review', 'Rankings, AI mentions and enquiries checked every month.'],
-    ],
-    faqs: [
-      ['What is llms.txt?', 'A plain summary file at your site root that tells AI assistants what you do and where to look.'],
-      ['Does it work on my current site?', 'Usually, yes. If the site makes it hard, we will tell you straight before you spend on it.'],
-    ],
-    cta: { title: 'Get found.', text: 'Tell us what you do and we will show you how search and AI see you now.', label: 'Get found', msg: "Hi, I'd like help being found on Google and AI search." },
-    summary: 'Found on Google and quoted by AI assistants: structured data, FAQ markup, llms.txt and pages built for how people search now.',
-  },
-  {
     slug: 'care', nav: 'Care plans', name: 'Care plans', eyebrow: 'Care plans',
     title: 'Hosting and care, handled.',
     lede: 'A website is never finished. Our care plan keeps it fast, secure and up to date, so you can get on with the work.',
@@ -324,15 +329,15 @@ export const moves: [string, string][] = [
 ]
 
 export const whyUs: [string, string][] = [
-  ['One team, every channel', 'Your site, reels, ads, bids and AI from one desk, so nothing gets lost between agencies.'],
+  ['One team, every channel', 'Your leads, site, Google listing, reels, bids and AI from one desk, so nothing gets lost between agencies.'],
   ['Honest from the start', 'If something will not earn its keep, we say so before you spend on it.'],
   ['Yours to own', 'Your domain, your content, your accounts. No lock in.'],
   ['Tracked from day one', 'Calls, forms and bookings measured, so decisions come from numbers.'],
 ]
 
 export const homeFaqs: [string, string][] = [
-  ['How much does it cost?', 'A website is £25 for the first 6 months, site and hosting, then £75 a year after that. Reels, tenders, Google Ads, AI and the rest are priced per project after a quick chat, with a clear quote before anything starts.'],
+  ['How much does it cost?', 'Lead generation is free for the first month, then a set monthly fee, ask us. A website is £25 for the first 6 months, site and hosting, then £75 a year. A Google listing fix is a one off £49. Google SEO, reels, tenders, AI and the rest are priced after a quick chat, with a clear quote before anything starts.'],
   ['How fast can you start?', 'Usually within a week. A website mock-up usually reaches you within a day.'],
-  ['Do I need every service?', 'No. Most clients start with one, often a website or a single tender, and add more when it pays.'],
+  ['Do I need every service?', 'No. Start with one, often lead generation or a website, and add more when it pays.'],
   ['Will I own my website?', 'Yes. The domain, content and accounts are yours.'],
 ]

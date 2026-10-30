@@ -344,3 +344,13 @@ section{scroll-margin-top:16px}
  .exname{font-size:16px}
  .exline{font-size:13.5px}
 }
+/* lead generation home block */
+.quoted.long{font-size:clamp(52px,7vw,96px);line-height:.98}
+.leadmore{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:56px 0 0 120px}
+.leadcard{display:grid;grid-template-columns:1fr 24px;gap:8px 16px;padding:26px 28px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.35);color:var(--ink);text-decoration:none;transition:transform .35s cubic-bezier(.2,.7,.2,1),background .35s}
+.leadcard .small{grid-column:1/2;margin:0}
+.leadcard .lname{grid-column:1/2;font:400 clamp(26px,2.6vw,34px)/1.1 var(--serif);letter-spacing:-.01em}
+.leadcard .lsum{grid-column:1/2;color:var(--muted);font-size:15px}
+.leadcard .arrow{grid-column:2;grid-row:1/4;align-self:center}
+@media (hover:hover){.leadcard:hover{background:rgba(255,255,255,.6);transform:translateY(-3px)}.leadcard:hover .arrow{transform:translateX(6px)}}
+@media (max-width:900px){.leadmore{grid-template-columns:1fr;margin-left:0;margin-top:40px;gap:14px}.leadcard{padding:22px 20px}}

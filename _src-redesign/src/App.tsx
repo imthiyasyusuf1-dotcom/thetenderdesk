@@ -192,30 +192,33 @@ function PriceBlock({ s }: { s: Service }) {
   return (
     <div className="price">
       <p className="small">{s.price.label}</p>
-      {s.price.big ? <Amount n={Number(s.price.big)} /> : <p className="quoted">{s.slug === 'customers' ? 'No jobs, no fee' : 'Quoted'}</p>}
+      {s.price.big ? <Amount n={Number(s.price.big)} /> : <p className={'quoted' + (s.price.headline ? ' long' : '')}>{s.price.headline ?? 'Quoted'}</p>}
       <p className="then">{s.price.note}</p>
     </div>
   )
 }
 
-const whatWeDo = ['Websites', 'Motion design', 'Reels', 'Video ads', 'Tender writing', 'Google Ads', 'AI assistants', 'Google Business Profile', 'SEO and AI search', 'Care plans']
+const whatWeDo = ['Lead generation', 'Websites', 'Google SEO', 'Motion design', 'Reels', 'Video ads', 'Tender writing', 'Google Ads', 'AI assistants', 'Google Business Profiles', 'AI search', 'Care plans']
 
 /* ---------------- pages ---------------- */
 
 function Home() {
-  const web = services[0]
+  const web = services.find(x => x.slug === 'websites')!
+  const lead = services.find(x => x.slug === 'customers')!
+  const gbp = services.find(x => x.slug === 'google-business')!
+  const seo = services.find(x => x.slug === 'seo')!
   return (
     <>
       <section className="hero wrap homehero" id="top">
         <div className="herotext">
-          <p className="eyebrow"><ShinyText text={'Websites, reels, tenders, Google\u00a0Ads\u00a0and\u00a0AI'} color="#6b6459" shineColor="#1b1a17" speed={4} delay={3} disabled={reduce} /></p>
-          <Display text="Built to win you work." />
+          <p className="eyebrow"><ShinyText text={'Lead generation, websites, Google\u00a0SEO\u00a0and\u00a0more'} color="#6b6459" shineColor="#1b1a17" speed={4} delay={3} disabled={reduce} /></p>
+          <Display text="More calls. More jobs." />
           <div className="herogrid">
-            <Reveal delay={0.5}><p className="lede">Websites, reels and video ads, tenders, Google Ads and AI for businesses that want more of the right work. One desk, so nothing gets lost between agencies.</p></Reveal>
+            <Reveal delay={0.5}><p className="lede">We get your phone ringing. Google ads for your trade, with calls straight to you and your first month free. Plus websites, Google SEO, your Google listing, reels, tenders and AI, all from one desk.</p></Reveal>
             <Reveal delay={0.65}>
               <div className="ctas">
-                <Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary shimmer" href="#contact">Start a project</a></Magnet>
-                <a className="btn ghost" href="#services">See the services</a>
+                <Magnet padding={40} magnetStrength={6} disabled={reduce}><a className="btn primary shimmer" href={`${B}customers/`}>Get more calls</a></Magnet>
+                <a className="btn ghost" href="#leads">How it works</a>
               </div>
             </Reveal>
           </div>
@@ -225,8 +228,36 @@ function Home() {
 
       <Marquee label="What we do" items={whatWeDo} />
 
+      <section className="pricing" id="leads" aria-labelledby="lead-h">
+        <div className="wrap">
+          <div className="sechead"><p className="num">01</p><h2 id="lead-h" className="h2">{reduce ? 'Lead generation' : <BlurText text="Lead generation" animateBy="words" delay={90} direction="bottom" />}</h2></div>
+          <div className="pricegrid">
+            <div className="homeprice">
+              <PriceBlock s={lead} />
+              <Reveal>
+                <ul className="incl">{['Google ads run for your trade', 'Calls straight to your phone', 'Your own page with your number', 'Never shared with other firms', 'You set the ad budget', 'Plain updates on every call'].map(x => <li key={x}>{x}</li>)}</ul>
+                <a className="textlink" href={`${B}customers/`}>How lead generation works <span aria-hidden="true">→</span></a>
+              </Reveal>
+            </div>
+            <ServiceVisual kind="ads" />
+          </div>
+          <ul className="leadmore">
+            {[gbp, seo].map(x => (
+              <li key={x.slug}><Reveal>
+                <a href={`${B}${x.slug}/`} className="leadcard">
+                  <span className="small">{x.price.short}</span>
+                  <span className="lname">{x.name}</span>
+                  <span className="lsum">{x.summary}</span>
+                  <span className="arrow" aria-hidden="true">→</span>
+                </a>
+              </Reveal></li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       <section className="wrap block" id="services" aria-labelledby="svc-h">
-        <Head n="01" text="Everything that brings work in" id="svc-h" />
+        <Head n="02" text="Everything that brings work in" id="svc-h" />
         <ul className="svclist">
           {services.map((s, i) => (
             <li key={s.slug}>
@@ -235,7 +266,7 @@ function Home() {
                   <span className="stepn">{String(i + 1).padStart(2, '0')}</span>
                   <span className="svcname">{s.name}</span>
                   <span className="svcsum">{s.summary}</span>
-                  <span className="svcprice">{s.price.big ? `£${s.price.big} first 6 months` : s.price.label}</span>
+                  <span className="svcprice">{s.price.short ?? s.price.label}</span>
                   <span className="arrow" aria-hidden="true">→</span>
                 </a>
               </Reveal>
@@ -246,7 +277,7 @@ function Home() {
 
       <section className="pricing" id="price" aria-labelledby="price-h">
         <div className="wrap">
-          <div className="sechead"><p className="num">02</p><h2 id="price-h" className="h2">{reduce ? 'A website for £25' : <BlurText text="A website for £25" animateBy="words" delay={90} direction="bottom" />}</h2></div>
+          <div className="sechead"><p className="num">03</p><h2 id="price-h" className="h2">{reduce ? 'A website for £25' : <BlurText text="A website for £25" animateBy="words" delay={90} direction="bottom" />}</h2></div>
           <div className="pricegrid">
             <div className="homeprice">
               <PriceBlock s={web} />
@@ -261,7 +292,7 @@ function Home() {
       </section>
 
       <section className="wrap block" aria-labelledby="moves-h">
-        <Head n="03" text="Four moves" id="moves-h" />
+        <Head n="04" text="Four moves" id="moves-h" />
         <ol className="moves">
           {moves.map(([t, d], i) => (
             <li key={t}><Reveal delay={i * 0.08}><span className="moveword">{t}.</span><p>{d}</p></Reveal></li>
@@ -270,30 +301,30 @@ function Home() {
       </section>
 
       <section className="wrap block" aria-labelledby="ai-h">
-        <Head n="04" text="03:07. You're asleep." id="ai-h" />
+        <Head n="05" text="03:07. You're asleep." id="ai-h" />
         <div className="split">
           <Reveal><p className="lede">A customer asks for a quote. The assistant answers, asks the right questions and books the visit into your diary. You wake up to the details.</p><a className="textlink" href={`${B}ai/`}>Meet the AI assistant <span aria-hidden="true">→</span></a></Reveal>
           <ServiceVisual kind="chat" />
         </div>
       </section>
 
-      <Reels n="05" />
+      <Reels n="06" />
 
-      <Work n="06" />
+      <Work n="07" />
 
       <section className="wrap block" aria-labelledby="why-h">
-        <Head n="07" text="Why us" id="why-h" />
+        <Head n="08" text="Why us" id="why-h" />
         <ol className="grid4">{whyUs.map(([t, d], i) => <li key={t}><Reveal delay={i * 0.06}><h3>{t}</h3><p>{d}</p></Reveal></li>)}</ol>
       </section>
 
-      <PartnerTeaser n="08" />
+      <PartnerTeaser n="09" />
 
       <section className="faqsec wrap" aria-labelledby="faq-h">
-        <Head n="09" text="Questions" id="faq-h" />
+        <Head n="10" text="Questions" id="faq-h" />
         <Faq items={homeFaqs} />
       </section>
 
-      <Contact n="10" title="Your next customer is searching now." text="Tell us what you need. We reply the same working day." msg="Hi, I'd like to talk about my business." />
+      <Contact n="11" title="Your next customer is searching now." text="Tell us what you need. We reply the same working day." msg="Hi, I'd like to talk about my business." />
     </>
   )
 }
@@ -358,10 +389,10 @@ function ServicePage({ s }: { s: Service }) {
 
       <section className="pricing" id="price" aria-labelledby="price-h">
         <div className="wrap">
-          <div className="sechead"><p className="num">Price</p><h2 id="price-h" className="h2">{s.price.big ? 'One simple price' : s.slug === 'customers' ? 'Pay only when it works' : 'A clear quote first'}</h2></div>
+          <div className="sechead"><p className="num">Price</p><h2 id="price-h" className="h2">{s.price.title ?? 'A clear quote first'}</h2></div>
           <div className="pricegrid">
             <PriceBlock s={s} />
-            <Reveal><p className="lede">{s.slug === 'customers' ? 'You pay Google for the ads. Our fee only starts once the phone is ringing and you are getting jobs from it. We agree the number with you before anything goes live.' : s.price.big ? 'Your website, built and live, with hosting for the first 6 months. After that it is £75 a year to keep it running. No contract and no lock in.' : 'Every job is quoted individually after a quick chat about what you need. You get a clear quote before anything starts.'}</p></Reveal>
+            <Reveal><p className="lede">{s.price.text ?? 'Every job is quoted individually after a quick chat about what you need. You get a clear quote before anything starts.'}</p></Reveal>
           </div>
         </div>
       </section>
@@ -459,8 +490,8 @@ function Partners() {
 
 /* ---------------- shell ---------------- */
 
-const navItems: [string, string][] = [['websites', 'Websites'], ['customers', 'More customers'], ['motion', 'Reels'], ['tenders', 'Tenders'], ['google-ads', 'Google Ads'], ['ai', 'AI'], ['about', 'About'], ['partners', 'Partners']]
-const menuItems: [string, string, string][] = [['websites', 'Websites', `${B}websites/`], ['customers', 'More customers', `${B}customers/`], ['motion', 'Reels and video ads', `${B}motion/`], ['tenders', 'Tenders', `${B}tenders/`], ['google-ads', 'Google Ads', `${B}google-ads/`], ['ai', 'AI', `${B}ai/`], ['work', 'Our work', '/work/'], ['about', 'About', `${B}about/`], ['partners', 'Partners', `${B}partners/`]]
+const navItems: [string, string][] = [['customers', 'Lead generation'], ['websites', 'Websites'], ['seo', 'Google SEO'], ['google-business', 'Google Business'], ['motion', 'Reels'], ['tenders', 'Tenders'], ['ai', 'AI'], ['about', 'About']]
+const menuItems: [string, string, string][] = [['customers', 'Lead generation', `${B}customers/`], ['websites', 'Websites', `${B}websites/`], ['seo', 'Google SEO', `${B}seo/`], ['google-business', 'Google Business Profiles', `${B}google-business/`], ['motion', 'Reels and video ads', `${B}motion/`], ['tenders', 'Tenders', `${B}tenders/`], ['google-ads', 'Google Ads', `${B}google-ads/`], ['ai', 'AI', `${B}ai/`], ['work', 'Our work', '/work/'], ['about', 'About', `${B}about/`], ['partners', 'Partners', `${B}partners/`]]
 
 function route() {
   const seg = window.location.pathname.slice(B.length).split('/')[0]
@@ -561,7 +592,7 @@ export default function App() {
 
       <footer className="foot wrap">
         <div className="fcols">
-          <div><p className="brand">The Tender Desk</p><p>Websites, reels, tenders, Google Ads and AI for businesses that want more of the right work.</p><p>Founded and run by Yusuf Imthiyas.</p></div>
+          <div><p className="brand">The Tender Desk</p><p>Lead generation, websites, Google SEO, reels, tenders and AI for businesses that want more of the right work.</p><p>Founded and run by Yusuf Imthiyas.</p></div>
           <div><p className="small">Services</p>{services.map(x => <a key={x.slug} href={`${B}${x.slug}/`}>{x.name}</a>)}</div>
           <div><p className="small">Company</p><a href={`${B}about/`}>About</a><a href="/work/">Our work</a><a href={`${B}partners/`}>Referral partners</a><a href={MAIL}>hello@thetenderdesk.co.uk</a></div>
         </div>
