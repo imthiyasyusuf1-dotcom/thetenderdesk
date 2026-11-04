@@ -31,7 +31,7 @@ export const services: Service[] = [
     slug: 'customers', nav: 'More calls', name: 'Get more calls', eyebrow: 'Get more calls',
     title: 'More people ringing you for work.',
     lede: 'When someone nearby searches for your trade, we make sure your phone is the one that rings. We set up and run the Google ads, and the calls come straight to you.',
-    price: { headline: 'Weekly', label: 'Ads included', note: 'One weekly price, paid up front each week.', text: 'We pay Google for the ads and run everything for you. You pay us one set price at the start of each week. No Google account, no card on Google, nothing to set up yourself.' },
+    price: { headline: 'Weekly', label: 'Ads included', note: 'One weekly price, ads included.', text: 'We pay Google for the ads and run everything for you. You pay us one set price at the start of each week. No Google account, no card on Google, nothing to set up yourself.' },
     visual: 'ads',
     listTitle: 'What you get',
     list: [
@@ -44,12 +44,12 @@ export const services: Service[] = [
     stepsTitle: 'How it works',
     steps: [
       ['Message us', 'Tell us your trade and the jobs you want more of.'],
-      ['Agree the price', 'We agree one weekly price. You pay the first week up front.'],
+      ['Agree the price', 'We agree one weekly price. Then we get the ads live.'],
       ['We set it up', 'We build the ads and your page. You see it all before it goes live.'],
       ['Your phone rings', 'People searching for your trade ring you direct.'],
     ],
     faqs: [
-      ['How do I pay?', 'A set weekly price, agreed before we start and paid up front each week. It covers the Google ads and us running them.'],
+      ['How do I pay?', 'A set weekly price, agreed before we start and paid each week. It covers the Google ads and us running them.'],
       ['Are the calls shared with other firms?', 'No. The ads are yours and the calls come straight to your phone. We never sell the same enquiry to anyone else.'],
       ['Do I need a Google account?', 'No. We run the ads and pay Google ourselves. You just answer the phone.'],
       ['Can I stop?', 'Yes. There is no contract. Just do not pay for the next week.'],
@@ -61,7 +61,7 @@ export const services: Service[] = [
     slug: 'google-business', nav: 'Google listing', name: 'Google listing fix', eyebrow: 'Google listing fix',
     title: 'Show up properly on Google Maps.',
     lede: 'For most trades the Google listing gets more views than the website. When someone looks you up, it should look right, say what you do and show your reviews. We set it up or fix it for you.',
-    price: { headline: 'One off', label: 'Paid up front', note: 'Paid up front. No monthly fee.', text: 'We set up or fix your Google listing, give you a QR card that takes happy customers to your review page, and a short text you can send to past customers asking for a review.' },
+    price: { headline: 'One off', label: 'One off', note: 'No monthly fee.', text: 'We set up or fix your Google listing, give you a QR card that takes happy customers to your review page, and a short text you can send to past customers asking for a review.' },
     visual: 'gbp',
     listTitle: 'What you get',
     list: [
@@ -74,12 +74,12 @@ export const services: Service[] = [
     stepsTitle: 'How it works',
     steps: [
       ['Message us', 'Send us your business name.'],
-      ['Pay up front', 'You pay up front, then we get to work.'],
+      ['Agree the job', 'We agree what you need, then we get to work.'],
       ['We sort it', 'Listing set up or fixed, usually within a few days.'],
       ['Reviews come in', 'Hand out the QR card and send the review text to past customers.'],
     ],
     faqs: [
-      ['How do I pay?', 'A one off price, paid up front before we start. No monthly fee.'],
+      ['How do I pay?', 'A one off price, agreed before we start. No monthly fee.'],
       ['Who owns the listing?', 'You do. It is set up in your name.'],
       ['Will you write reviews for me?', 'Never. Fake reviews are banned by Google and against the law. We help you ask your real customers.'],
       ['Do I need a website too?', 'No, but it works best linked to one, and we can build it.'],
@@ -91,7 +91,7 @@ export const services: Service[] = [
     slug: 'websites', nav: 'Websites', name: 'Websites', eyebrow: 'Websites',
     title: 'A proper website for your trade.',
     lede: 'A clean website that works on a phone, shows off your work and makes it easy to ring you. Built for you from scratch, not a template.',
-    price: { headline: 'One off', label: 'Paid up front', note: 'Paid up front.', text: 'Your website built and live, with hosting included. No contract.' },
+    price: { headline: 'One off', label: 'One off', note: '', text: 'Your website built and live, with hosting included. No contract.' },
     visual: 'site',
     listTitle: 'What you get',
     list: [
@@ -105,12 +105,12 @@ export const services: Service[] = [
     stepsTitle: 'How it works',
     steps: [
       ['Message us', 'A few lines about what you do and some photos of your work is plenty.'],
-      ['Pay up front', 'You pay up front, then we start building.'],
+      ['Agree the job', 'We agree what you need, then we start building.'],
       ['Check it on your phone', 'We send you a link. Tell us any changes.'],
       ['Live', 'We connect your domain and put it live, usually within two working days of your OK.'],
     ],
     faqs: [
-      ['How do I pay?', 'One price up front for the site and hosting, then a small yearly fee to keep it running.'],
+      ['How do I pay?', 'One price for the site and hosting, then a small yearly fee to keep it running.'],
       ['Do I need to send anything?', 'A few photos of your work and your contact details. We can pull the rest from your Google listing or a quick chat.'],
       ['Can I use my own domain?', 'Yes. We connect one you already own, or help you buy one in your name.'],
       ['What if I want to leave?', 'No contract. If you stop paying the yearly fee the site comes down, and we can hand over the files if you ask.'],
@@ -122,7 +122,7 @@ export const services: Service[] = [
     slug: 'seo', nav: 'Google SEO', name: 'Google SEO', eyebrow: 'Google SEO',
     title: 'Higher up Google for your trade.',
     lede: 'When someone searches for your trade, your website should be on the first page. We set your site up so Google, and AI apps like ChatGPT, understand exactly what you do and recommend you.',
-    price: { headline: 'Ask us', label: 'Priced to your site', note: 'A fixed price agreed before we start. Paid up front.', text: 'Every site is different, so we take a quick look first and give you a clear price. Basic Google setup is already included with every website we build.' },
+    price: { headline: 'Ask us', label: 'Priced to your site', note: 'A fixed price agreed before we start.', text: 'Every site is different, so we take a quick look first and give you a clear price. Basic Google setup is already included with every website we build.' },
     visual: 'seo',
     listTitle: 'What you get',
     list: [
@@ -135,12 +135,12 @@ export const services: Service[] = [
     stepsTitle: 'How it works',
     steps: [
       ['Message us', 'Send us your website.'],
-      ['Agree the price', 'We take a quick look and give you a clear price. You pay up front.'],
+      ['Agree the price', 'We take a quick look and give you a clear price.'],
       ['We fix it', 'Pages, speed and the behind the scenes setup sorted.'],
       ['You climb', 'Google takes a few months, and we tell you how it is going.'],
     ],
     faqs: [
-      ['How do I pay?', 'We give you a fixed price after a quick look at your site, paid up front before we start.'],
+      ['How do I pay?', 'We give you a fixed price after a quick look at your site, agreed before we start.'],
       ['How long does it take?', 'Google takes time. Expect movement over a few months, not days. If you need calls this week, our Google ads are the faster route.'],
       ['Does it work on my current site?', 'Usually, yes. If your site makes it hard, we tell you straight before you spend anything.'],
     ],
@@ -151,7 +151,7 @@ export const services: Service[] = [
     slug: 'motion', nav: 'Reels', name: 'Reels and video ads', eyebrow: 'Reels and video ads',
     title: 'Videos that stop the scroll.',
     lede: 'Short videos and video ads for Instagram, Facebook and TikTok, made for your business. No filming needed from you.',
-    price: { headline: 'Ask us', label: 'Priced per video', note: 'A fixed price agreed before we start. Paid up front.' },
+    price: { headline: 'Ask us', label: 'Priced per video', note: 'A fixed price agreed before we start.' },
     visual: 'reel',
     listTitle: 'What you get',
     list: [
@@ -163,12 +163,12 @@ export const services: Service[] = [
     stepsTitle: 'How it works',
     steps: [
       ['Message us', 'Tell us what you want more of: calls, bookings or a launch.'],
-      ['Agree the price', 'We send the idea and a fixed price. You pay up front.'],
+      ['Agree the price', 'We send the idea and a fixed price.'],
       ['We make it', 'You get a first cut to watch on your phone.'],
       ['Ready to post', 'Your changes made, then sent over in every size.'],
     ],
     faqs: [
-      ['How do I pay?', 'A fixed price per video or per batch, agreed before we start and paid up front.'],
+      ['How do I pay?', 'A fixed price per video or per batch, agreed before we start.'],
       ['Do I need to film anything?', 'No. If you have photos or clips of your work we can use them too.'],
       ['Who owns the videos?', 'You do. Post them wherever you like.'],
     ],
@@ -179,7 +179,7 @@ export const services: Service[] = [
     slug: 'tenders', nav: 'Tenders', name: 'Tender writing', eyebrow: 'Tender writing',
     title: 'We write the bid. You win the work.',
     lede: 'Councils, housing associations, schools and the NHS hire trades every week. Plenty of small firms could do the work but never bid, because the paperwork looks like a second job. We do the paperwork.',
-    price: { headline: 'Ask us', label: 'Priced per bid', note: 'A fixed price agreed before we start. Paid up front.' },
+    price: { headline: 'Ask us', label: 'Priced per bid', note: 'A fixed price agreed before we start.' },
     visual: 'bid',
     listTitle: 'What you get',
     list: [
@@ -191,12 +191,12 @@ export const services: Service[] = [
     stepsTitle: 'How it works',
     steps: [
       ['Send the tender', 'Forward the notice. No tender yet? Tell us what you do.'],
-      ['Agree the price', 'We tell you if it is worth bidding and give you a fixed price. You pay up front.'],
+      ['Agree the price', 'We tell you if it is worth bidding and give you a fixed price.'],
       ['We write it', 'A short call with you, then every answer drafted.'],
       ['Submitted', 'Checked with you and sent in before the deadline.'],
     ],
     faqs: [
-      ['How do I pay?', 'A fixed price per bid, agreed before we start and paid up front.'],
+      ['How do I pay?', 'A fixed price per bid, agreed before we start.'],
       ['Who is it for?', 'Small firms bidding for council, housing, school and NHS work, first tender or tenth.'],
       ['What if it is not worth bidding?', 'We tell you straight, before you pay for anything.'],
     ],
@@ -207,7 +207,7 @@ export const services: Service[] = [
     slug: 'google-ads', nav: 'Google Ads', name: 'Google Ads only', eyebrow: 'Google Ads only',
     title: 'Already have a website? We run the ads.',
     lede: 'If your website is fine and you just need the calls, we set up and run your Google ads and send people straight to it.',
-    price: { headline: 'Weekly', label: 'Ads included', note: 'One weekly price, paid up front each week.', text: 'We pay Google for the ads and run them for you. You pay us one set price at the start of each week.' },
+    price: { headline: 'Weekly', label: 'Ads included', note: 'One weekly price, ads included.', text: 'We pay Google for the ads and run them for you. You pay us one set price at the start of each week.' },
     visual: 'ads',
     listTitle: 'What you get',
     list: [
@@ -219,12 +219,12 @@ export const services: Service[] = [
     stepsTitle: 'How it works',
     steps: [
       ['Message us', 'Send us your website and your trade.'],
-      ['Agree the price', 'We agree one weekly price. You pay the first week up front.'],
+      ['Agree the price', 'We agree one weekly price. Then we get the ads live.'],
       ['We set it up', 'Ads built and checked with you before they go live.'],
       ['Your phone rings', 'People searching for your trade ring you direct.'],
     ],
     faqs: [
-      ['How do I pay?', 'A set weekly price, agreed before we start and paid up front each week. It covers the Google ads and us running them.'],
+      ['How do I pay?', 'A set weekly price, agreed before we start and paid each week. It covers the Google ads and us running them.'],
       ['How much does it cost?', 'It depends on your trade and how busy you want to be. We give you one weekly price before we start, with the ads included.'],
       ['Do I need a Google account?', 'No. We run the ads and pay Google ourselves. You just answer the phone.'],
     ],
@@ -235,7 +235,7 @@ export const services: Service[] = [
     slug: 'ai', nav: 'AI', name: 'AI receptionist', eyebrow: 'AI receptionist',
     title: 'Never miss a customer again.',
     lede: 'When you are on a job or asleep, an AI receptionist answers your customers on WhatsApp and your website, asks the right questions and books the job in.',
-    price: { headline: 'Monthly', label: 'Our fee', note: 'A set monthly fee, agreed before we start. Paid up front each month.' },
+    price: { headline: 'Monthly', label: 'Our fee', note: 'A set monthly fee, agreed before we start.' },
     visual: 'chat',
     listTitle: 'What you get',
     list: [
@@ -248,12 +248,12 @@ export const services: Service[] = [
     stepsTitle: 'How it works',
     steps: [
       ['Message us', 'Tell us your trade and how customers usually contact you.'],
-      ['Agree the price', 'We agree the monthly fee. You pay the first month up front.'],
+      ['Agree the price', 'We agree the monthly fee. Then we set it up.'],
       ['We set it up', 'Loaded with your services and prices, and tested with you.'],
       ['Live', 'Answering customers while you work or sleep.'],
     ],
     faqs: [
-      ['How do I pay?', 'A set monthly fee, agreed before we start and paid up front each month.'],
+      ['How do I pay?', 'A set monthly fee, agreed before we start and paid monthly.'],
       ['Will it say the wrong thing?', 'It only answers from what you approve, and passes anything else to you.'],
       ['How long does setup take?', 'Usually about a week, including testing.'],
     ],
@@ -264,7 +264,7 @@ export const services: Service[] = [
     slug: 'care', nav: 'Website care', name: 'Website care', eyebrow: 'Website care',
     title: 'Your website looked after.',
     lede: 'Hosting, updates, backups and small changes handled for you, so your site stays fast and safe while you get on with the work.',
-    price: { headline: 'Yearly', label: 'A year, for websites we build', note: 'Paid up front once your first 6 months are up. Other sites priced after a quick look.' },
+    price: { headline: 'Yearly', label: 'A year, for websites we build', note: 'Other sites priced after a quick look.' },
     visual: 'care',
     listTitle: 'What you get',
     list: [
@@ -275,13 +275,13 @@ export const services: Service[] = [
     ],
     stepsTitle: 'How it works',
     steps: [
-      ['Pay yearly', 'One yearly fee, paid up front.'],
+      ['Pay yearly', 'One yearly fee.'],
       ['Send changes', 'WhatsApp us whatever you want updating.'],
       ['We check it', 'Speed and uptime checked every month.'],
       ['Backed up', 'Your site copied and stored safely.'],
     ],
     faqs: [
-      ['How do I pay?', 'One yearly fee, paid up front, for websites we build. Other sites are priced after a quick look.'],
+      ['How do I pay?', 'One yearly fee, for websites we build. Other sites are priced after a quick look.'],
       ['How do I ask for a change?', 'Just send it over on WhatsApp or email.'],
       ['What if I want to leave?', 'No contract. We can hand over the files if you ask.'],
     ],
@@ -291,7 +291,7 @@ export const services: Service[] = [
 ]
 
 export const homeFaqs: [string, string][] = [
-  ['How do I pay?', 'Everything is paid up front, before we start. Message us on WhatsApp and we give you a clear price for your job. Getting more calls is one weekly price, with the Google ads included.'],
+  ['How do I pay?', 'Message us on WhatsApp and we give you a clear price for your job. Getting more calls is one weekly price, with the Google ads included.'],
   ['Do I have to sign a contract?', 'No. Pay for what you want, when you want it. Stop any time.'],
   ['Are the calls shared with other firms?', 'No. The ads are yours and the calls come straight to your phone. We never sell the same enquiry to anyone else.'],
   ['I am not good with computers. Is that a problem?', 'Not at all. We do all of it and keep you posted on WhatsApp in plain words.'],

@@ -87,7 +87,7 @@ function Ads() {
       <div className="ad">
         <p className="spons">Sponsored <span>yourbusiness.co.uk</span></p>
         <p className="adh">Your Business. Booked Today.</p>
-        <p className="adp">Fully certified. Upfront quotes. Five star reviews. Call now or book online in 30 seconds.</p>
+        <p className="adp">Fully certified. Fair quotes. Five star reviews. Call now or book online in 30 seconds.</p>
       </div>
       <div className="tracked"><div><span>Calls this month</span><b>tracked</b></div><div><span>Form enquiries</span><b>tracked</b></div></div>
     </div>

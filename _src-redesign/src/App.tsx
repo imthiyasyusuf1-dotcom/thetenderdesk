@@ -67,7 +67,7 @@ const three: { slug: string; title: string; text: string; price: string; sub: st
 
 const steps: [string, string][] = [
   ['Message us', 'Send a WhatsApp. Tell us your trade and what you need.'],
-  ['Pay up front', 'We agree a clear price. You pay before we start, so there are no surprises later.'],
+  ['Agree the job', 'We agree what you need and a clear price, so there are no surprises later.'],
   ['We set it up', 'We do all of it. You see everything before it goes live.'],
   ['Your phone rings', 'Customers call you direct. You get on with the work.'],
 ]
@@ -87,14 +87,14 @@ function Home() {
       <section className="hero homehero wrap" id="top">
         <p className="eyebrow">For plumbers, builders, electricians and fitters</p>
         <h1>More calls from local customers.</h1>
-        <p className="lede">Google ads, a proper website and a Google listing that works. Clear prices, paid up front, no contract.</p>
+        <p className="lede">Google ads, a proper website and a Google listing that works. Clear prices, no contract.</p>
         <WaBtn big />
         <a className="herolink" href="#services">See what we do</a>
       </section>
 
       <section className="wrap sec" id="services" aria-labelledby="svc-h">
         <h2 id="svc-h">What we do for trades</h2>
-        <p className="secsub">Pick what you need. Clear prices, all paid up front.</p>
+        <p className="secsub">Pick what you need. Clear prices, no contract.</p>
         <ul className="boxes">
           {three.map(x => (
             <li key={x.slug} className="box">

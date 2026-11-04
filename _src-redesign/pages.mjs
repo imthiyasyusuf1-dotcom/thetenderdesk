@@ -7,16 +7,16 @@ const SITE = 'https://thetenderdesk.co.uk'
 const src = new URL(live ? '../_live/' : '../preview/', import.meta.url)
 const root = new URL('../', import.meta.url)
 const html = fs.readFileSync(new URL('index.html', src), 'utf8')
-const D = 'More calls for local trades: Google ads, proper websites and Google listing fixes. Clear prices, paid up front. Founded and run by Yusuf Imthiyas.'
+const D = 'More calls for local trades: Google ads, proper websites and Google listing fixes. Clear prices, no contract. Founded and run by Yusuf Imthiyas.'
 const pages = {
-  '': ['The Tender Desk | More calls for local trades', 'More calls from local customers for plumbers, builders, electricians, fitters and every local trade. Google ads, websites and Google listing fixes. Clear prices, paid up front.'],
-  customers: ['Get More Calls for Your Trade | The Tender Desk', 'We run Google ads for your trade so people nearby ring your phone. Calls come straight to you, never shared. One weekly price with the ads included, paid up front.'],
-  'google-business': ['Google Listing Fix for Trades | The Tender Desk', 'Your Google listing set up or fixed so you show up properly on Maps with your reviews, plus a review QR card. Paid up front.'],
-  websites: ['Websites for Trades | The Tender Desk', 'A proper website that works on a phone and makes it easy to ring you. Hosting included, paid up front.'],
-  seo: ['Google SEO for Trades | The Tender Desk', 'Your website set up to climb Google for your trade and be recommended by AI apps. A fixed price after a quick look, paid up front.'],
+  '': ['The Tender Desk | More calls for local trades', 'More calls from local customers for plumbers, builders, electricians, fitters and every local trade. Google ads, websites and Google listing fixes. Clear prices, no contract.'],
+  customers: ['Get More Calls for Your Trade | The Tender Desk', 'We run Google ads for your trade so people nearby ring your phone. Calls come straight to you, never shared. One weekly price with the ads included.'],
+  'google-business': ['Google Listing Fix for Trades | The Tender Desk', 'Your Google listing set up or fixed so you show up properly on Maps with your reviews, plus a review QR card.'],
+  websites: ['Websites for Trades | The Tender Desk', 'A proper website that works on a phone and makes it easy to ring you. Hosting included.'],
+  seo: ['Google SEO for Trades | The Tender Desk', 'Your website set up to climb Google for your trade and be recommended by AI apps. A fixed price after a quick look.'],
   motion: ['Reels and Video Ads | The Tender Desk', 'Reels and video ads for Instagram and TikTok, made for your business. Priced per project, ask us.'],
-  tenders: ['Tender Writing | The Tender Desk', 'Clear, compliant bids for small businesses. We find the right contracts and write answers that follow the scoring criteria. A fixed price per bid, paid up front.'],
-  'google-ads': ['Google Ads | The Tender Desk', 'Already have a website? We run your Google ads and pay for them, with every call counted. One weekly price, paid up front.'],
+  tenders: ['Tender Writing | The Tender Desk', 'Clear, compliant bids for small businesses. We find the right contracts and write answers that follow the scoring criteria. A fixed price per bid.'],
+  'google-ads': ['Google Ads | The Tender Desk', 'Already have a website? We run your Google ads and pay for them, with every call counted. One weekly price.'],
   ai: ['AI Receptionist | The Tender Desk', 'An AI receptionist trained on your business that answers customers day and night, asks the right questions and books the job.'],
   care: ['Website Care | The Tender Desk', 'Hosting, updates, backups and small changes handled for you, so your site stays fast and secure.'],
   about: ['About Us | The Tender Desk', 'The Tender Desk helps small trades get more calls, a proper website and a Google listing that works. Founded and run by Yusuf Imthiyas.'],
