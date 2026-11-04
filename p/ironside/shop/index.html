@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Shop | Ironside Fire</title>
+<meta name="description" content="All fire door hardware.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head><body class="shop" data-root="../">
+<header class="hdr"><div class="wrap hdr-in">
+<a class="logo" href="../index.html" aria-label="Ironside Fire home"><span class="mark"></span><span class="word">IRONSIDE</span><span class="sub">FIRE</span></a>
+<nav class="dnav" aria-label="Main"><a href="../shop/">Shop</a><a href="../index.html#kit">Kit a door</a><a href="../trade/">Trade accounts</a><a href="../delivery/">Delivery</a><a href="../about/">About</a></nav>
+<div class="hdr-r">
+<div class="vat" role="group" aria-label="Show prices"><button type="button" data-vat="ex">Ex VAT</button><button type="button" data-vat="inc">Inc VAT</button></div>
+<button class="bag" type="button" aria-label="Open basket" data-open-basket><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><b>0</b></button>
+<button class="burger" type="button" aria-label="Menu" aria-expanded="false" data-burger><i></i><i></i><i></i></button>
+</div></div></header>
+<div class="mmenu" id="mmenu" hidden><nav aria-label="Mobile"><a href="../shop/">Shop</a><a href="../index.html#kit">Kit a door</a><a href="../trade/">Trade accounts</a><a href="../delivery/">Delivery</a><a href="../about/">About</a><div class="vat vat-m" role="group" aria-label="Show prices"><button type="button" data-vat="ex">Ex VAT</button><button type="button" data-vat="inc">Inc VAT</button></div></nav></div>
+<main>
+
+<section class="sec"><div class="wrap"><h1 class="h1s">Shop</h1>
+<div class="tools"><label class="sr" for="q">Search</label><input id="q" type="search" placeholder="Search name or SKU" autocomplete="off">
+<label class="sr" for="cat">Category</label><select id="cat"></select>
+<label class="sr" for="sort">Sort</label><select id="sort"><option value="">Sort: default</option><option value="asc">Price: low to high</option><option value="desc">Price: high to low</option></select></div>
+<p class="sm" id="count"></p><div class="grid" id="grid"></div><p class="more"><button class="btn" id="more" type="button" hidden>Show more</button></p></div></section>
+</main>
+<footer class="ftr"><div class="wrap">
+<div class="fcols">
+<div><a class="logo" href="../index.html"><span class="mark"></span><span class="word">IRONSIDE</span><span class="sub">FIRE</span></a><p>Fire door hardware, packed and sent by us.</p></div>
+<div><h4>Shop</h4><a href="../shop/">All products</a><a href="../index.html#kit">Kit a fire door</a><a href="../trade/">Trade accounts</a></div>
+<div><h4>Help</h4><a href="../delivery/">Delivery and returns</a><a href="../about/">About</a><a href="../checkout/">Checkout</a></div>
+<div><h4>Contact</h4><a href="mailto:sales@dorquip.com">sales@dorquip.com</a><p class="sm">Ask us for the test certificate for any product.</p></div>
+</div>
+<div class="fbot"><span>Ironside Fire is part of Dorquip Group</span><span class="sm">Prices shown ex VAT unless you switch to inc VAT.</span><span class="sm">Site by <a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">The Tender Desk</a></span></div>
+</div></footer>
+<div class="drawer-bg" data-close-basket hidden></div>
+<aside class="drawer" id="drawer" aria-label="Basket" hidden><div class="dr-h"><h2>Basket</h2><button type="button" class="x" aria-label="Close basket" data-close-basket>&times;</button></div><div class="dr-b" id="dr-b"></div><div class="dr-f" id="dr-f"></div></aside>
+<div class="toast" role="status" id="toast"></div>
+<script>window.IF={email:"sales@dorquip.com"};</script>
+<script src="../assets/app.js"></script>
+</body></html>
