@@ -44,11 +44,11 @@ Promise.all([load(),fetch(ROOT+'data/kit.json').then(function(r){return r.json()
 var bySku={};d.items.forEach(function(p){bySku[p.sku]=p});
 $$('[data-count]').forEach(function(el){var n=d.items.filter(function(p){return p.c===el.getAttribute('data-count')}).length;el.textContent=n+' products'});
 function drawPop(){$('#popular').innerHTML=pop.map(function(s){return bySku[s]}).filter(Boolean).map(function(p){return card(p).replace('<a class="card"','<a class="card"')}).join('')}
-function drawKit(){var rt=$('input[name=kr]:checked').value,ds=$('input[name=kd]:checked').value,L=K[rt+'-'+ds],tot=0;
+function drawKit(){var rt=$('input[name=kr]:checked').value,ds=$('input[name=kd]:checked').value,ku=$('input[name=ku]:checked').value,L=K[rt+'-'+ds+'-'+ku],tot=0;
 var h=L.map(function(k){var p=BY[k.id];tot+=p.p*k.q;return '<div class="kl-row"><img src="'+img(p,true)+'" alt=""><div><a href="'+purl(p)+'"><b>'+k.q+' x '+esc(p.n)+'</b></a><small>'+esc(p.sku)+' - '+esc(k.note)+'</small></div><b>'+gbp(px(p.p*k.q))+'</b></div>'}).join('');
 h+='<div class="kl-tot"><span>Kit total '+label()+': '+gbp(px(tot))+'</span><button class="btn" type="button" id="kitadd">Add whole kit to basket</button></div>';
 $('#kitlist').innerHTML=h;$('#kitadd').onclick=function(){L.forEach(function(k){cart.add(k.id,k.q)});toast('Kit added to basket');openBag()}}
-$$('input[name=kr],input[name=kd]').forEach(function(i){i.addEventListener('change',drawKit)});
+$$('input[name=kr],input[name=kd],input[name=ku]').forEach(function(i){i.addEventListener('change',drawKit)});
 window.__rerender=function(){drawPop();drawKit()};window.__rerender()})}
 
 function shop(){load().then(function(d){var q=$('#q'),c=$('#cat'),s=$('#sort'),g=$('#grid'),more=$('#more'),n=36;

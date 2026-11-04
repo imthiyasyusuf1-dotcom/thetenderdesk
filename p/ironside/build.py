@@ -12,7 +12,7 @@ CATS = [
  ('hinges', 'Hinges', 'Ball bearing, rising and parliament hinges, plus intumescent hinge pads.'),
  ('closers', 'Door closers', 'Overhead and concealed closers for fire doors.'),
  ('exit', 'Fire exit hardware', 'Panic bolts, push pads, latches and outside access devices.'),
- ('locks', 'Locks and bolts protection', 'Lock jackets, flush bolts and intumescent protection for bolts.'),
+ ('locks', 'Locks, latches and bolts', 'Fire door latches, sash locks, cylinders, flush bolts and the intumescent to suit.'),
  ('handles', 'Handles', 'Lever handles on rose.'),
  ('signs', 'Signs', 'Fire door keep shut, keep locked, keep clear and fire exit signs.'),
  ('drop', 'Drop down seals and finger guards', 'Automatic acoustic drop down seals and finger protectors.'),
@@ -36,6 +36,7 @@ def categorise(x):
     if 'flush bolt' in n: return 'locks'
     if re.search(r'fire door keep|fire exit', n) and 'sign' in n: return 'signs'
     if 'lever on rose' in n: return 'handles'
+    if re.search(r'(din (latch|euro sash|euro dead) lock case|din latch case|tubular latch|euro sash lock case|euro dead lock case|euro profile (double cylinder|cylinder and turn|escutcheon))', n) and 'umk' not in n: return 'locks'
     if 'finger protector' in n or 'drop down' in n: return 'drop'
     return None
 src = json.load(open(os.path.join(SRC, 'data', 'cat.json')))
@@ -60,7 +61,7 @@ for p in items:
 bysku = {p['sku']: p for p in items}
 
 # ---------- kit builder (rules live here, JS only renders kit.json) ----------
-def kit(rating, doors):
+def kit(rating, doors, use):
     d = 2 if doors == 'double' else 1
     hinges = (4 if rating == 'FD60' else 3) * d
     pairs = math.ceil(hinges / 2)
@@ -69,15 +70,32 @@ def kit(rating, doors):
      ('H3000.000', math.ceil(hinges / 6), 'Intumescent hinge pads, pack of 6'),
      ('D1011.900', d, 'Overhead door closer, one per leaf'),
      ('H1005.480', 3 + (2 if d == 2 else 0), 'Fire and smoke seal 2100mm: 2 jambs, 1 head' + (', 2 meeting edges' if d == 2 else '')),
-     ('E4000.700', d, 'Fire door keep shut sign, one per leaf'),
-     ('H2002.000', 1, 'Intumescent lock jacket for the latch or lock'),
+     ('C1000.700', d, 'Lever handles on rose, one set per leaf'),
     ]
+    if use == 'lock':
+        lines += [
+         ('B1005.700', 1, 'DIN euro sash lock, 55mm backset' + (', on the active leaf' if d == 2 else '')),
+         ('B2004.950', 1, 'Euro cylinder, key outside and thumb turn inside'),
+         ('C4000.700', 2, 'Euro escutcheons, one each side'),
+         ('H2002.000', 1, 'Intumescent lock jacket to suit the DIN sash lock'),
+        ]
+    else:
+        lines += [
+         ('B1011.700', 1, 'DIN latch, 55mm backset' + (', on the active leaf' if d == 2 else '')),
+         ('H2002.000', 1, 'Intumescent lock jacket to suit the DIN latch'),
+        ]
+    if d == 2:
+        lines += [
+         ('E2000.700', 2, 'Flush bolts for the inactive leaf, top and bottom'),
+         ('H2004.000', 2, 'Intumescent to suit the flush bolts'),
+        ]
+    lines.append(('E4000.700', d, 'Fire door keep shut sign, one per leaf'))
     out = []
     for sku, q, note in lines:
         p = bysku[sku]
         out.append({'sku': sku, 'id': p['id'], 'q': q, 'note': note})
     return out
-kits = {f'{r}-{d}': kit(r, d) for r in ('FD30', 'FD60') for d in ('single', 'double')}
+kits = {f'{r}-{d}-{u}': kit(r, d, u) for r in ('FD30', 'FD60') for d in ('single', 'double') for u in ('latch', 'lock')}
 json.dump(kits, open('data/kit.json', 'w'), separators=(',', ':'))
 
 # ---------- layout ----------
@@ -153,11 +171,12 @@ home = f'''
 <section class="brands"><div class="wrap"><span class="lab">Brands we stock</span><b>Astroflame</b><b>Eclipse</b></div></section>
 <section class="sec"><div class="wrap"><h2>Shop by category</h2><div class="tiles">{tiles}</div></div></section>
 <section class="sec grey" id="kit"><div class="wrap">
-<h2>Kit a fire door</h2><p class="lead">Pick your door and we list everything to fit it. One button adds the lot to your basket.</p>
+<h2>Kit a fire door</h2><p class="lead">Pick your door and we list everything to fit it: hinges, closer, seals, lever handles, latch or lock and the intumescent to suit. One button adds the lot to your basket.</p>
 <div class="kitbox">
 <div class="kitsel">
 <fieldset><legend>Fire rating</legend><label><input type="radio" name="kr" value="FD30" checked> FD30 (30 minutes)</label><label><input type="radio" name="kr" value="FD60"> FD60 (60 minutes)</label></fieldset>
 <fieldset><legend>Door set</legend><label><input type="radio" name="kd" value="single" checked> Single door</label><label><input type="radio" name="kd" value="double"> Double door</label></fieldset>
+<fieldset><legend>Latch or lock</legend><label><input type="radio" name="ku" value="latch" checked> Latch only</label><label><input type="radio" name="ku" value="lock"> Lockable (sash lock)</label></fieldset>
 </div>
 <div class="kitlist" id="kitlist" aria-live="polite"></div>
 </div>
@@ -376,11 +395,11 @@ Promise.all([load(),fetch(ROOT+'data/kit.json').then(function(r){return r.json()
 var bySku={};d.items.forEach(function(p){bySku[p.sku]=p});
 $$('[data-count]').forEach(function(el){var n=d.items.filter(function(p){return p.c===el.getAttribute('data-count')}).length;el.textContent=n+' products'});
 function drawPop(){$('#popular').innerHTML=pop.map(function(s){return bySku[s]}).filter(Boolean).map(function(p){return card(p).replace('<a class="card"','<a class="card"')}).join('')}
-function drawKit(){var rt=$('input[name=kr]:checked').value,ds=$('input[name=kd]:checked').value,L=K[rt+'-'+ds],tot=0;
+function drawKit(){var rt=$('input[name=kr]:checked').value,ds=$('input[name=kd]:checked').value,ku=$('input[name=ku]:checked').value,L=K[rt+'-'+ds+'-'+ku],tot=0;
 var h=L.map(function(k){var p=BY[k.id];tot+=p.p*k.q;return '<div class="kl-row"><img src="'+img(p,true)+'" alt=""><div><a href="'+purl(p)+'"><b>'+k.q+' x '+esc(p.n)+'</b></a><small>'+esc(p.sku)+' - '+esc(k.note)+'</small></div><b>'+gbp(px(p.p*k.q))+'</b></div>'}).join('');
 h+='<div class="kl-tot"><span>Kit total '+label()+': '+gbp(px(tot))+'</span><button class="btn" type="button" id="kitadd">Add whole kit to basket</button></div>';
 $('#kitlist').innerHTML=h;$('#kitadd').onclick=function(){L.forEach(function(k){cart.add(k.id,k.q)});toast('Kit added to basket');openBag()}}
-$$('input[name=kr],input[name=kd]').forEach(function(i){i.addEventListener('change',drawKit)});
+$$('input[name=kr],input[name=kd],input[name=ku]').forEach(function(i){i.addEventListener('change',drawKit)});
 window.__rerender=function(){drawPop();drawKit()};window.__rerender()})}
 
 function shop(){load().then(function(d){var q=$('#q'),c=$('#cat'),s=$('#sort'),g=$('#grid'),more=$('#more'),n=36;
