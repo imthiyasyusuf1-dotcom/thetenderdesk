@@ -60,9 +60,9 @@ const Founder = () => (
 // ---------- home ----------
 
 const three: { slug: string; title: string; text: string; price: string; sub: string }[] = [
-  { slug: 'customers', title: 'Get more calls', text: 'We run Google ads for your trade, so people nearby searching for what you do ring your phone. The calls come straight to you and are never shared.', price: 'Weekly', sub: 'Ads included, paid up front each week.' },
-  { slug: 'google-business', title: 'Get found on Google', text: 'We sort your Google listing so you show up on Maps with your reviews, and set your website up to climb the search results.', price: '£49', sub: 'One off, paid up front.' },
-  { slug: 'websites', title: 'A proper website', text: 'A clean site that works on a phone, shows off your work and makes it easy to ring you.', price: '£25', sub: 'For the first 6 months, then £75 a year.' },
+  { slug: 'customers', title: 'Get more calls', text: 'We run Google ads for your trade, so people nearby searching for what you do ring your phone. The calls come straight to you and are never shared.', price: '', sub: '' },
+  { slug: 'google-business', title: 'Get found on Google', text: 'We sort your Google listing so you show up on Maps with your reviews, and set your website up to climb the search results.', price: '', sub: '' },
+  { slug: 'websites', title: 'A proper website', text: 'A clean site that works on a phone, shows off your work and makes it easy to ring you.', price: '', sub: '' },
 ]
 
 const steps: [string, string][] = [
@@ -72,12 +72,6 @@ const steps: [string, string][] = [
   ['Your phone rings', 'Customers call you direct. You get on with the work.'],
 ]
 
-const prices: [string, string, string][] = [
-  ['More calls (Google ads)', 'Weekly', 'One set weekly price, agreed before we start and paid up front each week. We pay Google for the ads and run them for you.'],
-  ['Google listing fix', '£49', 'One off, paid up front. Your listing set up or fixed, plus a review QR card.'],
-  ['Website', '£25', 'Paid up front. Site and hosting for the first 6 months, then £75 a year. No contract.'],
-  ['Google SEO', 'Ask us', 'A fixed price after a quick look at your site, paid up front.'],
-]
 
 const alsoDo: [string, string, string][] = [
   ['motion', 'Reels and video ads', 'Short videos for Instagram and TikTok.'],
@@ -95,7 +89,7 @@ function Home() {
         <h1>More calls from local customers.</h1>
         <p className="lede">Google ads, a proper website and a Google listing that works. Clear prices, paid up front, no contract.</p>
         <WaBtn big />
-        <a className="herolink" href="#prices">See our prices</a>
+        <a className="herolink" href="#services">See what we do</a>
       </section>
 
       <section className="wrap sec" id="services" aria-labelledby="svc-h">
@@ -106,7 +100,6 @@ function Home() {
             <li key={x.slug} className="box">
               <h3>{x.title}</h3>
               <p>{x.text}</p>
-              <p className="boxprice"><strong>{x.price}</strong> <span>{x.sub}</span></p>
               <p className="boxlinks">
                 <a className="textlink" href={`${B}${x.slug}/`}><u>Find out more</u> <span aria-hidden="true">→</span></a>
               </p>
@@ -120,14 +113,6 @@ function Home() {
         <ol className="steps">
           {steps.map(([t, d], i) => <li key={t}><span className="stepn">{i + 1}</span><div><h3>{t}</h3><p>{d}</p></div></li>)}
         </ol>
-      </section>
-
-      <section className="wrap sec" id="prices" aria-labelledby="prices-h">
-        <h2 id="prices-h">Prices</h2>
-        <p className="secsub">Clear prices. Everything is paid up front, before we start, so there are never any surprise bills.</p>
-        <ul className="pricelist">
-          {prices.map(([n, p, d]) => <li key={n}><span className="pn">{n}</span><span className="pp">{p}</span><span className="pd">{d}</span></li>)}
-        </ul>
       </section>
 
       <section className="wrap sec" aria-labelledby="faq-h">
@@ -219,17 +204,6 @@ function Reels() {
 
 // ---------- service pages ----------
 
-function PriceBox({ s }: { s: Service }) {
-  const big = s.price.big ? '£' + s.price.big : s.price.headline ?? 'Ask us'
-  return (
-    <div className="pricebox" id="price">
-      <p className="plabel">{s.price.label}</p>
-      <p className="pbig">{big}</p>
-      <p className="pnote">{s.price.note}</p>
-      {s.price.text && <p className="ptext">{s.price.text}</p>}
-    </div>
-  )
-}
 
 function ServicePage({ s }: { s: Service }) {
   const others = services.filter(o => o.slug !== s.slug)
@@ -241,8 +215,6 @@ function ServicePage({ s }: { s: Service }) {
         <p className="lede">{s.lede}</p>
         <WaBtn msg={s.cta.msg} big />
       </section>
-
-      <section className="wrap sec" aria-label="Price"><PriceBox s={s} /></section>
 
       <section className="wrap sec" aria-labelledby="what-h">
         <h2 id="what-h">What you get</h2>
@@ -327,9 +299,9 @@ function Partners() {
 
 // ---------- shell ----------
 
-const navItems: [string, string, string][] = [['customers', 'More calls', `${B}customers/`], ['google-business', 'Google listing', `${B}google-business/`], ['websites', 'Websites', `${B}websites/`], ['prices', 'Prices', `${B}#prices`], ['about', 'About', `${B}about/`]]
+const navItems: [string, string, string][] = [['customers', 'More calls', `${B}customers/`], ['google-business', 'Google listing', `${B}google-business/`], ['websites', 'Websites', `${B}websites/`], ['about', 'About', `${B}about/`]]
 const menuItems: [string, string, string][] = [
-  ['customers', 'Get more calls', `${B}customers/`], ['google-business', 'Google listing fix', `${B}google-business/`], ['seo', 'Google SEO', `${B}seo/`], ['websites', 'Websites', `${B}websites/`], ['prices', 'Prices', `${B}#prices`],
+  ['customers', 'Get more calls', `${B}customers/`], ['google-business', 'Google listing fix', `${B}google-business/`], ['seo', 'Google SEO', `${B}seo/`], ['websites', 'Websites', `${B}websites/`],
   ['motion', 'Reels and video ads', `${B}motion/`], ['tenders', 'Tender writing', `${B}tenders/`], ['ai', 'AI receptionist', `${B}ai/`], ['about', 'About', `${B}about/`], ['partners', 'Referral partners', `${B}partners/`],
 ]
 

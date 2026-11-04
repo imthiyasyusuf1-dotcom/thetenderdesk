@@ -40,7 +40,7 @@ function Site() {
         <p className="ping-time">09:41</p>
         <AnimatedList pool={pings} max={8} seed={8} every={2400} render={Ping} />
       </div>
-      <div className="vcap"><b>£25</b> first 6 months</div>
+      <div className="vcap"><b>Built</b> for phones</div>
     </div>
   )
 }

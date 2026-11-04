@@ -7,12 +7,12 @@ const SITE = 'https://thetenderdesk.co.uk'
 const src = new URL(live ? '../_live/' : '../preview/', import.meta.url)
 const root = new URL('../', import.meta.url)
 const html = fs.readFileSync(new URL('index.html', src), 'utf8')
-const D = 'More calls for local trades: Google ads, a proper website from £25 and a £49 Google listing fix. Clear prices, paid up front. Founded and run by Yusuf Imthiyas.'
+const D = 'More calls for local trades: Google ads, proper websites and Google listing fixes. Clear prices, paid up front. Founded and run by Yusuf Imthiyas.'
 const pages = {
-  '': ['The Tender Desk | More calls for local trades', 'More calls from local customers for plumbers, builders, electricians, fitters and every local trade. Google ads, websites from £25 and a £49 Google listing fix. Clear prices, paid up front.'],
+  '': ['The Tender Desk | More calls for local trades', 'More calls from local customers for plumbers, builders, electricians, fitters and every local trade. Google ads, websites and Google listing fixes. Clear prices, paid up front.'],
   customers: ['Get More Calls for Your Trade | The Tender Desk', 'We run Google ads for your trade so people nearby ring your phone. Calls come straight to you, never shared. One weekly price with the ads included, paid up front.'],
-  'google-business': ['Google Listing Fix for Trades | The Tender Desk', 'Your Google listing set up or fixed so you show up properly on Maps with your reviews, plus a review QR card. A one off £49.'],
-  websites: ['Websites for Trades | The Tender Desk', 'A proper website that works on a phone and makes it easy to ring you. £25 up front for the first 6 months including hosting, then £75 a year.'],
+  'google-business': ['Google Listing Fix for Trades | The Tender Desk', 'Your Google listing set up or fixed so you show up properly on Maps with your reviews, plus a review QR card. Paid up front.'],
+  websites: ['Websites for Trades | The Tender Desk', 'A proper website that works on a phone and makes it easy to ring you. Hosting included, paid up front.'],
   seo: ['Google SEO for Trades | The Tender Desk', 'Your website set up to climb Google for your trade and be recommended by AI apps. A fixed price after a quick look, paid up front.'],
   motion: ['Reels and Video Ads | The Tender Desk', 'Reels and video ads for Instagram and TikTok, made for your business. Priced per project, ask us.'],
   tenders: ['Tender Writing | The Tender Desk', 'Clear, compliant bids for small businesses. We find the right contracts and write answers that follow the scoring criteria. A fixed price per bid, paid up front.'],
@@ -24,8 +24,8 @@ const pages = {
 }
 const SVC = [
   ['customers', 'Get more calls', 'Google ads for trades with calls straight to your phone. One weekly price with the ads included.'],
-  ['google-business', 'Google listing fix', 'Google listing set up or fixed, one off £49.'],
-  ['websites', 'Websites', 'Websites for trades that work on a phone. £25 for the first 6 months, then £75 a year.'],
+  ['google-business', 'Google listing fix', 'Google listing set up or fixed.'],
+  ['websites', 'Websites', 'Websites for trades that work on a phone.'],
   ['seo', 'Google SEO', 'Websites set up to rank on Google and be recommended by AI answers.'],
   ['motion', 'Reels and video ads', 'Reels and video ads for Instagram and TikTok, priced per project.'],
   ['tenders', 'Tender writing', 'Finding contracts, go or no go, method statements, quality and social value answers.'],

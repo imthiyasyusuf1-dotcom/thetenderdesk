@@ -60,8 +60,8 @@ export const services: Service[] = [
   {
     slug: 'google-business', nav: 'Google listing', name: 'Google listing fix', eyebrow: 'Google listing fix',
     title: 'Show up properly on Google Maps.',
-    lede: 'For most trades the Google listing gets more views than the website. When someone looks you up, it should look right, say what you do and show your reviews. We set it up or fix it for a one off £49.',
-    price: { big: '49', label: 'One off', note: 'Paid up front. No monthly fee.', text: 'For £49 we set up or fix your Google listing, give you a QR card that takes happy customers to your review page, and a short text you can send to past customers asking for a review.' },
+    lede: 'For most trades the Google listing gets more views than the website. When someone looks you up, it should look right, say what you do and show your reviews. We set it up or fix it for you.',
+    price: { headline: 'One off', label: 'Paid up front', note: 'Paid up front. No monthly fee.', text: 'We set up or fix your Google listing, give you a QR card that takes happy customers to your review page, and a short text you can send to past customers asking for a review.' },
     visual: 'gbp',
     listTitle: 'What you get',
     list: [
@@ -74,12 +74,12 @@ export const services: Service[] = [
     stepsTitle: 'How it works',
     steps: [
       ['Message us', 'Send us your business name.'],
-      ['Pay up front', 'You pay the £49, then we get to work.'],
+      ['Pay up front', 'You pay up front, then we get to work.'],
       ['We sort it', 'Listing set up or fixed, usually within a few days.'],
       ['Reviews come in', 'Hand out the QR card and send the review text to past customers.'],
     ],
     faqs: [
-      ['How do I pay?', 'A one off £49, paid up front before we start. No monthly fee.'],
+      ['How do I pay?', 'A one off price, paid up front before we start. No monthly fee.'],
       ['Who owns the listing?', 'You do. It is set up in your name.'],
       ['Will you write reviews for me?', 'Never. Fake reviews are banned by Google and against the law. We help you ask your real customers.'],
       ['Do I need a website too?', 'No, but it works best linked to one, and we can build it.'],
@@ -91,7 +91,7 @@ export const services: Service[] = [
     slug: 'websites', nav: 'Websites', name: 'Websites', eyebrow: 'Websites',
     title: 'A proper website for your trade.',
     lede: 'A clean website that works on a phone, shows off your work and makes it easy to ring you. Built for you from scratch, not a template.',
-    price: { big: '25', label: 'First 6 months, site and hosting', note: 'Paid up front. Then £75 a year.', text: 'Your website built and live, with hosting for the first 6 months. After that it is £75 a year to keep it running. No contract.' },
+    price: { headline: 'One off', label: 'Paid up front', note: 'Paid up front.', text: 'Your website built and live, with hosting included. No contract.' },
     visual: 'site',
     listTitle: 'What you get',
     list: [
@@ -105,12 +105,12 @@ export const services: Service[] = [
     stepsTitle: 'How it works',
     steps: [
       ['Message us', 'A few lines about what you do and some photos of your work is plenty.'],
-      ['Pay up front', 'You pay the £25, then we start building.'],
+      ['Pay up front', 'You pay up front, then we start building.'],
       ['Check it on your phone', 'We send you a link. Tell us any changes.'],
       ['Live', 'We connect your domain and put it live, usually within two working days of your OK.'],
     ],
     faqs: [
-      ['How do I pay?', '£25 up front, which covers the site and hosting for the first 6 months. Then £75 a year, paid up front each year.'],
+      ['How do I pay?', 'One price up front for the site and hosting, then a small yearly fee to keep it running.'],
       ['Do I need to send anything?', 'A few photos of your work and your contact details. We can pull the rest from your Google listing or a quick chat.'],
       ['Can I use my own domain?', 'Yes. We connect one you already own, or help you buy one in your name.'],
       ['What if I want to leave?', 'No contract. If you stop paying the yearly fee the site comes down, and we can hand over the files if you ask.'],
@@ -264,7 +264,7 @@ export const services: Service[] = [
     slug: 'care', nav: 'Website care', name: 'Website care', eyebrow: 'Website care',
     title: 'Your website looked after.',
     lede: 'Hosting, updates, backups and small changes handled for you, so your site stays fast and safe while you get on with the work.',
-    price: { headline: '£75', label: 'A year, for websites we build', note: 'Paid up front once your first 6 months are up. Other sites priced after a quick look.' },
+    price: { headline: 'Yearly', label: 'A year, for websites we build', note: 'Paid up front once your first 6 months are up. Other sites priced after a quick look.' },
     visual: 'care',
     listTitle: 'What you get',
     list: [
@@ -275,13 +275,13 @@ export const services: Service[] = [
     ],
     stepsTitle: 'How it works',
     steps: [
-      ['Pay yearly', '£75 a year, paid up front.'],
+      ['Pay yearly', 'One yearly fee, paid up front.'],
       ['Send changes', 'WhatsApp us whatever you want updating.'],
       ['We check it', 'Speed and uptime checked every month.'],
       ['Backed up', 'Your site copied and stored safely.'],
     ],
     faqs: [
-      ['How do I pay?', '£75 a year, paid up front, for websites we build. Other sites are priced after a quick look.'],
+      ['How do I pay?', 'One yearly fee, paid up front, for websites we build. Other sites are priced after a quick look.'],
       ['How do I ask for a change?', 'Just send it over on WhatsApp or email.'],
       ['What if I want to leave?', 'No contract. We can hand over the files if you ask.'],
     ],
@@ -291,7 +291,7 @@ export const services: Service[] = [
 ]
 
 export const homeFaqs: [string, string][] = [
-  ['How do I pay?', 'Everything is paid up front, before we start. A website is £25 for the first 6 months, then £75 a year. A Google listing fix is a one off £49. Getting more calls is one weekly price, with the Google ads included, paid at the start of each week.'],
+  ['How do I pay?', 'Everything is paid up front, before we start. Message us on WhatsApp and we give you a clear price for your job. Getting more calls is one weekly price, with the Google ads included.'],
   ['Do I have to sign a contract?', 'No. Pay for what you want, when you want it. Stop any time.'],
   ['Are the calls shared with other firms?', 'No. The ads are yours and the calls come straight to your phone. We never sell the same enquiry to anyone else.'],
   ['I am not good with computers. Is that a problem?', 'Not at all. We do all of it and keep you posted on WhatsApp in plain words.'],
