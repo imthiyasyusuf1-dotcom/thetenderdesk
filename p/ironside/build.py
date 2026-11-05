@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Ironside Fire static site generator. Run: python3 build.py  (generates every page, data, assets)."""
+"""Fire Door Hardware static site generator. Run: python3 build.py  (generates every page, data, assets)."""
 import json, re, math, shutil, os, html
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, '..', 'dorquip')
@@ -117,7 +117,7 @@ def page(path, title, desc, body, bodyclass=''):
 <link rel="stylesheet" href="{root}assets/style.css">
 </head><body class="{bodyclass}" data-root="{root}">
 <header class="hdr"><div class="wrap hdr-in">
-<a class="logo" href="{root}index.html" aria-label="Ironside Fire home"><span class="mark"></span><span class="word">IRONSIDE</span><span class="sub">FIRE</span></a>
+<a class="logo" href="{root}index.html" aria-label="Fire Door Hardware home"><span class="mark"></span><span class="word">FIRE DOOR <span>HARDWARE</span></span></a>
 <nav class="dnav" aria-label="Main">{nav}</nav>
 <div class="hdr-r">
 <div class="vat" role="group" aria-label="Show prices"><button type="button" data-vat="ex">Ex VAT</button><button type="button" data-vat="inc">Inc VAT</button></div>
@@ -130,12 +130,12 @@ def page(path, title, desc, body, bodyclass=''):
 </main>
 <footer class="ftr"><div class="wrap">
 <div class="fcols">
-<div><a class="logo" href="{root}index.html"><span class="mark"></span><span class="word">IRONSIDE</span><span class="sub">FIRE</span></a><p>Fire door hardware, packed and sent by us.</p></div>
+<div><a class="logo" href="{root}index.html"><span class="mark"></span><span class="word">FIRE DOOR <span>HARDWARE</span></span></a><p>Fire door hardware, packed and sent by us.</p></div>
 <div><h4>Shop</h4><a href="{root}shop/">All products</a><a href="{root}index.html#kit">Kit a fire door</a><a href="{root}trade/">Trade accounts</a></div>
 <div><h4>Help</h4><a href="{root}delivery/">Delivery and returns</a><a href="{root}about/">About</a><a href="{root}checkout/">Checkout</a></div>
 <div><h4>Contact</h4><a href="mailto:{ORDER_EMAIL}">{ORDER_EMAIL}</a><p class="sm">Ask us for the test certificate for any product.</p></div>
 </div>
-<div class="fbot"><span>Ironside Fire is part of Dorquip Group</span><span class="sm">Prices shown ex VAT unless you switch to inc VAT.</span><span class="sm">Site by <a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">The Tender Desk</a></span></div>
+<div class="fbot"><span>Fire Door Hardware is a trading name of Dorquip Group Limited</span><span class="sm">Prices shown ex VAT unless you switch to inc VAT.</span><span class="sm">Site by <a href="https://thetenderdesk.co.uk" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">The Tender Desk</a></span></div>
 </div></footer>
 <div class="drawer-bg" data-close-basket hidden></div>
 <aside class="drawer" id="drawer" aria-label="Basket" hidden><div class="dr-h"><h2>Basket</h2><button type="button" class="x" aria-label="Close basket" data-close-basket>&times;</button></div><div class="dr-b" id="dr-b"></div><div class="dr-f" id="dr-f"></div></aside>
@@ -182,7 +182,7 @@ home = f'''
 </div>
 <p class="sm">Quantities are a guide for a standard door. Check your door and frame specification and ask us if you are unsure.</p>
 </div></section>
-<section class="sec"><div class="wrap"><h2>Why Ironside Fire</h2><div class="three">
+<section class="sec"><div class="wrap"><h2>Why Fire Door Hardware</h2><div class="three">
 <div><h3>Packed in our own warehouse</h3><p>Every order is picked and packed by our team, not a third party.</p></div>
 <div><h3>Most fast moving items in stock</h3><p>Seals, hinges, closers and signs are the lines we hold.</p></div>
 <div><h3>Trade accounts for better prices</h3><p>Set prices for everyone. Apply for a trade account for better pricing.</p></div>
@@ -197,23 +197,23 @@ home = f'''
 </div></div></section>
 <section class="sec grey"><div class="wrap"><h2>Contact</h2><p>Questions about a fire door job? Email <a class="tl" href="mailto:{ORDER_EMAIL}">{ORDER_EMAIL}</a> and tell us what you are fitting.</p></div></section>
 '''
-write('index.html', page('index.html', 'Ironside Fire | Fire door hardware', 'Fire door hardware, packed and sent by us. Part of Dorquip Group.', home, 'home'))
+write('index.html', page('index.html', 'Fire Door Hardware | Fire door hardware kits and components', 'Fire door hardware, packed and sent by us. Part of Dorquip Group.', home, 'home'))
 
-write('shop/index.html', page('shop/index.html', 'Shop | Ironside Fire', 'All fire door hardware.', '''
+write('shop/index.html', page('shop/index.html', 'Shop | Fire Door Hardware', 'All fire door hardware.', '''
 <section class="sec"><div class="wrap"><h1 class="h1s">Shop</h1>
 <div class="tools"><label class="sr" for="q">Search</label><input id="q" type="search" placeholder="Search name or SKU" autocomplete="off">
 <label class="sr" for="cat">Category</label><select id="cat"></select>
 <label class="sr" for="sort">Sort</label><select id="sort"><option value="">Sort: default</option><option value="asc">Price: low to high</option><option value="desc">Price: high to low</option></select></div>
 <p class="sm" id="count"></p><div class="grid" id="grid"></div><p class="more"><button class="btn" id="more" type="button" hidden>Show more</button></p></div></section>''', 'shop'))
 
-write('product/index.html', page('product/index.html', 'Product | Ironside Fire', 'Fire door hardware product.', '''
+write('product/index.html', page('product/index.html', 'Product | Fire Door Hardware', 'Fire door hardware product.', '''
 <section class="sec"><div class="wrap"><p class="crumb"><a href="../shop/">Shop</a></p><div id="pd" class="pd"><p>Loading</p></div>
 <h2 class="rel-h" id="rel-h" hidden>Related items</h2><div class="grid" id="rel"></div></div></section>''', 'product'))
 
-write('checkout/index.html', page('checkout/index.html', 'Checkout | Ironside Fire', 'Send your order.', '''
+write('checkout/index.html', page('checkout/index.html', 'Checkout | Fire Door Hardware', 'Send your order.', '''
 <section class="sec"><div class="wrap"><h1 class="h1s">Checkout</h1><div id="ck"></div></div></section>''', 'checkout'))
 
-write('trade/index.html', page('trade/index.html', 'Trade accounts | Ironside Fire', 'Apply for a trade account.', '''
+write('trade/index.html', page('trade/index.html', 'Trade accounts | Fire Door Hardware', 'Apply for a trade account.', '''
 <section class="sec"><div class="wrap narrow"><h1 class="h1s">Trade accounts</h1>
 <p class="lead">Our prices are set for everyone. Apply for a trade account for better pricing.</p>
 <form id="tf" class="form" novalidate>
@@ -231,14 +231,14 @@ write('trade/index.html', page('trade/index.html', 'Trade accounts | Ironside Fi
 <div id="tdone" class="done" hidden><h2>Application ready</h2><p>If your email app did not open, email <a class="tl" href="mailto:%s">%s</a> with your company details.</p></div>
 </div></section>''' % (ORDER_EMAIL, ORDER_EMAIL), 'trade'))
 
-write('about/index.html', page('about/index.html', 'About | Ironside Fire', 'About Ironside Fire.', f'''
-<section class="sec"><div class="wrap narrow"><h1 class="h1s">About Ironside Fire</h1>
-<p class="lead">Ironside Fire is part of Dorquip Group. We supply fire door hardware to joiners, installers, contractors and facilities teams.</p>
+write('about/index.html', page('about/index.html', 'About | Fire Door Hardware', 'About Fire Door Hardware.', f'''
+<section class="sec"><div class="wrap narrow"><h1 class="h1s">About Fire Door Hardware</h1>
+<p class="lead">Fire Door Hardware is a trading name of Dorquip Group Limited. We supply fire door hardware to joiners, installers, contractors and facilities teams.</p>
 <p>We hold the fast moving lines, seals, hinges, closers, signs and fire exit hardware, and every order is packed in our own warehouse. We are adding more ranges, including Astroflame and Eclipse.</p>
 <p>Prices are set for everyone. If you buy regularly, <a class="tl" href="../trade/">apply for a trade account</a>.</p>
 <p>Contact: <a class="tl" href="mailto:{ORDER_EMAIL}">{ORDER_EMAIL}</a></p></div></section>''', 'about'))
 
-write('delivery/index.html', page('delivery/index.html', 'Delivery and returns | Ironside Fire', 'Delivery and returns.', f'''
+write('delivery/index.html', page('delivery/index.html', 'Delivery and returns | Fire Door Hardware', 'Delivery and returns.', f'''
 <section class="sec"><div class="wrap narrow"><h1 class="h1s">Delivery and returns</h1>
 <h2>Delivery</h2><p>Orders are packed in our warehouse and sent by courier. Delivery cost and times are shown at checkout or confirmed with your order.</p>
 <h2>Payment</h2><p>When you place an order we confirm it and send payment details.</p>
@@ -263,7 +263,7 @@ h1{font-size:clamp(2.2rem,7vw,4.6rem)}h2{font-size:clamp(1.6rem,4vw,2.4rem)}h3{f
 .tl{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .hdr{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
 .hdr-in{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;height:36px}
+.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;height:36px}.logo .word{white-space:nowrap}.logo .word span{color:var(--red)}@media(max-width:560px){.logo .word{font-size:1.02rem;letter-spacing:.03em}.logo{min-width:0}}@media(max-width:360px){.logo .word{font-size:.9rem}}
 .mark{width:22px;height:30px;background:var(--red);display:inline-block}
 .word{font-weight:800;font-size:1.35rem;letter-spacing:.06em}.sub{font-weight:500;font-size:.8rem;letter-spacing:.2em;color:var(--mute);align-self:flex-end;margin-bottom:5px}
 .dnav{display:none;gap:22px}.dnav a{text-decoration:none;font-weight:600;min-height:44px;display:inline-flex;align-items:center}.dnav a:hover{color:var(--red)}
@@ -415,7 +415,7 @@ window.__rerender=function(){draw()};draw(true)})}
 
 function product(){load().then(function(d){var id=new URLSearchParams(location.search).get('id'),p=BY[id],m=$('#pd');
 if(!p){m.innerHTML='<div><h1 class="h1s">Product not found</h1><p><a class="tl" href="'+ROOT+'shop/">Back to the shop</a></p></div>';return}
-document.title=p.n+' | Ironside Fire';var qty=1;
+document.title=p.n+' | Fire Door Hardware';var qty=1;
 function dh(){var h='',ul=0;p.d.forEach(function(l){if(/^\u2022/.test(l)){if(!ul){h+='<ul>';ul=1}h+='<li>'+esc(l.replace(/^\u2022\s*/,''))+'</li>'}else{if(ul){h+='</ul>';ul=0}h+='<p>'+esc(l)+'</p>'}});if(ul)h+='</ul>';return h}
 function draw(){m.innerHTML='<div class="pim"><img src="'+img(p)+'" alt="'+esc(p.n)+'"></div><div><h1 class="h1s">'+esc(p.n)+'</h1><p class="sm">SKU '+esc(p.sku)+'</p><p class="big">'+gbp(px(p.p))+' <small>'+label()+'</small></p><div class="row"><div class="qty"><button type="button" id="qm" aria-label="Less">-</button><span id="qv">'+qty+'</span><button type="button" id="qp" aria-label="More">+</button></div><button class="btn" type="button" id="add">Add to basket</button></div><div class="cert">Need the fire test certificate? <a class="tl" href="mailto:'+window.IF.email+'?subject='+encodeURIComponent('Test certificate: '+p.sku)+'">Ask us</a></div>'+dh()+'</div>';
 $('#qm').onclick=function(){qty=Math.max(1,qty-1);$('#qv').textContent=qty};$('#qp').onclick=function(){qty++;$('#qv').textContent=qty};
@@ -431,10 +431,10 @@ m.innerHTML='<div class="ckg"><form id="cf" class="form" novalidate style="margi
 $('#cf').onsubmit=function(e){e.preventDefault();var f=e.target,o={};new FormData(f).forEach(function(val,k){o[k]=String(val).trim()});
 if(!o.name||!o.email||!o.phone||!o.address||o.email.indexOf('@')<1){$('#ce').textContent='Please fill in name, a valid email, phone and delivery address.';return}
 ls('if_details',JSON.stringify(o));
-var body='New order from the Ironside Fire site\n\n'+L.map(function(l){return l.q+' x '+l.p.n+' ('+l.p.sku+') '+gbp(l.p.p)+' ex VAT each'}).join('\n')+'\n\nSubtotal ex VAT: '+gbp(t.ex)+'\nVAT 20%: '+gbp(t.vat)+'\nTotal inc VAT: '+gbp(t.inc)+'\nDelivery: to be confirmed\n\nName: '+o.name+'\nCompany: '+o.company+'\nEmail: '+o.email+'\nPhone: '+o.phone+'\nDelivery address:\n'+o.address+'\n\nNotes: '+o.notes;
+var body='New order from the Fire Door Hardware site\n\n'+L.map(function(l){return l.q+' x '+l.p.n+' ('+l.p.sku+') '+gbp(l.p.p)+' ex VAT each'}).join('\n')+'\n\nSubtotal ex VAT: '+gbp(t.ex)+'\nVAT 20%: '+gbp(t.vat)+'\nTotal inc VAT: '+gbp(t.inc)+'\nDelivery: to be confirmed\n\nName: '+o.name+'\nCompany: '+o.company+'\nEmail: '+o.email+'\nPhone: '+o.phone+'\nDelivery address:\n'+o.address+'\n\nNotes: '+o.notes;
 cart.clear();
 m.innerHTML='<div class="done"><h2>Order received</h2><p>Thank you, '+esc(o.name)+'. We will confirm your order and send payment details to '+esc(o.email)+'.</p><p class="sm">If your email app did not open, email your basket to <a class="tl" href="mailto:'+window.IF.email+'">'+window.IF.email+'</a>.</p><a class="btn" href="'+ROOT+'shop/">Back to the shop</a></div>';
-window.location.href='mailto:'+window.IF.email+'?subject='+encodeURIComponent('Order from Ironside Fire: '+o.name)+'&body='+encodeURIComponent(body)}}
+window.location.href='mailto:'+window.IF.email+'?subject='+encodeURIComponent('Order from Fire Door Hardware: '+o.name)+'&body='+encodeURIComponent(body)}}
 window.__rerender=draw;draw()})}
 
 function trade(){var f=$('#tf');f.onsubmit=function(e){e.preventDefault();var o={};new FormData(f).forEach(function(v,k){o[k]=String(v).trim()});

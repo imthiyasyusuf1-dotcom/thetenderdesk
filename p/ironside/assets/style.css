@@ -14,7 +14,7 @@ h1{font-size:clamp(2.2rem,7vw,4.6rem)}h2{font-size:clamp(1.6rem,4vw,2.4rem)}h3{f
 .tl{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .hdr{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
 .hdr-in{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;height:36px}
+.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;height:36px}.logo .word{white-space:nowrap}.logo .word span{color:var(--red)}@media(max-width:560px){.logo .word{font-size:1.02rem;letter-spacing:.03em}.logo{min-width:0}}@media(max-width:360px){.logo .word{font-size:.9rem}}
 .mark{width:22px;height:30px;background:var(--red);display:inline-block}
 .word{font-weight:800;font-size:1.35rem;letter-spacing:.06em}.sub{font-weight:500;font-size:.8rem;letter-spacing:.2em;color:var(--mute);align-self:flex-end;margin-bottom:5px}
 .dnav{display:none;gap:22px}.dnav a{text-decoration:none;font-weight:600;min-height:44px;display:inline-flex;align-items:center}.dnav a:hover{color:var(--red)}

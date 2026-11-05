@@ -64,7 +64,7 @@ window.__rerender=function(){draw()};draw(true)})}
 
 function product(){load().then(function(d){var id=new URLSearchParams(location.search).get('id'),p=BY[id],m=$('#pd');
 if(!p){m.innerHTML='<div><h1 class="h1s">Product not found</h1><p><a class="tl" href="'+ROOT+'shop/">Back to the shop</a></p></div>';return}
-document.title=p.n+' | Ironside Fire';var qty=1;
+document.title=p.n+' | Fire Door Hardware';var qty=1;
 function dh(){var h='',ul=0;p.d.forEach(function(l){if(/^\u2022/.test(l)){if(!ul){h+='<ul>';ul=1}h+='<li>'+esc(l.replace(/^\u2022\s*/,''))+'</li>'}else{if(ul){h+='</ul>';ul=0}h+='<p>'+esc(l)+'</p>'}});if(ul)h+='</ul>';return h}
 function draw(){m.innerHTML='<div class="pim"><img src="'+img(p)+'" alt="'+esc(p.n)+'"></div><div><h1 class="h1s">'+esc(p.n)+'</h1><p class="sm">SKU '+esc(p.sku)+'</p><p class="big">'+gbp(px(p.p))+' <small>'+label()+'</small></p><div class="row"><div class="qty"><button type="button" id="qm" aria-label="Less">-</button><span id="qv">'+qty+'</span><button type="button" id="qp" aria-label="More">+</button></div><button class="btn" type="button" id="add">Add to basket</button></div><div class="cert">Need the fire test certificate? <a class="tl" href="mailto:'+window.IF.email+'?subject='+encodeURIComponent('Test certificate: '+p.sku)+'">Ask us</a></div>'+dh()+'</div>';
 $('#qm').onclick=function(){qty=Math.max(1,qty-1);$('#qv').textContent=qty};$('#qp').onclick=function(){qty++;$('#qv').textContent=qty};
@@ -80,10 +80,10 @@ m.innerHTML='<div class="ckg"><form id="cf" class="form" novalidate style="margi
 $('#cf').onsubmit=function(e){e.preventDefault();var f=e.target,o={};new FormData(f).forEach(function(val,k){o[k]=String(val).trim()});
 if(!o.name||!o.email||!o.phone||!o.address||o.email.indexOf('@')<1){$('#ce').textContent='Please fill in name, a valid email, phone and delivery address.';return}
 ls('if_details',JSON.stringify(o));
-var body='New order from the Ironside Fire site\n\n'+L.map(function(l){return l.q+' x '+l.p.n+' ('+l.p.sku+') '+gbp(l.p.p)+' ex VAT each'}).join('\n')+'\n\nSubtotal ex VAT: '+gbp(t.ex)+'\nVAT 20%: '+gbp(t.vat)+'\nTotal inc VAT: '+gbp(t.inc)+'\nDelivery: to be confirmed\n\nName: '+o.name+'\nCompany: '+o.company+'\nEmail: '+o.email+'\nPhone: '+o.phone+'\nDelivery address:\n'+o.address+'\n\nNotes: '+o.notes;
+var body='New order from the Fire Door Hardware site\n\n'+L.map(function(l){return l.q+' x '+l.p.n+' ('+l.p.sku+') '+gbp(l.p.p)+' ex VAT each'}).join('\n')+'\n\nSubtotal ex VAT: '+gbp(t.ex)+'\nVAT 20%: '+gbp(t.vat)+'\nTotal inc VAT: '+gbp(t.inc)+'\nDelivery: to be confirmed\n\nName: '+o.name+'\nCompany: '+o.company+'\nEmail: '+o.email+'\nPhone: '+o.phone+'\nDelivery address:\n'+o.address+'\n\nNotes: '+o.notes;
 cart.clear();
 m.innerHTML='<div class="done"><h2>Order received</h2><p>Thank you, '+esc(o.name)+'. We will confirm your order and send payment details to '+esc(o.email)+'.</p><p class="sm">If your email app did not open, email your basket to <a class="tl" href="mailto:'+window.IF.email+'">'+window.IF.email+'</a>.</p><a class="btn" href="'+ROOT+'shop/">Back to the shop</a></div>';
-window.location.href='mailto:'+window.IF.email+'?subject='+encodeURIComponent('Order from Ironside Fire: '+o.name)+'&body='+encodeURIComponent(body)}}
+window.location.href='mailto:'+window.IF.email+'?subject='+encodeURIComponent('Order from Fire Door Hardware: '+o.name)+'&body='+encodeURIComponent(body)}}
 window.__rerender=draw;draw()})}
 
 function trade(){var f=$('#tf');f.onsubmit=function(e){e.preventDefault();var o={};new FormData(f).forEach(function(v,k){o[k]=String(v).trim()});
