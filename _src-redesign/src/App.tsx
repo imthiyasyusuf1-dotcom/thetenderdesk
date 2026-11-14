@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { services, homeFaqs, wa, MAIL, B } from './content'
 import type { Service } from './content'
+import { Egg } from './Egg'
 
 // Plain, calm site for small trades: no smooth scroll, no text effects, no scroll animation.
 
@@ -297,6 +298,51 @@ function Partners() {
   )
 }
 
+function Secret({ onClose }: { onClose: () => void }) {
+  const closeRef = useRef<HTMLButtonElement>(null)
+  useEffect(() => {
+    document.documentElement.classList.add('lock')
+    closeRef.current?.focus()
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', onKey)
+    return () => { document.documentElement.classList.remove('lock'); window.removeEventListener('keydown', onKey) }
+  }, [onClose])
+  return (
+    <div className="secret" role="dialog" aria-modal="true" aria-label="Secret">
+      <video className="secretv" src={`${B}assets/egg/brew.mp4`} poster={`${B}assets/egg/brew.jpg`} autoPlay muted loop playsInline preload="none" />
+      <div className="secretshade" />
+      <button ref={closeRef} className="secretx" aria-label="Close" onClick={onClose}><i /><i /></button>
+      <div className="secretbody">
+        <p className="secretk">You found the secret</p>
+        <p className="secrett">Fancy a brew and a chat?</p>
+        <WaBtn big msg="Hi, I found the secret on your site. Fancy a brew and a chat?" label="Say hello on WhatsApp" />
+      </div>
+    </div>
+  )
+}
+
+function useEgg() {
+  const [on, setOn] = useState(false)
+  const taps = useRef<number[]>([])
+  const typed = useRef('')
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey || e.altKey || e.key.length !== 1) return
+      typed.current = (typed.current + e.key.toLowerCase()).slice(-4)
+      if (typed.current === 'brew') setOn(true)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
+  const tap = (e: React.MouseEvent) => {
+    const now = Date.now()
+    taps.current = [...taps.current.filter(t => now - t < 2500), now]
+    if (window.location.pathname === B) e.preventDefault()
+    if (taps.current.length >= 5) { e.preventDefault(); taps.current = []; setOn(true) }
+  }
+  return { on, close: () => setOn(false), tap }
+}
+
 // ---------- shell ----------
 
 const navItems: [string, string, string][] = [['customers', 'More calls', `${B}customers/`], ['google-business', 'Google listing', `${B}google-business/`], ['websites', 'Websites', `${B}websites/`], ['about', 'About', `${B}about/`]]
@@ -312,6 +358,7 @@ export default function App() {
   const s = services.find(x => x.slug === r)
   const [menu, setMenu] = useState(false)
   const burgerRef = useRef<HTMLButtonElement>(null)
+  const egg = useEgg()
 
   useEffect(() => {
     document.documentElement.classList.toggle('lock', menu)
@@ -327,7 +374,7 @@ export default function App() {
     <>
       <a className="skip" href="#main">Skip to content</a>
       <header className="nav wrap">
-        <a href={B} className="brand" aria-label="The Tender Desk, home">The Tender Desk</a>
+        <a href={B} className="brand" aria-label="The Tender Desk, home" onClick={egg.tap}>The Tender Desk</a>
         <nav aria-label="Main" className="dnav">
           {navItems.map(([slug, label, href]) => <a key={slug} href={href} aria-current={r === slug ? 'page' : undefined}>{label}</a>)}
         </nav>
@@ -356,13 +403,14 @@ export default function App() {
         {s ? <ServicePage s={s} /> : r === 'about' ? <About /> : r === 'partners' ? <Partners /> : <Home />}
       </main>
 
+      {egg.on && <Secret onClose={egg.close} />}
       <footer className="foot wrap">
         <div className="fcols">
           <div><p className="brand">The Tender Desk</p><p>More calls, a proper website and a Google listing that works, for small trades.</p><p>Founded and run by Yusuf Imthiyas.</p></div>
           <div><p className="fh">Services</p>{services.slice(0, 4).map(x => <a key={x.slug} href={`${B}${x.slug}/`}>{x.name}</a>)}<a href={`${B}#also`}>Everything else</a></div>
           <div><p className="fh">Company</p><a href={`${B}about/`}>About</a><a href={`${B}partners/`}>Referral partners</a><a href={MAIL}>hello@thetenderdesk.co.uk</a></div>
         </div>
-        <p className="fbase">© {new Date().getFullYear()} The Tender Desk</p>
+        <div className="fbase"><p>© {new Date().getFullYear()} The Tender Desk</p><Egg /></div>
       </footer>
     </>
   )
