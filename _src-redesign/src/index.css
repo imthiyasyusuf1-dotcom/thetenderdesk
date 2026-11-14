@@ -223,37 +223,3 @@ section{scroll-margin-top:16px}
  .homehero .lede{max-width:min(40ch,calc(100% - 340px))}
 }
  @media (max-width:900px){.box{grid-row:auto;grid-template-rows:none}}
-
-/* hidden fun */
-.fbase{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-.fbase p{margin:0}
-.eggbtn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border:1px solid #d9d9d4;border-radius:999px;background:#fff;color:var(--muted);font:600 14px/1 var(--sans);cursor:pointer;transition:transform .2s,border-color .2s}
-.eggbtn:hover{border-color:#e5484d;color:var(--ink);transform:translateY(-1px)}
-.eggdot{width:10px;height:10px;border-radius:50%;background:#e5484d;box-shadow:0 0 0 0 rgba(229,72,77,.5);animation:eggp 1.8s infinite}
-@keyframes eggp{70%{box-shadow:0 0 0 9px rgba(229,72,77,0)}100%{box-shadow:0 0 0 0 rgba(229,72,77,0)}}
-.egg{position:fixed;inset:0;z-index:200;background:rgba(10,11,12,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 20px 28px;text-align:center;color:#fff;animation:eggin .35s ease-out}
-@keyframes eggin{from{opacity:0}to{opacity:1}}
-.eggframe{width:min(92vw,calc((100dvh - 300px) * .5625),420px);aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:#000;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:eggpop .5s cubic-bezier(.2,1.4,.4,1)}
-@keyframes eggpop{from{transform:scale(.6) rotate(-6deg);opacity:0}to{transform:none;opacity:1}}
-.eggframe video{width:100%;height:100%;object-fit:cover;display:block}
-.eggk{margin:22px 0 4px;font:700 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#e5484d}
-.eggl{margin:0 0 18px;font:700 clamp(20px,5vw,26px)/1.25 var(--sans);max-width:420px}
-.eggrow{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.eggagain{min-height:48px;padding:0 20px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:600 16px/1 var(--sans);cursor:pointer}
-.eggx{position:absolute;top:14px;right:14px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.12);cursor:pointer}
-.eggx i{position:absolute;left:12px;top:21px;width:20px;height:2px;background:#fff;transform:rotate(45deg)}
-.eggx i+i{transform:rotate(-45deg)}
-@media (prefers-reduced-motion:reduce){.eggdot,.egg,.eggframe{animation:none}}
-
-/* secret */
-.secret{position:fixed;inset:0;z-index:400;background:#0b0c0e;color:#fff;display:flex;align-items:flex-end;animation:secin .5s ease both}
-@keyframes secin{from{opacity:0}to{opacity:1}}
-.secretv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.secretshade{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,6,8,.88) 0%,rgba(5,6,8,.35) 45%,rgba(5,6,8,0) 70%)}
-.secretx{position:absolute;top:max(18px,env(safe-area-inset-top));right:18px;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.35);cursor:pointer;display:grid;place-items:center}
-.secretx i{position:absolute;width:20px;height:2px;background:#fff;transform:rotate(45deg)}.secretx i+i{transform:rotate(-45deg)}
-.secretbody{position:relative;width:min(560px,100% - 40px);margin:0 auto;padding:0 0 max(36px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px}
-.secretk{font:500 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.75}
-.secrett{font:400 clamp(38px,9vw,60px)/1.05 var(--serif)}
-.secretbody .btn{width:100%}
-@media (prefers-reduced-motion:reduce){.secret{animation:none}}

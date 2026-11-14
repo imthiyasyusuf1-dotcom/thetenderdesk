@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { services, homeFaqs, wa, MAIL, B } from './content'
 import type { Service } from './content'
-import { Egg } from './Egg'
 
 // Plain, calm site for small trades: no smooth scroll, no text effects, no scroll animation.
 
@@ -410,7 +409,7 @@ export default function App() {
           <div><p className="fh">Services</p>{services.slice(0, 4).map(x => <a key={x.slug} href={`${B}${x.slug}/`}>{x.name}</a>)}<a href={`${B}#also`}>Everything else</a></div>
           <div><p className="fh">Company</p><a href={`${B}about/`}>About</a><a href={`${B}partners/`}>Referral partners</a><a href={MAIL}>hello@thetenderdesk.co.uk</a></div>
         </div>
-        <div className="fbase"><p>© {new Date().getFullYear()} The Tender Desk</p><Egg /></div>
+        <p className="fbase">© {new Date().getFullYear()} The Tender Desk</p>
       </footer>
     </>
   )
