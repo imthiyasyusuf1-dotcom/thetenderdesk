@@ -85,7 +85,7 @@ function Home() {
   return (
     <>
       <section className="hero homehero wrap" id="top">
-        <p className="eyebrow">For plumbers, builders, electricians and fitters</p>
+        <p className="eyebrow">Websites, Google and AI for growing businesses</p>
         <h1>More calls from local customers.</h1>
         <p className="lede">Google ads, a proper website and a Google listing that works. Clear prices, no contract.</p>
         <WaBtn big />
@@ -93,7 +93,7 @@ function Home() {
       </section>
 
       <section className="wrap sec" id="services" aria-labelledby="svc-h">
-        <h2 id="svc-h">What we do for trades</h2>
+        <h2 id="svc-h">What we do</h2>
         <p className="secsub">Pick what you need. Clear prices, no contract.</p>
         <ul className="boxes">
           {three.map(x => (
@@ -257,13 +257,13 @@ function About() {
       <section className="hero wrap" id="top">
         <p className="eyebrow">About</p>
         <h1>Founded and run by Yusuf Imthiyas.</h1>
-        <p className="lede">The Tender Desk helps small trades get more work: more calls from Google, a proper website and a Google listing that shows up. One person, plain words, real prices.</p>
+        <p className="lede">The Tender Desk helps businesses get more customers: more calls from Google, a proper website and a Google listing that shows up. One person, plain words, real prices.</p>
         <WaBtn msg="Hi, I'd like to talk about my business." big />
       </section>
       <section className="wrap sec" aria-labelledby="story-h">
         <h2 id="story-h">Why it exists</h2>
         <div className="prose">
-          <p>Plenty of good trades lose work they should win. Great reviews, a phone that should be ringing, and a website or Google listing that lets them down. That is the bit we fix.</p>
+          <p>Plenty of good businesses lose work they should win. Great reviews, a phone that should be ringing, and a website or Google listing that lets them down. That is the bit we fix.</p>
           <p>Yusuf is a final year Chemical Engineering student who worked in a testing lab, where a missed detail means a wrong result. The same care goes into every site and every ad. You deal with him from the first message to the day it goes live.</p>
         </div>
       </section>
@@ -405,7 +405,7 @@ export default function App() {
       {egg.on && <Secret onClose={egg.close} />}
       <footer className="foot wrap">
         <div className="fcols">
-          <div><p className="brand">The Tender Desk</p><p>More calls, a proper website and a Google listing that works, for small trades.</p><p>Founded and run by Yusuf Imthiyas.</p></div>
+          <div><p className="brand">The Tender Desk</p><p>More calls, a proper website and a Google listing that works, for businesses that want more customers.</p><p>Founded and run by Yusuf Imthiyas.</p></div>
           <div><p className="fh">Services</p>{services.slice(0, 4).map(x => <a key={x.slug} href={`${B}${x.slug}/`}>{x.name}</a>)}<a href={`${B}#also`}>Everything else</a></div>
           <div><p className="fh">Company</p><a href={`${B}about/`}>About</a><a href={`${B}partners/`}>Referral partners</a><a href={MAIL}>hello@thetenderdesk.co.uk</a></div>
         </div>
