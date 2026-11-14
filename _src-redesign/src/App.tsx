@@ -60,13 +60,13 @@ const Founder = () => (
 // ---------- home ----------
 
 const three: { slug: string; title: string; text: string; price: string; sub: string }[] = [
-  { slug: 'customers', title: 'Get more calls', text: 'We run Google ads for your trade, so people nearby searching for what you do ring your phone. The calls come straight to you and are never shared.', price: '', sub: '' },
+  { slug: 'customers', title: 'Get more calls', text: 'We run Google ads for your business, so people nearby searching for what you do ring your phone. The calls come straight to you and are never shared.', price: '', sub: '' },
   { slug: 'google-business', title: 'Get found on Google', text: 'We sort your Google listing so you show up on Maps with your reviews, and set your website up to climb the search results.', price: '', sub: '' },
   { slug: 'websites', title: 'A proper website', text: 'A clean site that works on a phone, shows off your work and makes it easy to ring you.', price: '', sub: '' },
 ]
 
 const steps: [string, string][] = [
-  ['Message us', 'Send a WhatsApp. Tell us your trade and what you need.'],
+  ['Message us', 'Send a WhatsApp. Tell us about your business and what you need.'],
   ['Agree the job', 'We agree what you need and a clear price, so there are no surprises later.'],
   ['We set it up', 'We do all of it. You see everything before it goes live.'],
   ['Your phone rings', 'Customers call you direct. You get on with the work.'],
@@ -129,7 +129,7 @@ function Home() {
         </ul>
       </section>
 
-      <Contact title="Want more calls?" text="Send us a WhatsApp with your trade. We reply the same working day." msg={HELLO} />
+      <Contact title="Want more calls?" text="Send us a WhatsApp about your business. We reply the same working day." msg={HELLO} />
     </>
   )
 }
@@ -284,7 +284,7 @@ function Partners() {
     <>
       <section className="hero wrap" id="top">
         <p className="eyebrow">Referral partners</p>
-        <h1>Know a trade that needs more work?</h1>
+        <h1>Know a business that needs more customers?</h1>
         <p className="lede">Introduce them to us. If they become a client, you get a thank you of 10% of what they pay in their first year. Nothing to sign up to, no targets.</p>
         <WaBtn msg="Hi, I'd like to become a referral partner." big />
       </section>
