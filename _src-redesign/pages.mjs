@@ -18,6 +18,7 @@ const pages = {
   tenders: ['Tender Writing | The Tender Desk', 'Clear, compliant bids for small businesses. We find the right contracts and write answers that follow the scoring criteria. A fixed price per bid.'],
   'google-ads': ['Google Ads | The Tender Desk', 'Already have a website? We run your Google ads and pay for them, with every call counted. One weekly price.'],
   ai: ['AI Receptionist | The Tender Desk', 'An AI receptionist trained on your business that answers customers day and night, asks the right questions and books the job.'],
+  design: ['Logos, Business Cards and Brand Design | The Tender Desk', 'Logos redrawn sharp, print ready business cards with QR contact codes, team photo editing, social graphics and email signatures. A fixed price per job.'],
   care: ['Website Care | The Tender Desk', 'Hosting, updates, backups and small changes handled for you, so your site stays fast and secure.'],
   about: ['About Us | The Tender Desk', 'The Tender Desk helps businesses get more calls, a proper website and a Google listing that works. Founded and run by Yusuf Imthiyas.'],
   partners: ['Referral Partners | The Tender Desk', 'Introduce a business to The Tender Desk and receive a thank you of 10% of what they pay in their first year.'],
@@ -31,6 +32,7 @@ const SVC = [
   ['tenders', 'Tender writing', 'Finding contracts, go or no go, method statements, quality and social value answers.'],
   ['google-ads', 'Google Ads', 'Google Ads campaigns built and managed, with every enquiry tracked.'],
   ['ai', 'AI receptionist', 'An AI receptionist that answers customers and books jobs day and night.'],
+  ['design', 'Logos, cards and brand design', 'Logo redraws, brand files, business cards, QR contact cards, team photo editing, social graphics and email signatures.'],
   ['care', 'Website care', 'Hosting, updates, backups and small changes every month.'],
 ]
 const catalog = { '@type': 'OfferCatalog', name: 'Services', itemListElement: SVC.map(([slug, name, description]) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name, description, url: `${SITE}/${slug}/`, provider: { '@id': SITE + '/#org' } } })) }

@@ -74,6 +74,8 @@ const steps: [string, string][] = [
 
 
 const alsoDo: [string, string, string][] = [
+  ['design', 'Logos, cards and brand design', 'Logo redraws, business cards with QR contact codes, team photos and brand files.'],
+  ['seo', 'Google SEO', 'Your website set up to climb Google and be recommended by AI apps.'],
   ['motion', 'Reels and video ads', 'Short videos for Instagram and TikTok.'],
   ['tenders', 'Tender writing', 'Bids for council and public contracts.'],
   ['ai', 'AI receptionist', 'Answers customers and books jobs when you cannot.'],
@@ -85,7 +87,7 @@ function Home() {
   return (
     <>
       <section className="hero homehero wrap" id="top">
-        <p className="eyebrow">Websites, Google and AI for growing businesses</p>
+        <p className="eyebrow">Websites, Google, design and AI for growing businesses</p>
         <h1>More calls from local customers.</h1>
         <p className="lede">Google ads, a proper website and a Google listing that works. Clear prices, no contract.</p>
         <WaBtn big />
@@ -108,6 +110,14 @@ function Home() {
         </ul>
       </section>
 
+      <section className="wrap sec" id="also" aria-labelledby="also-h">
+        <h2 id="also-h">Everything else we do</h2>
+        <p className="secsub">One person for the lot, so it all looks and works together.</p>
+        <ul className="also">
+          {alsoDo.map(([slug, n, d]) => <li key={slug}><a href={`${B}${slug}/`}><span className="an">{n}</span><span className="ad">{d}</span><span aria-hidden="true" className="arrow">→</span></a></li>)}
+        </ul>
+      </section>
+
       <section className="wrap sec" id="how" aria-labelledby="how-h">
         <h2 id="how-h">How it works</h2>
         <ol className="steps">
@@ -121,13 +131,6 @@ function Home() {
       </section>
 
       <Founder />
-
-      <section className="wrap sec" id="also" aria-labelledby="also-h">
-        <h2 id="also-h">We also do</h2>
-        <ul className="also">
-          {alsoDo.map(([slug, n, d]) => <li key={slug}><a href={`${B}${slug}/`}><span className="an">{n}</span><span className="ad">{d}</span><span aria-hidden="true" className="arrow">→</span></a></li>)}
-        </ul>
-      </section>
 
       <Contact title="Want more calls?" text="Send us a WhatsApp about your business. We reply the same working day." msg={HELLO} />
     </>
@@ -347,7 +350,7 @@ function useEgg() {
 const navItems: [string, string, string][] = [['customers', 'More calls', `${B}customers/`], ['google-business', 'Google listing', `${B}google-business/`], ['websites', 'Websites', `${B}websites/`], ['about', 'About', `${B}about/`]]
 const menuItems: [string, string, string][] = [
   ['customers', 'Get more calls', `${B}customers/`], ['google-business', 'Google listing fix', `${B}google-business/`], ['seo', 'Google SEO', `${B}seo/`], ['websites', 'Websites', `${B}websites/`],
-  ['motion', 'Reels and video ads', `${B}motion/`], ['tenders', 'Tender writing', `${B}tenders/`], ['ai', 'AI receptionist', `${B}ai/`], ['about', 'About', `${B}about/`], ['partners', 'Referral partners', `${B}partners/`],
+  ['design', 'Logos, cards and brand design', `${B}design/`], ['motion', 'Reels and video ads', `${B}motion/`], ['tenders', 'Tender writing', `${B}tenders/`], ['ai', 'AI receptionist', `${B}ai/`], ['about', 'About', `${B}about/`], ['partners', 'Referral partners', `${B}partners/`],
 ]
 
 const route = () => window.location.pathname.slice(B.length).split('/')[0]
@@ -406,7 +409,7 @@ export default function App() {
       <footer className="foot wrap">
         <div className="fcols">
           <div><p className="brand">The Tender Desk</p><p>More calls, a proper website and a Google listing that works, for businesses that want more customers.</p><p>Founded and run by Yusuf Imthiyas.</p></div>
-          <div><p className="fh">Services</p>{services.slice(0, 4).map(x => <a key={x.slug} href={`${B}${x.slug}/`}>{x.name}</a>)}<a href={`${B}#also`}>Everything else</a></div>
+          <div><p className="fh">Services</p>{services.slice(0, 4).map(x => <a key={x.slug} href={`${B}${x.slug}/`}>{x.name}</a>)}<a href={`${B}design/`}>Logos and brand design</a><a href={`${B}#also`}>Everything else</a></div>
           <div><p className="fh">Company</p><a href={`${B}about/`}>About</a><a href={`${B}partners/`}>Referral partners</a><a href={MAIL}>hello@thetenderdesk.co.uk</a></div>
         </div>
         <p className="fbase">© {new Date().getFullYear()} The Tender Desk</p>
