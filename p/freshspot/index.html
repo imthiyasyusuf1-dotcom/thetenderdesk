@@ -65,7 +65,7 @@ h2{font-size:clamp(40px,6.6vw,104px);text-wrap:balance}
 .ready .hero .ph img{transform:scale(1.02)}
 .hero .ph:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,15,20,.35) 0%,rgba(9,15,20,.45) 40%,rgba(9,15,20,.86) 100%)}
 .hero .in{position:relative;padding-bottom:clamp(28px,6vh,64px);padding-top:120px}
-.hero h1{font-size:clamp(60px,11.2vw,190px);letter-spacing:-.05em;line-height:.9;max-width:12ch}
+.hero h1{font-size:clamp(60px,11.2vw,190px);letter-spacing:-.05em;line-height:.95;max-width:12ch}
 .hero h1 .l{display:block;overflow:hidden;padding-bottom:.06em}
 .hero h1 .l>span{display:block;transform:translateY(110%);transition:transform 1.2s var(--e)}
 .ready .hero h1 .l>span{transform:none}
@@ -226,7 +226,7 @@ form .btn{grid-column:1/-1;cursor:pointer;border:0;font-family:inherit;margin-to
 /* footer */
 footer{background:var(--night);color:#aeb9c0;padding:20px 0 clamp(110px,12vw,60px);font-size:15px}
 footer .big{padding:clamp(30px,6vw,80px) 0 clamp(30px,4vw,50px)}
-footer .big img{width:100%;max-width:520px;height:auto;opacity:.95}
+footer .big img{width:62%;max-width:420px;height:auto;opacity:.95}
 footer .row{display:flex;justify-content:space-between;gap:16px 30px;flex-wrap:wrap}
 footer a{color:#fff}
 footer .td{text-decoration:underline;text-underline-offset:3px}
@@ -443,7 +443,7 @@ const go=()=>R.classList.add('ready');addEventListener('load',go);setTimeout(go,
 // open now line
 try{const h=+new Intl.DateTimeFormat('en-GB',{hour:'numeric',hour12:false,timeZone:'Europe/London'}).format(new Date());
 const m=new Intl.DateTimeFormat('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/London'}).format(new Date());
-document.getElementById('openTxt').textContent='Open now, '+m+'. Open 24 hours, 7 days';
+
 window.__h=h}catch(e){window.__h=6}
 // nav + bar + parallax
 const nav=document.getElementById('nav'),bar=document.getElementById('bar'),par=document.getElementById('par');let ly=0,tk=false;
